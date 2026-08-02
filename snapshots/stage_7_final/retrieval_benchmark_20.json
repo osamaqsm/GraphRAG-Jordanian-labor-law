@@ -1,0 +1,304 @@
+{
+  "benchmark_name": "Jordanian Labor Law KG Retrieval Benchmark v1",
+  "benchmark_version": "1.0.0",
+  "language": "ar",
+  "scope": "Retrieval only: ontology/KG concept linking and supporting article retrieval before answer generation.",
+  "evaluation_notes": {
+    "primary_article": "The article expected to rank first.",
+    "required_articles": "Articles that must be returned for full recall.",
+    "acceptable_articles": "Legally related articles that are not counted as false positives in lenient scoring.",
+    "expected_concepts_any": "At least one of these local names should appear in direct or expanded concept hits."
+  },
+  "questions": [
+    {
+      "id": "Q01",
+      "category": "wages",
+      "difficulty": "medium",
+      "question": "صاحب العمل لم يدفع راتبي منذ عشرة أيام، ماذا أستطيع أن أفعل؟",
+      "primary_article": 46,
+      "required_articles": [46, 54],
+      "acceptable_articles": [46, 54],
+      "expected_concepts_any": [
+        "delay_exceeds_seven_days_condition",
+        "wage_delay_violation",
+        "pay_wages_obligation"
+      ],
+      "expected_result": "المادة 46 تحدد مهلة دفع الأجر بسبعة أيام، والمادة 54 تنظم المطالبة بالأجور المتأخرة أمام سلطة الأجور."
+    },
+    {
+      "id": "Q02",
+      "category": "contracts",
+      "difficulty": "medium",
+      "question": "لم يكتب صاحب العمل عقدي على الورق، هل أستطيع إثبات حقوقي بعقد شفهي؟",
+      "primary_article": 15,
+      "required_articles": [15],
+      "acceptable_articles": [2, 15],
+      "expected_concepts_any": [
+        "oral_contract_concept",
+        "written_contract_concept",
+        "employment_contract_concept"
+      ],
+      "expected_result": "المادة 15 تجيز للعامل إثبات حقوقه بجميع طرق الإثبات القانونية إذا لم يحرر العقد كتابة."
+    },
+    {
+      "id": "Q03",
+      "category": "contracts",
+      "difficulty": "hard",
+      "question": "عقدي محدد المدة وأنهاه صاحب العمل قبل انتهاء المدة، ما الحقوق التي أستحقها؟",
+      "primary_article": 26,
+      "required_articles": [26],
+      "acceptable_articles": [15, 21, 26],
+      "expected_concepts_any": [
+        "contract_fixed_term_condition",
+        "fixed_term_contract_concept",
+        "termination_contract_consequence"
+      ],
+      "expected_result": "المادة 26 تمنح العامل حقوق العقد والأجور المستحقة حتى نهاية المدة المتبقية، ما لم يكن الفصل وفق المادة 28."
+    },
+    {
+      "id": "Q04",
+      "category": "contracts",
+      "difficulty": "medium",
+      "question": "أعمل بعقد غير محدد المدة، كم مدة الإشعار المطلوبة قبل إنهاء العقد؟",
+      "primary_article": 23,
+      "required_articles": [23],
+      "acceptable_articles": [23],
+      "expected_concepts_any": [
+        "contract_indefinite_term_condition",
+        "indefinite_term_contract_concept",
+        "dismissal_event"
+      ],
+      "expected_result": "المادة 23 تتطلب إشعار الطرف الآخر خطيا قبل شهر واحد على الأقل."
+    },
+    {
+      "id": "Q05",
+      "category": "dismissal",
+      "difficulty": "hard",
+      "question": "قدمت شكوى لوزارة العمل، وبعدها عاقبني صاحب العمل وفصلني، هل هذا مسموح؟",
+      "primary_article": 24,
+      "required_articles": [24],
+      "acceptable_articles": [24, 25],
+      "expected_concepts_any": [
+        "arbitrary_dismissal_violation",
+        "dismissal_event",
+        "disciplinary_action_consequence"
+      ],
+      "expected_result": "المادة 24 تمنع فصل العامل أو اتخاذ إجراء تأديبي بحقه بسبب الشكاوى والمطالبات المتعلقة بتطبيق القانون."
+    },
+    {
+      "id": "Q06",
+      "category": "dismissal",
+      "difficulty": "medium",
+      "question": "فصلني صاحب العمل تعسفيا منذ ثلاثين يوما، هل يمكن أن أحصل على تعويض؟",
+      "primary_article": 25,
+      "required_articles": [25],
+      "acceptable_articles": [24, 25],
+      "expected_concepts_any": [
+        "arbitrary_dismissal_violation",
+        "dismissal_without_lawful_ground_condition",
+        "dismissal_event"
+      ],
+      "expected_result": "المادة 25 تنظم دعوى الفصل التعسفي خلال ستين يوما والتعويض من أجر ثلاثة أشهر إلى ستة أشهر أو الإعادة للعمل."
+    },
+    {
+      "id": "Q07",
+      "category": "dismissal",
+      "difficulty": "medium",
+      "question": "تغيبت عن العمل أحد عشر يوما متتالية دون عذر، هل يستطيع صاحب العمل فصلي دون إشعار؟",
+      "primary_article": 28,
+      "required_articles": [28],
+      "acceptable_articles": [28],
+      "expected_concepts_any": [
+        "dismissal_event",
+        "work_negligence_violation"
+      ],
+      "expected_result": "المادة 28 تجيز الفصل دون إشعار عند الغياب أكثر من عشرة أيام متتالية مع مراعاة الإنذار الكتابي والنشر المقرر فيها."
+    },
+    {
+      "id": "Q08",
+      "category": "work_assignment",
+      "difficulty": "hard",
+      "question": "كلفني صاحب العمل بعمل مختلف اختلافا واضحا عن العمل المتفق عليه، هل يلزمني تنفيذه وهل أستطيع ترك العمل؟",
+      "primary_article": 17,
+      "required_articles": [17, 29],
+      "acceptable_articles": [17, 29],
+      "expected_concepts_any": [
+        "assignment_different_work_violation",
+        "assign_agreed_work_obligation"
+      ],
+      "expected_result": "المادة 17 تقيد التكليف بعمل مختلف، والمادة 29 تجيز للعامل ترك العمل دون إشعار في الحالة المحددة فيها مع الاحتفاظ بحقوقه."
+    },
+    {
+      "id": "Q09",
+      "category": "worker_obligations",
+      "difficulty": "medium",
+      "question": "هل يلتزم العامل بالمحافظة على أسرار صاحب العمل، وما نتيجة إفشائها؟",
+      "primary_article": 19,
+      "required_articles": [19, 28],
+      "acceptable_articles": [19, 28],
+      "expected_concepts_any": [
+        "preserve_confidentiality_obligation",
+        "disclosure_employer_secrets_violation"
+      ],
+      "expected_result": "المادة 19 تفرض المحافظة على أسرار صاحب العمل، والمادة 28 تعد إفشاء أسرار العمل سببا للفصل دون إشعار."
+    },
+    {
+      "id": "Q10",
+      "category": "leave",
+      "difficulty": "easy",
+      "question": "أعمل لدى صاحب العمل نفسه منذ ست سنوات، كم يوم إجازة سنوية مدفوعة أستحق؟",
+      "primary_article": 61,
+      "required_articles": [61],
+      "acceptable_articles": [61],
+      "expected_concepts_any": [
+        "leave_right_concept",
+        "leave_request_event"
+      ],
+      "expected_result": "المادة 61 تمنح 21 يوما من الإجازة السنوية بعد خمس سنوات متصلة لدى صاحب العمل نفسه."
+    },
+    {
+      "id": "Q11",
+      "category": "leave",
+      "difficulty": "easy",
+      "question": "كم مدة الإجازة المرضية المدفوعة، وهل يمكن تجديدها؟",
+      "primary_article": 65,
+      "required_articles": [65],
+      "acceptable_articles": [27, 65],
+      "expected_concepts_any": [
+        "sick_leave_right_concept",
+        "leave_right_concept"
+      ],
+      "expected_result": "المادة 65 تمنح 14 يوما بأجر كامل وتسمح بالتجديد 14 يوما أخرى وفق الشروط الطبية المحددة."
+    },
+    {
+      "id": "Q12",
+      "category": "leave",
+      "difficulty": "easy",
+      "question": "ما مدة إجازة الأمومة المدفوعة، وكم يجب أن يكون منها بعد الولادة؟",
+      "primary_article": 70,
+      "required_articles": [70],
+      "acceptable_articles": [27, 70],
+      "expected_concepts_any": [
+        "leave_right_concept",
+        "leave_request_event"
+      ],
+      "expected_result": "المادة 70 تمنح عشرة أسابيع بأجر كامل، على ألا تقل المدة بعد الوضع عن ستة أسابيع."
+    },
+    {
+      "id": "Q13",
+      "category": "end_of_service",
+      "difficulty": "hard",
+      "question": "أنا بعقد غير محدد المدة وغير مشمول بالضمان الاجتماعي، كيف تحسب مكافأة نهاية الخدمة؟",
+      "primary_article": 32,
+      "required_articles": [32],
+      "acceptable_articles": [32],
+      "expected_concepts_any": [
+        "worker_not_covered_social_security_condition",
+        "end_of_service_benefit_right_concept",
+        "end_of_service_benefit_consequence"
+      ],
+      "expected_result": "المادة 32 تقرر أجر شهر عن كل سنة خدمة فعلية للعامل غير الخاضع للضمان الاجتماعي، مع مكافأة نسبية لكسور السنة."
+    },
+    {
+      "id": "Q14",
+      "category": "working_time",
+      "difficulty": "easy",
+      "question": "كم يجب أن أتقاضى عن ساعة العمل الإضافية وعن العمل في يوم العطلة الأسبوعية؟",
+      "primary_article": 59,
+      "required_articles": [59],
+      "acceptable_articles": [59],
+      "expected_concepts_any": [
+        "wage_right_concept",
+        "wage_payment_event",
+        "pay_wages_obligation"
+      ],
+      "expected_result": "المادة 59 تحدد 125% على الأقل للعمل الإضافي و150% على الأقل للعمل في العطلة الأسبوعية أو الأعياد والعطل الرسمية."
+    },
+    {
+      "id": "Q15",
+      "category": "working_time",
+      "difficulty": "easy",
+      "question": "ما يوم العطلة الأسبوعية للعامل، وهل تكون بأجر كامل؟",
+      "primary_article": 60,
+      "required_articles": [60],
+      "acceptable_articles": [60],
+      "expected_concepts_any": [
+        "weekly_rest_right_concept",
+        "wage_right_concept"
+      ],
+      "expected_result": "المادة 60 تجعل الجمعة يوم العطلة الأسبوعية ما لم تقتض طبيعة العمل غير ذلك، وتنظم استحقاق أجرها."
+    },
+    {
+      "id": "Q16",
+      "category": "wages",
+      "difficulty": "medium",
+      "question": "دفع لي صاحب العمل أجرا أقل من الحد الأدنى، ما المادة التي تعاقبه وتضمن لي فرق الأجر؟",
+      "primary_article": 53,
+      "required_articles": [53],
+      "acceptable_articles": [52, 53],
+      "expected_concepts_any": [
+        "wage_right_concept",
+        "wage_payment_event",
+        "pay_wages_obligation"
+      ],
+      "expected_result": "المادة 53 تفرض غرامة وتحكم للعامل بفرق الأجر عند دفع أجر أقل من الحد الأدنى."
+    },
+    {
+      "id": "Q17",
+      "category": "occupational_safety",
+      "difficulty": "medium",
+      "question": "هل يجب على صاحب العمل توفير معدات الوقاية الشخصية وإبلاغي بمخاطر المهنة دون تحميل العامل تكلفتها؟",
+      "primary_article": 78,
+      "required_articles": [78],
+      "acceptable_articles": [78],
+      "expected_concepts_any": [
+        "provide_safe_work_environment_obligation",
+        "safe_work_environment_right_concept"
+      ],
+      "expected_result": "المادة 78 تلزم صاحب العمل بتدابير الحماية ومعدات الوقاية والإرشاد والإسعاف، وتحظر تحميل العمال تكلفتها."
+    },
+    {
+      "id": "Q18",
+      "category": "juvenile_work",
+      "difficulty": "medium",
+      "question": "هل يجوز تشغيل عامل حدث أكثر من ست ساعات أو بين الثامنة مساء والسادسة صباحا؟",
+      "primary_article": 75,
+      "required_articles": [75],
+      "acceptable_articles": [74, 75],
+      "expected_concepts_any": [
+        "juvenile_concept",
+        "weekly_rest_right_concept"
+      ],
+      "expected_result": "المادة 75 تحظر تشغيل الحدث أكثر من ست ساعات يوميا أو ليلا بين الثامنة مساء والسادسة صباحا، كما تحظر تشغيله في أيام العطل المحددة."
+    },
+    {
+      "id": "Q19",
+      "category": "work_injury",
+      "difficulty": "medium",
+      "question": "أصيب عامل إصابة عمل منعته من الاستمرار، خلال كم ساعة يجب على صاحب العمل إبلاغ الوزارة؟",
+      "primary_article": 87,
+      "required_articles": [87],
+      "acceptable_articles": [87],
+      "expected_concepts_any": [
+        "work_injury_event",
+        "employer_liability_consequence"
+      ],
+      "expected_result": "المادة 87 تلزم بإرسال إشعار إلى الوزارة خلال مدة لا تزيد على 48 ساعة، مع نقل المصاب وتبليغ الجهات الأمنية."
+    },
+    {
+      "id": "Q20",
+      "category": "work_injury",
+      "difficulty": "hard",
+      "question": "إذا سببت إصابة العمل عجزا كليا للعامل، كيف يحسب التعويض؟",
+      "primary_article": 90,
+      "required_articles": [90],
+      "acceptable_articles": [90],
+      "expected_concepts_any": [
+        "work_injury_event",
+        "compensation_consequence",
+        "medical_examination_event"
+      ],
+      "expected_result": "المادة 90 تحدد للعجز الكلي تعويضا يساوي أجر 1200 يوم عمل ضمن الحدين الماليين المذكورين في النص."
+    }
+  ]
+}

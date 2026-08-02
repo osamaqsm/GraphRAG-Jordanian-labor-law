@@ -1,0 +1,1131 @@
+{
+  "benchmark_name": "Jordanian Labor Law KG Stage 7.7-D Unseen 20 Holdout",
+  "benchmark_version": "1.0.0",
+  "benchmark_sha256": "9888e7720c0b0ea07a67fd4df6d5a6d4c6b9532f1a37e0e01fb8fc72a8d232dc",
+  "runner": "scripts.run_unseen_30_benchmark",
+  "summary": {
+    "questions_requested": 20,
+    "questions_completed": 20,
+    "questions_failed_to_run": 0,
+    "passed": 19,
+    "overall_accuracy": 0.95,
+    "retrieve_cases": 14,
+    "retrieve_pass_rate": 0.928571,
+    "hit_at_1_accuracy": 0.928571,
+    "hit_at_3_accuracy": 1.0,
+    "mean_reciprocal_rank": 0.964286,
+    "exact_set_accuracy": 0.714286,
+    "required_article_recall": 1.0,
+    "mean_strict_precision": 0.833333,
+    "mean_strict_f1": 0.880952,
+    "concept_hit_accuracy": 0.833333,
+    "safety_cases": 6,
+    "safe_non_answer_accuracy": 1.0,
+    "clarification_accuracy": 1.0,
+    "out_of_scope_abstention_accuracy": 1.0,
+    "explicit_safety_signal_accuracy": 0.0,
+    "mean_elapsed_seconds": 18.874,
+    "by_test_type": {
+      "straightforward": {
+        "count": 4,
+        "passed": 3,
+        "accuracy": 0.75
+      },
+      "paraphrased": {
+        "count": 3,
+        "passed": 3,
+        "accuracy": 1.0
+      },
+      "typo": {
+        "count": 2,
+        "passed": 2,
+        "accuracy": 1.0
+      },
+      "colloquial": {
+        "count": 2,
+        "passed": 2,
+        "accuracy": 1.0
+      },
+      "numerical": {
+        "count": 2,
+        "passed": 2,
+        "accuracy": 1.0
+      },
+      "multi_article": {
+        "count": 1,
+        "passed": 1,
+        "accuracy": 1.0
+      },
+      "ambiguous": {
+        "count": 3,
+        "passed": 3,
+        "accuracy": 1.0
+      },
+      "out_of_scope": {
+        "count": 3,
+        "passed": 3,
+        "accuracy": 1.0
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "H01",
+      "test_type": "straightforward",
+      "category": "law_scope",
+      "difficulty": "medium",
+      "question": "على من لا تسري أحكام قانون العمل من بين الموظفين العامين وأفراد عائلة صاحب العمل وخدم المنازل وعمال الزراعة؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 3,
+        "required_articles": [
+          3
+        ],
+        "acceptable_articles": [
+          3
+        ],
+        "concepts_any": [],
+        "description": "تستثني المادة 3 الموظفين العامين وموظفي البلديات، وأفراد عائلة صاحب العمل العاملين دون أجر، وخدم المنازل ومن في حكمهم، وعمال الزراعة إلا الفئات التي تخضع بنظام."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          3
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "work_concept",
+          "disclosure_employer_secrets_violation",
+          "employer_concept",
+          "employer_liability_consequence",
+          "employment_contract_concept",
+          "perform_work_obligation",
+          "temporary_work_concept",
+          "employers_union_concept",
+          "seasonal_work_concept",
+          "occasional_work_concept",
+          "oral_contract_concept",
+          "written_contract_concept",
+          "work_negligence_violation",
+          "preserve_confidentiality_obligation",
+          "disciplinary_action_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 19.494
+    },
+    {
+      "id": "H02",
+      "test_type": "straightforward",
+      "category": "collective_contract_registration",
+      "difficulty": "medium",
+      "question": "كيف تُسجل عقود العمل الجماعية، وما البيان الذي يجب تعليقه داخل المؤسسة وأماكن العمل؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 44,
+        "required_articles": [
+          44
+        ],
+        "acceptable_articles": [
+          44
+        ],
+        "concepts_any": [
+          "collective_employment_contract_concept",
+          "contract_formation_event"
+        ],
+        "description": "تنظم تعليمات الوزير تسجيل العقود الجماعية والانضمام إليها واستخراج صورها، ويعلق بيان بوجود العقد وطرفيه وتاريخه ومكان إجرائه."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          39,
+          44
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "establishment_concept",
+          "employer_concept",
+          "employment_contract_concept",
+          "work_concept",
+          "employers_union_concept",
+          "occasional_work_concept",
+          "perform_work_obligation",
+          "seasonal_work_concept",
+          "temporary_work_concept",
+          "oral_contract_concept",
+          "employer_liability_consequence",
+          "work_injury_event"
+        ]
+      },
+      "metrics": {
+        "pass": false,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": false,
+        "hit_at_3": true,
+        "primary_rank": 2,
+        "reciprocal_rank": 0.5,
+        "required_recall": 1.0,
+        "strict_precision": 0.5,
+        "strict_f1": 0.666667,
+        "lenient_precision": 0.5,
+        "concept_scorable": true,
+        "concept_hit": false,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [
+          39
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 22.631
+    },
+    {
+      "id": "H03",
+      "test_type": "straightforward",
+      "category": "occupational_disease",
+      "difficulty": "medium",
+      "question": "من يتحمل تعويض العامل إذا أثبت تقرير المرجع الطبي أن مرضه المهني نشأ عن عمله؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 88,
+        "required_articles": [
+          88
+        ],
+        "acceptable_articles": [
+          88
+        ],
+        "concepts_any": [
+          "compensation_consequence",
+          "medical_examination_event",
+          "work_injury_event"
+        ],
+        "description": "يكون صاحب العمل مسؤولاً عن دفع التعويض للعامل المصاب بمرض مهني ناشئ عن عمله استناداً إلى تقرير المرجع الطبي."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          88
+        ],
+        "graph_supported_articles": [
+          88
+        ],
+        "concepts": [
+          "occupational_disease_concept",
+          "medical_examination_event",
+          "employer_concept",
+          "employer_liability_consequence",
+          "work_injury_event",
+          "work_concept",
+          "perform_work_obligation",
+          "occasional_work_concept",
+          "employment_contract_concept",
+          "temporary_work_concept",
+          "oral_contract_concept",
+          "employers_union_concept"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "medical_examination_event",
+          "work_injury_event"
+        ],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 16.839
+    },
+    {
+      "id": "H04",
+      "test_type": "straightforward",
+      "category": "union_bylaws",
+      "difficulty": "hard",
+      "question": "ما الموضوعات الأساسية التي يجب أن يتضمنها النظام الداخلي لنقابة العمال؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 100,
+        "required_articles": [
+          100
+        ],
+        "acceptable_articles": [
+          100
+        ],
+        "concepts_any": [],
+        "description": "تحدد المادة 100 عناصر النظام الداخلي، ومنها الاسم والعنوان والغايات والعضوية والفروع والهيئة الإدارية والحقوق والالتزامات والعقوبات والخدمات والشؤون المالية."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          100
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "collective_labor_dispute_concept",
+          "employers_union_concept",
+          "trade_union_concept",
+          "collective_employment_contract_concept",
+          "general_secretary_concept",
+          "worker_concept",
+          "employer_concept",
+          "social_security_related_right_concept",
+          "worker_not_covered_social_security_condition",
+          "wage_concept",
+          "administrative_body_concept",
+          "work_concept"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 17.353
+    },
+    {
+      "id": "H05",
+      "test_type": "paraphrased",
+      "category": "labor_inspection",
+      "difficulty": "medium",
+      "question": "اطّلع مفتش العمل أثناء التفتيش على أسرار المنشأة؛ ما الالتزام الذي يسبق مباشرته العمل وما واجبه تجاه تلك الأسرار؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 6,
+        "required_articles": [
+          6
+        ],
+        "acceptable_articles": [
+          6
+        ],
+        "concepts_any": [],
+        "description": "يوقع القائم بالتفتيش تصريحاً مشفوعاً بالقسم بأداء العمل بأمانة وإخلاص، ويلتزم بعدم إفشاء الأسرار التي يطلع عليها بحكم عمله."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          6,
+          19
+        ],
+        "graph_supported_articles": [
+          19
+        ],
+        "concepts": [
+          "disclosure_employer_secrets_violation",
+          "preserve_confidentiality_obligation",
+          "perform_work_obligation",
+          "assign_agreed_work_obligation",
+          "follow_lawful_instructions_obligation",
+          "work_negligence_violation",
+          "provide_safe_work_environment_obligation",
+          "pay_wages_obligation",
+          "work_concept",
+          "employer_concept",
+          "employment_contract_concept",
+          "occasional_work_concept",
+          "disciplinary_action_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.5,
+        "strict_f1": 0.666667,
+        "lenient_precision": 0.5,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [
+          19
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 21.884
+    },
+    {
+      "id": "H06",
+      "test_type": "paraphrased",
+      "category": "occupational_safety",
+      "difficulty": "hard",
+      "question": "من يحدد تدابير الوقاية وأجهزة الحماية ومعايير بيئة المصانع من التلوث والضوضاء والاهتزازات؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 79,
+        "required_articles": [
+          79
+        ],
+        "acceptable_articles": [
+          79
+        ],
+        "concepts_any": [
+          "safe_work_environment_right_concept",
+          "provide_safe_work_environment_obligation",
+          "work_injury_event"
+        ],
+        "description": "يحدد الوزير بعد استطلاع رأي الجهات الرسمية المختصة هذه التدابير والأجهزة والمعايير بتعليمات يصدرها."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          79,
+          78,
+          85
+        ],
+        "graph_supported_articles": [
+          79,
+          78,
+          85
+        ],
+        "concepts": [
+          "safe_work_environment_right_concept",
+          "provide_safe_work_environment_obligation",
+          "disclosure_employer_secrets_violation",
+          "occupational_disease_concept",
+          "employer_liability_consequence",
+          "worker_not_covered_social_security_condition",
+          "employers_union_concept",
+          "disciplinary_action_consequence",
+          "preserve_confidentiality_obligation",
+          "work_negligence_violation",
+          "dismissal_without_lawful_ground_condition",
+          "administrative_body_concept"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "provide_safe_work_environment_obligation",
+          "safe_work_environment_right_concept"
+        ],
+        "unexpected_articles": [
+          78,
+          85
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 24.814
+    },
+    {
+      "id": "H07",
+      "test_type": "paraphrased",
+      "category": "labor_court_decisions",
+      "difficulty": "hard",
+      "question": "صدر قرار من المحكمة العمالية وفيه غموض وخطأ حسابي؛ كيف يمكن تفسيره أو تصحيحه ومن يطلب ذلك؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 126,
+        "required_articles": [
+          126
+        ],
+        "acceptable_articles": [
+          126
+        ],
+        "concepts_any": [
+          "litigation_right_concept",
+          "legal_claim_consequence"
+        ],
+        "description": "تفسر المحكمة قرارها بناء على طلب الوزير أو أحد أطراف النزاع لإزالة الغموض، وتصحح الأخطاء الكتابية أو الحسابية من تلقاء نفسها أو بناء على طلب."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          126
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "leave_request_event",
+          "wage_delay_violation",
+          "arbitrary_dismissal_violation",
+          "assignment_different_work_violation",
+          "work_negligence_violation",
+          "compensation_consequence",
+          "legal_claim_consequence",
+          "disclosure_employer_secrets_violation",
+          "wage_right_concept",
+          "employer_liability_consequence",
+          "collective_labor_dispute_concept",
+          "pay_wages_obligation"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "legal_claim_consequence"
+        ],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 23.928
+    },
+    {
+      "id": "H08",
+      "test_type": "typo",
+      "category": "women_employment",
+      "difficulty": "medium",
+      "question": "مين بحدد الصناعات والاعمال الممنوع تشغبل النساء فيها، والاوقات الي ما بجوز تشغيلهن خلالها والاستثنائات؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 69,
+        "required_articles": [
+          69
+        ],
+        "acceptable_articles": [
+          69
+        ],
+        "concepts_any": [],
+        "description": "يحدد الوزير بقرار، بعد استطلاع رأي الجهات الرسمية المختصة، الأعمال المحظورة على النساء والأوقات المحظورة والحالات المستثناة."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          69
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "provide_safe_work_environment_obligation",
+          "temporary_work_concept",
+          "seasonal_work_concept",
+          "occasional_work_concept",
+          "wage_delay_violation",
+          "weekly_rest_right_concept",
+          "wage_concept",
+          "wage_right_concept",
+          "perform_work_obligation",
+          "worker_concept",
+          "work_concept",
+          "pay_wages_obligation"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 17.94
+    },
+    {
+      "id": "H09",
+      "test_type": "typo",
+      "category": "injury_compensation",
+      "difficulty": "medium",
+      "question": "كيف بنحسب تعويض العامل اذا كان باخذ اجر بالقطعه، وهل بنعتمد اخر اجر ولا متوسط فتره معينه؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 91,
+        "required_articles": [
+          91
+        ],
+        "acceptable_articles": [
+          91
+        ],
+        "concepts_any": [
+          "wage_right_concept",
+          "compensation_consequence",
+          "work_injury_event"
+        ],
+        "description": "يحسب التعويض على أساس الأجر الأخير، أما العامل بالقطعة فعلى أساس متوسط أجر الأشهر الستة الأخيرة."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          91
+        ],
+        "graph_supported_articles": [
+          91
+        ],
+        "concepts": [
+          "wage_concept",
+          "wage_right_concept",
+          "wage_payment_event",
+          "worker_concept",
+          "worker_not_covered_social_security_condition",
+          "compensation_consequence",
+          "wage_delay_violation",
+          "assignment_different_work_violation",
+          "pay_wages_obligation",
+          "occasional_work_concept",
+          "arbitrary_dismissal_violation",
+          "fixed_term_contract_concept",
+          "delay_exceeds_seven_days_condition",
+          "employer_liability_consequence",
+          "legal_claim_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "compensation_consequence",
+          "wage_right_concept"
+        ],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 22.742
+    },
+    {
+      "id": "H10",
+      "test_type": "colloquial",
+      "category": "inspection_enforcement",
+      "difficulty": "hard",
+      "question": "مفتش العمل أنذر صاحب الشغل يشيل المخالفة وما شالها؛ قديش المهلة وشو ممكن يصير بالمؤسسة والغرامة؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 9,
+        "required_articles": [
+          9
+        ],
+        "acceptable_articles": [
+          9
+        ],
+        "concepts_any": [],
+        "description": "للمفتش طلب إزالة المخالفة خلال مدة لا تزيد على سبعة أيام، ثم يجوز إغلاق المؤسسة، وتحكم المحكمة بإزالة المخالفة وغرامة من خمسين إلى خمسمائة دينار."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          9,
+          84,
+          77
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "disclosure_employer_secrets_violation",
+          "employer_liability_consequence",
+          "employer_concept",
+          "work_negligence_violation",
+          "perform_work_obligation",
+          "assign_agreed_work_obligation",
+          "employers_union_concept",
+          "temporary_work_concept",
+          "safe_work_environment_right_concept",
+          "work_concept",
+          "collective_employment_contract_concept",
+          "dismissal_without_lawful_ground_condition",
+          "preserve_confidentiality_obligation",
+          "disciplinary_action_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [
+          77,
+          84
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 22.12
+    },
+    {
+      "id": "H11",
+      "test_type": "colloquial",
+      "category": "union_financial_reporting",
+      "difficulty": "medium",
+      "question": "النقابة كل سنة شو لازم تبعث للمسجل قبل أول نيسان، وشو الكشف اللي لازم يكون مرفق معها؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 118,
+        "required_articles": [
+          118
+        ],
+        "acceptable_articles": [
+          118
+        ],
+        "concepts_any": [],
+        "description": "ترسل ميزانيتها العمومية المدققة قبل أول نيسان، ويرفق بها كشف بأسماء الموظفين والعاملين والتغييرات التي طرأت عليهم وأوضاعهم."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          118
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "disclosure_employer_secrets_violation",
+          "trade_union_concept",
+          "medical_examination_event",
+          "worker_not_covered_social_security_condition",
+          "collective_employment_contract_concept",
+          "wage_delay_violation",
+          "general_secretary_concept",
+          "wage_payment_event",
+          "employers_union_concept",
+          "preserve_confidentiality_obligation",
+          "seasonal_work_concept",
+          "social_security_related_right_concept",
+          "work_negligence_violation",
+          "disciplinary_action_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 17.796
+    },
+    {
+      "id": "H12",
+      "test_type": "numerical",
+      "category": "employers_union_formation",
+      "difficulty": "hard",
+      "question": "كم يجب أن يكون عدد مؤسسي نقابة أصحاب العمل، وما الحد الأدنى لعمر المؤسس وطالب الانتساب؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 108,
+        "required_articles": [
+          108
+        ],
+        "acceptable_articles": [
+          108
+        ],
+        "concepts_any": [],
+        "description": "لا يقل عدد المؤسسين عن ثلاثين صاحب عمل، ولا يقل عمر المؤسس عن خمس وعشرين سنة وعمر طالب الانتساب عن ثماني عشرة سنة."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          108
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "work_concept",
+          "temporary_work_concept",
+          "employers_union_concept",
+          "employer_concept",
+          "employer_liability_consequence",
+          "employment_contract_concept",
+          "occasional_work_concept",
+          "oral_contract_concept",
+          "written_contract_concept",
+          "seasonal_work_concept",
+          "work_injury_event",
+          "perform_work_obligation"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 21.668
+    },
+    {
+      "id": "H13",
+      "test_type": "numerical",
+      "category": "voluntary_union_dissolution",
+      "difficulty": "hard",
+      "question": "إذا أرادت النقابة حل نفسها اختيارياً، ما نسبة موافقة الأعضاء المطلوبة وخلال كم يوماً يجب إشعار الوزير والاتحاد؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 106,
+        "required_articles": [
+          106
+        ],
+        "acceptable_articles": [
+          106
+        ],
+        "concepts_any": [],
+        "description": "يتطلب الحل الاختياري موافقة ثلثي الأعضاء المسددين لاشتراكاتهم في اجتماع غير عادي، ويبلغ الوزير والاتحاد خلال خمسة عشر يوماً."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          106
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "collective_labor_dispute_concept",
+          "trade_union_concept",
+          "minister_concept",
+          "employers_union_concept",
+          "collective_employment_contract_concept",
+          "general_secretary_concept",
+          "assign_agreed_work_obligation",
+          "weekly_rest_right_concept",
+          "leave_request_event",
+          "wage_concept",
+          "dismissal_event",
+          "ministry_concept"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 16.732
+    },
+    {
+      "id": "H14",
+      "test_type": "multi_article",
+      "category": "collective_dispute_effects",
+      "difficulty": "hard",
+      "question": "على من تكون تسوية التوفيق أو قرار المحكمة العمالية ملزمين، ومن أي تاريخ يبدأ تنفيذ كل منهما؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 130,
+        "required_articles": [
+          130,
+          131
+        ],
+        "acceptable_articles": [
+          130,
+          131
+        ],
+        "concepts_any": [
+          "litigation_right_concept",
+          "legal_claim_consequence"
+        ],
+        "description": "المادة 130 تحدد الفئات الملزمة بالتسوية أو القرار، والمادة 131 تحدد تاريخ تنفيذ قرار المحكمة وتاريخ بدء العمل بالتسوية."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          130,
+          131
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "collective_labor_dispute_concept",
+          "litigation_right_concept",
+          "employers_union_concept",
+          "arbitrary_dismissal_violation",
+          "assign_agreed_work_obligation",
+          "perform_work_obligation",
+          "collective_employment_contract_concept",
+          "trade_union_concept",
+          "employer_liability_consequence",
+          "administrative_body_concept",
+          "wage_right_concept",
+          "provide_safe_work_environment_obligation"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "litigation_right_concept"
+        ],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 17.768
+    },
+    {
+      "id": "H15",
+      "test_type": "ambiguous",
+      "category": "ambiguous",
+      "difficulty": "hard",
+      "question": "وزارة العمل طلبت تصويب وضع في المنشأة، شو النتيجة إذا ما تم التصويب؟",
+      "expected_behavior": "clarify",
+      "expected": {
+        "description": "يلزم تحديد نوع المخالفة أو الوضع المطلوب تصويبه والجهة التي أصدرت الطلب، لأن الإجراء والجزاء يختلفان باختلاف الحالة."
+      },
+      "actual": {
+        "behavior_signal": "no_retrieval",
+        "articles": [],
+        "graph_supported_articles": [],
+        "concepts": []
+      },
+      "metrics": {
+        "pass": true,
+        "safe_no_retrieval": true,
+        "explicit_behavior_match": false,
+        "returned_article_count": 0
+      },
+      "elapsed_seconds": 18.208
+    },
+    {
+      "id": "H16",
+      "test_type": "ambiguous",
+      "category": "ambiguous",
+      "difficulty": "hard",
+      "question": "صار خلاف على قرار نقابي، هل بقدر أطعن فيه؟",
+      "expected_behavior": "clarify",
+      "expected": {
+        "description": "يلزم تحديد نوع القرار النقابي، وصفة السائل، والجهة التي أصدرته والإجراء المتخذ قبل تحديد طريق الاعتراض."
+      },
+      "actual": {
+        "behavior_signal": "no_retrieval",
+        "articles": [],
+        "graph_supported_articles": [],
+        "concepts": []
+      },
+      "metrics": {
+        "pass": true,
+        "safe_no_retrieval": true,
+        "explicit_behavior_match": false,
+        "returned_article_count": 0
+      },
+      "elapsed_seconds": 19.991
+    },
+    {
+      "id": "H17",
+      "test_type": "ambiguous",
+      "category": "ambiguous",
+      "difficulty": "hard",
+      "question": "استلمت كتاباً بخصوص نزاع عمالي، شو لازم أعمل بعده؟",
+      "expected_behavior": "clarify",
+      "expected": {
+        "description": "يلزم تحديد الجهة التي أصدرت الكتاب ومضمونه والمرحلة الإجرائية التي وصل إليها النزاع قبل تحديد الخطوة التالية."
+      },
+      "actual": {
+        "behavior_signal": "no_retrieval",
+        "articles": [],
+        "graph_supported_articles": [],
+        "concepts": []
+      },
+      "metrics": {
+        "pass": true,
+        "safe_no_retrieval": true,
+        "explicit_behavior_match": false,
+        "returned_article_count": 0
+      },
+      "elapsed_seconds": 16.275
+    },
+    {
+      "id": "H18",
+      "test_type": "out_of_scope",
+      "category": "inheritance",
+      "difficulty": "easy",
+      "question": "توفي والدي وترك عقاراً وحساباً بنكياً، كيف توزع التركة بين الورثة؟",
+      "expected_behavior": "abstain",
+      "expected": {
+        "description": "المسألة تتعلق بالميراث والأحوال الشخصية، وهي خارج نطاق قانون العمل الأردني."
+      },
+      "actual": {
+        "behavior_signal": "no_retrieval",
+        "articles": [],
+        "graph_supported_articles": [],
+        "concepts": []
+      },
+      "metrics": {
+        "pass": true,
+        "safe_no_retrieval": true,
+        "explicit_behavior_match": false,
+        "returned_article_count": 0
+      },
+      "elapsed_seconds": 12.424
+    },
+    {
+      "id": "H19",
+      "test_type": "out_of_scope",
+      "category": "tax",
+      "difficulty": "medium",
+      "question": "رفضت دائرة ضريبة الدخل اعتراضاً قدمته على التقدير، كيف أتابع الطعن؟",
+      "expected_behavior": "abstain",
+      "expected": {
+        "description": "المسألة تتعلق بالإجراءات الضريبية والطعن في تقدير الضريبة، وهي خارج نطاق قانون العمل الأردني."
+      },
+      "actual": {
+        "behavior_signal": "no_retrieval",
+        "articles": [],
+        "graph_supported_articles": [],
+        "concepts": []
+      },
+      "metrics": {
+        "pass": true,
+        "safe_no_retrieval": true,
+        "explicit_behavior_match": false,
+        "returned_article_count": 0
+      },
+      "elapsed_seconds": 12.741
+    },
+    {
+      "id": "H20",
+      "test_type": "out_of_scope",
+      "category": "traffic_insurance",
+      "difficulty": "easy",
+      "question": "تعرضت لحادث سير وتضررت سيارتي، كيف أطالب شركة التأمين بالتعويض؟",
+      "expected_behavior": "abstain",
+      "expected": {
+        "description": "المسألة تتعلق بحادث سير وتأمين مركبات، وهي خارج نطاق قانون العمل الأردني."
+      },
+      "actual": {
+        "behavior_signal": "no_retrieval",
+        "articles": [],
+        "graph_supported_articles": [],
+        "concepts": []
+      },
+      "metrics": {
+        "pass": true,
+        "safe_no_retrieval": true,
+        "explicit_behavior_match": false,
+        "returned_article_count": 0
+      },
+      "elapsed_seconds": 14.135
+    }
+  ]
+}

@@ -1,0 +1,1920 @@
+{
+  "benchmark_name": "Jordanian Labor Law KG Final Unseen 30 Benchmark",
+  "benchmark_version": "1.0.0",
+  "benchmark_sha256": "f450c4503cf7f067ff846274fe1ae2a8d68ec077c28ce04eafab167f196daace",
+  "runner": "scripts.run_unseen_30_benchmark",
+  "summary": {
+    "questions_requested": 30,
+    "questions_completed": 30,
+    "questions_failed_to_run": 0,
+    "passed": 20,
+    "overall_accuracy": 0.666667,
+    "retrieve_cases": 24,
+    "retrieve_pass_rate": 0.833333,
+    "hit_at_1_accuracy": 0.833333,
+    "hit_at_3_accuracy": 1.0,
+    "mean_reciprocal_rank": 0.909722,
+    "exact_set_accuracy": 0.666667,
+    "required_article_recall": 1.0,
+    "mean_strict_precision": 0.847222,
+    "mean_strict_f1": 0.897222,
+    "concept_hit_accuracy": 0.866667,
+    "safety_cases": 6,
+    "safe_non_answer_accuracy": 0.0,
+    "clarification_accuracy": 0.0,
+    "out_of_scope_abstention_accuracy": 0.0,
+    "explicit_safety_signal_accuracy": 0.0,
+    "mean_elapsed_seconds": 15.916,
+    "by_test_type": {
+      "straightforward": {
+        "count": 5,
+        "passed": 5,
+        "accuracy": 1.0
+      },
+      "paraphrased": {
+        "count": 5,
+        "passed": 4,
+        "accuracy": 0.8
+      },
+      "typo": {
+        "count": 3,
+        "passed": 3,
+        "accuracy": 1.0
+      },
+      "colloquial": {
+        "count": 3,
+        "passed": 2,
+        "accuracy": 0.666667
+      },
+      "numerical": {
+        "count": 3,
+        "passed": 3,
+        "accuracy": 1.0
+      },
+      "multi_article": {
+        "count": 5,
+        "passed": 3,
+        "accuracy": 0.6
+      },
+      "ambiguous": {
+        "count": 3,
+        "passed": 0,
+        "accuracy": 0.0
+      },
+      "out_of_scope": {
+        "count": 3,
+        "passed": 0,
+        "accuracy": 0.0
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "F01",
+      "test_type": "straightforward",
+      "category": "worker_rights",
+      "difficulty": "medium",
+      "question": "إذا منحني عقد العمل حقاً أفضل من الحد الموجود في قانون العمل، ثم تضمن بنداً أتنازل فيه عن هذا الحق، أي حكم يطبق؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 4,
+        "required_articles": [
+          4
+        ],
+        "acceptable_articles": [
+          4
+        ],
+        "concepts_any": [],
+        "description": "تظل الميزة الأفضل نافذة، ويكون باطلاً أي شرط يتنازل بموجبه العامل عن حق يمنحه القانون."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          4
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "employment_contract_concept",
+          "written_contract_concept",
+          "oral_contract_concept",
+          "collective_employment_contract_concept",
+          "indefinite_term_contract_concept",
+          "assign_agreed_work_obligation",
+          "fixed_term_contract_concept",
+          "employer_liability_consequence",
+          "employer_concept",
+          "employers_union_concept",
+          "perform_work_obligation",
+          "temporary_work_concept"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 11.151
+    },
+    {
+      "id": "F02",
+      "test_type": "straightforward",
+      "category": "employer_records",
+      "difficulty": "medium",
+      "question": "ما المعلومات التي يرسلها صاحب العمل إلى وزارة العمل في بداية كل سنة، وما السجلات التي يجب أن يحتفظ بها داخل المؤسسة؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 8,
+        "required_articles": [
+          8
+        ],
+        "acceptable_articles": [
+          8
+        ],
+        "concepts_any": [],
+        "description": "يرسل في الشهر الأول إشعاراً بعدد العمال ومواقعهم وأعمالهم وتواريخ مباشرتهم وأجورهم، ويحتفظ بسجلات العمال والمتدربين."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          8
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "establishment_concept",
+          "disclosure_employer_secrets_violation",
+          "employer_concept",
+          "employer_liability_consequence",
+          "seasonal_work_concept",
+          "collective_employment_contract_concept",
+          "perform_work_obligation",
+          "employers_union_concept",
+          "occasional_work_concept",
+          "work_negligence_violation",
+          "work_concept",
+          "assign_agreed_work_obligation",
+          "preserve_confidentiality_obligation",
+          "disciplinary_action_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 10.714
+    },
+    {
+      "id": "F03",
+      "test_type": "straightforward",
+      "category": "employment_mediation",
+      "difficulty": "hard",
+      "question": "جهة غير مرخصة تتوسط لتشغيل العمال داخل الأردن وخارجه؛ ما الإجراءات والعقوبات التي يمكن اتخاذها بحقها؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 11,
+        "required_articles": [
+          11
+        ],
+        "acceptable_articles": [
+          11
+        ],
+        "concepts_any": [],
+        "description": "الوساطة محصورة بالمديريات العامة والمكاتب المرخصة، ويجوز إغلاق المحل وإحالته للمحكمة مع الغرامة أو الحبس وإقفال المحل ومصادرة الموجودات ذات الصلة."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          11
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "indefinite_term_contract_concept",
+          "contract_indefinite_term_condition",
+          "perform_work_obligation",
+          "disciplinary_action_consequence",
+          "provide_safe_work_environment_obligation",
+          "work_negligence_violation",
+          "assignment_different_work_violation",
+          "employer_liability_consequence",
+          "disclosure_employer_secrets_violation",
+          "assign_agreed_work_obligation",
+          "worker_not_covered_social_security_condition",
+          "pay_wages_obligation"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 13.488
+    },
+    {
+      "id": "F04",
+      "test_type": "straightforward",
+      "category": "intellectual_property",
+      "difficulty": "hard",
+      "question": "ابتكر عامل منتجاً مرتبطاً بعمل المنشأة مستخدماً أدواتها وخبراتها؛ لمن تكون الملكية الفكرية إذا لم يوجد اتفاق خطي مختلف؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 20,
+        "required_articles": [
+          20
+        ],
+        "acceptable_articles": [
+          20
+        ],
+        "concepts_any": [
+          "employment_contract_concept"
+        ],
+        "description": "تكون الحقوق لصاحب العمل إذا ارتبط الابتكار بأعماله أو استُخدمت خبراته أو معلوماته أو أدواته، ما لم يوجد اتفاق خطي مخالف."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          20
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "assignment_different_work_violation",
+          "written_contract_concept",
+          "employers_union_concept",
+          "indefinite_term_contract_concept",
+          "oral_contract_concept",
+          "trade_union_concept",
+          "employment_contract_concept",
+          "fixed_term_contract_concept",
+          "collective_employment_contract_concept",
+          "employer_concept",
+          "general_secretary_concept",
+          "contract_formation_event",
+          "assign_agreed_work_obligation"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "employment_contract_concept"
+        ],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 11.068
+    },
+    {
+      "id": "F05",
+      "test_type": "straightforward",
+      "category": "internal_regulations",
+      "difficulty": "medium",
+      "question": "مؤسسة تشغّل اثني عشر عاملاً، هل يلزمها نظام داخلي للعمل، وما الموضوعات التي يجب أن يتضمنها ومتى يصبح نافذاً؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 55,
+        "required_articles": [
+          55
+        ],
+        "acceptable_articles": [
+          55
+        ],
+        "concepts_any": [],
+        "description": "يلزم النظام الداخلي عند تشغيل عشرة عمال فأكثر، ويبين الدوام والراحة والمخالفات والعقوبات والتدابير، ويعمل به بعد تصديق الوزير أو من ينيبه."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          55
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "establishment_concept",
+          "administrative_body_concept",
+          "provide_safe_work_environment_obligation",
+          "assign_agreed_work_obligation",
+          "general_secretary_concept",
+          "perform_work_obligation",
+          "employers_union_concept",
+          "temporary_work_concept",
+          "occasional_work_concept",
+          "employer_liability_consequence",
+          "employer_concept",
+          "dismissal_without_lawful_ground_condition"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 13.604
+    },
+    {
+      "id": "F06",
+      "test_type": "paraphrased",
+      "category": "partial_disability",
+      "difficulty": "medium",
+      "question": "أصيب موظف بعجز جزئي دائم يمنعه من وظيفته القديمة لكنه يستطيع أداء مهمة أخرى؛ ماذا يجب على المنشأة أن تفعل وكيف تُحسب حقوق الفترة السابقة؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 14,
+        "required_articles": [
+          14
+        ],
+        "acceptable_articles": [
+          14
+        ],
+        "concepts_any": [
+          "work_injury_event"
+        ],
+        "description": "يشغله صاحب العمل في عمل آخر مناسب إن وجد وبأجر ذلك العمل، وتحسب حقوقه السابقة على أساس آخر أجر قبل الإصابة."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          14
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "perform_work_obligation",
+          "arbitrary_dismissal_violation",
+          "wage_delay_violation",
+          "dismissal_without_lawful_ground_condition",
+          "assignment_different_work_violation",
+          "dismissal_event",
+          "work_negligence_violation",
+          "employer_liability_consequence",
+          "delay_exceeds_seven_days_condition",
+          "temporary_work_concept",
+          "disclosure_employer_secrets_violation",
+          "worker_not_covered_social_security_condition",
+          "follow_lawful_instructions_obligation",
+          "disciplinary_action_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": true,
+        "concept_hit": false,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 11.769
+    },
+    {
+      "id": "F07",
+      "test_type": "paraphrased",
+      "category": "vocational_training",
+      "difficulty": "hard",
+      "question": "نُقل موقع تدريب المتدرب إلى مكان يسبب له مشقة، كما أن استمرار التدريب قد يهدد صحته؛ متى يستطيع أحد الطرفين إنهاء عقد التدريب؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 38,
+        "required_articles": [
+          38
+        ],
+        "acceptable_articles": [
+          38
+        ],
+        "concepts_any": [
+          "termination_contract_consequence",
+          "medical_examination_event",
+          "safe_work_environment_right_concept"
+        ],
+        "description": "يجوز إنهاء العقد في الحالات المحددة، ومنها النقل المضر أو الشاق خلال المدة المقررة، أو ثبوت تهديد السلامة أو الصحة بتقرير مختص."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          36,
+          37,
+          38
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "employment_contract_concept",
+          "oral_contract_concept",
+          "termination_contract_consequence",
+          "indefinite_term_contract_concept",
+          "fixed_term_contract_concept",
+          "written_contract_concept",
+          "collective_employment_contract_concept",
+          "contract_indefinite_term_condition",
+          "contract_fixed_term_condition",
+          "dismissal_without_lawful_ground_condition",
+          "delay_exceeds_seven_days_condition",
+          "wage_delay_violation"
+        ]
+      },
+      "metrics": {
+        "pass": false,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": false,
+        "hit_at_3": true,
+        "primary_rank": 3,
+        "reciprocal_rank": 0.333333,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "termination_contract_consequence"
+        ],
+        "unexpected_articles": [
+          36,
+          37
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 10.341
+    },
+    {
+      "id": "F08",
+      "test_type": "paraphrased",
+      "category": "collective_contract",
+      "difficulty": "hard",
+      "question": "انتهت مدة الاتفاق الجماعي وبدأ الطرفان التفاوض لتجديده؛ إلى متى تبقى أحكامه سارية، وهل تزول المزايا التي اكتسبها العمال؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 41,
+        "required_articles": [
+          41
+        ],
+        "acceptable_articles": [
+          41
+        ],
+        "concepts_any": [
+          "collective_employment_contract_concept",
+          "termination_contract_consequence"
+        ],
+        "description": "يبقى مفعوله أثناء المفاوضات مدة لا تتجاوز ستة أشهر، ولا يجيز انتهاؤه المساس بالحقوق المكتسبة للعمال."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          41
+        ],
+        "graph_supported_articles": [
+          41
+        ],
+        "concepts": [
+          "collective_employment_contract_concept",
+          "collective_labor_dispute_concept",
+          "contract_fixed_term_condition",
+          "fixed_term_contract_concept",
+          "contract_indefinite_term_condition",
+          "termination_contract_consequence",
+          "wage_right_concept",
+          "wage_delay_violation",
+          "employment_contract_concept",
+          "oral_contract_concept",
+          "indefinite_term_contract_concept",
+          "wage_concept"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "collective_employment_contract_concept",
+          "termination_contract_consequence"
+        ],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 12.094
+    },
+    {
+      "id": "F09",
+      "test_type": "paraphrased",
+      "category": "collective_contract",
+      "difficulty": "hard",
+      "question": "هل يمكن تعميم شروط اتفاق عمل جماعي نافذ على بقية منشآت وعمال قطاع معين، ومن يملك إصدار هذا القرار وما الشرط الزمني؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 43,
+        "required_articles": [
+          43
+        ],
+        "acceptable_articles": [
+          43
+        ],
+        "concepts_any": [
+          "collective_employment_contract_concept",
+          "contract_formation_event"
+        ],
+        "description": "يجوز للوزير بعد الطلب والدراسة توسيع نطاق عقد جماعي مضى على تنفيذه شهران على الأقل، وينشر القرار في الجريدة الرسمية."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          43
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "provide_safe_work_environment_obligation",
+          "contract_fixed_term_condition",
+          "fixed_term_contract_concept",
+          "collective_employment_contract_concept",
+          "contract_indefinite_term_condition",
+          "assign_agreed_work_obligation",
+          "indefinite_term_contract_concept",
+          "oral_contract_concept",
+          "contract_formation_event",
+          "written_contract_concept",
+          "employment_contract_concept",
+          "temporary_work_concept"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "collective_employment_contract_concept",
+          "contract_formation_event"
+        ],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 12.602
+    },
+    {
+      "id": "F10",
+      "test_type": "paraphrased",
+      "category": "working_time",
+      "difficulty": "medium",
+      "question": "هل تخضع القيادات الإدارية والعاملون الذين تفرض وظائفهم السفر أو العمل خارج المؤسسة للحدود العامة لساعات العمل؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 58,
+        "required_articles": [
+          58
+        ],
+        "acceptable_articles": [
+          58
+        ],
+        "concepts_any": [],
+        "description": "لا تسري أحكام ساعات العمل على أصحاب الإشراف العام أو الإدارة، ولا على بعض العاملين خارج المؤسسة أو ممن تتطلب أعمالهم السفر أو التنقل."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          58
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "establishment_concept",
+          "work_concept",
+          "administrative_body_concept",
+          "temporary_work_concept",
+          "occasional_work_concept",
+          "seasonal_work_concept",
+          "perform_work_obligation",
+          "employer_concept",
+          "employer_liability_consequence",
+          "assign_agreed_work_obligation",
+          "employers_union_concept",
+          "employment_contract_concept"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 11.548
+    },
+    {
+      "id": "F11",
+      "test_type": "typo",
+      "category": "annual_leave",
+      "difficulty": "easy",
+      "question": "وقعت ورقه بتقول اني متنازل عن الاجازه السنويه كلها، هل هالتنازل معتَبر ولا باطل؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 64,
+        "required_articles": [
+          64
+        ],
+        "acceptable_articles": [
+          64
+        ],
+        "concepts_any": [
+          "leave_right_concept",
+          "leave_request_event"
+        ],
+        "description": "يبطل كل اتفاق يتنازل فيه العامل عن إجازته السنوية أو أي جزء منها."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          64
+        ],
+        "graph_supported_articles": [
+          64
+        ],
+        "concepts": [
+          "leave_right_concept",
+          "leave_request_event",
+          "wage_right_concept",
+          "disclosure_employer_secrets_violation",
+          "employer_liability_consequence",
+          "written_contract_concept",
+          "work_negligence_violation",
+          "employment_contract_concept",
+          "indefinite_term_contract_concept",
+          "temporary_work_concept",
+          "fixed_term_contract_concept",
+          "assign_agreed_work_obligation"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "leave_request_event",
+          "leave_right_concept"
+        ],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 10.334
+    },
+    {
+      "id": "F12",
+      "test_type": "typo",
+      "category": "occupational_safety",
+      "difficulty": "medium",
+      "question": "بالمصنع مواد سريعة الاشتعال، شو الاحتياطات الي لازم يوفرها صاحب العمل ضد الحرايق والانفجارات والتخزين الخطر؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 80,
+        "required_articles": [
+          80
+        ],
+        "acceptable_articles": [
+          80
+        ],
+        "concepts_any": [
+          "safe_work_environment_right_concept",
+          "provide_safe_work_environment_obligation",
+          "work_injury_event"
+        ],
+        "description": "على صاحب العمل حماية المؤسسة والعاملين من الحريق والانفجار ومخاطر تخزين المواد القابلة للاشتعال ونقلها وتداولها وتوفير الوسائل الفنية الكافية."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          80,
+          78
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "disclosure_employer_secrets_violation",
+          "employer_liability_consequence",
+          "work_injury_event",
+          "temporary_work_concept",
+          "safe_work_environment_right_concept",
+          "employer_concept",
+          "seasonal_work_concept",
+          "work_negligence_violation",
+          "fixed_term_contract_concept",
+          "employers_union_concept",
+          "indefinite_term_contract_concept",
+          "provide_safe_work_environment_obligation",
+          "preserve_confidentiality_obligation",
+          "disciplinary_action_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.5,
+        "strict_f1": 0.666667,
+        "lenient_precision": 0.5,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "provide_safe_work_environment_obligation",
+          "safe_work_environment_right_concept",
+          "work_injury_event"
+        ],
+        "unexpected_articles": [
+          78
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 10.736
+    },
+    {
+      "id": "F13",
+      "test_type": "typo",
+      "category": "union_registration",
+      "difficulty": "hard",
+      "question": "قدمنا طلب تسجيل نقابه؛ خلال قديش لازم المسجل يقرر، وقديش معنا للطعن لو انرفض الطلب؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 102,
+        "required_articles": [
+          102
+        ],
+        "acceptable_articles": [
+          102
+        ],
+        "concepts_any": [],
+        "description": "يصدر المسجل قراره خلال ثلاثين يوماً، وللمؤسسين الطعن في الرفض خلال ثلاثين يوماً من التبليغ."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          102
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "leave_request_event",
+          "arbitrary_dismissal_violation",
+          "dismissal_event",
+          "dismissal_without_lawful_ground_condition",
+          "disciplinary_action_consequence",
+          "wage_delay_violation",
+          "legal_claim_consequence",
+          "litigation_right_concept",
+          "termination_contract_consequence",
+          "compensation_consequence",
+          "disclosure_employer_secrets_violation",
+          "assignment_different_work_violation"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 131.081
+    },
+    {
+      "id": "F14",
+      "test_type": "colloquial",
+      "category": "workplace_conduct",
+      "difficulty": "medium",
+      "question": "واحد إجا عالشغل وهو تحت تأثير مخدر، وكمان في ناس بدهم يدخلوا مشروبات للموقع؛ القانون شو بحكي بهالموضوع؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 81,
+        "required_articles": [
+          81
+        ],
+        "acceptable_articles": [
+          81
+        ],
+        "concepts_any": [
+          "safe_work_environment_right_concept",
+          "provide_safe_work_environment_obligation",
+          "work_injury_event"
+        ],
+        "description": "يحظر إدخال أو عرض الخمور والمخدرات والمؤثرات والعقاقير الخطرة في مكان العمل، كما يحظر الدخول أو البقاء تحت تأثيرها."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          81,
+          28
+        ],
+        "graph_supported_articles": [
+          28
+        ],
+        "concepts": [
+          "work_negligence_violation",
+          "medical_reference_concept",
+          "oral_contract_concept",
+          "employer_liability_consequence",
+          "legal_claim_consequence",
+          "disclosure_employer_secrets_violation",
+          "assignment_different_work_violation",
+          "employers_union_concept",
+          "temporary_work_concept",
+          "trade_union_concept",
+          "occupational_disease_concept",
+          "beneficiary_concept",
+          "follow_lawful_instructions_obligation",
+          "perform_work_obligation",
+          "disciplinary_action_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.5,
+        "strict_f1": 0.666667,
+        "lenient_precision": 0.5,
+        "concept_scorable": true,
+        "concept_hit": false,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [
+          28
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 12.382
+    },
+    {
+      "id": "F15",
+      "test_type": "colloquial",
+      "category": "medical_fitness",
+      "difficulty": "medium",
+      "question": "في شغل معيّن قالوا ما بقدر أبلّش قبل فحص لياقة طبي؛ مين بحدد الأشغال اللي لازم إلها هالفحص وكيف بنعلن عنها؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 83,
+        "required_articles": [
+          83
+        ],
+        "acceptable_articles": [
+          83
+        ],
+        "concepts_any": [
+          "medical_examination_event",
+          "safe_work_environment_right_concept"
+        ],
+        "description": "يحدد الوزير بتعليمات، بعد استطلاع الجهات المعنية، الأعمال التي تتطلب فحصاً طبياً مسبقاً، وتنشر التعليمات في صحيفتين يوميتين وفي الجريدة الرسمية."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          83
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "work_negligence_violation",
+          "medical_examination_event",
+          "assignment_different_work_violation",
+          "perform_work_obligation",
+          "occupational_disease_concept",
+          "work_injury_event",
+          "disclosure_employer_secrets_violation",
+          "employer_liability_consequence",
+          "wage_delay_violation",
+          "dismissal_without_lawful_ground_condition",
+          "medical_reference_concept",
+          "disciplinary_action_consequence",
+          "follow_lawful_instructions_obligation"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "medical_examination_event"
+        ],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 24.611
+    },
+    {
+      "id": "F16",
+      "test_type": "colloquial",
+      "category": "work_injury",
+      "difficulty": "hard",
+      "question": "العامل انصاب وهو تحت تأثير مخدر أو بسبب إهمال جسيم منه؛ هل بروح حقه بالتعويض؟ وشو بصير لو الإصابة سببت وفاة أو عجز دائم 30% أو أكثر؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 94,
+        "required_articles": [
+          94
+        ],
+        "acceptable_articles": [
+          94
+        ],
+        "concepts_any": [
+          "compensation_consequence",
+          "legal_claim_consequence",
+          "work_injury_event"
+        ],
+        "description": "قد يسقط البدل والتعويض بعد التحقيق في الحالات المحددة، لكن لا يطبق السقوط إذا نتجت وفاة أو عجز دائم لا تقل نسبته عن 30%."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          90,
+          94,
+          91
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "worker_not_covered_social_security_condition",
+          "worker_concept",
+          "employer_liability_consequence",
+          "occupational_disease_concept",
+          "compensation_consequence",
+          "work_negligence_violation",
+          "work_injury_event",
+          "beneficiary_concept",
+          "disciplinary_action_consequence",
+          "arbitrary_dismissal_violation",
+          "assignment_different_work_violation",
+          "employer_concept"
+        ]
+      },
+      "metrics": {
+        "pass": false,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": false,
+        "hit_at_3": true,
+        "primary_rank": 2,
+        "reciprocal_rank": 0.5,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "compensation_consequence",
+          "work_injury_event"
+        ],
+        "unexpected_articles": [
+          90,
+          91
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 14.285
+    },
+    {
+      "id": "F17",
+      "test_type": "numerical",
+      "category": "exceptional_overtime",
+      "difficulty": "medium",
+      "question": "عند الجرد السنوي وإعداد الحسابات، ما الحد الأقصى لعدد الأيام في السنة وما أقصى ساعات العمل الفعلية في اليوم ضمن هذا الاستثناء؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 57,
+        "required_articles": [
+          57
+        ],
+        "acceptable_articles": [
+          57
+        ],
+        "concepts_any": [],
+        "description": "لا يزيد الاستثناء على ثلاثين يوماً في السنة، ولا تزيد ساعات العمل الفعلية على عشر ساعات في اليوم، مع استحقاق الأجر الإضافي."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          57
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "work_negligence_violation",
+          "seasonal_work_concept",
+          "temporary_work_concept",
+          "occasional_work_concept",
+          "fixed_term_contract_concept",
+          "work_concept",
+          "perform_work_obligation",
+          "assign_agreed_work_obligation",
+          "employer_concept",
+          "indefinite_term_contract_concept",
+          "collective_employment_contract_concept",
+          "employer_liability_consequence",
+          "disclosure_employer_secrets_violation",
+          "follow_lawful_instructions_obligation",
+          "disciplinary_action_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 10.087
+    },
+    {
+      "id": "F18",
+      "test_type": "numerical",
+      "category": "union_address",
+      "difficulty": "easy",
+      "question": "غيّرت النقابة عنوانها المسجل؛ خلال كم يوم يجب إبلاغ مسجل النقابات، وماذا يحدث إذا لم يتم التبليغ؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 104,
+        "required_articles": [
+          104
+        ],
+        "acceptable_articles": [
+          104
+        ],
+        "concepts_any": [],
+        "description": "يبلغ المسجل خلال سبعة أيام، وإلا يبقى العنوان المسجل أصلاً معتبراً قائماً للمراسلات والإشعارات."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          104
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "dismissal_event",
+          "trade_union_concept",
+          "wage_delay_violation",
+          "wage_payment_event",
+          "end_of_service_benefit_consequence",
+          "disciplinary_action_consequence",
+          "arbitrary_dismissal_violation",
+          "disclosure_employer_secrets_violation",
+          "leave_request_event",
+          "collective_labor_dispute_concept",
+          "employers_union_concept",
+          "worker_not_covered_social_security_condition",
+          "dismissal_without_lawful_ground_condition",
+          "compensation_consequence",
+          "legal_claim_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 11.885
+    },
+    {
+      "id": "F19",
+      "test_type": "numerical",
+      "category": "limitation_periods",
+      "difficulty": "hard",
+      "question": "ما المدة التي لا تُسمع بعدها دعوى المخالفة، وما مدة عدم سماع المطالبة بالحقوق العمالية وأجور العمل الإضافي؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 138,
+        "required_articles": [
+          138
+        ],
+        "acceptable_articles": [
+          138
+        ],
+        "concepts_any": [
+          "litigation_right_concept",
+          "legal_claim_consequence"
+        ],
+        "description": "دعوى المخالفة خلال شهر من ارتكابها، ودعوى الحقوق العمالية والأجر الإضافي خلال سنتين من نشوء سبب المطالبة."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          138
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "wage_right_concept",
+          "wage_payment_event",
+          "pay_wages_obligation",
+          "work_negligence_violation",
+          "legal_claim_consequence",
+          "temporary_work_concept",
+          "indefinite_term_contract_concept",
+          "fixed_term_contract_concept",
+          "contract_indefinite_term_condition",
+          "perform_work_obligation",
+          "contract_fixed_term_condition",
+          "oral_contract_concept",
+          "delay_exceeds_seven_days_condition",
+          "employer_liability_consequence",
+          "wage_delay_violation"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "legal_claim_consequence"
+        ],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 10.57
+    },
+    {
+      "id": "F20",
+      "test_type": "multi_article",
+      "category": "vocational_training",
+      "difficulty": "hard",
+      "question": "ما الذي يجب تحديده في عقد التدريب بشأن المدة والمراحل والأجر، ومتى يجوز إنهاؤه إذا تعذر التنفيذ أو أصبح الاستمرار خطراً على صحة المتدرب؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 37,
+        "required_articles": [
+          37,
+          38
+        ],
+        "acceptable_articles": [
+          37,
+          38
+        ],
+        "concepts_any": [
+          "termination_contract_consequence",
+          "medical_examination_event",
+          "safe_work_environment_right_concept"
+        ],
+        "description": "المادة 37 تنظم مدة التدريب ومراحله وأجر كل مرحلة وحد المرحلة الأخيرة، والمادة 38 تحدد حالات إنهاء عقد التدريب ومنها تعذر التنفيذ أو تهديد السلامة والصحة."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          36,
+          37,
+          38
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "fixed_term_contract_concept",
+          "indefinite_term_contract_concept",
+          "contract_fixed_term_condition",
+          "contract_indefinite_term_condition",
+          "work_negligence_violation",
+          "employment_contract_concept",
+          "oral_contract_concept",
+          "written_contract_concept",
+          "collective_employment_contract_concept",
+          "delay_exceeds_seven_days_condition",
+          "wage_delay_violation",
+          "termination_contract_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": false,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": false,
+        "hit_at_3": true,
+        "primary_rank": 2,
+        "reciprocal_rank": 0.5,
+        "required_recall": 1.0,
+        "strict_precision": 0.666667,
+        "strict_f1": 0.8,
+        "lenient_precision": 0.666667,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "termination_contract_consequence"
+        ],
+        "unexpected_articles": [
+          36
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 10.437
+    },
+    {
+      "id": "F21",
+      "test_type": "multi_article",
+      "category": "occupational_safety",
+      "difficulty": "hard",
+      "question": "في منشأة تخزن مواد قابلة للاشتعال، ما التزام صاحب العمل بمنع الحريق والانفجار، وما واجب العمال تجاه أجهزة وتعليمات السلامة؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 80,
+        "required_articles": [
+          80,
+          82
+        ],
+        "acceptable_articles": [
+          80,
+          82
+        ],
+        "concepts_any": [
+          "safe_work_environment_right_concept",
+          "provide_safe_work_environment_obligation",
+          "follow_lawful_instructions_obligation"
+        ],
+        "description": "المادة 80 تلزم صاحب العمل باحتياطات ووسائل الحماية من الحريق والانفجار والمواد الخطرة، والمادة 82 تلزم العمال باتباع التعليمات واستعمال أجهزة الوقاية وعدم العبث بها."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          80,
+          78,
+          82
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "perform_work_obligation",
+          "assign_agreed_work_obligation",
+          "provide_safe_work_environment_obligation",
+          "disclosure_employer_secrets_violation",
+          "work_negligence_violation",
+          "preserve_confidentiality_obligation",
+          "work_injury_event",
+          "safe_work_environment_right_concept",
+          "temporary_work_concept",
+          "follow_lawful_instructions_obligation",
+          "employer_liability_consequence",
+          "pay_wages_obligation",
+          "disciplinary_action_consequence",
+          "assignment_different_work_violation"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.666667,
+        "strict_f1": 0.8,
+        "lenient_precision": 0.666667,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "follow_lawful_instructions_obligation",
+          "provide_safe_work_environment_obligation",
+          "safe_work_environment_right_concept"
+        ],
+        "unexpected_articles": [
+          78
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 10.664
+    },
+    {
+      "id": "F22",
+      "test_type": "multi_article",
+      "category": "union_dissolution",
+      "difficulty": "hard",
+      "question": "متى يستطيع الوزير طلب حل نقابة قضائياً وما مدة استئناف قرار الحل، ثم أين تذهب أموال النقابة إذا لم تُنشأ نقابة بديلة خلال سنة؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 116,
+        "required_articles": [
+          116,
+          117
+        ],
+        "acceptable_articles": [
+          116,
+          117
+        ],
+        "concepts_any": [],
+        "description": "المادة 116 تحدد حالات دعوى الحل والاستئناف خلال ثلاثين يوماً، والمادة 117 تنظم إيداع الأموال ثم انتقالها إلى الاتحاد العام إذا لم تؤسس نقابة بديلة خلال سنة."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          116,
+          117
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "leave_request_event",
+          "trade_union_concept",
+          "employers_union_concept",
+          "minister_concept",
+          "legal_claim_consequence",
+          "collective_labor_dispute_concept",
+          "litigation_right_concept",
+          "wage_delay_violation",
+          "general_secretary_concept",
+          "compensation_consequence",
+          "indefinite_term_contract_concept",
+          "wage_right_concept"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
+        "concept_scorable": false,
+        "concept_hit": null,
+        "matched_expected_concepts": [],
+        "unexpected_articles": [],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 11.053
+    },
+    {
+      "id": "F23",
+      "test_type": "multi_article",
+      "category": "collective_disputes",
+      "difficulty": "hard",
+      "question": "إذا وصل النزاع إلى مجلس التوفيق، ما التقرير والمهلة المطلوبة عند نجاح التسوية أو فشلها، وهل يحق للطرفين توكيل محامين أمام المجلس؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 122,
+        "required_articles": [
+          122,
+          123
+        ],
+        "acceptable_articles": [
+          122,
+          123
+        ],
+        "concepts_any": [
+          "litigation_right_concept",
+          "legal_claim_consequence"
+        ],
+        "description": "المادة 122 تلزم المجلس بالسعي للتسوية وتقديم التقرير خلال واحد وعشرين يوماً، والمادة 123 تمنع توكيل المحامين أمام مندوب التوفيق أو مجلس التوفيق."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          121,
+          122,
+          123
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "collective_labor_dispute_concept",
+          "litigation_right_concept",
+          "legal_claim_consequence",
+          "disciplinary_action_consequence",
+          "general_secretary_concept",
+          "dismissal_without_lawful_ground_condition",
+          "trade_union_concept",
+          "follow_lawful_instructions_obligation",
+          "arbitrary_dismissal_violation",
+          "work_negligence_violation",
+          "compensation_consequence",
+          "disclosure_employer_secrets_violation"
+        ]
+      },
+      "metrics": {
+        "pass": false,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": false,
+        "hit_at_3": true,
+        "primary_rank": 2,
+        "reciprocal_rank": 0.5,
+        "required_recall": 1.0,
+        "strict_precision": 0.666667,
+        "strict_f1": 0.8,
+        "lenient_precision": 0.666667,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "legal_claim_consequence",
+          "litigation_right_concept"
+        ],
+        "unexpected_articles": [
+          121
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 13.038
+    },
+    {
+      "id": "F24",
+      "test_type": "multi_article",
+      "category": "strike_lockout",
+      "difficulty": "hard",
+      "question": "متى يكون الإضراب أو إغلاق المؤسسة محظوراً أثناء معالجة النزاع، وما الغرامات والآثار المالية على العامل أو صاحب العمل عند المخالفة؟",
+      "expected_behavior": "retrieve",
+      "expected": {
+        "primary_article": 134,
+        "required_articles": [
+          134,
+          136
+        ],
+        "acceptable_articles": [
+          134,
+          136
+        ],
+        "concepts_any": [
+          "wage_right_concept",
+          "pay_wages_obligation",
+          "employer_liability_consequence"
+        ],
+        "description": "المادة 134 تحدد حالات الحظر أثناء الإحالة أو سريان التسوية والقرار، والمادة 136 تحدد غرامات الإضراب أو الإغلاق المحظور وآثار الأجر."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          134,
+          135,
+          136
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "establishment_concept",
+          "collective_labor_dispute_concept",
+          "disclosure_employer_secrets_violation",
+          "temporary_work_concept",
+          "seasonal_work_concept",
+          "work_negligence_violation",
+          "worker_not_covered_social_security_condition",
+          "perform_work_obligation",
+          "employer_liability_consequence",
+          "occasional_work_concept",
+          "employer_concept",
+          "worker_concept"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.666667,
+        "strict_f1": 0.8,
+        "lenient_precision": 0.666667,
+        "concept_scorable": true,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "employer_liability_consequence"
+        ],
+        "unexpected_articles": [
+          135
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 11.323
+    },
+    {
+      "id": "F25",
+      "test_type": "ambiguous",
+      "category": "ambiguous",
+      "difficulty": "hard",
+      "question": "النقابة اتخذت قراراً ضدي، هل قرارها قانوني؟",
+      "expected_behavior": "clarify",
+      "expected": {
+        "description": "يلزم توضيح نوع القرار، وصفة السائل، وإجراءات النقابة أو نظامها الداخلي قبل تحديد الحكم القانوني."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          111,
+          99,
+          107
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "arbitrary_dismissal_violation",
+          "trade_union_concept",
+          "disciplinary_action_consequence",
+          "legal_claim_consequence",
+          "dismissal_without_lawful_ground_condition",
+          "termination_contract_consequence",
+          "collective_labor_dispute_concept",
+          "employers_union_concept",
+          "collective_employment_contract_concept",
+          "dismissal_event",
+          "employer_liability_consequence",
+          "litigation_right_concept",
+          "wage_delay_violation",
+          "work_injury_event",
+          "compensation_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": false,
+        "safe_no_retrieval": false,
+        "explicit_behavior_match": false,
+        "returned_article_count": 3
+      },
+      "elapsed_seconds": 12.627
+    },
+    {
+      "id": "F26",
+      "test_type": "ambiguous",
+      "category": "ambiguous",
+      "difficulty": "hard",
+      "question": "صار نزاع عمالي جماعي في المؤسسة، شو الخطوة القانونية الجاية؟",
+      "expected_behavior": "clarify",
+      "expected": {
+        "description": "يلزم تحديد المرحلة التي وصل إليها النزاع وما إذا عرض على مندوب التوفيق أو مجلس التوفيق أو المحكمة العمالية."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          121,
+          122,
+          124
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "establishment_concept",
+          "work_negligence_violation",
+          "legal_claim_consequence",
+          "collective_labor_dispute_concept",
+          "employers_union_concept",
+          "trade_union_concept",
+          "dismissal_without_lawful_ground_condition",
+          "collective_employment_contract_concept",
+          "arbitrary_dismissal_violation",
+          "disclosure_employer_secrets_violation",
+          "general_secretary_concept",
+          "dismissal_event"
+        ]
+      },
+      "metrics": {
+        "pass": false,
+        "safe_no_retrieval": false,
+        "explicit_behavior_match": false,
+        "returned_article_count": 3
+      },
+      "elapsed_seconds": 11.485
+    },
+    {
+      "id": "F27",
+      "test_type": "ambiguous",
+      "category": "ambiguous",
+      "difficulty": "hard",
+      "question": "في مخالفة سلامة داخل مكان العمل، مين المسؤول وشو العقوبة؟",
+      "expected_behavior": "clarify",
+      "expected": {
+        "description": "يلزم تحديد نوع مخالفة السلامة، ومن ارتكبها، وخطورتها والضرر الناتج عنها لاختيار الحكم والعقوبة المناسبة."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          78,
+          84,
+          77
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "work_negligence_violation",
+          "assignment_different_work_violation",
+          "disclosure_employer_secrets_violation",
+          "arbitrary_dismissal_violation",
+          "employer_liability_consequence",
+          "wage_delay_violation",
+          "employer_concept",
+          "perform_work_obligation",
+          "safe_work_environment_right_concept",
+          "assign_agreed_work_obligation",
+          "work_concept",
+          "work_injury_event",
+          "follow_lawful_instructions_obligation",
+          "disciplinary_action_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": false,
+        "safe_no_retrieval": false,
+        "explicit_behavior_match": false,
+        "returned_article_count": 3
+      },
+      "elapsed_seconds": 13.591
+    },
+    {
+      "id": "F28",
+      "test_type": "out_of_scope",
+      "category": "out_of_scope",
+      "difficulty": "easy",
+      "question": "اشتريت هاتفاً جديداً وظهر فيه عيب بعد أسبوع، هل يحق لي استبداله أو استرداد ثمنه؟",
+      "expected_behavior": "abstain",
+      "expected": {
+        "description": "مسألة حماية مستهلك وبيع، وليست من نطاق قانون العمل الأردني الممثل في الرسم."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          119
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "dismissal_without_lawful_ground_condition",
+          "end_of_service_benefit_consequence",
+          "wage_delay_violation",
+          "assignment_different_work_violation",
+          "end_of_service_benefit_right_concept",
+          "contract_fixed_term_condition",
+          "delay_exceeds_seven_days_condition",
+          "compensation_consequence",
+          "weekly_rest_right_concept",
+          "termination_contract_consequence",
+          "arbitrary_dismissal_violation",
+          "dismissal_event",
+          "legal_claim_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": false,
+        "safe_no_retrieval": false,
+        "explicit_behavior_match": false,
+        "returned_article_count": 1
+      },
+      "elapsed_seconds": 9.573
+    },
+    {
+      "id": "F29",
+      "test_type": "out_of_scope",
+      "category": "out_of_scope",
+      "difficulty": "medium",
+      "question": "أريد تسجيل شركة ذات مسؤولية محدودة وتحديد حصص الشركاء، ما الإجراءات المطلوبة؟",
+      "expected_behavior": "abstain",
+      "expected": {
+        "description": "مسألة شركات وسجل تجاري خارج نطاق قانون العمل الممثل في النظام."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          33
+        ],
+        "graph_supported_articles": [],
+        "concepts": [
+          "assign_agreed_work_obligation",
+          "employer_liability_consequence",
+          "general_secretary_concept",
+          "trade_union_concept",
+          "administrative_body_concept",
+          "employers_union_concept",
+          "preserve_confidentiality_obligation",
+          "establishment_concept",
+          "provide_safe_work_environment_obligation",
+          "disclosure_employer_secrets_violation",
+          "contract_formation_event",
+          "perform_work_obligation",
+          "assignment_different_work_violation"
+        ]
+      },
+      "metrics": {
+        "pass": false,
+        "safe_no_retrieval": false,
+        "explicit_behavior_match": false,
+        "returned_article_count": 1
+      },
+      "elapsed_seconds": 9.373
+    },
+    {
+      "id": "F30",
+      "test_type": "out_of_scope",
+      "category": "out_of_scope",
+      "difficulty": "medium",
+      "question": "الجامعة أوقفت تسجيلي بسبب المعدل، كيف أعترض على القرار الأكاديمي؟",
+      "expected_behavior": "abstain",
+      "expected": {
+        "description": "مسألة تعليم عالٍ وقرارات أكاديمية، وليست مسألة عمالية ضمن الرسم الحالي."
+      },
+      "actual": {
+        "behavior_signal": "retrieved",
+        "articles": [
+          124
+        ],
+        "graph_supported_articles": [
+          124
+        ],
+        "concepts": [
+          "arbitrary_dismissal_violation",
+          "dismissal_without_lawful_ground_condition",
+          "dismissal_event",
+          "wage_delay_violation",
+          "disciplinary_action_consequence",
+          "assignment_different_work_violation",
+          "delay_exceeds_seven_days_condition",
+          "legal_claim_consequence",
+          "contract_fixed_term_condition",
+          "termination_contract_consequence",
+          "worker_not_covered_social_security_condition",
+          "work_negligence_violation",
+          "work_injury_event",
+          "compensation_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": false,
+        "safe_no_retrieval": false,
+        "explicit_behavior_match": false,
+        "returned_article_count": 1
+      },
+      "elapsed_seconds": 9.956
+    }
+  ]
+}

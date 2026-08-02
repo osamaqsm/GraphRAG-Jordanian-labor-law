@@ -1,0 +1,2415 @@
+{
+  "status": "success",
+  "collection_counts": {
+    "nodes": 671,
+    "edges": 3694
+  },
+  "diagnostics": {
+    "direct_concept_count": 12,
+    "expanded_concept_count": 12,
+    "top_article_numbers": [
+      49,
+      28,
+      2,
+      29,
+      19,
+      46,
+      54,
+      17
+    ],
+    "graph_supported_articles": [
+      49,
+      28,
+      2,
+      29,
+      19,
+      46,
+      54,
+      17
+    ]
+  },
+  "retrieval": {
+    "question": "صاحب العمل لم يدفع راتبي منذ عشرة أيام، ماذا أستطيع أن أفعل؟",
+    "embedding": {
+      "model": "text-embedding-3-small",
+      "dimensions": 1536,
+      "input_tokens": 45
+    },
+    "concept_hits": [
+      {
+        "uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "local_name": "perform_work_obligation",
+        "node_kind": "PerformWork",
+        "labels_ar": [
+          "التزام أداء العمل"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#perform_work_obligation\nLocal name: perform_work_obligation\nNode kind: PerformWork\nRDF types: PerformWork\nArabic labels: التزام أداء العمل",
+        "vector_rank": 4,
+        "vector_distance": 0.77996391,
+        "bm25_rank": 12,
+        "bm25_score": 3.96919775,
+        "fused_score": 0.03732639,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+        "local_name": "delay_exceeds_seven_days_condition",
+        "node_kind": "DelayExceedsSevenDays",
+        "labels_ar": [
+          "شرط تجاوز التأخير سبعة أيام"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition\nLocal name: delay_exceeds_seven_days_condition\nNode kind: DelayExceedsSevenDays\nRDF types: DelayExceedsSevenDays\nArabic labels: شرط تجاوز التأخير سبعة أيام",
+        "vector_rank": 14,
+        "vector_distance": 0.83631504,
+        "bm25_rank": 1,
+        "bm25_score": 13.30577755,
+        "fused_score": 0.03666371,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+        "local_name": "temporary_work_concept",
+        "node_kind": "LaborDomainConcept",
+        "labels_ar": [
+          "العمل المؤقت"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#temporary_work_concept\nLocal name: temporary_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل المؤقت",
+        "vector_rank": 11,
+        "vector_distance": 0.82122254,
+        "bm25_rank": 7,
+        "bm25_score": 4.4651022,
+        "fused_score": 0.03605213,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#occasional_work_concept",
+        "local_name": "occasional_work_concept",
+        "node_kind": "LaborDomainConcept",
+        "labels_ar": [
+          "العمل العرضي"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#occasional_work_concept\nLocal name: occasional_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل العرضي",
+        "vector_rank": 13,
+        "vector_distance": 0.83501387,
+        "bm25_rank": 8,
+        "bm25_score": 4.4651022,
+        "fused_score": 0.03525383,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+        "local_name": "assign_agreed_work_obligation",
+        "node_kind": "AssignAgreedWork",
+        "labels_ar": [
+          "التزام إسناد العمل المتفق عليه"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#assign_agreed_work_obligation\nLocal name: assign_agreed_work_obligation\nNode kind: AssignAgreedWork\nRDF types: AssignAgreedWork\nArabic labels: التزام إسناد العمل المتفق عليه",
+        "vector_rank": 9,
+        "vector_distance": 0.82012182,
+        "bm25_rank": 19,
+        "bm25_score": 3.27517033,
+        "fused_score": 0.03439736,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+        "local_name": "employer_liability_consequence",
+        "node_kind": "EmployerLiability",
+        "labels_ar": [
+          "مسؤولية صاحب العمل"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#employer_liability_consequence\nLocal name: employer_liability_consequence\nNode kind: EmployerLiability\nRDF types: EmployerLiability\nArabic labels: مسؤولية صاحب العمل",
+        "vector_rank": 22,
+        "vector_distance": 0.85128236,
+        "bm25_rank": 3,
+        "bm25_score": 10.53550243,
+        "fused_score": 0.0341657,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#employer_concept",
+        "local_name": "employer_concept",
+        "node_kind": "Employer",
+        "labels_ar": [
+          "صاحب العمل"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#employer_concept\nLocal name: employer_concept\nNode kind: Employer\nRDF types: Employer\nArabic labels: صاحب العمل",
+        "vector_rank": 24,
+        "vector_distance": 0.8521682,
+        "bm25_rank": 2,
+        "bm25_score": 11.89023209,
+        "fused_score": 0.03398618,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+        "local_name": "work_negligence_violation",
+        "node_kind": "WorkNegligence",
+        "labels_ar": [
+          "مخالفة الإهمال في العمل"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#work_negligence_violation\nLocal name: work_negligence_violation\nNode kind: WorkNegligence\nRDF types: WorkNegligence\nArabic labels: مخالفة الإهمال في العمل",
+        "vector_rank": 16,
+        "vector_distance": 0.8385579,
+        "bm25_rank": 16,
+        "bm25_score": 3.58926296,
+        "fused_score": 0.03289474,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#indefinite_term_contract_concept",
+        "local_name": "indefinite_term_contract_concept",
+        "node_kind": "IndefiniteTermContract",
+        "labels_ar": [
+          "عقد العمل غير محدد المدة"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#indefinite_term_contract_concept\nLocal name: indefinite_term_contract_concept\nNode kind: IndefiniteTermContract\nRDF types: IndefiniteTermContract\nArabic labels: عقد العمل غير محدد المدة",
+        "vector_rank": 15,
+        "vector_distance": 0.83633924,
+        "bm25_rank": 20,
+        "bm25_score": 3.27517033,
+        "fused_score": 0.0325,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+        "local_name": "employment_contract_concept",
+        "node_kind": "EmploymentContract",
+        "labels_ar": [
+          "عقد العمل"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#employment_contract_concept\nLocal name: employment_contract_concept\nNode kind: EmploymentContract\nRDF types: EmploymentContract\nArabic labels: عقد العمل",
+        "vector_rank": 30,
+        "vector_distance": 0.86381769,
+        "bm25_rank": 6,
+        "bm25_score": 4.4651022,
+        "fused_score": 0.03181818,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+        "local_name": "collective_employment_contract_concept",
+        "node_kind": "EmploymentRelation",
+        "labels_ar": [
+          "عقد العمل الجماعي"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#collective_employment_contract_concept\nLocal name: collective_employment_contract_concept\nNode kind: EmploymentRelation\nRDF types: EmploymentRelation\nArabic labels: عقد العمل الجماعي",
+        "vector_rank": 23,
+        "vector_distance": 0.8518241,
+        "bm25_rank": 15,
+        "bm25_score": 3.95543933,
+        "fused_score": 0.03140562,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#oral_contract_concept",
+        "local_name": "oral_contract_concept",
+        "node_kind": "OralContract",
+        "labels_ar": [
+          "عقد العمل الشفهي"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#oral_contract_concept\nLocal name: oral_contract_concept\nNode kind: OralContract\nRDF types: OralContract\nArabic labels: عقد العمل الشفهي",
+        "vector_rank": 29,
+        "vector_distance": 0.85983169,
+        "bm25_rank": 10,
+        "bm25_score": 3.96919775,
+        "fused_score": 0.03113965,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      }
+    ],
+    "expanded_concept_hits": [
+      {
+        "uri": "http://example.org/jordan-labor-law#follow_lawful_instructions_obligation",
+        "local_name": "follow_lawful_instructions_obligation",
+        "node_kind": "FollowLawfulInstructions",
+        "labels_ar": [
+          "التزام اتباع التعليمات المشروعة"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#follow_lawful_instructions_obligation\nLocal name: follow_lawful_instructions_obligation\nNode kind: FollowLawfulInstructions\nRDF types: FollowLawfulInstructions\nArabic labels: التزام اتباع التعليمات المشروعة",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.0,
+        "direct_score": 0.0,
+        "graph_score": 3.8025,
+        "paragraph_score": 0.0,
+        "final_score": 3.8025,
+        "graph_supported": true,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#disciplinary_action_consequence",
+        "local_name": "disciplinary_action_consequence",
+        "node_kind": "DisciplinaryAction",
+        "labels_ar": [
+          "الإجراء التأديبي"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#disciplinary_action_consequence\nLocal name: disciplinary_action_consequence\nNode kind: DisciplinaryAction\nRDF types: DisciplinaryAction\nArabic labels: الإجراء التأديبي",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.0,
+        "direct_score": 0.0,
+        "graph_score": 3.16875,
+        "paragraph_score": 0.0,
+        "final_score": 3.16875,
+        "graph_supported": true,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#pay_wages_obligation",
+        "local_name": "pay_wages_obligation",
+        "node_kind": "PayWages",
+        "labels_ar": [
+          "التزام دفع الأجور"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#pay_wages_obligation\nLocal name: pay_wages_obligation\nNode kind: PayWages\nRDF types: PayWages\nArabic labels: التزام دفع الأجور",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.0,
+        "direct_score": 0.0,
+        "graph_score": 1.90125,
+        "paragraph_score": 0.0,
+        "final_score": 1.90125,
+        "graph_supported": true,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#wage_right_concept",
+        "local_name": "wage_right_concept",
+        "node_kind": "WageRight",
+        "labels_ar": [
+          "حق الأجر"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#wage_right_concept\nLocal name: wage_right_concept\nNode kind: WageRight\nRDF types: WageRight\nArabic labels: حق الأجر",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.0,
+        "direct_score": 0.0,
+        "graph_score": 1.90125,
+        "paragraph_score": 0.0,
+        "final_score": 1.90125,
+        "graph_supported": true,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#end_of_service_benefit_right_concept",
+        "local_name": "end_of_service_benefit_right_concept",
+        "node_kind": "EndOfServiceBenefitRight",
+        "labels_ar": [
+          "حق مكافأة نهاية الخدمة"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#end_of_service_benefit_right_concept\nLocal name: end_of_service_benefit_right_concept\nNode kind: EndOfServiceBenefitRight\nRDF types: EndOfServiceBenefitRight\nArabic labels: حق مكافأة نهاية الخدمة",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.0,
+        "direct_score": 0.0,
+        "graph_score": 1.69,
+        "paragraph_score": 0.0,
+        "final_score": 1.69,
+        "graph_supported": true,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#leave_right_concept",
+        "local_name": "leave_right_concept",
+        "node_kind": "LeaveRight",
+        "labels_ar": [
+          "حق الإجازة"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#leave_right_concept\nLocal name: leave_right_concept\nNode kind: LeaveRight\nRDF types: LeaveRight\nArabic labels: حق الإجازة",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.0,
+        "direct_score": 0.0,
+        "graph_score": 1.69,
+        "paragraph_score": 0.0,
+        "final_score": 1.69,
+        "graph_supported": true,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#litigation_right_concept",
+        "local_name": "litigation_right_concept",
+        "node_kind": "LitigationRight",
+        "labels_ar": [
+          "حق التقاضي"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#litigation_right_concept\nLocal name: litigation_right_concept\nNode kind: LitigationRight\nRDF types: LitigationRight\nArabic labels: حق التقاضي",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.0,
+        "direct_score": 0.0,
+        "graph_score": 1.69,
+        "paragraph_score": 0.0,
+        "final_score": 1.69,
+        "graph_supported": true,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#preserve_confidentiality_obligation",
+        "local_name": "preserve_confidentiality_obligation",
+        "node_kind": "PreserveConfidentiality",
+        "labels_ar": [
+          "التزام حفظ السرية"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#preserve_confidentiality_obligation\nLocal name: preserve_confidentiality_obligation\nNode kind: PreserveConfidentiality\nRDF types: PreserveConfidentiality\nArabic labels: التزام حفظ السرية",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.0,
+        "direct_score": 0.0,
+        "graph_score": 1.69,
+        "paragraph_score": 0.0,
+        "final_score": 1.69,
+        "graph_supported": true,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#safe_work_environment_right_concept",
+        "local_name": "safe_work_environment_right_concept",
+        "node_kind": "SafeWorkEnvironmentRight",
+        "labels_ar": [
+          "حق بيئة العمل الآمنة"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#safe_work_environment_right_concept\nLocal name: safe_work_environment_right_concept\nNode kind: SafeWorkEnvironmentRight\nRDF types: SafeWorkEnvironmentRight\nArabic labels: حق بيئة العمل الآمنة",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.0,
+        "direct_score": 0.0,
+        "graph_score": 1.69,
+        "paragraph_score": 0.0,
+        "final_score": 1.69,
+        "graph_supported": true,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#sick_leave_right_concept",
+        "local_name": "sick_leave_right_concept",
+        "node_kind": "SickLeaveRight",
+        "labels_ar": [
+          "حق الإجازة المرضية"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#sick_leave_right_concept\nLocal name: sick_leave_right_concept\nNode kind: SickLeaveRight\nRDF types: SickLeaveRight\nArabic labels: حق الإجازة المرضية",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.0,
+        "direct_score": 0.0,
+        "graph_score": 1.69,
+        "paragraph_score": 0.0,
+        "final_score": 1.69,
+        "graph_supported": true,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#social_security_related_right_concept",
+        "local_name": "social_security_related_right_concept",
+        "node_kind": "SocialSecurityRelatedRight",
+        "labels_ar": [
+          "حق متعلق بالضمان الاجتماعي"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#social_security_related_right_concept\nLocal name: social_security_related_right_concept\nNode kind: SocialSecurityRelatedRight\nRDF types: SocialSecurityRelatedRight\nArabic labels: حق متعلق بالضمان الاجتماعي",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.0,
+        "direct_score": 0.0,
+        "graph_score": 1.69,
+        "paragraph_score": 0.0,
+        "final_score": 1.69,
+        "graph_supported": true,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#weekly_rest_right_concept",
+        "local_name": "weekly_rest_right_concept",
+        "node_kind": "WeeklyRestRight",
+        "labels_ar": [
+          "حق العطلة الأسبوعية"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#weekly_rest_right_concept\nLocal name: weekly_rest_right_concept\nNode kind: WeeklyRestRight\nRDF types: WeeklyRestRight\nArabic labels: حق العطلة الأسبوعية",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.0,
+        "direct_score": 0.0,
+        "graph_score": 1.69,
+        "paragraph_score": 0.0,
+        "final_score": 1.69,
+        "graph_supported": true,
+        "support_paths": []
+      }
+    ],
+    "article_hits": [
+      {
+        "uri": "http://example.org/jordan-labor-law#article_49",
+        "local_name": "article_49",
+        "node_kind": "Article",
+        "labels_ar": [
+          "المادة 49"
+        ],
+        "labels_en": [],
+        "article_number": 49,
+        "text_preview": "اذا ثبت ان العامل قد تسبب في فقد او اتلاف ادوات او الات او منتجات يملكها او يحوزها صاحب العمل او كانت في عهدة العامل وكان ذلك ناشئاً عن خطا العامل او مخالفته تعليمات صاحب العمل فلصاحب العمل ان يقتطع من اجر العامل قيمة الاشياء المفقودة او المتلفة او كلفة اصلاحها على ان لا يزيد ما يقتطع لهذا الغرض على اجر خمسة ايام في الشهر ولصاحب العمل حق اللجوء الى المحاكم النظامية المختصة بالمطالبة بالتعويض عن الاضرار التي تسبب العامل بها.",
+        "vector_rank": 8,
+        "vector_distance": 0.63980162,
+        "bm25_rank": 25,
+        "bm25_score": 5.57186413,
+        "fused_score": 0.03764706,
+        "direct_score": 0.03764706,
+        "graph_score": 12.675,
+        "paragraph_score": 0.05,
+        "final_score": 12.76264706,
+        "graph_supported": true,
+        "support_paths": [
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_49",
+            "score": 10.14,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+                "relation": "breachesObligation",
+                "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+              },
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+                "relation": "regulatedBy",
+                "target_uri": "http://example.org/jordan-labor-law#article_49"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_49",
+            "score": 12.675,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+                "relation": "breachesObligation",
+                "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+              },
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+                "relation": "supportedByArticle",
+                "target_uri": "http://example.org/jordan-labor-law#article_49"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_49",
+            "score": 6.3375,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+                "relation": "breachesObligation",
+                "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+              },
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#article_49",
+                "relation": "regulates",
+                "target_uri": "http://example.org/jordan-labor-law#work_negligence_violation"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_28",
+        "local_name": "article_28",
+        "node_kind": "Article",
+        "labels_ar": [
+          "المادة 28"
+        ],
+        "labels_en": [],
+        "article_number": 28,
+        "text_preview": "لصاحب العمل فصل العامل دون اشعار وذلك في اي من الحالات التالية :\n\nأ . اذا انتحل العامل شخصية او هوية غيره او قدم شهادات او وثائق مزورة بقصد جلب المنفعة لنفسه او الاضرار بغيره.\n\nب. اذا لم يقم العامل بالوفاء بالالتزامات المترتبة عليه بموجب عقد العمل.\n\nج. اذا ارتكب العامل خطا نشا عنه خسارة مادية جسيمة لصاحب العمل بشرط ان يبلغ صاحب العمل الجهة او الجهات\n\n    المختصة بالحادث خلال خمسة ايام من وقت علمه بوقوعه.\n\nد. اذا خالف العامل النظام الداخلي للمؤسسة بما في ذلك شروط سلامة العمل والعمال رغم انذاره كتابة مرتين.\n\nهـ. اذا تغيب العامل دون سبب مشروع اكثر من عشرين يوماً متقطعة خلال السنة الواحدة او اكثر ",
+        "vector_rank": 29,
+        "vector_distance": 0.68648398,
+        "bm25_rank": 9,
+        "bm25_score": 7.60882854,
+        "fused_score": 0.03261684,
+        "direct_score": 0.03261684,
+        "graph_score": 12.675,
+        "paragraph_score": 0.0,
+        "final_score": 12.70761684,
+        "graph_supported": true,
+        "support_paths": [
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_28",
+            "score": 5.2,
+            "steps": [
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+                "relation": "regulatedBy",
+                "target_uri": "http://example.org/jordan-labor-law#article_28"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_28",
+            "score": 6.5,
+            "steps": [
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+                "relation": "supportedByArticle",
+                "target_uri": "http://example.org/jordan-labor-law#article_28"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_28",
+            "score": 3.25,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#article_28",
+                "relation": "regulates",
+                "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_28",
+            "score": 10.14,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+                "relation": "breachesObligation",
+                "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+              },
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+                "relation": "regulatedBy",
+                "target_uri": "http://example.org/jordan-labor-law#article_28"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_28",
+            "score": 12.675,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+                "relation": "breachesObligation",
+                "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+              },
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+                "relation": "supportedByArticle",
+                "target_uri": "http://example.org/jordan-labor-law#article_28"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_2",
+        "local_name": "article_2",
+        "node_kind": "Article",
+        "labels_ar": [
+          "المادة 2"
+        ],
+        "labels_en": [],
+        "article_number": 2,
+        "text_preview": "يكون للكلمات والعبارات التالية حيثما وردت في هذا القانون المعاني المخصصة لها ادناه ما لم تدل القرينة على غير ذلك:\n\nالوزارة                   : وزارة العمل.\n\nالوزير                    : وزير العمل.\n\nالامين العام               : الامين العام للوزارة.\n\nصاحب العمل              : كل شخص طبيعي او معنوي يستخدم باي صفة كانت شخصاً او اكثر مقابل اجر.\n\nنقابة اصحاب العمل       : الهيئة التي تمثل اصحاب العمل.\n\nالعامل                     : كل شخص ذكراً كان او انثى يؤدي عملاً لقاء اجر ويكون تابعاً لصاحب العمل وتحت امرته\n\n                             ويشمل ذلك الاحداث ومن كان قيد التجربة او التاهيل.\n\nالعمل   ",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": 11,
+        "bm25_score": 6.91568756,
+        "fused_score": 0.00985915,
+        "direct_score": 0.00985915,
+        "graph_score": 8.45,
+        "paragraph_score": 0.0,
+        "final_score": 8.45985915,
+        "graph_supported": true,
+        "support_paths": [
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_2",
+            "score": 6.76,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#worker_concept",
+                "relation": "hasObligation",
+                "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+              },
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#worker_concept",
+                "relation": "regulatedBy",
+                "target_uri": "http://example.org/jordan-labor-law#article_2"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_2",
+            "score": 8.45,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#worker_concept",
+                "relation": "hasObligation",
+                "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+              },
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#worker_concept",
+                "relation": "supportedByArticle",
+                "target_uri": "http://example.org/jordan-labor-law#article_2"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_2",
+            "score": 4.225,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#worker_concept",
+                "relation": "hasObligation",
+                "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+              },
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#article_2",
+                "relation": "regulates",
+                "target_uri": "http://example.org/jordan-labor-law#worker_concept"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+            "seed_label": "العمل المؤقت",
+            "article_uri": "http://example.org/jordan-labor-law#article_2",
+            "score": 1.73333333,
+            "steps": [
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+                "relation": "regulatedBy",
+                "target_uri": "http://example.org/jordan-labor-law#article_2"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+            "seed_label": "العمل المؤقت",
+            "article_uri": "http://example.org/jordan-labor-law#article_2",
+            "score": 2.16666667,
+            "steps": [
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+                "relation": "supportedByArticle",
+                "target_uri": "http://example.org/jordan-labor-law#article_2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_29",
+        "local_name": "article_29",
+        "node_kind": "Article",
+        "labels_ar": [
+          "المادة 29"
+        ],
+        "labels_en": [],
+        "article_number": 29,
+        "text_preview": "يحق للعامل ان يترك العمل دون اشعار مع احتفاظه بحقوقه القانونية عن انتهاء الخدمة وما يترتب له من تعويضات عطل وضرر وذلك في اي من الحالات التالية :\n\nأ . استخدامه في عمل يختلف في نوعه اختلافاً بيناً عن العمل الذي اتفق على استخدامه فيه بمقتضى عقد العمل على ان\n\n    تراعى في ذلك احكام المادة (17) من هذا القانون.\n\nب. استخدامه بصورة تدعو الى تغيير محل اقامته الدائم الا اذا نص في العقد على جواز ذلك.\n\nج. نقله الى عمل آخر في درجة ادنى من العمل الذي اتفق على استخدامه فيه.\n\nد. تخفيض اجره، على ان تراعى احكام المادة (14) من هذا القانون.\n\nهـ. اذا ثبت بتقرير طبي صادر عن مرجع طبي ان استمراره في العمل من شانه تهد",
+        "vector_rank": 18,
+        "vector_distance": 0.66516215,
+        "bm25_rank": 36,
+        "bm25_score": 4.70873165,
+        "fused_score": 0.03293269,
+        "direct_score": 0.03293269,
+        "graph_score": 6.5,
+        "paragraph_score": 0.0,
+        "final_score": 6.53293269,
+        "graph_supported": true,
+        "support_paths": [
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_29",
+            "score": 5.2,
+            "steps": [
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+                "relation": "regulatedBy",
+                "target_uri": "http://example.org/jordan-labor-law#article_29"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_29",
+            "score": 6.5,
+            "steps": [
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+                "relation": "supportedByArticle",
+                "target_uri": "http://example.org/jordan-labor-law#article_29"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_29",
+            "score": 3.25,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#article_29",
+                "relation": "regulates",
+                "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+            "seed_label": "التزام إسناد العمل المتفق عليه",
+            "article_uri": "http://example.org/jordan-labor-law#article_29",
+            "score": 1.04,
+            "steps": [
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+                "relation": "regulatedBy",
+                "target_uri": "http://example.org/jordan-labor-law#article_29"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+            "seed_label": "التزام إسناد العمل المتفق عليه",
+            "article_uri": "http://example.org/jordan-labor-law#article_29",
+            "score": 1.3,
+            "steps": [
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+                "relation": "supportedByArticle",
+                "target_uri": "http://example.org/jordan-labor-law#article_29"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_19",
+        "local_name": "article_19",
+        "node_kind": "Article",
+        "labels_ar": [
+          "المادة 19"
+        ],
+        "labels_en": [],
+        "article_number": 19,
+        "text_preview": "على العامل :\n\nأ . تادية العمل بنفسه وان يبذل في تاديته عناية الشخص العادي وان يلتزم باوامر صاحب العمل المتعلقة بتنفيذ العمل\n\n    المتفق عليه وذلك ضمن الحدود التي لا تعرضه للخطر او تخالف احكام القوانين المعمول بها او الآداب العامة.\n\nب. المحافظة على اسرار صاحب العمل الصناعية والتجارية وان لا يفشيها باي صورة من الصور ولو بعد انقضاء عقد\n\n     العمل وفقاً لما يقتضيه الاتفاق او العرف.\n\nج. الحرص على حفظ الاشياء المسلمة اليه لتادية العمل ومنها ادوات العمل والمواد وسائر اللوازم الخاصة بعمله.\n\nد. الخضوع للفحوصات الطبية اللازمة التي تقتضي طبيعة العمل ضرورة اجرائها قبل الالتحاق بالعمل او بعد ذلك للتحقق\n\n ",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": 24,
+        "bm25_score": 5.57849407,
+        "fused_score": 0.00833333,
+        "direct_score": 0.00833333,
+        "graph_score": 6.5,
+        "paragraph_score": 0.0,
+        "final_score": 6.50833333,
+        "graph_supported": true,
+        "support_paths": [
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_19",
+            "score": 5.2,
+            "steps": [
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+                "relation": "regulatedBy",
+                "target_uri": "http://example.org/jordan-labor-law#article_19"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_19",
+            "score": 6.5,
+            "steps": [
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+                "relation": "supportedByArticle",
+                "target_uri": "http://example.org/jordan-labor-law#article_19"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "seed_label": "التزام أداء العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_19",
+            "score": 3.25,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#article_19",
+                "relation": "regulates",
+                "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_46",
+        "local_name": "article_46",
+        "node_kind": "Article",
+        "labels_ar": [
+          "المادة 46"
+        ],
+        "labels_en": [],
+        "article_number": 46,
+        "text_preview": "أ . يدفع الاجر خلال مدة لا تزيد على سبعة ايام من تاريخ استحقاقه ولا يجوز لصاحب العمل حسم اي جزء منه الا في\n\n    الحالات التي يجيزها القانون.\n\nب. ان توقيع العامل على اي كشف او سجل للاجور او على ايصال بقيمة المبلغ المسجل فيه لا يعني اسقاط حقه في اي\n\n    زيادة على المبلغ المقبوض بموجب القانون او النظام او العقد.",
+        "vector_rank": 1,
+        "vector_distance": 0.58320981,
+        "bm25_rank": 14,
+        "bm25_score": 6.38267422,
+        "fused_score": 0.04224634,
+        "direct_score": 0.04224634,
+        "graph_score": 6.3375,
+        "paragraph_score": 0.08333333,
+        "final_score": 6.46307968,
+        "graph_supported": true,
+        "support_paths": [
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+            "seed_label": "شرط تجاوز التأخير سبعة أيام",
+            "article_uri": "http://example.org/jordan-labor-law#article_46",
+            "score": 2.6,
+            "steps": [
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+                "relation": "regulatedBy",
+                "target_uri": "http://example.org/jordan-labor-law#article_46"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+            "seed_label": "شرط تجاوز التأخير سبعة أيام",
+            "article_uri": "http://example.org/jordan-labor-law#article_46",
+            "score": 3.25,
+            "steps": [
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+                "relation": "supportedByArticle",
+                "target_uri": "http://example.org/jordan-labor-law#article_46"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+            "seed_label": "شرط تجاوز التأخير سبعة أيام",
+            "article_uri": "http://example.org/jordan-labor-law#article_46",
+            "score": 1.625,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#article_46",
+                "relation": "regulates",
+                "target_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+            "seed_label": "شرط تجاوز التأخير سبعة أيام",
+            "article_uri": "http://example.org/jordan-labor-law#article_46",
+            "score": 5.07,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+                "relation": "hasCondition",
+                "target_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition"
+              },
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+                "relation": "regulatedBy",
+                "target_uri": "http://example.org/jordan-labor-law#article_46"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+            "seed_label": "شرط تجاوز التأخير سبعة أيام",
+            "article_uri": "http://example.org/jordan-labor-law#article_46",
+            "score": 6.3375,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+                "relation": "hasCondition",
+                "target_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition"
+              },
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+                "relation": "supportedByArticle",
+                "target_uri": "http://example.org/jordan-labor-law#article_46"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_54",
+        "local_name": "article_54",
+        "node_kind": "Article",
+        "labels_ar": [
+          "المادة 54"
+        ],
+        "labels_en": [],
+        "article_number": 54,
+        "text_preview": "أ . لمجلس الوزراء بناء على تنسيب الوزير ان يعين سلطة من ذوي الخبرة والاختصاص في شؤون العمل تسمى (سلطة\n\n    الاجور) تتالف من شخص او اكثر للنظر في الدعاوى المتعلقة بالاجور في منطقة معينة ومنها النقص في الاجر المدفوع\n\n    او الحسميات غير القانونية منه او تاخير دفعه او اجور ساعات العمل الاضافية على ان يتم الفصل فيها بصورة\n\n    مستعجلة.  ويشترط في قبول الدعوى ان يكون العامل على راس عمله او لم يمض على انتهاء عمله مدة تزيد على\n\n    ستة اشهر وفي حالة عدم توفر هذا الشرط فللعامل الحق في اللجوء الى المحكمة النظامية المختصة.\n\nب. لا تكون سلطة الاجور ملزمة بتطبيق الاجراءات والاصول المتبعة في المحاكم وتكون ل",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": 18,
+        "bm25_score": 6.05599928,
+        "fused_score": 0.00897436,
+        "direct_score": 0.00897436,
+        "graph_score": 6.3375,
+        "paragraph_score": 0.07692308,
+        "final_score": 6.42339744,
+        "graph_supported": true,
+        "support_paths": [
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+            "seed_label": "شرط تجاوز التأخير سبعة أيام",
+            "article_uri": "http://example.org/jordan-labor-law#article_54",
+            "score": 5.07,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+                "relation": "hasCondition",
+                "target_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition"
+              },
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+                "relation": "regulatedBy",
+                "target_uri": "http://example.org/jordan-labor-law#article_54"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+            "seed_label": "شرط تجاوز التأخير سبعة أيام",
+            "article_uri": "http://example.org/jordan-labor-law#article_54",
+            "score": 6.3375,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+                "relation": "hasCondition",
+                "target_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition"
+              },
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+                "relation": "supportedByArticle",
+                "target_uri": "http://example.org/jordan-labor-law#article_54"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+            "seed_label": "شرط تجاوز التأخير سبعة أيام",
+            "article_uri": "http://example.org/jordan-labor-law#article_54",
+            "score": 3.16875,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+                "relation": "hasCondition",
+                "target_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition"
+              },
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#article_54",
+                "relation": "regulates",
+                "target_uri": "http://example.org/jordan-labor-law#wage_delay_violation"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+            "seed_label": "مسؤولية صاحب العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_54",
+            "score": 1.40833333,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+                "relation": "resultsIn",
+                "target_uri": "http://example.org/jordan-labor-law#employer_liability_consequence"
+              },
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+                "relation": "regulatedBy",
+                "target_uri": "http://example.org/jordan-labor-law#article_54"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+            "seed_label": "مسؤولية صاحب العمل",
+            "article_uri": "http://example.org/jordan-labor-law#article_54",
+            "score": 1.76041667,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+                "relation": "resultsIn",
+                "target_uri": "http://example.org/jordan-labor-law#employer_liability_consequence"
+              },
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+                "relation": "supportedByArticle",
+                "target_uri": "http://example.org/jordan-labor-law#article_54"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_17",
+        "local_name": "article_17",
+        "node_kind": "Article",
+        "labels_ar": [
+          "المادة 17"
+        ],
+        "labels_en": [],
+        "article_number": 17,
+        "text_preview": "لا يلزم العامل بالقيام بعمل يختلف اختلافاً بيناً عن طبيعة العمل المتفق عليه في عقد العمل الا اذا دعت الضرورة الى ذلك منعاً لوقوع حادث او لاصلاح ما نجم عنه او في حالة القوة القاهرة وفي الاحوال الاخرى التي ينص عليها القانون على ان يكون ذلك في حدود طاقته وفي حدود الظرف الذي اقتضى هذا العمل.",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.0,
+        "direct_score": 0.0,
+        "graph_score": 2.535,
+        "paragraph_score": 0.0,
+        "final_score": 2.535,
+        "graph_supported": true,
+        "support_paths": [
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+            "seed_label": "التزام إسناد العمل المتفق عليه",
+            "article_uri": "http://example.org/jordan-labor-law#article_17",
+            "score": 1.04,
+            "steps": [
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+                "relation": "regulatedBy",
+                "target_uri": "http://example.org/jordan-labor-law#article_17"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+            "seed_label": "التزام إسناد العمل المتفق عليه",
+            "article_uri": "http://example.org/jordan-labor-law#article_17",
+            "score": 1.3,
+            "steps": [
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+                "relation": "supportedByArticle",
+                "target_uri": "http://example.org/jordan-labor-law#article_17"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+            "seed_label": "التزام إسناد العمل المتفق عليه",
+            "article_uri": "http://example.org/jordan-labor-law#article_17",
+            "score": 0.65,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#article_17",
+                "relation": "regulates",
+                "target_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+            "seed_label": "التزام إسناد العمل المتفق عليه",
+            "article_uri": "http://example.org/jordan-labor-law#article_17",
+            "score": 2.028,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#assignment_different_work_violation",
+                "relation": "breachesObligation",
+                "target_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation"
+              },
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#assignment_different_work_violation",
+                "relation": "regulatedBy",
+                "target_uri": "http://example.org/jordan-labor-law#article_17"
+              }
+            ]
+          },
+          {
+            "seed_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+            "seed_label": "التزام إسناد العمل المتفق عليه",
+            "article_uri": "http://example.org/jordan-labor-law#article_17",
+            "score": 2.535,
+            "steps": [
+              {
+                "direction": "incoming",
+                "source_uri": "http://example.org/jordan-labor-law#assignment_different_work_violation",
+                "relation": "breachesObligation",
+                "target_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation"
+              },
+              {
+                "direction": "outgoing",
+                "source_uri": "http://example.org/jordan-labor-law#assignment_different_work_violation",
+                "relation": "supportedByArticle",
+                "target_uri": "http://example.org/jordan-labor-law#article_17"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "graph_paths": [
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_49",
+        "score": 10.14,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+            "relation": "breachesObligation",
+            "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+          },
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+            "relation": "regulatedBy",
+            "target_uri": "http://example.org/jordan-labor-law#article_49"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_49",
+        "score": 12.675,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+            "relation": "breachesObligation",
+            "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+          },
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+            "relation": "supportedByArticle",
+            "target_uri": "http://example.org/jordan-labor-law#article_49"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_49",
+        "score": 6.3375,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+            "relation": "breachesObligation",
+            "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+          },
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#article_49",
+            "relation": "regulates",
+            "target_uri": "http://example.org/jordan-labor-law#work_negligence_violation"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_28",
+        "score": 5.2,
+        "steps": [
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "relation": "regulatedBy",
+            "target_uri": "http://example.org/jordan-labor-law#article_28"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_28",
+        "score": 6.5,
+        "steps": [
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "relation": "supportedByArticle",
+            "target_uri": "http://example.org/jordan-labor-law#article_28"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_28",
+        "score": 3.25,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#article_28",
+            "relation": "regulates",
+            "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_28",
+        "score": 10.14,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+            "relation": "breachesObligation",
+            "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+          },
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+            "relation": "regulatedBy",
+            "target_uri": "http://example.org/jordan-labor-law#article_28"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_28",
+        "score": 12.675,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+            "relation": "breachesObligation",
+            "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+          },
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+            "relation": "supportedByArticle",
+            "target_uri": "http://example.org/jordan-labor-law#article_28"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_2",
+        "score": 6.760000000000001,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#worker_concept",
+            "relation": "hasObligation",
+            "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+          },
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#worker_concept",
+            "relation": "regulatedBy",
+            "target_uri": "http://example.org/jordan-labor-law#article_2"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_2",
+        "score": 8.450000000000001,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#worker_concept",
+            "relation": "hasObligation",
+            "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+          },
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#worker_concept",
+            "relation": "supportedByArticle",
+            "target_uri": "http://example.org/jordan-labor-law#article_2"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_2",
+        "score": 4.2250000000000005,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#worker_concept",
+            "relation": "hasObligation",
+            "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+          },
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#article_2",
+            "relation": "regulates",
+            "target_uri": "http://example.org/jordan-labor-law#worker_concept"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+        "seed_label": "العمل المؤقت",
+        "article_uri": "http://example.org/jordan-labor-law#article_2",
+        "score": 1.7333333333333334,
+        "steps": [
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+            "relation": "regulatedBy",
+            "target_uri": "http://example.org/jordan-labor-law#article_2"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+        "seed_label": "العمل المؤقت",
+        "article_uri": "http://example.org/jordan-labor-law#article_2",
+        "score": 2.1666666666666665,
+        "steps": [
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+            "relation": "supportedByArticle",
+            "target_uri": "http://example.org/jordan-labor-law#article_2"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_29",
+        "score": 5.2,
+        "steps": [
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "relation": "regulatedBy",
+            "target_uri": "http://example.org/jordan-labor-law#article_29"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_29",
+        "score": 6.5,
+        "steps": [
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "relation": "supportedByArticle",
+            "target_uri": "http://example.org/jordan-labor-law#article_29"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_29",
+        "score": 3.25,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#article_29",
+            "relation": "regulates",
+            "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+        "seed_label": "التزام إسناد العمل المتفق عليه",
+        "article_uri": "http://example.org/jordan-labor-law#article_29",
+        "score": 1.04,
+        "steps": [
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+            "relation": "regulatedBy",
+            "target_uri": "http://example.org/jordan-labor-law#article_29"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+        "seed_label": "التزام إسناد العمل المتفق عليه",
+        "article_uri": "http://example.org/jordan-labor-law#article_29",
+        "score": 1.3,
+        "steps": [
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+            "relation": "supportedByArticle",
+            "target_uri": "http://example.org/jordan-labor-law#article_29"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_19",
+        "score": 5.2,
+        "steps": [
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "relation": "regulatedBy",
+            "target_uri": "http://example.org/jordan-labor-law#article_19"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_19",
+        "score": 6.5,
+        "steps": [
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+            "relation": "supportedByArticle",
+            "target_uri": "http://example.org/jordan-labor-law#article_19"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+        "seed_label": "التزام أداء العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_19",
+        "score": 3.25,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#article_19",
+            "relation": "regulates",
+            "target_uri": "http://example.org/jordan-labor-law#perform_work_obligation"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+        "seed_label": "شرط تجاوز التأخير سبعة أيام",
+        "article_uri": "http://example.org/jordan-labor-law#article_46",
+        "score": 2.6,
+        "steps": [
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+            "relation": "regulatedBy",
+            "target_uri": "http://example.org/jordan-labor-law#article_46"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+        "seed_label": "شرط تجاوز التأخير سبعة أيام",
+        "article_uri": "http://example.org/jordan-labor-law#article_46",
+        "score": 3.25,
+        "steps": [
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+            "relation": "supportedByArticle",
+            "target_uri": "http://example.org/jordan-labor-law#article_46"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+        "seed_label": "شرط تجاوز التأخير سبعة أيام",
+        "article_uri": "http://example.org/jordan-labor-law#article_46",
+        "score": 1.625,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#article_46",
+            "relation": "regulates",
+            "target_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+        "seed_label": "شرط تجاوز التأخير سبعة أيام",
+        "article_uri": "http://example.org/jordan-labor-law#article_46",
+        "score": 5.07,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+            "relation": "hasCondition",
+            "target_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition"
+          },
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+            "relation": "regulatedBy",
+            "target_uri": "http://example.org/jordan-labor-law#article_46"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+        "seed_label": "شرط تجاوز التأخير سبعة أيام",
+        "article_uri": "http://example.org/jordan-labor-law#article_46",
+        "score": 6.3375,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+            "relation": "hasCondition",
+            "target_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition"
+          },
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+            "relation": "supportedByArticle",
+            "target_uri": "http://example.org/jordan-labor-law#article_46"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+        "seed_label": "شرط تجاوز التأخير سبعة أيام",
+        "article_uri": "http://example.org/jordan-labor-law#article_54",
+        "score": 5.07,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+            "relation": "hasCondition",
+            "target_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition"
+          },
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+            "relation": "regulatedBy",
+            "target_uri": "http://example.org/jordan-labor-law#article_54"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+        "seed_label": "شرط تجاوز التأخير سبعة أيام",
+        "article_uri": "http://example.org/jordan-labor-law#article_54",
+        "score": 6.3375,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+            "relation": "hasCondition",
+            "target_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition"
+          },
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+            "relation": "supportedByArticle",
+            "target_uri": "http://example.org/jordan-labor-law#article_54"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+        "seed_label": "شرط تجاوز التأخير سبعة أيام",
+        "article_uri": "http://example.org/jordan-labor-law#article_54",
+        "score": 3.16875,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+            "relation": "hasCondition",
+            "target_uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition"
+          },
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#article_54",
+            "relation": "regulates",
+            "target_uri": "http://example.org/jordan-labor-law#wage_delay_violation"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+        "seed_label": "مسؤولية صاحب العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_54",
+        "score": 1.4083333333333332,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+            "relation": "resultsIn",
+            "target_uri": "http://example.org/jordan-labor-law#employer_liability_consequence"
+          },
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+            "relation": "regulatedBy",
+            "target_uri": "http://example.org/jordan-labor-law#article_54"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+        "seed_label": "مسؤولية صاحب العمل",
+        "article_uri": "http://example.org/jordan-labor-law#article_54",
+        "score": 1.7604166666666665,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+            "relation": "resultsIn",
+            "target_uri": "http://example.org/jordan-labor-law#employer_liability_consequence"
+          },
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+            "relation": "supportedByArticle",
+            "target_uri": "http://example.org/jordan-labor-law#article_54"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+        "seed_label": "التزام إسناد العمل المتفق عليه",
+        "article_uri": "http://example.org/jordan-labor-law#article_17",
+        "score": 1.04,
+        "steps": [
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+            "relation": "regulatedBy",
+            "target_uri": "http://example.org/jordan-labor-law#article_17"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+        "seed_label": "التزام إسناد العمل المتفق عليه",
+        "article_uri": "http://example.org/jordan-labor-law#article_17",
+        "score": 1.3,
+        "steps": [
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+            "relation": "supportedByArticle",
+            "target_uri": "http://example.org/jordan-labor-law#article_17"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+        "seed_label": "التزام إسناد العمل المتفق عليه",
+        "article_uri": "http://example.org/jordan-labor-law#article_17",
+        "score": 0.65,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#article_17",
+            "relation": "regulates",
+            "target_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+        "seed_label": "التزام إسناد العمل المتفق عليه",
+        "article_uri": "http://example.org/jordan-labor-law#article_17",
+        "score": 2.0280000000000005,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#assignment_different_work_violation",
+            "relation": "breachesObligation",
+            "target_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation"
+          },
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#assignment_different_work_violation",
+            "relation": "regulatedBy",
+            "target_uri": "http://example.org/jordan-labor-law#article_17"
+          }
+        ]
+      },
+      {
+        "seed_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+        "seed_label": "التزام إسناد العمل المتفق عليه",
+        "article_uri": "http://example.org/jordan-labor-law#article_17",
+        "score": 2.5350000000000006,
+        "steps": [
+          {
+            "direction": "incoming",
+            "source_uri": "http://example.org/jordan-labor-law#assignment_different_work_violation",
+            "relation": "breachesObligation",
+            "target_uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation"
+          },
+          {
+            "direction": "outgoing",
+            "source_uri": "http://example.org/jordan-labor-law#assignment_different_work_violation",
+            "relation": "supportedByArticle",
+            "target_uri": "http://example.org/jordan-labor-law#article_17"
+          }
+        ]
+      }
+    ],
+    "raw_mixed_hits": [
+      {
+        "uri": "http://example.org/jordan-labor-law#article_50_paragraph_1",
+        "local_name": "article_50_paragraph_1",
+        "node_kind": "Paragraph",
+        "labels_ar": [
+          "نص المادة 50"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "اذا اضطر صاحب العمل الى وقف العمل بصورة مؤقتة بسبب لا يعزى اليه وليس في وسعه دفعه فيستحق العامل الاجر الكامل عن مدة لا تزيد على العشرة ايام الاولى من توقف العمل خلال السنة وان يدفع للعامل نصف اجره عن المدة التي تزيد على ذلك بحيث لا يزيد مجموع التعطيل الكلي المدفوع الاجر على ستين يوماً في السنة.",
+        "vector_rank": 5,
+        "vector_distance": 0.62250614,
+        "bm25_rank": 7,
+        "bm25_score": 9.82599258,
+        "fused_score": 0.03030999,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_50",
+        "local_name": "article_50",
+        "node_kind": "Article",
+        "labels_ar": [
+          "المادة 50"
+        ],
+        "labels_en": [],
+        "article_number": 50,
+        "text_preview": "اذا اضطر صاحب العمل الى وقف العمل بصورة مؤقتة بسبب لا يعزى اليه وليس في وسعه دفعه فيستحق العامل الاجر الكامل عن مدة لا تزيد على العشرة ايام الاولى من توقف العمل خلال السنة وان يدفع للعامل نصف اجره عن المدة التي تزيد على ذلك بحيث لا يزيد مجموع التعطيل الكلي المدفوع الاجر على ستين يوماً في السنة.",
+        "vector_rank": 7,
+        "vector_distance": 0.62537909,
+        "bm25_rank": 6,
+        "bm25_score": 9.90815067,
+        "fused_score": 0.03007689,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_46",
+        "local_name": "article_46",
+        "node_kind": "Article",
+        "labels_ar": [
+          "المادة 46"
+        ],
+        "labels_en": [],
+        "article_number": 46,
+        "text_preview": "أ . يدفع الاجر خلال مدة لا تزيد على سبعة ايام من تاريخ استحقاقه ولا يجوز لصاحب العمل حسم اي جزء منه الا في\n\n    الحالات التي يجيزها القانون.\n\nب. ان توقيع العامل على اي كشف او سجل للاجور او على ايصال بقيمة المبلغ المسجل فيه لا يعني اسقاط حقه في اي\n\n    زيادة على المبلغ المقبوض بموجب القانون او النظام او العقد.",
+        "vector_rank": 1,
+        "vector_distance": 0.58320981,
+        "bm25_rank": 37,
+        "bm25_score": 6.38267422,
+        "fused_score": 0.02670272,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_54_paragraph_6",
+        "local_name": "article_54_paragraph_6",
+        "node_kind": "Paragraph",
+        "labels_ar": [
+          "المادة 54 - الفقرة د"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "يجوز لسلطة الاجور ان تطلب الى صاحب العمل ضمن فترة تحددها ان يدفع للعامل الاجور المحسومة بصورة غير قانونية او الاجور غير المدفوعة او المستحقة الاداء او التي تاخر عن دفعها في المدة المعينة لهذا الغرض ولها ان تضيف تعويضاً تقدره شريطة ان لا يتجاوز مبلغ التعويض المبلغ المحسوم او غير المدفوع عن المدة المطالب باجور عنها، ويشترط في ذلك ان لا يلزم صاحب العمل بدفع تعويض عن الاجور الناقصة او المتاخر دفعها اذا اقتنعت السلطة ان التاخر كان ناجماً عن خطا بحسن نية، او عن نزاع على المبلغ الواجب دفعه او عن حدوث حالة طارئة او عن تخلف العامل عن المطالبة بدفع الاجور او قبولها. هـ. تنظر سلطة الاجور في الدعوى المقدم",
+        "vector_rank": 20,
+        "vector_distance": 0.65476692,
+        "bm25_rank": 11,
+        "bm25_score": 9.50978184,
+        "fused_score": 0.02658451,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_46_paragraph_1",
+        "local_name": "article_46_paragraph_1",
+        "node_kind": "Paragraph",
+        "labels_ar": [
+          "المادة 46 - الفقرة أ"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "يدفع الاجر خلال مدة لا تزيد على سبعة ايام من تاريخ استحقاقه ولا يجوز لصاحب العمل حسم اي جزء منه الا في الحالات التي يجيزها القانون.",
+        "vector_rank": 12,
+        "vector_distance": 0.63667786,
+        "bm25_rank": 20,
+        "bm25_score": 8.38575935,
+        "fused_score": 0.02638889,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_53_paragraph_1",
+        "local_name": "article_53_paragraph_1",
+        "node_kind": "Paragraph",
+        "labels_ar": [
+          "نص المادة 53"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "يعاقب صاحب العمل او من ينوب عنه بغرامة لا تقل عن خمسة وعشرين دينارا ولا تزيد على مئة دينار عن كل حالة يدفع فيها الى عامل اجراً يقل عن الحد الادنى المقرر للاجور وذلك بالاضافة الى الحكم للعامل بفرق الاجر وتضاعف العقوبة كلما تكررت المخالفة.",
+        "vector_rank": 27,
+        "vector_distance": 0.65982103,
+        "bm25_rank": 8,
+        "bm25_score": 9.81603146,
+        "fused_score": 0.02620014,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_53",
+        "local_name": "article_53",
+        "node_kind": "Article",
+        "labels_ar": [
+          "المادة 53"
+        ],
+        "labels_en": [],
+        "article_number": 53,
+        "text_preview": "يعاقب صاحب العمل او من ينوب عنه بغرامة لا تقل عن خمسة وعشرين دينارا ولا تزيد على مئة دينار عن كل حالة يدفع فيها الى عامل اجراً يقل عن الحد الادنى المقرر للاجور وذلك بالاضافة الى الحكم للعامل بفرق الاجر وتضاعف العقوبة كلما تكررت المخالفة.",
+        "vector_rank": 37,
+        "vector_distance": 0.66827464,
+        "bm25_rank": 5,
+        "bm25_score": 9.91281128,
+        "fused_score": 0.02569389,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#DelayExceedsSevenDays",
+        "local_name": "DelayExceedsSevenDays",
+        "node_kind": "OntologyClass",
+        "labels_ar": [
+          "تجاوز التأخير سبعة أيام"
+        ],
+        "labels_en": [
+          "Delay Exceeds Seven Days"
+        ],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#DelayExceedsSevenDays\nLocal name: DelayExceedsSevenDays\nNode kind: OntologyClass\nRDF types: Class\nArabic labels: تجاوز التأخير سبعة أيام\nEnglish labels: Delay Exceeds Seven Days",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": 1,
+        "bm25_score": 12.3206625,
+        "fused_score": 0.01639344,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_25_paragraph_1",
+        "local_name": "article_25_paragraph_1",
+        "node_kind": "Paragraph",
+        "labels_ar": [
+          "نص المادة 25"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "اذا تبين للمحكمة المختصة في دعوى اقامها العامل خلال ستين يوماً من تاريخ فصله ان الفصل كان تعسفياً ومخالفاً لاحكام هذا القانون جاز لها اصدار امر الى صاحب العمل باعادة العامل الى عمله الاصلي او بدفع تعويض له بالاضافة الى بدل الاشعار واستحقاقاته الاخرى المنصوص عليها في المادتين (32) و (33) من هذا القانون على ان لا يقل مقدار هذا التعويض عن اجور ثلاثة اشهر ولا يزيد على ستة اشهر ويحتسب التعويض على اساس آخر اجر تقاضاه العامل.",
+        "vector_rank": 2,
+        "vector_distance": 0.60591698,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.01612903,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+        "local_name": "delay_exceeds_seven_days_condition",
+        "node_kind": "DelayExceedsSevenDays",
+        "labels_ar": [
+          "شرط تجاوز التأخير سبعة أيام"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "URI: http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition\nLocal name: delay_exceeds_seven_days_condition\nNode kind: DelayExceedsSevenDays\nRDF types: DelayExceedsSevenDays\nArabic labels: شرط تجاوز التأخير سبعة أيام",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": 2,
+        "bm25_score": 11.28205681,
+        "fused_score": 0.01612903,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_25",
+        "local_name": "article_25",
+        "node_kind": "Article",
+        "labels_ar": [
+          "المادة 25"
+        ],
+        "labels_en": [],
+        "article_number": 25,
+        "text_preview": "اذا تبين للمحكمة المختصة في دعوى اقامها العامل خلال ستين يوماً من تاريخ فصله ان الفصل كان تعسفياً ومخالفاً لاحكام هذا القانون جاز لها اصدار امر الى صاحب العمل باعادة العامل الى عمله الاصلي او بدفع تعويض له بالاضافة الى بدل الاشعار واستحقاقاته الاخرى المنصوص عليها في المادتين (32) و (33) من هذا القانون على ان لا يقل مقدار هذا التعويض عن اجور ثلاثة اشهر ولا يزيد على ستة اشهر ويحتسب التعويض على اساس آخر اجر تقاضاه العامل.",
+        "vector_rank": 3,
+        "vector_distance": 0.60864902,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.01587302,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_51_paragraph_3",
+        "local_name": "article_51_paragraph_3",
+        "node_kind": "Paragraph",
+        "labels_ar": [
+          "المادة 51 - الفقرة ب"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "في حالة تصفية المؤسسة او افلاس صاحب العمل يدفع المصفي او وكيل التفليسة للعامل او لورثته فورا وبمجرد وضع يده على اموال صاحب العمل ما يعادل اجر شهر واحد من المبالغ المستحقة له وذلك قبل تسديد اي مصروفات اخرى بما في ذلك المصروفات القضائية ومصروفات التفليسة او التصفية.",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": 3,
+        "bm25_score": 11.22591019,
+        "fused_score": 0.01587302,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_136",
+        "local_name": "article_136",
+        "node_kind": "Article",
+        "labels_ar": [
+          "المادة 136"
+        ],
+        "labels_en": [],
+        "article_number": 136,
+        "text_preview": "أ . اذا قام اي عامل باضراب محظور بموجب هذا القانون يعاقب بغرامة لا تقل عن خمسين دينارا عن اليوم الاول وخمسة\n\n    دنانير عن كل يوم يستمر فيه الاضراب بعد ذلك ويحرم من اجره عن الايام التي يضرب فيها.\n\nب. اذا اقدم صاحب العمل على اغلاق محظور بموجب هذا القانون فيعاقب بغرامة مقدارها خمسمائة دينار عن اليوم الاول\n\n    وخمسون دينار عن كل يوم يستمر فيه الاغلاق بعد ذلك ويلزم بدفع اجور العمال عن الايام التي يستمر الاغلاق فيها.",
+        "vector_rank": 4,
+        "vector_distance": 0.61458248,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.015625,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_20",
+        "local_name": "article_20",
+        "node_kind": "Article",
+        "labels_ar": [
+          "المادة 20"
+        ],
+        "labels_en": [],
+        "article_number": 20,
+        "text_preview": "أ . تكون حقوق الملكية الفكرية لصاحب العمل اذا ابتكرها العامل ، وكانت تتعلق باعمال صاحب العمل ، او اذا استخدم\n\n    العامل خبرات صاحب العمل او معلوماته او ادواته او الاته او مواده الاولية في التوصل الى هذا الابتكار ما لم يتفق\n\n    خطيا على غير ذلك .\n\nب. تكون حقوق الملكية الفكرية للعامل اذا كان حق الملكية الفكرية المبتكر من قبله لا يتعلق باعمال صاحب العمل ولم\n\n    يستخدم خبرات صاحب العمل او معلوماته او ادواته او مواده الاولية في التوصل الى هذا الابتكار ما لم يتفق خطيا على\n\n    غير ذلك .",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": 4,
+        "bm25_score": 10.28144264,
+        "fused_score": 0.015625,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_23",
+        "local_name": "article_23",
+        "node_kind": "Article",
+        "labels_ar": [
+          "المادة 23"
+        ],
+        "labels_en": [],
+        "article_number": 23,
+        "text_preview": "أ . اذا رغب احد الطرفين في انهاء عقد العمل غير المحدد المدة فيترتب عليه اشعار الطرف الاخر خطياً برغبته في انهاء\n\n    العقد قبل شهر واحد على الاقل ولا يجوز سحب الاشعار الا بموافقة الطرفين.\n\nب. يبقى عقد العمل ساري المفعول طوال مدة الاشعار وتعتبر مدة الاشعار من مدة الخدمة.\n\nج. اذا كان الاشعار من طرف صاحب العمل فله ان يعفي العامل من العمل خلال مدته وله ان يشغله الا في الايام السبعة\n\n     الاخيرة منها ويستحق العامل اجره عن مدة الاشعار في جميع هذه الاحوال.\n\nد. اذا كان الاشعار من طرف العامل وترك العمل قبل انقضاء مدة الاشعار فلا يستحق اجراً عن فترة تركه العمل وعليه\n\n    تعويض صاحب العمل عن تلك الفترة ",
+        "vector_rank": 6,
+        "vector_distance": 0.62359774,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.01515152,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_12_paragraph_4",
+        "local_name": "article_12_paragraph_4",
+        "node_kind": "Paragraph",
+        "labels_ar": [
+          "المادة 12 - الفقرة د"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "للوزير بناء على توصية من وزارة التنمية الاجتماعية ان يعفي المعوق شديد الاعاقة او ولي امره او وصيه من دفع رسم تصريح العمل لعامل غير اردني واحد اذا كان المعوق بحاجة ماسة دائمة الى المساعدة من الغير للقيام باعباء حياته اليومية واذا كانت مهام العامل غير الاردني تقتصر على تقديم العون للمعوق. هـ. يعاقب صاحب العمل او مدير المؤسسة حسب مقتضى الحال بغرامة لا تقل عن خمسين ديناراً ولا تزيد على مئة دينار عن كل شهر او الجزء من الشهر عن كل عامل غير اردني يستخدم بصورة تخالف احكام هذا القانون ولا يجوز تخفيض الغرامة عن حدها الادنى في اي حالة من الحالات او لاي سبب من الاسباب.",
+        "vector_rank": 8,
+        "vector_distance": 0.62742734,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.01470588,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_136_paragraph_2",
+        "local_name": "article_136_paragraph_2",
+        "node_kind": "Paragraph",
+        "labels_ar": [
+          "المادة 136 - الفقرة ب"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "اذا اقدم صاحب العمل على اغلاق محظور بموجب هذا القانون فيعاقب بغرامة مقدارها خمسمائة دينار عن اليوم الاول وخمسون دينار عن كل يوم يستمر فيه الاغلاق بعد ذلك ويلزم بدفع اجور العمال عن الايام التي يستمر الاغلاق فيها.",
+        "vector_rank": 9,
+        "vector_distance": 0.62979066,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.01449275,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_20_paragraph_1",
+        "local_name": "article_20_paragraph_1",
+        "node_kind": "Paragraph",
+        "labels_ar": [
+          "المادة 20 - الفقرة أ"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "تكون حقوق الملكية الفكرية لصاحب العمل اذا ابتكرها العامل ، وكانت تتعلق باعمال صاحب العمل ، او اذا استخدم العامل خبرات صاحب العمل او معلوماته او ادواته او الاته او مواده الاولية في التوصل الى هذا الابتكار ما لم يتفق خطيا على غير ذلك .",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": 9,
+        "bm25_score": 9.63519669,
+        "fused_score": 0.01449275,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_57",
+        "local_name": "article_57",
+        "node_kind": "Article",
+        "labels_ar": [
+          "المادة 57"
+        ],
+        "labels_en": [],
+        "article_number": 57,
+        "text_preview": "يجوز لصاحب العمل تشغيل العامل اكثر من ساعات العمل اليومية او الاسبوعية وذلك في اي من الحالات التالية على ان يتقاضى العامل في اي من هذه الحالات الاجر الاضافي المنصوص عليه في هذا القانون :\n\nأ . القيام باعمال الجرد السنوي للمؤسسة واعداد الميزانية والحسابات الختامية والاستعداد للبيع باثمان مخفضة بشرط ان لا\n\n    يزيد عدد الايام التي تنطبق عليها احكام هذه الفقرة على ثلاثين يوماً في السنة وان لا تزيد ساعات العمل الفعلية على\n\n    عشر ساعات في كل يوم منها.\n\nب. من اجل تلافي وقوع خسارة في البضائع او اي مادة اخرى تتعرض للتلف او لتجنب مخاطر عمل فني او من اجل تسلم\n\n     مواد معينة او تسليمها او نقلها.",
+        "vector_rank": 10,
+        "vector_distance": 0.63542497,
+        "bm25_rank": null,
+        "bm25_score": null,
+        "fused_score": 0.01428571,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      },
+      {
+        "uri": "http://example.org/jordan-labor-law#article_31_paragraph_4",
+        "local_name": "article_31_paragraph_4",
+        "node_kind": "Paragraph",
+        "labels_ar": [
+          "المادة 31 - الفقرة د"
+        ],
+        "labels_en": [],
+        "article_number": null,
+        "text_preview": "اذا قرر الوزير في ضوء توصيات اللجنة ان على صاحب العمل اعادة عدد من العمال الى مواقعهم وان ظروف صاحب العمل تحتمل ذلك فيجوز لصاحب العمل الطعن بقرار الوزير امام محكمة الاستئناف خلال عشرة ايام من تاريخ تبليغ هذا القرار وتنظر المحكمة فيه تدقيقا بصورة مستعجلة بحيث يبت في الاستئناف خلال مدة لا تتجاوز شهرا ويكون قرارها قطعيا . هـ. يتمتع العمال الذين انهيت خدماتهم وفقاً للفقرة (أ،ب) من هذه المادة بالعودة الى العمل خلال سنة من تاريخ تركهم العمل اذا عاد العمل الى طبيعته وامكن استخدامهم لدى صاحب العمل.",
+        "vector_rank": null,
+        "vector_distance": null,
+        "bm25_rank": 10,
+        "bm25_score": 9.54634285,
+        "fused_score": 0.01428571,
+        "direct_score": 0.0,
+        "graph_score": 0.0,
+        "paragraph_score": 0.0,
+        "final_score": 0.0,
+        "graph_supported": false,
+        "support_paths": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "snapshot_name": "Stage 7.7-A Query Planner Configuration Snapshot",
+  "generated_at_utc": "2026-08-01T22:11:03.533041+00:00",
+  "planner_enabled": true,
+  "planner_model": "gpt-5-nano",
+  "reasoning_effort": "low",
+  "route_confidence": 0.8,
+  "retrieve_override_confidence": 0.9,
+  "instructions": "You are the pre-retrieval query planner for a system whose knowledge base\ncontains only the Jordanian Labor Law represented in the supplied project.\n\nYou must not answer the question and must not select or mention article\nnumbers. Choose exactly one decision:\n\n- retrieve: the question is within Jordanian labor law and contains enough\n  facts to search for the governing provision.\n- clarify: the question concerns labor law, but a legally decisive fact is\n  missing, so selecting a provision would be unsafe.\n- abstain: the question is outside Jordanian labor law.\n\nFor retrieve decisions:\n1. Rewrite the question in precise Arabic legal language while preserving the\n   user's facts, actors, numbers, deadlines, exceptions, and requested result.\n2. Decompose it into the smallest set of independent legal issues explicitly\n   requested by the user.\n3. Produce one focused Arabic retrieval query for each independent issue.\n4. Do not split background facts, explanations, or multiple details governed\n   by the same legal rule into separate issues.\n5. Use two or three issues only when distinct rules, procedures, remedies,\n   consequences, actors, or chronological stages are explicitly requested.\n6. Estimate the smallest plausible number of governing provisions. The range\n   must be between one and three.\n\nFor clarify decisions:\n- State the missing decisive fact and ask one concise Arabic clarification\n  question.\n- Return no atomic issues and article counts of zero.\n\nFor abstain decisions:\n- Explain that the matter is outside Jordanian labor law.\n- Return no atomic issues and article counts of zero.\n\nImportant distinctions:\n- A question may contain labor-related words but still concern consumer law,\n  company registration, academic decisions, tenancy, tax, family law,\n  criminal law, or another unsupported domain. Such questions require\n  abstention.\n- A broad labor question is not automatically answerable. Clarify when the\n  type of decision, procedural stage, violation, actor, contract, leave,\n  deduction, dismissal reason, injury, remedy, or other decisive circumstance\n  is missing.\n- Handle Modern Standard Arabic, Jordanian colloquial Arabic, spelling errors,\n  attached prefixes, and Arabic or Western digits.\n- Never rely on article numbers and never provide legal advice.",
+  "strict_response_schema": {
+    "$defs": {
+      "AtomicLegalIssue": {
+        "additionalProperties": false,
+        "description": "One independent issue that should receive its own retrieval query.",
+        "properties": {
+          "issue_ar": {
+            "minLength": 1,
+            "title": "Issue Ar",
+            "type": "string"
+          },
+          "retrieval_query_ar": {
+            "minLength": 1,
+            "title": "Retrieval Query Ar",
+            "type": "string"
+          },
+          "actors": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 6,
+            "title": "Actors",
+            "type": "array"
+          },
+          "conditions": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 8,
+            "title": "Conditions",
+            "type": "array"
+          },
+          "numbers": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 8,
+            "title": "Numbers",
+            "type": "array"
+          },
+          "requested_result_ar": {
+            "title": "Requested Result Ar",
+            "type": "string"
+          }
+        },
+        "required": [
+          "issue_ar",
+          "retrieval_query_ar",
+          "actors",
+          "conditions",
+          "numbers",
+          "requested_result_ar"
+        ],
+        "title": "AtomicLegalIssue",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "description": "Strict output produced before any KG or vector retrieval.",
+    "properties": {
+      "decision": {
+        "enum": [
+          "retrieve",
+          "clarify",
+          "abstain"
+        ],
+        "title": "Decision",
+        "type": "string"
+      },
+      "confidence": {
+        "maximum": 1.0,
+        "minimum": 0.0,
+        "title": "Confidence",
+        "type": "number"
+      },
+      "decision_reason": {
+        "minLength": 1,
+        "title": "Decision Reason",
+        "type": "string"
+      },
+      "normalized_question_ar": {
+        "title": "Normalized Question Ar",
+        "type": "string"
+      },
+      "legal_domain": {
+        "title": "Legal Domain",
+        "type": "string"
+      },
+      "atomic_issues": {
+        "items": {
+          "$ref": "#/$defs/AtomicLegalIssue"
+        },
+        "maxItems": 3,
+        "title": "Atomic Issues",
+        "type": "array"
+      },
+      "minimum_articles": {
+        "maximum": 3,
+        "minimum": 0,
+        "title": "Minimum Articles",
+        "type": "integer"
+      },
+      "maximum_articles": {
+        "maximum": 3,
+        "minimum": 0,
+        "title": "Maximum Articles",
+        "type": "integer"
+      },
+      "clarification_question_ar": {
+        "title": "Clarification Question Ar",
+        "type": "string"
+      }
+    },
+    "required": [
+      "decision",
+      "confidence",
+      "decision_reason",
+      "normalized_question_ar",
+      "legal_domain",
+      "atomic_issues",
+      "minimum_articles",
+      "maximum_articles",
+      "clarification_question_ar"
+    ],
+    "title": "LegalQueryPlan",
+    "type": "object"
+  }
+}

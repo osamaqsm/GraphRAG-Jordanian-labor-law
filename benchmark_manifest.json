@@ -1,0 +1,17 @@
+{
+  "benchmark_name": "Jordanian Labor Law KG Final Unseen 30 Benchmark",
+  "benchmark_version": "1.0.0",
+  "frozen": true,
+  "files": {
+    "data/benchmarks/retrieval_benchmark_unseen_30_final.json": "f450c4503cf7f067ff846274fe1ae2a8d68ec077c28ce04eafab167f196daace",
+    "scripts/run_unseen_30_benchmark.py": "620b80b2d56b89636b488afb41c2a282949b02bc699892051a9f0598d33d5230",
+    "scripts/validate_unseen_30_benchmark.py": "a06cac11201c111531d8f1ea410fa3afb6d78e920bdd7eff058446d31358334a",
+    "UNSEEN_30_README.md": "9ecc10e39821ac79d46774ba709693b7a1b76dde2616748eb22e37e9fa5f2c72"
+  },
+  "benchmark_sha256": "f450c4503cf7f067ff846274fe1ae2a8d68ec077c28ce04eafab167f196daace",
+  "question_count": 30,
+  "retrieve_cases": 24,
+  "clarify_cases": 3,
+  "abstain_cases": 3,
+  "unique_new_gold_articles": 27
+}

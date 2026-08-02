@@ -1,0 +1,98 @@
+{
+  "status": "valid",
+  "report": {
+    "ttl_path": "/app/data/jordan_labor_law_full_knowledge_graph.ttl",
+    "file_size_bytes": 387405,
+    "triple_count": 3694,
+    "node_count": 671,
+    "edge_count": 3694,
+    "article_count": 142,
+    "paragraph_count": 359,
+    "definition_count": 22,
+    "ontology_class_count": 61,
+    "object_property_count": 21,
+    "datatype_property_count": 0,
+    "missing_article_numbers": [],
+    "duplicate_article_numbers": [],
+    "articles_without_arabic_text": [],
+    "articles_without_labels": [],
+    "is_valid": true,
+    "article_number_count": 142,
+    "article_number_range": [
+      1,
+      142
+    ]
+  },
+  "article_46_sample": {
+    "uri": "http://example.org/jordan-labor-law#article_46",
+    "local_name": "article_46",
+    "node_kind": "Article",
+    "rdf_types": [
+      "http://example.org/jordan-labor-law#Article"
+    ],
+    "labels_ar": [
+      "المادة 46"
+    ],
+    "labels_en": [],
+    "labels_other": [],
+    "comments_ar": [
+      "أ . يدفع الاجر خلال مدة لا تزيد على سبعة ايام من تاريخ استحقاقه ولا يجوز لصاحب العمل حسم اي جزء منه الا في\n\n    الحالات التي يجيزها القانون.\n\nب. ان توقيع العامل على اي كشف او سجل للاجور او على ايصال بقيمة المبلغ المسجل فيه لا يعني اسقاط حقه في اي\n\n    زيادة على المبلغ المقبوض بموجب القانون او النظام او العقد."
+    ],
+    "comments_en": [],
+    "comments_other": [],
+    "article_number": 46,
+    "searchable_text": "URI: http://example.org/jordan-labor-law#article_46\nLocal name: article_46\nNode kind: Article\nRDF types: Article\nArabic labels: المادة 46\nArabic text: أ . يدفع الاجر خلال مدة لا تزيد على سبعة ايام من تاريخ استحقاقه ولا يجوز لصاحب العمل حسم اي جزء منه الا في\n\n    الحالات التي يجيزها القانون.\n\nب. ان توقيع العامل على اي كشف او سجل للاجور او على ايصال بقيمة المبلغ المسجل فيه لا يعني اسقاط حقه في اي\n\n    زيادة على المبلغ المقبوض بموجب القانون او النظام او العقد."
+  },
+  "semantic_edge_samples": [
+    {
+      "source_uri": "http://example.org/jordan-labor-law#administrative_body_concept",
+      "predicate_uri": "http://example.org/jordan-labor-law#supportedByArticle",
+      "predicate_local_name": "supportedByArticle",
+      "object_kind": "uri",
+      "target_uri": "http://example.org/jordan-labor-law#article_2",
+      "literal_value": null,
+      "literal_language": null,
+      "literal_datatype": null
+    },
+    {
+      "source_uri": "http://example.org/jordan-labor-law#arbitrary_dismissal_violation",
+      "predicate_uri": "http://example.org/jordan-labor-law#hasCondition",
+      "predicate_local_name": "hasCondition",
+      "object_kind": "uri",
+      "target_uri": "http://example.org/jordan-labor-law#dismissal_without_lawful_ground_condition",
+      "literal_value": null,
+      "literal_language": null,
+      "literal_datatype": null
+    },
+    {
+      "source_uri": "http://example.org/jordan-labor-law#arbitrary_dismissal_violation",
+      "predicate_uri": "http://example.org/jordan-labor-law#resultsIn",
+      "predicate_local_name": "resultsIn",
+      "object_kind": "uri",
+      "target_uri": "http://example.org/jordan-labor-law#compensation_consequence",
+      "literal_value": null,
+      "literal_language": null,
+      "literal_datatype": null
+    },
+    {
+      "source_uri": "http://example.org/jordan-labor-law#arbitrary_dismissal_violation",
+      "predicate_uri": "http://example.org/jordan-labor-law#resultsIn",
+      "predicate_local_name": "resultsIn",
+      "object_kind": "uri",
+      "target_uri": "http://example.org/jordan-labor-law#legal_claim_consequence",
+      "literal_value": null,
+      "literal_language": null,
+      "literal_datatype": null
+    },
+    {
+      "source_uri": "http://example.org/jordan-labor-law#arbitrary_dismissal_violation",
+      "predicate_uri": "http://example.org/jordan-labor-law#supportedByArticle",
+      "predicate_local_name": "supportedByArticle",
+      "object_kind": "uri",
+      "target_uri": "http://example.org/jordan-labor-law#article_24",
+      "literal_value": null,
+      "literal_language": null,
+      "literal_datatype": null
+    }
+  ]
+}

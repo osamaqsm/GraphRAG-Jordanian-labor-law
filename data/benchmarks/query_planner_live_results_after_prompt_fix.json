@@ -1,0 +1,157 @@
+{
+  "test_name": "Stage 7.7-A Live Query Planner Test",
+  "generated_at_utc": "2026-08-01T22:25:50.554134+00:00",
+  "planner_enabled": true,
+  "planner_model": "gpt-5-nano",
+  "reasoning_effort": "low",
+  "route_confidence": 0.8,
+  "retrieve_override_confidence": 0.9,
+  "summary": {
+    "questions_requested": 6,
+    "questions_completed": 6,
+    "successful_plans": 6,
+    "fallback_or_error": 0,
+    "decision_counts": {
+      "retrieve": 2,
+      "clarify": 2,
+      "abstain": 2,
+      "fallback": 0
+    }
+  },
+  "results": [
+    {
+      "id": "Q1",
+      "question": "ما شروط عقد التدريب ومتى يجوز إنهاؤه إذا أصبح خطراً على صحة المتدرب؟",
+      "planner_status": "success",
+      "plan": {
+        "decision": "retrieve",
+        "confidence": 0.92,
+        "decision_reason": "الأسئلة ضمن نطاق قانون العمل الأردني وتحديداً حول شروط عقد التدريب وإجراءات إنهائه عند وجود مخاطر صحية، ويستلزم ذلك استخراج نصوص تنظيمية محددة.",
+        "normalized_question_ar": "ما شروط عقد التدريب ومتى يجوز إنهاؤه إذا أصبح خطراً على صحة المتدرب؟",
+        "legal_domain": "علاقات العمل الأردنية",
+        "atomic_issues": [
+          {
+            "issue_ar": "شروط عقد التدريب",
+            "retrieval_query_ar": "شروط عقد التدريب المهني الأردني",
+            "actors": [
+              "المتدرب"
+            ],
+            "conditions": [],
+            "numbers": [],
+            "requested_result_ar": "شرح الشروط والالتزامات عقد التدريب"
+          },
+          {
+            "issue_ar": "إجراءات إنهاء عقد التدريب عند الخطر الصحي",
+            "retrieval_query_ar": "إجراءات إنهاء عقد التدريب عند وجود خطر صحي على المتدرب",
+            "actors": [
+              "المتدرب"
+            ],
+            "conditions": [],
+            "numbers": [],
+            "requested_result_ar": "تحديد أسباب وجوب إنهاء عقد التدريب بسبب الخطر الصحي على المتدرب"
+          }
+        ],
+        "minimum_articles": 2,
+        "maximum_articles": 2,
+        "clarification_question_ar": ""
+      },
+      "error": null
+    },
+    {
+      "id": "Q2",
+      "question": "كم يستطيع صاحب العمل اقتطاعه من الأجر لاسترداد سلفة؟",
+      "planner_status": "success",
+      "plan": {
+        "decision": "retrieve",
+        "confidence": 0.92,
+        "decision_reason": "السؤال ضمن نطاق العمل الأردني ويتطلب نصاً قانونياً محدداً حول حدود الاقتطاع من الراتب لسلفة/اقتطاع، وهو ليس خارج النطاق ولا يحتاج clarification.",
+        "normalized_question_ar": "حدود استقطاع الأجر لسلفة من صاحب العمل",
+        "legal_domain": "المملكة الأردنية الهاشمية - قانون العمل",
+        "atomic_issues": [
+          {
+            "issue_ar": "حدود استقطاع الأجر لسلفة مقدمة من صاحب العمل",
+            "retrieval_query_ar": "حدود استقطاع الأجر لسلفة من صاحب العمل",
+            "actors": [
+              "صاحب العمل"
+            ],
+            "conditions": [],
+            "numbers": [],
+            "requested_result_ar": "الحكم أو النص القانوني الذي يحدد الحد الأقصى للاستقطاع من الأجر لسلفة"
+          }
+        ],
+        "minimum_articles": 1,
+        "maximum_articles": 1,
+        "clarification_question_ar": ""
+      },
+      "error": null
+    },
+    {
+      "id": "Q3",
+      "question": "النقابة اتخذت قراراً ضدي، هل قرارها قانوني؟",
+      "planner_status": "success",
+      "plan": {
+        "decision": "clarify",
+        "confidence": 0.88,
+        "decision_reason": "يستلزم التحديد نوع القرار النقابي لاتخاذ حكم صحيح وفق قانون العمل الأردني.",
+        "normalized_question_ar": "",
+        "legal_domain": "Labor Law (Jordan)",
+        "atomic_issues": [],
+        "minimum_articles": 0,
+        "maximum_articles": 0,
+        "clarification_question_ar": "ما هو نوع القرار النقابي الذي اتُخذ ضدك؟"
+      },
+      "error": null
+    },
+    {
+      "id": "Q4",
+      "question": "صار نزاع عمالي جماعي، شو الخطوة القانونية الجاية؟",
+      "planner_status": "success",
+      "plan": {
+        "decision": "clarify",
+        "confidence": 0.85,
+        "decision_reason": "الاستفسار بحاجة لتحديد المرحلة الحالية للنزاع الجماعي لتحديد الإجراء القانوني المناسب.",
+        "normalized_question_ar": "",
+        "legal_domain": "Labor Law (Jordan)",
+        "atomic_issues": [],
+        "minimum_articles": 0,
+        "maximum_articles": 0,
+        "clarification_question_ar": "ما هي المرحلة الحالية للنزاع الجماعي العمالي (مثلاً شكوى مقدمة، تحقيق جارٍ، أو خطوة قانونية محددة قيد التنفيذ)؟"
+      },
+      "error": null
+    },
+    {
+      "id": "Q5",
+      "question": "اشتريت هاتفاً وظهر فيه عيب، هل أستطيع استبداله؟",
+      "planner_status": "success",
+      "plan": {
+        "decision": "abstain",
+        "confidence": 0.92,
+        "decision_reason": "المسألة خارج نطاق قانون العمل الأردني الممثل في النظام، وتتعلق بكمبيوتر/جهاز مبيع ومشكلة كفاءة المنتج وحقوق المستهلك وليس بعلاقات العمل أو العمالة",
+        "normalized_question_ar": "",
+        "legal_domain": "خارج نطاق قانون العمل الأردني",
+        "atomic_issues": [],
+        "minimum_articles": 0,
+        "maximum_articles": 0,
+        "clarification_question_ar": ""
+      },
+      "error": null
+    },
+    {
+      "id": "Q6",
+      "question": "الجامعة أوقفت تسجيلي بسبب المعدل، كيف أعترض؟",
+      "planner_status": "success",
+      "plan": {
+        "decision": "abstain",
+        "confidence": 0.92,
+        "decision_reason": "السؤال يتعلق بإجراءات جامعية وتعليم عالي خارج نطاق قانون العمل الأردني الممثل في النظام.",
+        "normalized_question_ar": "",
+        "legal_domain": "التعليم العالي والإجراءات الجامعية",
+        "atomic_issues": [],
+        "minimum_articles": 0,
+        "maximum_articles": 0,
+        "clarification_question_ar": ""
+      },
+      "error": null
+    }
+  ]
+}

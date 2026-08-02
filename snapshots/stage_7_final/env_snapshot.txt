@@ -1,0 +1,83 @@
+
+# -----------------------------------------
+# Application
+# -----------------------------------------
+
+APP_NAME=Jordan Legal KG API
+APP_VERSION=0.1.0
+APP_ENVIRONMENT=development
+
+
+# -----------------------------------------
+# OpenAI
+# We will use these in a later stage.
+# -----------------------------------------
+
+OPENAI_API_KEY=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
+OPENAI_CHAT_MODEL=gpt-5-nano
+OPENAI_EMBEDDING_MODEL=text-embedding-3-small
+OPENAI_REASONING_EFFORT=low
+OPENAI_TIMEOUT_SECONDS=120
+OPENAI_MAX_RETRIES=3
+
+EMBEDDING_BATCH_SIZE=32
+
+
+# -----------------------------------------
+# Weaviate
+# -----------------------------------------
+
+WEAVIATE_API_KEY=e8ec1bf0fdcb4b0b9cde68a58b14194e292dc942a73740699d4bbb3aaa532e08
+
+WEAVIATE_HTTP_HOST=weaviate
+WEAVIATE_HTTP_PORT=8080
+
+WEAVIATE_GRPC_HOST=weaviate
+WEAVIATE_GRPC_PORT=50051
+
+WEAVIATE_CONNECTION_ATTEMPTS=30
+WEAVIATE_CONNECTION_DELAY_SECONDS=2
+
+# -----------------------------------------
+# Weaviate batch ingestion
+# -----------------------------------------
+
+WEAVIATE_NODE_BATCH_SIZE=25
+WEAVIATE_EDGE_BATCH_SIZE=100
+
+# -----------------------------------------
+# Weaviate collections
+# -----------------------------------------
+
+WEAVIATE_NODE_COLLECTION=JordanLaborLegalNode
+WEAVIATE_EDGE_COLLECTION=JordanLaborLegalEdge
+
+# -----------------------------------------
+# Retrieval
+# -----------------------------------------
+
+RETRIEVAL_VECTOR_CANDIDATES=40
+RETRIEVAL_BM25_CANDIDATES=40
+
+RETRIEVAL_CONCEPT_TOP_K=12
+RETRIEVAL_ARTICLE_TOP_K=8
+
+RETRIEVAL_RRF_K=60
+
+RETRIEVAL_PARAGRAPH_CANDIDATES=20
+
+RETRIEVAL_GRAPH_SEED_COUNT=3
+RETRIEVAL_GRAPH_MAX_HOPS=2
+RETRIEVAL_GRAPH_EDGES_LIMIT=1000
+RETRIEVAL_GRAPH_PATHS_PER_ARTICLE=5
+
+RETRIEVAL_VECTOR_WEIGHT=2.0
+RETRIEVAL_BM25_WEIGHT=0.7
+
+
+# -----------------------------------------
+# KG location inside the API container
+# -----------------------------------------
+
+KG_TTL_PATH=/app/data/jordan_labor_law_full_knowledge_graph.ttl
+

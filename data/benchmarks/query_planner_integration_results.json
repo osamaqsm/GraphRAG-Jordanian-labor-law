@@ -1,0 +1,125 @@
+{
+  "test_name": "Stage 7.7-B Query Planner Integration Test",
+  "generated_at_utc": "2026-08-01T22:34:42.237044+00:00",
+  "planner_enabled": true,
+  "planner_model": "gpt-5-nano",
+  "reasoning_effort": "low",
+  "route_confidence": 0.8,
+  "retrieve_override_confidence": 0.9,
+  "summary": {
+    "questions_requested": 6,
+    "questions_completed": 6,
+    "passed": 6,
+    "accuracy": 1.0,
+    "errors": 0,
+    "observed_behavior_counts": {
+      "retrieved": 2,
+      "safe_no_retrieval": 4
+    }
+  },
+  "results": [
+    {
+      "id": "Q1",
+      "question": "ما شروط عقد التدريب ومتى يجوز إنهاؤه إذا أصبح خطراً على صحة المتدرب؟",
+      "expected_behavior": "retrieve",
+      "observed_behavior": "retrieved",
+      "articles": [
+        36,
+        37,
+        38
+      ],
+      "concepts": [
+        "employment_contract_concept",
+        "oral_contract_concept",
+        "termination_contract_consequence",
+        "indefinite_term_contract_concept",
+        "fixed_term_contract_concept",
+        "written_contract_concept",
+        "collective_employment_contract_concept",
+        "contract_indefinite_term_condition",
+        "contract_fixed_term_condition",
+        "occupational_disease_concept",
+        "contract_formation_event",
+        "provide_safe_work_environment_obligation"
+      ],
+      "article_count": 3,
+      "pass": true,
+      "elapsed_seconds": 26.761
+    },
+    {
+      "id": "Q2",
+      "question": "كم يستطيع صاحب العمل اقتطاعه من الأجر لاسترداد سلفة؟",
+      "expected_behavior": "retrieve",
+      "observed_behavior": "retrieved",
+      "articles": [
+        47
+      ],
+      "concepts": [
+        "wage_concept",
+        "wage_right_concept",
+        "wage_payment_event",
+        "worker_not_covered_social_security_condition",
+        "worker_concept",
+        "employer_liability_consequence",
+        "assign_agreed_work_obligation",
+        "temporary_work_concept",
+        "disclosure_employer_secrets_violation",
+        "indefinite_term_contract_concept",
+        "fixed_term_contract_concept",
+        "work_negligence_violation",
+        "delay_exceeds_seven_days_condition",
+        "pay_wages_obligation",
+        "legal_claim_consequence",
+        "wage_delay_violation"
+      ],
+      "article_count": 1,
+      "pass": true,
+      "elapsed_seconds": 21.566
+    },
+    {
+      "id": "Q3",
+      "question": "النقابة اتخذت قراراً ضدي، هل قرارها قانوني؟",
+      "expected_behavior": "clarify",
+      "observed_behavior": "safe_no_retrieval",
+      "articles": [],
+      "concepts": [],
+      "article_count": 0,
+      "pass": true,
+      "elapsed_seconds": 11.336
+    },
+    {
+      "id": "Q4",
+      "question": "صار نزاع عمالي جماعي، شو الخطوة القانونية الجاية؟",
+      "expected_behavior": "clarify",
+      "observed_behavior": "safe_no_retrieval",
+      "articles": [],
+      "concepts": [],
+      "article_count": 0,
+      "pass": true,
+      "elapsed_seconds": 12.612
+    },
+    {
+      "id": "Q5",
+      "question": "اشتريت هاتفاً وظهر فيه عيب، هل أستطيع استبداله؟",
+      "expected_behavior": "abstain",
+      "observed_behavior": "safe_no_retrieval",
+      "articles": [],
+      "concepts": [],
+      "article_count": 0,
+      "pass": true,
+      "elapsed_seconds": 26.542
+    },
+    {
+      "id": "Q6",
+      "question": "الجامعة أوقفت تسجيلي بسبب المعدل، كيف أعترض؟",
+      "expected_behavior": "abstain",
+      "observed_behavior": "safe_no_retrieval",
+      "articles": [],
+      "concepts": [],
+      "article_count": 0,
+      "pass": true,
+      "elapsed_seconds": 11.289
+    }
+  ],
+  "errors": []
+}

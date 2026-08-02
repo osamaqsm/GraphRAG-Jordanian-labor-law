@@ -1,0 +1,549 @@
+{
+  "benchmark_name": "Jordanian Labor Law KG Final Unseen 30 Benchmark",
+  "benchmark_version": "1.0.0",
+  "language": "Arabic",
+  "frozen": true,
+  "scope": "Jordanian Labor Law article retrieval, multi-provision completeness, ambiguity handling, and out-of-scope abstention.",
+  "warning": "Final evaluation set. Run before inspecting gold fields or changing retrieval code. Do not tune the system against these questions.",
+  "evaluation_notes": [
+    "All retrieval gold articles were absent from the gold/acceptable article pools of the earlier 20-question and 50-question benchmarks.",
+    "Questions are textually distinct from both earlier benchmarks.",
+    "A retrieval case passes when all required articles are returned and the primary article is ranked first.",
+    "Clarification and abstention cases pass only when no legal article is returned.",
+    "This benchmark must remain frozen after its first system run."
+  ],
+  "distribution": {
+    "straightforward": 5,
+    "paraphrased": 5,
+    "typo": 3,
+    "colloquial": 3,
+    "numerical": 3,
+    "multi_article": 5,
+    "ambiguous": 3,
+    "out_of_scope": 3
+  },
+  "questions": [
+    {
+      "id": "F01",
+      "test_type": "straightforward",
+      "category": "worker_rights",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "إذا منحني عقد العمل حقاً أفضل من الحد الموجود في قانون العمل، ثم تضمن بنداً أتنازل فيه عن هذا الحق، أي حكم يطبق؟",
+      "primary_article": 4,
+      "required_articles": [
+        4
+      ],
+      "acceptable_articles": [
+        4
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "تظل الميزة الأفضل نافذة، ويكون باطلاً أي شرط يتنازل بموجبه العامل عن حق يمنحه القانون."
+    },
+    {
+      "id": "F02",
+      "test_type": "straightforward",
+      "category": "employer_records",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "ما المعلومات التي يرسلها صاحب العمل إلى وزارة العمل في بداية كل سنة، وما السجلات التي يجب أن يحتفظ بها داخل المؤسسة؟",
+      "primary_article": 8,
+      "required_articles": [
+        8
+      ],
+      "acceptable_articles": [
+        8
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "يرسل في الشهر الأول إشعاراً بعدد العمال ومواقعهم وأعمالهم وتواريخ مباشرتهم وأجورهم، ويحتفظ بسجلات العمال والمتدربين."
+    },
+    {
+      "id": "F03",
+      "test_type": "straightforward",
+      "category": "employment_mediation",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "جهة غير مرخصة تتوسط لتشغيل العمال داخل الأردن وخارجه؛ ما الإجراءات والعقوبات التي يمكن اتخاذها بحقها؟",
+      "primary_article": 11,
+      "required_articles": [
+        11
+      ],
+      "acceptable_articles": [
+        11
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "الوساطة محصورة بالمديريات العامة والمكاتب المرخصة، ويجوز إغلاق المحل وإحالته للمحكمة مع الغرامة أو الحبس وإقفال المحل ومصادرة الموجودات ذات الصلة."
+    },
+    {
+      "id": "F04",
+      "test_type": "straightforward",
+      "category": "intellectual_property",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "ابتكر عامل منتجاً مرتبطاً بعمل المنشأة مستخدماً أدواتها وخبراتها؛ لمن تكون الملكية الفكرية إذا لم يوجد اتفاق خطي مختلف؟",
+      "primary_article": 20,
+      "required_articles": [
+        20
+      ],
+      "acceptable_articles": [
+        20
+      ],
+      "expected_concepts_any": [
+        "employment_contract_concept"
+      ],
+      "expected_result": "تكون الحقوق لصاحب العمل إذا ارتبط الابتكار بأعماله أو استُخدمت خبراته أو معلوماته أو أدواته، ما لم يوجد اتفاق خطي مخالف."
+    },
+    {
+      "id": "F05",
+      "test_type": "straightforward",
+      "category": "internal_regulations",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "مؤسسة تشغّل اثني عشر عاملاً، هل يلزمها نظام داخلي للعمل، وما الموضوعات التي يجب أن يتضمنها ومتى يصبح نافذاً؟",
+      "primary_article": 55,
+      "required_articles": [
+        55
+      ],
+      "acceptable_articles": [
+        55
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "يلزم النظام الداخلي عند تشغيل عشرة عمال فأكثر، ويبين الدوام والراحة والمخالفات والعقوبات والتدابير، ويعمل به بعد تصديق الوزير أو من ينيبه."
+    },
+    {
+      "id": "F06",
+      "test_type": "paraphrased",
+      "category": "partial_disability",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "أصيب موظف بعجز جزئي دائم يمنعه من وظيفته القديمة لكنه يستطيع أداء مهمة أخرى؛ ماذا يجب على المنشأة أن تفعل وكيف تُحسب حقوق الفترة السابقة؟",
+      "primary_article": 14,
+      "required_articles": [
+        14
+      ],
+      "acceptable_articles": [
+        14
+      ],
+      "expected_concepts_any": [
+        "work_injury_event"
+      ],
+      "expected_result": "يشغله صاحب العمل في عمل آخر مناسب إن وجد وبأجر ذلك العمل، وتحسب حقوقه السابقة على أساس آخر أجر قبل الإصابة."
+    },
+    {
+      "id": "F07",
+      "test_type": "paraphrased",
+      "category": "vocational_training",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "نُقل موقع تدريب المتدرب إلى مكان يسبب له مشقة، كما أن استمرار التدريب قد يهدد صحته؛ متى يستطيع أحد الطرفين إنهاء عقد التدريب؟",
+      "primary_article": 38,
+      "required_articles": [
+        38
+      ],
+      "acceptable_articles": [
+        38
+      ],
+      "expected_concepts_any": [
+        "termination_contract_consequence",
+        "medical_examination_event",
+        "safe_work_environment_right_concept"
+      ],
+      "expected_result": "يجوز إنهاء العقد في الحالات المحددة، ومنها النقل المضر أو الشاق خلال المدة المقررة، أو ثبوت تهديد السلامة أو الصحة بتقرير مختص."
+    },
+    {
+      "id": "F08",
+      "test_type": "paraphrased",
+      "category": "collective_contract",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "انتهت مدة الاتفاق الجماعي وبدأ الطرفان التفاوض لتجديده؛ إلى متى تبقى أحكامه سارية، وهل تزول المزايا التي اكتسبها العمال؟",
+      "primary_article": 41,
+      "required_articles": [
+        41
+      ],
+      "acceptable_articles": [
+        41
+      ],
+      "expected_concepts_any": [
+        "collective_employment_contract_concept",
+        "termination_contract_consequence"
+      ],
+      "expected_result": "يبقى مفعوله أثناء المفاوضات مدة لا تتجاوز ستة أشهر، ولا يجيز انتهاؤه المساس بالحقوق المكتسبة للعمال."
+    },
+    {
+      "id": "F09",
+      "test_type": "paraphrased",
+      "category": "collective_contract",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "هل يمكن تعميم شروط اتفاق عمل جماعي نافذ على بقية منشآت وعمال قطاع معين، ومن يملك إصدار هذا القرار وما الشرط الزمني؟",
+      "primary_article": 43,
+      "required_articles": [
+        43
+      ],
+      "acceptable_articles": [
+        43
+      ],
+      "expected_concepts_any": [
+        "collective_employment_contract_concept",
+        "contract_formation_event"
+      ],
+      "expected_result": "يجوز للوزير بعد الطلب والدراسة توسيع نطاق عقد جماعي مضى على تنفيذه شهران على الأقل، وينشر القرار في الجريدة الرسمية."
+    },
+    {
+      "id": "F10",
+      "test_type": "paraphrased",
+      "category": "working_time",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "هل تخضع القيادات الإدارية والعاملون الذين تفرض وظائفهم السفر أو العمل خارج المؤسسة للحدود العامة لساعات العمل؟",
+      "primary_article": 58,
+      "required_articles": [
+        58
+      ],
+      "acceptable_articles": [
+        58
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "لا تسري أحكام ساعات العمل على أصحاب الإشراف العام أو الإدارة، ولا على بعض العاملين خارج المؤسسة أو ممن تتطلب أعمالهم السفر أو التنقل."
+    },
+    {
+      "id": "F11",
+      "test_type": "typo",
+      "category": "annual_leave",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "وقعت ورقه بتقول اني متنازل عن الاجازه السنويه كلها، هل هالتنازل معتَبر ولا باطل؟",
+      "primary_article": 64,
+      "required_articles": [
+        64
+      ],
+      "acceptable_articles": [
+        64
+      ],
+      "expected_concepts_any": [
+        "leave_right_concept",
+        "leave_request_event"
+      ],
+      "expected_result": "يبطل كل اتفاق يتنازل فيه العامل عن إجازته السنوية أو أي جزء منها."
+    },
+    {
+      "id": "F12",
+      "test_type": "typo",
+      "category": "occupational_safety",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "بالمصنع مواد سريعة الاشتعال، شو الاحتياطات الي لازم يوفرها صاحب العمل ضد الحرايق والانفجارات والتخزين الخطر؟",
+      "primary_article": 80,
+      "required_articles": [
+        80
+      ],
+      "acceptable_articles": [
+        80
+      ],
+      "expected_concepts_any": [
+        "safe_work_environment_right_concept",
+        "provide_safe_work_environment_obligation",
+        "work_injury_event"
+      ],
+      "expected_result": "على صاحب العمل حماية المؤسسة والعاملين من الحريق والانفجار ومخاطر تخزين المواد القابلة للاشتعال ونقلها وتداولها وتوفير الوسائل الفنية الكافية."
+    },
+    {
+      "id": "F13",
+      "test_type": "typo",
+      "category": "union_registration",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "قدمنا طلب تسجيل نقابه؛ خلال قديش لازم المسجل يقرر، وقديش معنا للطعن لو انرفض الطلب؟",
+      "primary_article": 102,
+      "required_articles": [
+        102
+      ],
+      "acceptable_articles": [
+        102
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "يصدر المسجل قراره خلال ثلاثين يوماً، وللمؤسسين الطعن في الرفض خلال ثلاثين يوماً من التبليغ."
+    },
+    {
+      "id": "F14",
+      "test_type": "colloquial",
+      "category": "workplace_conduct",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "واحد إجا عالشغل وهو تحت تأثير مخدر، وكمان في ناس بدهم يدخلوا مشروبات للموقع؛ القانون شو بحكي بهالموضوع؟",
+      "primary_article": 81,
+      "required_articles": [
+        81
+      ],
+      "acceptable_articles": [
+        81
+      ],
+      "expected_concepts_any": [
+        "safe_work_environment_right_concept",
+        "provide_safe_work_environment_obligation",
+        "work_injury_event"
+      ],
+      "expected_result": "يحظر إدخال أو عرض الخمور والمخدرات والمؤثرات والعقاقير الخطرة في مكان العمل، كما يحظر الدخول أو البقاء تحت تأثيرها."
+    },
+    {
+      "id": "F15",
+      "test_type": "colloquial",
+      "category": "medical_fitness",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "في شغل معيّن قالوا ما بقدر أبلّش قبل فحص لياقة طبي؛ مين بحدد الأشغال اللي لازم إلها هالفحص وكيف بنعلن عنها؟",
+      "primary_article": 83,
+      "required_articles": [
+        83
+      ],
+      "acceptable_articles": [
+        83
+      ],
+      "expected_concepts_any": [
+        "medical_examination_event",
+        "safe_work_environment_right_concept"
+      ],
+      "expected_result": "يحدد الوزير بتعليمات، بعد استطلاع الجهات المعنية، الأعمال التي تتطلب فحصاً طبياً مسبقاً، وتنشر التعليمات في صحيفتين يوميتين وفي الجريدة الرسمية."
+    },
+    {
+      "id": "F16",
+      "test_type": "colloquial",
+      "category": "work_injury",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "العامل انصاب وهو تحت تأثير مخدر أو بسبب إهمال جسيم منه؛ هل بروح حقه بالتعويض؟ وشو بصير لو الإصابة سببت وفاة أو عجز دائم 30% أو أكثر؟",
+      "primary_article": 94,
+      "required_articles": [
+        94
+      ],
+      "acceptable_articles": [
+        94
+      ],
+      "expected_concepts_any": [
+        "compensation_consequence",
+        "legal_claim_consequence",
+        "work_injury_event"
+      ],
+      "expected_result": "قد يسقط البدل والتعويض بعد التحقيق في الحالات المحددة، لكن لا يطبق السقوط إذا نتجت وفاة أو عجز دائم لا تقل نسبته عن 30%."
+    },
+    {
+      "id": "F17",
+      "test_type": "numerical",
+      "category": "exceptional_overtime",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "عند الجرد السنوي وإعداد الحسابات، ما الحد الأقصى لعدد الأيام في السنة وما أقصى ساعات العمل الفعلية في اليوم ضمن هذا الاستثناء؟",
+      "primary_article": 57,
+      "required_articles": [
+        57
+      ],
+      "acceptable_articles": [
+        57
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "لا يزيد الاستثناء على ثلاثين يوماً في السنة، ولا تزيد ساعات العمل الفعلية على عشر ساعات في اليوم، مع استحقاق الأجر الإضافي."
+    },
+    {
+      "id": "F18",
+      "test_type": "numerical",
+      "category": "union_address",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "غيّرت النقابة عنوانها المسجل؛ خلال كم يوم يجب إبلاغ مسجل النقابات، وماذا يحدث إذا لم يتم التبليغ؟",
+      "primary_article": 104,
+      "required_articles": [
+        104
+      ],
+      "acceptable_articles": [
+        104
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "يبلغ المسجل خلال سبعة أيام، وإلا يبقى العنوان المسجل أصلاً معتبراً قائماً للمراسلات والإشعارات."
+    },
+    {
+      "id": "F19",
+      "test_type": "numerical",
+      "category": "limitation_periods",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "ما المدة التي لا تُسمع بعدها دعوى المخالفة، وما مدة عدم سماع المطالبة بالحقوق العمالية وأجور العمل الإضافي؟",
+      "primary_article": 138,
+      "required_articles": [
+        138
+      ],
+      "acceptable_articles": [
+        138
+      ],
+      "expected_concepts_any": [
+        "litigation_right_concept",
+        "legal_claim_consequence"
+      ],
+      "expected_result": "دعوى المخالفة خلال شهر من ارتكابها، ودعوى الحقوق العمالية والأجر الإضافي خلال سنتين من نشوء سبب المطالبة."
+    },
+    {
+      "id": "F20",
+      "test_type": "multi_article",
+      "category": "vocational_training",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "ما الذي يجب تحديده في عقد التدريب بشأن المدة والمراحل والأجر، ومتى يجوز إنهاؤه إذا تعذر التنفيذ أو أصبح الاستمرار خطراً على صحة المتدرب؟",
+      "primary_article": 37,
+      "required_articles": [
+        37,
+        38
+      ],
+      "acceptable_articles": [
+        37,
+        38
+      ],
+      "expected_concepts_any": [
+        "termination_contract_consequence",
+        "medical_examination_event",
+        "safe_work_environment_right_concept"
+      ],
+      "expected_result": "المادة 37 تنظم مدة التدريب ومراحله وأجر كل مرحلة وحد المرحلة الأخيرة، والمادة 38 تحدد حالات إنهاء عقد التدريب ومنها تعذر التنفيذ أو تهديد السلامة والصحة."
+    },
+    {
+      "id": "F21",
+      "test_type": "multi_article",
+      "category": "occupational_safety",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "في منشأة تخزن مواد قابلة للاشتعال، ما التزام صاحب العمل بمنع الحريق والانفجار، وما واجب العمال تجاه أجهزة وتعليمات السلامة؟",
+      "primary_article": 80,
+      "required_articles": [
+        80,
+        82
+      ],
+      "acceptable_articles": [
+        80,
+        82
+      ],
+      "expected_concepts_any": [
+        "safe_work_environment_right_concept",
+        "provide_safe_work_environment_obligation",
+        "follow_lawful_instructions_obligation"
+      ],
+      "expected_result": "المادة 80 تلزم صاحب العمل باحتياطات ووسائل الحماية من الحريق والانفجار والمواد الخطرة، والمادة 82 تلزم العمال باتباع التعليمات واستعمال أجهزة الوقاية وعدم العبث بها."
+    },
+    {
+      "id": "F22",
+      "test_type": "multi_article",
+      "category": "union_dissolution",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "متى يستطيع الوزير طلب حل نقابة قضائياً وما مدة استئناف قرار الحل، ثم أين تذهب أموال النقابة إذا لم تُنشأ نقابة بديلة خلال سنة؟",
+      "primary_article": 116,
+      "required_articles": [
+        116,
+        117
+      ],
+      "acceptable_articles": [
+        116,
+        117
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "المادة 116 تحدد حالات دعوى الحل والاستئناف خلال ثلاثين يوماً، والمادة 117 تنظم إيداع الأموال ثم انتقالها إلى الاتحاد العام إذا لم تؤسس نقابة بديلة خلال سنة."
+    },
+    {
+      "id": "F23",
+      "test_type": "multi_article",
+      "category": "collective_disputes",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "إذا وصل النزاع إلى مجلس التوفيق، ما التقرير والمهلة المطلوبة عند نجاح التسوية أو فشلها، وهل يحق للطرفين توكيل محامين أمام المجلس؟",
+      "primary_article": 122,
+      "required_articles": [
+        122,
+        123
+      ],
+      "acceptable_articles": [
+        122,
+        123
+      ],
+      "expected_concepts_any": [
+        "litigation_right_concept",
+        "legal_claim_consequence"
+      ],
+      "expected_result": "المادة 122 تلزم المجلس بالسعي للتسوية وتقديم التقرير خلال واحد وعشرين يوماً، والمادة 123 تمنع توكيل المحامين أمام مندوب التوفيق أو مجلس التوفيق."
+    },
+    {
+      "id": "F24",
+      "test_type": "multi_article",
+      "category": "strike_lockout",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "متى يكون الإضراب أو إغلاق المؤسسة محظوراً أثناء معالجة النزاع، وما الغرامات والآثار المالية على العامل أو صاحب العمل عند المخالفة؟",
+      "primary_article": 134,
+      "required_articles": [
+        134,
+        136
+      ],
+      "acceptable_articles": [
+        134,
+        136
+      ],
+      "expected_concepts_any": [
+        "wage_right_concept",
+        "pay_wages_obligation",
+        "employer_liability_consequence"
+      ],
+      "expected_result": "المادة 134 تحدد حالات الحظر أثناء الإحالة أو سريان التسوية والقرار، والمادة 136 تحدد غرامات الإضراب أو الإغلاق المحظور وآثار الأجر."
+    },
+    {
+      "id": "F25",
+      "test_type": "ambiguous",
+      "category": "ambiguous",
+      "difficulty": "hard",
+      "expected_behavior": "clarify",
+      "question": "النقابة اتخذت قراراً ضدي، هل قرارها قانوني؟",
+      "expected_result": "يلزم توضيح نوع القرار، وصفة السائل، وإجراءات النقابة أو نظامها الداخلي قبل تحديد الحكم القانوني."
+    },
+    {
+      "id": "F26",
+      "test_type": "ambiguous",
+      "category": "ambiguous",
+      "difficulty": "hard",
+      "expected_behavior": "clarify",
+      "question": "صار نزاع عمالي جماعي في المؤسسة، شو الخطوة القانونية الجاية؟",
+      "expected_result": "يلزم تحديد المرحلة التي وصل إليها النزاع وما إذا عرض على مندوب التوفيق أو مجلس التوفيق أو المحكمة العمالية."
+    },
+    {
+      "id": "F27",
+      "test_type": "ambiguous",
+      "category": "ambiguous",
+      "difficulty": "hard",
+      "expected_behavior": "clarify",
+      "question": "في مخالفة سلامة داخل مكان العمل، مين المسؤول وشو العقوبة؟",
+      "expected_result": "يلزم تحديد نوع مخالفة السلامة، ومن ارتكبها، وخطورتها والضرر الناتج عنها لاختيار الحكم والعقوبة المناسبة."
+    },
+    {
+      "id": "F28",
+      "test_type": "out_of_scope",
+      "category": "out_of_scope",
+      "difficulty": "easy",
+      "expected_behavior": "abstain",
+      "question": "اشتريت هاتفاً جديداً وظهر فيه عيب بعد أسبوع، هل يحق لي استبداله أو استرداد ثمنه؟",
+      "expected_result": "مسألة حماية مستهلك وبيع، وليست من نطاق قانون العمل الأردني الممثل في الرسم."
+    },
+    {
+      "id": "F29",
+      "test_type": "out_of_scope",
+      "category": "out_of_scope",
+      "difficulty": "medium",
+      "expected_behavior": "abstain",
+      "question": "أريد تسجيل شركة ذات مسؤولية محدودة وتحديد حصص الشركاء، ما الإجراءات المطلوبة؟",
+      "expected_result": "مسألة شركات وسجل تجاري خارج نطاق قانون العمل الممثل في النظام."
+    },
+    {
+      "id": "F30",
+      "test_type": "out_of_scope",
+      "category": "out_of_scope",
+      "difficulty": "medium",
+      "expected_behavior": "abstain",
+      "question": "الجامعة أوقفت تسجيلي بسبب المعدل، كيف أعترض على القرار الأكاديمي؟",
+      "expected_result": "مسألة تعليم عالٍ وقرارات أكاديمية، وليست مسألة عمالية ضمن الرسم الحالي."
+    }
+  ]
+}

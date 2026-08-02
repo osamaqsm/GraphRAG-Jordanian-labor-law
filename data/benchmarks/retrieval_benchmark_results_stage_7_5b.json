@@ -1,0 +1,1544 @@
+{
+  "benchmark_name": "Jordanian Labor Law KG Retrieval Benchmark v1",
+  "benchmark_version": "1.0.0",
+  "runner": "scripts.run_retrieval_benchmark",
+  "summary": {
+    "questions_requested": 20,
+    "questions_completed": 20,
+    "questions_failed_to_run": 0,
+    "passed": 19,
+    "pass_rate": 0.95,
+    "hit_at_1_accuracy": 0.95,
+    "hit_at_3_accuracy": 0.95,
+    "mean_reciprocal_rank": 0.95,
+    "exact_set_accuracy": 0.0,
+    "required_article_recall": 0.95,
+    "mean_strict_precision": 0.366666,
+    "mean_strict_f1": 0.52,
+    "mean_lenient_precision": 0.4,
+    "mean_lenient_f1": 0.518333,
+    "concept_hit_accuracy": 1.0,
+    "mean_elapsed_seconds": 6.754
+  },
+  "results": [
+    {
+      "id": "Q01",
+      "category": "wages",
+      "difficulty": "medium",
+      "question": "صاحب العمل لم يدفع راتبي منذ عشرة أيام، ماذا أستطيع أن أفعل؟",
+      "expected": {
+        "primary_article": 46,
+        "required_articles": [
+          46,
+          54
+        ],
+        "acceptable_articles": [
+          46,
+          54
+        ],
+        "concepts_any": [
+          "delay_exceeds_seven_days_condition",
+          "wage_delay_violation",
+          "pay_wages_obligation"
+        ],
+        "description": "المادة 46 تحدد مهلة دفع الأجر بسبعة أيام، والمادة 54 تنظم المطالبة بالأجور المتأخرة أمام سلطة الأجور."
+      },
+      "actual": {
+        "articles": [
+          46,
+          50,
+          54
+        ],
+        "graph_supported_articles": [
+          46,
+          50,
+          54
+        ],
+        "concepts": [
+          "delay_exceeds_seven_days_condition",
+          "wage_delay_violation",
+          "pay_wages_obligation",
+          "wage_payment_event",
+          "perform_work_obligation",
+          "temporary_work_concept",
+          "occasional_work_concept",
+          "assign_agreed_work_obligation",
+          "employer_concept",
+          "employer_liability_consequence",
+          "work_negligence_violation",
+          "indefinite_term_contract_concept",
+          "wage_right_concept",
+          "legal_claim_consequence",
+          "arbitrary_dismissal_violation",
+          "work_injury_event"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.666667,
+        "strict_f1": 0.8,
+        "lenient_precision": 0.666667,
+        "lenient_recall": 1.0,
+        "lenient_f1": 0.8,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "delay_exceeds_seven_days_condition",
+          "pay_wages_obligation",
+          "wage_delay_violation"
+        ],
+        "unexpected_articles": [
+          50
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 7.267
+    },
+    {
+      "id": "Q02",
+      "category": "contracts",
+      "difficulty": "medium",
+      "question": "لم يكتب صاحب العمل عقدي على الورق، هل أستطيع إثبات حقوقي بعقد شفهي؟",
+      "expected": {
+        "primary_article": 15,
+        "required_articles": [
+          15
+        ],
+        "acceptable_articles": [
+          2,
+          15
+        ],
+        "concepts_any": [
+          "oral_contract_concept",
+          "written_contract_concept",
+          "employment_contract_concept"
+        ],
+        "description": "المادة 15 تجيز للعامل إثبات حقوقه بجميع طرق الإثبات القانونية إذا لم يحرر العقد كتابة."
+      },
+      "actual": {
+        "articles": [
+          15,
+          26,
+          41
+        ],
+        "graph_supported_articles": [
+          15
+        ],
+        "concepts": [
+          "oral_contract_concept",
+          "written_contract_concept",
+          "employment_contract_concept",
+          "contract_indefinite_term_condition",
+          "termination_contract_consequence",
+          "contract_fixed_term_condition",
+          "collective_employment_contract_concept",
+          "indefinite_term_contract_concept",
+          "fixed_term_contract_concept",
+          "contract_formation_event",
+          "employer_liability_consequence",
+          "disclosure_employer_secrets_violation"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "lenient_recall": 0.5,
+        "lenient_f1": 0.4,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "employment_contract_concept",
+          "oral_contract_concept",
+          "written_contract_concept"
+        ],
+        "unexpected_articles": [
+          26,
+          41
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 6.62
+    },
+    {
+      "id": "Q03",
+      "category": "contracts",
+      "difficulty": "hard",
+      "question": "عقدي محدد المدة وأنهاه صاحب العمل قبل انتهاء المدة، ما الحقوق التي أستحقها؟",
+      "expected": {
+        "primary_article": 26,
+        "required_articles": [
+          26
+        ],
+        "acceptable_articles": [
+          15,
+          21,
+          26
+        ],
+        "concepts_any": [
+          "contract_fixed_term_condition",
+          "fixed_term_contract_concept",
+          "termination_contract_consequence"
+        ],
+        "description": "المادة 26 تمنح العامل حقوق العقد والأجور المستحقة حتى نهاية المدة المتبقية، ما لم يكن الفصل وفق المادة 28."
+      },
+      "actual": {
+        "articles": [
+          26,
+          15,
+          16
+        ],
+        "graph_supported_articles": [
+          26,
+          15
+        ],
+        "concepts": [
+          "contract_fixed_term_condition",
+          "fixed_term_contract_concept",
+          "termination_contract_consequence",
+          "contract_indefinite_term_condition",
+          "indefinite_term_contract_concept",
+          "disclosure_employer_secrets_violation",
+          "employer_liability_consequence",
+          "employment_contract_concept",
+          "assign_agreed_work_obligation",
+          "temporary_work_concept",
+          "oral_contract_concept",
+          "written_contract_concept"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.666667,
+        "lenient_recall": 0.666667,
+        "lenient_f1": 0.666667,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "contract_fixed_term_condition",
+          "fixed_term_contract_concept",
+          "termination_contract_consequence"
+        ],
+        "unexpected_articles": [
+          16
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 6.7
+    },
+    {
+      "id": "Q04",
+      "category": "contracts",
+      "difficulty": "medium",
+      "question": "أعمل بعقد غير محدد المدة، كم مدة الإشعار المطلوبة قبل إنهاء العقد؟",
+      "expected": {
+        "primary_article": 23,
+        "required_articles": [
+          23
+        ],
+        "acceptable_articles": [
+          23
+        ],
+        "concepts_any": [
+          "contract_indefinite_term_condition",
+          "indefinite_term_contract_concept",
+          "dismissal_event"
+        ],
+        "description": "المادة 23 تتطلب إشعار الطرف الآخر خطيا قبل شهر واحد على الأقل."
+      },
+      "actual": {
+        "articles": [
+          23,
+          15,
+          26
+        ],
+        "graph_supported_articles": [
+          23,
+          15
+        ],
+        "concepts": [
+          "contract_indefinite_term_condition",
+          "indefinite_term_contract_concept",
+          "dismissal_event",
+          "contract_fixed_term_condition",
+          "fixed_term_contract_concept",
+          "termination_contract_consequence",
+          "contract_formation_event",
+          "oral_contract_concept",
+          "employment_contract_concept",
+          "written_contract_concept",
+          "collective_employment_contract_concept",
+          "wage_delay_violation"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "lenient_recall": 1.0,
+        "lenient_f1": 0.5,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "contract_indefinite_term_condition",
+          "dismissal_event",
+          "indefinite_term_contract_concept"
+        ],
+        "unexpected_articles": [
+          15,
+          26
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 6.769
+    },
+    {
+      "id": "Q05",
+      "category": "dismissal",
+      "difficulty": "hard",
+      "question": "قدمت شكوى لوزارة العمل، وبعدها عاقبني صاحب العمل وفصلني، هل هذا مسموح؟",
+      "expected": {
+        "primary_article": 24,
+        "required_articles": [
+          24
+        ],
+        "acceptable_articles": [
+          24,
+          25
+        ],
+        "concepts_any": [
+          "arbitrary_dismissal_violation",
+          "dismissal_event",
+          "disciplinary_action_consequence"
+        ],
+        "description": "المادة 24 تمنع فصل العامل أو اتخاذ إجراء تأديبي بحقه بسبب الشكاوى والمطالبات المتعلقة بتطبيق القانون."
+      },
+      "actual": {
+        "articles": [
+          84,
+          25,
+          31
+        ],
+        "graph_supported_articles": [
+          25,
+          31
+        ],
+        "concepts": [
+          "arbitrary_dismissal_violation",
+          "dismissal_event",
+          "disciplinary_action_consequence",
+          "disclosure_employer_secrets_violation",
+          "employer_liability_consequence",
+          "work_negligence_violation",
+          "collective_employment_contract_concept",
+          "employment_contract_concept",
+          "employer_concept",
+          "perform_work_obligation",
+          "assign_agreed_work_obligation",
+          "temporary_work_concept",
+          "wage_delay_violation",
+          "work_injury_event",
+          "dismissal_without_lawful_ground_condition",
+          "compensation_consequence",
+          "legal_claim_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": false,
+        "all_required_found": false,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": false,
+        "hit_at_3": false,
+        "primary_rank": null,
+        "reciprocal_rank": 0.0,
+        "required_recall": 0.0,
+        "strict_precision": 0.0,
+        "strict_f1": 0.0,
+        "lenient_precision": 0.333333,
+        "lenient_recall": 0.5,
+        "lenient_f1": 0.4,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "arbitrary_dismissal_violation",
+          "disciplinary_action_consequence",
+          "dismissal_event"
+        ],
+        "unexpected_articles": [
+          31,
+          84
+        ],
+        "missing_required_articles": [
+          24
+        ]
+      },
+      "elapsed_seconds": 6.97
+    },
+    {
+      "id": "Q06",
+      "category": "dismissal",
+      "difficulty": "medium",
+      "question": "فصلني صاحب العمل تعسفيا منذ ثلاثين يوما، هل يمكن أن أحصل على تعويض؟",
+      "expected": {
+        "primary_article": 25,
+        "required_articles": [
+          25
+        ],
+        "acceptable_articles": [
+          24,
+          25
+        ],
+        "concepts_any": [
+          "arbitrary_dismissal_violation",
+          "dismissal_without_lawful_ground_condition",
+          "dismissal_event"
+        ],
+        "description": "المادة 25 تنظم دعوى الفصل التعسفي خلال ستين يوما والتعويض من أجر ثلاثة أشهر إلى ستة أشهر أو الإعادة للعمل."
+      },
+      "actual": {
+        "articles": [
+          25,
+          90,
+          92
+        ],
+        "graph_supported_articles": [
+          25,
+          90,
+          92
+        ],
+        "concepts": [
+          "arbitrary_dismissal_violation",
+          "dismissal_without_lawful_ground_condition",
+          "dismissal_event",
+          "compensation_consequence",
+          "temporary_work_concept",
+          "occasional_work_concept",
+          "work_negligence_violation",
+          "assign_agreed_work_obligation",
+          "employer_liability_consequence",
+          "disclosure_employer_secrets_violation",
+          "perform_work_obligation",
+          "fixed_term_contract_concept",
+          "wage_delay_violation",
+          "work_injury_event",
+          "legal_claim_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "lenient_recall": 0.5,
+        "lenient_f1": 0.4,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "arbitrary_dismissal_violation",
+          "dismissal_event",
+          "dismissal_without_lawful_ground_condition"
+        ],
+        "unexpected_articles": [
+          90,
+          92
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 6.799
+    },
+    {
+      "id": "Q07",
+      "category": "dismissal",
+      "difficulty": "medium",
+      "question": "تغيبت عن العمل أحد عشر يوما متتالية دون عذر، هل يستطيع صاحب العمل فصلي دون إشعار؟",
+      "expected": {
+        "primary_article": 28,
+        "required_articles": [
+          28
+        ],
+        "acceptable_articles": [
+          28
+        ],
+        "concepts_any": [
+          "dismissal_event",
+          "work_negligence_violation"
+        ],
+        "description": "المادة 28 تجيز الفصل دون إشعار عند الغياب أكثر من عشرة أيام متتالية مع مراعاة الإنذار الكتابي والنشر المقرر فيها."
+      },
+      "actual": {
+        "articles": [
+          28,
+          135,
+          29
+        ],
+        "graph_supported_articles": [
+          28,
+          29
+        ],
+        "concepts": [
+          "work_negligence_violation",
+          "dismissal_event",
+          "termination_contract_consequence",
+          "dismissal_without_lawful_ground_condition",
+          "arbitrary_dismissal_violation",
+          "disclosure_employer_secrets_violation",
+          "temporary_work_concept",
+          "perform_work_obligation",
+          "employer_liability_consequence",
+          "occasional_work_concept",
+          "employer_concept",
+          "indefinite_term_contract_concept",
+          "follow_lawful_instructions_obligation",
+          "disciplinary_action_consequence",
+          "compensation_consequence",
+          "legal_claim_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "lenient_recall": 1.0,
+        "lenient_f1": 0.5,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "dismissal_event",
+          "work_negligence_violation"
+        ],
+        "unexpected_articles": [
+          29,
+          135
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 6.65
+    },
+    {
+      "id": "Q08",
+      "category": "work_assignment",
+      "difficulty": "hard",
+      "question": "كلفني صاحب العمل بعمل مختلف اختلافا واضحا عن العمل المتفق عليه، هل يلزمني تنفيذه وهل أستطيع ترك العمل؟",
+      "expected": {
+        "primary_article": 17,
+        "required_articles": [
+          17,
+          29
+        ],
+        "acceptable_articles": [
+          17,
+          29
+        ],
+        "concepts_any": [
+          "assignment_different_work_violation",
+          "assign_agreed_work_obligation"
+        ],
+        "description": "المادة 17 تقيد التكليف بعمل مختلف، والمادة 29 تجيز للعامل ترك العمل دون إشعار في الحالة المحددة فيها مع الاحتفاظ بحقوقه."
+      },
+      "actual": {
+        "articles": [
+          17,
+          29,
+          12
+        ],
+        "graph_supported_articles": [
+          17,
+          29
+        ],
+        "concepts": [
+          "assignment_different_work_violation",
+          "assign_agreed_work_obligation",
+          "employer_liability_consequence",
+          "perform_work_obligation",
+          "occasional_work_concept",
+          "work_concept",
+          "employer_concept",
+          "work_negligence_violation",
+          "disclosure_employer_secrets_violation",
+          "written_contract_concept",
+          "temporary_work_concept",
+          "provide_safe_work_environment_obligation"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.666667,
+        "strict_f1": 0.8,
+        "lenient_precision": 0.666667,
+        "lenient_recall": 1.0,
+        "lenient_f1": 0.8,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "assign_agreed_work_obligation",
+          "assignment_different_work_violation"
+        ],
+        "unexpected_articles": [
+          12
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 6.619
+    },
+    {
+      "id": "Q09",
+      "category": "worker_obligations",
+      "difficulty": "medium",
+      "question": "هل يلتزم العامل بالمحافظة على أسرار صاحب العمل، وما نتيجة إفشائها؟",
+      "expected": {
+        "primary_article": 19,
+        "required_articles": [
+          19,
+          28
+        ],
+        "acceptable_articles": [
+          19,
+          28
+        ],
+        "concepts_any": [
+          "preserve_confidentiality_obligation",
+          "disclosure_employer_secrets_violation"
+        ],
+        "description": "المادة 19 تفرض المحافظة على أسرار صاحب العمل، والمادة 28 تعد إفشاء أسرار العمل سببا للفصل دون إشعار."
+      },
+      "actual": {
+        "articles": [
+          19,
+          28,
+          30
+        ],
+        "graph_supported_articles": [
+          19,
+          28
+        ],
+        "concepts": [
+          "disclosure_employer_secrets_violation",
+          "preserve_confidentiality_obligation",
+          "employer_liability_consequence",
+          "employer_concept",
+          "assign_agreed_work_obligation",
+          "perform_work_obligation",
+          "worker_not_covered_social_security_condition",
+          "work_negligence_violation",
+          "worker_concept",
+          "employers_union_concept",
+          "employment_contract_concept",
+          "work_concept",
+          "disciplinary_action_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.666667,
+        "strict_f1": 0.8,
+        "lenient_precision": 0.666667,
+        "lenient_recall": 1.0,
+        "lenient_f1": 0.8,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "disclosure_employer_secrets_violation",
+          "preserve_confidentiality_obligation"
+        ],
+        "unexpected_articles": [
+          30
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 6.411
+    },
+    {
+      "id": "Q10",
+      "category": "leave",
+      "difficulty": "easy",
+      "question": "أعمل لدى صاحب العمل نفسه منذ ست سنوات، كم يوم إجازة سنوية مدفوعة أستحق؟",
+      "expected": {
+        "primary_article": 61,
+        "required_articles": [
+          61
+        ],
+        "acceptable_articles": [
+          61
+        ],
+        "concepts_any": [
+          "leave_right_concept",
+          "leave_request_event"
+        ],
+        "description": "المادة 61 تمنح 21 يوما من الإجازة السنوية بعد خمس سنوات متصلة لدى صاحب العمل نفسه."
+      },
+      "actual": {
+        "articles": [
+          61,
+          66,
+          27
+        ],
+        "graph_supported_articles": [
+          61,
+          66,
+          27
+        ],
+        "concepts": [
+          "leave_right_concept",
+          "leave_request_event",
+          "wage_right_concept",
+          "occasional_work_concept",
+          "temporary_work_concept",
+          "fixed_term_contract_concept",
+          "perform_work_obligation",
+          "employer_concept",
+          "seasonal_work_concept",
+          "employer_liability_consequence",
+          "assign_agreed_work_obligation",
+          "employment_contract_concept"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "lenient_recall": 1.0,
+        "lenient_f1": 0.5,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "leave_request_event",
+          "leave_right_concept"
+        ],
+        "unexpected_articles": [
+          27,
+          66
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 7.273
+    },
+    {
+      "id": "Q11",
+      "category": "leave",
+      "difficulty": "easy",
+      "question": "كم مدة الإجازة المرضية المدفوعة، وهل يمكن تجديدها؟",
+      "expected": {
+        "primary_article": 65,
+        "required_articles": [
+          65
+        ],
+        "acceptable_articles": [
+          27,
+          65
+        ],
+        "concepts_any": [
+          "sick_leave_right_concept",
+          "leave_right_concept"
+        ],
+        "description": "المادة 65 تمنح 14 يوما بأجر كامل وتسمح بالتجديد 14 يوما أخرى وفق الشروط الطبية المحددة."
+      },
+      "actual": {
+        "articles": [
+          65,
+          61,
+          66
+        ],
+        "graph_supported_articles": [
+          65,
+          61,
+          66
+        ],
+        "concepts": [
+          "sick_leave_right_concept",
+          "leave_right_concept",
+          "leave_request_event",
+          "wage_payment_event",
+          "wage_delay_violation",
+          "contract_fixed_term_condition",
+          "pay_wages_obligation",
+          "weekly_rest_right_concept",
+          "occupational_disease_concept",
+          "delay_exceeds_seven_days_condition",
+          "wage_concept",
+          "end_of_service_benefit_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "lenient_recall": 0.5,
+        "lenient_f1": 0.4,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "leave_right_concept",
+          "sick_leave_right_concept"
+        ],
+        "unexpected_articles": [
+          61,
+          66
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 6.346
+    },
+    {
+      "id": "Q12",
+      "category": "leave",
+      "difficulty": "easy",
+      "question": "ما مدة إجازة الأمومة المدفوعة، وكم يجب أن يكون منها بعد الولادة؟",
+      "expected": {
+        "primary_article": 70,
+        "required_articles": [
+          70
+        ],
+        "acceptable_articles": [
+          27,
+          70
+        ],
+        "concepts_any": [
+          "leave_right_concept",
+          "leave_request_event"
+        ],
+        "description": "المادة 70 تمنح عشرة أسابيع بأجر كامل، على ألا تقل المدة بعد الوضع عن ستة أسابيع."
+      },
+      "actual": {
+        "articles": [
+          70,
+          71,
+          61
+        ],
+        "graph_supported_articles": [
+          70,
+          71,
+          61
+        ],
+        "concepts": [
+          "leave_right_concept",
+          "leave_request_event",
+          "wage_right_concept",
+          "pay_wages_obligation",
+          "wage_concept",
+          "wage_payment_event",
+          "sick_leave_right_concept",
+          "wage_delay_violation",
+          "temporary_work_concept",
+          "end_of_service_benefit_consequence",
+          "contract_fixed_term_condition",
+          "seasonal_work_concept"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "lenient_recall": 0.5,
+        "lenient_f1": 0.4,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "leave_request_event",
+          "leave_right_concept"
+        ],
+        "unexpected_articles": [
+          61,
+          71
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 6.476
+    },
+    {
+      "id": "Q13",
+      "category": "end_of_service",
+      "difficulty": "hard",
+      "question": "أنا بعقد غير محدد المدة وغير مشمول بالضمان الاجتماعي، كيف تحسب مكافأة نهاية الخدمة؟",
+      "expected": {
+        "primary_article": 32,
+        "required_articles": [
+          32
+        ],
+        "acceptable_articles": [
+          32
+        ],
+        "concepts_any": [
+          "worker_not_covered_social_security_condition",
+          "end_of_service_benefit_right_concept",
+          "end_of_service_benefit_consequence"
+        ],
+        "description": "المادة 32 تقرر أجر شهر عن كل سنة خدمة فعلية للعامل غير الخاضع للضمان الاجتماعي، مع مكافأة نسبية لكسور السنة."
+      },
+      "actual": {
+        "articles": [
+          32,
+          92,
+          33
+        ],
+        "graph_supported_articles": [
+          32,
+          92,
+          33
+        ],
+        "concepts": [
+          "worker_not_covered_social_security_condition",
+          "end_of_service_benefit_right_concept",
+          "end_of_service_benefit_consequence",
+          "contract_indefinite_term_condition",
+          "contract_fixed_term_condition",
+          "indefinite_term_contract_concept",
+          "fixed_term_contract_concept",
+          "social_security_related_right_concept",
+          "wage_delay_violation",
+          "legal_claim_consequence",
+          "compensation_consequence",
+          "termination_contract_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "lenient_recall": 1.0,
+        "lenient_f1": 0.5,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "end_of_service_benefit_consequence",
+          "end_of_service_benefit_right_concept",
+          "worker_not_covered_social_security_condition"
+        ],
+        "unexpected_articles": [
+          33,
+          92
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 6.34
+    },
+    {
+      "id": "Q14",
+      "category": "working_time",
+      "difficulty": "easy",
+      "question": "كم يجب أن أتقاضى عن ساعة العمل الإضافية وعن العمل في يوم العطلة الأسبوعية؟",
+      "expected": {
+        "primary_article": 59,
+        "required_articles": [
+          59
+        ],
+        "acceptable_articles": [
+          59
+        ],
+        "concepts_any": [
+          "wage_right_concept",
+          "wage_payment_event",
+          "pay_wages_obligation"
+        ],
+        "description": "المادة 59 تحدد 125% على الأقل للعمل الإضافي و150% على الأقل للعمل في العطلة الأسبوعية أو الأعياد والعطل الرسمية."
+      },
+      "actual": {
+        "articles": [
+          59,
+          60,
+          56
+        ],
+        "graph_supported_articles": [
+          59,
+          60
+        ],
+        "concepts": [
+          "wage_right_concept",
+          "wage_payment_event",
+          "pay_wages_obligation",
+          "weekly_rest_right_concept",
+          "temporary_work_concept",
+          "work_negligence_violation",
+          "perform_work_obligation",
+          "occasional_work_concept",
+          "seasonal_work_concept",
+          "assign_agreed_work_obligation",
+          "employer_liability_consequence",
+          "work_concept",
+          "delay_exceeds_seven_days_condition",
+          "legal_claim_consequence",
+          "wage_delay_violation"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "lenient_recall": 1.0,
+        "lenient_f1": 0.5,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "pay_wages_obligation",
+          "wage_payment_event",
+          "wage_right_concept"
+        ],
+        "unexpected_articles": [
+          56,
+          60
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 6.911
+    },
+    {
+      "id": "Q15",
+      "category": "working_time",
+      "difficulty": "easy",
+      "question": "ما يوم العطلة الأسبوعية للعامل، وهل تكون بأجر كامل؟",
+      "expected": {
+        "primary_article": 60,
+        "required_articles": [
+          60
+        ],
+        "acceptable_articles": [
+          60
+        ],
+        "concepts_any": [
+          "weekly_rest_right_concept",
+          "wage_right_concept"
+        ],
+        "description": "المادة 60 تجعل الجمعة يوم العطلة الأسبوعية ما لم تقتض طبيعة العمل غير ذلك، وتنظم استحقاق أجرها."
+      },
+      "actual": {
+        "articles": [
+          60,
+          61,
+          65
+        ],
+        "graph_supported_articles": [
+          60,
+          61,
+          65
+        ],
+        "concepts": [
+          "weekly_rest_right_concept",
+          "wage_right_concept",
+          "seasonal_work_concept",
+          "temporary_work_concept",
+          "wage_concept",
+          "occasional_work_concept",
+          "wage_payment_event",
+          "leave_right_concept",
+          "worker_concept",
+          "wage_delay_violation",
+          "pay_wages_obligation",
+          "end_of_service_benefit_consequence",
+          "delay_exceeds_seven_days_condition",
+          "employer_liability_consequence",
+          "legal_claim_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "lenient_recall": 1.0,
+        "lenient_f1": 0.5,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "wage_right_concept",
+          "weekly_rest_right_concept"
+        ],
+        "unexpected_articles": [
+          61,
+          65
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 6.825
+    },
+    {
+      "id": "Q16",
+      "category": "wages",
+      "difficulty": "medium",
+      "question": "دفع لي صاحب العمل أجرا أقل من الحد الأدنى، ما المادة التي تعاقبه وتضمن لي فرق الأجر؟",
+      "expected": {
+        "primary_article": 53,
+        "required_articles": [
+          53
+        ],
+        "acceptable_articles": [
+          52,
+          53
+        ],
+        "concepts_any": [
+          "wage_right_concept",
+          "wage_payment_event",
+          "pay_wages_obligation"
+        ],
+        "description": "المادة 53 تفرض غرامة وتحكم للعامل بفرق الأجر عند دفع أجر أقل من الحد الأدنى."
+      },
+      "actual": {
+        "articles": [
+          53,
+          47,
+          46
+        ],
+        "graph_supported_articles": [
+          53,
+          47,
+          46
+        ],
+        "concepts": [
+          "wage_right_concept",
+          "wage_payment_event",
+          "pay_wages_obligation",
+          "wage_delay_violation",
+          "wage_concept",
+          "employer_liability_consequence",
+          "perform_work_obligation",
+          "assign_agreed_work_obligation",
+          "work_negligence_violation",
+          "disclosure_employer_secrets_violation",
+          "employment_contract_concept",
+          "fixed_term_contract_concept",
+          "delay_exceeds_seven_days_condition",
+          "legal_claim_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "lenient_recall": 0.5,
+        "lenient_f1": 0.4,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "pay_wages_obligation",
+          "wage_payment_event",
+          "wage_right_concept"
+        ],
+        "unexpected_articles": [
+          46,
+          47
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 6.41
+    },
+    {
+      "id": "Q17",
+      "category": "occupational_safety",
+      "difficulty": "medium",
+      "question": "هل يجب على صاحب العمل توفير معدات الوقاية الشخصية وإبلاغي بمخاطر المهنة دون تحميل العامل تكلفتها؟",
+      "expected": {
+        "primary_article": 78,
+        "required_articles": [
+          78
+        ],
+        "acceptable_articles": [
+          78
+        ],
+        "concepts_any": [
+          "provide_safe_work_environment_obligation",
+          "safe_work_environment_right_concept"
+        ],
+        "description": "المادة 78 تلزم صاحب العمل بتدابير الحماية ومعدات الوقاية والإرشاد والإسعاف، وتحظر تحميل العمال تكلفتها."
+      },
+      "actual": {
+        "articles": [
+          78,
+          49,
+          28
+        ],
+        "graph_supported_articles": [
+          78
+        ],
+        "concepts": [
+          "provide_safe_work_environment_obligation",
+          "safe_work_environment_right_concept",
+          "employer_liability_consequence",
+          "dismissal_without_lawful_ground_condition",
+          "worker_not_covered_social_security_condition",
+          "disclosure_employer_secrets_violation",
+          "employer_concept",
+          "work_negligence_violation",
+          "worker_concept",
+          "perform_work_obligation",
+          "temporary_work_concept",
+          "employment_contract_concept"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "lenient_recall": 1.0,
+        "lenient_f1": 0.5,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "provide_safe_work_environment_obligation",
+          "safe_work_environment_right_concept"
+        ],
+        "unexpected_articles": [
+          28,
+          49
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 6.557
+    },
+    {
+      "id": "Q18",
+      "category": "juvenile_work",
+      "difficulty": "medium",
+      "question": "هل يجوز تشغيل عامل حدث أكثر من ست ساعات أو بين الثامنة مساء والسادسة صباحا؟",
+      "expected": {
+        "primary_article": 75,
+        "required_articles": [
+          75
+        ],
+        "acceptable_articles": [
+          74,
+          75
+        ],
+        "concepts_any": [
+          "juvenile_concept",
+          "weekly_rest_right_concept"
+        ],
+        "description": "المادة 75 تحظر تشغيل الحدث أكثر من ست ساعات يوميا أو ليلا بين الثامنة مساء والسادسة صباحا، كما تحظر تشغيله في أيام العطل المحددة."
+      },
+      "actual": {
+        "articles": [
+          75,
+          60,
+          56
+        ],
+        "graph_supported_articles": [
+          75,
+          60
+        ],
+        "concepts": [
+          "juvenile_concept",
+          "weekly_rest_right_concept",
+          "leave_request_event",
+          "wage_payment_event",
+          "work_injury_event",
+          "dismissal_event",
+          "contract_formation_event",
+          "delay_exceeds_seven_days_condition",
+          "temporary_work_concept",
+          "wage_delay_violation",
+          "occasional_work_concept",
+          "perform_work_obligation"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "lenient_recall": 0.5,
+        "lenient_f1": 0.4,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "juvenile_concept",
+          "weekly_rest_right_concept"
+        ],
+        "unexpected_articles": [
+          56,
+          60
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 6.576
+    },
+    {
+      "id": "Q19",
+      "category": "work_injury",
+      "difficulty": "medium",
+      "question": "أصيب عامل إصابة عمل منعته من الاستمرار، خلال كم ساعة يجب على صاحب العمل إبلاغ الوزارة؟",
+      "expected": {
+        "primary_article": 87,
+        "required_articles": [
+          87
+        ],
+        "acceptable_articles": [
+          87
+        ],
+        "concepts_any": [
+          "work_injury_event",
+          "employer_liability_consequence"
+        ],
+        "description": "المادة 87 تلزم بإرسال إشعار إلى الوزارة خلال مدة لا تزيد على 48 ساعة، مع نقل المصاب وتبليغ الجهات الأمنية."
+      },
+      "actual": {
+        "articles": [
+          87,
+          14,
+          90
+        ],
+        "graph_supported_articles": [
+          87,
+          14,
+          90
+        ],
+        "concepts": [
+          "work_injury_event",
+          "employer_liability_consequence",
+          "ministry_concept",
+          "work_negligence_violation",
+          "temporary_work_concept",
+          "provide_safe_work_environment_obligation",
+          "employer_concept",
+          "disclosure_employer_secrets_violation",
+          "perform_work_obligation",
+          "assign_agreed_work_obligation",
+          "work_concept",
+          "occasional_work_concept",
+          "arbitrary_dismissal_violation",
+          "wage_delay_violation",
+          "compensation_consequence",
+          "delay_exceeds_seven_days_condition",
+          "pay_wages_obligation",
+          "wage_right_concept",
+          "legal_claim_consequence",
+          "wage_payment_event"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "lenient_recall": 1.0,
+        "lenient_f1": 0.5,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "employer_liability_consequence",
+          "work_injury_event"
+        ],
+        "unexpected_articles": [
+          14,
+          90
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 6.415
+    },
+    {
+      "id": "Q20",
+      "category": "work_injury",
+      "difficulty": "hard",
+      "question": "إذا سببت إصابة العمل عجزا كليا للعامل، كيف يحسب التعويض؟",
+      "expected": {
+        "primary_article": 90,
+        "required_articles": [
+          90
+        ],
+        "acceptable_articles": [
+          90
+        ],
+        "concepts_any": [
+          "work_injury_event",
+          "compensation_consequence",
+          "medical_examination_event"
+        ],
+        "description": "المادة 90 تحدد للعجز الكلي تعويضا يساوي أجر 1200 يوم عمل ضمن الحدين الماليين المذكورين في النص."
+      },
+      "actual": {
+        "articles": [
+          90,
+          92,
+          95
+        ],
+        "graph_supported_articles": [
+          90,
+          92,
+          95
+        ],
+        "concepts": [
+          "work_injury_event",
+          "compensation_consequence",
+          "medical_examination_event",
+          "work_negligence_violation",
+          "employer_liability_consequence",
+          "perform_work_obligation",
+          "temporary_work_concept",
+          "occasional_work_concept",
+          "assign_agreed_work_obligation",
+          "seasonal_work_concept",
+          "employers_union_concept",
+          "collective_employment_contract_concept",
+          "arbitrary_dismissal_violation",
+          "wage_delay_violation",
+          "dismissal_without_lawful_ground_condition",
+          "dismissal_event",
+          "legal_claim_consequence"
+        ]
+      },
+      "metrics": {
+        "pass": true,
+        "all_required_found": true,
+        "exact_set_match": false,
+        "ordered_exact_match": false,
+        "hit_at_1": true,
+        "hit_at_3": true,
+        "primary_rank": 1,
+        "reciprocal_rank": 1.0,
+        "required_recall": 1.0,
+        "strict_precision": 0.333333,
+        "strict_f1": 0.5,
+        "lenient_precision": 0.333333,
+        "lenient_recall": 1.0,
+        "lenient_f1": 0.5,
+        "concept_hit": true,
+        "matched_expected_concepts": [
+          "compensation_consequence",
+          "medical_examination_event",
+          "work_injury_event"
+        ],
+        "unexpected_articles": [
+          92,
+          95
+        ],
+        "missing_required_articles": []
+      },
+      "elapsed_seconds": 8.154
+    }
+  ]
+}

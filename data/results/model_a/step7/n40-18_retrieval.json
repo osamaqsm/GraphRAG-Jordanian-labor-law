@@ -1,0 +1,281 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "هل تعد نقابة العمال غير مشروعة فقط لأن هناك ادعاء بأن إحدى غاياتها تقيد حرية التجارة؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "",
+    "clarification_question_ar": "",
+    "planner_used": false,
+    "planner_confidence": 0.0
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 62
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_112",
+      "local_name": "article_112",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 112"
+      ],
+      "labels_en": [],
+      "article_number": 112,
+      "text": "لا تعتبر اي نقابة للعمال هيئة غير مشروعة لمجرد الادعاء بان ايا من غاياتها تهدف الى تقييد حرية التجارة.",
+      "final_score": 1.0,
+      "fused_score": 0.04426229508196722,
+      "direct_score": 0.04426229508196722,
+      "graph_score": 0.0,
+      "paragraph_score": 0.09090909090909091,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#indefinite_term_contract_concept",
+      "local_name": "indefinite_term_contract_concept",
+      "node_kind": "IndefiniteTermContract",
+      "labels_ar": [
+        "عقد العمل غير محدد المدة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#indefinite_term_contract_concept\nLocal name: indefinite_term_contract_concept\nNode kind: IndefiniteTermContract\nRDF types: IndefiniteTermContract\nArabic labels: عقد العمل غير محدد المدة",
+      "final_score": 0.0,
+      "fused_score": 0.03612903225806452,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#contract_indefinite_term_condition",
+      "local_name": "contract_indefinite_term_condition",
+      "node_kind": "ContractIsIndefiniteTerm",
+      "labels_ar": [
+        "شرط كون العقد غير محدد المدة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#contract_indefinite_term_condition\nLocal name: contract_indefinite_term_condition\nNode kind: ContractIsIndefiniteTerm\nRDF types: ContractIsIndefiniteTerm\nArabic labels: شرط كون العقد غير محدد المدة",
+      "final_score": 0.0,
+      "fused_score": 0.03235653235653235,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+      "local_name": "employers_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "نقابة أصحاب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.04020296643247463,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#trade_union_concept",
+      "local_name": "trade_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "النقابة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#trade_union_concept\nLocal name: trade_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: النقابة",
+      "final_score": 0.0,
+      "fused_score": 0.02459016393442623,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#collective_labor_dispute_concept",
+      "local_name": "collective_labor_dispute_concept",
+      "node_kind": "LegalEvent",
+      "labels_ar": [
+        "النزاع العمالي الجماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#collective_labor_dispute_concept\nLocal name: collective_labor_dispute_concept\nNode kind: LegalEvent\nRDF types: LegalEvent\nArabic labels: النزاع العمالي الجماعي",
+      "final_score": 0.0,
+      "fused_score": 0.024193548387096774,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+      "local_name": "collective_employment_contract_concept",
+      "node_kind": "EmploymentRelation",
+      "labels_ar": [
+        "عقد العمل الجماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#collective_employment_contract_concept\nLocal name: collective_employment_contract_concept\nNode kind: EmploymentRelation\nRDF types: EmploymentRelation\nArabic labels: عقد العمل الجماعي",
+      "final_score": 0.0,
+      "fused_score": 0.0234375,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#arbitrary_dismissal_violation",
+      "local_name": "arbitrary_dismissal_violation",
+      "node_kind": "ArbitraryDismissal",
+      "labels_ar": [
+        "مخالفة الفصل التعسفي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#arbitrary_dismissal_violation\nLocal name: arbitrary_dismissal_violation\nNode kind: ArbitraryDismissal\nRDF types: ArbitraryDismissal\nArabic labels: مخالفة الفصل التعسفي",
+      "final_score": 0.0,
+      "fused_score": 0.023076923076923078,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_right_concept",
+      "local_name": "wage_right_concept",
+      "node_kind": "WageRight",
+      "labels_ar": [
+        "حق الأجر"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_right_concept\nLocal name: wage_right_concept\nNode kind: WageRight\nRDF types: WageRight\nArabic labels: حق الأجر",
+      "final_score": 0.0,
+      "fused_score": 0.022727272727272728,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#dismissal_without_lawful_ground_condition",
+      "local_name": "dismissal_without_lawful_ground_condition",
+      "node_kind": "DismissalWithoutLawfulGround",
+      "labels_ar": [
+        "شرط الفصل دون سبب مشروع"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#dismissal_without_lawful_ground_condition\nLocal name: dismissal_without_lawful_ground_condition\nNode kind: DismissalWithoutLawfulGround\nRDF types: DismissalWithoutLawfulGround\nArabic labels: شرط الفصل دون سبب مشروع",
+      "final_score": 0.0,
+      "fused_score": 0.022388059701492536,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#pay_wages_obligation",
+      "local_name": "pay_wages_obligation",
+      "node_kind": "PayWages",
+      "labels_ar": [
+        "التزام دفع الأجور"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#pay_wages_obligation\nLocal name: pay_wages_obligation\nNode kind: PayWages\nRDF types: PayWages\nArabic labels: التزام دفع الأجور",
+      "final_score": 0.0,
+      "fused_score": 0.022058823529411766,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+      "local_name": "employment_contract_concept",
+      "node_kind": "EmploymentContract",
+      "labels_ar": [
+        "عقد العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employment_contract_concept\nLocal name: employment_contract_concept\nNode kind: EmploymentContract\nRDF types: EmploymentContract\nArabic labels: عقد العمل",
+      "final_score": 0.0,
+      "fused_score": 0.021739130434782608,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+      "local_name": "perform_work_obligation",
+      "node_kind": "PerformWork",
+      "labels_ar": [
+        "التزام أداء العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#perform_work_obligation\nLocal name: perform_work_obligation\nNode kind: PerformWork\nRDF types: PerformWork\nArabic labels: التزام أداء العمل",
+      "final_score": 0.0,
+      "fused_score": 0.02142857142857143,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      112
+    ],
+    "concept_local_names": [
+      "indefinite_term_contract_concept",
+      "contract_indefinite_term_condition",
+      "employers_union_concept",
+      "trade_union_concept",
+      "collective_labor_dispute_concept",
+      "collective_employment_contract_concept",
+      "arbitrary_dismissal_violation",
+      "wage_right_concept",
+      "dismissal_without_lawful_ground_condition",
+      "pay_wages_obligation",
+      "employment_contract_concept",
+      "perform_work_obligation"
+    ],
+    "graph_supported_articles": [],
+    "concept_count": 12,
+    "expanded_concept_count": 0,
+    "article_count": 1
+  },
+  "elapsed_ms": 15328,
+  "debug": null
+}

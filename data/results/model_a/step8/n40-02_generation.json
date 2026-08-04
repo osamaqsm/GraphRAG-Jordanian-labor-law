@@ -1,0 +1,29 @@
+{
+  "schema_version": "generation.v1",
+  "status": "generated",
+  "question": "أي جهة رسمية تتولى أعمال التفتيش للتأكد من تطبيق أحكام قانون العمل؟",
+  "retrieval_schema_version": "retrieval.v1",
+  "answer_ar": "تتولى الوزارة القيام بمهام التفتيش تطبيقاً لاحكام هذا القانون.[المادة 5]",
+  "key_points": [],
+  "citations": [
+    {
+      "article_number": 5,
+      "label_ar": "المادة 5",
+      "uri": "http://example.org/jordan-labor-law#article_5",
+      "excerpt": "تتولى الوزارة القيام بمهام التفتيش تطبيقاً لاحكام هذا القانون."
+    }
+  ],
+  "cited_article_numbers": [
+    5
+  ],
+  "grounded": true,
+  "warnings": [],
+  "model": "gpt-5-nano",
+  "usage": {
+    "input_tokens": 2704,
+    "output_tokens": 206,
+    "total_tokens": 2910
+  },
+  "elapsed_ms": 2650,
+  "debug": null
+}

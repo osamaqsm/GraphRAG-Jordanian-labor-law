@@ -1,0 +1,30 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "وصلتني مخالفة بسبب قطع الإشارة الحمراء؛ كيف أعترض عليها وما قيمة الغرامة؟",
+  "decision": {
+    "behavior": "abstain",
+    "reason": "المسألة خارج نطاق قانون العمل الأردني وتتعلق بمخالفة مرورية وليست مسألة عمالية.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.92
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 0,
+    "input_tokens": 0
+  },
+  "articles": [],
+  "concepts": [],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [],
+    "concept_local_names": [],
+    "graph_supported_articles": [],
+    "concept_count": 0,
+    "expanded_concept_count": 0,
+    "article_count": 0
+  },
+  "elapsed_ms": 6113,
+  "debug": null
+}

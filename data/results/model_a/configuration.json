@@ -1,0 +1,10 @@
+{
+  "experiment_name": "fresh_unseen_40_model_a",
+  "benchmark_file": "retrieval_benchmark_fresh_unseen_40_gold.json",
+  "benchmark_sha256": "8f6035dea920b1aef40e4b28cd57635ae64eede1b05fa6a6df0711e6cf01ddc3",
+  "question_count": 40,
+  "retrieve_count": 32,
+  "out_of_scope_count": 8,
+  "environment": "docker-compose",
+  "notes": "Frozen Model A evaluation. Same benchmark and environment must be used for Model B."
+}

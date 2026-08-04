@@ -1,0 +1,29 @@
+{
+  "schema_version": "generation.v1",
+  "status": "generated",
+  "question": "هل تعد نقابة العمال غير مشروعة فقط لأن هناك ادعاء بأن إحدى غاياتها تقيد حرية التجارة؟",
+  "retrieval_schema_version": "retrieval.v1",
+  "answer_ar": "لا، لا تعتبر نقابة العمال هيئة غير مشروعة لمجرد الادعاء بأن إحدى غاياتها تهدف إلى تقييد حرية التجارة. [المادة 112]",
+  "key_points": [],
+  "citations": [
+    {
+      "article_number": 112,
+      "label_ar": "المادة 112",
+      "uri": "http://example.org/jordan-labor-law#article_112",
+      "excerpt": "لا تعتبر اي نقابة للعمال هيئة غير مشروعة لمجرد الادعاء بان ايا من غاياتها تهدف الى تقييد حرية التجارة."
+    }
+  ],
+  "cited_article_numbers": [
+    112
+  ],
+  "grounded": true,
+  "warnings": [],
+  "model": "gpt-5-nano",
+  "usage": {
+    "input_tokens": 2852,
+    "output_tokens": 220,
+    "total_tokens": 3072
+  },
+  "elapsed_ms": 2676,
+  "debug": null
+}

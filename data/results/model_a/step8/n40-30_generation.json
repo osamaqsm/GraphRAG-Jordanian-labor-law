@@ -1,0 +1,29 @@
+{
+  "schema_version": "generation.v1",
+  "status": "generated",
+  "question": "أي جهة تملك إصدار الأنظمة اللازمة لتنفيذ أحكام قانون العمل، وبناء على تنسيب من؟",
+  "retrieval_schema_version": "retrieval.v1",
+  "answer_ar": "تملك إصدار الأنظمة اللازمة لتنفيذ أحكام قانون العمل مجلس الوزراء بناء على تنسيب من الوزير. [المادة 140]",
+  "key_points": [],
+  "citations": [
+    {
+      "article_number": 140,
+      "label_ar": "المادة 140",
+      "uri": "http://example.org/jordan-labor-law#article_140",
+      "excerpt": "لمجلس الوزراء بناء على تنسيب من الوزير ان يصدر الانظمة اللازمة لتنفيذ احكام هذا القانون."
+    }
+  ],
+  "cited_article_numbers": [
+    140
+  ],
+  "grounded": true,
+  "warnings": [],
+  "model": "gpt-5-nano",
+  "usage": {
+    "input_tokens": 2710,
+    "output_tokens": 177,
+    "total_tokens": 2887
+  },
+  "elapsed_ms": 2290,
+  "debug": null
+}

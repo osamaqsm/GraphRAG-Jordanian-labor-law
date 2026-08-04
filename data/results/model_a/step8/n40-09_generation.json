@@ -1,0 +1,22 @@
+{
+  "schema_version": "generation.v1",
+  "status": "insufficient_evidence",
+  "question": "وفق أي مرجع توزع تعويضات إصابة العمل عند وفاة العامل على المستحقين عنه؟",
+  "retrieval_schema_version": "retrieval.v1",
+  "answer_ar": "تعذر اعتماد الإجابة لأن توثيقها غير صالح.",
+  "key_points": [],
+  "citations": [],
+  "cited_article_numbers": [],
+  "grounded": false,
+  "warnings": [
+    "Answer referenced unretrieved articles: 95"
+  ],
+  "model": "",
+  "usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0
+  },
+  "elapsed_ms": 6262,
+  "debug": null
+}

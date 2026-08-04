@@ -1,0 +1,30 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "أريد تسجيل شركة ذات مسؤولية محدودة؛ ما رأس المال والوثائق وإجراءات التسجيل؟",
+  "decision": {
+    "behavior": "abstain",
+    "reason": "السؤال خارج نطاق قانون العمل الأردني",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.8
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 0,
+    "input_tokens": 0
+  },
+  "articles": [],
+  "concepts": [],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [],
+    "concept_local_names": [],
+    "graph_supported_articles": [],
+    "concept_count": 0,
+    "expanded_concept_count": 0,
+    "article_count": 0
+  },
+  "elapsed_ms": 12185,
+  "debug": null
+}

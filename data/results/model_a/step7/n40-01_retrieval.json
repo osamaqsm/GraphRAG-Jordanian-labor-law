@@ -1,0 +1,336 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "ما الاسم الرسمي لقانون العمل، وبعد كم يوماً من نشره في الجريدة الرسمية يبدأ العمل به؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "الأسئلة تقع ضمن قانون العمل الأردني وتتعلق باسم القانون ونطاق سريانه بعد النشر، وهو مجال بحثي مؤسسي معمول به ويتطلب بحثاً في النصوص التنظيمية من المصادر الرسمية.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.92
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 60
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_1",
+      "local_name": "article_1",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 1"
+      ],
+      "labels_en": [],
+      "article_number": 1,
+      "text": "يسمى هذا القانون (قانون العمل لسنة 1996) ويعمل به بعد مرور ستين يوما على تاريخ نشره في الجريدة الرسمية.",
+      "final_score": 1.0,
+      "fused_score": 0.07652035959809625,
+      "direct_score": 0.07652035959809625,
+      "graph_score": 0.0,
+      "paragraph_score": 0.09090909090909091,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#work_concept",
+      "local_name": "work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#work_concept\nLocal name: work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل",
+      "final_score": 0.0,
+      "fused_score": 0.071568387570345,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+      "local_name": "work_negligence_violation",
+      "node_kind": "WorkNegligence",
+      "labels_ar": [
+        "مخالفة الإهمال في العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#work_negligence_violation\nLocal name: work_negligence_violation\nNode kind: WorkNegligence\nRDF types: WorkNegligence\nArabic labels: مخالفة الإهمال في العمل",
+      "final_score": 0.0,
+      "fused_score": 0.03225806451612903,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+      "local_name": "temporary_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل المؤقت"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#temporary_work_concept\nLocal name: temporary_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل المؤقت",
+      "final_score": 0.0,
+      "fused_score": 0.07007211538461539,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+      "local_name": "employment_contract_concept",
+      "node_kind": "EmploymentContract",
+      "labels_ar": [
+        "عقد العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employment_contract_concept\nLocal name: employment_contract_concept\nNode kind: EmploymentContract\nRDF types: EmploymentContract\nArabic labels: عقد العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06737103174603175,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_concept",
+      "local_name": "employer_concept",
+      "node_kind": "Employer",
+      "labels_ar": [
+        "صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_concept\nLocal name: employer_concept\nNode kind: Employer\nRDF types: Employer\nArabic labels: صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06736184961991414,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+      "local_name": "perform_work_obligation",
+      "node_kind": "PerformWork",
+      "labels_ar": [
+        "التزام أداء العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#perform_work_obligation\nLocal name: perform_work_obligation\nNode kind: PerformWork\nRDF types: PerformWork\nArabic labels: التزام أداء العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06684948400077886,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#occasional_work_concept",
+      "local_name": "occasional_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل العرضي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#occasional_work_concept\nLocal name: occasional_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل العرضي",
+      "final_score": 0.0,
+      "fused_score": 0.06646869112622537,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+      "local_name": "employers_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "نقابة أصحاب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.0660665718491903,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#seasonal_work_concept",
+      "local_name": "seasonal_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل الموسمي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#seasonal_work_concept\nLocal name: seasonal_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل الموسمي",
+      "final_score": 0.0,
+      "fused_score": 0.06606173677069199,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#oral_contract_concept",
+      "local_name": "oral_contract_concept",
+      "node_kind": "OralContract",
+      "labels_ar": [
+        "عقد العمل الشفهي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#oral_contract_concept\nLocal name: oral_contract_concept\nNode kind: OralContract\nRDF types: OralContract\nArabic labels: عقد العمل الشفهي",
+      "final_score": 0.0,
+      "fused_score": 0.06284931154842716,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+      "local_name": "employer_liability_consequence",
+      "node_kind": "EmployerLiability",
+      "labels_ar": [
+        "مسؤولية صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_liability_consequence\nLocal name: employer_liability_consequence\nNode kind: EmployerLiability\nRDF types: EmployerLiability\nArabic labels: مسؤولية صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.062021221532091095,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#written_contract_concept",
+      "local_name": "written_contract_concept",
+      "node_kind": "WrittenContract",
+      "labels_ar": [
+        "عقد العمل الخطي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#written_contract_concept\nLocal name: written_contract_concept\nNode kind: WrittenContract\nRDF types: WrittenContract\nArabic labels: عقد العمل الخطي",
+      "final_score": 0.0,
+      "fused_score": 0.06104524474554783,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#disclosure_employer_secrets_violation",
+      "local_name": "disclosure_employer_secrets_violation",
+      "node_kind": "DisclosureOfEmployerSecrets",
+      "labels_ar": [
+        "مخالفة إفشاء أسرار صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#disclosure_employer_secrets_violation\nLocal name: disclosure_employer_secrets_violation\nNode kind: DisclosureOfEmployerSecrets\nRDF types: DisclosureOfEmployerSecrets\nArabic labels: مخالفة إفشاء أسرار صاحب العمل",
+      "final_score": 1.3203125,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.3203125,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#follow_lawful_instructions_obligation",
+      "local_name": "follow_lawful_instructions_obligation",
+      "node_kind": "FollowLawfulInstructions",
+      "labels_ar": [
+        "التزام اتباع التعليمات المشروعة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#follow_lawful_instructions_obligation\nLocal name: follow_lawful_instructions_obligation\nNode kind: FollowLawfulInstructions\nRDF types: FollowLawfulInstructions\nArabic labels: التزام اتباع التعليمات المشروعة",
+      "final_score": 0.9750000000000001,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.9750000000000001,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#disciplinary_action_consequence",
+      "local_name": "disciplinary_action_consequence",
+      "node_kind": "DisciplinaryAction",
+      "labels_ar": [
+        "الإجراء التأديبي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#disciplinary_action_consequence\nLocal name: disciplinary_action_consequence\nNode kind: DisciplinaryAction\nRDF types: DisciplinaryAction\nArabic labels: الإجراء التأديبي",
+      "final_score": 0.8125,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.8125,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "diagnostics": {
+    "article_numbers": [
+      1
+    ],
+    "concept_local_names": [
+      "work_concept",
+      "work_negligence_violation",
+      "temporary_work_concept",
+      "employment_contract_concept",
+      "employer_concept",
+      "perform_work_obligation",
+      "occasional_work_concept",
+      "employers_union_concept",
+      "seasonal_work_concept",
+      "oral_contract_concept",
+      "employer_liability_consequence",
+      "written_contract_concept"
+    ],
+    "graph_supported_articles": [],
+    "concept_count": 12,
+    "expanded_concept_count": 3,
+    "article_count": 1
+  },
+  "elapsed_ms": 43748,
+  "debug": null
+}

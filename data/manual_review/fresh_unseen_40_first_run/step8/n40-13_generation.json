@@ -1,0 +1,29 @@
+{
+  "schema_version": "generation.v1",
+  "status": "generated",
+  "question": "متى يلغي مسجل النقابات شهادة تسجيل نقابة العمال أو نقابة أصحاب العمل؟",
+  "retrieval_schema_version": "retrieval.v1",
+  "answer_ar": "يلغي المسجل شهادة تسجيل نقابة العمال أو نقابة أصحاب العمل إذا ثبت أنها أصبحت غير قائمة، إما لحلها اختيارياً أو لأنها حلت وفق أحكام هذا القانون أو بقرار قضائي. [المادة 105]",
+  "key_points": [],
+  "citations": [
+    {
+      "article_number": 105,
+      "label_ar": "المادة 105",
+      "uri": "http://example.org/jordan-labor-law#article_105",
+      "excerpt": "يقوم المسجل بالغاء شهادة تسجيل النقابة او نقابة اصحاب العمل اذا ثبت انها اصبحت غير قائمة اما لحلها اختيارياً او لانها حلت وفقا لاحكام هذا القانون او بقرار قضائي."
+    }
+  ],
+  "cited_article_numbers": [
+    105
+  ],
+  "grounded": true,
+  "warnings": [],
+  "model": "gpt-5-nano",
+  "usage": {
+    "input_tokens": 2745,
+    "output_tokens": 319,
+    "total_tokens": 3064
+  },
+  "elapsed_ms": 17219,
+  "debug": null
+}

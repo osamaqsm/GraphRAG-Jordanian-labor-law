@@ -7,6 +7,8 @@ from fastapi.responses import JSONResponse
 
 from app.config import get_settings
 from app.weaviate_db import connect_to_weaviate_with_retry
+from app.retrieval_api import register_retrieval_routes
+from app.generation_api import register_generation_routes
 
 
 logging.basicConfig(
@@ -64,6 +66,9 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+
+register_retrieval_routes(app)
+register_generation_routes(app)
 
 @app.get(
     "/",

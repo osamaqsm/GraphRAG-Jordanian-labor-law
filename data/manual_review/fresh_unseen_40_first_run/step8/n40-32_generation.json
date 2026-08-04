@@ -1,0 +1,36 @@
+{
+  "schema_version": "generation.v1",
+  "status": "generated",
+  "question": "من كلفه القانون بتنفيذ أحكام قانون العمل؟",
+  "retrieval_schema_version": "retrieval.v1",
+  "answer_ar": "وفق [المادة 142]، رئيس الوزراء والوزراء مكلفون بتنفيذ أحكام قانون العمل. [المادة 142] وتوضح [المادة 5]أن تتولى الوزارة القيام بمهام التفتيش تطبيقاً لأحكام هذا القانون. [المادة 5]",
+  "key_points": [],
+  "citations": [
+    {
+      "article_number": 142,
+      "label_ar": "المادة 142",
+      "uri": "http://example.org/jordan-labor-law#article_142",
+      "excerpt": "رئيس الوزراء والوزراء مكلفون بتنفيذ احكام هذا القانون."
+    },
+    {
+      "article_number": 5,
+      "label_ar": "المادة 5",
+      "uri": "http://example.org/jordan-labor-law#article_5",
+      "excerpt": "تتولى الوزارة القيام بمهام التفتيش تطبيقاً لاحكام هذا القانون."
+    }
+  ],
+  "cited_article_numbers": [
+    142,
+    5
+  ],
+  "grounded": true,
+  "warnings": [],
+  "model": "gpt-5-nano",
+  "usage": {
+    "input_tokens": 2816,
+    "output_tokens": 333,
+    "total_tokens": 3149
+  },
+  "elapsed_ms": 4025,
+  "debug": null
+}

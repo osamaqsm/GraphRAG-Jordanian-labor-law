@@ -1,0 +1,1424 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "كيف يوثق عقد العمل الجماعي لدى الوزارة، وما أقصى مدة للعقد المحدد وكيف ينهى العقد غير المحدد؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "المسألة داخل نطاق قانون العمل الأردني وتطلب استخراج أحكام محددة لإجراءات التوثيق، مدة العقد المحدد، وإنهاء العقد غير المحدد.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.92
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 69
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_39",
+      "local_name": "article_39",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 39"
+      ],
+      "labels_en": [],
+      "article_number": 39,
+      "text": "ينظم عقد العمل الجماعي على ثلاث نسخ اصلية على الاقل ويحتفظ كل طرف بنسخة منه وتودع النسخة الثالثة لدى الوزارة لتسجيلها في سجل خاص ويكون عقد العمل الجماعي ملزماً من التاريخ المحدد فيه وفي حالة عدم تحديد التاريخ فمن تاريخ تسجيله في الوزارة.",
+      "final_score": 1.0,
+      "fused_score": 0.07600832682799896,
+      "direct_score": 0.07600832682799896,
+      "graph_score": 1.0252608495536184,
+      "paragraph_score": 0.09090909090909091,
+      "graph_supported": true,
+      "support_paths": [
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+          "seed_label": "عقد العمل الجماعي",
+          "article_uri": "http://example.org/jordan-labor-law#article_39",
+          "score": 0.8202086796428948,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+              "relation": "regulatedBy",
+              "target_uri": "http://example.org/jordan-labor-law#article_39"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+          "seed_label": "عقد العمل الجماعي",
+          "article_uri": "http://example.org/jordan-labor-law#article_39",
+          "score": 1.0252608495536184,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+              "relation": "supportedByArticle",
+              "target_uri": "http://example.org/jordan-labor-law#article_39"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+          "seed_label": "عقد العمل الجماعي",
+          "article_uri": "http://example.org/jordan-labor-law#article_39",
+          "score": 0.5126304247768092,
+          "steps": [
+            {
+              "direction": "incoming",
+              "source_uri": "http://example.org/jordan-labor-law#article_39",
+              "relation": "regulates",
+              "target_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#article_40",
+      "local_name": "article_40",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 40"
+      ],
+      "labels_en": [],
+      "article_number": 40,
+      "text": "يكون عقد العمل الجماعي لمدة معينة او غير معينة فاذا عقد لمدة معينة فلا يجوز ان تتجاوز السنتين واذا عقد لمدة غير معينة ومضى على تنفيذه سنتان على الاقل فيكون لكل من طرفي العقد حق انهائه بموجب اشعار يبلغ الى الطرف الاخر قبل شهر على الاقل من تاريخ الانهاء وتبلغ الوزارة بنسخة عن هذا الاشعار.",
+      "final_score": 0.99,
+      "fused_score": 0.07514799635701275,
+      "direct_score": 0.07514799635701275,
+      "graph_score": 1.0252608495536184,
+      "paragraph_score": 0.08333333333333333,
+      "graph_supported": true,
+      "support_paths": [
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+          "seed_label": "عقد العمل الجماعي",
+          "article_uri": "http://example.org/jordan-labor-law#article_40",
+          "score": 0.8202086796428948,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+              "relation": "regulatedBy",
+              "target_uri": "http://example.org/jordan-labor-law#article_40"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+          "seed_label": "عقد العمل الجماعي",
+          "article_uri": "http://example.org/jordan-labor-law#article_40",
+          "score": 1.0252608495536184,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+              "relation": "supportedByArticle",
+              "target_uri": "http://example.org/jordan-labor-law#article_40"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+          "seed_label": "عقد العمل الجماعي",
+          "article_uri": "http://example.org/jordan-labor-law#article_40",
+          "score": 0.5126304247768092,
+          "steps": [
+            {
+              "direction": "incoming",
+              "source_uri": "http://example.org/jordan-labor-law#article_40",
+              "relation": "regulates",
+              "target_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#article_41",
+      "local_name": "article_41",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 41"
+      ],
+      "labels_en": [],
+      "article_number": 41,
+      "text": "أ . اذا انتهى عقد العمل الجماعي بانتهاء اجله او بانهائه من قبل احد الطرفين وفقاً لاحكام المادة (40) من هذا القانون\n\n    وكانت هناك مفاوضات لتجديده او تمديد مدته او تعديله فان مفعوله يبقى ساريا طيلة المفاوضات لمدة لا تزيد على ستة\n\n    اشهر فاذا لم تنته المفاوضات الى اتفاق خلال هذه المدة يعتبر العقد منتهياً.\n\nب. ان انتهاء عقد العمل الجماعي لا يجيز لصاحب العمل المساس باي صورة من الصور بالحقوق التي اكتسبها العمال الذين\n\n    كان العقد يشملهم.",
+      "final_score": 0.98,
+      "fused_score": 0.07127725428158745,
+      "direct_score": 0.07127725428158745,
+      "graph_score": 1.0252608495536184,
+      "paragraph_score": 0.11437908496732026,
+      "graph_supported": true,
+      "support_paths": [
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+          "seed_label": "عقد العمل الجماعي",
+          "article_uri": "http://example.org/jordan-labor-law#article_41",
+          "score": 0.8202086796428948,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+              "relation": "regulatedBy",
+              "target_uri": "http://example.org/jordan-labor-law#article_41"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+          "seed_label": "عقد العمل الجماعي",
+          "article_uri": "http://example.org/jordan-labor-law#article_41",
+          "score": 1.0252608495536184,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+              "relation": "supportedByArticle",
+              "target_uri": "http://example.org/jordan-labor-law#article_41"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+          "seed_label": "عقد العمل الجماعي",
+          "article_uri": "http://example.org/jordan-labor-law#article_41",
+          "score": 0.5126304247768092,
+          "steps": [
+            {
+              "direction": "incoming",
+              "source_uri": "http://example.org/jordan-labor-law#article_41",
+              "relation": "regulates",
+              "target_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#indefinite_term_contract_concept",
+      "local_name": "indefinite_term_contract_concept",
+      "node_kind": "IndefiniteTermContract",
+      "labels_ar": [
+        "عقد العمل غير محدد المدة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#indefinite_term_contract_concept\nLocal name: indefinite_term_contract_concept\nNode kind: IndefiniteTermContract\nRDF types: IndefiniteTermContract\nArabic labels: عقد العمل غير محدد المدة",
+      "final_score": 0.0,
+      "fused_score": 0.06924270732883317,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+      "local_name": "collective_employment_contract_concept",
+      "node_kind": "EmploymentRelation",
+      "labels_ar": [
+        "عقد العمل الجماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#collective_employment_contract_concept\nLocal name: collective_employment_contract_concept\nNode kind: EmploymentRelation\nRDF types: EmploymentRelation\nArabic labels: عقد العمل الجماعي",
+      "final_score": 0.0,
+      "fused_score": 0.07199284058088923,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#contract_indefinite_term_condition",
+      "local_name": "contract_indefinite_term_condition",
+      "node_kind": "ContractIsIndefiniteTerm",
+      "labels_ar": [
+        "شرط كون العقد غير محدد المدة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#contract_indefinite_term_condition\nLocal name: contract_indefinite_term_condition\nNode kind: ContractIsIndefiniteTerm\nRDF types: ContractIsIndefiniteTerm\nArabic labels: شرط كون العقد غير محدد المدة",
+      "final_score": 0.0,
+      "fused_score": 0.07142857142857142,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#termination_contract_consequence",
+      "local_name": "termination_contract_consequence",
+      "node_kind": "TerminationOfContract",
+      "labels_ar": [
+        "إنهاء العقد"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#termination_contract_consequence\nLocal name: termination_contract_consequence\nNode kind: TerminationOfContract\nRDF types: TerminationOfContract\nArabic labels: إنهاء العقد",
+      "final_score": 0.0,
+      "fused_score": 0.0699418880455408,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#contract_fixed_term_condition",
+      "local_name": "contract_fixed_term_condition",
+      "node_kind": "ContractIsFixedTerm",
+      "labels_ar": [
+        "شرط كون العقد محدد المدة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#contract_fixed_term_condition\nLocal name: contract_fixed_term_condition\nNode kind: ContractIsFixedTerm\nRDF types: ContractIsFixedTerm\nArabic labels: شرط كون العقد محدد المدة",
+      "final_score": 0.0,
+      "fused_score": 0.0695924253545981,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+      "local_name": "employment_contract_concept",
+      "node_kind": "EmploymentContract",
+      "labels_ar": [
+        "عقد العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employment_contract_concept\nLocal name: employment_contract_concept\nNode kind: EmploymentContract\nRDF types: EmploymentContract\nArabic labels: عقد العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06890264586160108,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#fixed_term_contract_concept",
+      "local_name": "fixed_term_contract_concept",
+      "node_kind": "FixedTermContract",
+      "labels_ar": [
+        "عقد العمل محدد المدة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#fixed_term_contract_concept\nLocal name: fixed_term_contract_concept\nNode kind: FixedTermContract\nRDF types: FixedTermContract\nArabic labels: عقد العمل محدد المدة",
+      "final_score": 0.0,
+      "fused_score": 0.06735594154948993,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#contract_formation_event",
+      "local_name": "contract_formation_event",
+      "node_kind": "ContractFormation",
+      "labels_ar": [
+        "حدث إبرام العقد"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#contract_formation_event\nLocal name: contract_formation_event\nNode kind: ContractFormation\nRDF types: ContractFormation\nArabic labels: حدث إبرام العقد",
+      "final_score": 0.0,
+      "fused_score": 0.06648351648351648,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#written_contract_concept",
+      "local_name": "written_contract_concept",
+      "node_kind": "WrittenContract",
+      "labels_ar": [
+        "عقد العمل الخطي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#written_contract_concept\nLocal name: written_contract_concept\nNode kind: WrittenContract\nRDF types: WrittenContract\nArabic labels: عقد العمل الخطي",
+      "final_score": 0.0,
+      "fused_score": 0.06545224189610951,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#oral_contract_concept",
+      "local_name": "oral_contract_concept",
+      "node_kind": "OralContract",
+      "labels_ar": [
+        "عقد العمل الشفهي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#oral_contract_concept\nLocal name: oral_contract_concept\nNode kind: OralContract\nRDF types: OralContract\nArabic labels: عقد العمل الشفهي",
+      "final_score": 0.0,
+      "fused_score": 0.0654305200341006,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#ministry_concept",
+      "local_name": "ministry_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "الوزارة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#ministry_concept\nLocal name: ministry_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الوزارة",
+      "final_score": 0.0,
+      "fused_score": 0.0618293978104001,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#collective_labor_dispute_concept",
+      "local_name": "collective_labor_dispute_concept",
+      "node_kind": "LegalEvent",
+      "labels_ar": [
+        "النزاع العمالي الجماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#collective_labor_dispute_concept\nLocal name: collective_labor_dispute_concept\nNode kind: LegalEvent\nRDF types: LegalEvent\nArabic labels: النزاع العمالي الجماعي",
+      "final_score": 0.0,
+      "fused_score": 0.061286149162861486,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      39,
+      40,
+      41
+    ],
+    "concept_local_names": [
+      "indefinite_term_contract_concept",
+      "collective_employment_contract_concept",
+      "contract_indefinite_term_condition",
+      "termination_contract_consequence",
+      "contract_fixed_term_condition",
+      "employment_contract_concept",
+      "fixed_term_contract_concept",
+      "contract_formation_event",
+      "written_contract_concept",
+      "oral_contract_concept",
+      "ministry_concept",
+      "collective_labor_dispute_concept"
+    ],
+    "graph_supported_articles": [
+      39,
+      40,
+      41
+    ],
+    "concept_count": 12,
+    "expanded_concept_count": 0,
+    "article_count": 3
+  },
+  "elapsed_ms": 20414,
+  "debug": {
+    "analysis": {
+      "normalized_question": "كيف يوثق عقد العمل الجماعي لدي الوزاره وما اقصي مده للعقد المحدد وكيف ينهي العقد غير المحدد كيف يوثق عقد العمل الجماعي لدي الوزاره ما اقصي مده العقد المحدد وكيف ينهي العقد غير المحدد اجراءات توثيق عقد العمل الجماعي لدي الوزاره اقصي مده العقد المحدد طريقه انهاء العقد غير المحدد اجراءات توثيق عقد العمل الجماعي لدي الوزاره اقصي مده العقد المحدد في قانون العمل الاردني طرق انهاء العقد غير محدد المده في قانون العمل الاردني",
+      "issue_ids": [],
+      "planner_queries": [
+        "إجراءات توثيق عقد العمل الجماعي لدى الوزارة",
+        "أقصى مدة العقد المحدد في قانون العمل الأردني",
+        "طرق إنهاء العقد غير محدد المدة في قانون العمل الأردني"
+      ],
+      "planner_issue_labels": [
+        "إجراءات توثيق عقد العمل الجماعي لدى الوزارة",
+        "أقصى مدة العقد المحدد",
+        "طريقة إنهاء العقد غير المحدد"
+      ],
+      "max_final_articles": 3
+    },
+    "query_plan": {
+      "decision": "retrieve",
+      "confidence": 0.92,
+      "decision_reason": "المسألة داخل نطاق قانون العمل الأردني وتطلب استخراج أحكام محددة لإجراءات التوثيق، مدة العقد المحدد، وإنهاء العقد غير المحدد.",
+      "normalized_question_ar": "كيف يوثق عقد العمل الجماعي لدى الوزارة؛ ما أقصى مدة العقد المحدد؛ وكيف ينهى العقد غير المحدد؟",
+      "legal_domain": "Jordanian Labor Law",
+      "atomic_issues": [
+        {
+          "issue_ar": "إجراءات توثيق عقد العمل الجماعي لدى الوزارة",
+          "retrieval_query_ar": "إجراءات توثيق عقد العمل الجماعي لدى الوزارة",
+          "actors": [
+            "الوزارة"
+          ],
+          "conditions": [],
+          "numbers": [],
+          "requested_result_ar": "الحكم الإجرائي لإجراءات توثيق عقد العمل الجماعي مع الجهة المختصة"
+        },
+        {
+          "issue_ar": "أقصى مدة العقد المحدد",
+          "retrieval_query_ar": "أقصى مدة العقد المحدد في قانون العمل الأردني",
+          "actors": [
+            "الوزارة",
+            "الموظفان المعنيان؟"
+          ],
+          "conditions": [],
+          "numbers": [],
+          "requested_result_ar": "القاعدة القانونية حول مدة العقد المحدد والحد الأقصى لها"
+        },
+        {
+          "issue_ar": "طريقة إنهاء العقد غير المحدد",
+          "retrieval_query_ar": "طرق إنهاء العقد غير محدد المدة في قانون العمل الأردني",
+          "actors": [
+            "المؤسسة",
+            "العامل"
+          ],
+          "conditions": [],
+          "numbers": [],
+          "requested_result_ar": "الإجراءات القانونية لإنهاء عقد العمل غير المدة المحددة"
+        }
+      ],
+      "minimum_articles": 1,
+      "maximum_articles": 3,
+      "clarification_question_ar": ""
+    },
+    "raw_preview": {
+      "question": "كيف يوثق عقد العمل الجماعي لدى الوزارة، وما أقصى مدة للعقد المحدد وكيف ينهى العقد غير المحدد؟",
+      "embedding_model": "text-embedding-3-small",
+      "embedding_dimensions": 1536,
+      "embedding_input_tokens": 69,
+      "concept_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#indefinite_term_contract_concept",
+          "local_name": "indefinite_term_contract_concept",
+          "node_kind": "IndefiniteTermContract",
+          "labels_ar": [
+            "عقد العمل غير محدد المدة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#indefinite_term_contract_concept\nLocal name: indefinite_term_contract_concept\nNode kind: IndefiniteTermContract\nRDF types: IndefiniteTermContract\nArabic labels: عقد العمل غير محدد المدة",
+          "vector_rank": 4,
+          "vector_distance": 0.6130011081695557,
+          "bm25_rank": 1,
+          "bm25_score": 57.60067367553711,
+          "fused_score": 0.06924270732883317,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+          "local_name": "collective_employment_contract_concept",
+          "node_kind": "EmploymentRelation",
+          "labels_ar": [
+            "عقد العمل الجماعي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#collective_employment_contract_concept\nLocal name: collective_employment_contract_concept\nNode kind: EmploymentRelation\nRDF types: EmploymentRelation\nArabic labels: عقد العمل الجماعي",
+          "vector_rank": 5,
+          "vector_distance": 0.6197469830513,
+          "bm25_rank": 2,
+          "bm25_score": 54.150177001953125,
+          "fused_score": 0.07199284058088923,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#contract_indefinite_term_condition",
+          "local_name": "contract_indefinite_term_condition",
+          "node_kind": "ContractIsIndefiniteTerm",
+          "labels_ar": [
+            "شرط كون العقد غير محدد المدة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#contract_indefinite_term_condition\nLocal name: contract_indefinite_term_condition\nNode kind: ContractIsIndefiniteTerm\nRDF types: ContractIsIndefiniteTerm\nArabic labels: شرط كون العقد غير محدد المدة",
+          "vector_rank": 3,
+          "vector_distance": 0.604378879070282,
+          "bm25_rank": 3,
+          "bm25_score": 51.03885269165039,
+          "fused_score": 0.07142857142857142,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#termination_contract_consequence",
+          "local_name": "termination_contract_consequence",
+          "node_kind": "TerminationOfContract",
+          "labels_ar": [
+            "إنهاء العقد"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#termination_contract_consequence\nLocal name: termination_contract_consequence\nNode kind: TerminationOfContract\nRDF types: TerminationOfContract\nArabic labels: إنهاء العقد",
+          "vector_rank": 8,
+          "vector_distance": 0.670622706413269,
+          "bm25_rank": 4,
+          "bm25_score": 50.55499267578125,
+          "fused_score": 0.0699418880455408,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#contract_fixed_term_condition",
+          "local_name": "contract_fixed_term_condition",
+          "node_kind": "ContractIsFixedTerm",
+          "labels_ar": [
+            "شرط كون العقد محدد المدة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#contract_fixed_term_condition\nLocal name: contract_fixed_term_condition\nNode kind: ContractIsFixedTerm\nRDF types: ContractIsFixedTerm\nArabic labels: شرط كون العقد محدد المدة",
+          "vector_rank": 1,
+          "vector_distance": 0.5910809636116028,
+          "bm25_rank": 6,
+          "bm25_score": 41.61494445800781,
+          "fused_score": 0.0695924253545981,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "local_name": "employment_contract_concept",
+          "node_kind": "EmploymentContract",
+          "labels_ar": [
+            "عقد العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#employment_contract_concept\nLocal name: employment_contract_concept\nNode kind: EmploymentContract\nRDF types: EmploymentContract\nArabic labels: عقد العمل",
+          "vector_rank": 6,
+          "vector_distance": 0.6516305208206177,
+          "bm25_rank": 7,
+          "bm25_score": 35.684688568115234,
+          "fused_score": 0.06890264586160108,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#fixed_term_contract_concept",
+          "local_name": "fixed_term_contract_concept",
+          "node_kind": "FixedTermContract",
+          "labels_ar": [
+            "عقد العمل محدد المدة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#fixed_term_contract_concept\nLocal name: fixed_term_contract_concept\nNode kind: FixedTermContract\nRDF types: FixedTermContract\nArabic labels: عقد العمل محدد المدة",
+          "vector_rank": 2,
+          "vector_distance": 0.598615288734436,
+          "bm25_rank": 5,
+          "bm25_score": 48.1097412109375,
+          "fused_score": 0.06735594154948993,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#contract_formation_event",
+          "local_name": "contract_formation_event",
+          "node_kind": "ContractFormation",
+          "labels_ar": [
+            "حدث إبرام العقد"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#contract_formation_event\nLocal name: contract_formation_event\nNode kind: ContractFormation\nRDF types: ContractFormation\nArabic labels: حدث إبرام العقد",
+          "vector_rank": 10,
+          "vector_distance": 0.6873664855957031,
+          "bm25_rank": 10,
+          "bm25_score": 28.75125503540039,
+          "fused_score": 0.06648351648351648,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#written_contract_concept",
+          "local_name": "written_contract_concept",
+          "node_kind": "WrittenContract",
+          "labels_ar": [
+            "عقد العمل الخطي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#written_contract_concept\nLocal name: written_contract_concept\nNode kind: WrittenContract\nRDF types: WrittenContract\nArabic labels: عقد العمل الخطي",
+          "vector_rank": 7,
+          "vector_distance": 0.6682870388031006,
+          "bm25_rank": 9,
+          "bm25_score": 31.721467971801758,
+          "fused_score": 0.06545224189610951,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#oral_contract_concept",
+          "local_name": "oral_contract_concept",
+          "node_kind": "OralContract",
+          "labels_ar": [
+            "عقد العمل الشفهي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#oral_contract_concept\nLocal name: oral_contract_concept\nNode kind: OralContract\nRDF types: OralContract\nArabic labels: عقد العمل الشفهي",
+          "vector_rank": 9,
+          "vector_distance": 0.6720008850097656,
+          "bm25_rank": 8,
+          "bm25_score": 31.721467971801758,
+          "fused_score": 0.0654305200341006,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#ministry_concept",
+          "local_name": "ministry_concept",
+          "node_kind": "LegalActor",
+          "labels_ar": [
+            "الوزارة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#ministry_concept\nLocal name: ministry_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الوزارة",
+          "vector_rank": 26,
+          "vector_distance": 0.7505258321762085,
+          "bm25_rank": 11,
+          "bm25_score": 25.878795623779297,
+          "fused_score": 0.0618293978104001,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#collective_labor_dispute_concept",
+          "local_name": "collective_labor_dispute_concept",
+          "node_kind": "LegalEvent",
+          "labels_ar": [
+            "النزاع العمالي الجماعي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#collective_labor_dispute_concept\nLocal name: collective_labor_dispute_concept\nNode kind: LegalEvent\nRDF types: LegalEvent\nArabic labels: النزاع العمالي الجماعي",
+          "vector_rank": 15,
+          "vector_distance": 0.7207846641540527,
+          "bm25_rank": 12,
+          "bm25_score": 22.538667678833008,
+          "fused_score": 0.061286149162861486,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ],
+      "expanded_concept_hits": [],
+      "article_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#article_39",
+          "local_name": "article_39",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 39"
+          ],
+          "labels_en": [],
+          "article_number": 39,
+          "text_preview": "ينظم عقد العمل الجماعي على ثلاث نسخ اصلية على الاقل ويحتفظ كل طرف بنسخة منه وتودع النسخة الثالثة لدى الوزارة لتسجيلها في سجل خاص ويكون عقد العمل الجماعي ملزماً من التاريخ المحدد فيه وفي حالة عدم تحديد التاريخ فمن تاريخ تسجيله في الوزارة.",
+          "vector_rank": 3,
+          "vector_distance": 0.46857941150665283,
+          "bm25_rank": 1,
+          "bm25_score": 73.9576416015625,
+          "fused_score": 0.07600832682799896,
+          "direct_score": 0.07600832682799896,
+          "graph_score": 1.0252608495536184,
+          "paragraph_score": 0.09090909090909091,
+          "final_score": 1.0,
+          "graph_supported": true,
+          "support_paths": [
+            {
+              "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+              "seed_label": "عقد العمل الجماعي",
+              "article_uri": "http://example.org/jordan-labor-law#article_39",
+              "score": 0.8202086796428948,
+              "steps": [
+                {
+                  "direction": "outgoing",
+                  "source_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+                  "relation": "regulatedBy",
+                  "target_uri": "http://example.org/jordan-labor-law#article_39"
+                }
+              ]
+            },
+            {
+              "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+              "seed_label": "عقد العمل الجماعي",
+              "article_uri": "http://example.org/jordan-labor-law#article_39",
+              "score": 1.0252608495536184,
+              "steps": [
+                {
+                  "direction": "outgoing",
+                  "source_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+                  "relation": "supportedByArticle",
+                  "target_uri": "http://example.org/jordan-labor-law#article_39"
+                }
+              ]
+            },
+            {
+              "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+              "seed_label": "عقد العمل الجماعي",
+              "article_uri": "http://example.org/jordan-labor-law#article_39",
+              "score": 0.5126304247768092,
+              "steps": [
+                {
+                  "direction": "incoming",
+                  "source_uri": "http://example.org/jordan-labor-law#article_39",
+                  "relation": "regulates",
+                  "target_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_40",
+          "local_name": "article_40",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 40"
+          ],
+          "labels_en": [],
+          "article_number": 40,
+          "text_preview": "يكون عقد العمل الجماعي لمدة معينة او غير معينة فاذا عقد لمدة معينة فلا يجوز ان تتجاوز السنتين واذا عقد لمدة غير معينة ومضى على تنفيذه سنتان على الاقل فيكون لكل من طرفي العقد حق انهائه بموجب اشعار يبلغ الى الطرف الاخر قبل شهر على الاقل من تاريخ الانهاء وتبلغ الوزارة بنسخة عن هذا الاشعار.",
+          "vector_rank": 1,
+          "vector_distance": 0.4284316301345825,
+          "bm25_rank": 3,
+          "bm25_score": 54.86665344238281,
+          "fused_score": 0.07514799635701275,
+          "direct_score": 0.07514799635701275,
+          "graph_score": 1.0252608495536184,
+          "paragraph_score": 0.08333333333333333,
+          "final_score": 0.99,
+          "graph_supported": true,
+          "support_paths": [
+            {
+              "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+              "seed_label": "عقد العمل الجماعي",
+              "article_uri": "http://example.org/jordan-labor-law#article_40",
+              "score": 0.8202086796428948,
+              "steps": [
+                {
+                  "direction": "outgoing",
+                  "source_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+                  "relation": "regulatedBy",
+                  "target_uri": "http://example.org/jordan-labor-law#article_40"
+                }
+              ]
+            },
+            {
+              "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+              "seed_label": "عقد العمل الجماعي",
+              "article_uri": "http://example.org/jordan-labor-law#article_40",
+              "score": 1.0252608495536184,
+              "steps": [
+                {
+                  "direction": "outgoing",
+                  "source_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+                  "relation": "supportedByArticle",
+                  "target_uri": "http://example.org/jordan-labor-law#article_40"
+                }
+              ]
+            },
+            {
+              "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+              "seed_label": "عقد العمل الجماعي",
+              "article_uri": "http://example.org/jordan-labor-law#article_40",
+              "score": 0.5126304247768092,
+              "steps": [
+                {
+                  "direction": "incoming",
+                  "source_uri": "http://example.org/jordan-labor-law#article_40",
+                  "relation": "regulates",
+                  "target_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_41",
+          "local_name": "article_41",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 41"
+          ],
+          "labels_en": [],
+          "article_number": 41,
+          "text_preview": "أ . اذا انتهى عقد العمل الجماعي بانتهاء اجله او بانهائه من قبل احد الطرفين وفقاً لاحكام المادة (40) من هذا القانون\n\n    وكانت هناك مفاوضات لتجديده او تمديد مدته او تعديله فان مفعوله يبقى ساريا طيلة المفاوضات لمدة لا تزيد على ستة\n\n    اشهر فاذا لم تنته المفاوضات الى اتفاق خلال هذه المدة يعتبر العقد منتهياً.\n\nب. ان انتهاء عقد العمل الجماعي لا يجيز لصاحب العمل المساس باي صورة من الصور بالحقوق التي اكتسبها العمال الذين\n\n    كان العقد يشملهم.",
+          "vector_rank": 2,
+          "vector_distance": 0.451884388923645,
+          "bm25_rank": 7,
+          "bm25_score": 47.26055145263672,
+          "fused_score": 0.07127725428158745,
+          "direct_score": 0.07127725428158745,
+          "graph_score": 1.0252608495536184,
+          "paragraph_score": 0.11437908496732026,
+          "final_score": 0.98,
+          "graph_supported": true,
+          "support_paths": [
+            {
+              "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+              "seed_label": "عقد العمل الجماعي",
+              "article_uri": "http://example.org/jordan-labor-law#article_41",
+              "score": 0.8202086796428948,
+              "steps": [
+                {
+                  "direction": "outgoing",
+                  "source_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+                  "relation": "regulatedBy",
+                  "target_uri": "http://example.org/jordan-labor-law#article_41"
+                }
+              ]
+            },
+            {
+              "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+              "seed_label": "عقد العمل الجماعي",
+              "article_uri": "http://example.org/jordan-labor-law#article_41",
+              "score": 1.0252608495536184,
+              "steps": [
+                {
+                  "direction": "outgoing",
+                  "source_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+                  "relation": "supportedByArticle",
+                  "target_uri": "http://example.org/jordan-labor-law#article_41"
+                }
+              ]
+            },
+            {
+              "seed_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+              "seed_label": "عقد العمل الجماعي",
+              "article_uri": "http://example.org/jordan-labor-law#article_41",
+              "score": 0.5126304247768092,
+              "steps": [
+                {
+                  "direction": "incoming",
+                  "source_uri": "http://example.org/jordan-labor-law#article_41",
+                  "relation": "regulates",
+                  "target_uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "raw_mixed_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#article_39",
+          "local_name": "article_39",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 39"
+          ],
+          "labels_en": [],
+          "article_number": 39,
+          "text_preview": "ينظم عقد العمل الجماعي على ثلاث نسخ اصلية على الاقل ويحتفظ كل طرف بنسخة منه وتودع النسخة الثالثة لدى الوزارة لتسجيلها في سجل خاص ويكون عقد العمل الجماعي ملزماً من التاريخ المحدد فيه وفي حالة عدم تحديد التاريخ فمن تاريخ تسجيله في الوزارة.",
+          "vector_rank": 6,
+          "vector_distance": 0.46857941150665283,
+          "bm25_rank": 1,
+          "bm25_score": 35.42485046386719,
+          "fused_score": 0.031544957774465976,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_39_paragraph_1",
+          "local_name": "article_39_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 39"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "ينظم عقد العمل الجماعي على ثلاث نسخ اصلية على الاقل ويحتفظ كل طرف بنسخة منه وتودع النسخة الثالثة لدى الوزارة لتسجيلها في سجل خاص ويكون عقد العمل الجماعي ملزماً من التاريخ المحدد فيه وفي حالة عدم تحديد التاريخ فمن تاريخ تسجيله في الوزارة.",
+          "vector_rank": 5,
+          "vector_distance": 0.46271324157714844,
+          "bm25_rank": 2,
+          "bm25_score": 35.13435745239258,
+          "fused_score": 0.0315136476426799,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_40_paragraph_1",
+          "local_name": "article_40_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 40"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يكون عقد العمل الجماعي لمدة معينة او غير معينة فاذا عقد لمدة معينة فلا يجوز ان تتجاوز السنتين واذا عقد لمدة غير معينة ومضى على تنفيذه سنتان على الاقل فيكون لكل من طرفي العقد حق انهائه بموجب اشعار يبلغ الى الطرف الاخر قبل شهر على الاقل من تاريخ الانهاء وتبلغ الوزارة بنسخة عن هذا الاشعار.",
+          "vector_rank": 1,
+          "vector_distance": 0.42110419273376465,
+          "bm25_rank": 7,
+          "bm25_score": 23.793502807617188,
+          "fused_score": 0.03131881575727918,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_40",
+          "local_name": "article_40",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 40"
+          ],
+          "labels_en": [],
+          "article_number": 40,
+          "text_preview": "يكون عقد العمل الجماعي لمدة معينة او غير معينة فاذا عقد لمدة معينة فلا يجوز ان تتجاوز السنتين واذا عقد لمدة غير معينة ومضى على تنفيذه سنتان على الاقل فيكون لكل من طرفي العقد حق انهائه بموجب اشعار يبلغ الى الطرف الاخر قبل شهر على الاقل من تاريخ الانهاء وتبلغ الوزارة بنسخة عن هذا الاشعار.",
+          "vector_rank": 3,
+          "vector_distance": 0.4284316301345825,
+          "bm25_rank": 6,
+          "bm25_score": 23.984230041503906,
+          "fused_score": 0.031024531024531024,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_23",
+          "local_name": "article_23",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 23"
+          ],
+          "labels_en": [],
+          "article_number": 23,
+          "text_preview": "أ . اذا رغب احد الطرفين في انهاء عقد العمل غير المحدد المدة فيترتب عليه اشعار الطرف الاخر خطياً برغبته في انهاء\n\n    العقد قبل شهر واحد على الاقل ولا يجوز سحب الاشعار الا بموافقة الطرفين.\n\nب. يبقى عقد العمل ساري المفعول طوال مدة الاشعار وتعتبر مدة الاشعار من مدة الخدمة.\n\nج. اذا كان الاشعار من طرف صاحب العمل فله ان يعفي العامل من العمل خلال مدته وله ان يشغله الا في الايام السبعة\n\n     الاخيرة منها ويستحق العامل اجره عن مدة الاشعار في جميع هذه الاحوال.\n\nد. اذا كان الاشعار من طرف العامل وترك العمل قبل انقضاء مدة الاشعار فلا يستحق اجراً عن فترة تركه العمل وعليه\n\n    تعويض صاحب العمل عن تلك الفترة بما يعادل اجره عنها.",
+          "vector_rank": 9,
+          "vector_distance": 0.48566484451293945,
+          "bm25_rank": 8,
+          "bm25_score": 22.651527404785156,
+          "fused_score": 0.02919863597612958,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_23_paragraph_1",
+          "local_name": "article_23_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 23 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اذا رغب احد الطرفين في انهاء عقد العمل غير المحدد المدة فيترتب عليه اشعار الطرف الاخر خطياً برغبته في انهاء العقد قبل شهر واحد على الاقل ولا يجوز سحب الاشعار الا بموافقة الطرفين.",
+          "vector_rank": 18,
+          "vector_distance": 0.5343577861785889,
+          "bm25_rank": 3,
+          "bm25_score": 26.08245849609375,
+          "fused_score": 0.028693528693528692,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_41",
+          "local_name": "article_41",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 41"
+          ],
+          "labels_en": [],
+          "article_number": 41,
+          "text_preview": "أ . اذا انتهى عقد العمل الجماعي بانتهاء اجله او بانهائه من قبل احد الطرفين وفقاً لاحكام المادة (40) من هذا القانون\n\n    وكانت هناك مفاوضات لتجديده او تمديد مدته او تعديله فان مفعوله يبقى ساريا طيلة المفاوضات لمدة لا تزيد على ستة\n\n    اشهر فاذا لم تنته المفاوضات الى اتفاق خلال هذه المدة يعتبر العقد منتهياً.\n\nب. ان انتهاء عقد العمل الجماعي لا يجيز لصاحب العمل المساس باي صورة من الصور بالحقوق التي اكتسبها العمال الذين\n\n    كان العقد يشملهم.",
+          "vector_rank": 4,
+          "vector_distance": 0.451884388923645,
+          "bm25_rank": 18,
+          "bm25_score": 17.246421813964844,
+          "fused_score": 0.02844551282051282,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_2_definition_12",
+          "local_name": "article_2_definition_12",
+          "node_kind": "Definition",
+          "labels_ar": [
+            "عقد العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اتفاق شفهي او كتابي صريح او ضمني يتعهد العامل بمقتضاه ان يعمل لدى صاحب العمل وتحت اشرافه او ادارته مقابل اجر ويكون عقد العمل لمدة محدودة او غير محدودة او لعمل معين او غير معين.",
+          "vector_rank": 19,
+          "vector_distance": 0.534773588180542,
+          "bm25_rank": 5,
+          "bm25_score": 24.25652313232422,
+          "fused_score": 0.02804284323271665,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_42",
+          "local_name": "article_42",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 42"
+          ],
+          "labels_en": [],
+          "article_number": 42,
+          "text_preview": "أ . يكون عقد العمل الجماعي ملزما للفئات التالية :\n\n  1. اصحاب العمل وخلفهم بمن فيهم ورثتهم والاشخاص الذين انتقلت اليهم المؤسسة باي صورة من الصور او عند\n\n      اندماجها بغيرها.\n\n   2. العمال المشمولين باحكامه في حالة انسحابهم من النقابة او انسحاب النقابة من الاتحاد والذي هو طرف في العقد\n\n       الجماعي اذا كانوا اعضاء في تلك النقابة او كانت النقابة عضوا في الاتحاد وقت ابرام العقد.\n\n   3. عمال اي مؤسسة خاضعة لاحكام عقد العمل الجماعي ولو لم يكونوا اعضاء في اي نقابة.\n\n    4. العمال في اي مؤسسة خاضعة لاحكام عقد العمل الجماعي ويرتبطون بعقود عمل فردية مع هذه المؤسسة وكانت\n\n        شروط عقودهم اقل فائدة لهم من الاحكام الواردة في العقد الجماعي.\n\nب. يعتبر باطلاً كل شرط مخالف لعقد العمل الجماعي يرد في اي عقد فردي ابرم بين اشخاص مرتبطين بالعقد الجماعي ما\n\n    لم يكن هذا الشرط اكثر فائدة للعمال.",
+          "vector_rank": 16,
+          "vector_distance": 0.5216259956359863,
+          "bm25_rank": 9,
+          "bm25_score": 19.68343162536621,
+          "fused_score": 0.027650648360030512,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_35_paragraph_3",
+          "local_name": "article_35_paragraph_3",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 35 - الفقرة ج"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اذا استمر العامل في عمله بعد انتهاء مدة التجربة اعتبر العقد عقد عمل ولمدة غير محدودة وتحسب مدة التجربة ضمن مدة خدمة العامل لدى صاحب العمل.",
+          "vector_rank": 25,
+          "vector_distance": 0.5560100078582764,
+          "bm25_rank": 4,
+          "bm25_score": 25.211341857910156,
+          "fused_score": 0.02738970588235294,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_41_paragraph_1",
+          "local_name": "article_41_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 41 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اذا انتهى عقد العمل الجماعي بانتهاء اجله او بانهائه من قبل احد الطرفين وفقاً لاحكام المادة (40) من هذا القانون وكانت هناك مفاوضات لتجديده او تمديد مدته او تعديله فان مفعوله يبقى ساريا طيلة المفاوضات لمدة لا تزيد على ستة اشهر فاذا لم تنته المفاوضات الى اتفاق خلال هذه المدة يعتبر العقد منتهياً.",
+          "vector_rank": 2,
+          "vector_distance": 0.42545533180236816,
+          "bm25_rank": 30,
+          "bm25_score": 13.385787963867188,
+          "fused_score": 0.02724014336917563,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_26",
+          "local_name": "article_26",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 26"
+          ],
+          "labels_en": [],
+          "article_number": 26,
+          "text_preview": "أ . اذا انهى صاحب العمل عقد العمل محدد المدة قبل انتهاء مدته او انهاه العامل لاحد الاسباب الواردة في المادة (29) من\n\n    هذا القانون يحق للعامل استيفاء جميع الحقوق والمزايا التي ينص عليها العقد كما يستحق الاجور التي تستحق حتى\n\n    انتهاء المدة المتبقية من العقد ما لم يكن انهاء عقد العمل فصلاً بموجب المادة (28) من هذا القانون.\n\nب. اذا كان انهاء العقد محدد المدة صادراً عن العامل في غير الحالات المنصوص عليها في المادة (29) من هذا القانون جاز\n\n    لصاحب العمل مطالبته بما ينشا عن هذا الانهاء من عطل وضرر يعود تقديره الى المحكمة المختصة على ان لا يتجاوز\n\n     مبلغ ما يحكم به على العامل اجر نصف شهر عن كل شهر من المدة المتبقية من العقد.",
+          "vector_rank": 7,
+          "vector_distance": 0.4744812250137329,
+          "bm25_rank": 26,
+          "bm25_score": 13.701067924499512,
+          "fused_score": 0.026553280111072546,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_35",
+          "local_name": "article_35",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 35"
+          ],
+          "labels_en": [],
+          "article_number": 35,
+          "text_preview": "أ . لصاحب العمل استخدام اي عامل قيد التجربة وذلك للتحقق من كفاءته وامكاناته للقيام بالعمل المطلوب ويشترط في ذلك\n\n    ان لا تزيد مدة التجربة في اي حالة من الحالات على ثلاثة اشهر وان لا يقل اجر العامل قيد التجربة عن الحد الادنى\n\n     المقرر للاجور.\n\nب. يحق لصاحب العمل انهاء استخدام العامل تحت التجربة دون اشعار او مكافاة خلال مدة التجربة.\n\nج. اذا استمر العامل في عمله بعد انتهاء مدة التجربة اعتبر العقد عقد عمل ولمدة غير محدودة وتحسب مدة التجربة ضمن\n\n    مدة خدمة العامل لدى صاحب العمل.",
+          "vector_rank": 27,
+          "vector_distance": 0.5658068656921387,
+          "bm25_rank": 10,
+          "bm25_score": 18.573917388916016,
+          "fused_score": 0.025779967159277502,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_44_paragraph_1",
+          "local_name": "article_44_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 44"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يصدر الوزير تعليمات تحدد كيفية تسجيل عقود العمل الجماعية والانضمام اليها واستخراج صور عنها وغير ذلك من الامور التنظيمية المتعلقة بهذه العقود ويتم تعليق بيان يشير الى وجود العقد الجماعي والى طرفي العقد وتاريخه ومكان اجرائه داخل المؤسسة وفي اماكن العمل.",
+          "vector_rank": 10,
+          "vector_distance": 0.489158034324646,
+          "bm25_rank": 29,
+          "bm25_score": 13.420856475830078,
+          "fused_score": 0.02552166934189406,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_44",
+          "local_name": "article_44",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 44"
+          ],
+          "labels_en": [],
+          "article_number": 44,
+          "text_preview": "يصدر الوزير تعليمات تحدد كيفية تسجيل عقود العمل الجماعية والانضمام اليها واستخراج صور عنها وغير ذلك من الامور التنظيمية المتعلقة بهذه العقود ويتم تعليق بيان يشير الى وجود العقد الجماعي والى طرفي العقد وتاريخه ومكان اجرائه داخل المؤسسة وفي اماكن العمل.",
+          "vector_rank": 12,
+          "vector_distance": 0.495405912399292,
+          "bm25_rank": 28,
+          "bm25_score": 13.53082275390625,
+          "fused_score": 0.025252525252525252,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_41_paragraph_2",
+          "local_name": "article_41_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 41 - الفقرة ب"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "ان انتهاء عقد العمل الجماعي لا يجيز لصاحب العمل المساس باي صورة من الصور بالحقوق التي اكتسبها العمال الذين كان العقد يشملهم.",
+          "vector_rank": 33,
+          "vector_distance": 0.5718160271644592,
+          "bm25_rank": 14,
+          "bm25_score": 18.138294219970703,
+          "fused_score": 0.024266201685556526,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_26_paragraph_1",
+          "local_name": "article_26_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 26 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اذا انهى صاحب العمل عقد العمل محدد المدة قبل انتهاء مدته او انهاه العامل لاحد الاسباب الواردة في المادة (29) من هذا القانون يحق للعامل استيفاء جميع الحقوق والمزايا التي ينص عليها العقد كما يستحق الاجور التي تستحق حتى انتهاء المدة المتبقية من العقد ما لم يكن انهاء عقد العمل فصلاً بموجب المادة (28) من هذا القانون.",
+          "vector_rank": 14,
+          "vector_distance": 0.5058958530426025,
+          "bm25_rank": 38,
+          "bm25_score": 12.371224403381348,
+          "fused_score": 0.023717595146166573,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_2",
+          "local_name": "article_2",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 2"
+          ],
+          "labels_en": [],
+          "article_number": 2,
+          "text_preview": "يكون للكلمات والعبارات التالية حيثما وردت في هذا القانون المعاني المخصصة لها ادناه ما لم تدل القرينة على غير ذلك:\n\nالوزارة                   : وزارة العمل.\n\nالوزير                    : وزير العمل.\n\nالامين العام               : الامين العام للوزارة.\n\nصاحب العمل              : كل شخص طبيعي او معنوي يستخدم باي صفة كانت شخصاً او اكثر مقابل اجر.\n\nنقابة اصحاب العمل       : الهيئة التي تمثل اصحاب العمل.\n\nالعامل                     : كل شخص ذكراً كان او انثى يؤدي عملاً لقاء اجر ويكون تابعاً لصاحب العمل وتحت امرته\n\n                             ويشمل ذلك الاحداث ومن كان قيد التجربة او التاهيل.\n\nالعمل                     : كل جهد فكري او جسماني يبذله العامل لقاء اجر سواء كان بشكل دائم او عرضي او مؤقت او\n\n                             موسمي.\n\nالعمل العرضي           : العمل الذي تستدعيه ضرورات طارئة ولا تزيد مدة انجازه على ثلاثة اشهر.\n\nالعمل المؤقت             : العمل الذي تقتضي طبيعة انجازه مدة محدودة.\n\nالعمل الموسمي           : العمل في مواسم محدودة من كل سنة ولا تزيد مدته على ستة اشهر.\n\nعقد العمل الجماعي       : اتفاق خطي تنظم بمقتضاه شروط العمل بين صاحب العمل او نقابة اصحاب العمل من جهة\n\n                              ومجموعة عمال او النقابة من جهة اخرى.\n\nعقد العمل                : اتفاق شفهي او كتابي صريح او ضمني يتعهد العامل بمقتضاه ان يعمل لدى صاحب العمل وتحت\n\n                            اشرافه او ادارته مقابل اجر ويكون عقد العمل لمدة محدودة او غير محدودة او لعمل معين او غير\n\n                             معين.\n\nالاجر                     : كل ما يستحقه العامل لقاء عمله نقدا او عيناً مضافاً اليه سائر الاستحقاقات الاخرى ايا كان نوعها\n\n                             اذا نص القانون او عقد العمل او النظام الداخلي او استقر التعامل على دفعها باستثناء الاجور\n\n                             المستحقة عن العمل الاضافي.\n\nالحدث                    : كل شخص ذكراً كان او انثى بلغ السابعة من عمره ولم يتم الثامنة عشرة.\n\nالمؤسسة                 : الجهة التي تقدم خدمات او تعمل في انتاج السلع او توزيعها.\n\nالمرجع الطبي            : الطبيب المعتمد او اللجنة الطبية المعتمدة من الوزير.\n\nالمرض المهني           : الاصابة باحد الامراض الصناعية المبينة في الجدول رقم (1) او الاصابة باي من الاصابات\n\n                              المهنية المبينة في الجدول رقم (2) الملحقين بهذا القانون.\n\nاصابة العمل              : اصابة العامل نتيجة حادث اثناء تادية العمل او بسببه ويعتبر في حكم ذلك الحادث ما يقع للعامل\n\n                             اثناء ذهابه لمباشرة عمله او عودته منه.\n\nالمستحق                 : المنتفع او المنتفعون من عائلة العامل المنصوص عليهم في قانون الضمان الاجتماعي المعمول\n\n                    ",
+          "vector_rank": 30,
+          "vector_distance": 0.5699077248573303,
+          "bm25_rank": 24,
+          "bm25_score": 14.227739334106445,
+          "fused_score": 0.023015873015873017,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_26_paragraph_2",
+          "local_name": "article_26_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 26 - الفقرة ب"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اذا كان انهاء العقد محدد المدة صادراً عن العامل في غير الحالات المنصوص عليها في المادة (29) من هذا القانون جاز لصاحب العمل مطالبته بما ينشا عن هذا الانهاء من عطل وضرر يعود تقديره الى المحكمة المختصة على ان لا يتجاوز مبلغ ما يحكم به على العامل اجر نصف شهر عن كل شهر من المدة المتبقية من العقد.",
+          "vector_rank": 8,
+          "vector_distance": 0.4815305471420288,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.014705882352941176,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_43_paragraph_1",
+          "local_name": "article_43_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 43"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "للوزير بناء على طلب اي من اصحاب العمل او العمال وبعد اجراء دراسة مناسبة تشتمل النظر في توصيات لجنة يشكلها الوزير من اصحاب العمل والعمال المعنيين ان يقرر توسيع نطاق شمول اي عقد جماعي مضى على تنفيذه مدة لا تقل عن شهرين ليسري بجميع شروطه على اصحاب العمل والعمال في قطاع معين او على فئة منهم في جميع المناطق او في منطقة معينة وتنشر القرارات الصادرة بمقتضى هذه المادة في الجريدة الرسمية.",
+          "vector_rank": 11,
+          "vector_distance": 0.4951220154762268,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.014084507042253521,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ]
+    }
+  }
+}

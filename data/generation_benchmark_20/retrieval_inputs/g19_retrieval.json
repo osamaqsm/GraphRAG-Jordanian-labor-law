@@ -1,0 +1,76 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "إذا وصل النزاع إلى مجلس التوفيق، ما التقرير والمهلة المطلوبة عند نجاح التسوية أو فشلها، وهل يحق للطرفين توكيل محامين أمام المجلس؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "Oracle-frozen generation benchmark input with complete gold article evidence.",
+    "clarification_question_ar": "",
+    "planner_used": false,
+    "planner_confidence": 1.0
+  },
+  "embedding": {
+    "model": "oracle-generation-benchmark",
+    "dimensions": 0,
+    "input_tokens": 0
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_122",
+      "local_name": "article_122",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 122"
+      ],
+      "labels_en": [],
+      "article_number": 122,
+      "text": "أ . اذا احيل نزاع عمالي الى مجلس التوفيق وجب عليه ان يسعى جهده للتوصل الى تسويته بالطريقة التي يراها ملائمة\n\n    فاذا توصل الى تسويته كلياً او جزئياً فيقدم الى الوزير تقريراً بذلك مرفقاً به التسوية الموقعة بين الطرفين.\n\nب. اذا لم يتوصل مجلس التوفيق الى تسوية النزاع فيترتب عليه ان يقدم الى الوزير تقريراً يتضمن اسباب النزاع\n\n    والاجراءات التي اتخذها لتسويته والاسباب التي ادت الى عدم انهائه والتوصيات التي يراها مناسبة بهذا الشان.\n\nج. يترتب على المجلس في جميع الاحوال ان ينهي اجراءات التوفيق وتقديم تقريره بالنتائج التي توصل اليها خلال مدة لا\n\n     تزيد على واحد وعشرين يوماً من تاريخ احالة النزاع اليه.",
+      "final_score": 1.0,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#article_123",
+      "local_name": "article_123",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 123"
+      ],
+      "labels_en": [],
+      "article_number": 123,
+      "text": "لا يجوز لاي من الطرفين في النزاع العمالي توكيل المحامين امام مندوب التوفيق او مجلس التوفيق.",
+      "final_score": 0.99,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "concepts": [],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      122,
+      123
+    ],
+    "concept_local_names": [],
+    "graph_supported_articles": [
+      122,
+      123
+    ],
+    "concept_count": 0,
+    "expanded_concept_count": 0,
+    "article_count": 2
+  },
+  "elapsed_ms": 0,
+  "debug": {
+    "benchmark_mode": "oracle_frozen_generation_input",
+    "source_case_id": "FINAL30-F23"
+  }
+}

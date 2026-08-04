@@ -1,0 +1,560 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "وفق أي مرجع توزع تعويضات إصابة العمل عند وفاة العامل على المستحقين عنه؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "المسألة ضمن نطاق قانون العمل الأردني وتتعلق بتوزيع تعويض إصابة العمل عند وفاة العامل، وهو موضوع بحثي يمكن تحديده من خلال مراجع نصية محددة بدون إفتراضات.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.92
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 51
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_90",
+      "local_name": "article_90",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 90"
+      ],
+      "labels_en": [],
+      "article_number": 90,
+      "text": "أ . اذا نشا عن اصابة العمل وفاة العامل او عجزه الكلي فيستحق على صاحب العمل تعويض يساوي اجر الف ومئتي يوم\n\n    عمل على ان لا يتجاوز التعويض خمسة الاف دينار ولا يقل عن الفي دينار.\n\nب. اذا نشا عن اصابة العمل عجز مؤقت للعامل فيستحق بدلاً يومياً يعادل (75%) من معدل اجره اليومي اعتباراً من اليوم\n\n    الذي وقعت فيه الاصابة وذلك خلال مدة المعالجة التي تحدد بناء على تقرير من المرجع الطبي اذا كانت معالجته خارج\n\n     المستشفى ويخفض ذلك البدل الى (65%) من ذلك الاجر اذا كان المصاب يعالج لدى احد مراكز العلاج المعتمدة.\n\nج. اذا نتج عن اصابة العمل عجز جزئي دائم بناء على تقرير من المرجع الطبي فيدفع للعامل تعويض على اساس نسبة\n\n    ذلك العجز الى التعويض المقرر للعجز الكلي بموجب الجدول رقم (2) الملحق بهذا القانون.\n\nد. اذا نتج عن اصابة العمل الواحدة اكثر من ضرر جسماني واحد فيستحق العامل المصاب التعويض عن كل ضرر من هذه\n\n   الاضرار وفقاً للاسس المنصوص عليها في هذا القانون على ان لا يتجاوز مجموع المبلغ الواجب دفعه في هذه الحالة\n\n   مقدار التعويض الواجب دفعه في حالة العجز الكلي.",
+      "final_score": 1.0853015581731267,
+      "fused_score": 0.21884520967017002,
+      "direct_score": 0.21884520967017002,
+      "graph_score": 2.854390506138565,
+      "paragraph_score": 0.2409090909090909,
+      "graph_supported": true,
+      "support_paths": [
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#work_injury_event",
+          "seed_label": "حدث إصابة العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_90",
+          "score": 1.1495365931790196,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#work_injury_event",
+              "relation": "regulatedBy",
+              "target_uri": "http://example.org/jordan-labor-law#article_90"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#work_injury_event",
+          "seed_label": "حدث إصابة العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_90",
+          "score": 1.4369207414737744,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#work_injury_event",
+              "relation": "supportedByArticle",
+              "target_uri": "http://example.org/jordan-labor-law#article_90"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#work_injury_event",
+          "seed_label": "حدث إصابة العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_90",
+          "score": 0.7184603707368872,
+          "steps": [
+            {
+              "direction": "incoming",
+              "source_uri": "http://example.org/jordan-labor-law#article_90",
+              "relation": "regulates",
+              "target_uri": "http://example.org/jordan-labor-law#work_injury_event"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#work_injury_event",
+          "seed_label": "حدث إصابة العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_90",
+          "score": 2.1125000000000003,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#work_injury_event",
+              "relation": "resultsIn",
+              "target_uri": "http://example.org/jordan-labor-law#compensation_consequence"
+            },
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#compensation_consequence",
+              "relation": "regulatedBy",
+              "target_uri": "http://example.org/jordan-labor-law#article_90"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#work_injury_event",
+          "seed_label": "حدث إصابة العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_90",
+          "score": 2.640625,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#work_injury_event",
+              "relation": "resultsIn",
+              "target_uri": "http://example.org/jordan-labor-law#compensation_consequence"
+            },
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#compensation_consequence",
+              "relation": "supportedByArticle",
+              "target_uri": "http://example.org/jordan-labor-law#article_90"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#article_96",
+      "local_name": "article_96",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 96"
+      ],
+      "labels_en": [],
+      "article_number": 96,
+      "text": "مع مراعاة احكام المادة (95) من هذا القانون يوزع التعويض في حالة وفاة العامل على المستحقين عنه وفقاً للانصبة المعينة في الجدول رقم (3) الملحق بهذا القانون.",
+      "final_score": 0.99,
+      "fused_score": 0.10982732706490964,
+      "direct_score": 0.10982732706490964,
+      "graph_score": 2.640625,
+      "paragraph_score": 0.058823529411764705,
+      "graph_supported": true,
+      "support_paths": [
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#work_injury_event",
+          "seed_label": "حدث إصابة العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_96",
+          "score": 1.1495365931790196,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#work_injury_event",
+              "relation": "regulatedBy",
+              "target_uri": "http://example.org/jordan-labor-law#article_96"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#work_injury_event",
+          "seed_label": "حدث إصابة العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_96",
+          "score": 1.4369207414737744,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#work_injury_event",
+              "relation": "supportedByArticle",
+              "target_uri": "http://example.org/jordan-labor-law#article_96"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#work_injury_event",
+          "seed_label": "حدث إصابة العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_96",
+          "score": 0.7184603707368872,
+          "steps": [
+            {
+              "direction": "incoming",
+              "source_uri": "http://example.org/jordan-labor-law#article_96",
+              "relation": "regulates",
+              "target_uri": "http://example.org/jordan-labor-law#work_injury_event"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#work_injury_event",
+          "seed_label": "حدث إصابة العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_96",
+          "score": 2.1125000000000003,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#work_injury_event",
+              "relation": "resultsIn",
+              "target_uri": "http://example.org/jordan-labor-law#compensation_consequence"
+            },
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#compensation_consequence",
+              "relation": "regulatedBy",
+              "target_uri": "http://example.org/jordan-labor-law#article_96"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#work_injury_event",
+          "seed_label": "حدث إصابة العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_96",
+          "score": 2.640625,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#work_injury_event",
+              "relation": "resultsIn",
+              "target_uri": "http://example.org/jordan-labor-law#compensation_consequence"
+            },
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#compensation_consequence",
+              "relation": "supportedByArticle",
+              "target_uri": "http://example.org/jordan-labor-law#article_96"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#work_injury_event",
+      "local_name": "work_injury_event",
+      "node_kind": "WorkInjury",
+      "labels_ar": [
+        "حدث إصابة العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#work_injury_event\nLocal name: work_injury_event\nNode kind: WorkInjury\nRDF types: WorkInjury\nArabic labels: حدث إصابة العمل",
+      "final_score": 0.0,
+      "fused_score": 0.07337387625594924,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#compensation_consequence",
+      "local_name": "compensation_consequence",
+      "node_kind": "Compensation",
+      "labels_ar": [
+        "التعويض"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#compensation_consequence\nLocal name: compensation_consequence\nNode kind: Compensation\nRDF types: Compensation\nArabic labels: التعويض",
+      "final_score": 0.0,
+      "fused_score": 0.02459016393442623,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#medical_examination_event",
+      "local_name": "medical_examination_event",
+      "node_kind": "MedicalExamination",
+      "labels_ar": [
+        "حدث الفحص الطبي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#medical_examination_event\nLocal name: medical_examination_event\nNode kind: MedicalExamination\nRDF types: MedicalExamination\nArabic labels: حدث الفحص الطبي",
+      "final_score": 0.0,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#worker_not_covered_social_security_condition",
+      "local_name": "worker_not_covered_social_security_condition",
+      "node_kind": "WorkerNotCoveredBySocialSecurity",
+      "labels_ar": [
+        "شرط عدم شمول العامل بالضمان الاجتماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#worker_not_covered_social_security_condition\nLocal name: worker_not_covered_social_security_condition\nNode kind: WorkerNotCoveredBySocialSecurity\nRDF types: WorkerNotCoveredBySocialSecurity\nArabic labels: شرط عدم شمول العامل بالضمان الاجتماعي",
+      "final_score": 0.0,
+      "fused_score": 0.06770833333333333,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+      "local_name": "employer_liability_consequence",
+      "node_kind": "EmployerLiability",
+      "labels_ar": [
+        "مسؤولية صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_liability_consequence\nLocal name: employer_liability_consequence\nNode kind: EmployerLiability\nRDF types: EmployerLiability\nArabic labels: مسؤولية صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06533044420368364,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#worker_concept",
+      "local_name": "worker_concept",
+      "node_kind": "Worker",
+      "labels_ar": [
+        "العامل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#worker_concept\nLocal name: worker_concept\nNode kind: Worker\nRDF types: Worker\nArabic labels: العامل",
+      "final_score": 0.0,
+      "fused_score": 0.0635386119257087,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+      "local_name": "temporary_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل المؤقت"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#temporary_work_concept\nLocal name: temporary_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل المؤقت",
+      "final_score": 0.0,
+      "fused_score": 0.06284840855961157,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#occasional_work_concept",
+      "local_name": "occasional_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل العرضي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#occasional_work_concept\nLocal name: occasional_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل العرضي",
+      "final_score": 0.0,
+      "fused_score": 0.060075093867334166,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+      "local_name": "employers_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "نقابة أصحاب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.05759563911737825,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#work_concept",
+      "local_name": "work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#work_concept\nLocal name: work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل",
+      "final_score": 0.0,
+      "fused_score": 0.047619047619047616,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_concept",
+      "local_name": "employer_concept",
+      "node_kind": "Employer",
+      "labels_ar": [
+        "صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_concept\nLocal name: employer_concept\nNode kind: Employer\nRDF types: Employer\nArabic labels: صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.046153846153846156,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+      "local_name": "employment_contract_concept",
+      "node_kind": "EmploymentContract",
+      "labels_ar": [
+        "عقد العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employment_contract_concept\nLocal name: employment_contract_concept\nNode kind: EmploymentContract\nRDF types: EmploymentContract\nArabic labels: عقد العمل",
+      "final_score": 0.0,
+      "fused_score": 0.045454545454545456,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#arbitrary_dismissal_violation",
+      "local_name": "arbitrary_dismissal_violation",
+      "node_kind": "ArbitraryDismissal",
+      "labels_ar": [
+        "مخالفة الفصل التعسفي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#arbitrary_dismissal_violation\nLocal name: arbitrary_dismissal_violation\nNode kind: ArbitraryDismissal\nRDF types: ArbitraryDismissal\nArabic labels: مخالفة الفصل التعسفي",
+      "final_score": 2.640625,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 2.640625,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+      "local_name": "wage_delay_violation",
+      "node_kind": "WageDelay",
+      "labels_ar": [
+        "مخالفة تأخر دفع الأجور"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_delay_violation\nLocal name: wage_delay_violation\nNode kind: WageDelay\nRDF types: WageDelay\nArabic labels: مخالفة تأخر دفع الأجور",
+      "final_score": 2.640625,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 2.640625,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#dismissal_without_lawful_ground_condition",
+      "local_name": "dismissal_without_lawful_ground_condition",
+      "node_kind": "DismissalWithoutLawfulGround",
+      "labels_ar": [
+        "شرط الفصل دون سبب مشروع"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#dismissal_without_lawful_ground_condition\nLocal name: dismissal_without_lawful_ground_condition\nNode kind: DismissalWithoutLawfulGround\nRDF types: DismissalWithoutLawfulGround\nArabic labels: شرط الفصل دون سبب مشروع",
+      "final_score": 1.584375,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.584375,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#dismissal_event",
+      "local_name": "dismissal_event",
+      "node_kind": "Dismissal",
+      "labels_ar": [
+        "حدث الفصل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#dismissal_event\nLocal name: dismissal_event\nNode kind: Dismissal\nRDF types: Dismissal\nArabic labels: حدث الفصل",
+      "final_score": 1.3203125,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.3203125,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#legal_claim_consequence",
+      "local_name": "legal_claim_consequence",
+      "node_kind": "LegalClaim",
+      "labels_ar": [
+        "المطالبة القانونية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#legal_claim_consequence\nLocal name: legal_claim_consequence\nNode kind: LegalClaim\nRDF types: LegalClaim\nArabic labels: المطالبة القانونية",
+      "final_score": 1.3203125,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.3203125,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "diagnostics": {
+    "article_numbers": [
+      90,
+      96
+    ],
+    "concept_local_names": [
+      "work_injury_event",
+      "compensation_consequence",
+      "medical_examination_event",
+      "worker_not_covered_social_security_condition",
+      "employer_liability_consequence",
+      "worker_concept",
+      "temporary_work_concept",
+      "occasional_work_concept",
+      "employers_union_concept",
+      "work_concept",
+      "employer_concept",
+      "employment_contract_concept"
+    ],
+    "graph_supported_articles": [
+      90,
+      96
+    ],
+    "concept_count": 12,
+    "expanded_concept_count": 5,
+    "article_count": 2
+  },
+  "elapsed_ms": 11545,
+  "debug": null
+}

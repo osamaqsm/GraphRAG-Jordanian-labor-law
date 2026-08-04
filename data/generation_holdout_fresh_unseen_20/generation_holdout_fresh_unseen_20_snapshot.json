@@ -1,0 +1,1356 @@
+{
+  "benchmark_name": "Jordanian Labor Law Fresh Unseen Generation Holdout — Frozen Real Retrieval",
+  "benchmark_version": "1.0.0",
+  "created_at_utc": "2026-08-03T17:22:57.069155+00:00",
+  "frozen": true,
+  "input_contract": "retrieval.v1",
+  "output_contract": "generation.v1",
+  "input_mode": "fresh_unseen_frozen_actual_retrieval",
+  "question_count": 20,
+  "source_holdout_sha256": "1f037f2064540fad215996b2c77a7378048f6e20848e626cbf6f24185e779969",
+  "warning": "Do not modify this snapshot, its retrieval files, or the generation implementation before the first sealed run.",
+  "cases": [
+    {
+      "id": "UGH01",
+      "expected_behavior": "retrieve",
+      "category": "labor_inspection",
+      "difficulty": "easy",
+      "question": "أي جهة تتولى مهام تفتيش العمل لتطبيق أحكام قانون العمل الأردني؟",
+      "articles": [
+        5
+      ],
+      "reference_answer_ar": "تتولى وزارة العمل مهام التفتيش لتطبيق أحكام قانون العمل الأردني [المادة 5].",
+      "required_facts": [
+        {
+          "name": "ministry performs labor inspection",
+          "any_of": [
+            [
+              "الوزاره",
+              "مهام التفتيش"
+            ],
+            [
+              "وزاره",
+              "مهام التفتيش"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "court incorrectly assigned inspection role",
+          "pattern": "المحكمه.*تتولى.*التفتيش"
+        }
+      ],
+      "key_points_policy": "empty",
+      "max_answer_chars": 350,
+      "retrieval_file": "ugh01_retrieval.json",
+      "retrieval_sha256": "d65a2c1bf18eb2a9fb400e0d2c79fc2f0c057a9cd27d664c443c742b87412daa",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          5
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 15612
+      }
+    },
+    {
+      "id": "UGH02",
+      "expected_behavior": "retrieve",
+      "category": "labor_inspection",
+      "difficulty": "medium",
+      "question": "بأي أداة قانونية تحدد مؤهلات مفتشي العمل ومهامهم وصلاحياتهم ومكافآتهم والتزامات صاحب العمل تجاههم؟",
+      "articles": [
+        7
+      ],
+      "reference_answer_ar": "تحدد هذه المسائل بموجب أنظمة تصدر لهذه الغاية [المادة 7].",
+      "required_facts": [
+        {
+          "name": "matters are defined by regulations",
+          "any_of": [
+            [
+              "بموجب",
+              "انظمه",
+              "تصدر"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "individual decision incorrectly used",
+          "pattern": "قرار فردي"
+        }
+      ],
+      "key_points_policy": "empty",
+      "max_answer_chars": 350,
+      "retrieval_file": "ugh02_retrieval.json",
+      "retrieval_sha256": "f75c05d7630fe80a3c958f7ce4264852091845116feb13b8fe0528228c344885",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          7
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 27574
+      }
+    },
+    {
+      "id": "UGH03",
+      "expected_behavior": "retrieve",
+      "category": "labor_market",
+      "difficulty": "hard",
+      "question": "ما دور الوزارة في تنظيم سوق العمل وتشغيل الأردنيين، وهل يمكن إنشاء مكاتب عامة أو ترخيص مكاتب خاصة للتشغيل؟",
+      "articles": [
+        10
+      ],
+      "reference_answer_ar": "تتولى الوزارة، بالتنسيق مع الجهات المختصة، تنظيم سوق العمل والتوجيه المهني وتوفير فرص العمل والتشغيل للأردنيين داخل المملكة وخارجها. ولها إنشاء مكاتب لتشغيل الأردنيين أو الترخيص بإنشاء مكاتب خاصة لهذه الغاية [المادة 10].",
+      "required_facts": [
+        {
+          "name": "ministry organizes labor market with competent bodies",
+          "any_of": [
+            [
+              "الوزاره",
+              "تنظيم سوق العمل",
+              "الجهات المختصه"
+            ]
+          ]
+        },
+        {
+          "name": "guidance and jobs inside and outside Jordan",
+          "any_of": [
+            [
+              "التوجيه المهني",
+              "فرص العمل",
+              "الاردنيين",
+              "داخل",
+              "خارج"
+            ]
+          ]
+        },
+        {
+          "name": "ministry may establish employment offices",
+          "any_of": [
+            [
+              "انشاء",
+              "مكاتب",
+              "تشغيل الاردنيين"
+            ]
+          ]
+        },
+        {
+          "name": "ministry may license private offices",
+          "any_of": [
+            [
+              "ترخيص",
+              "مكاتب خاصه"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "private offices declared lawful without license",
+          "pattern": "مكاتب خاصه.*دون ترخيص"
+        }
+      ],
+      "key_points_policy": "optional",
+      "max_answer_chars": 750,
+      "retrieval_file": "ugh03_retrieval.json",
+      "retrieval_sha256": "592a6c5b9c2c39ce3f01f561de9941a0b8bf9e2acfa06b6bf52165534d642c94",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          10,
+          11
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [
+          11
+        ],
+        "context_state": "complete",
+        "elapsed_ms": 12554
+      }
+    },
+    {
+      "id": "UGH04",
+      "expected_behavior": "retrieve",
+      "category": "juvenile_employment",
+      "difficulty": "medium",
+      "question": "ما الغرامة على صاحب العمل أو مدير المؤسسة عند مخالفة أحكام تشغيل الأحداث، وماذا يحدث عند التكرار وهل يجوز تخفيضها؟",
+      "articles": [
+        77
+      ],
+      "reference_answer_ar": "يعاقب صاحب العمل أو مدير المؤسسة بغرامة من 100 إلى 500 دينار، وتضاعف العقوبة عند التكرار، ولا يجوز تخفيضها عن حدها الأدنى للأسباب التقديرية المخففة [المادة 77].",
+      "required_facts": [
+        {
+          "name": "fine is one hundred to five hundred dinars",
+          "any_of": [
+            [
+              "100",
+              "500",
+              "دينار"
+            ],
+            [
+              "مئه",
+              "خمسمائه",
+              "دينار"
+            ],
+            [
+              "مائه",
+              "خمسمائه",
+              "دينار"
+            ]
+          ]
+        },
+        {
+          "name": "penalty doubles on repetition",
+          "any_of": [
+            [
+              "تضاعف",
+              "التكرار"
+            ]
+          ]
+        },
+        {
+          "name": "fine cannot be reduced below minimum",
+          "any_of": [
+            [
+              "لا يجوز",
+              "تخفيض",
+              "الحد الادنى"
+            ],
+            [
+              "لا يجوز",
+              "تخفيض",
+              "حدها الادني"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "wrong five-thousand maximum",
+          "pattern": "5000"
+        }
+      ],
+      "key_points_policy": "empty",
+      "max_answer_chars": 500,
+      "retrieval_file": "ugh04_retrieval.json",
+      "retrieval_sha256": "b4087de3adf8d8cb8167675da6aa2302b713ba3c6febdb7d15be7af3dcc47b3d",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          77
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 13088
+      }
+    },
+    {
+      "id": "UGH05",
+      "expected_behavior": "retrieve",
+      "category": "occupational_safety",
+      "difficulty": "hard",
+      "question": "إذا عرّضت مخالفة للسلامة العمال أو المؤسسة أو الآلات للخطر، ما الإجراءات التي يستطيع الوزير اتخاذها، وهل تتوقف أجور العمال أثناء الإغلاق، وما الغرامة المحتملة؟",
+      "articles": [
+        84
+      ],
+      "reference_answer_ar": "بعد إنذار صاحب العمل ومنحه مدة لإزالة المخالفة بحسب جسامتها، يجوز للوزير إغلاق المؤسسة أو مكان العمل كلياً أو جزئياً أو إيقاف آلة إلى أن تزال المخالفة. ويظل العمال مستحقين لأجورهم كاملة خلال الإغلاق أو الإيقاف. كما يجوز إحالة المخالف إلى المحكمة، وتكون الغرامة من 100 إلى 500 دينار، وتتضاعف عند التكرار ولا يجوز تخفيضها عن حدها الأدنى [المادة 84].",
+      "required_facts": [
+        {
+          "name": "warning precedes closure or machine stoppage",
+          "any_of": [
+            [
+              "انذار",
+              "ازاله المخالفه",
+              "الوزير"
+            ],
+            [
+              "انذار",
+              "منحه",
+              "مده"
+            ]
+          ]
+        },
+        {
+          "name": "minister may close wholly or partly or stop machine",
+          "any_of": [
+            [
+              "اغلاق",
+              "كليا",
+              "جزئيا",
+              "ايقاف",
+              "اله"
+            ]
+          ]
+        },
+        {
+          "name": "measure lasts until violation removed",
+          "any_of": [
+            [
+              "الى ان",
+              "يزيل",
+              "المخالفه"
+            ],
+            [
+              "لحين",
+              "ازاله المخالفه"
+            ],
+            [
+              "الى ان",
+              "تزال",
+              "المخالفه"
+            ]
+          ]
+        },
+        {
+          "name": "workers receive full wages during closure",
+          "any_of": [
+            [
+              "اجورهم كامله",
+              "الاغلاق"
+            ],
+            [
+              "الاجر الكامل",
+              "الاغلاق"
+            ]
+          ]
+        },
+        {
+          "name": "fine is one hundred to five hundred dinars",
+          "any_of": [
+            [
+              "100",
+              "500",
+              "دينار"
+            ],
+            [
+              "مئه",
+              "خمسمائه",
+              "دينار"
+            ]
+          ]
+        },
+        {
+          "name": "fine doubles and cannot be reduced",
+          "any_of": [
+            [
+              "تضاعف",
+              "التكرار",
+              "لا يجوز",
+              "تخفيض"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "workers incorrectly lose wages",
+          "pattern": "لا يستحق.*الاجر|دون اجر"
+        }
+      ],
+      "key_points_policy": "optional",
+      "max_answer_chars": 1100,
+      "retrieval_file": "ugh05_retrieval.json",
+      "retrieval_sha256": "9b11cdad6e4f31accbb1719867d8fd7bd352b6ae6a7a4490641aa580f2c8fc7e",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          9,
+          84
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [
+          9
+        ],
+        "context_state": "complete",
+        "elapsed_ms": 19774
+      }
+    },
+    {
+      "id": "UGH06",
+      "expected_behavior": "retrieve",
+      "category": "work_injury",
+      "difficulty": "medium",
+      "question": "هل يستطيع العامل المصاب أو المستحقون عنه مطالبة صاحب العمل بتعويضات إصابة عمل غير الواردة في قانون العمل؟ وما الاستثناء؟",
+      "articles": [
+        89
+      ],
+      "reference_answer_ar": "لا يحق للمصاب أو للمستحقين عنه مطالبة صاحب العمل بتعويضات عن إصابة العمل غير الواردة في القانون، إلا إذا كانت الإصابة ناشئة عن خطأ صاحب العمل [المادة 89].",
+      "required_facts": [
+        {
+          "name": "additional compensation generally not claimable",
+          "any_of": [
+            [
+              "لا يحق",
+              "تعويضات",
+              "غير وارده"
+            ],
+            [
+              "لا يحق",
+              "تعويضات",
+              "غير الوارده"
+            ]
+          ]
+        },
+        {
+          "name": "exception is employer fault",
+          "any_of": [
+            [
+              "الا اذا",
+              "خطا صاحب العمل"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "unconditional extra compensation allowed",
+          "pattern": "يحق.*دون.*خطا صاحب العمل"
+        }
+      ],
+      "key_points_policy": "empty",
+      "max_answer_chars": 450,
+      "retrieval_file": "ugh06_retrieval.json",
+      "retrieval_sha256": "21b0a82b7ce2e3392337db0c8b55c75bc5247e6029f96ba06cc50fe81f9f168c",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          89
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 15692
+      }
+    },
+    {
+      "id": "UGH07",
+      "expected_behavior": "retrieve",
+      "category": "trade_unions",
+      "difficulty": "hard",
+      "question": "ما أبرز الأهداف التي تمارس نقابة العمال نشاطها لتحقيقها، وهل يجوز لها فتح فروع؟",
+      "articles": [
+        99
+      ],
+      "reference_answer_ar": "تهدف النقابة إلى رعاية مصالح العاملين والدفاع عن حقوقهم، وتقديم الخدمات الصحية والاجتماعية، والعمل على رفع مستواهم الاقتصادي والمهني والثقافي. ويجوز لها فتح فروع في المملكة وفق أحكام نظامها الداخلي [المادة 99].",
+      "required_facts": [
+        {
+          "name": "protect workers interests and rights",
+          "any_of": [
+            [
+              "رعايه",
+              "مصالح",
+              "الدفاع",
+              "حقوق"
+            ]
+          ]
+        },
+        {
+          "name": "provide health and social services",
+          "any_of": [
+            [
+              "الخدمات الصحيه",
+              "الاجتماعيه"
+            ]
+          ]
+        },
+        {
+          "name": "raise economic professional and cultural level",
+          "any_of": [
+            [
+              "المستوى الاقتصادي",
+              "المهني",
+              "الثقافي"
+            ],
+            [
+              "مستواهم الاقتصادي",
+              "المهني",
+              "الثقافي"
+            ]
+          ]
+        },
+        {
+          "name": "union may open branches under bylaws",
+          "any_of": [
+            [
+              "فتح فروع",
+              "النظام الداخلي"
+            ],
+            [
+              "فتح فروع",
+              "نظامها الداخلي"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [],
+      "key_points_policy": "optional",
+      "max_answer_chars": 800,
+      "retrieval_file": "ugh07_retrieval.json",
+      "retrieval_sha256": "36482993ee597d06e106b3a14279671a06f3fd54e0b79a66c3e9ecb11abf6f7f",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          99,
+          115
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [
+          115
+        ],
+        "context_state": "complete",
+        "elapsed_ms": 14487
+      }
+    },
+    {
+      "id": "UGH08",
+      "expected_behavior": "retrieve",
+      "category": "trade_unions",
+      "difficulty": "hard",
+      "question": "متى تكتسب النقابة الشخصية الاعتبارية، وخلال كم يوماً يجب إبلاغ المسجل بأي تعديل على نظامها الداخلي؟",
+      "articles": [
+        103
+      ],
+      "reference_answer_ar": "تكتسب النقابة الشخصية الاعتبارية من تاريخ نشر قرار المسجل بتسجيلها في الجريدة الرسمية، أو صدور قرار محكمة العدل العليا بإلغاء رفض التسجيل، أو انقضاء مدة الطعن المقررة. ويجب تزويد المسجل بأي تعديل على النظام الداخلي خلال 15 يوماً من إجرائه [المادة 103].",
+      "required_facts": [
+        {
+          "name": "personality after publication of registration",
+          "any_of": [
+            [
+              "نشر",
+              "قرار",
+              "المسجل",
+              "التسجيل",
+              "الجريده الرسميه"
+            ]
+          ]
+        },
+        {
+          "name": "personality after court cancels refusal",
+          "any_of": [
+            [
+              "محكمه العدل العليا",
+              "الغاء",
+              "رفض التسجيل"
+            ]
+          ]
+        },
+        {
+          "name": "personality after appeal period expires",
+          "any_of": [
+            [
+              "انقضاء",
+              "مده الطعن"
+            ]
+          ]
+        },
+        {
+          "name": "bylaw amendment notified within fifteen days",
+          "any_of": [
+            [
+              "تعديل",
+              "النظام الداخلي",
+              "15 يوما"
+            ],
+            [
+              "تعديل",
+              "النظام الداخلي",
+              "خمسه عشر يوما"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "notification period incorrectly thirty days",
+          "pattern": "30 يوما|ثلاثين يوما"
+        }
+      ],
+      "key_points_policy": "optional",
+      "max_answer_chars": 950,
+      "retrieval_file": "ugh08_retrieval.json",
+      "retrieval_sha256": "6330f24ffec822a8b7a0c4c5257645c8f75f8dd2e93677406726715a28bdaa46",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          103
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 14962
+      }
+    },
+    {
+      "id": "UGH09",
+      "expected_behavior": "retrieve",
+      "category": "trade_unions",
+      "difficulty": "hard",
+      "question": "ما العقوبة إذا لم تقدم النقابة إشعاراً أو كشفاً أو ميزانية مطلوبة، وما المهلة لتصويب مخالفة نظامها الداخلي قبل إحالتها للمحكمة؟",
+      "articles": [
+        107
+      ],
+      "reference_answer_ar": "تعاقب النقابة أو من يمثلها قانوناً بغرامة من 50 إلى 100 دينار، ولا يجوز تخفيضها. وإذا خالفت نظامها الداخلي فعليها تصويب الوضع خلال مدة لا تتجاوز ثلاثة أشهر، وإلا أحالها الوزير أو من ينيبه إلى محكمة البداية المختصة، وللمحكمة وقفها عن العمل حتى صدور القرار [المادة 107].",
+      "required_facts": [
+        {
+          "name": "submission failure fine is fifty to one hundred",
+          "any_of": [
+            [
+              "50",
+              "100",
+              "دينار"
+            ],
+            [
+              "خمسين",
+              "مئه",
+              "دينار"
+            ]
+          ]
+        },
+        {
+          "name": "fine cannot be reduced",
+          "any_of": [
+            [
+              "لا يجوز",
+              "تخفيض",
+              "الغرامه"
+            ],
+            [
+              "لا يجوز",
+              "تخفيضها"
+            ]
+          ]
+        },
+        {
+          "name": "correction period is at most three months",
+          "any_of": [
+            [
+              "تصويب",
+              "ثلاثه اشهر"
+            ],
+            [
+              "تصويب",
+              "3 اشهر"
+            ]
+          ]
+        },
+        {
+          "name": "minister or delegate refers to court",
+          "any_of": [
+            [
+              "الوزير",
+              "ينيبه",
+              "محكمه البدايه"
+            ],
+            [
+              "الوزير",
+              "يفوض",
+              "المحكمه"
+            ]
+          ]
+        },
+        {
+          "name": "court may suspend union until decision",
+          "any_of": [
+            [
+              "المحكمه",
+              "توقف",
+              "لحين",
+              "قرار"
+            ],
+            [
+              "المحكمه",
+              "وقفها",
+              "حتى",
+              "القرار"
+            ],
+            [
+              "للمحكمه",
+              "وقفها",
+              "حتي",
+              "القرار"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "wrong six-month correction period",
+          "pattern": "سته اشهر|6 اشهر"
+        }
+      ],
+      "key_points_policy": "optional",
+      "max_answer_chars": 1000,
+      "retrieval_file": "ugh09_retrieval.json",
+      "retrieval_sha256": "e78823752208cac2d159b66dfcefd46e613d88038b704983f547c69dfe563e34",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          107
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 18823
+      }
+    },
+    {
+      "id": "UGH10",
+      "expected_behavior": "retrieve",
+      "category": "union_finance",
+      "difficulty": "medium",
+      "question": "هل يجوز للنقابة دفع رسوم دعوى لعضو ضد صاحب العمل، وصرف إعانات بسبب الوفاة أو المرض أو البطالة من أموالها؟",
+      "articles": [
+        109
+      ],
+      "reference_answer_ar": "يجوز للنقابة دفع رسوم ونفقات دعوى يكون عضو طرفاً فيها إذا تعلقت بحقوق ناشئة عن علاقة العضو بصاحب العمل أو هدفت إلى حماية حقوق النقابة. كما يجوز صرف إعانات للأعضاء أو عائلاتهم بسبب الوفاة أو المرض أو البطالة وغيرها من الحالات المذكورة [المادة 109].",
+      "required_facts": [
+        {
+          "name": "litigation expense allowed for employment rights",
+          "any_of": [
+            [
+              "رسوم",
+              "دعوى",
+              "عضو",
+              "حقوق",
+              "صاحب العمل"
+            ]
+          ]
+        },
+        {
+          "name": "allowances allowed for death illness or unemployment",
+          "any_of": [
+            [
+              "اعانات",
+              "الوفاه",
+              "المرض",
+              "البطاله"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "all personal lawsuits funded unconditionally",
+          "pattern": "اي دعوى شخصيه.*دون شرط"
+        }
+      ],
+      "key_points_policy": "empty",
+      "max_answer_chars": 650,
+      "retrieval_file": "ugh10_retrieval.json",
+      "retrieval_sha256": "4132ad357e916ed307496b257a270d2612e8d5822938cf29e9c0312cc2133126",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          99,
+          109
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [
+          99
+        ],
+        "context_state": "complete",
+        "elapsed_ms": 21636
+      }
+    },
+    {
+      "id": "UGH11",
+      "expected_behavior": "retrieve",
+      "category": "trade_union_federation",
+      "difficulty": "hard",
+      "question": "كيف يمكن لنقابتين أو أكثر تشكيل اتحاد مهني، وما الموافقات والإشعار المطلوبان؟",
+      "articles": [
+        110
+      ],
+      "reference_answer_ar": "يجوز لنقابتين أو أكثر تشكيل اتحاد مهني بعد موافقة الاتحاد العام لنقابات العمال، على أن تحصل كل نقابة على موافقة الأكثرية العادية لهيئتها العامة، وأن تحيط المسجل علماً بذلك خطياً [المادة 110].",
+      "required_facts": [
+        {
+          "name": "two or more unions may form federation",
+          "any_of": [
+            [
+              "نقابتين",
+              "او اكثر",
+              "اتحاد مهني"
+            ]
+          ]
+        },
+        {
+          "name": "general federation approval required",
+          "any_of": [
+            [
+              "موافقه",
+              "الاتحاد العام"
+            ]
+          ]
+        },
+        {
+          "name": "ordinary majority of each general assembly",
+          "any_of": [
+            [
+              "الاكثرية العاديه",
+              "هيئتها العامه"
+            ],
+            [
+              "الاغلبيه العاديه",
+              "الهيئه العامه"
+            ]
+          ]
+        },
+        {
+          "name": "registrar notified in writing",
+          "any_of": [
+            [
+              "المسجل",
+              "خطيا"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "formation without approvals",
+          "pattern": "دون موافقه"
+        }
+      ],
+      "key_points_policy": "empty",
+      "max_answer_chars": 600,
+      "retrieval_file": "ugh11_retrieval.json",
+      "retrieval_sha256": "7857c081d46caf2585cf49972c6a3862b01ebf23d5bb38f8a375d884971bb4ab",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          110
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 28333
+      }
+    },
+    {
+      "id": "UGH12",
+      "expected_behavior": "retrieve",
+      "category": "union_records",
+      "difficulty": "hard",
+      "question": "من يحق له الاطلاع على دفاتر وسجلات وقوائم أعضاء النقابة، وأين ومتى يتم الاطلاع؟",
+      "articles": [
+        113
+      ],
+      "reference_answer_ar": "يحق لمفتش العمل الاطلاع في أي وقت على دفاتر حسابات النقابة وسجلاتها وقوائم أعضائها. ويحق لموظف النقابة أو عضو فيها الاطلاع عليها في الأوقات التي يحددها النظام الداخلي، على أن يتم الاطلاع في مقر النقابة [المادة 113].",
+      "required_facts": [
+        {
+          "name": "labor inspector may inspect at any time",
+          "any_of": [
+            [
+              "مفتش العمل",
+              "اي وقت"
+            ]
+          ]
+        },
+        {
+          "name": "inspector may inspect records and member lists",
+          "any_of": [
+            [
+              "دفاتر",
+              "السجلات",
+              "قوائم الاعضاء"
+            ],
+            [
+              "دفاتر",
+              "سجلاتها",
+              "قوائم اعضائها"
+            ]
+          ]
+        },
+        {
+          "name": "union employee or member may inspect",
+          "any_of": [
+            [
+              "موظف",
+              "عضو",
+              "الاطلاع"
+            ]
+          ]
+        },
+        {
+          "name": "member access at times set by bylaws",
+          "any_of": [
+            [
+              "الاوقات",
+              "النظام الداخلي"
+            ]
+          ]
+        },
+        {
+          "name": "inspection occurs at union premises",
+          "any_of": [
+            [
+              "مقر النقابه"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [],
+      "key_points_policy": "optional",
+      "max_answer_chars": 800,
+      "retrieval_file": "ugh12_retrieval.json",
+      "retrieval_sha256": "be277bf18990b65b1f963e3bb1fadda9c398e0bceb27150d54f168e08ac20f72",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          113
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 10108
+      }
+    },
+    {
+      "id": "UGH13",
+      "expected_behavior": "retrieve",
+      "category": "union_governance",
+      "difficulty": "medium",
+      "question": "ما شروط انتخاب شخص في الهيئة الإدارية للنقابة، وما الأحكام القضائية التي تمنع انتخابه؟",
+      "articles": [
+        114
+      ],
+      "reference_answer_ar": "يشترط أن يكون الشخص عاملاً مسجلاً لدى النقابة أو مستخدماً فيها طوال الوقت على سبيل التفرغ. ولا يجوز انتخاب من صدر بحقه حكم قضائي في جريمة جنائية أو جريمة تمس الشرف والآداب العامة [المادة 114].",
+      "required_facts": [
+        {
+          "name": "candidate is registered worker or full-time employee",
+          "any_of": [
+            [
+              "عاملا مسجلا",
+              "او",
+              "مستخدما",
+              "التفرغ"
+            ]
+          ]
+        },
+        {
+          "name": "criminal conviction prevents election",
+          "any_of": [
+            [
+              "حكم قضائي",
+              "جريمه جنائيه"
+            ]
+          ]
+        },
+        {
+          "name": "honor or morals conviction prevents election",
+          "any_of": [
+            [
+              "تمس الشرف",
+              "الاداب العامه"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "any member automatically eligible",
+          "pattern": "اي عضو.*يجوز انتخابه"
+        }
+      ],
+      "key_points_policy": "empty",
+      "max_answer_chars": 600,
+      "retrieval_file": "ugh13_retrieval.json",
+      "retrieval_sha256": "c5d5b31c6280228f46f799d0eb5a7527d2f58580de6dc79ad9a6debf4fb66144",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          114
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 16806
+      }
+    },
+    {
+      "id": "UGH14",
+      "expected_behavior": "retrieve",
+      "category": "labor_dispute_procedure",
+      "difficulty": "medium",
+      "question": "ما الصلاحيتان المتعلقتان بالشهود والمستندات اللتان يملكهما مجلس التوفيق والمحكمة العمالية عند نظر النزاع؟",
+      "articles": [
+        125
+      ],
+      "reference_answer_ar": "لهما سماع أقوال أي شخص أو الاستعانة بخبرته بعد القسم، كما يجوز لهما تكليف أي طرف في النزاع بإبراز المستندات والبيانات الضرورية للنظر أو الفصل فيه [المادة 125].",
+      "required_facts": [
+        {
+          "name": "may hear a person or use expertise after oath",
+          "any_of": [
+            [
+              "سماع",
+              "اي شخص",
+              "خبرته",
+              "القسم"
+            ]
+          ]
+        },
+        {
+          "name": "may compel party to produce documents and data",
+          "any_of": [
+            [
+              "تكليف",
+              "طرف",
+              "ابراز",
+              "المستندات",
+              "البيانات"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [],
+      "key_points_policy": "empty",
+      "max_answer_chars": 550,
+      "retrieval_file": "ugh14_retrieval.json",
+      "retrieval_sha256": "991ab496b77dd7a1856079c05f17cc744208ebf8a839a43ffec308353f20a1b9",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          125
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 9629
+      }
+    },
+    {
+      "id": "UGH15",
+      "expected_behavior": "retrieve",
+      "category": "labor_dispute_procedure",
+      "difficulty": "hard",
+      "question": "أين تعقد جلسات مجلس التوفيق والمحكمة العمالية، ومن يوفر المتطلبات، وكيف يصدر التقرير أو القرار وينشر؟",
+      "articles": [
+        127,
+        128
+      ],
+      "reference_answer_ar": "تعقد الجلسات في الوزارة، وتتولى الوزارة توفير المتطلبات الإدارية والتسهيلات والأجهزة [المادة 127]. ويكون تقرير مجلس التوفيق وقرار المحكمة مكتوبين وموقعين من جميع الأعضاء، ويصدر قرار المحكمة بالإجماع أو الأكثرية، ويثبت العضو المخالف رأيه كتابة. وينشر التقرير أو القرار في صحيفة محلية أو أكثر على نفقة أصحاب النزاع خلال 30 يوماً من تسلم الوزير له [المادة 128].",
+      "required_facts": [
+        {
+          "name": "sessions held at ministry",
+          "any_of": [
+            [
+              "الجلسات",
+              "الوزاره"
+            ]
+          ]
+        },
+        {
+          "name": "ministry provides facilities and equipment",
+          "any_of": [
+            [
+              "الوزاره",
+              "المتطلبات الاداريه",
+              "التسهيلات",
+              "الاجهزه"
+            ]
+          ]
+        },
+        {
+          "name": "report or decision written and signed by all",
+          "any_of": [
+            [
+              "كتابيا",
+              "يوقعه",
+              "جميع الاعضاء"
+            ],
+            [
+              "مكتوبين",
+              "موقعين",
+              "جميع الاعضاء"
+            ]
+          ]
+        },
+        {
+          "name": "court decision by unanimity or majority",
+          "any_of": [
+            [
+              "قرار المحكمه",
+              "الاجماع",
+              "الاكثرية"
+            ],
+            [
+              "قرار المحكمه",
+              "الاجماع",
+              "الاغلبيه"
+            ]
+          ]
+        },
+        {
+          "name": "dissenting member records opinion in writing",
+          "any_of": [
+            [
+              "عضو مخالف",
+              "رايه",
+              "كتابه"
+            ],
+            [
+              "العضو المخالف",
+              "رايه",
+              "كتابه"
+            ]
+          ]
+        },
+        {
+          "name": "publication at parties expense within thirty days",
+          "any_of": [
+            [
+              "صحيفه محليه",
+              "نفقه",
+              "اصحاب النزاع",
+              "30 يوما"
+            ],
+            [
+              "صحيفه محليه",
+              "نفقه",
+              "اصحاب النزاع",
+              "ثلاثين يوما"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "sessions incorrectly held in courthouse",
+          "pattern": "قصر العدل|دار المحكمه"
+        }
+      ],
+      "key_points_policy": "optional",
+      "max_answer_chars": 1200,
+      "retrieval_file": "ugh15_retrieval.json",
+      "retrieval_sha256": "8f14725d9bf11e2bcb7ce1fc906fd9ed62d25d060594d9ee9ee2c9c4ab93f2c2",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          127,
+          128
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 17265
+      }
+    },
+    {
+      "id": "UGH16",
+      "expected_behavior": "retrieve",
+      "category": "labor_dispute_enforcement",
+      "difficulty": "hard",
+      "question": "أثناء نظر نزاع عمالي، ما الذي يمنع على صاحب العمل فعله، وما الغرامة لأول مخالفة إذا خالف العامل أو صاحب العمل تسوية أو قراراً ملزماً؟",
+      "articles": [
+        132,
+        133
+      ],
+      "reference_answer_ar": "يحظر على صاحب العمل أثناء نظر النزاع تغيير شروط الاستخدام السارية أو فصل عامل دون إذن كتابي من جهة التوفيق أو المحكمة المختصة [المادة 132]. وإذا خالف العامل تسوية أو قراراً ملزماً لأول مرة فالغرامة من 50 إلى 200 دينار، أما صاحب العمل فمن 200 إلى 400 دينار. وتتضاعف العقوبة عند التكرار ولا يجوز تخفيضها عن الحد الأدنى [المادة 133].",
+      "required_facts": [
+        {
+          "name": "employer may not change current conditions",
+          "any_of": [
+            [
+              "لا يجوز",
+              "صاحب العمل",
+              "تغيير",
+              "شروط الاستخدام"
+            ]
+          ]
+        },
+        {
+          "name": "employer may not dismiss without written permission",
+          "any_of": [
+            [
+              "فصل",
+              "عامل",
+              "اذن كتابي"
+            ]
+          ]
+        },
+        {
+          "name": "worker first fine is fifty to two hundred",
+          "any_of": [
+            [
+              "العامل",
+              "50",
+              "200",
+              "دينار"
+            ],
+            [
+              "العامل",
+              "خمسين",
+              "مائتي",
+              "دينار"
+            ]
+          ]
+        },
+        {
+          "name": "employer first fine is two hundred to four hundred",
+          "any_of": [
+            [
+              "صاحب العمل",
+              "200",
+              "400",
+              "دينار"
+            ],
+            [
+              "صاحب العمل",
+              "مائتي",
+              "اربعمائه",
+              "دينار"
+            ]
+          ]
+        },
+        {
+          "name": "penalty doubles and cannot be reduced",
+          "any_of": [
+            [
+              "تضاعف",
+              "التكرار",
+              "لا يجوز",
+              "تخفيض",
+              "الحد الادنى"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "worker and employer ranges reversed",
+          "pattern": "العامل.*200.*400"
+        },
+        {
+          "name": "dismissal allowed without permission",
+          "pattern": "فصل.*دون.*اذن.*يجوز"
+        }
+      ],
+      "key_points_policy": "optional",
+      "max_answer_chars": 1100,
+      "retrieval_file": "ugh16_retrieval.json",
+      "retrieval_sha256": "b316df1d5902e0999ab18b7e5419b34a14e3bd76e5bafa3e2f9e6bc53739a7d3",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          134,
+          133
+        ],
+        "missing_required_articles": [
+          132
+        ],
+        "extra_articles": [
+          134
+        ],
+        "context_state": "partial",
+        "elapsed_ms": 18546
+      }
+    },
+    {
+      "id": "UGH17",
+      "expected_behavior": "clarify",
+      "category": "ambiguous_union_request",
+      "difficulty": "hard",
+      "question": "وصلني طلب من النقابة لدفع مبلغ، هل أنا ملزم بالدفع؟",
+      "articles": [],
+      "expected_result": "يلزم تحديد صفة السائل، وطبيعة المبلغ وأساسه، والوثيقة الصادرة عن النقابة قبل تحديد وجود التزام بالدفع.",
+      "required_facts": [],
+      "forbidden_patterns": [],
+      "key_points_policy": "empty",
+      "max_answer_chars": 500,
+      "retrieval_file": "ugh17_retrieval.json",
+      "retrieval_sha256": "acded4fb28d9a109c443d098073b0831070d3507327a18462694cfc82f3c9e1c",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          117,
+          47
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [
+          47,
+          117
+        ],
+        "context_state": "route_mismatch",
+        "elapsed_ms": 18797
+      }
+    },
+    {
+      "id": "UGH18",
+      "expected_behavior": "clarify",
+      "category": "ambiguous_dispute_action",
+      "difficulty": "hard",
+      "question": "تم اتخاذ إجراء أثناء نزاع عمالي، هل هذا الإجراء قانوني؟",
+      "articles": [],
+      "expected_result": "يلزم تحديد الإجراء، ومن اتخذه، والمرحلة التي وصل إليها النزاع والجهة التي تنظر فيه قبل تقييم مشروعيته.",
+      "required_facts": [],
+      "forbidden_patterns": [],
+      "key_points_policy": "empty",
+      "max_answer_chars": 500,
+      "retrieval_file": "ugh18_retrieval.json",
+      "retrieval_sha256": "7c64f54db49b7b23580d21779d12bdc04b3e3f0eaf81077fa28cfda08fcbe73a",
+      "actual_retrieval": {
+        "behavior": "clarify",
+        "article_numbers": [],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 14327
+      }
+    },
+    {
+      "id": "UGH19",
+      "expected_behavior": "abstain",
+      "category": "criminal_commercial",
+      "difficulty": "easy",
+      "question": "صدر بحقي شيك بدون رصيد، ما العقوبة وكيف أعترض على القضية؟",
+      "articles": [],
+      "expected_result": "المسألة جزائية أو تجارية وتتعلق بأحكام الشيكات والإجراءات القضائية، وهي خارج نطاق قانون العمل الأردني.",
+      "required_facts": [],
+      "forbidden_patterns": [],
+      "key_points_policy": "empty",
+      "max_answer_chars": 500,
+      "retrieval_file": "ugh19_retrieval.json",
+      "retrieval_sha256": "64a5932783a090d0a95c8f68aee3aafb4b3cd0fa74304cfa5ca605b76c9687c2",
+      "actual_retrieval": {
+        "behavior": "abstain",
+        "article_numbers": [],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 9402
+      }
+    },
+    {
+      "id": "UGH20",
+      "expected_behavior": "abstain",
+      "category": "municipal_building",
+      "difficulty": "easy",
+      "question": "رفضت البلدية ترخيص بناء على أرض أملكها، كيف أطعن في القرار؟",
+      "articles": [],
+      "expected_result": "المسألة تتعلق بالتنظيم والبناء والقرارات البلدية، وهي خارج نطاق قانون العمل الأردني.",
+      "required_facts": [],
+      "forbidden_patterns": [],
+      "key_points_policy": "empty",
+      "max_answer_chars": 500,
+      "retrieval_file": "ugh20_retrieval.json",
+      "retrieval_sha256": "4666e648b584c97b93f0f4fe7655d6e10c08f183bb7fa5d6031d5312f0402897",
+      "actual_retrieval": {
+        "behavior": "abstain",
+        "article_numbers": [],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 12227
+      }
+    }
+  ]
+}

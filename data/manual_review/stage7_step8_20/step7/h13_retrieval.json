@@ -1,0 +1,281 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "إذا أرادت النقابة حل نفسها اختيارياً، ما نسبة موافقة الأعضاء المطلوبة وخلال كم يوماً يجب إشعار الوزير والاتحاد؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "المسألة داخل نطاق قانون العمل الأردني وتطلب توظيف نصوص محددة بخصوص حل النقابة وتحديد نسبة الموافقة والإشعار الرسمي.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.85
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 81
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_106",
+      "local_name": "article_106",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 106"
+      ],
+      "labels_en": [],
+      "article_number": 106,
+      "text": "تحل النقابة او نقابة اصحاب العمل اختيارياً بموافقة ثلثي اعضائها المسددين لاشتراكاتهم في اجتماع غير عادي تعقده الهيئة العامة للنقابة او  نقابة اصحاب العمل لهذه الغاية دون غيرها وتتم تصفية اموالها وحقوقها والتصرف بها في هذه الحالة وفقاً لاحكام النظام الداخلي ويجب اشعار الوزير والاتحاد العام لنقابات العمال بقرار الحل خلال خمسة عشر يوماً من تاريخ صدوره وينشر في الجريدة الرسمية.",
+      "final_score": 1.0,
+      "fused_score": 0.07652035959809625,
+      "direct_score": 0.07652035959809625,
+      "graph_score": 0.0,
+      "paragraph_score": 0.09090909090909091,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#collective_labor_dispute_concept",
+      "local_name": "collective_labor_dispute_concept",
+      "node_kind": "LegalEvent",
+      "labels_ar": [
+        "النزاع العمالي الجماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#collective_labor_dispute_concept\nLocal name: collective_labor_dispute_concept\nNode kind: LegalEvent\nRDF types: LegalEvent\nArabic labels: النزاع العمالي الجماعي",
+      "final_score": 0.0,
+      "fused_score": 0.024193548387096774,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#trade_union_concept",
+      "local_name": "trade_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "النقابة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#trade_union_concept\nLocal name: trade_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: النقابة",
+      "final_score": 0.0,
+      "fused_score": 0.07377049180327869,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#minister_concept",
+      "local_name": "minister_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "الوزير"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#minister_concept\nLocal name: minister_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الوزير",
+      "final_score": 0.0,
+      "fused_score": 0.07111436950146627,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+      "local_name": "employers_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "نقابة أصحاب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.023809523809523808,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+      "local_name": "collective_employment_contract_concept",
+      "node_kind": "EmploymentRelation",
+      "labels_ar": [
+        "عقد العمل الجماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#collective_employment_contract_concept\nLocal name: collective_employment_contract_concept\nNode kind: EmploymentRelation\nRDF types: EmploymentRelation\nArabic labels: عقد العمل الجماعي",
+      "final_score": 0.0,
+      "fused_score": 0.0234375,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#general_secretary_concept",
+      "local_name": "general_secretary_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "الأمين العام"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#general_secretary_concept\nLocal name: general_secretary_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الأمين العام",
+      "final_score": 0.0,
+      "fused_score": 0.023076923076923078,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+      "local_name": "assign_agreed_work_obligation",
+      "node_kind": "AssignAgreedWork",
+      "labels_ar": [
+        "التزام إسناد العمل المتفق عليه"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#assign_agreed_work_obligation\nLocal name: assign_agreed_work_obligation\nNode kind: AssignAgreedWork\nRDF types: AssignAgreedWork\nArabic labels: التزام إسناد العمل المتفق عليه",
+      "final_score": 0.0,
+      "fused_score": 0.022388059701492536,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#weekly_rest_right_concept",
+      "local_name": "weekly_rest_right_concept",
+      "node_kind": "WeeklyRestRight",
+      "labels_ar": [
+        "حق العطلة الأسبوعية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#weekly_rest_right_concept\nLocal name: weekly_rest_right_concept\nNode kind: WeeklyRestRight\nRDF types: WeeklyRestRight\nArabic labels: حق العطلة الأسبوعية",
+      "final_score": 0.0,
+      "fused_score": 0.022058823529411766,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#leave_request_event",
+      "local_name": "leave_request_event",
+      "node_kind": "LeaveRequest",
+      "labels_ar": [
+        "حدث طلب الإجازة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#leave_request_event\nLocal name: leave_request_event\nNode kind: LeaveRequest\nRDF types: LeaveRequest\nArabic labels: حدث طلب الإجازة",
+      "final_score": 0.0,
+      "fused_score": 0.021739130434782608,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_concept",
+      "local_name": "wage_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "الأجر"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_concept\nLocal name: wage_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: الأجر",
+      "final_score": 0.0,
+      "fused_score": 0.02142857142857143,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#dismissal_event",
+      "local_name": "dismissal_event",
+      "node_kind": "Dismissal",
+      "labels_ar": [
+        "حدث الفصل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#dismissal_event\nLocal name: dismissal_event\nNode kind: Dismissal\nRDF types: Dismissal\nArabic labels: حدث الفصل",
+      "final_score": 0.0,
+      "fused_score": 0.02112676056338028,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#ministry_concept",
+      "local_name": "ministry_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "الوزارة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#ministry_concept\nLocal name: ministry_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الوزارة",
+      "final_score": 0.0,
+      "fused_score": 0.020833333333333332,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      106
+    ],
+    "concept_local_names": [
+      "collective_labor_dispute_concept",
+      "trade_union_concept",
+      "minister_concept",
+      "employers_union_concept",
+      "collective_employment_contract_concept",
+      "general_secretary_concept",
+      "assign_agreed_work_obligation",
+      "weekly_rest_right_concept",
+      "leave_request_event",
+      "wage_concept",
+      "dismissal_event",
+      "ministry_concept"
+    ],
+    "graph_supported_articles": [],
+    "concept_count": 12,
+    "expanded_concept_count": 0,
+    "article_count": 1
+  },
+  "elapsed_ms": 21627,
+  "debug": null
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "صدر قرار من المحكمة العمالية وفيه غموض وخطأ حسابي؛ كيف يمكن تفسيره أو تصحيحه ومن يطلب ذلك؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "Oracle-frozen generation benchmark input with complete gold article evidence.",
+    "clarification_question_ar": "",
+    "planner_used": false,
+    "planner_confidence": 1.0
+  },
+  "embedding": {
+    "model": "oracle-generation-benchmark",
+    "dimensions": 0,
+    "input_tokens": 0
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_126",
+      "local_name": "article_126",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 126"
+      ],
+      "labels_en": [],
+      "article_number": 126,
+      "text": "للمحكمة العمالية تفسير اي قرار اصدرته وذلك بناء على طلب الوزير او طلب احد اطراف النزاع لازالة اي غموض فيه، وذلك بما لا يخرج القرار عن النتائج التي توصل اليها، كما وان لها في كل وقت ان تصحح من تلقاء نفسها او بناء على طلب الوزير او احد الخصوم الاغلاط او الاخطاء الكتابية او الحسابية التي تقع في الاحكام والقرارات عن طريق السهو العرضي.",
+      "final_score": 1.0,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "concepts": [],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      126
+    ],
+    "concept_local_names": [],
+    "graph_supported_articles": [
+      126
+    ],
+    "concept_count": 0,
+    "expanded_concept_count": 0,
+    "article_count": 1
+  },
+  "elapsed_ms": 0,
+  "debug": {
+    "benchmark_mode": "oracle_frozen_generation_input",
+    "source_case_id": "HOLDOUT20-H07"
+  }
+}

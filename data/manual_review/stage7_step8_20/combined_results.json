@@ -1,0 +1,536 @@
+{
+  "source_benchmark_name": "Jordanian Labor Law KG Stage 7.7-D Unseen 20 Holdout",
+  "source_benchmark_version": "1.0.0",
+  "question_count": 20,
+  "base_url": "http://localhost:8000",
+  "results": [
+    {
+      "id": "H01",
+      "test_type": "straightforward",
+      "category": "law_scope",
+      "difficulty": "medium",
+      "question": "على من لا تسري أحكام قانون العمل من بين الموظفين العامين وأفراد عائلة صاحب العمل وخدم المنازل وعمال الزراعة؟",
+      "expected_behavior": "retrieve",
+      "expected_result": "تستثني المادة 3 الموظفين العامين وموظفي البلديات، وأفراد عائلة صاحب العمل العاملين دون أجر، وخدم المنازل ومن في حكمهم، وعمال الزراعة إلا الفئات التي تخضع بنظام.",
+      "required_articles": [
+        3
+      ],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h01_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h01_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        3
+      ],
+      "step8_status": "generated",
+      "answer_ar": "لا تسري أحكام قانون العمل على: (1) الموظفين العامين وموظفي البلديات؛ (2) أفراد عائلة صاحب العمل الذين يعملون في مشاريعه دون أجر؛ (3) خدم المنازل وبستانييها وطهاتها ومن في حكمهم؛ (4) عمال الزراعة، باستثناء من يتم إخضاعهم لأي من أحكام هذا القانون وتحدد فئاتهم والأحكام المتعلقة بهم بمقتضى نظام يصدر لهذه الغاية. [المادة 3]",
+      "cited_article_numbers": [
+        3
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 22733
+    },
+    {
+      "id": "H02",
+      "test_type": "straightforward",
+      "category": "collective_contract_registration",
+      "difficulty": "medium",
+      "question": "كيف تُسجل عقود العمل الجماعية، وما البيان الذي يجب تعليقه داخل المؤسسة وأماكن العمل؟",
+      "expected_behavior": "retrieve",
+      "expected_result": "تنظم تعليمات الوزير تسجيل العقود الجماعية والانضمام إليها واستخراج صورها، ويعلق بيان بوجود العقد وطرفيه وتاريخه ومكان إجرائه.",
+      "required_articles": [
+        44
+      ],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h02_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h02_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        39,
+        44
+      ],
+      "step8_status": "generated",
+      "answer_ar": "يُسجل عقد العمل الجماعي بثلاث نسخ أصلية على الأقل؛ يحتفظ كل طرف بنسخة، وتودع النسخة الثالثة لدى الوزارة لتسجيلها في سجل خاص، ويكون العقد ملزماً من التاريخ المحدد فيه، وإن لم يُحدد التاريخ فمن تاريخ تسجيله في الوزارة. [المادة 39] كما يصدر الوزير تعليمات تحدد كيفية تسجيل عقود العمل الجماعية والانضمام إليها واستخراج صور عنها، ويتم تعليق بيان داخل المؤسسة وأماكن العمل يشير إلى وجود العقد وأطرافه وتاريخه ومكان اجرائه. [المادة 44]",
+      "cited_article_numbers": [
+        39,
+        44
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 21043
+    },
+    {
+      "id": "H03",
+      "test_type": "straightforward",
+      "category": "occupational_disease",
+      "difficulty": "medium",
+      "question": "من يتحمل تعويض العامل إذا أثبت تقرير المرجع الطبي أن مرضه المهني نشأ عن عمله؟",
+      "expected_behavior": "retrieve",
+      "expected_result": "يكون صاحب العمل مسؤولاً عن دفع التعويض للعامل المصاب بمرض مهني ناشئ عن عمله استناداً إلى تقرير المرجع الطبي.",
+      "required_articles": [
+        88
+      ],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h03_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h03_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        88
+      ],
+      "step8_status": "generated",
+      "answer_ar": "صاحب العمل هو المسؤول عن دفع التعويض للعامل المصاب بمرض من أمراض المهنة إذا كان المرض ناشئاً عن عمله، وذلك وفقاً لتقرير المرجع الطبي [المادة 88].",
+      "cited_article_numbers": [
+        88
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 18300
+    },
+    {
+      "id": "H04",
+      "test_type": "straightforward",
+      "category": "union_bylaws",
+      "difficulty": "hard",
+      "question": "ما الموضوعات الأساسية التي يجب أن يتضمنها النظام الداخلي لنقابة العمال؟",
+      "expected_behavior": "retrieve",
+      "expected_result": "تحدد المادة 100 عناصر النظام الداخلي، ومنها الاسم والعنوان والغايات والعضوية والفروع والهيئة الإدارية والحقوق والالتزامات والعقوبات والخدمات والشؤون المالية.",
+      "required_articles": [
+        100
+      ],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h04_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h04_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        100
+      ],
+      "step8_status": "generated",
+      "answer_ar": "النظام الداخلي للنقابة يجب أن يتضمن: اسم النقابة وعنوان مركزها الأساسي؛ الغايات التي سيتم تأسيس النقابة من أجلها؛ إجراءات انتساب الأعضاء للنقابة وفصلهم منها؛ كيفية تأسيس فروع النقابة وشروط تشكيل اللجان فيها وإجراءاتها؛ عدد أعضاء الهيئة الإدارية ومدة ولايتها وكيفية انتخابهم ومواعيد اجتماعاتها وطريقة تعبئة الشواغر صلاحيتها؛ الحقوق التي يتمتع بها العضو والالتزامات التي يتحملها والحالات التي يتعرض فيها للعقوبات المسلكية بما في ذلك الغرامة والفصل من النقابة؛ الخدمات والمساعدات المالية التي تقدم لعضو النقابة في حالات الضرورة بما في ذلك المساهمة في نفقات المعالجة وتوكيل المحامين؛ شروط تعيين الموظفين والمستخدمين في النقابة وإجراءاتها وإنهاء خدماتهم؛ كيفية حفظ أموال النقابة ومسك دفاترها وقيودها المالية؛ إجراءات دعوة الهيئة العامة للنقابة إلى اجتماعاتها العادية وغير العادية.[المادة 100]",
+      "cited_article_numbers": [
+        100
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 16700
+    },
+    {
+      "id": "H05",
+      "test_type": "paraphrased",
+      "category": "labor_inspection",
+      "difficulty": "medium",
+      "question": "اطّلع مفتش العمل أثناء التفتيش على أسرار المنشأة؛ ما الالتزام الذي يسبق مباشرته العمل وما واجبه تجاه تلك الأسرار؟",
+      "expected_behavior": "retrieve",
+      "expected_result": "يوقع القائم بالتفتيش تصريحاً مشفوعاً بالقسم بأداء العمل بأمانة وإخلاص، ويلتزم بعدم إفشاء الأسرار التي يطلع عليها بحكم عمله.",
+      "required_articles": [
+        6
+      ],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h05_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h05_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        6
+      ],
+      "step8_status": "generated",
+      "answer_ar": "الالتزام المسبق هو توقيع تصريح مشفوع بالقسم بأن يؤدي عمله أمانة وإخلاص وأن لا يفشي الأسرار التي يطلع عليها بحكم عمله. [المادة 6] واجبه تجاه أسرار المنشأة هو عدم إفشاء الأسرار التي يطلع عليها بحكم عمله. [المادة 6]",
+      "cited_article_numbers": [
+        6
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 21561
+    },
+    {
+      "id": "H06",
+      "test_type": "paraphrased",
+      "category": "occupational_safety",
+      "difficulty": "hard",
+      "question": "من يحدد تدابير الوقاية وأجهزة الحماية ومعايير بيئة المصانع من التلوث والضوضاء والاهتزازات؟",
+      "expected_behavior": "retrieve",
+      "expected_result": "يحدد الوزير بعد استطلاع رأي الجهات الرسمية المختصة هذه التدابير والأجهزة والمعايير بتعليمات يصدرها.",
+      "required_articles": [
+        79
+      ],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h06_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h06_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        79
+      ],
+      "step8_status": "generated",
+      "answer_ar": "يحدد الوزير بعد استطلاع راي الجهات الرسمية المختصة بتعليمات يصدرها الاحتياطات والتدابير التي يجب اتخاذها لحماية العمال، وكذلك الأجهزة والوسائل التي يجب توفيرها لحماية العاملين من أخطار العمل وأمراض المهنة، وتشمل الأسس والمعايير الواجب توافرها في المؤسسات الصناعية لضمان بيئة خالية من التلوث بجميع أشكاله والوقاية من الضوضاء والاهتزازات وكل ما يضر بصحة العامل ضمن المعايير الدولية المعتمدة وتحديد طرق الفحص والاختبار الخاصة لضبط هذه المعايير. [المادة 79]",
+      "cited_article_numbers": [
+        79
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 20164
+    },
+    {
+      "id": "H07",
+      "test_type": "paraphrased",
+      "category": "labor_court_decisions",
+      "difficulty": "hard",
+      "question": "صدر قرار من المحكمة العمالية وفيه غموض وخطأ حسابي؛ كيف يمكن تفسيره أو تصحيحه ومن يطلب ذلك؟",
+      "expected_behavior": "retrieve",
+      "expected_result": "تفسر المحكمة قرارها بناء على طلب الوزير أو أحد أطراف النزاع لإزالة الغموض، وتصحح الأخطاء الكتابية أو الحسابية من تلقاء نفسها أو بناء على طلب.",
+      "required_articles": [
+        126
+      ],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h07_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h07_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        126
+      ],
+      "step8_status": "generated",
+      "answer_ar": "يمكن تفسير قرار المحكمة العمالية عند وجود غموض بناءً على طلب الوزير أو أحد أطراف النزاع، ولا يجوز الخروج عن النتائج التي توصل إليها القرار. كما يحق للمحكمة أن تصحح من تلقاء نفسها أو بناءً على طلب الوزير أو أحد الخصوم الأخطاء الكتابية أو الحسابية الناتجة عن سهو عرضي، وذلك دون تغيير من نطاق النتائج الأساسية للقرار. [المادة 126]",
+      "cited_article_numbers": [
+        126
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 25209
+    },
+    {
+      "id": "H08",
+      "test_type": "typo",
+      "category": "women_employment",
+      "difficulty": "medium",
+      "question": "مين بحدد الصناعات والاعمال الممنوع تشغبل النساء فيها، والاوقات الي ما بجوز تشغيلهن خلالها والاستثنائات؟",
+      "expected_behavior": "retrieve",
+      "expected_result": "يحدد الوزير بقرار، بعد استطلاع رأي الجهات الرسمية المختصة، الأعمال المحظورة على النساء والأوقات المحظورة والحالات المستثناة.",
+      "required_articles": [
+        69
+      ],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h08_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h08_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        69
+      ],
+      "step8_status": "generated",
+      "answer_ar": "يحدد الوزير بقرار بعد استطلاع رأي الجهات الرسمية المختصة: أ- الصناعات والأعمال التي يحظر تشغيل النساء فيها، ب- الأوقات التي لا يجوز تشغيل النساء فيها والحالات المستثناة منها. [المادة 69]",
+      "cited_article_numbers": [
+        69
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 22414
+    },
+    {
+      "id": "H09",
+      "test_type": "typo",
+      "category": "injury_compensation",
+      "difficulty": "medium",
+      "question": "كيف بنحسب تعويض العامل اذا كان باخذ اجر بالقطعه، وهل بنعتمد اخر اجر ولا متوسط فتره معينه؟",
+      "expected_behavior": "retrieve",
+      "expected_result": "يحسب التعويض على أساس الأجر الأخير، أما العامل بالقطعة فعلى أساس متوسط أجر الأشهر الستة الأخيرة.",
+      "required_articles": [
+        91
+      ],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h09_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h09_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        91
+      ],
+      "step8_status": "generated",
+      "answer_ar": "يعتمد تعويض العامل عند الأجر بالقطعة على متوسط أجره خلال آخر ستة أشهر من العمل، بينما في باقي الحالات يُحسب على أساس الأجر الأخير الذي يتقاضاه العامل [المادة 91].",
+      "cited_article_numbers": [
+        91
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 17687
+    },
+    {
+      "id": "H10",
+      "test_type": "colloquial",
+      "category": "inspection_enforcement",
+      "difficulty": "hard",
+      "question": "مفتش العمل أنذر صاحب الشغل يشيل المخالفة وما شالها؛ قديش المهلة وشو ممكن يصير بالمؤسسة والغرامة؟",
+      "expected_behavior": "retrieve",
+      "expected_result": "للمفتش طلب إزالة المخالفة خلال مدة لا تزيد على سبعة أيام، ثم يجوز إغلاق المؤسسة، وتحكم المحكمة بإزالة المخالفة وغرامة من خمسين إلى خمسمائة دينار.",
+      "required_articles": [
+        9
+      ],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h10_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h10_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        9
+      ],
+      "step8_status": "generated",
+      "answer_ar": "المدة seven أيام؟ المهلة هي سبعة أيام من تاريخ تبلغه إنذاراً خطياً بذلك؛ وفي حال التخلف فللوزير أو من يفوضه أن يقرر إغلاق المؤسسة لحين إزالة المخالفة أو صدور قرار المحكمة بشأنها. وتصدر المحكمة حكما بإزالة المخالفة وبغرامة لا تقل عن 50 ديناراً ولا تزيد على 500 دينار، ولا يجوز تخفيض الغرامة عن حدها الأدنى. [المادة 9]",
+      "cited_article_numbers": [
+        9
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 22240
+    },
+    {
+      "id": "H11",
+      "test_type": "colloquial",
+      "category": "union_financial_reporting",
+      "difficulty": "medium",
+      "question": "النقابة كل سنة شو لازم تبعث للمسجل قبل أول نيسان، وشو الكشف اللي لازم يكون مرفق معها؟",
+      "expected_behavior": "retrieve",
+      "expected_result": "ترسل ميزانيتها العمومية المدققة قبل أول نيسان، ويرفق بها كشف بأسماء الموظفين والعاملين والتغييرات التي طرأت عليهم وأوضاعهم.",
+      "required_articles": [
+        118
+      ],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h11_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h11_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        118
+      ],
+      "step8_status": "generated",
+      "answer_ar": "يجب على كل نقابة عمال أو نقابة أصحاب عمل أن ترسل قبل أول نيسان من كل سنة نسخة من ميزانيتها العمومية على النموذج المقرر ومدققة حسب الاصول من مدقق حسابات قانوني تبين فيه وارداتها ومصروفاتها وموجوداتها والتزاماتها خلال السنة السابقة والمنتهية في الحادي والثلاثين من شهر كانون الأول، وللمسجل أن يطلب من النقابة تزويده ببيانات أو أي إيضاحات إضافية للميزانية. كما يرفق بنسخة الميزانية كشف يتضمن أسماء الموظفين وسائر العاملين في النقابة والتغيرات التي أجرتها عليهم وعلى أوضاعهم خلال السنة التي تعود إليها الميزانية. [المادة 118]",
+      "cited_article_numbers": [
+        118
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 21864
+    },
+    {
+      "id": "H12",
+      "test_type": "numerical",
+      "category": "employers_union_formation",
+      "difficulty": "hard",
+      "question": "كم يجب أن يكون عدد مؤسسي نقابة أصحاب العمل، وما الحد الأدنى لعمر المؤسس وطالب الانتساب؟",
+      "expected_behavior": "retrieve",
+      "expected_result": "لا يقل عدد المؤسسين عن ثلاثين صاحب عمل، ولا يقل عمر المؤسس عن خمس وعشرين سنة وعمر طالب الانتساب عن ثماني عشرة سنة.",
+      "required_articles": [
+        108
+      ],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h12_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h12_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        108
+      ],
+      "step8_status": "generated",
+      "answer_ar": "يجب أن لا يقل عدد مؤسسي نقابة أصحاب العمل عن 30 شخصاً. كما يشترط أن لا يقل عمر المؤسس عن 25 سنة، وأن عمر طالب الانتساب عن 18 سنة. [المادة 108]",
+      "cited_article_numbers": [
+        108
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 25123
+    },
+    {
+      "id": "H13",
+      "test_type": "numerical",
+      "category": "voluntary_union_dissolution",
+      "difficulty": "hard",
+      "question": "إذا أرادت النقابة حل نفسها اختيارياً، ما نسبة موافقة الأعضاء المطلوبة وخلال كم يوماً يجب إشعار الوزير والاتحاد؟",
+      "expected_behavior": "retrieve",
+      "expected_result": "يتطلب الحل الاختياري موافقة ثلثي الأعضاء المسددين لاشتراكاتهم في اجتماع غير عادي، ويبلغ الوزير والاتحاد خلال خمسة عشر يوماً.",
+      "required_articles": [
+        106
+      ],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h13_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h13_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        106
+      ],
+      "step8_status": "generated",
+      "answer_ar": "نسبة الموافقة المطلوبة هي ثلثا أعضاء النقابة المسددين لاشتراكاتهم، وتنجز في اجتماع غير عادي، مع إشعار الوزير والاتحاد العام لنقابات العمال بقرار الحل خلال خمسة عشر يوماً من تاريخ صدوره. [المادة 106]",
+      "cited_article_numbers": [
+        106
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 26202
+    },
+    {
+      "id": "H14",
+      "test_type": "multi_article",
+      "category": "collective_dispute_effects",
+      "difficulty": "hard",
+      "question": "على من تكون تسوية التوفيق أو قرار المحكمة العمالية ملزمين، ومن أي تاريخ يبدأ تنفيذ كل منهما؟",
+      "expected_behavior": "retrieve",
+      "expected_result": "المادة 130 تحدد الفئات الملزمة بالتسوية أو القرار، والمادة 131 تحدد تاريخ تنفيذ قرار المحكمة وتاريخ بدء العمل بالتسوية.",
+      "required_articles": [
+        130,
+        131
+      ],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h14_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h14_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        130,
+        131
+      ],
+      "step8_status": "generated",
+      "answer_ar": "تكون التسوية الناتجة عن إجراءات التوفيق أو قرار المحكمة العمالية ملزمين: لأطراف النزاع العمالي، وخلف صاحب العمل بما في ذلك ورثته المتولّين المؤسسة المعنية، ولجميع العاملين في المؤسسة بتاريخ حدوث النزاع أو جزء منه، ولجميع من يُستخدمون لاحقاً في المؤسسة إذا نص تقرير التسوية أو القرار على ذلك [المادة 130]. وينفذ قرار المحكمة العمالية اعتباراً من التاريخ الذي تعينه، بينما يعمل بالتسوية التي تم التوصل إليها نتيجة إجراءات التوفيق اعتباراً من التاريخ الذي يتفق عليه أطراف النزاع؛ وإن لم يتفقوا على تاريخ محدد فتبدأ التسوية من تاريخ توقيع تقرير التسوية وتكون ملزمة لجميع أطرافها وفقاً للشروط الواردة فيها [المادة 131].",
+      "cited_article_numbers": [
+        130,
+        131
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 17215
+    },
+    {
+      "id": "H15",
+      "test_type": "ambiguous",
+      "category": "ambiguous",
+      "difficulty": "hard",
+      "question": "وزارة العمل طلبت تصويب وضع في المنشأة، شو النتيجة إذا ما تم التصويب؟",
+      "expected_behavior": "clarify",
+      "expected_result": "يلزم تحديد نوع المخالفة أو الوضع المطلوب تصويبه والجهة التي أصدرت الطلب، لأن الإجراء والجزاء يختلفان باختلاف الحالة.",
+      "required_articles": [],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h15_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h15_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        84
+      ],
+      "step8_status": "generated",
+      "answer_ar": "إذا لم يصوب صاحب العمل المخالفة خلال المهلة المحددة، فللوزير إغلاق المؤسسة كلياً أو جزئياً أو إيقاف الآلة فيها إذا كان في المخالفة خطر على العمال أو المؤسسة حتى يزيل المخالفة [المادة 84]. كما يراعى عدم الإخلال بحق العمال في أجورهم كاملة عن مدة الإغلاق أو الإيقاف [المادة 84]. وللوزير أيضاً إحالة المخالفة إلى المحكمة المختصة وتغريمه بغرامة لا تقل عن 100 دينار ولا تزيد على 500 دينار، وتضاعف الغرامة في حالة التكرار، ولا يجوز تخفيضها عن حدها الأدنى لأي سبب [المادة 84]. وتُشترط عدم صدور القرار قبل توجيه إنذار بإزالة المخالفة خلال المدة التي يحددها الإنذار وفقاً لجسامة المخالفة [المادة 84].",
+      "cited_article_numbers": [
+        84
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 21965
+    },
+    {
+      "id": "H16",
+      "test_type": "ambiguous",
+      "category": "ambiguous",
+      "difficulty": "hard",
+      "question": "صار خلاف على قرار نقابي، هل بقدر أطعن فيه؟",
+      "expected_behavior": "clarify",
+      "expected_result": "يلزم تحديد نوع القرار النقابي، وصفة السائل، والجهة التي أصدرته والإجراء المتخذ قبل تحديد طريق الاعتراض.",
+      "required_articles": [],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h16_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h16_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        102,
+        116
+      ],
+      "step8_status": "generated",
+      "answer_ar": "نعم، يمكنك الطعن في القرار النقابي أمام محكمة العدل العليا إذا كان القرار قد رُفض، ويكون الطعن خلال ثلاثين يوماً من تاريخ تبليغ القرار. كما يجوز للأشخاص الذين تضرروا من تسجيل النقابة الطعن في القرار لدى محكمة العدل العليا خلال ثلاثين يوماً من تاريخ نشر القرار في الجريدة الرسمية.[المادة 102]",
+      "cited_article_numbers": [
+        102
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 21179
+    },
+    {
+      "id": "H17",
+      "test_type": "ambiguous",
+      "category": "ambiguous",
+      "difficulty": "hard",
+      "question": "استلمت كتاباً بخصوص نزاع عمالي، شو لازم أعمل بعده؟",
+      "expected_behavior": "clarify",
+      "expected_result": "يلزم تحديد الجهة التي أصدرت الكتاب ومضمونه والمرحلة الإجرائية التي وصل إليها النزاع قبل تحديد الخطوة التالية.",
+      "required_articles": [],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h17_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h17_generation.json",
+      "step7_behavior": "retrieve",
+      "retrieved_article_numbers": [
+        121,
+        122,
+        124
+      ],
+      "step8_status": "generated",
+      "answer_ar": "بعد استلامك الكتاب يجب أن تبدأ عملية التوفيق: يباشر مندوب التوفيق إجراءات الوساطة بين الطرفين لتسوية النزاع، فإذا تم الاتفاق يحتفظ مندوب التوفيق بنسخة منه مصادق عليها من الطرفين [المادة 121]أ]. وإن تعذر التفاوض أو لم يؤدِ إلى تسوية، يجب عليه أن يقدم تقريراً إلى الوزير يبين أسباب النزاع والمفاوضات التي تمت والنتيجة خلال مدة لا تتجاوز 21 يوماً من تاريخ الإحالة إليه [المادة 121]ب]. إذا تعذر الوزير بدوره التسوية فعليه إحالة النزاع إلى مجلس توفيق تشكليه وفقاً للنصوص المذكورة، ويجب أن يسعى المجلس إلى التسوية ويقدم تقريراً بذلك إلى الوزير إن توصل إلى تسوية كلياً أو جزئياً، أو تقريراً يبيِّن أسباب النزاع والإجراءات والتوصيات إذا لم يتوصل، ويُنهى المجلس إجراءاته خلال 21 يوماً من تاريخ الإحالة إليه [المادة 121]ج، [المادة 122]أ، 122ب، 122ج]. إذا لم يتمكن المجلس من إنهاء النزاع العمالي الجماعي، فتعاد الإحالة إلى الوزير ليُحال النزاع إلى محكمة عمالية تكون تشكيلها من ثلاثة قضاة ويباشرها الوزير، وتكون قراراتها نهائية وقطعياً خلال مدة محددة، مع إمكانية توكيل محامين [المادة 124]أ، 124ب، 124ج].",
+      "cited_article_numbers": [
+        121,
+        122,
+        124
+      ],
+      "grounded": true,
+      "warnings": [],
+      "elapsed_ms": 21768
+    },
+    {
+      "id": "H18",
+      "test_type": "out_of_scope",
+      "category": "inheritance",
+      "difficulty": "easy",
+      "question": "توفي والدي وترك عقاراً وحساباً بنكياً، كيف توزع التركة بين الورثة؟",
+      "expected_behavior": "abstain",
+      "expected_result": "المسألة تتعلق بالميراث والأحوال الشخصية، وهي خارج نطاق قانون العمل الأردني.",
+      "required_articles": [],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h18_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h18_generation.json",
+      "step7_behavior": "abstain",
+      "retrieved_article_numbers": [],
+      "step8_status": "out_of_scope",
+      "answer_ar": "المسألة خارج نطاق قانون العمل الأردني وليست معنية بقاعدة العمل؛ تتعلق بالتركة والميراث وفق قانون الورثه/التصرف في الإرث وليس بقانون العمل الأردني.",
+      "cited_article_numbers": [],
+      "grounded": false,
+      "warnings": [],
+      "elapsed_ms": 7502
+    },
+    {
+      "id": "H19",
+      "test_type": "out_of_scope",
+      "category": "tax",
+      "difficulty": "medium",
+      "question": "رفضت دائرة ضريبة الدخل اعتراضاً قدمته على التقدير، كيف أتابع الطعن؟",
+      "expected_behavior": "abstain",
+      "expected_result": "المسألة تتعلق بالإجراءات الضريبية والطعن في تقدير الضريبة، وهي خارج نطاق قانون العمل الأردني.",
+      "required_articles": [],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h19_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h19_generation.json",
+      "step7_behavior": "abstain",
+      "retrieved_article_numbers": [],
+      "step8_status": "out_of_scope",
+      "answer_ar": "The question belongs to a legal domain outside the Jordanian Labor Law knowledge graph.",
+      "cited_article_numbers": [],
+      "grounded": false,
+      "warnings": [],
+      "elapsed_ms": 8985
+    },
+    {
+      "id": "H20",
+      "test_type": "out_of_scope",
+      "category": "traffic_insurance",
+      "difficulty": "easy",
+      "question": "تعرضت لحادث سير وتضررت سيارتي، كيف أطالب شركة التأمين بالتعويض؟",
+      "expected_behavior": "abstain",
+      "expected_result": "المسألة تتعلق بحادث سير وتأمين مركبات، وهي خارج نطاق قانون العمل الأردني.",
+      "required_articles": [],
+      "run_status": "success",
+      "step7_file": "data\\manual_review\\stage7_step8_20\\step7\\h20_retrieval.json",
+      "step8_file": "data\\manual_review\\stage7_step8_20\\step8\\h20_generation.json",
+      "step7_behavior": "abstain",
+      "retrieved_article_numbers": [],
+      "step8_status": "out_of_scope",
+      "answer_ar": "المسألة خارج نطاق قانون العمل الأردني؛ تخص تأمين المركبات والتعويض وليس علاقة عمالية.",
+      "cited_article_numbers": [],
+      "grounded": false,
+      "warnings": [],
+      "elapsed_ms": 6741
+    }
+  ],
+  "questions_succeeded": 20,
+  "questions_failed": 0
+}

@@ -1,0 +1,338 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "هل تستطيع النقابة فتح فروع في مختلف أنحاء المملكة، وما الذي ينظم علاقتها بهذه الفروع وبالاتحاد العام؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "السؤال ضمن نطاق قانون العمل الأردني ويتطلب البحث عن أحكام تنظيم النقابات وتشكيل فروعها وعلاقاتها بالاتحاد العام",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.86
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 68
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_99",
+      "local_name": "article_99",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 99"
+      ],
+      "labels_en": [],
+      "article_number": 99,
+      "text": "أ . تمارس النقابة نشاطها لتحقيق الاهداف التالية :\n\n   1. رعاية مصالح العاملين في المهنة والدفاع عن حقوقهم في نطاق الاحكام المنصوص عليها في هذا القانون.\n\n   2. تقديم الخدمات الصحية والاجتماعية للعمال المنتسبين للنقابة وانشاء العيادات الطبية ومؤسسات الرعاية الاجتماعية\n\n       والاستهلاكية لهم.\n\n   3. العمل على رفع المستوى الاقتصادي والمهني والثقافي للعمال.\n\nب. للنقابة فتح فروع لها في المملكة وتحدد الاحكام والاجراءات المتعلقة بالعلاقة بين النقابة وفروعها بموجب نظامها\n\n    الداخلي.",
+      "final_score": 1.0,
+      "fused_score": 0.07704918032786887,
+      "direct_score": 0.07704918032786887,
+      "graph_score": 0.0,
+      "paragraph_score": 0.09090909090909091,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#article_100",
+      "local_name": "article_100",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 100"
+      ],
+      "labels_en": [],
+      "article_number": 100,
+      "text": "يضع الاتحاد العام لنقابات العمال بعد الاستئناس براي الوزارة نظاماً داخلياً للاتحاد والنقابات على ان يتضمن النظام الداخلي للنقابات الامور التالية :\n\nأ . اسم النقابة وعنوان مركزها الرئيسي.\n\nب. الغايات التي سيتم تاسيس النقابة من اجلها.\n\nج. اجراءات انتساب الاعضاء للنقابة وفصلهم منها.\n\nد. كيفية تاسيس فروع النقابة في انحاء المملكة وشروط تشكيل اللجان فيها واجراءاتها.\n\nهـ. عدد اعضاء الهيئة الادارية للنقابة ومدة ولايتها وكيفية انتخابهم ومواعيد اجتماعاتها وطريقة تعبئة الشواغر في\n\n      عضويتها وصلاحيتها.\n\nو. الحقوق التي يتمتع بها عضو النقابة والالتزامات التي يتحملها والحالات التي يتعرض فيها للعقوبات المسلكية بما في\n\n    ذلك الغرامة والفصل من النقابة.\n\nز. الخدمات والمساعدات المالية التي تقدم لعضو النقابة في حالات الضرورة بما في ذلك المساهمة في نفقات المعالجة\n\n    وتوكيل المحامين.\n\nح. شروط تعيين الموظفين والمستخدمين في النقابة واجراءاتها وانهاء خدماتهم.\n\nط. كيفية حفظ اموال النقابة ومسك دفاترها وقيودها المالية.\n\nي. اجراءات دعوة الهيئة العامة للنقابة الى اجتماعاتها العادية وغير العادية.",
+      "final_score": 0.99,
+      "fused_score": 0.07478238607270865,
+      "direct_score": 0.07478238607270865,
+      "graph_score": 0.0,
+      "paragraph_score": 0.15488409641333178,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#article_115",
+      "local_name": "article_115",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 115"
+      ],
+      "labels_en": [],
+      "article_number": 115,
+      "text": "للنقابة ان تفتح فروعاً لها في جميع انحاء المملكة، ويحدد النظام الداخلي للنقابة العلاقة بينها وبين فروعها، وبينها وبين الاتحاد العام لنقابات العمال.",
+      "final_score": 0.98,
+      "fused_score": 0.07048360348793666,
+      "direct_score": 0.07048360348793666,
+      "graph_score": 0.0,
+      "paragraph_score": 0.06666666666666667,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#assignment_different_work_violation",
+      "local_name": "assignment_different_work_violation",
+      "node_kind": "AssignmentOfDifferentWork",
+      "labels_ar": [
+        "مخالفة التكليف بعمل مختلف"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#assignment_different_work_violation\nLocal name: assignment_different_work_violation\nNode kind: AssignmentOfDifferentWork\nRDF types: AssignmentOfDifferentWork\nArabic labels: مخالفة التكليف بعمل مختلف",
+      "final_score": 0.0,
+      "fused_score": 0.03087301587301587,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#trade_union_concept",
+      "local_name": "trade_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "النقابة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#trade_union_concept\nLocal name: trade_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: النقابة",
+      "final_score": 0.0,
+      "fused_score": 0.07377049180327869,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#general_secretary_concept",
+      "local_name": "general_secretary_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "الأمين العام"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#general_secretary_concept\nLocal name: general_secretary_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الأمين العام",
+      "final_score": 0.0,
+      "fused_score": 0.07044592030360532,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+      "local_name": "work_negligence_violation",
+      "node_kind": "WorkNegligence",
+      "labels_ar": [
+        "مخالفة الإهمال في العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#work_negligence_violation\nLocal name: work_negligence_violation\nNode kind: WorkNegligence\nRDF types: WorkNegligence\nArabic labels: مخالفة الإهمال في العمل",
+      "final_score": 0.0,
+      "fused_score": 0.03536184210526316,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+      "local_name": "employers_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "نقابة أصحاب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.024193548387096774,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+      "local_name": "collective_employment_contract_concept",
+      "node_kind": "EmploymentRelation",
+      "labels_ar": [
+        "عقد العمل الجماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#collective_employment_contract_concept\nLocal name: collective_employment_contract_concept\nNode kind: EmploymentRelation\nRDF types: EmploymentRelation\nArabic labels: عقد العمل الجماعي",
+      "final_score": 0.0,
+      "fused_score": 0.023809523809523808,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#occasional_work_concept",
+      "local_name": "occasional_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل العرضي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#occasional_work_concept\nLocal name: occasional_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل العرضي",
+      "final_score": 0.0,
+      "fused_score": 0.0234375,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+      "local_name": "employer_liability_consequence",
+      "node_kind": "EmployerLiability",
+      "labels_ar": [
+        "مسؤولية صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_liability_consequence\nLocal name: employer_liability_consequence\nNode kind: EmployerLiability\nRDF types: EmployerLiability\nArabic labels: مسؤولية صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.023076923076923078,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_concept",
+      "local_name": "employer_concept",
+      "node_kind": "Employer",
+      "labels_ar": [
+        "صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_concept\nLocal name: employer_concept\nNode kind: Employer\nRDF types: Employer\nArabic labels: صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.022727272727272728,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#end_of_service_benefit_consequence",
+      "local_name": "end_of_service_benefit_consequence",
+      "node_kind": "EndOfServiceBenefit",
+      "labels_ar": [
+        "مكافأة نهاية الخدمة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#end_of_service_benefit_consequence\nLocal name: end_of_service_benefit_consequence\nNode kind: EndOfServiceBenefit\nRDF types: EndOfServiceBenefit\nArabic labels: مكافأة نهاية الخدمة",
+      "final_score": 0.0,
+      "fused_score": 0.022388059701492536,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#seasonal_work_concept",
+      "local_name": "seasonal_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل الموسمي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#seasonal_work_concept\nLocal name: seasonal_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل الموسمي",
+      "final_score": 0.0,
+      "fused_score": 0.021739130434782608,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#pay_wages_obligation",
+      "local_name": "pay_wages_obligation",
+      "node_kind": "PayWages",
+      "labels_ar": [
+        "التزام دفع الأجور"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#pay_wages_obligation\nLocal name: pay_wages_obligation\nNode kind: PayWages\nRDF types: PayWages\nArabic labels: التزام دفع الأجور",
+      "final_score": 0.0,
+      "fused_score": 0.02142857142857143,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+      "local_name": "assign_agreed_work_obligation",
+      "node_kind": "AssignAgreedWork",
+      "labels_ar": [
+        "التزام إسناد العمل المتفق عليه"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#assign_agreed_work_obligation\nLocal name: assign_agreed_work_obligation\nNode kind: AssignAgreedWork\nRDF types: AssignAgreedWork\nArabic labels: التزام إسناد العمل المتفق عليه",
+      "final_score": 1.9500000000000002,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.9500000000000002,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "diagnostics": {
+    "article_numbers": [
+      99,
+      100,
+      115
+    ],
+    "concept_local_names": [
+      "assignment_different_work_violation",
+      "trade_union_concept",
+      "general_secretary_concept",
+      "work_negligence_violation",
+      "employers_union_concept",
+      "collective_employment_contract_concept",
+      "occasional_work_concept",
+      "employer_liability_consequence",
+      "employer_concept",
+      "end_of_service_benefit_consequence",
+      "seasonal_work_concept",
+      "pay_wages_obligation"
+    ],
+    "graph_supported_articles": [],
+    "concept_count": 12,
+    "expanded_concept_count": 1,
+    "article_count": 3
+  },
+  "elapsed_ms": 23820,
+  "debug": null
+}

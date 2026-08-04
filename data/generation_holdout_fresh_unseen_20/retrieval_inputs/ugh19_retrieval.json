@@ -1,0 +1,50 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "صدر بحقي شيك بدون رصيد، ما العقوبة وكيف أعترض على القضية؟",
+  "decision": {
+    "behavior": "abstain",
+    "reason": "المسألة خارج نطاق قانون العمل الأردني وتتعلق بجريمة الشيك بدون رصيد والعقوبات والإجراءات الجنائية/المدنية وليست مسألة عمالية.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.88
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 0,
+    "input_tokens": 0
+  },
+  "articles": [],
+  "concepts": [],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [],
+    "concept_local_names": [],
+    "graph_supported_articles": [],
+    "concept_count": 0,
+    "expanded_concept_count": 0,
+    "article_count": 0
+  },
+  "elapsed_ms": 9402,
+  "debug": {
+    "analysis": {
+      "normalized_question": "صدر بحقي شيك بدون رصيد ما العقوبه وكيف اعترض علي القضيه",
+      "issue_ids": [],
+      "planner_queries": [],
+      "planner_issue_labels": [],
+      "max_final_articles": 0
+    },
+    "query_plan": {
+      "decision": "abstain",
+      "confidence": 0.88,
+      "decision_reason": "المسألة خارج نطاق قانون العمل الأردني وتتعلق بجريمة الشيك بدون رصيد والعقوبات والإجراءات الجنائية/المدنية وليست مسألة عمالية.",
+      "normalized_question_ar": "",
+      "legal_domain": "domain خارج نطاق قانون العمل الأردني",
+      "atomic_issues": [],
+      "minimum_articles": 0,
+      "maximum_articles": 0,
+      "clarification_question_ar": ""
+    },
+    "raw_preview": null
+  }
+}

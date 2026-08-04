@@ -1,0 +1,319 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "استلمت كتاباً بخصوص نزاع عمالي، شو لازم أعمل بعده؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "",
+    "clarification_question_ar": "",
+    "planner_used": false,
+    "planner_confidence": 0.0
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 40
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_121",
+      "local_name": "article_121",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 121"
+      ],
+      "labels_en": [],
+      "article_number": 121,
+      "text": "أ . اذا وقع نزاع عمالي جماعي فعلى مندوب التوفيق ان يبدا اجراءات الوساطة بين الطرفين لتسوية ذلك النزاع فاذا تم\n\n    الاتفاق بشانه بعقد جماعي او بغيره يحتفظ مندوب التوفيق بنسخة منه مصادق عليها من الطرفين.\n\nب. اذا تعذر اجراء المفاوضات بين الطرفين لاي سبب من الاسباب او تبين ان الاستمرار فيها لن يؤدي الى تسوية النزاع\n\n    فيترتب على مندوب التوفيق ان يقدم تقريراً الى الوزير يضمن اسباب النزاع والمفاوضات التي تمت بين الطرفين\n\n    والنتيجة التي توصل اليها وذلك خلال مدة لا تزيد على واحد وعشرين يوماً من تاريخ احالة النزاع اليه.\n\nج. اذا لم يتمكن الوزير بدوره من تسوية النزاع فعليه ان يحيله الى مجلس توفيق يشكله على النحو التالي :\n\n    1. رئيس يعينه الوزير على ان لا يكون من ذوي العلاقة بالنزاع او بنقابات العمال او نقابات اصحاب العمل.\n\n    2. عضوان او اكثر يمثلون كلا من اصحاب العمل والعمال باعداد متساوية يسمي كل من الطرفين ممثليه في المجلس.",
+      "final_score": 1.0,
+      "fused_score": 0.04251526251526251,
+      "direct_score": 0.04251526251526251,
+      "graph_score": 0.0,
+      "paragraph_score": 0.09090909090909091,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#article_122",
+      "local_name": "article_122",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 122"
+      ],
+      "labels_en": [],
+      "article_number": 122,
+      "text": "أ . اذا احيل نزاع عمالي الى مجلس التوفيق وجب عليه ان يسعى جهده للتوصل الى تسويته بالطريقة التي يراها ملائمة\n\n    فاذا توصل الى تسويته كلياً او جزئياً فيقدم الى الوزير تقريراً بذلك مرفقاً به التسوية الموقعة بين الطرفين.\n\nب. اذا لم يتوصل مجلس التوفيق الى تسوية النزاع فيترتب عليه ان يقدم الى الوزير تقريراً يتضمن اسباب النزاع\n\n    والاجراءات التي اتخذها لتسويته والاسباب التي ادت الى عدم انهائه والتوصيات التي يراها مناسبة بهذا الشان.\n\nج. يترتب على المجلس في جميع الاحوال ان ينهي اجراءات التوفيق وتقديم تقريره بالنتائج التي توصل اليها خلال مدة لا\n\n     تزيد على واحد وعشرين يوماً من تاريخ احالة النزاع اليه.",
+      "final_score": 0.99,
+      "fused_score": 0.041880341880341884,
+      "direct_score": 0.041880341880341884,
+      "graph_score": 0.0,
+      "paragraph_score": 0.08333333333333333,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#article_124",
+      "local_name": "article_124",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 124"
+      ],
+      "labels_en": [],
+      "article_number": 124,
+      "text": "أ . اذا لم يتمكن مجلس التوفيق من انهاء النزاع العمالي الجماعي فيترتب على الوزير احالته الى محكمة عمالية يتم\n\n    تشكيلها من ثلاثة قضاة نظاميين ينتدبهم المجلس القضائي لهذه الغاية بناء على طلب الوزير ويراسها اعلاهم في\n\n    الدرجة ويجوز انعقادها بحضور اثنين من اعضائها وفي حالة اختلافهما في الراي يدعى القاضي الثالث للاشتراك في\n\n    نظر القضية واصدار القرار فيها.\n\nب. يعطى النزاع العمالي الذي يحال الى المحكمة العمالية صفة الاستعجال بحيث تباشر النظر فيه خلال مدة لا تزيد على\n\n    سبعة ايام من تاريخ الاحالة على ان تصدر المحكمة قرارها في النزاع وتبلغه الى الوزير خلال ثلاثين يوماً من ذلك\n\n    التاريخ ويكون هذا القرار قطعياً، غير قابل للطعن امام اي جهة قضائية او ادارية.\n\nج. تنظر المحكمة العمالية في النزاع العمالي المعروض عليها وتفصل فيه وفقاً للاجراءات التي تراها مناسبة لتحقيق\n\n    العدالة بين الطرفين على ان تراعي في ذلك اي اجراءات خاصة منصوص عليها في هذا القانون ويجوز لكل من\n\n    الطرفين توكيل محام او اكثر امام المحكمة.",
+      "final_score": 0.98,
+      "fused_score": 0.03278688524590164,
+      "direct_score": 0.03278688524590164,
+      "graph_score": 0.0,
+      "paragraph_score": 0.1669172932330827,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#collective_labor_dispute_concept",
+      "local_name": "collective_labor_dispute_concept",
+      "node_kind": "LegalEvent",
+      "labels_ar": [
+        "النزاع العمالي الجماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#collective_labor_dispute_concept\nLocal name: collective_labor_dispute_concept\nNode kind: LegalEvent\nRDF types: LegalEvent\nArabic labels: النزاع العمالي الجماعي",
+      "final_score": 0.0,
+      "fused_score": 0.02459016393442623,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+      "local_name": "collective_employment_contract_concept",
+      "node_kind": "EmploymentRelation",
+      "labels_ar": [
+        "عقد العمل الجماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#collective_employment_contract_concept\nLocal name: collective_employment_contract_concept\nNode kind: EmploymentRelation\nRDF types: EmploymentRelation\nArabic labels: عقد العمل الجماعي",
+      "final_score": 0.0,
+      "fused_score": 0.024193548387096774,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+      "local_name": "assign_agreed_work_obligation",
+      "node_kind": "AssignAgreedWork",
+      "labels_ar": [
+        "التزام إسناد العمل المتفق عليه"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#assign_agreed_work_obligation\nLocal name: assign_agreed_work_obligation\nNode kind: AssignAgreedWork\nRDF types: AssignAgreedWork\nArabic labels: التزام إسناد العمل المتفق عليه",
+      "final_score": 0.0,
+      "fused_score": 0.023809523809523808,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+      "local_name": "perform_work_obligation",
+      "node_kind": "PerformWork",
+      "labels_ar": [
+        "التزام أداء العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#perform_work_obligation\nLocal name: perform_work_obligation\nNode kind: PerformWork\nRDF types: PerformWork\nArabic labels: التزام أداء العمل",
+      "final_score": 0.0,
+      "fused_score": 0.0234375,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_right_concept",
+      "local_name": "wage_right_concept",
+      "node_kind": "WageRight",
+      "labels_ar": [
+        "حق الأجر"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_right_concept\nLocal name: wage_right_concept\nNode kind: WageRight\nRDF types: WageRight\nArabic labels: حق الأجر",
+      "final_score": 0.0,
+      "fused_score": 0.023076923076923078,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#trade_union_concept",
+      "local_name": "trade_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "النقابة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#trade_union_concept\nLocal name: trade_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: النقابة",
+      "final_score": 0.0,
+      "fused_score": 0.022727272727272728,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+      "local_name": "employers_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "نقابة أصحاب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.022388059701492536,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+      "local_name": "temporary_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل المؤقت"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#temporary_work_concept\nLocal name: temporary_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل المؤقت",
+      "final_score": 0.0,
+      "fused_score": 0.022058823529411766,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#assignment_different_work_violation",
+      "local_name": "assignment_different_work_violation",
+      "node_kind": "AssignmentOfDifferentWork",
+      "labels_ar": [
+        "مخالفة التكليف بعمل مختلف"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#assignment_different_work_violation\nLocal name: assignment_different_work_violation\nNode kind: AssignmentOfDifferentWork\nRDF types: AssignmentOfDifferentWork\nArabic labels: مخالفة التكليف بعمل مختلف",
+      "final_score": 0.0,
+      "fused_score": 0.021739130434782608,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#written_contract_concept",
+      "local_name": "written_contract_concept",
+      "node_kind": "WrittenContract",
+      "labels_ar": [
+        "عقد العمل الخطي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#written_contract_concept\nLocal name: written_contract_concept\nNode kind: WrittenContract\nRDF types: WrittenContract\nArabic labels: عقد العمل الخطي",
+      "final_score": 0.0,
+      "fused_score": 0.02142857142857143,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#worker_concept",
+      "local_name": "worker_concept",
+      "node_kind": "Worker",
+      "labels_ar": [
+        "العامل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#worker_concept\nLocal name: worker_concept\nNode kind: Worker\nRDF types: Worker\nArabic labels: العامل",
+      "final_score": 0.0,
+      "fused_score": 0.02112676056338028,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#weekly_rest_right_concept",
+      "local_name": "weekly_rest_right_concept",
+      "node_kind": "WeeklyRestRight",
+      "labels_ar": [
+        "حق العطلة الأسبوعية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#weekly_rest_right_concept\nLocal name: weekly_rest_right_concept\nNode kind: WeeklyRestRight\nRDF types: WeeklyRestRight\nArabic labels: حق العطلة الأسبوعية",
+      "final_score": 0.0,
+      "fused_score": 0.020833333333333332,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      121,
+      122,
+      124
+    ],
+    "concept_local_names": [
+      "collective_labor_dispute_concept",
+      "collective_employment_contract_concept",
+      "assign_agreed_work_obligation",
+      "perform_work_obligation",
+      "wage_right_concept",
+      "trade_union_concept",
+      "employers_union_concept",
+      "temporary_work_concept",
+      "assignment_different_work_violation",
+      "written_contract_concept",
+      "worker_concept",
+      "weekly_rest_right_concept"
+    ],
+    "graph_supported_articles": [],
+    "concept_count": 12,
+    "expanded_concept_count": 0,
+    "article_count": 3
+  },
+  "elapsed_ms": 14643,
+  "debug": null
+}

@@ -7,24 +7,24 @@
     "questions_requested": 20,
     "questions_completed": 20,
     "questions_failed_to_run": 0,
-    "passed": 19,
-    "overall_accuracy": 0.95,
+    "passed": 18,
+    "overall_accuracy": 0.9,
     "retrieve_cases": 14,
     "retrieve_pass_rate": 0.928571,
     "hit_at_1_accuracy": 0.928571,
     "hit_at_3_accuracy": 1.0,
     "mean_reciprocal_rank": 0.964286,
-    "exact_set_accuracy": 0.714286,
+    "exact_set_accuracy": 0.928571,
     "required_article_recall": 1.0,
-    "mean_strict_precision": 0.833333,
-    "mean_strict_f1": 0.880952,
+    "mean_strict_precision": 0.964286,
+    "mean_strict_f1": 0.976191,
     "concept_hit_accuracy": 0.833333,
     "safety_cases": 6,
-    "safe_non_answer_accuracy": 1.0,
-    "clarification_accuracy": 1.0,
+    "safe_non_answer_accuracy": 0.833333,
+    "clarification_accuracy": 0.666667,
     "out_of_scope_abstention_accuracy": 1.0,
     "explicit_safety_signal_accuracy": 0.0,
-    "mean_elapsed_seconds": 18.874,
+    "mean_elapsed_seconds": 25.362,
     "by_test_type": {
       "straightforward": {
         "count": 4,
@@ -58,8 +58,8 @@
       },
       "ambiguous": {
         "count": 3,
-        "passed": 3,
-        "accuracy": 1.0
+        "passed": 2,
+        "accuracy": 0.666667
       },
       "out_of_scope": {
         "count": 3,
@@ -130,7 +130,7 @@
         "unexpected_articles": [],
         "missing_required_articles": []
       },
-      "elapsed_seconds": 19.494
+      "elapsed_seconds": 30.622
     },
     {
       "id": "H02",
@@ -161,10 +161,10 @@
         ],
         "graph_supported_articles": [],
         "concepts": [
-          "establishment_concept",
+          "work_negligence_violation",
+          "work_concept",
           "employer_concept",
           "employment_contract_concept",
-          "work_concept",
           "employers_union_concept",
           "occasional_work_concept",
           "perform_work_obligation",
@@ -172,7 +172,10 @@
           "temporary_work_concept",
           "oral_contract_concept",
           "employer_liability_consequence",
-          "work_injury_event"
+          "work_injury_event",
+          "disclosure_employer_secrets_violation",
+          "follow_lawful_instructions_obligation",
+          "disciplinary_action_consequence"
         ]
       },
       "metrics": {
@@ -196,7 +199,7 @@
         ],
         "missing_required_articles": []
       },
-      "elapsed_seconds": 22.631
+      "elapsed_seconds": 22.842
     },
     {
       "id": "H03",
@@ -231,16 +234,16 @@
         "concepts": [
           "occupational_disease_concept",
           "medical_examination_event",
-          "employer_concept",
           "employer_liability_consequence",
+          "compensation_consequence",
           "work_injury_event",
-          "work_concept",
+          "employer_concept",
           "perform_work_obligation",
+          "work_concept",
           "occasional_work_concept",
           "employment_contract_concept",
-          "temporary_work_concept",
-          "oral_contract_concept",
-          "employers_union_concept"
+          "employers_union_concept",
+          "temporary_work_concept"
         ]
       },
       "metrics": {
@@ -259,13 +262,14 @@
         "concept_scorable": true,
         "concept_hit": true,
         "matched_expected_concepts": [
+          "compensation_consequence",
           "medical_examination_event",
           "work_injury_event"
         ],
         "unexpected_articles": [],
         "missing_required_articles": []
       },
-      "elapsed_seconds": 16.839
+      "elapsed_seconds": 26.642
     },
     {
       "id": "H04",
@@ -296,14 +300,14 @@
           "employers_union_concept",
           "trade_union_concept",
           "collective_employment_contract_concept",
-          "general_secretary_concept",
           "worker_concept",
+          "general_secretary_concept",
           "employer_concept",
           "social_security_related_right_concept",
           "worker_not_covered_social_security_condition",
           "wage_concept",
-          "administrative_body_concept",
-          "work_concept"
+          "work_concept",
+          "administrative_body_concept"
         ]
       },
       "metrics": {
@@ -325,7 +329,7 @@
         "unexpected_articles": [],
         "missing_required_articles": []
       },
-      "elapsed_seconds": 17.353
+      "elapsed_seconds": 33.037
     },
     {
       "id": "H05",
@@ -348,50 +352,46 @@
       "actual": {
         "behavior_signal": "retrieved",
         "articles": [
-          6,
-          19
+          6
         ],
-        "graph_supported_articles": [
-          19
-        ],
+        "graph_supported_articles": [],
         "concepts": [
           "disclosure_employer_secrets_violation",
           "preserve_confidentiality_obligation",
-          "perform_work_obligation",
-          "assign_agreed_work_obligation",
-          "follow_lawful_instructions_obligation",
-          "work_negligence_violation",
-          "provide_safe_work_environment_obligation",
-          "pay_wages_obligation",
           "work_concept",
           "employer_concept",
+          "temporary_work_concept",
+          "perform_work_obligation",
+          "employer_liability_consequence",
           "employment_contract_concept",
+          "work_injury_event",
           "occasional_work_concept",
+          "employers_union_concept",
+          "seasonal_work_concept",
+          "work_negligence_violation",
           "disciplinary_action_consequence"
         ]
       },
       "metrics": {
         "pass": true,
         "all_required_found": true,
-        "exact_set_match": false,
-        "ordered_exact_match": false,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
         "hit_at_1": true,
         "hit_at_3": true,
         "primary_rank": 1,
         "reciprocal_rank": 1.0,
         "required_recall": 1.0,
-        "strict_precision": 0.5,
-        "strict_f1": 0.666667,
-        "lenient_precision": 0.5,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
         "concept_scorable": false,
         "concept_hit": null,
         "matched_expected_concepts": [],
-        "unexpected_articles": [
-          19
-        ],
+        "unexpected_articles": [],
         "missing_required_articles": []
       },
-      "elapsed_seconds": 21.884
+      "elapsed_seconds": 27.061
     },
     {
       "id": "H06",
@@ -418,56 +418,49 @@
       "actual": {
         "behavior_signal": "retrieved",
         "articles": [
-          79,
-          78,
-          85
+          79
         ],
         "graph_supported_articles": [
-          79,
-          78,
-          85
+          79
         ],
         "concepts": [
           "safe_work_environment_right_concept",
           "provide_safe_work_environment_obligation",
-          "disclosure_employer_secrets_violation",
-          "occupational_disease_concept",
-          "employer_liability_consequence",
-          "worker_not_covered_social_security_condition",
-          "employers_union_concept",
-          "disciplinary_action_consequence",
-          "preserve_confidentiality_obligation",
           "work_negligence_violation",
-          "dismissal_without_lawful_ground_condition",
-          "administrative_body_concept"
+          "employer_concept",
+          "employer_liability_consequence",
+          "work_concept",
+          "employers_union_concept",
+          "employment_contract_concept",
+          "seasonal_work_concept",
+          "temporary_work_concept",
+          "occasional_work_concept",
+          "oral_contract_concept"
         ]
       },
       "metrics": {
         "pass": true,
         "all_required_found": true,
-        "exact_set_match": false,
-        "ordered_exact_match": false,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
         "hit_at_1": true,
         "hit_at_3": true,
         "primary_rank": 1,
         "reciprocal_rank": 1.0,
         "required_recall": 1.0,
-        "strict_precision": 0.333333,
-        "strict_f1": 0.5,
-        "lenient_precision": 0.333333,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
         "concept_scorable": true,
         "concept_hit": true,
         "matched_expected_concepts": [
           "provide_safe_work_environment_obligation",
           "safe_work_environment_right_concept"
         ],
-        "unexpected_articles": [
-          78,
-          85
-        ],
+        "unexpected_articles": [],
         "missing_required_articles": []
       },
-      "elapsed_seconds": 24.814
+      "elapsed_seconds": 30.451
     },
     {
       "id": "H07",
@@ -497,18 +490,21 @@
         ],
         "graph_supported_articles": [],
         "concepts": [
-          "leave_request_event",
+          "work_negligence_violation",
           "wage_delay_violation",
           "arbitrary_dismissal_violation",
           "assignment_different_work_violation",
-          "work_negligence_violation",
           "compensation_consequence",
           "legal_claim_consequence",
           "disclosure_employer_secrets_violation",
           "wage_right_concept",
-          "employer_liability_consequence",
           "collective_labor_dispute_concept",
-          "pay_wages_obligation"
+          "employer_liability_consequence",
+          "pay_wages_obligation",
+          "dismissal_without_lawful_ground_condition",
+          "follow_lawful_instructions_obligation",
+          "perform_work_obligation",
+          "disciplinary_action_consequence"
         ]
       },
       "metrics": {
@@ -532,7 +528,7 @@
         "unexpected_articles": [],
         "missing_required_articles": []
       },
-      "elapsed_seconds": 23.928
+      "elapsed_seconds": 31.167
     },
     {
       "id": "H08",
@@ -559,18 +555,18 @@
         ],
         "graph_supported_articles": [],
         "concepts": [
-          "provide_safe_work_environment_obligation",
-          "temporary_work_concept",
-          "seasonal_work_concept",
-          "occasional_work_concept",
-          "wage_delay_violation",
-          "weekly_rest_right_concept",
-          "wage_concept",
-          "wage_right_concept",
-          "perform_work_obligation",
-          "worker_concept",
           "work_concept",
-          "pay_wages_obligation"
+          "temporary_work_concept",
+          "occasional_work_concept",
+          "seasonal_work_concept",
+          "employer_concept",
+          "employment_contract_concept",
+          "perform_work_obligation",
+          "work_injury_event",
+          "employer_liability_consequence",
+          "employers_union_concept",
+          "written_contract_concept",
+          "oral_contract_concept"
         ]
       },
       "metrics": {
@@ -592,7 +588,7 @@
         "unexpected_articles": [],
         "missing_required_articles": []
       },
-      "elapsed_seconds": 17.94
+      "elapsed_seconds": 20.056
     },
     {
       "id": "H09",
@@ -621,25 +617,20 @@
         "articles": [
           91
         ],
-        "graph_supported_articles": [
-          91
-        ],
+        "graph_supported_articles": [],
         "concepts": [
-          "wage_concept",
-          "wage_right_concept",
-          "wage_payment_event",
-          "worker_concept",
           "worker_not_covered_social_security_condition",
+          "worker_concept",
           "compensation_consequence",
           "wage_delay_violation",
           "assignment_different_work_violation",
+          "wage_concept",
           "pay_wages_obligation",
           "occasional_work_concept",
+          "wage_right_concept",
           "arbitrary_dismissal_violation",
-          "fixed_term_contract_concept",
-          "delay_exceeds_seven_days_condition",
-          "employer_liability_consequence",
-          "legal_claim_consequence"
+          "wage_payment_event",
+          "fixed_term_contract_concept"
         ]
       },
       "metrics": {
@@ -664,7 +655,7 @@
         "unexpected_articles": [],
         "missing_required_articles": []
       },
-      "elapsed_seconds": 22.742
+      "elapsed_seconds": 29.687
     },
     {
       "id": "H10",
@@ -687,51 +678,44 @@
       "actual": {
         "behavior_signal": "retrieved",
         "articles": [
-          9,
-          84,
-          77
+          9
         ],
         "graph_supported_articles": [],
         "concepts": [
+          "fixed_term_contract_concept",
+          "indefinite_term_contract_concept",
+          "worker_not_covered_social_security_condition",
+          "contract_fixed_term_condition",
+          "contract_indefinite_term_condition",
           "disclosure_employer_secrets_violation",
           "employer_liability_consequence",
           "employer_concept",
           "work_negligence_violation",
           "perform_work_obligation",
           "assign_agreed_work_obligation",
-          "employers_union_concept",
-          "temporary_work_concept",
-          "safe_work_environment_right_concept",
-          "work_concept",
-          "collective_employment_contract_concept",
-          "dismissal_without_lawful_ground_condition",
-          "preserve_confidentiality_obligation",
-          "disciplinary_action_consequence"
+          "employers_union_concept"
         ]
       },
       "metrics": {
         "pass": true,
         "all_required_found": true,
-        "exact_set_match": false,
-        "ordered_exact_match": false,
+        "exact_set_match": true,
+        "ordered_exact_match": true,
         "hit_at_1": true,
         "hit_at_3": true,
         "primary_rank": 1,
         "reciprocal_rank": 1.0,
         "required_recall": 1.0,
-        "strict_precision": 0.333333,
-        "strict_f1": 0.5,
-        "lenient_precision": 0.333333,
+        "strict_precision": 1.0,
+        "strict_f1": 1.0,
+        "lenient_precision": 1.0,
         "concept_scorable": false,
         "concept_hit": null,
         "matched_expected_concepts": [],
-        "unexpected_articles": [
-          77,
-          84
-        ],
+        "unexpected_articles": [],
         "missing_required_articles": []
       },
-      "elapsed_seconds": 22.12
+      "elapsed_seconds": 23.519
     },
     {
       "id": "H11",
@@ -793,7 +777,7 @@
         "unexpected_articles": [],
         "missing_required_articles": []
       },
-      "elapsed_seconds": 17.796
+      "elapsed_seconds": 29.858
     },
     {
       "id": "H12",
@@ -853,7 +837,7 @@
         "unexpected_articles": [],
         "missing_required_articles": []
       },
-      "elapsed_seconds": 21.668
+      "elapsed_seconds": 23.092
     },
     {
       "id": "H13",
@@ -913,7 +897,7 @@
         "unexpected_articles": [],
         "missing_required_articles": []
       },
-      "elapsed_seconds": 16.732
+      "elapsed_seconds": 20.813
     },
     {
       "id": "H14",
@@ -981,7 +965,7 @@
         "unexpected_articles": [],
         "missing_required_articles": []
       },
-      "elapsed_seconds": 17.768
+      "elapsed_seconds": 33.403
     },
     {
       "id": "H15",
@@ -994,18 +978,37 @@
         "description": "يلزم تحديد نوع المخالفة أو الوضع المطلوب تصويبه والجهة التي أصدرت الطلب، لأن الإجراء والجزاء يختلفان باختلاف الحالة."
       },
       "actual": {
-        "behavior_signal": "no_retrieval",
-        "articles": [],
+        "behavior_signal": "retrieved",
+        "articles": [
+          9,
+          84
+        ],
         "graph_supported_articles": [],
-        "concepts": []
+        "concepts": [
+          "work_negligence_violation",
+          "temporary_work_concept",
+          "perform_work_obligation",
+          "employment_contract_concept",
+          "work_concept",
+          "oral_contract_concept",
+          "occasional_work_concept",
+          "employers_union_concept",
+          "employer_liability_consequence",
+          "worker_not_covered_social_security_condition",
+          "employer_concept",
+          "seasonal_work_concept",
+          "disclosure_employer_secrets_violation",
+          "follow_lawful_instructions_obligation",
+          "disciplinary_action_consequence"
+        ]
       },
       "metrics": {
-        "pass": true,
-        "safe_no_retrieval": true,
+        "pass": false,
+        "safe_no_retrieval": false,
         "explicit_behavior_match": false,
-        "returned_article_count": 0
+        "returned_article_count": 2
       },
-      "elapsed_seconds": 18.208
+      "elapsed_seconds": 23.283
     },
     {
       "id": "H16",
@@ -1029,7 +1032,7 @@
         "explicit_behavior_match": false,
         "returned_article_count": 0
       },
-      "elapsed_seconds": 19.991
+      "elapsed_seconds": 20.712
     },
     {
       "id": "H17",
@@ -1053,7 +1056,7 @@
         "explicit_behavior_match": false,
         "returned_article_count": 0
       },
-      "elapsed_seconds": 16.275
+      "elapsed_seconds": 25.483
     },
     {
       "id": "H18",
@@ -1077,7 +1080,7 @@
         "explicit_behavior_match": false,
         "returned_article_count": 0
       },
-      "elapsed_seconds": 12.424
+      "elapsed_seconds": 23.686
     },
     {
       "id": "H19",
@@ -1101,7 +1104,7 @@
         "explicit_behavior_match": false,
         "returned_article_count": 0
       },
-      "elapsed_seconds": 12.741
+      "elapsed_seconds": 15.803
     },
     {
       "id": "H20",
@@ -1125,7 +1128,7 @@
         "explicit_behavior_match": false,
         "returned_article_count": 0
       },
-      "elapsed_seconds": 14.135
+      "elapsed_seconds": 16.022
     }
   ]
 }

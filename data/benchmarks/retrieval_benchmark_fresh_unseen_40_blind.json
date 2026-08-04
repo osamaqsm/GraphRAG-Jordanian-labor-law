@@ -1,0 +1,290 @@
+{
+  "benchmark_name": "Jordanian Labor Law KG Fresh Unseen Retrieve-and-Abstain 40 Holdout",
+  "benchmark_version": "1.0.0",
+  "language": "Arabic",
+  "frozen": true,
+  "question_count": 40,
+  "warning": "Blind execution file. It intentionally excludes gold articles and expected answers. Do not inspect the gold-key file before preserving the first complete run.",
+  "questions": [
+    {
+      "id": "N40-01",
+      "test_type": "straightforward",
+      "category": "law_commencement",
+      "difficulty": "easy",
+      "question": "ما الاسم الرسمي لقانون العمل، وبعد كم يوماً من نشره في الجريدة الرسمية يبدأ العمل به؟"
+    },
+    {
+      "id": "N40-02",
+      "test_type": "paraphrased",
+      "category": "labor_inspection",
+      "difficulty": "easy",
+      "question": "أي جهة رسمية تتولى أعمال التفتيش للتأكد من تطبيق أحكام قانون العمل؟"
+    },
+    {
+      "id": "N40-03",
+      "test_type": "straightforward",
+      "category": "labor_inspection",
+      "difficulty": "medium",
+      "question": "بأي أداة قانونية تحدد مؤهلات مفتشي العمل وصلاحياتهم ومكافآتهم والتزامات أصحاب العمل تجاههم؟"
+    },
+    {
+      "id": "N40-04",
+      "test_type": "multi_issue",
+      "category": "employment_services",
+      "difficulty": "hard",
+      "question": "من ينظم سوق العمل ويوفر فرص تشغيل الأردنيين، وهل يمكن إنشاء مكاتب خاصة للتشغيل أو لاستقدام خدم المنازل غير الأردنيين؟"
+    },
+    {
+      "id": "N40-05",
+      "test_type": "numerical",
+      "category": "juvenile_work_penalties",
+      "difficulty": "medium",
+      "question": "ما مقدار الغرامة على صاحب العمل أو مدير المؤسسة عند مخالفة أحكام تشغيل الأحداث، وماذا يحدث عند تكرار المخالفة؟"
+    },
+    {
+      "id": "N40-06",
+      "test_type": "multi_issue",
+      "category": "occupational_safety_enforcement",
+      "difficulty": "hard",
+      "question": "إذا كانت مخالفة السلامة تعرض العمال أو الآلات للخطر، هل يستطيع الوزير إغلاق مكان العمل أو إيقاف آلة، وما الإجراء الذي يجب أن يسبق القرار؟"
+    },
+    {
+      "id": "N40-07",
+      "test_type": "paraphrased",
+      "category": "occupational_safety_regulations",
+      "difficulty": "hard",
+      "question": "من يصدر أنظمة لجان السلامة والصحة المهنية والرعاية الطبية الوقائية والفحوص الدورية والوقاية من الآلات الصناعية؟"
+    },
+    {
+      "id": "N40-08",
+      "test_type": "paraphrased",
+      "category": "work_injury_compensation",
+      "difficulty": "medium",
+      "question": "هل يجوز للمصاب بإصابة عمل أن يطالب صاحب العمل بتعويضات إضافية غير الواردة في قانون العمل، ومتى يستثنى من المنع؟"
+    },
+    {
+      "id": "N40-09",
+      "test_type": "straightforward",
+      "category": "death_compensation",
+      "difficulty": "medium",
+      "question": "وفق أي مرجع توزع تعويضات إصابة العمل عند وفاة العامل على المستحقين عنه؟"
+    },
+    {
+      "id": "N40-10",
+      "test_type": "multi_issue",
+      "category": "trade_union_objectives",
+      "difficulty": "medium",
+      "question": "ما أبرز الأهداف التي تمارس النقابة نشاطها لتحقيقها، وهل يسمح لها بفتح فروع داخل المملكة؟"
+    },
+    {
+      "id": "N40-11",
+      "test_type": "numerical",
+      "category": "trade_union_transition",
+      "difficulty": "medium",
+      "question": "ما وضع النقابات المسجلة قبل نفاذ القانون، وكم كانت المهلة الممنوحة لها لتوفيق أنظمتها وأوضاعها معه؟"
+    },
+    {
+      "id": "N40-12",
+      "test_type": "multi_issue",
+      "category": "trade_union_legal_personality",
+      "difficulty": "hard",
+      "question": "متى تكتسب النقابة الشخصية الاعتبارية، وخلال أي مدة يجب إبلاغ المسجل بأي تعديل على نظامها الداخلي؟"
+    },
+    {
+      "id": "N40-13",
+      "test_type": "straightforward",
+      "category": "trade_union_registration",
+      "difficulty": "easy",
+      "question": "متى يلغي مسجل النقابات شهادة تسجيل نقابة العمال أو نقابة أصحاب العمل؟"
+    },
+    {
+      "id": "N40-14",
+      "test_type": "multi_issue",
+      "category": "trade_union_compliance",
+      "difficulty": "hard",
+      "question": "ما العقوبة إذا لم تقدم النقابة مستنداتها المطلوبة للوزارة، وما المهلة الممنوحة لها لتصويب مخالفة نظامها الداخلي؟"
+    },
+    {
+      "id": "N40-15",
+      "test_type": "paraphrased",
+      "category": "trade_union_finance",
+      "difficulty": "hard",
+      "question": "في أي أغراض مشروعة يمكن إنفاق أموال نقابة العمال، وهل تشمل نفقات الإدارة والدعاوى والنزاعات العمالية؟"
+    },
+    {
+      "id": "N40-16",
+      "test_type": "multi_issue",
+      "category": "trade_union_federations",
+      "difficulty": "hard",
+      "question": "كيف يتشكل الاتحاد العام لنقابات العمال، وهل تستطيع نقابتان أو أكثر إنشاء اتحاد مهني والانضمام إلى منظمات عمالية خارجية؟"
+    },
+    {
+      "id": "N40-17",
+      "test_type": "paraphrased",
+      "category": "trade_union_immunity",
+      "difficulty": "medium",
+      "question": "هل يتعرض عضو أو موظف النقابة للملاحقة لمجرد مشاركته في اتفاق بين الأعضاء لتحقيق غاية نقابية مشروعة؟"
+    },
+    {
+      "id": "N40-18",
+      "test_type": "straightforward",
+      "category": "trade_union_legality",
+      "difficulty": "easy",
+      "question": "هل تعد نقابة العمال غير مشروعة فقط لأن هناك ادعاء بأن إحدى غاياتها تقيد حرية التجارة؟"
+    },
+    {
+      "id": "N40-19",
+      "test_type": "multi_issue",
+      "category": "trade_union_records",
+      "difficulty": "medium",
+      "question": "من يحدد أوضاع سجلات النقابة، ومن يحق له الاطلاع على دفاترها وقوائم أعضائها وأين يتم ذلك؟"
+    },
+    {
+      "id": "N40-20",
+      "test_type": "paraphrased",
+      "category": "trade_union_governance",
+      "difficulty": "medium",
+      "question": "ما الشروط التي يجب أن تتوافر في الشخص حتى ينتخب عضواً في الهيئة الإدارية للنقابة، وما الأحكام الجنائية التي تمنعه؟"
+    },
+    {
+      "id": "N40-21",
+      "test_type": "straightforward",
+      "category": "trade_union_branches",
+      "difficulty": "easy",
+      "question": "هل تستطيع النقابة فتح فروع في مختلف أنحاء المملكة، وما الذي ينظم علاقتها بهذه الفروع وبالاتحاد العام؟"
+    },
+    {
+      "id": "N40-22",
+      "test_type": "multi_issue",
+      "category": "trade_union_offences",
+      "difficulty": "hard",
+      "question": "ما عقوبة الموظف المسؤول إذا امتنع عن إرسال بيانات النقابة المطلوبة، وماذا عن إدخال بيانات غير صحيحة أو تزوير وثائقها؟"
+    },
+    {
+      "id": "N40-23",
+      "test_type": "straightforward",
+      "category": "collective_disputes",
+      "difficulty": "medium",
+      "question": "ما صلاحيات المحكمة العمالية ومجلس التوفيق في سماع الأشخاص وطلب المستندات والبيانات من أطراف النزاع؟"
+    },
+    {
+      "id": "N40-24",
+      "test_type": "straightforward",
+      "category": "collective_disputes",
+      "difficulty": "easy",
+      "question": "أين تعقد جلسات المحكمة العمالية ومجلس التوفيق، ومن يوفر المتطلبات الإدارية والأجهزة اللازمة لعملهما؟"
+    },
+    {
+      "id": "N40-25",
+      "test_type": "numerical",
+      "category": "collective_dispute_decisions",
+      "difficulty": "hard",
+      "question": "كيف يصدر تقرير مجلس التوفيق أو قرار المحكمة العمالية، وخلال كم يوماً يجب نشره وعلى نفقة من؟"
+    },
+    {
+      "id": "N40-26",
+      "test_type": "straightforward",
+      "category": "collective_dispute_remuneration",
+      "difficulty": "easy",
+      "question": "من يقرر مكافآت رئيس وأعضاء المحكمة العمالية ومجلس التوفيق وكاتب الجلسات؟"
+    },
+    {
+      "id": "N40-27",
+      "test_type": "multi_issue",
+      "category": "collective_dispute_employer_restrictions",
+      "difficulty": "hard",
+      "question": "أثناء نظر النزاع العمالي، هل يستطيع صاحب العمل تغيير شروط الاستخدام أو فصل عامل دون موافقة الجهة التي تنظر النزاع؟"
+    },
+    {
+      "id": "N40-28",
+      "test_type": "numerical",
+      "category": "collective_dispute_penalties",
+      "difficulty": "hard",
+      "question": "ما الغرامات التي تفرض على العامل وعلى صاحب العمل عند مخالفة شرط ملزم في تسوية نزاع عمالي أو قرار محكمة عمالية، وماذا يحدث عند التكرار؟"
+    },
+    {
+      "id": "N40-29",
+      "test_type": "numerical",
+      "category": "general_penalties",
+      "difficulty": "medium",
+      "question": "إذا وقعت مخالفة لقانون العمل ولم يحدد لها القانون أو النظام عقوبة خاصة، فما الغرامة العامة المطبقة؟"
+    },
+    {
+      "id": "N40-30",
+      "test_type": "straightforward",
+      "category": "implementing_regulations",
+      "difficulty": "easy",
+      "question": "أي جهة تملك إصدار الأنظمة اللازمة لتنفيذ أحكام قانون العمل، وبناء على تنسيب من؟"
+    },
+    {
+      "id": "N40-31",
+      "test_type": "numerical",
+      "category": "transitional_provisions",
+      "difficulty": "hard",
+      "question": "ما مصير قانون العمل السابق وأنظمته وتعليماته بعد صدور القانون الجديد، وما الحد الأقصى لاستمرار الأحكام القديمة غير المخالفة؟"
+    },
+    {
+      "id": "N40-32",
+      "test_type": "straightforward",
+      "category": "law_execution",
+      "difficulty": "easy",
+      "question": "من كلفه القانون بتنفيذ أحكام قانون العمل؟"
+    },
+    {
+      "id": "N40-33",
+      "test_type": "out_of_scope",
+      "category": "personal_status",
+      "difficulty": "easy",
+      "question": "كيف أرفع دعوى طلاق للشقاق والنزاع، وما حقوق الزوجة بعد الطلاق؟"
+    },
+    {
+      "id": "N40-34",
+      "test_type": "out_of_scope",
+      "category": "inheritance",
+      "difficulty": "easy",
+      "question": "توفي والدي وترك منزلاً وأموالاً؛ كيف توزع الحصص بين الأبناء والزوجة؟"
+    },
+    {
+      "id": "N40-35",
+      "test_type": "out_of_scope",
+      "category": "traffic_law",
+      "difficulty": "easy",
+      "question": "وصلتني مخالفة بسبب قطع الإشارة الحمراء؛ كيف أعترض عليها وما قيمة الغرامة؟"
+    },
+    {
+      "id": "N40-36",
+      "test_type": "out_of_scope",
+      "category": "tax_law",
+      "difficulty": "medium",
+      "question": "كيف أحسب ضريبة الدخل على أرباح متجري، وما المصاريف التي يمكن تنزيلها؟"
+    },
+    {
+      "id": "N40-37",
+      "test_type": "out_of_scope",
+      "category": "criminal_law",
+      "difficulty": "medium",
+      "question": "تعرضت لاعتداء في الشارع وأصبت بكسر؛ ما العقوبة الجنائية على المعتدي؟"
+    },
+    {
+      "id": "N40-38",
+      "test_type": "out_of_scope",
+      "category": "landlord_tenant",
+      "difficulty": "medium",
+      "question": "المستأجر لم يدفع أجرة الشقة منذ ثلاثة أشهر؛ ما إجراءات إخلائه قانونياً؟"
+    },
+    {
+      "id": "N40-39",
+      "test_type": "out_of_scope",
+      "category": "companies_law",
+      "difficulty": "medium",
+      "question": "أريد تسجيل شركة ذات مسؤولية محدودة؛ ما رأس المال والوثائق وإجراءات التسجيل؟"
+    },
+    {
+      "id": "N40-40",
+      "test_type": "out_of_scope",
+      "category": "social_security",
+      "difficulty": "hard",
+      "question": "كم اشتراكاً أحتاج للحصول على راتب تقاعد الشيخوخة من الضمان الاجتماعي، وكيف يحسب الراتب؟"
+    }
+  ]
+}

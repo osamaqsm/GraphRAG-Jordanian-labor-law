@@ -1,0 +1,14 @@
+{
+  "package": "stage_8b7_evidence_selection_verification",
+  "generic_fix": true,
+  "retrieval_dependencies": 0,
+  "model_calls_for_retrieve": 2,
+  "model_calls_for_clarify_or_abstain": 0,
+  "sealed_stage_8b6_modified": false,
+  "files": {
+    "STAGE_8B7_README.md": "2a88ff1d70799ce807af882b7b181ea8af0bae30f657da7c9e3565efeb7a4658",
+    "app/grounded_answer_generator.py": "b3cc816c39e09a60dec1bc59bf4e515659bcdb44fca2f3b8ed043cd42416ed58",
+    "scripts/check_stage_8b7_architecture.py": "b7a4f718e55c07e0150af93bc45999cc9c6a3cab9f94ad73721aaf1b11b33eba",
+    "scripts/test_stage_8b7.py": "6eaa7df43c812374919f61506e5bfa9cc4decbfee1a3d603707063d3de1ec2b1"
+  }
+}

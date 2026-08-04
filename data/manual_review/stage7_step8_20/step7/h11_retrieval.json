@@ -1,0 +1,318 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "النقابة كل سنة شو لازم تبعث للمسجل قبل أول نيسان، وشو الكشف اللي لازم يكون مرفق معها؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "المسألة داخلة في قانون العمل الأردني وتتطلب استرجاع نصوص تنظيمية محددة حول التزامات النقابة السنوية وذكر المستندات المطلوبة؛ لا حاجة لطلب توضيحات إضافية من المستخدم.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.85
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 64
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_118",
+      "local_name": "article_118",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 118"
+      ],
+      "labels_en": [],
+      "article_number": 118,
+      "text": "أ . يجب على كل نقابة عمال او نقابة اصحاب عمل ان ترسل الى المسجل قبل اول نيسان من كل سنة نسخة من ميزانيتها\n\n    العمومية على النموذج المقرر مدققة حسب الاصول من مدقق حسابات قانوني تبين فيه وارداتها ومصروفاتها\n\n     وموجوداتها والتزاماتها خلال السنة السابقة والمنتهية في الحادي والثلاثين من شهر كانون الاول ولمسجل النقابات ان\n\n     يطلب من النقابة تزويده ببيانات او ايضاحات اضافية للميزانية.\n\nب. يرفق بنسخة الميزانية العمومية للنقابة التي ترسل للمسجل كشف يتضمن اسماء الموظفين وسائر العاملين في النقابة\n\n     والتغيرات التي اجرتها عليهم وعلى اوضاعهم خلال السنة التي تعود اليها الميزانية.",
+      "final_score": 1.0,
+      "fused_score": 0.07704918032786887,
+      "direct_score": 0.07704918032786887,
+      "graph_score": 0.0,
+      "paragraph_score": 0.14354066985645933,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#disclosure_employer_secrets_violation",
+      "local_name": "disclosure_employer_secrets_violation",
+      "node_kind": "DisclosureOfEmployerSecrets",
+      "labels_ar": [
+        "مخالفة إفشاء أسرار صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#disclosure_employer_secrets_violation\nLocal name: disclosure_employer_secrets_violation\nNode kind: DisclosureOfEmployerSecrets\nRDF types: DisclosureOfEmployerSecrets\nArabic labels: مخالفة إفشاء أسرار صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.02459016393442623,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#trade_union_concept",
+      "local_name": "trade_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "النقابة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#trade_union_concept\nLocal name: trade_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: النقابة",
+      "final_score": 0.0,
+      "fused_score": 0.07261782786885246,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#medical_examination_event",
+      "local_name": "medical_examination_event",
+      "node_kind": "MedicalExamination",
+      "labels_ar": [
+        "حدث الفحص الطبي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#medical_examination_event\nLocal name: medical_examination_event\nNode kind: MedicalExamination\nRDF types: MedicalExamination\nArabic labels: حدث الفحص الطبي",
+      "final_score": 0.0,
+      "fused_score": 0.024193548387096774,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#worker_not_covered_social_security_condition",
+      "local_name": "worker_not_covered_social_security_condition",
+      "node_kind": "WorkerNotCoveredBySocialSecurity",
+      "labels_ar": [
+        "شرط عدم شمول العامل بالضمان الاجتماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#worker_not_covered_social_security_condition\nLocal name: worker_not_covered_social_security_condition\nNode kind: WorkerNotCoveredBySocialSecurity\nRDF types: WorkerNotCoveredBySocialSecurity\nArabic labels: شرط عدم شمول العامل بالضمان الاجتماعي",
+      "final_score": 0.0,
+      "fused_score": 0.023809523809523808,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+      "local_name": "collective_employment_contract_concept",
+      "node_kind": "EmploymentRelation",
+      "labels_ar": [
+        "عقد العمل الجماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#collective_employment_contract_concept\nLocal name: collective_employment_contract_concept\nNode kind: EmploymentRelation\nRDF types: EmploymentRelation\nArabic labels: عقد العمل الجماعي",
+      "final_score": 0.0,
+      "fused_score": 0.023076923076923078,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+      "local_name": "wage_delay_violation",
+      "node_kind": "WageDelay",
+      "labels_ar": [
+        "مخالفة تأخر دفع الأجور"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_delay_violation\nLocal name: wage_delay_violation\nNode kind: WageDelay\nRDF types: WageDelay\nArabic labels: مخالفة تأخر دفع الأجور",
+      "final_score": 0.0,
+      "fused_score": 0.022727272727272728,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#general_secretary_concept",
+      "local_name": "general_secretary_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "الأمين العام"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#general_secretary_concept\nLocal name: general_secretary_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الأمين العام",
+      "final_score": 0.0,
+      "fused_score": 0.022388059701492536,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_payment_event",
+      "local_name": "wage_payment_event",
+      "node_kind": "WagePayment",
+      "labels_ar": [
+        "حدث دفع الأجر"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_payment_event\nLocal name: wage_payment_event\nNode kind: WagePayment\nRDF types: WagePayment\nArabic labels: حدث دفع الأجر",
+      "final_score": 0.0,
+      "fused_score": 0.022058823529411766,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+      "local_name": "employers_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "نقابة أصحاب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.021739130434782608,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#preserve_confidentiality_obligation",
+      "local_name": "preserve_confidentiality_obligation",
+      "node_kind": "PreserveConfidentiality",
+      "labels_ar": [
+        "التزام حفظ السرية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#preserve_confidentiality_obligation\nLocal name: preserve_confidentiality_obligation\nNode kind: PreserveConfidentiality\nRDF types: PreserveConfidentiality\nArabic labels: التزام حفظ السرية",
+      "final_score": 0.0,
+      "fused_score": 0.02142857142857143,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#seasonal_work_concept",
+      "local_name": "seasonal_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل الموسمي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#seasonal_work_concept\nLocal name: seasonal_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل الموسمي",
+      "final_score": 0.0,
+      "fused_score": 0.02112676056338028,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#social_security_related_right_concept",
+      "local_name": "social_security_related_right_concept",
+      "node_kind": "SocialSecurityRelatedRight",
+      "labels_ar": [
+        "حق متعلق بالضمان الاجتماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#social_security_related_right_concept\nLocal name: social_security_related_right_concept\nNode kind: SocialSecurityRelatedRight\nRDF types: SocialSecurityRelatedRight\nArabic labels: حق متعلق بالضمان الاجتماعي",
+      "final_score": 0.0,
+      "fused_score": 0.020833333333333332,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+      "local_name": "work_negligence_violation",
+      "node_kind": "WorkNegligence",
+      "labels_ar": [
+        "مخالفة الإهمال في العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#work_negligence_violation\nLocal name: work_negligence_violation\nNode kind: WorkNegligence\nRDF types: WorkNegligence\nArabic labels: مخالفة الإهمال في العمل",
+      "final_score": 2.640625,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 2.640625,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#disciplinary_action_consequence",
+      "local_name": "disciplinary_action_consequence",
+      "node_kind": "DisciplinaryAction",
+      "labels_ar": [
+        "الإجراء التأديبي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#disciplinary_action_consequence\nLocal name: disciplinary_action_consequence\nNode kind: DisciplinaryAction\nRDF types: DisciplinaryAction\nArabic labels: الإجراء التأديبي",
+      "final_score": 1.625,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.625,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "diagnostics": {
+    "article_numbers": [
+      118
+    ],
+    "concept_local_names": [
+      "disclosure_employer_secrets_violation",
+      "trade_union_concept",
+      "medical_examination_event",
+      "worker_not_covered_social_security_condition",
+      "collective_employment_contract_concept",
+      "wage_delay_violation",
+      "general_secretary_concept",
+      "wage_payment_event",
+      "employers_union_concept",
+      "preserve_confidentiality_obligation",
+      "seasonal_work_concept",
+      "social_security_related_right_concept"
+    ],
+    "graph_supported_articles": [],
+    "concept_count": 12,
+    "expanded_concept_count": 2,
+    "article_count": 1
+  },
+  "elapsed_ms": 17362,
+  "debug": null
+}

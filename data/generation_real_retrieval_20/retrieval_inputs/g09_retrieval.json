@@ -1,0 +1,1174 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "ما الحدود القانونية العادية لساعات العمل اليومية والأسبوعية، وما الحد الأقصى لمجموع العمل والراحة في اليوم؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "الاستفسار متعلق بنطاق قانون العمل الأردني المعروض ولا يحتاج توضيح معلومات واقعية إضافية.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.92
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 73
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_56",
+      "local_name": "article_56",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 56"
+      ],
+      "labels_en": [],
+      "article_number": 56,
+      "text": "أ . لا يجوز تشغيل العامل اكثر من ثماني ساعات يوميا او ثمان واربعين ساعة في الاسبوع الا في الحالات المنصوص\n\n    عليها في هذا القانون ولا يحسب منها الوقت المخصص لتناول الطعام والراحة .\n\nب. يجوز توزيع الحد الاعلى لساعات العمل الاسبوعية وفترات الراحة بحيث لا يزيد مجموعها على احدى عشرة ساعة في\n\n    اليوم .",
+      "final_score": 1.0,
+      "fused_score": 0.07600832682799896,
+      "direct_score": 0.07600832682799896,
+      "graph_score": 0.0,
+      "paragraph_score": 0.12681159420289856,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#work_concept",
+      "local_name": "work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#work_concept\nLocal name: work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل",
+      "final_score": 0.0,
+      "fused_score": 0.07097474103337792,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+      "local_name": "work_negligence_violation",
+      "node_kind": "WorkNegligence",
+      "labels_ar": [
+        "مخالفة الإهمال في العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#work_negligence_violation\nLocal name: work_negligence_violation\nNode kind: WorkNegligence\nRDF types: WorkNegligence\nArabic labels: مخالفة الإهمال في العمل",
+      "final_score": 0.0,
+      "fused_score": 0.0331143951833607,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+      "local_name": "temporary_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل المؤقت"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#temporary_work_concept\nLocal name: temporary_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل المؤقت",
+      "final_score": 0.0,
+      "fused_score": 0.07059506353861192,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#occasional_work_concept",
+      "local_name": "occasional_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل العرضي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#occasional_work_concept\nLocal name: occasional_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل العرضي",
+      "final_score": 0.0,
+      "fused_score": 0.06950412771308294,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#seasonal_work_concept",
+      "local_name": "seasonal_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل الموسمي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#seasonal_work_concept\nLocal name: seasonal_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل الموسمي",
+      "final_score": 0.0,
+      "fused_score": 0.06808583573289456,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_concept",
+      "local_name": "employer_concept",
+      "node_kind": "Employer",
+      "labels_ar": [
+        "صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_concept\nLocal name: employer_concept\nNode kind: Employer\nRDF types: Employer\nArabic labels: صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06687040628828093,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+      "local_name": "perform_work_obligation",
+      "node_kind": "PerformWork",
+      "labels_ar": [
+        "التزام أداء العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#perform_work_obligation\nLocal name: perform_work_obligation\nNode kind: PerformWork\nRDF types: PerformWork\nArabic labels: التزام أداء العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06518759018759018,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+      "local_name": "employment_contract_concept",
+      "node_kind": "EmploymentContract",
+      "labels_ar": [
+        "عقد العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employment_contract_concept\nLocal name: employment_contract_concept\nNode kind: EmploymentContract\nRDF types: EmploymentContract\nArabic labels: عقد العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06308809393915776,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+      "local_name": "employer_liability_consequence",
+      "node_kind": "EmployerLiability",
+      "labels_ar": [
+        "مسؤولية صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_liability_consequence\nLocal name: employer_liability_consequence\nNode kind: EmployerLiability\nRDF types: EmployerLiability\nArabic labels: مسؤولية صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06114230344525684,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#work_injury_event",
+      "local_name": "work_injury_event",
+      "node_kind": "WorkInjury",
+      "labels_ar": [
+        "حدث إصابة العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#work_injury_event\nLocal name: work_injury_event\nNode kind: WorkInjury\nRDF types: WorkInjury\nArabic labels: حدث إصابة العمل",
+      "final_score": 0.0,
+      "fused_score": 0.05916139651736983,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+      "local_name": "employers_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "نقابة أصحاب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.05914843414843415,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#oral_contract_concept",
+      "local_name": "oral_contract_concept",
+      "node_kind": "OralContract",
+      "labels_ar": [
+        "عقد العمل الشفهي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#oral_contract_concept\nLocal name: oral_contract_concept\nNode kind: OralContract\nRDF types: OralContract\nArabic labels: عقد العمل الشفهي",
+      "final_score": 0.0,
+      "fused_score": 0.04434349989184512,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#disclosure_employer_secrets_violation",
+      "local_name": "disclosure_employer_secrets_violation",
+      "node_kind": "DisclosureOfEmployerSecrets",
+      "labels_ar": [
+        "مخالفة إفشاء أسرار صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#disclosure_employer_secrets_violation\nLocal name: disclosure_employer_secrets_violation\nNode kind: DisclosureOfEmployerSecrets\nRDF types: DisclosureOfEmployerSecrets\nArabic labels: مخالفة إفشاء أسرار صاحب العمل",
+      "final_score": 1.3203125,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.3203125,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#follow_lawful_instructions_obligation",
+      "local_name": "follow_lawful_instructions_obligation",
+      "node_kind": "FollowLawfulInstructions",
+      "labels_ar": [
+        "التزام اتباع التعليمات المشروعة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#follow_lawful_instructions_obligation\nLocal name: follow_lawful_instructions_obligation\nNode kind: FollowLawfulInstructions\nRDF types: FollowLawfulInstructions\nArabic labels: التزام اتباع التعليمات المشروعة",
+      "final_score": 0.9750000000000001,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.9750000000000001,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#disciplinary_action_consequence",
+      "local_name": "disciplinary_action_consequence",
+      "node_kind": "DisciplinaryAction",
+      "labels_ar": [
+        "الإجراء التأديبي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#disciplinary_action_consequence\nLocal name: disciplinary_action_consequence\nNode kind: DisciplinaryAction\nRDF types: DisciplinaryAction\nArabic labels: الإجراء التأديبي",
+      "final_score": 0.8125,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.8125,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "diagnostics": {
+    "article_numbers": [
+      56
+    ],
+    "concept_local_names": [
+      "work_concept",
+      "work_negligence_violation",
+      "temporary_work_concept",
+      "occasional_work_concept",
+      "seasonal_work_concept",
+      "employer_concept",
+      "perform_work_obligation",
+      "employment_contract_concept",
+      "employer_liability_consequence",
+      "work_injury_event",
+      "employers_union_concept",
+      "oral_contract_concept"
+    ],
+    "graph_supported_articles": [],
+    "concept_count": 12,
+    "expanded_concept_count": 3,
+    "article_count": 1
+  },
+  "elapsed_ms": 9973,
+  "debug": {
+    "analysis": {
+      "normalized_question": "ما الحدود القانونيه العاديه لساعات العمل اليوميه والاسبوعيه وما الحد الاقصي لمجموع العمل والراحه في اليوم حدود ساعات العمل العاديه اليوميه والاسبوعيه والراحه اليوميه في القانون الاردني حدود ساعات العمل العاديه اليوميه والاسبوعيه والراحه اليوميه حدود ساعات العمل اليوميه والاسبوعيه والراحه اليوميه",
+      "issue_ids": [],
+      "planner_queries": [
+        "حدود ساعات العمل اليومية والأسبوعية والراحة اليومية"
+      ],
+      "planner_issue_labels": [
+        "حدود ساعات العمل العادية اليومية والأسبوعية والراحة اليومية"
+      ],
+      "max_final_articles": 3
+    },
+    "query_plan": {
+      "decision": "retrieve",
+      "confidence": 0.92,
+      "decision_reason": "الاستفسار متعلق بنطاق قانون العمل الأردني المعروض ولا يحتاج توضيح معلومات واقعية إضافية.",
+      "normalized_question_ar": "حدود ساعات العمل العادية اليومية والأسبوعية والراحة اليومية في القانون الأردني",
+      "legal_domain": "Jordanian Labor Law",
+      "atomic_issues": [
+        {
+          "issue_ar": "حدود ساعات العمل العادية اليومية والأسبوعية والراحة اليومية",
+          "retrieval_query_ar": "حدود ساعات العمل اليومية والأسبوعية والراحة اليومية",
+          "actors": [],
+          "conditions": [],
+          "numbers": [],
+          "requested_result_ar": "الحدود القانونية لساعات العمل العادية اليومية والأسبوعية والراحة اليومية"
+        }
+      ],
+      "minimum_articles": 1,
+      "maximum_articles": 3,
+      "clarification_question_ar": ""
+    },
+    "raw_preview": {
+      "question": "ما الحدود القانونية العادية لساعات العمل اليومية والأسبوعية، وما الحد الأقصى لمجموع العمل والراحة في اليوم؟",
+      "embedding_model": "text-embedding-3-small",
+      "embedding_dimensions": 1536,
+      "embedding_input_tokens": 73,
+      "concept_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#work_concept",
+          "local_name": "work_concept",
+          "node_kind": "LaborDomainConcept",
+          "labels_ar": [
+            "العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#work_concept\nLocal name: work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل",
+          "vector_rank": 8,
+          "vector_distance": 0.7507351636886597,
+          "bm25_rank": 2,
+          "bm25_score": 15.466840744018555,
+          "fused_score": 0.07097474103337792,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+          "local_name": "work_negligence_violation",
+          "node_kind": "WorkNegligence",
+          "labels_ar": [
+            "مخالفة الإهمال في العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#work_negligence_violation\nLocal name: work_negligence_violation\nNode kind: WorkNegligence\nRDF types: WorkNegligence\nArabic labels: مخالفة الإهمال في العمل",
+          "vector_rank": 27,
+          "vector_distance": 0.7951405048370361,
+          "bm25_rank": 3,
+          "bm25_score": 14.434945106506348,
+          "fused_score": 0.0331143951833607,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+          "local_name": "temporary_work_concept",
+          "node_kind": "LaborDomainConcept",
+          "labels_ar": [
+            "العمل المؤقت"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#temporary_work_concept\nLocal name: temporary_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل المؤقت",
+          "vector_rank": 2,
+          "vector_distance": 0.7028166055679321,
+          "bm25_rank": 6,
+          "bm25_score": 13.395307540893555,
+          "fused_score": 0.07059506353861192,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#occasional_work_concept",
+          "local_name": "occasional_work_concept",
+          "node_kind": "LaborDomainConcept",
+          "labels_ar": [
+            "العمل العرضي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#occasional_work_concept\nLocal name: occasional_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل العرضي",
+          "vector_rank": 3,
+          "vector_distance": 0.7216680645942688,
+          "bm25_rank": 7,
+          "bm25_score": 13.395307540893555,
+          "fused_score": 0.06950412771308294,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#seasonal_work_concept",
+          "local_name": "seasonal_work_concept",
+          "node_kind": "LaborDomainConcept",
+          "labels_ar": [
+            "العمل الموسمي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#seasonal_work_concept\nLocal name: seasonal_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل الموسمي",
+          "vector_rank": 5,
+          "vector_distance": 0.7366583943367004,
+          "bm25_rank": 8,
+          "bm25_score": 13.395307540893555,
+          "fused_score": 0.06808583573289456,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#employer_concept",
+          "local_name": "employer_concept",
+          "node_kind": "Employer",
+          "labels_ar": [
+            "صاحب العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#employer_concept\nLocal name: employer_concept\nNode kind: Employer\nRDF types: Employer\nArabic labels: صاحب العمل",
+          "vector_rank": 19,
+          "vector_distance": 0.783495306968689,
+          "bm25_rank": 4,
+          "bm25_score": 13.438756942749023,
+          "fused_score": 0.06687040628828093,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+          "local_name": "perform_work_obligation",
+          "node_kind": "PerformWork",
+          "labels_ar": [
+            "التزام أداء العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#perform_work_obligation\nLocal name: perform_work_obligation\nNode kind: PerformWork\nRDF types: PerformWork\nArabic labels: التزام أداء العمل",
+          "vector_rank": 6,
+          "vector_distance": 0.747685432434082,
+          "bm25_rank": 12,
+          "bm25_score": 11.907593727111816,
+          "fused_score": 0.06518759018759018,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "local_name": "employment_contract_concept",
+          "node_kind": "EmploymentContract",
+          "labels_ar": [
+            "عقد العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#employment_contract_concept\nLocal name: employment_contract_concept\nNode kind: EmploymentContract\nRDF types: EmploymentContract\nArabic labels: عقد العمل",
+          "vector_rank": 34,
+          "vector_distance": 0.8020654916763306,
+          "bm25_rank": 5,
+          "bm25_score": 13.395307540893555,
+          "fused_score": 0.06308809393915776,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+          "local_name": "employer_liability_consequence",
+          "node_kind": "EmployerLiability",
+          "labels_ar": [
+            "مسؤولية صاحب العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#employer_liability_consequence\nLocal name: employer_liability_consequence\nNode kind: EmployerLiability\nRDF types: EmployerLiability\nArabic labels: مسؤولية صاحب العمل",
+          "vector_rank": 23,
+          "vector_distance": 0.7904000282287598,
+          "bm25_rank": 11,
+          "bm25_score": 11.907593727111816,
+          "fused_score": 0.06114230344525684,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#work_injury_event",
+          "local_name": "work_injury_event",
+          "node_kind": "WorkInjury",
+          "labels_ar": [
+            "حدث إصابة العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#work_injury_event\nLocal name: work_injury_event\nNode kind: WorkInjury\nRDF types: WorkInjury\nArabic labels: حدث إصابة العمل",
+          "vector_rank": 37,
+          "vector_distance": 0.8098725080490112,
+          "bm25_rank": 10,
+          "bm25_score": 11.907593727111816,
+          "fused_score": 0.05916139651736983,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+          "local_name": "employers_union_concept",
+          "node_kind": "LegalActor",
+          "labels_ar": [
+            "نقابة أصحاب العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+          "vector_rank": 24,
+          "vector_distance": 0.7927644848823547,
+          "bm25_rank": 14,
+          "bm25_score": 11.907593727111816,
+          "fused_score": 0.05914843414843415,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#oral_contract_concept",
+          "local_name": "oral_contract_concept",
+          "node_kind": "OralContract",
+          "labels_ar": [
+            "عقد العمل الشفهي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#oral_contract_concept\nLocal name: oral_contract_concept\nNode kind: OralContract\nRDF types: OralContract\nArabic labels: عقد العمل الشفهي",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 9,
+          "bm25_score": 11.907593727111816,
+          "fused_score": 0.04434349989184512,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ],
+      "expanded_concept_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#disclosure_employer_secrets_violation",
+          "local_name": "disclosure_employer_secrets_violation",
+          "node_kind": "DisclosureOfEmployerSecrets",
+          "labels_ar": [
+            "مخالفة إفشاء أسرار صاحب العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#disclosure_employer_secrets_violation\nLocal name: disclosure_employer_secrets_violation\nNode kind: DisclosureOfEmployerSecrets\nRDF types: DisclosureOfEmployerSecrets\nArabic labels: مخالفة إفشاء أسرار صاحب العمل",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.0,
+          "direct_score": 0.0,
+          "graph_score": 1.3203125,
+          "paragraph_score": 0.0,
+          "final_score": 1.3203125,
+          "graph_supported": true,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#follow_lawful_instructions_obligation",
+          "local_name": "follow_lawful_instructions_obligation",
+          "node_kind": "FollowLawfulInstructions",
+          "labels_ar": [
+            "التزام اتباع التعليمات المشروعة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#follow_lawful_instructions_obligation\nLocal name: follow_lawful_instructions_obligation\nNode kind: FollowLawfulInstructions\nRDF types: FollowLawfulInstructions\nArabic labels: التزام اتباع التعليمات المشروعة",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.0,
+          "direct_score": 0.0,
+          "graph_score": 0.9750000000000001,
+          "paragraph_score": 0.0,
+          "final_score": 0.9750000000000001,
+          "graph_supported": true,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#disciplinary_action_consequence",
+          "local_name": "disciplinary_action_consequence",
+          "node_kind": "DisciplinaryAction",
+          "labels_ar": [
+            "الإجراء التأديبي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#disciplinary_action_consequence\nLocal name: disciplinary_action_consequence\nNode kind: DisciplinaryAction\nRDF types: DisciplinaryAction\nArabic labels: الإجراء التأديبي",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.0,
+          "direct_score": 0.0,
+          "graph_score": 0.8125,
+          "paragraph_score": 0.0,
+          "final_score": 0.8125,
+          "graph_supported": true,
+          "support_paths": []
+        }
+      ],
+      "article_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#article_56",
+          "local_name": "article_56",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 56"
+          ],
+          "labels_en": [],
+          "article_number": 56,
+          "text_preview": "أ . لا يجوز تشغيل العامل اكثر من ثماني ساعات يوميا او ثمان واربعين ساعة في الاسبوع الا في الحالات المنصوص\n\n    عليها في هذا القانون ولا يحسب منها الوقت المخصص لتناول الطعام والراحة .\n\nب. يجوز توزيع الحد الاعلى لساعات العمل الاسبوعية وفترات الراحة بحيث لا يزيد مجموعها على احدى عشرة ساعة في\n\n    اليوم .",
+          "vector_rank": 1,
+          "vector_distance": 0.4235762357711792,
+          "bm25_rank": 1,
+          "bm25_score": 43.089271545410156,
+          "fused_score": 0.07600832682799896,
+          "direct_score": 0.07600832682799896,
+          "graph_score": 0.0,
+          "paragraph_score": 0.12681159420289856,
+          "final_score": 1.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ],
+      "raw_mixed_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#article_56",
+          "local_name": "article_56",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 56"
+          ],
+          "labels_en": [],
+          "article_number": 56,
+          "text_preview": "أ . لا يجوز تشغيل العامل اكثر من ثماني ساعات يوميا او ثمان واربعين ساعة في الاسبوع الا في الحالات المنصوص\n\n    عليها في هذا القانون ولا يحسب منها الوقت المخصص لتناول الطعام والراحة .\n\nب. يجوز توزيع الحد الاعلى لساعات العمل الاسبوعية وفترات الراحة بحيث لا يزيد مجموعها على احدى عشرة ساعة في\n\n    اليوم .",
+          "vector_rank": 1,
+          "vector_distance": 0.4235762357711792,
+          "bm25_rank": 1,
+          "bm25_score": 29.537818908691406,
+          "fused_score": 0.03278688524590164,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_59",
+          "local_name": "article_59",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 59"
+          ],
+          "labels_en": [],
+          "article_number": 59,
+          "text_preview": "أ . يجوز تشغيل العامل بموافقته اكثر من ساعات العمل اليومية او الاسبوعية على ان يتقاضى العامل عن ساعة العمل\n\n    الاضافية اجراً لا يقل عن 125% من اجره المعتاد.\n\nب. اذا اشتغل العامل في يوم عطلته الاسبوعية او ايام الاعياد الدينية او العطل الرسمية يتقاضى لقاء عمله عن ذلك اليوم\n\n    اجرا اضافياً لا يقل عن (150%) من اجره المعتاد.",
+          "vector_rank": 4,
+          "vector_distance": 0.5005943775177002,
+          "bm25_rank": 4,
+          "bm25_score": 15.062077522277832,
+          "fused_score": 0.03125,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_56_paragraph_2",
+          "local_name": "article_56_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 56 - الفقرة ب"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يجوز توزيع الحد الاعلى لساعات العمل الاسبوعية وفترات الراحة بحيث لا يزيد مجموعها على احدى عشرة ساعة في اليوم .",
+          "vector_rank": 7,
+          "vector_distance": 0.5151041746139526,
+          "bm25_rank": 2,
+          "bm25_score": 28.373580932617188,
+          "fused_score": 0.031054405392392875,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_57_paragraph_1",
+          "local_name": "article_57_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "مقدمة المادة 57"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يجوز لصاحب العمل تشغيل العامل اكثر من ساعات العمل اليومية او الاسبوعية وذلك في اي من الحالات التالية على ان يتقاضى العامل في اي من هذه الحالات الاجر الاضافي المنصوص عليه في هذا القانون :",
+          "vector_rank": 8,
+          "vector_distance": 0.5242508053779602,
+          "bm25_rank": 8,
+          "bm25_score": 13.20711898803711,
+          "fused_score": 0.029411764705882353,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_56_paragraph_1",
+          "local_name": "article_56_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 56 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "لا يجوز تشغيل العامل اكثر من ثماني ساعات يوميا او ثمان واربعين ساعة في الاسبوع الا في الحالات المنصوص عليها في هذا القانون ولا يحسب منها الوقت المخصص لتناول الطعام والراحة .",
+          "vector_rank": 5,
+          "vector_distance": 0.5016312599182129,
+          "bm25_rank": 16,
+          "bm25_score": 10.893234252929688,
+          "fused_score": 0.02854251012145749,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_57",
+          "local_name": "article_57",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 57"
+          ],
+          "labels_en": [],
+          "article_number": 57,
+          "text_preview": "يجوز لصاحب العمل تشغيل العامل اكثر من ساعات العمل اليومية او الاسبوعية وذلك في اي من الحالات التالية على ان يتقاضى العامل في اي من هذه الحالات الاجر الاضافي المنصوص عليه في هذا القانون :\n\nأ . القيام باعمال الجرد السنوي للمؤسسة واعداد الميزانية والحسابات الختامية والاستعداد للبيع باثمان مخفضة بشرط ان لا\n\n    يزيد عدد الايام التي تنطبق عليها احكام هذه الفقرة على ثلاثين يوماً في السنة وان لا تزيد ساعات العمل الفعلية على\n\n    عشر ساعات في كل يوم منها.\n\nب. من اجل تلافي وقوع خسارة في البضائع او اي مادة اخرى تتعرض للتلف او لتجنب مخاطر عمل فني او من اجل تسلم\n\n     مواد معينة او تسليمها او نقلها.",
+          "vector_rank": 3,
+          "vector_distance": 0.45491278171539307,
+          "bm25_rank": 26,
+          "bm25_score": 10.103440284729004,
+          "fused_score": 0.027500922849760058,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_59_paragraph_1",
+          "local_name": "article_59_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 59 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يجوز تشغيل العامل بموافقته اكثر من ساعات العمل اليومية او الاسبوعية على ان يتقاضى العامل عن ساعة العمل الاضافية اجراً لا يقل عن 125% من اجره المعتاد.",
+          "vector_rank": 16,
+          "vector_distance": 0.5665446519851685,
+          "bm25_rank": 14,
+          "bm25_score": 11.310588836669922,
+          "fused_score": 0.02667140825035562,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_55",
+          "local_name": "article_55",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 55"
+          ],
+          "labels_en": [],
+          "article_number": 55,
+          "text_preview": "على كل صاحب عمل يستخدم عشرة عمال فاكثر ان يضع نظاماً داخلياً لتنظيم العمل في مؤسسته يبين فيه اوقات الدوام وفترات الراحة اليومية والاسبوعية ومخالفات العمل والعقوبات والتدابير المتخذة بشانها بما في ذلك الفصل من العمل وكيفية تنفيذها واي تفاصيل اخرى تقتضيها طبيعة العمل ويخضع النظام الداخلي للمؤسسة لتصديق الوزير او من ينيبه ويعمل به من تاريخ تصديقه.",
+          "vector_rank": 36,
+          "vector_distance": 0.609113872051239,
+          "bm25_rank": 9,
+          "bm25_score": 12.173811912536621,
+          "fused_score": 0.024909420289855072,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_60",
+          "local_name": "article_60",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 60"
+          ],
+          "labels_en": [],
+          "article_number": 60,
+          "text_preview": "أ . يكون يوم الجمعة من كل اسبوع يوم العطلة الاسبوعية للعامل الا اذا اقتضت طبيعة العمل غير ذلك.\n\nب. يجوز للعامل بموافقة صاحب العمل جمع ايام عطلته الاسبوعية والحصول عليها خلال مدة لا تزيد على شهر.\n\nج. يكون يوم العطلة الاسبوعية للعامل باجر كامل، الا اذا كان يعمل على اساس يومي او اسبوعي فيستحق في كلتا\n\n    الحالتين اجر يوم العطلة الاسبوعية اذا عمل ستة ايام متصلة قبل اليوم المحدد للعطلة، ويستحق من ذلك الاجر بنسبة\n\n    الايام التي عمل فيها خلال الاسبوع اذا كانت ثلاثة ايام او اكثر.",
+          "vector_rank": 2,
+          "vector_distance": 0.4466360807418823,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.016129032258064516,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_29_paragraph_1",
+          "local_name": "article_29_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "مقدمة المادة 29"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يحق للعامل ان يترك العمل دون اشعار مع احتفاظه بحقوقه القانونية عن انتهاء الخدمة وما يترتب له من تعويضات عطل وضرر وذلك في اي من الحالات التالية :",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 3,
+          "bm25_score": 21.37451171875,
+          "fused_score": 0.015873015873015872,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_2_definition_18",
+          "local_name": "article_2_definition_18",
+          "node_kind": "Definition",
+          "labels_ar": [
+            "اصابة العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اصابة العامل نتيجة حادث اثناء تادية العمل او بسببه ويعتبر في حكم ذلك الحادث ما يقع للعامل اثناء ذهابه لمباشرة عمله او عودته منه.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 5,
+          "bm25_score": 14.88209056854248,
+          "fused_score": 0.015384615384615385,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_60_paragraph_3",
+          "local_name": "article_60_paragraph_3",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 60 - الفقرة ج"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يكون يوم العطلة الاسبوعية للعامل باجر كامل، الا اذا كان يعمل على اساس يومي او اسبوعي فيستحق في كلتا الحالتين اجر يوم العطلة الاسبوعية اذا عمل ستة ايام متصلة قبل اليوم المحدد للعطلة، ويستحق من ذلك الاجر بنسبة الايام التي عمل فيها خلال الاسبوع اذا كانت ثلاثة ايام او اكثر.",
+          "vector_rank": 6,
+          "vector_distance": 0.5020159482955933,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.015151515151515152,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_19_paragraph_2",
+          "local_name": "article_19_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 19 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "تادية العمل بنفسه وان يبذل في تاديته عناية الشخص العادي وان يلتزم باوامر صاحب العمل المتعلقة بتنفيذ العمل المتفق عليه وذلك ضمن الحدود التي لا تعرضه للخطر او تخالف احكام القوانين المعمول بها او الآداب العامة.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 6,
+          "bm25_score": 14.80837345123291,
+          "fused_score": 0.015151515151515152,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_29",
+          "local_name": "article_29",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 29"
+          ],
+          "labels_en": [],
+          "article_number": 29,
+          "text_preview": "يحق للعامل ان يترك العمل دون اشعار مع احتفاظه بحقوقه القانونية عن انتهاء الخدمة وما يترتب له من تعويضات عطل وضرر وذلك في اي من الحالات التالية :\n\nأ . استخدامه في عمل يختلف في نوعه اختلافاً بيناً عن العمل الذي اتفق على استخدامه فيه بمقتضى عقد العمل على ان\n\n    تراعى في ذلك احكام المادة (17) من هذا القانون.\n\nب. استخدامه بصورة تدعو الى تغيير محل اقامته الدائم الا اذا نص في العقد على جواز ذلك.\n\nج. نقله الى عمل آخر في درجة ادنى من العمل الذي اتفق على استخدامه فيه.\n\nد. تخفيض اجره، على ان تراعى احكام المادة (14) من هذا القانون.\n\nهـ. اذا ثبت بتقرير طبي صادر عن مرجع طبي ان استمراره في العمل من شانه تهديد صحته.\n\nو. اذا اعتدى صاحب العمل او من يمثله عليه في اثناء العمل او بسببه وذلك بالضرب او التحقير.\n\nز. اذا تخلف صاحب العمل عن تنفيذ اي حكم من احكام هذا القانون او اي نظام صادر بمقتضاه شريطة ان يكون قد تلقى\n\n   اشعاراً من جهة مختصة في الوزارة تطلب فيه التقيد بتلك الاحكام.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 7,
+          "bm25_score": 14.199747085571289,
+          "fused_score": 0.014925373134328358,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_60_paragraph_1",
+          "local_name": "article_60_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 60 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يكون يوم الجمعة من كل اسبوع يوم العطلة الاسبوعية للعامل الا اذا اقتضت طبيعة العمل غير ذلك.",
+          "vector_rank": 9,
+          "vector_distance": 0.5351382493972778,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.014492753623188406,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_135",
+          "local_name": "article_135",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 135"
+          ],
+          "labels_en": [],
+          "article_number": 135,
+          "text_preview": "أ . لا يجوز للعامل ان يضرب دون اعطاء اشعار لصاحب العمل قبل مدة لا تقل عن اربعة عشر يوماً من التاريخ المحدد\n\n    للاضراب وتضاعف هذه المدة اذا كان العمل متعلقاً باحدى خدمات المصالح العامة.\n\nب. لا يجوز لصاحب العمل اغلاق مؤسسته دون ان يعطي اشعاراً للعمال بذلك قبل مدة لا تقل عن اربعة عشر يوماً من\n\n    التاريخ المحدد للاغلاق وتضاعف هذه المدة اذا كان العمل متعلقاً باحدى خدمات المصالح العامة.\n\nج. تحدد الشروط والاجراءات الاخرى للاضراب والاغلاق بموجب نظام يصدر لهذه الغاية.",
+          "vector_rank": 10,
+          "vector_distance": 0.5434332489967346,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.014285714285714285,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_55_paragraph_1",
+          "local_name": "article_55_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 55"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "على كل صاحب عمل يستخدم عشرة عمال فاكثر ان يضع نظاماً داخلياً لتنظيم العمل في مؤسسته يبين فيه اوقات الدوام وفترات الراحة اليومية والاسبوعية ومخالفات العمل والعقوبات والتدابير المتخذة بشانها بما في ذلك الفصل من العمل وكيفية تنفيذها واي تفاصيل اخرى تقتضيها طبيعة العمل ويخضع النظام الداخلي للمؤسسة لتصديق الوزير او من ينيبه ويعمل به من تاريخ تصديقه.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 10,
+          "bm25_score": 12.092001914978027,
+          "fused_score": 0.014285714285714285,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_61",
+          "local_name": "article_61",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 61"
+          ],
+          "labels_en": [],
+          "article_number": 61,
+          "text_preview": "أ .  لكل عامل الحق باجازة سنوية باجر كامل لمدة اربعة عشر يوماً عن كل سنة خدمة الا اذا تم الاتفاق على اكثر من ذلك\n\n    على ان تصبح مدة الاجازة السنوية واحداً وعشرين يوماً اذا امضى في الخدمة لدى صاحب العمل نفسه خمس سنوات\n\n     متصلة، ولا تحسب ايام العطل الرسمية والاعياد الدينية وايام العطل الاسبوعية من الاجازة السنوية الا اذا وقعت خلالها.\n\nب. اذا لم تبلغ مدة خدمة العامل السنة فيحق له الحصول على اجازة باجر بنسبة المدة التي عمل خلالها في السنة.\n\nج. يجوز تاجيل اجازة العامل عن اي سنة بالاتفاق بين العامل وصاحب العمل الى السنة التالية مباشرة لتلك السنة ويسقط\n\n    حق العامل في الاجازة المؤجلة على هذا الوجه اذا انقضت السنة التي اجلت اليها ولم يطلب استعمالها خلال تلك السنة،\n\n    ولا يجوز لصاحب العمل رفض طلب العامل للحصول على اجازته.\n\nد. لصاحب العمل ان يحدد خلال الشهر الاول من السنة تاريخ الاجازة السنوية لكل عامل وكيفية استعمالها للعامل في\n\n    مؤسسته وذلك حسب مقتضيات العمل فيها على ان يراعى في ذلك مصلحة العامل.",
+          "vector_rank": 11,
+          "vector_distance": 0.5450329184532166,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.014084507042253521,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_19",
+          "local_name": "article_19",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 19"
+          ],
+          "labels_en": [],
+          "article_number": 19,
+          "text_preview": "على العامل :\n\nأ . تادية العمل بنفسه وان يبذل في تاديته عناية الشخص العادي وان يلتزم باوامر صاحب العمل المتعلقة بتنفيذ العمل\n\n    المتفق عليه وذلك ضمن الحدود التي لا تعرضه للخطر او تخالف احكام القوانين المعمول بها او الآداب العامة.\n\nب. المحافظة على اسرار صاحب العمل الصناعية والتجارية وان لا يفشيها باي صورة من الصور ولو بعد انقضاء عقد\n\n     العمل وفقاً لما يقتضيه الاتفاق او العرف.\n\nج. الحرص على حفظ الاشياء المسلمة اليه لتادية العمل ومنها ادوات العمل والمواد وسائر اللوازم الخاصة بعمله.\n\nد. الخضوع للفحوصات الطبية اللازمة التي تقتضي طبيعة العمل ضرورة اجرائها قبل الالتحاق بالعمل او بعد ذلك للتحقق\n\n    من خلوه من الامراض المهنية والسارية.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 11,
+          "bm25_score": 11.521543502807617,
+          "fused_score": 0.014084507042253521,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_66",
+          "local_name": "article_66",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 66"
+          ],
+          "labels_en": [],
+          "article_number": 66,
+          "text_preview": "أ . لكل عامل الحق في اجازة مدتها اربعة عشر يوماً في السنة مدفوعة الاجر في اي من الحالات التالية :\n\n     1. اذا التحق بدورة للثقافة العمالية معتمدة من الوزارة بناء على ترشيح صاحب العمل او مدير المؤسسة بالتنسيق مع\n\n         النقابة المعنية.\n\n      2. لاداء فريضة الحج ويشترط لمنح هذه الاجازة ان يكون العامل قد عمل مدة خمس سنوات متواصلة على الاقل لدى\n\n          صاحب العمل، ولا تعطى هذه الاجازة الا لمرة واحدة خلال مدة الخدمة.\n\nب. يحق للعامل الحصول على اجازة مدتها اربعة اشهر دون اجر اذا التحق للدراسة في جامعة او معهد او كلية معترف بها\n\n    بصورة رسمية.",
+          "vector_rank": 12,
+          "vector_distance": 0.5483548641204834,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.013888888888888888,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,353 @@
+{
+  "created_at_utc": "2026-08-03T17:22:57.069155+00:00",
+  "holdout_file": "/app/data/benchmarks/generation_holdout_fresh_unseen_20.json",
+  "holdout_sha256": "1f037f2064540fad215996b2c77a7378048f6e20848e626cbf6f24185e779969",
+  "benchmark_file": "generation_holdout_fresh_unseen_20_snapshot.json",
+  "benchmark_sha256": "ac1ec6b90e2ff4d05c1addf05e841e5e79bb9b7405fb236bbf0973d1dfc2d6b8",
+  "retrieval_input_count": 20,
+  "include_debug": true,
+  "context_state_counts": {
+    "complete": 18,
+    "partial": 1,
+    "route_mismatch": 1
+  },
+  "retrieval_code_hashes": {
+    "retrieval_pipeline.py": "2a3c45f986e2e0698a16ebb5386f527b1467cf7f99d5546c84774e38249784d0",
+    "retrieval_service.py": "4dcda10caf8a924349dcfe2c7043bda28a589d8b0aa937ab02efabb3c160acd2",
+    "legal_query_planner.py": "18b55c76ba3bb9f0ed5360f080a656433d677787687d6e33ba1e39466b407a9a",
+    "legal_article_reranker.py": "bd3f99570366ee86275bdcd5e4fae8174a226a828b1b67cb2bc5eb2388a2ff7c"
+  },
+  "retrieval_inputs": [
+    {
+      "id": "UGH01",
+      "file": "ugh01_retrieval.json",
+      "sha256": "d65a2c1bf18eb2a9fb400e0d2c79fc2f0c057a9cd27d664c443c742b87412daa",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        5
+      ],
+      "actual_articles": [
+        5
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH02",
+      "file": "ugh02_retrieval.json",
+      "sha256": "f75c05d7630fe80a3c958f7ce4264852091845116feb13b8fe0528228c344885",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        7
+      ],
+      "actual_articles": [
+        7
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH03",
+      "file": "ugh03_retrieval.json",
+      "sha256": "592a6c5b9c2c39ce3f01f561de9941a0b8bf9e2acfa06b6bf52165534d642c94",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        10
+      ],
+      "actual_articles": [
+        10,
+        11
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [
+        11
+      ],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH04",
+      "file": "ugh04_retrieval.json",
+      "sha256": "b4087de3adf8d8cb8167675da6aa2302b713ba3c6febdb7d15be7af3dcc47b3d",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        77
+      ],
+      "actual_articles": [
+        77
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH05",
+      "file": "ugh05_retrieval.json",
+      "sha256": "9b11cdad6e4f31accbb1719867d8fd7bd352b6ae6a7a4490641aa580f2c8fc7e",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        84
+      ],
+      "actual_articles": [
+        9,
+        84
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [
+        9
+      ],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH06",
+      "file": "ugh06_retrieval.json",
+      "sha256": "21b0a82b7ce2e3392337db0c8b55c75bc5247e6029f96ba06cc50fe81f9f168c",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        89
+      ],
+      "actual_articles": [
+        89
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH07",
+      "file": "ugh07_retrieval.json",
+      "sha256": "36482993ee597d06e106b3a14279671a06f3fd54e0b79a66c3e9ecb11abf6f7f",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        99
+      ],
+      "actual_articles": [
+        99,
+        115
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [
+        115
+      ],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH08",
+      "file": "ugh08_retrieval.json",
+      "sha256": "6330f24ffec822a8b7a0c4c5257645c8f75f8dd2e93677406726715a28bdaa46",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        103
+      ],
+      "actual_articles": [
+        103
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH09",
+      "file": "ugh09_retrieval.json",
+      "sha256": "e78823752208cac2d159b66dfcefd46e613d88038b704983f547c69dfe563e34",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        107
+      ],
+      "actual_articles": [
+        107
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH10",
+      "file": "ugh10_retrieval.json",
+      "sha256": "4132ad357e916ed307496b257a270d2612e8d5822938cf29e9c0312cc2133126",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        109
+      ],
+      "actual_articles": [
+        99,
+        109
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [
+        99
+      ],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH11",
+      "file": "ugh11_retrieval.json",
+      "sha256": "7857c081d46caf2585cf49972c6a3862b01ebf23d5bb38f8a375d884971bb4ab",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        110
+      ],
+      "actual_articles": [
+        110
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH12",
+      "file": "ugh12_retrieval.json",
+      "sha256": "be277bf18990b65b1f963e3bb1fadda9c398e0bceb27150d54f168e08ac20f72",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        113
+      ],
+      "actual_articles": [
+        113
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH13",
+      "file": "ugh13_retrieval.json",
+      "sha256": "c5d5b31c6280228f46f799d0eb5a7527d2f58580de6dc79ad9a6debf4fb66144",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        114
+      ],
+      "actual_articles": [
+        114
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH14",
+      "file": "ugh14_retrieval.json",
+      "sha256": "991ab496b77dd7a1856079c05f17cc744208ebf8a839a43ffec308353f20a1b9",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        125
+      ],
+      "actual_articles": [
+        125
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH15",
+      "file": "ugh15_retrieval.json",
+      "sha256": "8f14725d9bf11e2bcb7ce1fc906fd9ed62d25d060594d9ee9ee2c9c4ab93f2c2",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        127,
+        128
+      ],
+      "actual_articles": [
+        127,
+        128
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH16",
+      "file": "ugh16_retrieval.json",
+      "sha256": "b316df1d5902e0999ab18b7e5419b34a14e3bd76e5bafa3e2f9e6bc53739a7d3",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        132,
+        133
+      ],
+      "actual_articles": [
+        134,
+        133
+      ],
+      "missing_required_articles": [
+        132
+      ],
+      "extra_articles": [
+        134
+      ],
+      "context_state": "partial"
+    },
+    {
+      "id": "UGH17",
+      "file": "ugh17_retrieval.json",
+      "sha256": "acded4fb28d9a109c443d098073b0831070d3507327a18462694cfc82f3c9e1c",
+      "expected_behavior": "clarify",
+      "actual_behavior": "retrieve",
+      "required_articles": [],
+      "actual_articles": [
+        117,
+        47
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [
+        47,
+        117
+      ],
+      "context_state": "route_mismatch"
+    },
+    {
+      "id": "UGH18",
+      "file": "ugh18_retrieval.json",
+      "sha256": "7c64f54db49b7b23580d21779d12bdc04b3e3f0eaf81077fa28cfda08fcbe73a",
+      "expected_behavior": "clarify",
+      "actual_behavior": "clarify",
+      "required_articles": [],
+      "actual_articles": [],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH19",
+      "file": "ugh19_retrieval.json",
+      "sha256": "64a5932783a090d0a95c8f68aee3aafb4b3cd0fa74304cfa5ca605b76c9687c2",
+      "expected_behavior": "abstain",
+      "actual_behavior": "abstain",
+      "required_articles": [],
+      "actual_articles": [],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "UGH20",
+      "file": "ugh20_retrieval.json",
+      "sha256": "4666e648b584c97b93f0f4fe7655d6e10c08f183bb7fa5d6031d5312f0402897",
+      "expected_behavior": "abstain",
+      "actual_behavior": "abstain",
+      "required_articles": [],
+      "actual_articles": [],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    }
+  ],
+  "freeze_rule": "Every retrieval SHA-256 must remain unchanged for the first sealed generation run."
+}

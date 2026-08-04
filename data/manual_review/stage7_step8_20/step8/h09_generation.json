@@ -1,0 +1,29 @@
+{
+  "schema_version": "generation.v1",
+  "status": "generated",
+  "question": "كيف بنحسب تعويض العامل اذا كان باخذ اجر بالقطعه، وهل بنعتمد اخر اجر ولا متوسط فتره معينه؟",
+  "retrieval_schema_version": "retrieval.v1",
+  "answer_ar": "يعتمد تعويض العامل عند الأجر بالقطعة على متوسط أجره خلال آخر ستة أشهر من العمل، بينما في باقي الحالات يُحسب على أساس الأجر الأخير الذي يتقاضاه العامل [المادة 91].",
+  "key_points": [],
+  "citations": [
+    {
+      "article_number": 91,
+      "label_ar": "المادة 91",
+      "uri": "http://example.org/jordan-labor-law#article_91",
+      "excerpt": "يحسب التعويض المنصوص عليه في هذا القانون على اساس الاجر الاخير الذي يتقاضاه العامل اما اذا كان العامل عاملاً بالقطعة فيحسب على اساس متوسط الاجر خلال الاشهر الستة الاخيرة من عمله."
+    }
+  ],
+  "cited_article_numbers": [
+    91
+  ],
+  "grounded": true,
+  "warnings": [],
+  "model": "gpt-5-nano",
+  "usage": {
+    "input_tokens": 3634,
+    "output_tokens": 237,
+    "total_tokens": 3871
+  },
+  "elapsed_ms": 2297,
+  "debug": null
+}

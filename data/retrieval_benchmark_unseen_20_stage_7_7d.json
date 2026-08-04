@@ -1,0 +1,343 @@
+{
+  "benchmark_name": "Jordanian Labor Law KG Stage 7.7-D Unseen 20 Holdout",
+  "benchmark_version": "1.0.0",
+  "language": "Arabic",
+  "frozen": true,
+  "scope": "Jordanian Labor Law represented by jordan_labor_law_full_knowledge_graph.ttl",
+  "warning": "This is a fresh holdout. Record the first complete run before making any retrieval, routing, prompt, threshold, KG, or reranker changes.",
+  "evaluation_notes": {
+    "retrieve_cases": 14,
+    "clarify_cases": 3,
+    "abstain_cases": 3,
+    "gold_article_policy": "Every gold article in this holdout was absent from the gold sets of retrieval_benchmark_20.json, retrieval_benchmark_unseen_50.json, and retrieval_benchmark_unseen_30_final.json.",
+    "question_policy": "No normalized question duplicates any question in the three prior benchmark files.",
+    "runner": "Use scripts.run_unseen_30_benchmark with explicit --benchmark and --output paths; the runner accepts any frozen benchmark size."
+  },
+  "distribution": {
+    "straightforward": 4,
+    "paraphrased": 3,
+    "typo": 2,
+    "colloquial": 2,
+    "numerical": 2,
+    "multi_article": 1,
+    "ambiguous": 3,
+    "out_of_scope": 3
+  },
+  "questions": [
+    {
+      "id": "H01",
+      "test_type": "straightforward",
+      "category": "law_scope",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "على من لا تسري أحكام قانون العمل من بين الموظفين العامين وأفراد عائلة صاحب العمل وخدم المنازل وعمال الزراعة؟",
+      "primary_article": 3,
+      "required_articles": [
+        3
+      ],
+      "acceptable_articles": [
+        3
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "تستثني المادة 3 الموظفين العامين وموظفي البلديات، وأفراد عائلة صاحب العمل العاملين دون أجر، وخدم المنازل ومن في حكمهم، وعمال الزراعة إلا الفئات التي تخضع بنظام."
+    },
+    {
+      "id": "H02",
+      "test_type": "straightforward",
+      "category": "collective_contract_registration",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "كيف تُسجل عقود العمل الجماعية، وما البيان الذي يجب تعليقه داخل المؤسسة وأماكن العمل؟",
+      "primary_article": 44,
+      "required_articles": [
+        44
+      ],
+      "acceptable_articles": [
+        44
+      ],
+      "expected_concepts_any": [
+        "collective_employment_contract_concept",
+        "contract_formation_event"
+      ],
+      "expected_result": "تنظم تعليمات الوزير تسجيل العقود الجماعية والانضمام إليها واستخراج صورها، ويعلق بيان بوجود العقد وطرفيه وتاريخه ومكان إجرائه."
+    },
+    {
+      "id": "H03",
+      "test_type": "straightforward",
+      "category": "occupational_disease",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "من يتحمل تعويض العامل إذا أثبت تقرير المرجع الطبي أن مرضه المهني نشأ عن عمله؟",
+      "primary_article": 88,
+      "required_articles": [
+        88
+      ],
+      "acceptable_articles": [
+        88
+      ],
+      "expected_concepts_any": [
+        "compensation_consequence",
+        "medical_examination_event",
+        "work_injury_event"
+      ],
+      "expected_result": "يكون صاحب العمل مسؤولاً عن دفع التعويض للعامل المصاب بمرض مهني ناشئ عن عمله استناداً إلى تقرير المرجع الطبي."
+    },
+    {
+      "id": "H04",
+      "test_type": "straightforward",
+      "category": "union_bylaws",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "ما الموضوعات الأساسية التي يجب أن يتضمنها النظام الداخلي لنقابة العمال؟",
+      "primary_article": 100,
+      "required_articles": [
+        100
+      ],
+      "acceptable_articles": [
+        100
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "تحدد المادة 100 عناصر النظام الداخلي، ومنها الاسم والعنوان والغايات والعضوية والفروع والهيئة الإدارية والحقوق والالتزامات والعقوبات والخدمات والشؤون المالية."
+    },
+    {
+      "id": "H05",
+      "test_type": "paraphrased",
+      "category": "labor_inspection",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "اطّلع مفتش العمل أثناء التفتيش على أسرار المنشأة؛ ما الالتزام الذي يسبق مباشرته العمل وما واجبه تجاه تلك الأسرار؟",
+      "primary_article": 6,
+      "required_articles": [
+        6
+      ],
+      "acceptable_articles": [
+        6
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "يوقع القائم بالتفتيش تصريحاً مشفوعاً بالقسم بأداء العمل بأمانة وإخلاص، ويلتزم بعدم إفشاء الأسرار التي يطلع عليها بحكم عمله."
+    },
+    {
+      "id": "H06",
+      "test_type": "paraphrased",
+      "category": "occupational_safety",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "من يحدد تدابير الوقاية وأجهزة الحماية ومعايير بيئة المصانع من التلوث والضوضاء والاهتزازات؟",
+      "primary_article": 79,
+      "required_articles": [
+        79
+      ],
+      "acceptable_articles": [
+        79
+      ],
+      "expected_concepts_any": [
+        "safe_work_environment_right_concept",
+        "provide_safe_work_environment_obligation",
+        "work_injury_event"
+      ],
+      "expected_result": "يحدد الوزير بعد استطلاع رأي الجهات الرسمية المختصة هذه التدابير والأجهزة والمعايير بتعليمات يصدرها."
+    },
+    {
+      "id": "H07",
+      "test_type": "paraphrased",
+      "category": "labor_court_decisions",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "صدر قرار من المحكمة العمالية وفيه غموض وخطأ حسابي؛ كيف يمكن تفسيره أو تصحيحه ومن يطلب ذلك؟",
+      "primary_article": 126,
+      "required_articles": [
+        126
+      ],
+      "acceptable_articles": [
+        126
+      ],
+      "expected_concepts_any": [
+        "litigation_right_concept",
+        "legal_claim_consequence"
+      ],
+      "expected_result": "تفسر المحكمة قرارها بناء على طلب الوزير أو أحد أطراف النزاع لإزالة الغموض، وتصحح الأخطاء الكتابية أو الحسابية من تلقاء نفسها أو بناء على طلب."
+    },
+    {
+      "id": "H08",
+      "test_type": "typo",
+      "category": "women_employment",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "مين بحدد الصناعات والاعمال الممنوع تشغبل النساء فيها، والاوقات الي ما بجوز تشغيلهن خلالها والاستثنائات؟",
+      "primary_article": 69,
+      "required_articles": [
+        69
+      ],
+      "acceptable_articles": [
+        69
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "يحدد الوزير بقرار، بعد استطلاع رأي الجهات الرسمية المختصة، الأعمال المحظورة على النساء والأوقات المحظورة والحالات المستثناة."
+    },
+    {
+      "id": "H09",
+      "test_type": "typo",
+      "category": "injury_compensation",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "كيف بنحسب تعويض العامل اذا كان باخذ اجر بالقطعه، وهل بنعتمد اخر اجر ولا متوسط فتره معينه؟",
+      "primary_article": 91,
+      "required_articles": [
+        91
+      ],
+      "acceptable_articles": [
+        91
+      ],
+      "expected_concepts_any": [
+        "wage_right_concept",
+        "compensation_consequence",
+        "work_injury_event"
+      ],
+      "expected_result": "يحسب التعويض على أساس الأجر الأخير، أما العامل بالقطعة فعلى أساس متوسط أجر الأشهر الستة الأخيرة."
+    },
+    {
+      "id": "H10",
+      "test_type": "colloquial",
+      "category": "inspection_enforcement",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "مفتش العمل أنذر صاحب الشغل يشيل المخالفة وما شالها؛ قديش المهلة وشو ممكن يصير بالمؤسسة والغرامة؟",
+      "primary_article": 9,
+      "required_articles": [
+        9
+      ],
+      "acceptable_articles": [
+        9
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "للمفتش طلب إزالة المخالفة خلال مدة لا تزيد على سبعة أيام، ثم يجوز إغلاق المؤسسة، وتحكم المحكمة بإزالة المخالفة وغرامة من خمسين إلى خمسمائة دينار."
+    },
+    {
+      "id": "H11",
+      "test_type": "colloquial",
+      "category": "union_financial_reporting",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "النقابة كل سنة شو لازم تبعث للمسجل قبل أول نيسان، وشو الكشف اللي لازم يكون مرفق معها؟",
+      "primary_article": 118,
+      "required_articles": [
+        118
+      ],
+      "acceptable_articles": [
+        118
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "ترسل ميزانيتها العمومية المدققة قبل أول نيسان، ويرفق بها كشف بأسماء الموظفين والعاملين والتغييرات التي طرأت عليهم وأوضاعهم."
+    },
+    {
+      "id": "H12",
+      "test_type": "numerical",
+      "category": "employers_union_formation",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "كم يجب أن يكون عدد مؤسسي نقابة أصحاب العمل، وما الحد الأدنى لعمر المؤسس وطالب الانتساب؟",
+      "primary_article": 108,
+      "required_articles": [
+        108
+      ],
+      "acceptable_articles": [
+        108
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "لا يقل عدد المؤسسين عن ثلاثين صاحب عمل، ولا يقل عمر المؤسس عن خمس وعشرين سنة وعمر طالب الانتساب عن ثماني عشرة سنة."
+    },
+    {
+      "id": "H13",
+      "test_type": "numerical",
+      "category": "voluntary_union_dissolution",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "إذا أرادت النقابة حل نفسها اختيارياً، ما نسبة موافقة الأعضاء المطلوبة وخلال كم يوماً يجب إشعار الوزير والاتحاد؟",
+      "primary_article": 106,
+      "required_articles": [
+        106
+      ],
+      "acceptable_articles": [
+        106
+      ],
+      "expected_concepts_any": [],
+      "expected_result": "يتطلب الحل الاختياري موافقة ثلثي الأعضاء المسددين لاشتراكاتهم في اجتماع غير عادي، ويبلغ الوزير والاتحاد خلال خمسة عشر يوماً."
+    },
+    {
+      "id": "H14",
+      "test_type": "multi_article",
+      "category": "collective_dispute_effects",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "على من تكون تسوية التوفيق أو قرار المحكمة العمالية ملزمين، ومن أي تاريخ يبدأ تنفيذ كل منهما؟",
+      "primary_article": 130,
+      "required_articles": [
+        130,
+        131
+      ],
+      "acceptable_articles": [
+        130,
+        131
+      ],
+      "expected_concepts_any": [
+        "litigation_right_concept",
+        "legal_claim_consequence"
+      ],
+      "expected_result": "المادة 130 تحدد الفئات الملزمة بالتسوية أو القرار، والمادة 131 تحدد تاريخ تنفيذ قرار المحكمة وتاريخ بدء العمل بالتسوية."
+    },
+    {
+      "id": "H15",
+      "test_type": "ambiguous",
+      "category": "ambiguous",
+      "difficulty": "hard",
+      "expected_behavior": "clarify",
+      "question": "وزارة العمل طلبت تصويب وضع في المنشأة، شو النتيجة إذا ما تم التصويب؟",
+      "expected_result": "يلزم تحديد نوع المخالفة أو الوضع المطلوب تصويبه والجهة التي أصدرت الطلب، لأن الإجراء والجزاء يختلفان باختلاف الحالة."
+    },
+    {
+      "id": "H16",
+      "test_type": "ambiguous",
+      "category": "ambiguous",
+      "difficulty": "hard",
+      "expected_behavior": "clarify",
+      "question": "صار خلاف على قرار نقابي، هل بقدر أطعن فيه؟",
+      "expected_result": "يلزم تحديد نوع القرار النقابي، وصفة السائل، والجهة التي أصدرته والإجراء المتخذ قبل تحديد طريق الاعتراض."
+    },
+    {
+      "id": "H17",
+      "test_type": "ambiguous",
+      "category": "ambiguous",
+      "difficulty": "hard",
+      "expected_behavior": "clarify",
+      "question": "استلمت كتاباً بخصوص نزاع عمالي، شو لازم أعمل بعده؟",
+      "expected_result": "يلزم تحديد الجهة التي أصدرت الكتاب ومضمونه والمرحلة الإجرائية التي وصل إليها النزاع قبل تحديد الخطوة التالية."
+    },
+    {
+      "id": "H18",
+      "test_type": "out_of_scope",
+      "category": "inheritance",
+      "difficulty": "easy",
+      "expected_behavior": "abstain",
+      "question": "توفي والدي وترك عقاراً وحساباً بنكياً، كيف توزع التركة بين الورثة؟",
+      "expected_result": "المسألة تتعلق بالميراث والأحوال الشخصية، وهي خارج نطاق قانون العمل الأردني."
+    },
+    {
+      "id": "H19",
+      "test_type": "out_of_scope",
+      "category": "tax",
+      "difficulty": "medium",
+      "expected_behavior": "abstain",
+      "question": "رفضت دائرة ضريبة الدخل اعتراضاً قدمته على التقدير، كيف أتابع الطعن؟",
+      "expected_result": "المسألة تتعلق بالإجراءات الضريبية والطعن في تقدير الضريبة، وهي خارج نطاق قانون العمل الأردني."
+    },
+    {
+      "id": "H20",
+      "test_type": "out_of_scope",
+      "category": "traffic_insurance",
+      "difficulty": "easy",
+      "expected_behavior": "abstain",
+      "question": "تعرضت لحادث سير وتضررت سيارتي، كيف أطالب شركة التأمين بالتعويض؟",
+      "expected_result": "المسألة تتعلق بحادث سير وتأمين مركبات، وهي خارج نطاق قانون العمل الأردني."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "تم اتخاذ إجراء أثناء نزاع عمالي، هل هذا الإجراء قانوني؟",
+  "decision": {
+    "behavior": "clarify",
+    "reason": "السؤال ناقص معلومات واقعية حاسمة تحدد نوع الإجراء بما يؤثر في التطبيق القانوني.",
+    "clarification_question_ar": "ما نوع الإجراء الذي تم اتخاذه أثناء النزاع العمالي؟",
+    "planner_used": true,
+    "planner_confidence": 0.82
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 0,
+    "input_tokens": 0
+  },
+  "articles": [],
+  "concepts": [],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [],
+    "concept_local_names": [],
+    "graph_supported_articles": [],
+    "concept_count": 0,
+    "expanded_concept_count": 0,
+    "article_count": 0
+  },
+  "elapsed_ms": 14327,
+  "debug": {
+    "analysis": {
+      "normalized_question": "تم اتخاذ اجراء اثناء نزاع عمالي هل هذا الاجراء قانوني",
+      "issue_ids": [],
+      "planner_queries": [],
+      "planner_issue_labels": [],
+      "max_final_articles": 0
+    },
+    "query_plan": {
+      "decision": "clarify",
+      "confidence": 0.82,
+      "decision_reason": "السؤال ناقص معلومات واقعية حاسمة تحدد نوع الإجراء بما يؤثر في التطبيق القانوني.",
+      "normalized_question_ar": "",
+      "legal_domain": "Jordanian Labor Law",
+      "atomic_issues": [],
+      "minimum_articles": 0,
+      "maximum_articles": 0,
+      "clarification_question_ar": "ما نوع الإجراء الذي تم اتخاذه أثناء النزاع العمالي؟"
+    },
+    "raw_preview": null
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": "generation.v1",
+  "status": "generated",
+  "question": "من يتحمل تعويض العامل إذا أثبت تقرير المرجع الطبي أن مرضه المهني نشأ عن عمله؟",
+  "retrieval_schema_version": "retrieval.v1",
+  "answer_ar": "صاحب العمل هو المسؤول عن دفع التعويض للعامل المصاب بمرض من أمراض المهنة إذا كان المرض ناشئاً عن عمله، وذلك وفقاً لتقرير المرجع الطبي [المادة 88].",
+  "key_points": [],
+  "citations": [
+    {
+      "article_number": 88,
+      "label_ar": "المادة 88",
+      "uri": "http://example.org/jordan-labor-law#article_88",
+      "excerpt": "يكون صاحب العمل مسؤولا عن دفع التعويض المنصوص عليه في هذا القانون للعامل الذي يصاب بمرض من امراض المهنة ناشىء عن عمله وذلك بالاستناد الى تقرير من المرجع الطبي."
+    }
+  ],
+  "cited_article_numbers": [
+    88
+  ],
+  "grounded": true,
+  "warnings": [],
+  "model": "gpt-5-nano",
+  "usage": {
+    "input_tokens": 3068,
+    "output_tokens": 165,
+    "total_tokens": 3233
+  },
+  "elapsed_ms": 2109,
+  "debug": null
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "كم يجب أن يكون عدد مؤسسي نقابة أصحاب العمل، وما الحد الأدنى لعمر المؤسس وطالب الانتساب؟",
+  "decision": {
+    "behavior": "abstain",
+    "reason": "المسألة تخص تأسيس غرفة تجارة/أصحاب العمل وشروط التأسيس العضوية، وهو نطاق خارج قانون العمل الأردني الممثّل في النظام ولا يرد ضمنه معلومات عنه.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.85
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 0,
+    "input_tokens": 0
+  },
+  "articles": [],
+  "concepts": [],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [],
+    "concept_local_names": [],
+    "graph_supported_articles": [],
+    "concept_count": 0,
+    "expanded_concept_count": 0,
+    "article_count": 0
+  },
+  "elapsed_ms": 10734,
+  "debug": {
+    "analysis": {
+      "normalized_question": "كم يجب ان يكون عدد موسسي نقابه اصحاب العمل وما الحد الادني لعمر الموسس وطالب الانتساب",
+      "issue_ids": [],
+      "planner_queries": [],
+      "planner_issue_labels": [],
+      "max_final_articles": 0
+    },
+    "query_plan": {
+      "decision": "abstain",
+      "confidence": 0.85,
+      "decision_reason": "المسألة تخص تأسيس غرفة تجارة/أصحاب العمل وشروط التأسيس العضوية، وهو نطاق خارج قانون العمل الأردني الممثّل في النظام ولا يرد ضمنه معلومات عنه.",
+      "normalized_question_ar": "",
+      "legal_domain": "قانون التجارة/تأسيس منظمات أصحاب العمل",
+      "atomic_issues": [],
+      "minimum_articles": 0,
+      "maximum_articles": 0,
+      "clarification_question_ar": ""
+    },
+    "raw_preview": null
+  }
+}

@@ -1,0 +1,1055 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "من يحق له الاطلاع على دفاتر وسجلات وقوائم أعضاء النقابة، وأين ومتى يتم الاطلاع؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "الاستفسار ينتمي لقضايا تنظيم النقابات ضمن قانون العمل الأردني ويطلب قاعدة عامة حول من له حق الاطلاع ومكان وزمان الاطلاع.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.92
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 57
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_113",
+      "local_name": "article_113",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 113"
+      ],
+      "labels_en": [],
+      "article_number": 113,
+      "text": "أ . يجب على كل نقابة عمال  او نقابة اصحاب عمل ان تعد السجلات والدفاتر حسب الاوضاع والشروط التي يقررها الوزير.\n\nب. لمفتش العمل الاطلاع في اي وقت على دفاتر حسابات اي نقابة وعلى غيرها من الدفاتر والسجلات التي تحتفظ بها\n\n    النقابة وعلى قوائم الاعضاء فيها كما يحق لاي موظف في النقابة ولاي عضو فيها الاطلاع على تلك الدفاتر والسجلات\n\n    وعلى تلك القوائم وذلك في الاوقات المحددة في النظام الداخلي للنقابة على ان تجري تلك الاجراءات في مقر النقابة.",
+      "final_score": 1.0,
+      "fused_score": 0.07704918032786887,
+      "direct_score": 0.07704918032786887,
+      "graph_score": 0.0,
+      "paragraph_score": 0.09090909090909091,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#litigation_right_concept",
+      "local_name": "litigation_right_concept",
+      "node_kind": "LitigationRight",
+      "labels_ar": [
+        "حق التقاضي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#litigation_right_concept\nLocal name: litigation_right_concept\nNode kind: LitigationRight\nRDF types: LitigationRight\nArabic labels: حق التقاضي",
+      "final_score": 0.0,
+      "fused_score": 0.02459016393442623,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#trade_union_concept",
+      "local_name": "trade_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "النقابة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#trade_union_concept\nLocal name: trade_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: النقابة",
+      "final_score": 0.0,
+      "fused_score": 0.07337387625594924,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#medical_reference_concept",
+      "local_name": "medical_reference_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "المرجع الطبي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#medical_reference_concept\nLocal name: medical_reference_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: المرجع الطبي",
+      "final_score": 0.0,
+      "fused_score": 0.023809523809523808,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+      "local_name": "employers_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "نقابة أصحاب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.0234375,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#follow_lawful_instructions_obligation",
+      "local_name": "follow_lawful_instructions_obligation",
+      "node_kind": "FollowLawfulInstructions",
+      "labels_ar": [
+        "التزام اتباع التعليمات المشروعة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#follow_lawful_instructions_obligation\nLocal name: follow_lawful_instructions_obligation\nNode kind: FollowLawfulInstructions\nRDF types: FollowLawfulInstructions\nArabic labels: التزام اتباع التعليمات المشروعة",
+      "final_score": 0.0,
+      "fused_score": 0.023076923076923078,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#disclosure_employer_secrets_violation",
+      "local_name": "disclosure_employer_secrets_violation",
+      "node_kind": "DisclosureOfEmployerSecrets",
+      "labels_ar": [
+        "مخالفة إفشاء أسرار صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#disclosure_employer_secrets_violation\nLocal name: disclosure_employer_secrets_violation\nNode kind: DisclosureOfEmployerSecrets\nRDF types: DisclosureOfEmployerSecrets\nArabic labels: مخالفة إفشاء أسرار صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.022727272727272728,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#medical_examination_event",
+      "local_name": "medical_examination_event",
+      "node_kind": "MedicalExamination",
+      "labels_ar": [
+        "حدث الفحص الطبي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#medical_examination_event\nLocal name: medical_examination_event\nNode kind: MedicalExamination\nRDF types: MedicalExamination\nArabic labels: حدث الفحص الطبي",
+      "final_score": 0.0,
+      "fused_score": 0.022388059701492536,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#social_security_related_right_concept",
+      "local_name": "social_security_related_right_concept",
+      "node_kind": "SocialSecurityRelatedRight",
+      "labels_ar": [
+        "حق متعلق بالضمان الاجتماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#social_security_related_right_concept\nLocal name: social_security_related_right_concept\nNode kind: SocialSecurityRelatedRight\nRDF types: SocialSecurityRelatedRight\nArabic labels: حق متعلق بالضمان الاجتماعي",
+      "final_score": 0.0,
+      "fused_score": 0.022058823529411766,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#safe_work_environment_right_concept",
+      "local_name": "safe_work_environment_right_concept",
+      "node_kind": "SafeWorkEnvironmentRight",
+      "labels_ar": [
+        "حق بيئة العمل الآمنة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#safe_work_environment_right_concept\nLocal name: safe_work_environment_right_concept\nNode kind: SafeWorkEnvironmentRight\nRDF types: SafeWorkEnvironmentRight\nArabic labels: حق بيئة العمل الآمنة",
+      "final_score": 0.0,
+      "fused_score": 0.021739130434782608,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_right_concept",
+      "local_name": "wage_right_concept",
+      "node_kind": "WageRight",
+      "labels_ar": [
+        "حق الأجر"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_right_concept\nLocal name: wage_right_concept\nNode kind: WageRight\nRDF types: WageRight\nArabic labels: حق الأجر",
+      "final_score": 0.0,
+      "fused_score": 0.02142857142857143,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#written_contract_concept",
+      "local_name": "written_contract_concept",
+      "node_kind": "WrittenContract",
+      "labels_ar": [
+        "عقد العمل الخطي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#written_contract_concept\nLocal name: written_contract_concept\nNode kind: WrittenContract\nRDF types: WrittenContract\nArabic labels: عقد العمل الخطي",
+      "final_score": 0.0,
+      "fused_score": 0.02112676056338028,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#weekly_rest_right_concept",
+      "local_name": "weekly_rest_right_concept",
+      "node_kind": "WeeklyRestRight",
+      "labels_ar": [
+        "حق العطلة الأسبوعية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#weekly_rest_right_concept\nLocal name: weekly_rest_right_concept\nNode kind: WeeklyRestRight\nRDF types: WeeklyRestRight\nArabic labels: حق العطلة الأسبوعية",
+      "final_score": 0.0,
+      "fused_score": 0.020833333333333332,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      113
+    ],
+    "concept_local_names": [
+      "litigation_right_concept",
+      "trade_union_concept",
+      "medical_reference_concept",
+      "employers_union_concept",
+      "follow_lawful_instructions_obligation",
+      "disclosure_employer_secrets_violation",
+      "medical_examination_event",
+      "social_security_related_right_concept",
+      "safe_work_environment_right_concept",
+      "wage_right_concept",
+      "written_contract_concept",
+      "weekly_rest_right_concept"
+    ],
+    "graph_supported_articles": [],
+    "concept_count": 12,
+    "expanded_concept_count": 0,
+    "article_count": 1
+  },
+  "elapsed_ms": 10108,
+  "debug": {
+    "analysis": {
+      "normalized_question": "من يحق له الاطلاع علي دفاتر وسجلات وقوايم اعضاء النقابه واين ومتي يتم الاطلاع من يحق له الاطلاع علي دفاتر وسجلات وقوايم اعضاء النقابه واين ومتي يتم الاطلاع حق الاطلاع علي دفاتر وسجلات وقوايم اعضاء النقابه حقوق الاطلاع علي دفاتر اعضاء النقابه الاردنيه",
+      "issue_ids": [],
+      "planner_queries": [
+        "حقوق الاطلاع على دفاتر أعضاء النقابة الأردنية"
+      ],
+      "planner_issue_labels": [
+        "حق الاطلاع على دفاتر وسجلات وقوائم أعضاء النقابة"
+      ],
+      "max_final_articles": 3
+    },
+    "query_plan": {
+      "decision": "retrieve",
+      "confidence": 0.92,
+      "decision_reason": "الاستفسار ينتمي لقضايا تنظيم النقابات ضمن قانون العمل الأردني ويطلب قاعدة عامة حول من له حق الاطلاع ومكان وزمان الاطلاع.",
+      "normalized_question_ar": "من يحق له الاطلاع على دفاتر وسجلات وقوائم أعضاء النقابة، وأين ومتى يتم الاطلاع؟",
+      "legal_domain": "Jordanian Labor Law",
+      "atomic_issues": [
+        {
+          "issue_ar": "حق الاطلاع على دفاتر وسجلات وقوائم أعضاء النقابة",
+          "retrieval_query_ar": "حقوق الاطلاع على دفاتر أعضاء النقابة الأردنية",
+          "actors": [
+            "النقابة",
+            "الأعضاء"
+          ],
+          "conditions": [],
+          "numbers": [],
+          "requested_result_ar": "تحديد من له حق الاطلاع ومكان الاطلاع وزمانه"
+        }
+      ],
+      "minimum_articles": 1,
+      "maximum_articles": 3,
+      "clarification_question_ar": ""
+    },
+    "raw_preview": {
+      "question": "من يحق له الاطلاع على دفاتر وسجلات وقوائم أعضاء النقابة، وأين ومتى يتم الاطلاع؟",
+      "embedding_model": "text-embedding-3-small",
+      "embedding_dimensions": 1536,
+      "embedding_input_tokens": 57,
+      "concept_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#litigation_right_concept",
+          "local_name": "litigation_right_concept",
+          "node_kind": "LitigationRight",
+          "labels_ar": [
+            "حق التقاضي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#litigation_right_concept\nLocal name: litigation_right_concept\nNode kind: LitigationRight\nRDF types: LitigationRight\nArabic labels: حق التقاضي",
+          "vector_rank": 1,
+          "vector_distance": 0.8389886617660522,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.02459016393442623,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#trade_union_concept",
+          "local_name": "trade_union_concept",
+          "node_kind": "LegalActor",
+          "labels_ar": [
+            "النقابة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#trade_union_concept\nLocal name: trade_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: النقابة",
+          "vector_rank": 2,
+          "vector_distance": 0.8465451002120972,
+          "bm25_rank": 1,
+          "bm25_score": 23.183456420898438,
+          "fused_score": 0.07337387625594924,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#medical_reference_concept",
+          "local_name": "medical_reference_concept",
+          "node_kind": "LegalActor",
+          "labels_ar": [
+            "المرجع الطبي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#medical_reference_concept\nLocal name: medical_reference_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: المرجع الطبي",
+          "vector_rank": 3,
+          "vector_distance": 0.8656287789344788,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.023809523809523808,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+          "local_name": "employers_union_concept",
+          "node_kind": "LegalActor",
+          "labels_ar": [
+            "نقابة أصحاب العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+          "vector_rank": 4,
+          "vector_distance": 0.8682945966720581,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.0234375,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#follow_lawful_instructions_obligation",
+          "local_name": "follow_lawful_instructions_obligation",
+          "node_kind": "FollowLawfulInstructions",
+          "labels_ar": [
+            "التزام اتباع التعليمات المشروعة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#follow_lawful_instructions_obligation\nLocal name: follow_lawful_instructions_obligation\nNode kind: FollowLawfulInstructions\nRDF types: FollowLawfulInstructions\nArabic labels: التزام اتباع التعليمات المشروعة",
+          "vector_rank": 5,
+          "vector_distance": 0.8693206906318665,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.023076923076923078,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#disclosure_employer_secrets_violation",
+          "local_name": "disclosure_employer_secrets_violation",
+          "node_kind": "DisclosureOfEmployerSecrets",
+          "labels_ar": [
+            "مخالفة إفشاء أسرار صاحب العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#disclosure_employer_secrets_violation\nLocal name: disclosure_employer_secrets_violation\nNode kind: DisclosureOfEmployerSecrets\nRDF types: DisclosureOfEmployerSecrets\nArabic labels: مخالفة إفشاء أسرار صاحب العمل",
+          "vector_rank": 6,
+          "vector_distance": 0.8794207572937012,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.022727272727272728,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#medical_examination_event",
+          "local_name": "medical_examination_event",
+          "node_kind": "MedicalExamination",
+          "labels_ar": [
+            "حدث الفحص الطبي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#medical_examination_event\nLocal name: medical_examination_event\nNode kind: MedicalExamination\nRDF types: MedicalExamination\nArabic labels: حدث الفحص الطبي",
+          "vector_rank": 7,
+          "vector_distance": 0.8809423446655273,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.022388059701492536,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#social_security_related_right_concept",
+          "local_name": "social_security_related_right_concept",
+          "node_kind": "SocialSecurityRelatedRight",
+          "labels_ar": [
+            "حق متعلق بالضمان الاجتماعي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#social_security_related_right_concept\nLocal name: social_security_related_right_concept\nNode kind: SocialSecurityRelatedRight\nRDF types: SocialSecurityRelatedRight\nArabic labels: حق متعلق بالضمان الاجتماعي",
+          "vector_rank": 8,
+          "vector_distance": 0.8812951445579529,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.022058823529411766,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#safe_work_environment_right_concept",
+          "local_name": "safe_work_environment_right_concept",
+          "node_kind": "SafeWorkEnvironmentRight",
+          "labels_ar": [
+            "حق بيئة العمل الآمنة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#safe_work_environment_right_concept\nLocal name: safe_work_environment_right_concept\nNode kind: SafeWorkEnvironmentRight\nRDF types: SafeWorkEnvironmentRight\nArabic labels: حق بيئة العمل الآمنة",
+          "vector_rank": 9,
+          "vector_distance": 0.8844059109687805,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.021739130434782608,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#wage_right_concept",
+          "local_name": "wage_right_concept",
+          "node_kind": "WageRight",
+          "labels_ar": [
+            "حق الأجر"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#wage_right_concept\nLocal name: wage_right_concept\nNode kind: WageRight\nRDF types: WageRight\nArabic labels: حق الأجر",
+          "vector_rank": 10,
+          "vector_distance": 0.8897515535354614,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.02142857142857143,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#written_contract_concept",
+          "local_name": "written_contract_concept",
+          "node_kind": "WrittenContract",
+          "labels_ar": [
+            "عقد العمل الخطي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#written_contract_concept\nLocal name: written_contract_concept\nNode kind: WrittenContract\nRDF types: WrittenContract\nArabic labels: عقد العمل الخطي",
+          "vector_rank": 11,
+          "vector_distance": 0.8905370831489563,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.02112676056338028,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#weekly_rest_right_concept",
+          "local_name": "weekly_rest_right_concept",
+          "node_kind": "WeeklyRestRight",
+          "labels_ar": [
+            "حق العطلة الأسبوعية"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#weekly_rest_right_concept\nLocal name: weekly_rest_right_concept\nNode kind: WeeklyRestRight\nRDF types: WeeklyRestRight\nArabic labels: حق العطلة الأسبوعية",
+          "vector_rank": 12,
+          "vector_distance": 0.8909904360771179,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.020833333333333332,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ],
+      "expanded_concept_hits": [],
+      "article_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#article_113",
+          "local_name": "article_113",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 113"
+          ],
+          "labels_en": [],
+          "article_number": 113,
+          "text_preview": "أ . يجب على كل نقابة عمال  او نقابة اصحاب عمل ان تعد السجلات والدفاتر حسب الاوضاع والشروط التي يقررها الوزير.\n\nب. لمفتش العمل الاطلاع في اي وقت على دفاتر حسابات اي نقابة وعلى غيرها من الدفاتر والسجلات التي تحتفظ بها\n\n    النقابة وعلى قوائم الاعضاء فيها كما يحق لاي موظف في النقابة ولاي عضو فيها الاطلاع على تلك الدفاتر والسجلات\n\n    وعلى تلك القوائم وذلك في الاوقات المحددة في النظام الداخلي للنقابة على ان تجري تلك الاجراءات في مقر النقابة.",
+          "vector_rank": 1,
+          "vector_distance": 0.5638645887374878,
+          "bm25_rank": 1,
+          "bm25_score": 58.71864318847656,
+          "fused_score": 0.07704918032786887,
+          "direct_score": 0.07704918032786887,
+          "graph_score": 0.0,
+          "paragraph_score": 0.09090909090909091,
+          "final_score": 1.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ],
+      "raw_mixed_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#article_113",
+          "local_name": "article_113",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 113"
+          ],
+          "labels_en": [],
+          "article_number": 113,
+          "text_preview": "أ . يجب على كل نقابة عمال  او نقابة اصحاب عمل ان تعد السجلات والدفاتر حسب الاوضاع والشروط التي يقررها الوزير.\n\nب. لمفتش العمل الاطلاع في اي وقت على دفاتر حسابات اي نقابة وعلى غيرها من الدفاتر والسجلات التي تحتفظ بها\n\n    النقابة وعلى قوائم الاعضاء فيها كما يحق لاي موظف في النقابة ولاي عضو فيها الاطلاع على تلك الدفاتر والسجلات\n\n    وعلى تلك القوائم وذلك في الاوقات المحددة في النظام الداخلي للنقابة على ان تجري تلك الاجراءات في مقر النقابة.",
+          "vector_rank": 1,
+          "vector_distance": 0.5638645887374878,
+          "bm25_rank": 2,
+          "bm25_score": 36.02055358886719,
+          "fused_score": 0.03252247488101534,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_113_paragraph_2",
+          "local_name": "article_113_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 113 - الفقرة ب"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "لمفتش العمل الاطلاع في اي وقت على دفاتر حسابات اي نقابة وعلى غيرها من الدفاتر والسجلات التي تحتفظ بها النقابة وعلى قوائم الاعضاء فيها كما يحق لاي موظف في النقابة ولاي عضو فيها الاطلاع على تلك الدفاتر والسجلات وعلى تلك القوائم وذلك في الاوقات المحددة في النظام الداخلي للنقابة على ان تجري تلك الاجراءات في مقر النقابة.",
+          "vector_rank": 2,
+          "vector_distance": 0.5738414525985718,
+          "bm25_rank": 1,
+          "bm25_score": 39.647674560546875,
+          "fused_score": 0.03252247488101534,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_103",
+          "local_name": "article_103",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 103"
+          ],
+          "labels_en": [],
+          "article_number": 103,
+          "text_preview": "أ . تعتبر النقابة او نقابة اصحاب العمل قائمة بالاسم الذي سجلت به وتكتسب الشخصية الاعتبارية وتمارس بهذه الصفة\n\n    جميع الاعمال المصرح لها بممارستها وفقاً لاحكام هذا القانون والانظمة الصادرة بموجبه وبمقتضى النظام الداخلي لها\n\n    اعتباراً من تاريخ :\n\n     1. نشر قرار مسجل النقابات ونقابات اصحاب العمل بتسجيل النقابة او نقابة اصحاب العمل في الجريدة الرسمية.\n\n     2. او صدور قرار محكمة العدل العليا بالغاء قرار المسجل برفض تسجيل النقابة او نقابة اصحاب العمل .\n\n     3. او انقضاء مدة الطعن المنصوص عليها في المادة (102) من هذا القانون.\n\nب. على النقابة او نقابة اصحاب العمل تزويد مسجل النقابات ونقابات  اصحاب العمل باي تغيير او تعديل يطرا على نظامها\n\n    الداخلي وذلك خلال خمسة عشر يوماً من تاريخ اجرائه.",
+          "vector_rank": 3,
+          "vector_distance": 0.6752831935882568,
+          "bm25_rank": 16,
+          "bm25_score": 8.82474136352539,
+          "fused_score": 0.029030910609857977,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_110",
+          "local_name": "article_110",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 110"
+          ],
+          "labels_en": [],
+          "article_number": 110,
+          "text_preview": "أ . تشكل النقابات العمالية الاتحاد العام لنقابات العمال وتكون له شخصية اعتبارية وتحتفظ فيه كل نقابة بحقوقها الخاصة.\n\nب. يتكون الاتحاد من اعضاء النقابات التي يتالف منها الاتحاد ويتمتع بجميع الحقوق التي تتمتع بها النقابة.\n\nج. يحق لنقابتين او اكثر بموافقة الاتحاد العام لنقابات العمال تشكيل اتحاد مهني على ان تحصل كل منها على موافقة\n\n    الاكثرية العادية لهيئتها العامة وان تحيط المسجل علماً بذلك خطياً.\n\nد. يحق للاتحاد العام لنقابات العمال وللاتحادات المهنية المسجلة الانضمام الى اي منظمة عمالية عربية او دولية ذات اهداف\n\n   ووسائل مشروعة.\n\nهـ. تنظيم شؤون الاتحاد العام والاتحادات المهنية بنظام خاص يصدر لهذه الغاية.",
+          "vector_rank": 19,
+          "vector_distance": 0.7636235356330872,
+          "bm25_rank": 3,
+          "bm25_score": 13.308490753173828,
+          "fused_score": 0.028531243721117136,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_100",
+          "local_name": "article_100",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 100"
+          ],
+          "labels_en": [],
+          "article_number": 100,
+          "text_preview": "يضع الاتحاد العام لنقابات العمال بعد الاستئناس براي الوزارة نظاماً داخلياً للاتحاد والنقابات على ان يتضمن النظام الداخلي للنقابات الامور التالية :\n\nأ . اسم النقابة وعنوان مركزها الرئيسي.\n\nب. الغايات التي سيتم تاسيس النقابة من اجلها.\n\nج. اجراءات انتساب الاعضاء للنقابة وفصلهم منها.\n\nد. كيفية تاسيس فروع النقابة في انحاء المملكة وشروط تشكيل اللجان فيها واجراءاتها.\n\nهـ. عدد اعضاء الهيئة الادارية للنقابة ومدة ولايتها وكيفية انتخابهم ومواعيد اجتماعاتها وطريقة تعبئة الشواغر في\n\n      عضويتها وصلاحيتها.\n\nو. الحقوق التي يتمتع بها عضو النقابة والالتزامات التي يتحملها والحالات التي يتعرض فيها للعقوبات المسلكية بما في\n\n    ذلك الغرامة والفصل من النقابة.\n\nز. الخدمات والمساعدات المالية التي تقدم لعضو النقابة في حالات الضرورة بما في ذلك المساهمة في نفقات المعالجة\n\n    وتوكيل المحامين.\n\nح. شروط تعيين الموظفين والمستخدمين في النقابة واجراءاتها وانهاء خدماتهم.\n\nط. كيفية حفظ اموال النقابة ومسك دفاترها وقيودها المالية.\n\nي. اجراءات دعوة الهيئة العامة للنقابة الى اجتماعاتها العادية وغير العادية.",
+          "vector_rank": 5,
+          "vector_distance": 0.7195003628730774,
+          "bm25_rank": 21,
+          "bm25_score": 8.433796882629395,
+          "fused_score": 0.027730294396961064,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_33",
+          "local_name": "article_33",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 33"
+          ],
+          "labels_en": [],
+          "article_number": 33,
+          "text_preview": "أ .  بالاضافة الى مكافاة نهاية الخدمة يحق للعامل الخاضع لانظمة خاصة للمؤسسة التي يعمل فيها تتعلق بصناديق الادخار\n\n     او التوفير او التقاعد او اي صندوق آخر مماثل الحصول على جميع الاستحقاقات الممنوحة له بموجب هذه الانظمة في\n\n     حالة انتهاء الخدمة.\n\nب.  تعتمد الانظمة الخاصة بالصناديق المنصوص عليها في الفقرة (أ) من هذه المادة من قبل الوزير او من يفوضه .\n\nج. يجوز ان ينص نظام اي من الصناديق المنصوص عليها في الفقرة (أ) من هذه المادة على ان يكون استثمار امواله كليا\n\n    او جزئيا في اسهم او حصص الشركة التي اسس فيها ذلك الصندوق .\n\nد . يكون للصناديق المنصوص عليها في الفقرة (أ) من هذه المادة شخصية اعتبارية مستقلة ويجب ان يتضمن نظام اي منها\n\n    على الامور المتعلقة بادارة الصندوق بما في ذلك ما يلي :\n\n    1. وجود هيئة عامة للصندوق تتالف من جميع العاملين الاعضاء في الصندوق تجتمع مرة واحدة على الاقل سنويا\n\n        لاقرار حسابات الصندوق ومناقشة الامور الادارية والمالية وانتخاب ممثليها في لجنة ادارة الصندوق .\n\n    2. ادارة اموال الصندوق واستثماراته من قبل لجنة يكون اعضائها من عمال المؤسسة الاعضاء في الصندوق .",
+          "vector_rank": 12,
+          "vector_distance": 0.7483569383621216,
+          "bm25_rank": 17,
+          "bm25_score": 8.780475616455078,
+          "fused_score": 0.026875901875901876,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_98",
+          "local_name": "article_98",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 98"
+          ],
+          "labels_en": [],
+          "article_number": 98,
+          "text_preview": "أ . مع مراعاة احكام الفقرة (ب) من هذه المادة تؤسس النقابة من قبل مؤسسين لا يقل عددهم عن خمسين شخصاً من\n\n    العاملين في المهنة الواحدة او المهن المتماثلة او المرتبط بعضها ببعض في انتاج واحد.\n\nب. للوزير ان يصدر قراراً بتصنيف المهن والصناعات التي يحق لعمالها تاسيس نقابة لهم وذلك بالاتفاق مع الاتحاد العام\n\n    لنقابات العمال وان يحدد في قراره مجموعات المهن والصناعات التي لا يجوز تاسيس اكثر من نقابة عامة واحدة لجميع\n\n    العمال فيها وذلك بحكم تماثلها او المرتبط بعضها ببعض او اشتراكها في انتاج واحد او متكامل وان يجعل قراره بذلك\n\n    ساري المفعول على النقابات القائمة.",
+          "vector_rank": 18,
+          "vector_distance": 0.7576479911804199,
+          "bm25_rank": 13,
+          "bm25_score": 9.04404354095459,
+          "fused_score": 0.02651914295749912,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_102_paragraph_5",
+          "local_name": "article_102_paragraph_5",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 102 - الفقرة ج"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يترتب على مسجل النقابات ونقابات اصحاب العمل ان يصدر قراره بشان طلب تسجيل اي نقابة او نقابة اصحاب العمل خلال مدة لا تتجاوز ثلاثين يوماً من تاريخ تقديم الطلب اليه فاذا وافق على الطلب اصدر شهادة بتسجيل النقابة او الجمعية وينشر قرار التسجيل في الجريدة الرسمية واذا قرر رفض الطلب فللمؤسسين الطعن في قراراه لدى محكمة العدل العليا خلال ثلاثين يوماً من تاريخ تبليغ القرار.",
+          "vector_rank": 7,
+          "vector_distance": 0.7252407073974609,
+          "bm25_rank": 38,
+          "bm25_score": 7.205078125,
+          "fused_score": 0.02512945476698142,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_118",
+          "local_name": "article_118",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 118"
+          ],
+          "labels_en": [],
+          "article_number": 118,
+          "text_preview": "أ . يجب على كل نقابة عمال او نقابة اصحاب عمل ان ترسل الى المسجل قبل اول نيسان من كل سنة نسخة من ميزانيتها\n\n    العمومية على النموذج المقرر مدققة حسب الاصول من مدقق حسابات قانوني تبين فيه وارداتها ومصروفاتها\n\n     وموجوداتها والتزاماتها خلال السنة السابقة والمنتهية في الحادي والثلاثين من شهر كانون الاول ولمسجل النقابات ان\n\n     يطلب من النقابة تزويده ببيانات او ايضاحات اضافية للميزانية.\n\nب. يرفق بنسخة الميزانية العمومية للنقابة التي ترسل للمسجل كشف يتضمن اسماء الموظفين وسائر العاملين في النقابة\n\n     والتغيرات التي اجرتها عليهم وعلى اوضاعهم خلال السنة التي تعود اليها الميزانية.",
+          "vector_rank": 16,
+          "vector_distance": 0.7545644044876099,
+          "bm25_rank": 24,
+          "bm25_score": 8.38033676147461,
+          "fused_score": 0.02506265664160401,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_118_paragraph_1",
+          "local_name": "article_118_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 118 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يجب على كل نقابة عمال او نقابة اصحاب عمل ان ترسل الى المسجل قبل اول نيسان من كل سنة نسخة من ميزانيتها العمومية على النموذج المقرر مدققة حسب الاصول من مدقق حسابات قانوني تبين فيه وارداتها ومصروفاتها وموجوداتها والتزاماتها خلال السنة السابقة والمنتهية في الحادي والثلاثين من شهر كانون الاول ولمسجل النقابات ان يطلب من النقابة تزويده ببيانات او ايضاحات اضافية للميزانية.",
+          "vector_rank": 13,
+          "vector_distance": 0.7496465444564819,
+          "bm25_rank": 29,
+          "bm25_score": 7.975098609924316,
+          "fused_score": 0.024934585193166076,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_103_paragraph_5",
+          "local_name": "article_103_paragraph_5",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 103 - الفقرة ب"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "على النقابة او نقابة اصحاب العمل تزويد مسجل النقابات ونقابات اصحاب العمل باي تغيير او تعديل يطرا على نظامها الداخلي وذلك خلال خمسة عشر يوماً من تاريخ اجرائه.",
+          "vector_rank": 37,
+          "vector_distance": 0.7890048623085022,
+          "bm25_rank": 19,
+          "bm25_score": 8.730082511901855,
+          "fused_score": 0.02296750619861673,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_109",
+          "local_name": "article_109",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 109"
+          ],
+          "labels_en": [],
+          "article_number": 109,
+          "text_preview": "لا يجوز انفاق اموال نقابة العمال الا في الغايات المشروعة والمتعلقة بمصلحة النقابة بما في ذلك ما يلي :\n\nأ . الرواتب والعلاوات والنفقات للموظفين العاملين فيها وللاعضاء المتفرغين للعمل فيها.\n\nب. نفقات ادارة النقابة بما في ذلك اجور تدقيق حساباتها.\n\nج. رسوم الدعاوى القضائية التي تقيمها النقابة او تقام عليها ونفقاتها اذا كانت هي او اي عضو من اعضائها طرفاً في\n\n    الدعوى وكانت من اجل تامين اي حقوق للنقابة او حمايتها او كانت تتعلق بحقوق ناشئة عن علاقة عضو من اعضائها\n\n    بصاحب العمل.\n\nد.  نفقات اي نزاع عمالي يتعلق بالنقابة او بعضو من اعضائها.\n\nهـ. تعويض الاعضاء عن اي خسارة ناشئة عن نزاع عمالي.\n\nو.  الاعانات التي تدفع لاعضاء النقابة او لافراد عائلاتهم بسبب الوفاة او الشيخوخة او المرض او البطالة او الحوادث التي\n\n     تقع لهم.\n\nز‌.        نفقات الخدمات التعليمية والاجتماعية التي تقدمها النقابة للاعضاء.",
+          "vector_rank": 20,
+          "vector_distance": 0.7654027938842773,
+          "bm25_rank": 37,
+          "bm25_score": 7.319822788238525,
+          "fused_score": 0.022809278350515466,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_102",
+          "local_name": "article_102",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 102"
+          ],
+          "labels_en": [],
+          "article_number": 102,
+          "text_preview": "أ . يقدم طلب تاسيس اي نقابة للعمال او نقابة اصحاب العمل موقعاً من قبل المؤسسين الى مسجل النقابات و نقابات اصحاب\n\n    العمل  في الوزارة مرفقاً بما يلي :\n\n    1. النظام الداخلي للنقابة او نقابة اصحاب العمل مدرجاً فيه اسمها ومركزها الرئيسي وعنوانها.\n\n    2. اعضاء الهيئة الادارية الاولى لها المنتخبة من قبل المؤسسين.\n\nب. لمسجل النقابات و نقابات اصحاب العمل ان يكلف الهيئة الادارية بتزويده باي تفاصيل اضافية يراها ضرورية لدراسة\n\n    الطلب واتمام اجراءات تسجيل النقابة او نقابة اصحاب العمل .\n\nج. يترتب على مسجل النقابات ونقابات اصحاب العمل ان يصدر قراره بشان طلب تسجيل اي نقابة او نقابة اصحاب العمل\n\n    خلال مدة لا تتجاوز ثلاثين يوماً من تاريخ تقديم الطلب اليه فاذا وافق على الطلب اصدر شهادة بتسجيل النقابة او\n\n    الجمعية وينشر قرار التسجيل في الجريدة الرسمية واذا قرر رفض الطلب فللمؤسسين الطعن في قراراه لدى محكمة\n\n    العدل العليا خلال ثلاثين يوماً من تاريخ تبليغ القرار.\n\nد.  يجوز للاشخاص الذين تضرروا من تسجيل اي نقابة او نقابة اصحاب العمل الطعن في قرار تسجيلها لدى محكمة العدل\n\n    العليا خلال ثلاثين يوماً من تاريخ نشر القرار في الجريدة الرسمية.",
+          "vector_rank": 4,
+          "vector_distance": 0.6894960999488831,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.015625,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_29_paragraph_1",
+          "local_name": "article_29_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "مقدمة المادة 29"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يحق للعامل ان يترك العمل دون اشعار مع احتفاظه بحقوقه القانونية عن انتهاء الخدمة وما يترتب له من تعويضات عطل وضرر وذلك في اي من الحالات التالية :",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 4,
+          "bm25_score": 12.363750457763672,
+          "fused_score": 0.015625,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_117",
+          "local_name": "article_117",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 117"
+          ],
+          "labels_en": [],
+          "article_number": 117,
+          "text_preview": "اذا حلت النقابة بصورة غير اختيارية لاي سبب من الاسباب فتودع اموالها في البنك الذي يعينه الاتحاد العام لنقابات العمال الى ان تؤسس نقابة جديدة للمهنة او للمهن نفسها فاذا لم يتم تاسيس مثل هذه النقابة خلال سنة واحدة من حل النقابة الاولى فتؤول اموالها المنقولة وغير المنقولة الى الاتحاد العام لنقابات العمال.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 5,
+          "bm25_score": 12.026735305786133,
+          "fused_score": 0.015384615384615385,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_104",
+          "local_name": "article_104",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 104"
+          ],
+          "labels_en": [],
+          "article_number": 104,
+          "text_preview": "ترسل جميع المراسلات والاشعارات للنقابة او نقابة اصحاب العمل الى عنوانها المسجل ويجب ان يبلغ مسجل النقابات باي تغيير فيه خلال سبعة ايام من حدوثه ويدرج التغيير في سجل النقابات ونقابات اصحاب العمل لدى المسجل والا اعتبر العنوان المسجل اصلاً قائماً.",
+          "vector_rank": 6,
+          "vector_distance": 0.7243032455444336,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.015151515151515152,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_117_paragraph_1",
+          "local_name": "article_117_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 117"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اذا حلت النقابة بصورة غير اختيارية لاي سبب من الاسباب فتودع اموالها في البنك الذي يعينه الاتحاد العام لنقابات العمال الى ان تؤسس نقابة جديدة للمهنة او للمهن نفسها فاذا لم يتم تاسيس مثل هذه النقابة خلال سنة واحدة من حل النقابة الاولى فتؤول اموالها المنقولة وغير المنقولة الى الاتحاد العام لنقابات العمال.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 6,
+          "bm25_score": 11.94271469116211,
+          "fused_score": 0.015151515151515152,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_33_paragraph_1",
+          "local_name": "article_33_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 33 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "بالاضافة الى مكافاة نهاية الخدمة يحق للعامل الخاضع لانظمة خاصة للمؤسسة التي يعمل فيها تتعلق بصناديق الادخار او التوفير او التقاعد او اي صندوق آخر مماثل الحصول على جميع الاستحقاقات الممنوحة له بموجب هذه الانظمة في حالة انتهاء الخدمة.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 7,
+          "bm25_score": 10.963315963745117,
+          "fused_score": 0.014925373134328358,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_104_paragraph_1",
+          "local_name": "article_104_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 104"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "ترسل جميع المراسلات والاشعارات للنقابة او نقابة اصحاب العمل الى عنوانها المسجل ويجب ان يبلغ مسجل النقابات باي تغيير فيه خلال سبعة ايام من حدوثه ويدرج التغيير في سجل النقابات ونقابات اصحاب العمل لدى المسجل والا اعتبر العنوان المسجل اصلاً قائماً.",
+          "vector_rank": 8,
+          "vector_distance": 0.7314087152481079,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.014705882352941176,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_47_paragraph_2",
+          "local_name": "article_47_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 47 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "استرداد ما قدم صاحب العمل من سلف للعامل بحيث لا يزيد كل قسط يتم استرداده من السلفة على (10%) من الاجر.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 8,
+          "bm25_score": 10.290053367614746,
+          "fused_score": 0.014705882352941176,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ]
+    }
+  }
+}

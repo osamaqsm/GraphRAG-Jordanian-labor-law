@@ -1,0 +1,1136 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "ما الذي يجب تحديده في عقد التدريب بشأن المدة والمراحل والأجر، ومتى يجوز إنهاؤه إذا تعذر التنفيذ أو أصبح الاستمرار خطراً على صحة المتدرب؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "السؤال داخل نطاق قانون العمل الأردني ويطلب قواعد عامة محددة بشأن عقد تدريب وليست مسألة خارج النطاق، ويتطلب استخراج نصوص تنظيمية محددة.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.92
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 97
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_36",
+      "local_name": "article_36",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 36"
+      ],
+      "labels_en": [],
+      "article_number": 36,
+      "text": "أ . يجب ان يكون عقد التدريب المهني خطياً بين العامل وصاحب العمل وان يكون المدرب حائزا على المؤهلات والخبرات\n\n    الكافية في المهنة او الحرفة المراد تدريب العامل فيها كما يجب ان تتوفر في المؤسسة نفسها الشروط المناسبة للتدريب.\n\nب. ينظم عقد التدريب وفق النموذج والشروط التي تحددها مؤسسة التدريب المهني بموجب تعليمات تصدرها لهذا الغرض\n\n    وتنشر في الجريدة الرسمية ويعفى العقد من رسوم الطوابع.\n\nج. يتولى المتدرب الذي اتم الثامنة عشرة من العمر التعاقد بنفسه واما اذا كان حدثا فينوب عنه وليه او وصيه.",
+      "final_score": 1.0,
+      "fused_score": 0.07547950609822635,
+      "direct_score": 0.07547950609822635,
+      "graph_score": 0.0,
+      "paragraph_score": 0.1917989417989418,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#article_37",
+      "local_name": "article_37",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 37"
+      ],
+      "labels_en": [],
+      "article_number": 37,
+      "text": "تحدد في عقد التدريب مدته ومراحله المتعاقبة والاجور المستحقة للمتدرب في كل مرحلة ويجب ان لا يقل الاجر في المرحلة الاخيرة عن الحد الادنى للاجر المعطى لعمل مماثل وان لا يكون تحديده بحال من الاحوال على اساس القطعة او الانتاج وينظم التدريب وفق البرامج التي تحددها مؤسسة التدريب المهني بتعليمات تصدرها لهذا الغرض وتنشر في الجريدة الرسمية.",
+      "final_score": 0.99,
+      "fused_score": 0.07511520737327189,
+      "direct_score": 0.07511520737327189,
+      "graph_score": 0.0,
+      "paragraph_score": 0.09090909090909091,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#article_38",
+      "local_name": "article_38",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 38"
+      ],
+      "labels_en": [],
+      "article_number": 38,
+      "text": "يجوز انهاء عقد التدريب بناء على طلب احد الفريقين في اي من الحالات التالية :\n\nأ . اذا ارتكب احدهما اي مخالفة لاحكام هذا القانون او الانظمة الصادرة بموجبه.\n\nب. اذا لم يقم احدهما بواجباته وفقا لشروط العقد المبرم بينهما.\n\nج. اذا استحال تنفيذ شروط العقد لاسباب خارجة عن ارادة احد الفريقين.\n\nد. اذا نقل صاحب العمل مكان التدريب المحدد في العقد الى مكان آخر يشكل الانتقال اليه صعوبة على المتدرب او يضر\n\n    بمصلحته ولا يجوز للمتدرب ان يحتج بهذا السبب بعد مضي شهر واحد على نقله الى مكان التدريب الجديد.\n\nهـ. اذا كان استمرار المتدرب في العمل يهدد سلامته او صحته وثبت ذلك بتقرير مفتش العمل او تقرير طبي صادر عن\n\n      لجنة طبية معتمدة.",
+      "final_score": 0.98,
+      "fused_score": 0.07686409307244844,
+      "direct_score": 0.07686409307244844,
+      "graph_score": 0.0,
+      "paragraph_score": 0.17807250221043325,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#fixed_term_contract_concept",
+      "local_name": "fixed_term_contract_concept",
+      "node_kind": "FixedTermContract",
+      "labels_ar": [
+        "عقد العمل محدد المدة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#fixed_term_contract_concept\nLocal name: fixed_term_contract_concept\nNode kind: FixedTermContract\nRDF types: FixedTermContract\nArabic labels: عقد العمل محدد المدة",
+      "final_score": 0.0,
+      "fused_score": 0.07023959646910467,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#indefinite_term_contract_concept",
+      "local_name": "indefinite_term_contract_concept",
+      "node_kind": "IndefiniteTermContract",
+      "labels_ar": [
+        "عقد العمل غير محدد المدة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#indefinite_term_contract_concept\nLocal name: indefinite_term_contract_concept\nNode kind: IndefiniteTermContract\nRDF types: IndefiniteTermContract\nArabic labels: عقد العمل غير محدد المدة",
+      "final_score": 0.0,
+      "fused_score": 0.06915933528836754,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+      "local_name": "employment_contract_concept",
+      "node_kind": "EmploymentContract",
+      "labels_ar": [
+        "عقد العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employment_contract_concept\nLocal name: employment_contract_concept\nNode kind: EmploymentContract\nRDF types: EmploymentContract\nArabic labels: عقد العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06764724289106941,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#oral_contract_concept",
+      "local_name": "oral_contract_concept",
+      "node_kind": "OralContract",
+      "labels_ar": [
+        "عقد العمل الشفهي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#oral_contract_concept\nLocal name: oral_contract_concept\nNode kind: OralContract\nRDF types: OralContract\nArabic labels: عقد العمل الشفهي",
+      "final_score": 0.0,
+      "fused_score": 0.06640158303464755,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#written_contract_concept",
+      "local_name": "written_contract_concept",
+      "node_kind": "WrittenContract",
+      "labels_ar": [
+        "عقد العمل الخطي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#written_contract_concept\nLocal name: written_contract_concept\nNode kind: WrittenContract\nRDF types: WrittenContract\nArabic labels: عقد العمل الخطي",
+      "final_score": 0.0,
+      "fused_score": 0.06361416361416361,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+      "local_name": "collective_employment_contract_concept",
+      "node_kind": "EmploymentRelation",
+      "labels_ar": [
+        "عقد العمل الجماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#collective_employment_contract_concept\nLocal name: collective_employment_contract_concept\nNode kind: EmploymentRelation\nRDF types: EmploymentRelation\nArabic labels: عقد العمل الجماعي",
+      "final_score": 0.0,
+      "fused_score": 0.06140151515151515,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#contract_fixed_term_condition",
+      "local_name": "contract_fixed_term_condition",
+      "node_kind": "ContractIsFixedTerm",
+      "labels_ar": [
+        "شرط كون العقد محدد المدة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#contract_fixed_term_condition\nLocal name: contract_fixed_term_condition\nNode kind: ContractIsFixedTerm\nRDF types: ContractIsFixedTerm\nArabic labels: شرط كون العقد محدد المدة",
+      "final_score": 0.0,
+      "fused_score": 0.03951553706875459,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#contract_indefinite_term_condition",
+      "local_name": "contract_indefinite_term_condition",
+      "node_kind": "ContractIsIndefiniteTerm",
+      "labels_ar": [
+        "شرط كون العقد غير محدد المدة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#contract_indefinite_term_condition\nLocal name: contract_indefinite_term_condition\nNode kind: ContractIsIndefiniteTerm\nRDF types: ContractIsIndefiniteTerm\nArabic labels: شرط كون العقد غير محدد المدة",
+      "final_score": 0.0,
+      "fused_score": 0.038899430740037946,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+      "local_name": "work_negligence_violation",
+      "node_kind": "WorkNegligence",
+      "labels_ar": [
+        "مخالفة الإهمال في العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#work_negligence_violation\nLocal name: work_negligence_violation\nNode kind: WorkNegligence\nRDF types: WorkNegligence\nArabic labels: مخالفة الإهمال في العمل",
+      "final_score": 0.0,
+      "fused_score": 0.03504069882866786,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+      "local_name": "delay_exceeds_seven_days_condition",
+      "node_kind": "DelayExceedsSevenDays",
+      "labels_ar": [
+        "شرط تجاوز التأخير سبعة أيام"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition\nLocal name: delay_exceeds_seven_days_condition\nNode kind: DelayExceedsSevenDays\nRDF types: DelayExceedsSevenDays\nArabic labels: شرط تجاوز التأخير سبعة أيام",
+      "final_score": 0.0,
+      "fused_score": 0.023809523809523808,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+      "local_name": "wage_delay_violation",
+      "node_kind": "WageDelay",
+      "labels_ar": [
+        "مخالفة تأخر دفع الأجور"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_delay_violation\nLocal name: wage_delay_violation\nNode kind: WageDelay\nRDF types: WageDelay\nArabic labels: مخالفة تأخر دفع الأجور",
+      "final_score": 0.0,
+      "fused_score": 0.0234375,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#termination_contract_consequence",
+      "local_name": "termination_contract_consequence",
+      "node_kind": "TerminationOfContract",
+      "labels_ar": [
+        "إنهاء العقد"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#termination_contract_consequence\nLocal name: termination_contract_consequence\nNode kind: TerminationOfContract\nRDF types: TerminationOfContract\nArabic labels: إنهاء العقد",
+      "final_score": 0.0,
+      "fused_score": 0.022388059701492536,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      36,
+      37,
+      38
+    ],
+    "concept_local_names": [
+      "fixed_term_contract_concept",
+      "indefinite_term_contract_concept",
+      "employment_contract_concept",
+      "oral_contract_concept",
+      "written_contract_concept",
+      "collective_employment_contract_concept",
+      "contract_fixed_term_condition",
+      "contract_indefinite_term_condition",
+      "work_negligence_violation",
+      "delay_exceeds_seven_days_condition",
+      "wage_delay_violation",
+      "termination_contract_consequence"
+    ],
+    "graph_supported_articles": [],
+    "concept_count": 12,
+    "expanded_concept_count": 0,
+    "article_count": 3
+  },
+  "elapsed_ms": 14782,
+  "debug": {
+    "analysis": {
+      "normalized_question": "ما الذي يجب تحديده في عقد التدريب بشان المده والمراحل والاجر ومتي يجوز انهاوه اذا تعذر التنفيذ او اصبح الاستمرار خطرا علي صحه المتدرب ما الذي يجب تحديده في عقد التدريب بشان المده والمراحل والاجر ومتي يجوز انهاوه اذا تعذر التنفيذ او اصبح الاستمرار خطرا علي صحه المتدرب شروط عقد التدريب من حيث المده والمراحل والاجر واجراءات الانهاء عند تعذر التنفيذ شروط عقد التدريب مده ومراحل واجر وانهاء عند تعذر التنفيذ",
+      "issue_ids": [],
+      "planner_queries": [
+        "شروط عقد التدريب مدة ومراحل وأجر وإنهاء عند تعذر التنفيذ"
+      ],
+      "planner_issue_labels": [
+        "شروط عقد التدريب من حيث المدة والمراحل والأجر وإجراءات الإنهاء عند تعذر التنفيذ"
+      ],
+      "max_final_articles": 3
+    },
+    "query_plan": {
+      "decision": "retrieve",
+      "confidence": 0.92,
+      "decision_reason": "السؤال داخل نطاق قانون العمل الأردني ويطلب قواعد عامة محددة بشأن عقد تدريب وليست مسألة خارج النطاق، ويتطلب استخراج نصوص تنظيمية محددة.",
+      "normalized_question_ar": "ما الذي يجب تحديده في عقد التدريب بشأن المدة والمراحل والأجر، ومتى يجوز إنهاؤه إذا تعذر التنفيذ أو أصبح الاستمرار خطراً على صحة المتدرب؟",
+      "legal_domain": "قانون العمل الأردني",
+      "atomic_issues": [
+        {
+          "issue_ar": "شروط عقد التدريب من حيث المدة والمراحل والأجر وإجراءات الإنهاء عند تعذر التنفيذ",
+          "retrieval_query_ar": "شروط عقد التدريب مدة ومراحل وأجر وإنهاء عند تعذر التنفيذ",
+          "actors": [
+            "المتدرب"
+          ],
+          "conditions": [],
+          "numbers": [],
+          "requested_result_ar": "الحكم القانوني في عقد التدريب بشأن المدد والمراحل والأجر وإمكانية الإنهاء عند تعذر التنفيذ أو مخاطر الصحة"
+        }
+      ],
+      "minimum_articles": 1,
+      "maximum_articles": 3,
+      "clarification_question_ar": ""
+    },
+    "raw_preview": {
+      "question": "ما الذي يجب تحديده في عقد التدريب بشأن المدة والمراحل والأجر، ومتى يجوز إنهاؤه إذا تعذر التنفيذ أو أصبح الاستمرار خطراً على صحة المتدرب؟",
+      "embedding_model": "text-embedding-3-small",
+      "embedding_dimensions": 1536,
+      "embedding_input_tokens": 97,
+      "concept_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#fixed_term_contract_concept",
+          "local_name": "fixed_term_contract_concept",
+          "node_kind": "FixedTermContract",
+          "labels_ar": [
+            "عقد العمل محدد المدة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#fixed_term_contract_concept\nLocal name: fixed_term_contract_concept\nNode kind: FixedTermContract\nRDF types: FixedTermContract\nArabic labels: عقد العمل محدد المدة",
+          "vector_rank": 5,
+          "vector_distance": 0.7964089512825012,
+          "bm25_rank": 1,
+          "bm25_score": 22.703140258789062,
+          "fused_score": 0.07023959646910467,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#indefinite_term_contract_concept",
+          "local_name": "indefinite_term_contract_concept",
+          "node_kind": "IndefiniteTermContract",
+          "labels_ar": [
+            "عقد العمل غير محدد المدة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#indefinite_term_contract_concept\nLocal name: indefinite_term_contract_concept\nNode kind: IndefiniteTermContract\nRDF types: IndefiniteTermContract\nArabic labels: عقد العمل غير محدد المدة",
+          "vector_rank": 6,
+          "vector_distance": 0.7964414954185486,
+          "bm25_rank": 2,
+          "bm25_score": 20.79479217529297,
+          "fused_score": 0.06915933528836754,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "local_name": "employment_contract_concept",
+          "node_kind": "EmploymentContract",
+          "labels_ar": [
+            "عقد العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#employment_contract_concept\nLocal name: employment_contract_concept\nNode kind: EmploymentContract\nRDF types: EmploymentContract\nArabic labels: عقد العمل",
+          "vector_rank": 19,
+          "vector_distance": 0.8716612458229065,
+          "bm25_rank": 3,
+          "bm25_score": 17.824281692504883,
+          "fused_score": 0.06764724289106941,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#oral_contract_concept",
+          "local_name": "oral_contract_concept",
+          "node_kind": "OralContract",
+          "labels_ar": [
+            "عقد العمل الشفهي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#oral_contract_concept\nLocal name: oral_contract_concept\nNode kind: OralContract\nRDF types: OralContract\nArabic labels: عقد العمل الشفهي",
+          "vector_rank": 21,
+          "vector_distance": 0.8749869465827942,
+          "bm25_rank": 4,
+          "bm25_score": 15.844675064086914,
+          "fused_score": 0.06640158303464755,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#written_contract_concept",
+          "local_name": "written_contract_concept",
+          "node_kind": "WrittenContract",
+          "labels_ar": [
+            "عقد العمل الخطي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#written_contract_concept\nLocal name: written_contract_concept\nNode kind: WrittenContract\nRDF types: WrittenContract\nArabic labels: عقد العمل الخطي",
+          "vector_rank": 31,
+          "vector_distance": 0.8844366073608398,
+          "bm25_rank": 5,
+          "bm25_score": 15.844675064086914,
+          "fused_score": 0.06361416361416361,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+          "local_name": "collective_employment_contract_concept",
+          "node_kind": "EmploymentRelation",
+          "labels_ar": [
+            "عقد العمل الجماعي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#collective_employment_contract_concept\nLocal name: collective_employment_contract_concept\nNode kind: EmploymentRelation\nRDF types: EmploymentRelation\nArabic labels: عقد العمل الجماعي",
+          "vector_rank": 40,
+          "vector_distance": 0.9056475758552551,
+          "bm25_rank": 6,
+          "bm25_score": 15.789752960205078,
+          "fused_score": 0.06140151515151515,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#contract_fixed_term_condition",
+          "local_name": "contract_fixed_term_condition",
+          "node_kind": "ContractIsFixedTerm",
+          "labels_ar": [
+            "شرط كون العقد محدد المدة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#contract_fixed_term_condition\nLocal name: contract_fixed_term_condition\nNode kind: ContractIsFixedTerm\nRDF types: ContractIsFixedTerm\nArabic labels: شرط كون العقد محدد المدة",
+          "vector_rank": 1,
+          "vector_distance": 0.7503029108047485,
+          "bm25_rank": 7,
+          "bm25_score": 7.720612525939941,
+          "fused_score": 0.03951553706875459,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#contract_indefinite_term_condition",
+          "local_name": "contract_indefinite_term_condition",
+          "node_kind": "ContractIsIndefiniteTerm",
+          "labels_ar": [
+            "شرط كون العقد غير محدد المدة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#contract_indefinite_term_condition\nLocal name: contract_indefinite_term_condition\nNode kind: ContractIsIndefiniteTerm\nRDF types: ContractIsIndefiniteTerm\nArabic labels: شرط كون العقد غير محدد المدة",
+          "vector_rank": 2,
+          "vector_distance": 0.7638776898384094,
+          "bm25_rank": 8,
+          "bm25_score": 7.14510440826416,
+          "fused_score": 0.038899430740037946,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+          "local_name": "work_negligence_violation",
+          "node_kind": "WorkNegligence",
+          "labels_ar": [
+            "مخالفة الإهمال في العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#work_negligence_violation\nLocal name: work_negligence_violation\nNode kind: WorkNegligence\nRDF types: WorkNegligence\nArabic labels: مخالفة الإهمال في العمل",
+          "vector_rank": 13,
+          "vector_distance": 0.8562849760055542,
+          "bm25_rank": 9,
+          "bm25_score": 3.6671552658081055,
+          "fused_score": 0.03504069882866786,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+          "local_name": "delay_exceeds_seven_days_condition",
+          "node_kind": "DelayExceedsSevenDays",
+          "labels_ar": [
+            "شرط تجاوز التأخير سبعة أيام"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition\nLocal name: delay_exceeds_seven_days_condition\nNode kind: DelayExceedsSevenDays\nRDF types: DelayExceedsSevenDays\nArabic labels: شرط تجاوز التأخير سبعة أيام",
+          "vector_rank": 3,
+          "vector_distance": 0.7702959775924683,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.023809523809523808,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+          "local_name": "wage_delay_violation",
+          "node_kind": "WageDelay",
+          "labels_ar": [
+            "مخالفة تأخر دفع الأجور"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#wage_delay_violation\nLocal name: wage_delay_violation\nNode kind: WageDelay\nRDF types: WageDelay\nArabic labels: مخالفة تأخر دفع الأجور",
+          "vector_rank": 4,
+          "vector_distance": 0.7856007814407349,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.0234375,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#termination_contract_consequence",
+          "local_name": "termination_contract_consequence",
+          "node_kind": "TerminationOfContract",
+          "labels_ar": [
+            "إنهاء العقد"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#termination_contract_consequence\nLocal name: termination_contract_consequence\nNode kind: TerminationOfContract\nRDF types: TerminationOfContract\nArabic labels: إنهاء العقد",
+          "vector_rank": 7,
+          "vector_distance": 0.8082456588745117,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.022388059701492536,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ],
+      "expanded_concept_hits": [],
+      "article_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#article_36",
+          "local_name": "article_36",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 36"
+          ],
+          "labels_en": [],
+          "article_number": 36,
+          "text_preview": "أ . يجب ان يكون عقد التدريب المهني خطياً بين العامل وصاحب العمل وان يكون المدرب حائزا على المؤهلات والخبرات\n\n    الكافية في المهنة او الحرفة المراد تدريب العامل فيها كما يجب ان تتوفر في المؤسسة نفسها الشروط المناسبة للتدريب.\n\nب. ينظم عقد التدريب وفق النموذج والشروط التي تحددها مؤسسة التدريب المهني بموجب تعليمات تصدرها لهذا الغرض\n\n    وتنشر في الجريدة الرسمية ويعفى العقد من رسوم الطوابع.\n\nج. يتولى المتدرب الذي اتم الثامنة عشرة من العمر التعاقد بنفسه واما اذا كان حدثا فينوب عنه وليه او وصيه.",
+          "vector_rank": 2,
+          "vector_distance": 0.47128230333328247,
+          "bm25_rank": 1,
+          "bm25_score": 40.793212890625,
+          "fused_score": 0.07547950609822635,
+          "direct_score": 0.07547950609822635,
+          "graph_score": 0.0,
+          "paragraph_score": 0.1917989417989418,
+          "final_score": 1.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_37",
+          "local_name": "article_37",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 37"
+          ],
+          "labels_en": [],
+          "article_number": 37,
+          "text_preview": "تحدد في عقد التدريب مدته ومراحله المتعاقبة والاجور المستحقة للمتدرب في كل مرحلة ويجب ان لا يقل الاجر في المرحلة الاخيرة عن الحد الادنى للاجر المعطى لعمل مماثل وان لا يكون تحديده بحال من الاحوال على اساس القطعة او الانتاج وينظم التدريب وفق البرامج التي تحددها مؤسسة التدريب المهني بتعليمات تصدرها لهذا الغرض وتنشر في الجريدة الرسمية.",
+          "vector_rank": 3,
+          "vector_distance": 0.48795539140701294,
+          "bm25_rank": 3,
+          "bm25_score": 34.93840026855469,
+          "fused_score": 0.07511520737327189,
+          "direct_score": 0.07511520737327189,
+          "graph_score": 0.0,
+          "paragraph_score": 0.09090909090909091,
+          "final_score": 0.99,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_38",
+          "local_name": "article_38",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 38"
+          ],
+          "labels_en": [],
+          "article_number": 38,
+          "text_preview": "يجوز انهاء عقد التدريب بناء على طلب احد الفريقين في اي من الحالات التالية :\n\nأ . اذا ارتكب احدهما اي مخالفة لاحكام هذا القانون او الانظمة الصادرة بموجبه.\n\nب. اذا لم يقم احدهما بواجباته وفقا لشروط العقد المبرم بينهما.\n\nج. اذا استحال تنفيذ شروط العقد لاسباب خارجة عن ارادة احد الفريقين.\n\nد. اذا نقل صاحب العمل مكان التدريب المحدد في العقد الى مكان آخر يشكل الانتقال اليه صعوبة على المتدرب او يضر\n\n    بمصلحته ولا يجوز للمتدرب ان يحتج بهذا السبب بعد مضي شهر واحد على نقله الى مكان التدريب الجديد.\n\nهـ. اذا كان استمرار المتدرب في العمل يهدد سلامته او صحته وثبت ذلك بتقرير مفتش العمل او تقرير طبي صادر عن\n\n      لجنة طبية معتمدة.",
+          "vector_rank": 1,
+          "vector_distance": 0.4006991386413574,
+          "bm25_rank": 2,
+          "bm25_score": 35.33341598510742,
+          "fused_score": 0.07686409307244844,
+          "direct_score": 0.07686409307244844,
+          "graph_score": 0.0,
+          "paragraph_score": 0.17807250221043325,
+          "final_score": 0.98,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ],
+      "raw_mixed_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#article_38",
+          "local_name": "article_38",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 38"
+          ],
+          "labels_en": [],
+          "article_number": 38,
+          "text_preview": "يجوز انهاء عقد التدريب بناء على طلب احد الفريقين في اي من الحالات التالية :\n\nأ . اذا ارتكب احدهما اي مخالفة لاحكام هذا القانون او الانظمة الصادرة بموجبه.\n\nب. اذا لم يقم احدهما بواجباته وفقا لشروط العقد المبرم بينهما.\n\nج. اذا استحال تنفيذ شروط العقد لاسباب خارجة عن ارادة احد الفريقين.\n\nد. اذا نقل صاحب العمل مكان التدريب المحدد في العقد الى مكان آخر يشكل الانتقال اليه صعوبة على المتدرب او يضر\n\n    بمصلحته ولا يجوز للمتدرب ان يحتج بهذا السبب بعد مضي شهر واحد على نقله الى مكان التدريب الجديد.\n\nهـ. اذا كان استمرار المتدرب في العمل يهدد سلامته او صحته وثبت ذلك بتقرير مفتش العمل او تقرير طبي صادر عن\n\n      لجنة طبية معتمدة.",
+          "vector_rank": 1,
+          "vector_distance": 0.4006991386413574,
+          "bm25_rank": 3,
+          "bm25_score": 22.875389099121094,
+          "fused_score": 0.032266458495966696,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_36",
+          "local_name": "article_36",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 36"
+          ],
+          "labels_en": [],
+          "article_number": 36,
+          "text_preview": "أ . يجب ان يكون عقد التدريب المهني خطياً بين العامل وصاحب العمل وان يكون المدرب حائزا على المؤهلات والخبرات\n\n    الكافية في المهنة او الحرفة المراد تدريب العامل فيها كما يجب ان تتوفر في المؤسسة نفسها الشروط المناسبة للتدريب.\n\nب. ينظم عقد التدريب وفق النموذج والشروط التي تحددها مؤسسة التدريب المهني بموجب تعليمات تصدرها لهذا الغرض\n\n    وتنشر في الجريدة الرسمية ويعفى العقد من رسوم الطوابع.\n\nج. يتولى المتدرب الذي اتم الثامنة عشرة من العمر التعاقد بنفسه واما اذا كان حدثا فينوب عنه وليه او وصيه.",
+          "vector_rank": 3,
+          "vector_distance": 0.47128230333328247,
+          "bm25_rank": 1,
+          "bm25_score": 28.879772186279297,
+          "fused_score": 0.032266458495966696,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_37_paragraph_1",
+          "local_name": "article_37_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 37"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "تحدد في عقد التدريب مدته ومراحله المتعاقبة والاجور المستحقة للمتدرب في كل مرحلة ويجب ان لا يقل الاجر في المرحلة الاخيرة عن الحد الادنى للاجر المعطى لعمل مماثل وان لا يكون تحديده بحال من الاحوال على اساس القطعة او الانتاج وينظم التدريب وفق البرامج التي تحددها مؤسسة التدريب المهني بتعليمات تصدرها لهذا الغرض وتنشر في الجريدة الرسمية.",
+          "vector_rank": 2,
+          "vector_distance": 0.46473193168640137,
+          "bm25_rank": 4,
+          "bm25_score": 22.764095306396484,
+          "fused_score": 0.031754032258064516,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_37",
+          "local_name": "article_37",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 37"
+          ],
+          "labels_en": [],
+          "article_number": 37,
+          "text_preview": "تحدد في عقد التدريب مدته ومراحله المتعاقبة والاجور المستحقة للمتدرب في كل مرحلة ويجب ان لا يقل الاجر في المرحلة الاخيرة عن الحد الادنى للاجر المعطى لعمل مماثل وان لا يكون تحديده بحال من الاحوال على اساس القطعة او الانتاج وينظم التدريب وفق البرامج التي تحددها مؤسسة التدريب المهني بتعليمات تصدرها لهذا الغرض وتنشر في الجريدة الرسمية.",
+          "vector_rank": 4,
+          "vector_distance": 0.48795539140701294,
+          "bm25_rank": 2,
+          "bm25_score": 22.928936004638672,
+          "fused_score": 0.031754032258064516,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_38_paragraph_5",
+          "local_name": "article_38_paragraph_5",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 38 - الفقرة د"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اذا نقل صاحب العمل مكان التدريب المحدد في العقد الى مكان آخر يشكل الانتقال اليه صعوبة على المتدرب او يضر بمصلحته ولا يجوز للمتدرب ان يحتج بهذا السبب بعد مضي شهر واحد على نقله الى مكان التدريب الجديد. هـ. اذا كان استمرار المتدرب في العمل يهدد سلامته او صحته وثبت ذلك بتقرير مفتش العمل او تقرير طبي صادر عن لجنة طبية معتمدة.",
+          "vector_rank": 5,
+          "vector_distance": 0.49578559398651123,
+          "bm25_rank": 5,
+          "bm25_score": 22.174894332885742,
+          "fused_score": 0.03076923076923077,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_36_paragraph_1",
+          "local_name": "article_36_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 36 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يجب ان يكون عقد التدريب المهني خطياً بين العامل وصاحب العمل وان يكون المدرب حائزا على المؤهلات والخبرات الكافية في المهنة او الحرفة المراد تدريب العامل فيها كما يجب ان تتوفر في المؤسسة نفسها الشروط المناسبة للتدريب.",
+          "vector_rank": 6,
+          "vector_distance": 0.5612255334854126,
+          "bm25_rank": 6,
+          "bm25_score": 21.454341888427734,
+          "fused_score": 0.030303030303030304,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_26",
+          "local_name": "article_26",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 26"
+          ],
+          "labels_en": [],
+          "article_number": 26,
+          "text_preview": "أ . اذا انهى صاحب العمل عقد العمل محدد المدة قبل انتهاء مدته او انهاه العامل لاحد الاسباب الواردة في المادة (29) من\n\n    هذا القانون يحق للعامل استيفاء جميع الحقوق والمزايا التي ينص عليها العقد كما يستحق الاجور التي تستحق حتى\n\n    انتهاء المدة المتبقية من العقد ما لم يكن انهاء عقد العمل فصلاً بموجب المادة (28) من هذا القانون.\n\nب. اذا كان انهاء العقد محدد المدة صادراً عن العامل في غير الحالات المنصوص عليها في المادة (29) من هذا القانون جاز\n\n    لصاحب العمل مطالبته بما ينشا عن هذا الانهاء من عطل وضرر يعود تقديره الى المحكمة المختصة على ان لا يتجاوز\n\n     مبلغ ما يحكم به على العامل اجر نصف شهر عن كل شهر من المدة المتبقية من العقد.",
+          "vector_rank": 9,
+          "vector_distance": 0.6304673552513123,
+          "bm25_rank": 9,
+          "bm25_score": 15.905320167541504,
+          "fused_score": 0.028985507246376812,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_38_paragraph_1",
+          "local_name": "article_38_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "مقدمة المادة 38"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يجوز انهاء عقد التدريب بناء على طلب احد الفريقين في اي من الحالات التالية :",
+          "vector_rank": 13,
+          "vector_distance": 0.6453791856765747,
+          "bm25_rank": 7,
+          "bm25_score": 20.3802547454834,
+          "fused_score": 0.02862400327131466,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_36_paragraph_2",
+          "local_name": "article_36_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 36 - الفقرة ب"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "ينظم عقد التدريب وفق النموذج والشروط التي تحددها مؤسسة التدريب المهني بموجب تعليمات تصدرها لهذا الغرض وتنشر في الجريدة الرسمية ويعفى العقد من رسوم الطوابع.",
+          "vector_rank": 16,
+          "vector_distance": 0.6542689204216003,
+          "bm25_rank": 11,
+          "bm25_score": 14.967689514160156,
+          "fused_score": 0.027242401779095628,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_26_paragraph_2",
+          "local_name": "article_26_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 26 - الفقرة ب"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اذا كان انهاء العقد محدد المدة صادراً عن العامل في غير الحالات المنصوص عليها في المادة (29) من هذا القانون جاز لصاحب العمل مطالبته بما ينشا عن هذا الانهاء من عطل وضرر يعود تقديره الى المحكمة المختصة على ان لا يتجاوز مبلغ ما يحكم به على العامل اجر نصف شهر عن كل شهر من المدة المتبقية من العقد.",
+          "vector_rank": 8,
+          "vector_distance": 0.6262508630752563,
+          "bm25_rank": 21,
+          "bm25_score": 12.414785385131836,
+          "fused_score": 0.027051561365286855,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_36_paragraph_3",
+          "local_name": "article_36_paragraph_3",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 36 - الفقرة ج"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يتولى المتدرب الذي اتم الثامنة عشرة من العمر التعاقد بنفسه واما اذا كان حدثا فينوب عنه وليه او وصيه.",
+          "vector_rank": 12,
+          "vector_distance": 0.6437974572181702,
+          "bm25_rank": 19,
+          "bm25_score": 12.636024475097656,
+          "fused_score": 0.026547116736990152,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_15",
+          "local_name": "article_15",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 15"
+          ],
+          "labels_en": [],
+          "article_number": 15,
+          "text_preview": "أ . ينظم عقد العمل باللغة العربية وعلى نسختين على الاقل يحتفظ كل من الطرفين بنسخة منه، ويجوز للعامل اثبات حقوقه\n\n    بجميع طرق الاثبات القانونية اذا لم يحرر العقد كتابة.\n\nب. يعتبر العامل المعين لمدة غير محدودة بانه مستمراً بعمله الى ان تنتهي خدمته بموجب احكام هذا القانون اما في الحالات\n\n    التي يستخدم فيها العامل لمدة محدودة فيعتبر انه مستمر في عمله خلال تلك المدة.\n\nج. اذا كان عقد العمل لمدة محدودة فانه ينتهي من تلقاء نفسه بانتهاء مدته فاذا استمر طرفاه في تنفيذه بعد انقضاء مدته\n\n    اعتبر ذلك تجديداً له لمدة غير محدودة وذلك من بداية الاستخدام.\n\nد. يعتبر العامل الذي يستخدم بانتظام بالقطعة في محل العمل او الذي يقوم بسلسلة من الاعمال بالقطعة انه عامل لمدة غير\n\n    محدودة.\n\nهـ.1. لعمال المقاول الذين يشتغلون في تنفيذ مقاولة رفع دعوى مباشرة على صاحب المشروع للمطالبة بما يستحق لهم\n\n         قبل المقاول وذلك في حدود ما يستحق للمقاول على صاحب المشروع وقت رفع الدعوى.\n\n     2. ولعمال المقاول الفرعي رفع دعوى مباشرة على كل من المقاول الاصلي وصاحب المشروع في حدود المستحق على\n\n         صاحب المشروع للمقاول الاصلي والمستحق على المقاول الاصلي للمقاول الفرعي وقت رفع الدعوى.\n\n     3. للعمال المذكورين في الفقرتين السابقتين ان يستوفوا حقوقهم بالامتياز على المبالغ المستحقة للمقاول الاصلي او\n\n         المقاول الفرعي ويستوفون حقوقهم عند تزاحمهم بنسبة حق كل منهم.",
+          "vector_rank": 19,
+          "vector_distance": 0.6614116430282593,
+          "bm25_rank": 17,
+          "bm25_score": 12.821269989013672,
+          "fused_score": 0.025645240835114255,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_26_paragraph_1",
+          "local_name": "article_26_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 26 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اذا انهى صاحب العمل عقد العمل محدد المدة قبل انتهاء مدته او انهاه العامل لاحد الاسباب الواردة في المادة (29) من هذا القانون يحق للعامل استيفاء جميع الحقوق والمزايا التي ينص عليها العقد كما يستحق الاجور التي تستحق حتى انتهاء المدة المتبقية من العقد ما لم يكن انهاء عقد العمل فصلاً بموجب المادة (28) من هذا القانون.",
+          "vector_rank": 26,
+          "vector_distance": 0.6745308637619019,
+          "bm25_rank": 12,
+          "bm25_score": 14.116592407226562,
+          "fused_score": 0.025516795865633074,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_14_paragraph_1",
+          "local_name": "article_14_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 14"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اذا اصيب عامل اصابة عمل نتج عنها عجز دائم جزئي لا يمنعه من اداء عمل غير عمله الذي كان يقوم به وجب على صاحب العمل تشغيله في عمل آخر يناسب حالته اذا وجد مثل هذا العمل وبالاجر المخصص لذلك، على ان تحسب حقوقه المالية عن المدة السابقة لاصابته على اساس اجره الاخير قبل الاصابة.",
+          "vector_rank": 18,
+          "vector_distance": 0.659970760345459,
+          "bm25_rank": 32,
+          "bm25_score": 11.03776741027832,
+          "fused_score": 0.023690078037904124,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_23",
+          "local_name": "article_23",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 23"
+          ],
+          "labels_en": [],
+          "article_number": 23,
+          "text_preview": "أ . اذا رغب احد الطرفين في انهاء عقد العمل غير المحدد المدة فيترتب عليه اشعار الطرف الاخر خطياً برغبته في انهاء\n\n    العقد قبل شهر واحد على الاقل ولا يجوز سحب الاشعار الا بموافقة الطرفين.\n\nب. يبقى عقد العمل ساري المفعول طوال مدة الاشعار وتعتبر مدة الاشعار من مدة الخدمة.\n\nج. اذا كان الاشعار من طرف صاحب العمل فله ان يعفي العامل من العمل خلال مدته وله ان يشغله الا في الايام السبعة\n\n     الاخيرة منها ويستحق العامل اجره عن مدة الاشعار في جميع هذه الاحوال.\n\nد. اذا كان الاشعار من طرف العامل وترك العمل قبل انقضاء مدة الاشعار فلا يستحق اجراً عن فترة تركه العمل وعليه\n\n    تعويض صاحب العمل عن تلك الفترة بما يعادل اجره عنها.",
+          "vector_rank": 20,
+          "vector_distance": 0.6676470041275024,
+          "bm25_rank": 31,
+          "bm25_score": 11.066411972045898,
+          "fused_score": 0.02348901098901099,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_14",
+          "local_name": "article_14",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 14"
+          ],
+          "labels_en": [],
+          "article_number": 14,
+          "text_preview": "اذا اصيب عامل اصابة عمل نتج عنها عجز دائم جزئي لا يمنعه من اداء عمل غير عمله الذي كان يقوم به وجب على صاحب العمل تشغيله في عمل آخر يناسب حالته اذا وجد مثل هذا العمل وبالاجر المخصص لذلك، على ان تحسب حقوقه المالية عن المدة السابقة لاصابته على اساس اجره الاخير قبل الاصابة.",
+          "vector_rank": 23,
+          "vector_distance": 0.6727287769317627,
+          "bm25_rank": 29,
+          "bm25_score": 11.131304740905762,
+          "fused_score": 0.023284147827264113,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_79",
+          "local_name": "article_79",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 79"
+          ],
+          "labels_en": [],
+          "article_number": 79,
+          "text_preview": "يحدد الوزير بعد استطلاع راي الجهات الرسمية المختصة بتعليمات يصدرها ما يلي :\n\nأ . الاحتياطات والتدابير التي يجب اتخاذها او توفيرها في جميع المؤسسات او في اي منها لحماية العمال والمؤسسات من\n\n    اخطار العمل وامراض المهنة.\n\nب. الاجهزة والوسائل التي يجب توفيرها في المؤسسات او في اي منها لحماية العاملين فيها من اخطار العمل وامراض\n\n    المهنة ووقايتهم منها.\n\nج. الاسس والمعايير الواجب توافرها في المؤسسات الصناعية لضمان بيئة خالية من التلوث بجميع اشكاله والوقاية من\n\n    الضوضاء والاهتزازات وكل ما يضر بصحة العامل ضمن المعايير الدولية المعتمدة وتحديد طرق الفحص والاختبار\n\n    الخاصة لضبط هذه المعايير.",
+          "vector_rank": 37,
+          "vector_distance": 0.6954280138015747,
+          "bm25_rank": 25,
+          "bm25_score": 11.56353759765625,
+          "fused_score": 0.022073984232868403,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_93_paragraph_1",
+          "local_name": "article_93_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 93"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "لا يقبل الطلب بالتعويض عن اي اصابة عمل ما لم يقدم الى المفوض خلال سنتين من تاريخ وقوعها او من تاريخ وفاة العامل المصاب على انه يجوز للمفوض قبول الطلب بعد مرور سنتين من تاريخ وقوع الاصابة او الوفاة اذا كان التاخر في تقديمه ناشئاً عن عذر مشروع بما في ذلك عدم الاستقرار النهائي لنتائج الاصابة.",
+          "vector_rank": 7,
+          "vector_distance": 0.6250878572463989,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.014925373134328358,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_121_paragraph_2",
+          "local_name": "article_121_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 121 - الفقرة ب"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اذا تعذر اجراء المفاوضات بين الطرفين لاي سبب من الاسباب او تبين ان الاستمرار فيها لن يؤدي الى تسوية النزاع فيترتب على مندوب التوفيق ان يقدم تقريراً الى الوزير يضمن اسباب النزاع والمفاوضات التي تمت بين الطرفين والنتيجة التي توصل اليها وذلك خلال مدة لا تزيد على واحد وعشرين يوماً من تاريخ احالة النزاع اليه.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 8,
+          "bm25_score": 16.017946243286133,
+          "fused_score": 0.014705882352941176,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_73_paragraph_1",
+          "local_name": "article_73_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 73"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "مع مراعاة الاحكام المتعلقة بالتدريب المهني لا يجوز باي حال تشغيل الحدث الذي لم يكمل السادسة عشرة من عمره باي صورة من الصور.",
+          "vector_rank": 10,
+          "vector_distance": 0.6317633390426636,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.014285714285714285,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ]
+    }
+  }
+}

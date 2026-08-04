@@ -1,0 +1,76 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "كيف يوثق عقد العمل الجماعي لدى الوزارة، وما أقصى مدة للعقد المحدد وكيف ينهى العقد غير المحدد؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "Oracle-frozen generation benchmark input with complete gold article evidence.",
+    "clarification_question_ar": "",
+    "planner_used": false,
+    "planner_confidence": 1.0
+  },
+  "embedding": {
+    "model": "oracle-generation-benchmark",
+    "dimensions": 0,
+    "input_tokens": 0
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_39",
+      "local_name": "article_39",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 39"
+      ],
+      "labels_en": [],
+      "article_number": 39,
+      "text": "ينظم عقد العمل الجماعي على ثلاث نسخ اصلية على الاقل ويحتفظ كل طرف بنسخة منه وتودع النسخة الثالثة لدى الوزارة لتسجيلها في سجل خاص ويكون عقد العمل الجماعي ملزماً من التاريخ المحدد فيه وفي حالة عدم تحديد التاريخ فمن تاريخ تسجيله في الوزارة.",
+      "final_score": 1.0,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#article_40",
+      "local_name": "article_40",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 40"
+      ],
+      "labels_en": [],
+      "article_number": 40,
+      "text": "يكون عقد العمل الجماعي لمدة معينة او غير معينة فاذا عقد لمدة معينة فلا يجوز ان تتجاوز السنتين واذا عقد لمدة غير معينة ومضى على تنفيذه سنتان على الاقل فيكون لكل من طرفي العقد حق انهائه بموجب اشعار يبلغ الى الطرف الاخر قبل شهر على الاقل من تاريخ الانهاء وتبلغ الوزارة بنسخة عن هذا الاشعار.",
+      "final_score": 0.99,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "concepts": [],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      39,
+      40
+    ],
+    "concept_local_names": [],
+    "graph_supported_articles": [
+      39,
+      40
+    ],
+    "concept_count": 0,
+    "expanded_concept_count": 0,
+    "article_count": 2
+  },
+  "elapsed_ms": 0,
+  "debug": {
+    "benchmark_mode": "oracle_frozen_generation_input",
+    "source_case_id": "UNSEEN50-U36"
+  }
+}

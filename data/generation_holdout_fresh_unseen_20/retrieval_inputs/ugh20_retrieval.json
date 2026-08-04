@@ -1,0 +1,50 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "رفضت البلدية ترخيص بناء على أرض أملكها، كيف أطعن في القرار؟",
+  "decision": {
+    "behavior": "abstain",
+    "reason": "المسألة خارج نطاق قانون العمل الأردني وتندرج في إجراءات الترخيص الإداري والطعن في قرارات الجهات البلدية وليست مسائل عمالية.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.84
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 0,
+    "input_tokens": 0
+  },
+  "articles": [],
+  "concepts": [],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [],
+    "concept_local_names": [],
+    "graph_supported_articles": [],
+    "concept_count": 0,
+    "expanded_concept_count": 0,
+    "article_count": 0
+  },
+  "elapsed_ms": 12227,
+  "debug": {
+    "analysis": {
+      "normalized_question": "رفضت البلديه ترخيص بناء علي ارض املكها كيف اطعن في القرار",
+      "issue_ids": [],
+      "planner_queries": [],
+      "planner_issue_labels": [],
+      "max_final_articles": 0
+    },
+    "query_plan": {
+      "decision": "abstain",
+      "confidence": 0.84,
+      "decision_reason": "المسألة خارج نطاق قانون العمل الأردني وتندرج في إجراءات الترخيص الإداري والطعن في قرارات الجهات البلدية وليست مسائل عمالية.",
+      "normalized_question_ar": "كيف أطعَن في قرار رفض البلدية ترخِيص البناء على أرض أملكها؟",
+      "legal_domain": "Domain خارج قانون العمل الأردني",
+      "atomic_issues": [],
+      "minimum_articles": 0,
+      "maximum_articles": 0,
+      "clarification_question_ar": ""
+    },
+    "raw_preview": null
+  }
+}

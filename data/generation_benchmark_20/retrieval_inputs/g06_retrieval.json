@@ -1,0 +1,56 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "كم يجب أن أتقاضى عن ساعة العمل الإضافية وعن العمل في يوم العطلة الأسبوعية؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "Oracle-frozen generation benchmark input with complete gold article evidence.",
+    "clarification_question_ar": "",
+    "planner_used": false,
+    "planner_confidence": 1.0
+  },
+  "embedding": {
+    "model": "oracle-generation-benchmark",
+    "dimensions": 0,
+    "input_tokens": 0
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_59",
+      "local_name": "article_59",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 59"
+      ],
+      "labels_en": [],
+      "article_number": 59,
+      "text": "أ . يجوز تشغيل العامل بموافقته اكثر من ساعات العمل اليومية او الاسبوعية على ان يتقاضى العامل عن ساعة العمل\n\n    الاضافية اجراً لا يقل عن 125% من اجره المعتاد.\n\nب. اذا اشتغل العامل في يوم عطلته الاسبوعية او ايام الاعياد الدينية او العطل الرسمية يتقاضى لقاء عمله عن ذلك اليوم\n\n    اجرا اضافياً لا يقل عن (150%) من اجره المعتاد.",
+      "final_score": 1.0,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "concepts": [],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      59
+    ],
+    "concept_local_names": [],
+    "graph_supported_articles": [
+      59
+    ],
+    "concept_count": 0,
+    "expanded_concept_count": 0,
+    "article_count": 1
+  },
+  "elapsed_ms": 0,
+  "debug": {
+    "benchmark_mode": "oracle_frozen_generation_input",
+    "source_case_id": "DEV20-Q14"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "package": "stage_8_final_simple_generation",
+  "architecture": "one_model_call_for_retrieve_zero_for_clarify_abstain",
+  "manual_questions": 20,
+  "automatic_grading": false,
+  "files": {
+    "STEP8_SIMPLE_README.md": "9674950669572132db04af837e8859a69f1c14f3219adbf9dba315166c526b24",
+    "app/__pycache__/grounded_answer_generator.cpython-313.pyc": "583fb0e4f56c18a0ed9539c6d9b76b8de1ed2c0caa70b130e70ef88825fa3225",
+    "app/grounded_answer_generator.py": "4fd420850138d2c6610364ba888252feafe9494a2b6b7fdba2e0c0e835903bf9",
+    "data/manual_review/step8_manual_questions_20.json": "7315ef0798f0e8a3858e72950bd3bf089a1d8e0365fb10b51ac37203a15bf5e6",
+    "scripts/__pycache__/check_step8_simple_architecture.cpython-313.pyc": "e59b826aa10d6a8d0620f77e84ce72a12310151e0b162d4f45d3c2b1cbf4fbb1",
+    "scripts/__pycache__/run_step8_manual_review_20.cpython-313.pyc": "5848d41af5e6c8658c1b756ec58cea3b0c53f80a44dc34a3679223184ddc59c0",
+    "scripts/__pycache__/test_step8_simple.cpython-313.pyc": "79c5f76ab43c2147ef2c6ed369e5c2cdcd282d35be7eec11bdb5567b2c8e168b",
+    "scripts/check_step8_simple_architecture.py": "f7e897d063e4f0863acb1744404e524fa1e81d34c6f8497a6f55fc30fd7dbbae",
+    "scripts/run_step8_manual_review_20.py": "c1b054ce39a25b4ef3f9716fb49f9eef6bc7d4e9e0787510298991c42b2a88d1",
+    "scripts/test_step8_simple.py": "8829d7beb2ec552eae50d7def5be838f65d2de102e064b9c7bf55c891d5228a9"
+  }
+}

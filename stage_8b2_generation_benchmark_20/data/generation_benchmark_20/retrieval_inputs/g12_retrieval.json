@@ -1,0 +1,56 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "كم يجب أن يكون عدد مؤسسي نقابة أصحاب العمل، وما الحد الأدنى لعمر المؤسس وطالب الانتساب؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "Oracle-frozen generation benchmark input with complete gold article evidence.",
+    "clarification_question_ar": "",
+    "planner_used": false,
+    "planner_confidence": 1.0
+  },
+  "embedding": {
+    "model": "oracle-generation-benchmark",
+    "dimensions": 0,
+    "input_tokens": 0
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_108",
+      "local_name": "article_108",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 108"
+      ],
+      "labels_en": [],
+      "article_number": 108,
+      "text": "أ . يحق لاصحاب العمل في اي مهنة تاسيس نقابة اصحاب العمل لهم لرعاية مصالحهم المهنية في ما يتعلق بتطبيق احكام\n\n    هذا القانون.\n\nب. تؤسس نقابة اصحاب العمل من قبل مؤسسين لا يقل عددهم عن ثلاثين شخصاُ من اصحاب العمل في بناء مهنة واحدة او\n\n    في مهن متماثلة او مرتبطة ببعضها او مشتركة في انتاج واحد وتحدد هذه المجموعات المهنية بقرار من الوزير\n\n    بالاتفاق مع ممثلي  نقابة اصحاب العمل  ولصاحب العمل في اي مهنة الحق في الانتساب الى نقابة اصحاب العمل  التي\n\n    تمثل مهنته او الامتناع عن ذلك.\n\nج. يشترط في المؤسس لاي نقابة من نقابات صحاب العمل ونقابات العمال وفي طالب الانتساب اليها ما يلي :\n\n    1. ان يكون اردني الجنسية.\n\n    2. ان لا يقل عمر المؤسس عن (25) سنة وعمر طالب الانتساب عن (18) سنة.\n\n    3. ان يكون غير محكوم بجناية او جنحة مخلة بالشرف والاداب العامة.",
+      "final_score": 1.0,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "concepts": [],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      108
+    ],
+    "concept_local_names": [],
+    "graph_supported_articles": [
+      108
+    ],
+    "concept_count": 0,
+    "expanded_concept_count": 0,
+    "article_count": 1
+  },
+  "elapsed_ms": 0,
+  "debug": {
+    "benchmark_mode": "oracle_frozen_generation_input",
+    "source_case_id": "HOLDOUT20-H12"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": "generation.v1",
+  "status": "generated",
+  "question": "من يقرر مكافآت رئيس وأعضاء المحكمة العمالية ومجلس التوفيق وكاتب الجلسات؟",
+  "retrieval_schema_version": "retrieval.v1",
+  "answer_ar": "تصرف المكافآت لرأس المحكمة العمالية وأعضائها ورئيس مجلس التوفيق وكاتب الجلسات، وتقرر هذه المكافآت من قبل مجلس الوزراء بناء على تنسيب من الوزير. [المادة 129]",
+  "key_points": [],
+  "citations": [
+    {
+      "article_number": 129,
+      "label_ar": "المادة 129",
+      "uri": "http://example.org/jordan-labor-law#article_129",
+      "excerpt": "يصرف لرئيس واعضاء المحكمة العمالية ورئيس مجلس التوفيق وكاتب الجلسات المكافآت التي يقررها مجلس الوزراء بناء على تنسيب من الوزير."
+    }
+  ],
+  "cited_article_numbers": [
+    129
+  ],
+  "grounded": true,
+  "warnings": [],
+  "model": "gpt-5-nano",
+  "usage": {
+    "input_tokens": 2844,
+    "output_tokens": 176,
+    "total_tokens": 3020
+  },
+  "elapsed_ms": 2893,
+  "debug": null
+}

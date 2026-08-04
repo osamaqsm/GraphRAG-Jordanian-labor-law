@@ -1,0 +1,326 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "من يصدر أنظمة لجان السلامة والصحة المهنية والرعاية الطبية الوقائية والفحوص الدورية والوقاية من الآلات الصناعية؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "الطلب داخل نطاق قانون العمل الأردني ويتطلب جهة الإصدار للنظم المعنية بالسلامة والصحة المهنية وهو أمر بحثي عام لا يعتمد على حقائق حالة محددة.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.88
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 74
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_85",
+      "local_name": "article_85",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 85"
+      ],
+      "labels_en": [],
+      "article_number": 85,
+      "text": "يصدر مجلس الوزراء بناء على تنسيب الوزير الانظمة اللازمة في الامور التالية :\n\nأ . تشكيل لجان السلامة والصحة المهنية وتعيين المشرفين في المؤسسات العامة والخاصة وتحديد اختصاص تلك اللجان\n\n    والمشرفين وواجباتها.\n\nب. العناية الطبية الوقائية والعلاجية للعمال وواجبات اصحاب العمل في توفيرها وكيفية انشاء الوحدات الطبية المشتركة\n\n    بين اكثر من مؤسسة وطريقة تمويلها والاجهزة الفنية الواجب توافرها في هذه الوحدات والفحوص الطبية الدورية\n\n    للعمال.\n\nج. الوقاية والسلامة من الالات والماكنات الصناعية ومواقع العمل.",
+      "final_score": 1.0,
+      "fused_score": 0.07704918032786887,
+      "direct_score": 0.07704918032786887,
+      "graph_score": 1.956694971815878,
+      "paragraph_score": 0.17424242424242425,
+      "graph_supported": true,
+      "support_paths": [
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#provide_safe_work_environment_obligation",
+          "seed_label": "التزام توفير بيئة عمل آمنة",
+          "article_uri": "http://example.org/jordan-labor-law#article_85",
+          "score": 1.5653559774527024,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#provide_safe_work_environment_obligation",
+              "relation": "regulatedBy",
+              "target_uri": "http://example.org/jordan-labor-law#article_85"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#provide_safe_work_environment_obligation",
+          "seed_label": "التزام توفير بيئة عمل آمنة",
+          "article_uri": "http://example.org/jordan-labor-law#article_85",
+          "score": 1.956694971815878,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#provide_safe_work_environment_obligation",
+              "relation": "supportedByArticle",
+              "target_uri": "http://example.org/jordan-labor-law#article_85"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#provide_safe_work_environment_obligation",
+          "seed_label": "التزام توفير بيئة عمل آمنة",
+          "article_uri": "http://example.org/jordan-labor-law#article_85",
+          "score": 0.978347485907939,
+          "steps": [
+            {
+              "direction": "incoming",
+              "source_uri": "http://example.org/jordan-labor-law#article_85",
+              "relation": "regulates",
+              "target_uri": "http://example.org/jordan-labor-law#provide_safe_work_environment_obligation"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#provide_safe_work_environment_obligation",
+      "local_name": "provide_safe_work_environment_obligation",
+      "node_kind": "ProvideSafeWorkEnvironment",
+      "labels_ar": [
+        "التزام توفير بيئة عمل آمنة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#provide_safe_work_environment_obligation\nLocal name: provide_safe_work_environment_obligation\nNode kind: ProvideSafeWorkEnvironment\nRDF types: ProvideSafeWorkEnvironment\nArabic labels: التزام توفير بيئة عمل آمنة",
+      "final_score": 0.0,
+      "fused_score": 0.02459016393442623,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#safe_work_environment_right_concept",
+      "local_name": "safe_work_environment_right_concept",
+      "node_kind": "SafeWorkEnvironmentRight",
+      "labels_ar": [
+        "حق بيئة العمل الآمنة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#safe_work_environment_right_concept\nLocal name: safe_work_environment_right_concept\nNode kind: SafeWorkEnvironmentRight\nRDF types: SafeWorkEnvironmentRight\nArabic labels: حق بيئة العمل الآمنة",
+      "final_score": 0.0,
+      "fused_score": 0.024193548387096774,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#administrative_body_concept",
+      "local_name": "administrative_body_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "الهيئة الإدارية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#administrative_body_concept\nLocal name: administrative_body_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الهيئة الإدارية",
+      "final_score": 0.0,
+      "fused_score": 0.023809523809523808,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#social_security_related_right_concept",
+      "local_name": "social_security_related_right_concept",
+      "node_kind": "SocialSecurityRelatedRight",
+      "labels_ar": [
+        "حق متعلق بالضمان الاجتماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#social_security_related_right_concept\nLocal name: social_security_related_right_concept\nNode kind: SocialSecurityRelatedRight\nRDF types: SocialSecurityRelatedRight\nArabic labels: حق متعلق بالضمان الاجتماعي",
+      "final_score": 0.0,
+      "fused_score": 0.0234375,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#general_secretary_concept",
+      "local_name": "general_secretary_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "الأمين العام"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#general_secretary_concept\nLocal name: general_secretary_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الأمين العام",
+      "final_score": 0.0,
+      "fused_score": 0.023076923076923078,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#trade_union_concept",
+      "local_name": "trade_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "النقابة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#trade_union_concept\nLocal name: trade_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: النقابة",
+      "final_score": 0.0,
+      "fused_score": 0.022727272727272728,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+      "local_name": "employers_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "نقابة أصحاب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.022388059701492536,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#worker_not_covered_social_security_condition",
+      "local_name": "worker_not_covered_social_security_condition",
+      "node_kind": "WorkerNotCoveredBySocialSecurity",
+      "labels_ar": [
+        "شرط عدم شمول العامل بالضمان الاجتماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#worker_not_covered_social_security_condition\nLocal name: worker_not_covered_social_security_condition\nNode kind: WorkerNotCoveredBySocialSecurity\nRDF types: WorkerNotCoveredBySocialSecurity\nArabic labels: شرط عدم شمول العامل بالضمان الاجتماعي",
+      "final_score": 0.0,
+      "fused_score": 0.022058823529411766,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#medical_reference_concept",
+      "local_name": "medical_reference_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "المرجع الطبي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#medical_reference_concept\nLocal name: medical_reference_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: المرجع الطبي",
+      "final_score": 0.0,
+      "fused_score": 0.021739130434782608,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#occupational_disease_concept",
+      "local_name": "occupational_disease_concept",
+      "node_kind": "LegalEvent",
+      "labels_ar": [
+        "المرض المهني"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#occupational_disease_concept\nLocal name: occupational_disease_concept\nNode kind: LegalEvent\nRDF types: LegalEvent\nArabic labels: المرض المهني",
+      "final_score": 0.0,
+      "fused_score": 0.02142857142857143,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#ministry_concept",
+      "local_name": "ministry_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "الوزارة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#ministry_concept\nLocal name: ministry_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الوزارة",
+      "final_score": 0.0,
+      "fused_score": 0.02112676056338028,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#preserve_confidentiality_obligation",
+      "local_name": "preserve_confidentiality_obligation",
+      "node_kind": "PreserveConfidentiality",
+      "labels_ar": [
+        "التزام حفظ السرية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#preserve_confidentiality_obligation\nLocal name: preserve_confidentiality_obligation\nNode kind: PreserveConfidentiality\nRDF types: PreserveConfidentiality\nArabic labels: التزام حفظ السرية",
+      "final_score": 0.0,
+      "fused_score": 0.020833333333333332,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      85
+    ],
+    "concept_local_names": [
+      "provide_safe_work_environment_obligation",
+      "safe_work_environment_right_concept",
+      "administrative_body_concept",
+      "social_security_related_right_concept",
+      "general_secretary_concept",
+      "trade_union_concept",
+      "employers_union_concept",
+      "worker_not_covered_social_security_condition",
+      "medical_reference_concept",
+      "occupational_disease_concept",
+      "ministry_concept",
+      "preserve_confidentiality_obligation"
+    ],
+    "graph_supported_articles": [
+      85
+    ],
+    "concept_count": 12,
+    "expanded_concept_count": 0,
+    "article_count": 1
+  },
+  "elapsed_ms": 20498,
+  "debug": null
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "اطّلع مفتش العمل أثناء التفتيش على أسرار المنشأة؛ ما الالتزام الذي يسبق مباشرته العمل وما واجبه تجاه تلك الأسرار؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "Oracle-frozen generation benchmark input with complete gold article evidence.",
+    "clarification_question_ar": "",
+    "planner_used": false,
+    "planner_confidence": 1.0
+  },
+  "embedding": {
+    "model": "oracle-generation-benchmark",
+    "dimensions": 0,
+    "input_tokens": 0
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_6",
+      "local_name": "article_6",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 6"
+      ],
+      "labels_en": [],
+      "article_number": 6,
+      "text": "يترتب على كل من يتولى مهام التفتيش ان يوقع تصريحاً مشفوعاً بالقسم بان يؤدي عمله بامانة واخلاص وان لا يفشي الاسرار التي يطلع عليها بحكم عمله.",
+      "final_score": 1.0,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "concepts": [],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      6
+    ],
+    "concept_local_names": [],
+    "graph_supported_articles": [
+      6
+    ],
+    "concept_count": 0,
+    "expanded_concept_count": 0,
+    "article_count": 1
+  },
+  "elapsed_ms": 0,
+  "debug": {
+    "benchmark_mode": "oracle_frozen_generation_input",
+    "source_case_id": "HOLDOUT20-H05"
+  }
+}

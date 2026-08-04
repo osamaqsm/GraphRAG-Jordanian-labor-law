@@ -1,0 +1,1219 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "ما الغرامة على صاحب العمل أو مدير المؤسسة عند مخالفة أحكام تشغيل الأحداث، وماذا يحدث عند التكرار وهل يجوز تخفيضها؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "الاستفسار داخل نطاق قانون العمل الأردني ويتطلب نصاً تنظيمياً عن الغرامات وتبعات التكرار وتخفيضها عند مخالفة تشغيل الأحداث.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.92
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 83
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_77",
+      "local_name": "article_77",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 77"
+      ],
+      "labels_en": [],
+      "article_number": 77,
+      "text": "يعاقب صاحب العمل او مدير المؤسسة عن اي مخالفة لاي حكم من احكام هذا الفصل او اي نظام او قرار صادر بمقتضاه بغرامة لا تقل عن مئة دينار ولا تزيد على خمسمائة دينار وتضاعف العقوبة حالة التكرار ولا يجوز تخفيض العقوبة عن حدها الادنى للاسباب التقديرية المخففة.",
+      "final_score": 1.0,
+      "fused_score": 0.07220694882847413,
+      "direct_score": 0.07220694882847413,
+      "graph_score": 0.0,
+      "paragraph_score": 0.05555555555555555,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#disclosure_employer_secrets_violation",
+      "local_name": "disclosure_employer_secrets_violation",
+      "node_kind": "DisclosureOfEmployerSecrets",
+      "labels_ar": [
+        "مخالفة إفشاء أسرار صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#disclosure_employer_secrets_violation\nLocal name: disclosure_employer_secrets_violation\nNode kind: DisclosureOfEmployerSecrets\nRDF types: DisclosureOfEmployerSecrets\nArabic labels: مخالفة إفشاء أسرار صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.07071033066849161,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+      "local_name": "work_negligence_violation",
+      "node_kind": "WorkNegligence",
+      "labels_ar": [
+        "مخالفة الإهمال في العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#work_negligence_violation\nLocal name: work_negligence_violation\nNode kind: WorkNegligence\nRDF types: WorkNegligence\nArabic labels: مخالفة الإهمال في العمل",
+      "final_score": 0.0,
+      "fused_score": 0.07164319023123888,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#arbitrary_dismissal_violation",
+      "local_name": "arbitrary_dismissal_violation",
+      "node_kind": "ArbitraryDismissal",
+      "labels_ar": [
+        "مخالفة الفصل التعسفي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#arbitrary_dismissal_violation\nLocal name: arbitrary_dismissal_violation\nNode kind: ArbitraryDismissal\nRDF types: ArbitraryDismissal\nArabic labels: مخالفة الفصل التعسفي",
+      "final_score": 0.0,
+      "fused_score": 0.07142857142857142,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+      "local_name": "wage_delay_violation",
+      "node_kind": "WageDelay",
+      "labels_ar": [
+        "مخالفة تأخر دفع الأجور"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_delay_violation\nLocal name: wage_delay_violation\nNode kind: WageDelay\nRDF types: WageDelay\nArabic labels: مخالفة تأخر دفع الأجور",
+      "final_score": 0.0,
+      "fused_score": 0.06926305970149253,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#assignment_different_work_violation",
+      "local_name": "assignment_different_work_violation",
+      "node_kind": "AssignmentOfDifferentWork",
+      "labels_ar": [
+        "مخالفة التكليف بعمل مختلف"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#assignment_different_work_violation\nLocal name: assignment_different_work_violation\nNode kind: AssignmentOfDifferentWork\nRDF types: AssignmentOfDifferentWork\nArabic labels: مخالفة التكليف بعمل مختلف",
+      "final_score": 0.0,
+      "fused_score": 0.06923076923076923,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+      "local_name": "employer_liability_consequence",
+      "node_kind": "EmployerLiability",
+      "labels_ar": [
+        "مسؤولية صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_liability_consequence\nLocal name: employer_liability_consequence\nNode kind: EmployerLiability\nRDF types: EmployerLiability\nArabic labels: مسؤولية صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06689669929920292,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_concept",
+      "local_name": "employer_concept",
+      "node_kind": "Employer",
+      "labels_ar": [
+        "صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_concept\nLocal name: employer_concept\nNode kind: Employer\nRDF types: Employer\nArabic labels: صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06527253169044214,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+      "local_name": "temporary_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل المؤقت"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#temporary_work_concept\nLocal name: temporary_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل المؤقت",
+      "final_score": 0.0,
+      "fused_score": 0.060927157145773195,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#occasional_work_concept",
+      "local_name": "occasional_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل العرضي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#occasional_work_concept\nLocal name: occasional_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل العرضي",
+      "final_score": 0.0,
+      "fused_score": 0.05970169677066228,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#work_concept",
+      "local_name": "work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#work_concept\nLocal name: work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل",
+      "final_score": 0.0,
+      "fused_score": 0.04479578392621871,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+      "local_name": "employment_contract_concept",
+      "node_kind": "EmploymentContract",
+      "labels_ar": [
+        "عقد العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employment_contract_concept\nLocal name: employment_contract_concept\nNode kind: EmploymentContract\nRDF types: EmploymentContract\nArabic labels: عقد العمل",
+      "final_score": 0.0,
+      "fused_score": 0.043697478991596636,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#seasonal_work_concept",
+      "local_name": "seasonal_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل الموسمي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#seasonal_work_concept\nLocal name: seasonal_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل الموسمي",
+      "final_score": 0.0,
+      "fused_score": 0.04186764422149335,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#preserve_confidentiality_obligation",
+      "local_name": "preserve_confidentiality_obligation",
+      "node_kind": "PreserveConfidentiality",
+      "labels_ar": [
+        "التزام حفظ السرية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#preserve_confidentiality_obligation\nLocal name: preserve_confidentiality_obligation\nNode kind: PreserveConfidentiality\nRDF types: PreserveConfidentiality\nArabic labels: التزام حفظ السرية",
+      "final_score": 1.9500000000000002,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.9500000000000002,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#disciplinary_action_consequence",
+      "local_name": "disciplinary_action_consequence",
+      "node_kind": "DisciplinaryAction",
+      "labels_ar": [
+        "الإجراء التأديبي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#disciplinary_action_consequence\nLocal name: disciplinary_action_consequence\nNode kind: DisciplinaryAction\nRDF types: DisciplinaryAction\nArabic labels: الإجراء التأديبي",
+      "final_score": 1.625,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.625,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#follow_lawful_instructions_obligation",
+      "local_name": "follow_lawful_instructions_obligation",
+      "node_kind": "FollowLawfulInstructions",
+      "labels_ar": [
+        "التزام اتباع التعليمات المشروعة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#follow_lawful_instructions_obligation\nLocal name: follow_lawful_instructions_obligation\nNode kind: FollowLawfulInstructions\nRDF types: FollowLawfulInstructions\nArabic labels: التزام اتباع التعليمات المشروعة",
+      "final_score": 0.9750000000000001,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.9750000000000001,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+      "local_name": "perform_work_obligation",
+      "node_kind": "PerformWork",
+      "labels_ar": [
+        "التزام أداء العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#perform_work_obligation\nLocal name: perform_work_obligation\nNode kind: PerformWork\nRDF types: PerformWork\nArabic labels: التزام أداء العمل",
+      "final_score": 0.9750000000000001,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.9750000000000001,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "diagnostics": {
+    "article_numbers": [
+      77
+    ],
+    "concept_local_names": [
+      "disclosure_employer_secrets_violation",
+      "work_negligence_violation",
+      "arbitrary_dismissal_violation",
+      "wage_delay_violation",
+      "assignment_different_work_violation",
+      "employer_liability_consequence",
+      "employer_concept",
+      "temporary_work_concept",
+      "occasional_work_concept",
+      "work_concept",
+      "employment_contract_concept",
+      "seasonal_work_concept"
+    ],
+    "graph_supported_articles": [],
+    "concept_count": 12,
+    "expanded_concept_count": 4,
+    "article_count": 1
+  },
+  "elapsed_ms": 13088,
+  "debug": {
+    "analysis": {
+      "normalized_question": "ما الغرامه علي صاحب العمل او مدير الموسسه عند مخالفه احكام تشغيل الاحداث وماذا يحدث عند التكرار وهل يجوز تخفيضها ما الغرامه علي صاحب العمل او مدير الموسسه عند مخالفه احكام تشغيل الاحداث وماذا يحدث عند التكرار وهل يجوز تخفيضها الغرامه والتبعات عند مخالفه احكام تشغيل الاحداث وتكرار المخالفه وتخفيف الغرامه الغرامه مخالفه تشغيل الاحداث الاردن قانون العمل",
+      "issue_ids": [],
+      "planner_queries": [
+        "الغرامة مخالفة تشغيل الأحداث الأردن قانون العمل"
+      ],
+      "planner_issue_labels": [
+        "الغرامة والتبعات عند مخالفة أحكام تشغيل الأحداث وتكرار المخالفة وتخفيف الغرامة"
+      ],
+      "max_final_articles": 3
+    },
+    "query_plan": {
+      "decision": "retrieve",
+      "confidence": 0.92,
+      "decision_reason": "الاستفسار داخل نطاق قانون العمل الأردني ويتطلب نصاً تنظيمياً عن الغرامات وتبعات التكرار وتخفيضها عند مخالفة تشغيل الأحداث.",
+      "normalized_question_ar": "ما الغرامة على صاحب العمل أو مدير المؤسسة عند مخالفة أحكام تشغيل الأحداث، وماذا يحدث عند التكرار وهل يجوز تخفيضها؟",
+      "legal_domain": "قانون العمل الأردني",
+      "atomic_issues": [
+        {
+          "issue_ar": "الغرامة والتبعات عند مخالفة أحكام تشغيل الأحداث وتكرار المخالفة وتخفيف الغرامة",
+          "retrieval_query_ar": "الغرامة مخالفة تشغيل الأحداث الأردن قانون العمل",
+          "actors": [
+            "صاحب العمل",
+            "مدير المؤسسة"
+          ],
+          "conditions": [
+            "مخالفة أحكام تشغيل الأحداث"
+          ],
+          "numbers": [],
+          "requested_result_ar": "قيمة الغرامة المحددة والتبعات عند التكرار وهل يجوز تخفيضها"
+        }
+      ],
+      "minimum_articles": 1,
+      "maximum_articles": 3,
+      "clarification_question_ar": ""
+    },
+    "raw_preview": {
+      "question": "ما الغرامة على صاحب العمل أو مدير المؤسسة عند مخالفة أحكام تشغيل الأحداث، وماذا يحدث عند التكرار وهل يجوز تخفيضها؟",
+      "embedding_model": "text-embedding-3-small",
+      "embedding_dimensions": 1536,
+      "embedding_input_tokens": 83,
+      "concept_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#disclosure_employer_secrets_violation",
+          "local_name": "disclosure_employer_secrets_violation",
+          "node_kind": "DisclosureOfEmployerSecrets",
+          "labels_ar": [
+            "مخالفة إفشاء أسرار صاحب العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#disclosure_employer_secrets_violation\nLocal name: disclosure_employer_secrets_violation\nNode kind: DisclosureOfEmployerSecrets\nRDF types: DisclosureOfEmployerSecrets\nArabic labels: مخالفة إفشاء أسرار صاحب العمل",
+          "vector_rank": 8,
+          "vector_distance": 0.7986451983451843,
+          "bm25_rank": 1,
+          "bm25_score": 30.289615631103516,
+          "fused_score": 0.07071033066849161,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+          "local_name": "work_negligence_violation",
+          "node_kind": "WorkNegligence",
+          "labels_ar": [
+            "مخالفة الإهمال في العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#work_negligence_violation\nLocal name: work_negligence_violation\nNode kind: WorkNegligence\nRDF types: WorkNegligence\nArabic labels: مخالفة الإهمال في العمل",
+          "vector_rank": 6,
+          "vector_distance": 0.7887608408927917,
+          "bm25_rank": 2,
+          "bm25_score": 27.25665283203125,
+          "fused_score": 0.07164319023123888,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#arbitrary_dismissal_violation",
+          "local_name": "arbitrary_dismissal_violation",
+          "node_kind": "ArbitraryDismissal",
+          "labels_ar": [
+            "مخالفة الفصل التعسفي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#arbitrary_dismissal_violation\nLocal name: arbitrary_dismissal_violation\nNode kind: ArbitraryDismissal\nRDF types: ArbitraryDismissal\nArabic labels: مخالفة الفصل التعسفي",
+          "vector_rank": 3,
+          "vector_distance": 0.778725266456604,
+          "bm25_rank": 3,
+          "bm25_score": 22.203458786010742,
+          "fused_score": 0.07142857142857142,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+          "local_name": "wage_delay_violation",
+          "node_kind": "WageDelay",
+          "labels_ar": [
+            "مخالفة تأخر دفع الأجور"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#wage_delay_violation\nLocal name: wage_delay_violation\nNode kind: WageDelay\nRDF types: WageDelay\nArabic labels: مخالفة تأخر دفع الأجور",
+          "vector_rank": 7,
+          "vector_distance": 0.7889504432678223,
+          "bm25_rank": 4,
+          "bm25_score": 20.078125,
+          "fused_score": 0.06926305970149253,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#assignment_different_work_violation",
+          "local_name": "assignment_different_work_violation",
+          "node_kind": "AssignmentOfDifferentWork",
+          "labels_ar": [
+            "مخالفة التكليف بعمل مختلف"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#assignment_different_work_violation\nLocal name: assignment_different_work_violation\nNode kind: AssignmentOfDifferentWork\nRDF types: AssignmentOfDifferentWork\nArabic labels: مخالفة التكليف بعمل مختلف",
+          "vector_rank": 5,
+          "vector_distance": 0.7830859422683716,
+          "bm25_rank": 5,
+          "bm25_score": 20.002445220947266,
+          "fused_score": 0.06923076923076923,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+          "local_name": "employer_liability_consequence",
+          "node_kind": "EmployerLiability",
+          "labels_ar": [
+            "مسؤولية صاحب العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#employer_liability_consequence\nLocal name: employer_liability_consequence\nNode kind: EmployerLiability\nRDF types: EmployerLiability\nArabic labels: مسؤولية صاحب العمل",
+          "vector_rank": 2,
+          "vector_distance": 0.7687774896621704,
+          "bm25_rank": 7,
+          "bm25_score": 14.50469970703125,
+          "fused_score": 0.06689669929920292,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#employer_concept",
+          "local_name": "employer_concept",
+          "node_kind": "Employer",
+          "labels_ar": [
+            "صاحب العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#employer_concept\nLocal name: employer_concept\nNode kind: Employer\nRDF types: Employer\nArabic labels: صاحب العمل",
+          "vector_rank": 14,
+          "vector_distance": 0.8398226499557495,
+          "bm25_rank": 6,
+          "bm25_score": 16.36981773376465,
+          "fused_score": 0.06527253169044214,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+          "local_name": "temporary_work_concept",
+          "node_kind": "LaborDomainConcept",
+          "labels_ar": [
+            "العمل المؤقت"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#temporary_work_concept\nLocal name: temporary_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل المؤقت",
+          "vector_rank": 24,
+          "vector_distance": 0.8617932796478271,
+          "bm25_rank": 11,
+          "bm25_score": 8.930204391479492,
+          "fused_score": 0.060927157145773195,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#occasional_work_concept",
+          "local_name": "occasional_work_concept",
+          "node_kind": "LaborDomainConcept",
+          "labels_ar": [
+            "العمل العرضي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#occasional_work_concept\nLocal name: occasional_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل العرضي",
+          "vector_rank": 27,
+          "vector_distance": 0.8666362762451172,
+          "bm25_rank": 12,
+          "bm25_score": 8.930204391479492,
+          "fused_score": 0.05970169677066228,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#work_concept",
+          "local_name": "work_concept",
+          "node_kind": "LaborDomainConcept",
+          "labels_ar": [
+            "العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#work_concept\nLocal name: work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 9,
+          "bm25_score": 10.311227798461914,
+          "fused_score": 0.04479578392621871,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "local_name": "employment_contract_concept",
+          "node_kind": "EmploymentContract",
+          "labels_ar": [
+            "عقد العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#employment_contract_concept\nLocal name: employment_contract_concept\nNode kind: EmploymentContract\nRDF types: EmploymentContract\nArabic labels: عقد العمل",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 10,
+          "bm25_score": 8.930204391479492,
+          "fused_score": 0.043697478991596636,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#seasonal_work_concept",
+          "local_name": "seasonal_work_concept",
+          "node_kind": "LaborDomainConcept",
+          "labels_ar": [
+            "العمل الموسمي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#seasonal_work_concept\nLocal name: seasonal_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل الموسمي",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 13,
+          "bm25_score": 8.930204391479492,
+          "fused_score": 0.04186764422149335,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ],
+      "expanded_concept_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#preserve_confidentiality_obligation",
+          "local_name": "preserve_confidentiality_obligation",
+          "node_kind": "PreserveConfidentiality",
+          "labels_ar": [
+            "التزام حفظ السرية"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#preserve_confidentiality_obligation\nLocal name: preserve_confidentiality_obligation\nNode kind: PreserveConfidentiality\nRDF types: PreserveConfidentiality\nArabic labels: التزام حفظ السرية",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.0,
+          "direct_score": 0.0,
+          "graph_score": 1.9500000000000002,
+          "paragraph_score": 0.0,
+          "final_score": 1.9500000000000002,
+          "graph_supported": true,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#disciplinary_action_consequence",
+          "local_name": "disciplinary_action_consequence",
+          "node_kind": "DisciplinaryAction",
+          "labels_ar": [
+            "الإجراء التأديبي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#disciplinary_action_consequence\nLocal name: disciplinary_action_consequence\nNode kind: DisciplinaryAction\nRDF types: DisciplinaryAction\nArabic labels: الإجراء التأديبي",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.0,
+          "direct_score": 0.0,
+          "graph_score": 1.625,
+          "paragraph_score": 0.0,
+          "final_score": 1.625,
+          "graph_supported": true,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#follow_lawful_instructions_obligation",
+          "local_name": "follow_lawful_instructions_obligation",
+          "node_kind": "FollowLawfulInstructions",
+          "labels_ar": [
+            "التزام اتباع التعليمات المشروعة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#follow_lawful_instructions_obligation\nLocal name: follow_lawful_instructions_obligation\nNode kind: FollowLawfulInstructions\nRDF types: FollowLawfulInstructions\nArabic labels: التزام اتباع التعليمات المشروعة",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.0,
+          "direct_score": 0.0,
+          "graph_score": 0.9750000000000001,
+          "paragraph_score": 0.0,
+          "final_score": 0.9750000000000001,
+          "graph_supported": true,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+          "local_name": "perform_work_obligation",
+          "node_kind": "PerformWork",
+          "labels_ar": [
+            "التزام أداء العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#perform_work_obligation\nLocal name: perform_work_obligation\nNode kind: PerformWork\nRDF types: PerformWork\nArabic labels: التزام أداء العمل",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.0,
+          "direct_score": 0.0,
+          "graph_score": 0.9750000000000001,
+          "paragraph_score": 0.0,
+          "final_score": 0.9750000000000001,
+          "graph_supported": true,
+          "support_paths": []
+        }
+      ],
+      "article_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#article_77",
+          "local_name": "article_77",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 77"
+          ],
+          "labels_en": [],
+          "article_number": 77,
+          "text_preview": "يعاقب صاحب العمل او مدير المؤسسة عن اي مخالفة لاي حكم من احكام هذا الفصل او اي نظام او قرار صادر بمقتضاه بغرامة لا تقل عن مئة دينار ولا تزيد على خمسمائة دينار وتضاعف العقوبة حالة التكرار ولا يجوز تخفيض العقوبة عن حدها الادنى للاسباب التقديرية المخففة.",
+          "vector_rank": 3,
+          "vector_distance": 0.4796473979949951,
+          "bm25_rank": 1,
+          "bm25_score": 35.39938735961914,
+          "fused_score": 0.07220694882847413,
+          "direct_score": 0.07220694882847413,
+          "graph_score": 0.0,
+          "paragraph_score": 0.05555555555555555,
+          "final_score": 1.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ],
+      "raw_mixed_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#article_77",
+          "local_name": "article_77",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 77"
+          ],
+          "labels_en": [],
+          "article_number": 77,
+          "text_preview": "يعاقب صاحب العمل او مدير المؤسسة عن اي مخالفة لاي حكم من احكام هذا الفصل او اي نظام او قرار صادر بمقتضاه بغرامة لا تقل عن مئة دينار ولا تزيد على خمسمائة دينار وتضاعف العقوبة حالة التكرار ولا يجوز تخفيض العقوبة عن حدها الادنى للاسباب التقديرية المخففة.",
+          "vector_rank": 3,
+          "vector_distance": 0.4796473979949951,
+          "bm25_rank": 1,
+          "bm25_score": 28.864282608032227,
+          "fused_score": 0.032266458495966696,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_77_paragraph_1",
+          "local_name": "article_77_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 77"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يعاقب صاحب العمل او مدير المؤسسة عن اي مخالفة لاي حكم من احكام هذا الفصل او اي نظام او قرار صادر بمقتضاه بغرامة لا تقل عن مئة دينار ولا تزيد على خمسمائة دينار وتضاعف العقوبة حالة التكرار ولا يجوز تخفيض العقوبة عن حدها الادنى للاسباب التقديرية المخففة.",
+          "vector_rank": 4,
+          "vector_distance": 0.4826802611351013,
+          "bm25_rank": 2,
+          "bm25_score": 28.584728240966797,
+          "fused_score": 0.031754032258064516,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_84",
+          "local_name": "article_84",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 84"
+          ],
+          "labels_en": [],
+          "article_number": 84,
+          "text_preview": "أ . اذا خالف صاحب العمل أي حكم من احكام هذا الفصل فللوزير اغلاق المؤسسة او مكان العمل كليا او جزئيا او ايقاف اي\n\n    الة فيهما اذا كان من شان تلك المخالفة تعريض العمال او المؤسسة او الالات للخطر وذلك الى ان يزيل صاحب العمل\n\n    المخالفة.\n\nب. يشترط ان لا يصدر الوزير قراره المنصوص عليه في الفقرة (أ) من هذه المادة قبل توجيه انذار الى صاحب العمل بازالة\n\n    المخالفة خلال المدة التي يحددها له في الانذار وذلك وفقاً لجسامة المخالفة وخطورتها.\n\nج. يراعى في حالة اغلاق المؤسسة او مكان العمل او ايقاف الات فيهما عدم الاخلال بحق العمال في تقاضي اجورهم كاملة\n\n    عن مدة الاغلاق او الايقاف.\n\nد.  للوزير احالة المخالف الى المحكمة المختصة ويعاقب في هذه الحالة بغرامة لا تقل عن مئة دينار ولا تزيد على خمسمائة\n\n    دينار وتضاعف الغرامة في حالة التكرار ولا يجوز تخفيض الغرامة المحكوم بها عن حدها الادنى لاي سبب من الاسباب.",
+          "vector_rank": 1,
+          "vector_distance": 0.42208462953567505,
+          "bm25_rank": 9,
+          "bm25_score": 19.659067153930664,
+          "fused_score": 0.030886196246139225,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_87_paragraph_2",
+          "local_name": "article_87_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 87 - الفقرة ب"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يعاقب صاحب العمل او مدير المؤسسة او من يمثلها في حالة مخالفته لاحكام الفقرة (أ) من هذه المادة بغرامة لا تقل عن مائة دينار ولا تزيد على خمسمائة دينار عن كل مخالفة وتضاعف العقوبة في حالة التكرار.",
+          "vector_rank": 11,
+          "vector_distance": 0.5285443067550659,
+          "bm25_rank": 3,
+          "bm25_score": 28.17820167541504,
+          "fused_score": 0.029957522915269395,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_12_paragraph_4",
+          "local_name": "article_12_paragraph_4",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 12 - الفقرة د"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "للوزير بناء على توصية من وزارة التنمية الاجتماعية ان يعفي المعوق شديد الاعاقة او ولي امره او وصيه من دفع رسم تصريح العمل لعامل غير اردني واحد اذا كان المعوق بحاجة ماسة دائمة الى المساعدة من الغير للقيام باعباء حياته اليومية واذا كانت مهام العامل غير الاردني تقتصر على تقديم العون للمعوق. هـ. يعاقب صاحب العمل او مدير المؤسسة حسب مقتضى الحال بغرامة لا تقل عن خمسين ديناراً ولا تزيد على مئة دينار عن كل شهر او الجزء من الشهر عن كل عامل غير اردني يستخدم بصورة تخالف احكام هذا القانون ولا يجوز تخفيض الغرامة عن حدها الادنى في اي حالة من الحالات او لاي سبب من الاسباب.",
+          "vector_rank": 8,
+          "vector_distance": 0.4987541437149048,
+          "bm25_rank": 16,
+          "bm25_score": 16.99704360961914,
+          "fused_score": 0.02786377708978328,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_9",
+          "local_name": "article_9",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 9"
+          ],
+          "labels_en": [],
+          "article_number": 9,
+          "text_preview": "أ . يمارس مفتش العمل اثناء قيامه بوظيفته الصلاحيات المخولة لافراد الضابطة العدلية بموجب قانون اصول المحاكمات\n\n    الجزائية المعمول به ويعمل بالضبط الذي ينظمه في حدود وظيفته حتى يثبت غير ذلك.\n\nب. للمفتش الطلب من صاحب العمل ازالة المخالفة خلال مدة لا تزيد على سبعة ايام من تاريخ تبلغه انذاراً خطياً بذلك وفي\n\n    حالة تخلفه فللوزير او من يفوضه ان يقرر اغلاق المؤسسة لحين ازالة المخالفة او صدور قرار المحكمة بشانها.\n\nج. تحكم المحكمة على المخالف بازالة المخالفة وبغرامة لا تقل عن خمسين ديناراً ولا تزيد على خمسمائة دينار ولا يجوز\n\n    تخفيض الغرامة عن حدها الادنى لاي سبب من الاسباب التقديرية المخففة.",
+          "vector_rank": 2,
+          "vector_distance": 0.4502025842666626,
+          "bm25_rank": 26,
+          "bm25_score": 13.834156036376953,
+          "fused_score": 0.0277569392348087,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_48",
+          "local_name": "article_48",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 48"
+          ],
+          "labels_en": [],
+          "article_number": 48,
+          "text_preview": "لا يجوز لصاحب العمل اتخاذ اي اجراء تاديبي او فرض غرامة على العامل عن مخالفة غير منصوص عليها في لائحة الجزاءات المعتمدة من قبل الوزير او من يفوضه على ان يراعى ما يلي :\n\nأ . ان لا تفرض على العامل غرامة تزيد على اجر ثلاثة ايام في الشهر الواحد او ايقافه عن العمل بدون اجر لمدة تزيد\n\n    على ثلاثة ايام في الشهر الواحد وان تتاح له فرصة سماع اقواله للدفاع عن نفسه قبل فرض العقوبة عليه، وان يكون\n\n    للعامل حق الاعتراض على العقوبة التي فرضت عليه لدى مفتش العمل خلال اسبوع واحد من تاريخ تبليغها له.\n\nب. ان لا يتخذ بحق العامل اي اجراء تاديبي او فرض غرامة عليه عن اي مخالفة من المخالفات المنصوص عليها في لائحة\n\n    الجزاءات المعتمدة بعد انقضاء خمسة عشر يوماً على ارتكابها.\n\nج. ان تسجل الغرامات التي تفرض بمقتضى هذه المادة في سجل خاص يبين فيه اسم العامل ومقدار اجره واسباب فرض\n\n    الغرامة عليه وان تخصص الغرامات لتحقيق خدمات اجتماعية للعمال في المؤسسة وفق ما يقرره الوزير او من يفوضه.",
+          "vector_rank": 10,
+          "vector_distance": 0.5166882276535034,
+          "bm25_rank": 15,
+          "bm25_score": 17.142902374267578,
+          "fused_score": 0.02761904761904762,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_133",
+          "local_name": "article_133",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 133"
+          ],
+          "labels_en": [],
+          "article_number": 133,
+          "text_preview": "أ . اذا خالف اي عامل شرطاً من شروط التسوية او قرار المحكمة العمالية الملزم له بمقتضى هذا القانون فيعاقب بغرامة لا\n\n    تقل عن خمسين دينارا ولا تزيد على مائتي دينار للمرة الاولى وتضاعف في حالة التكرار ولا يجوز تخفيض الغرامة عن\n\n    حدها الادنى للاسباب التقديرية المخففة.\n\nب. اذا خالف صاحب العمل اي شرط من شروط التسوية او قرار المحكمة العمالية الملزم له بمقتضى هذا القانون فيعاقب\n\n    بغرامة لا تقل عن مائتي دينار ولا تزيد على اربعمائة دينار للمرة الاولى وتضاعف في حالة التكرار ولا يجوز تخفيض\n\n    الغرامة عن حدها الادنى للاسباب التقديرية المخففة.",
+          "vector_rank": 15,
+          "vector_distance": 0.5461084842681885,
+          "bm25_rank": 10,
+          "bm25_score": 19.523290634155273,
+          "fused_score": 0.02761904761904762,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_51_paragraph_3",
+          "local_name": "article_51_paragraph_3",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 51 - الفقرة ب"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "في حالة تصفية المؤسسة او افلاس صاحب العمل يدفع المصفي او وكيل التفليسة للعامل او لورثته فورا وبمجرد وضع يده على اموال صاحب العمل ما يعادل اجر شهر واحد من المبالغ المستحقة له وذلك قبل تسديد اي مصروفات اخرى بما في ذلك المصروفات القضائية ومصروفات التفليسة او التصفية.",
+          "vector_rank": 6,
+          "vector_distance": 0.48822230100631714,
+          "bm25_rank": 21,
+          "bm25_score": 14.57224178314209,
+          "fused_score": 0.02749719416386083,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_133_paragraph_2",
+          "local_name": "article_133_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 133 - الفقرة ب"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اذا خالف صاحب العمل اي شرط من شروط التسوية او قرار المحكمة العمالية الملزم له بمقتضى هذا القانون فيعاقب بغرامة لا تقل عن مائتي دينار ولا تزيد على اربعمائة دينار للمرة الاولى وتضاعف في حالة التكرار ولا يجوز تخفيض الغرامة عن حدها الادنى للاسباب التقديرية المخففة.",
+          "vector_rank": 29,
+          "vector_distance": 0.5725071430206299,
+          "bm25_rank": 11,
+          "bm25_score": 19.02237319946289,
+          "fused_score": 0.025320462098433298,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_47",
+          "local_name": "article_47",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 47"
+          ],
+          "labels_en": [],
+          "article_number": 47,
+          "text_preview": "لا يجوز حسم اي مبلغ من اجر العامل الا في الحالات التالية :\n\nأ . استرداد ما قدم صاحب العمل من سلف للعامل بحيث لا يزيد كل قسط يتم استرداده من السلفة على (10%) من الاجر.\n\nب. استرداد اي مبلغ دفع للعامل زيادة على استحقاقه.\n\nج. اشتراكات الضمان الاجتماعي واقساطه المستحقة على العامل والحسميات الواجب اجراؤها بموجب القوانين الاخرى.\n\nد. اشتراكات العامل في صندوق الادخار.\n\nهـ. الحسميات الخاصة بتسهيلات الاسكان التي يقدمها صاحب العمل وغير ذلك من مزايا او خدمات حسب المعدلات او\n\n      النسب المئوية المتفق عليها بين الطرفين.\n\nو. كل دين يستوفى تنفيذا لحكم قضائي.\n\nز. المبالغ التي تفرض على العامل بسبب مخالفته لاحكام النظام الداخلي للمؤسسة او لعقد العمل او مقابل ما اتلفه من المواد\n\n    او الادوات بسبب اهماله او اخطائه وذلك وفق الاحكام الخاصة المنصوص عليها في هذا القانون.",
+          "vector_rank": 7,
+          "vector_distance": 0.49695849418640137,
+          "bm25_rank": 38,
+          "bm25_score": 11.360502243041992,
+          "fused_score": 0.02512945476698142,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_12",
+          "local_name": "article_12",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 12"
+          ],
+          "labels_en": [],
+          "article_number": 12,
+          "text_preview": "أ . لا يجوز استخدام اي عامل غير اردني الا بموافقة الوزير او من يفوضه شريطة ان يتطلب العمل خبرة وكفاءة غير\n\n    متوفرة لدى العمال الاردنيين او كان العدد المتوفر منهم لا يفي بالحاجة وتعطى الاولوية للخبراء والفنيين والعمال العرب.\n\nب. يجب ان يحصل العامل غير الاردني على تصريح عمل من الوزير او من يفوضه قبل استقدامه او استخدامه ولا يجوز\n\n     ان تزيد مدة التصريح على سنة واحدة قابلة للتجديد.\n\nج. تستوفي الوزارة من صاحب العمل رسماً مقابل تصريح العمل الذي تصدره لكل عامل غير اردني او تجدده بما في ذلك\n\n    العمل المستثنيين من احكام هذا القانون بموجب الفقرتين (ج) و (د) من المادة (3) منه ويعتبر هذا الرسم ايراداً للخزينة\n\n     ويحدد مقداره بموجب نظام.\n\nد. للوزير بناء على توصية من وزارة التنمية الاجتماعية ان يعفي المعوق شديد الاعاقة او ولي امره او وصيه من دفع رسم\n\n    تصريح العمل لعامل غير اردني واحد اذا كان المعوق بحاجة ماسة دائمة الى المساعدة من الغير للقيام باعباء حياته\n\n    اليومية واذا كانت مهام العامل غير الاردني تقتصر على تقديم العون للمعوق.\n\nهـ. يعاقب صاحب العمل او مدير المؤسسة حسب مقتضى الحال بغرامة لا تقل عن خمسين ديناراً ولا تزيد على مئة دينار\n\n      عن كل شهر او الجزء من الشهر عن كل عامل غير اردني يستخدم بصورة تخالف احكام هذا القانون ولا يجوز\n\n      تخفيض الغرامة عن حدها الادنى في اي حالة من الحالات او لاي سبب من الاسباب.\n\nو. تعتبر مخالفة لاحكام هذا القانون استخدام العامل غير الاردني في اي من الحالات التالية:\n\n    1. استخدامه دون الحصول على تصريح عمل.\n\n    2. استخدامه لدى صاحب عمل غير المصرح له بالعمل لديه ما لم يكن حاصلا على اذن بذلك من الجهة المختصة في\n\n        الوزارة.\n\n    3. استخدامه في مهنة غير المهنة المصرح له العمل بها.\n\nز. يصدر الوزير قرارا بتسفير العامل المخالف لاحكام هذه المادة الى خارج المملكة على نفقة صاحب العمل او مدير\n\n   المؤسسة ويتم تنفيذ هذا القرار من قبل السلطات المختصة ولا يجوز اعادة استقدام او استخدام العامل غير الاردني الذي\n\n    تم تسفيره قبل مضي ثلاث سنوات على الاقل من تاريخ تنفيذ قرار التسفير.",
+          "vector_rank": 31,
+          "vector_distance": 0.5729460120201111,
+          "bm25_rank": 13,
+          "bm25_score": 18.30048942565918,
+          "fused_score": 0.024687641125997292,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_48_paragraph_4",
+          "local_name": "article_48_paragraph_4",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 48 - الفقرة ج"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "ان تسجل الغرامات التي تفرض بمقتضى هذه المادة في سجل خاص يبين فيه اسم العامل ومقدار اجره واسباب فرض الغرامة عليه وان تخصص الغرامات لتحقيق خدمات اجتماعية للعمال في المؤسسة وفق ما يقرره الوزير او من يفوضه.",
+          "vector_rank": 19,
+          "vector_distance": 0.5621803998947144,
+          "bm25_rank": 31,
+          "bm25_score": 12.855498313903809,
+          "fused_score": 0.023647238837112255,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_84_paragraph_4",
+          "local_name": "article_84_paragraph_4",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 84 - الفقرة د"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "للوزير احالة المخالف الى المحكمة المختصة ويعاقب في هذه الحالة بغرامة لا تقل عن مئة دينار ولا تزيد على خمسمائة دينار وتضاعف الغرامة في حالة التكرار ولا يجوز تخفيض الغرامة المحكوم بها عن حدها الادنى لاي سبب من الاسباب.",
+          "vector_rank": 39,
+          "vector_distance": 0.587529182434082,
+          "bm25_rank": 14,
+          "bm25_score": 17.51285171508789,
+          "fused_score": 0.023614523614523618,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_133_paragraph_1",
+          "local_name": "article_133_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 133 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اذا خالف اي عامل شرطاً من شروط التسوية او قرار المحكمة العمالية الملزم له بمقتضى هذا القانون فيعاقب بغرامة لا تقل عن خمسين دينارا ولا تزيد على مائتي دينار للمرة الاولى وتضاعف في حالة التكرار ولا يجوز تخفيض الغرامة عن حدها الادنى للاسباب التقديرية المخففة.",
+          "vector_rank": 37,
+          "vector_distance": 0.5826132893562317,
+          "bm25_rank": 20,
+          "bm25_score": 14.890691757202148,
+          "fused_score": 0.022809278350515466,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_30",
+          "local_name": "article_30",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 30"
+          ],
+          "labels_en": [],
+          "article_number": 30,
+          "text_preview": "على صاحب العمل ان يعطي للعامل عند انتهاء خدمته بناء على طلبه ذلك شهادة خدمة يذكر فيها اسم العامل ونوع عمله وتاريخ التحاقه بالخدمة وتاريخ انتهاء الخدمة كما ويلزم صاحب العمل برد ما اودعه العامل لديه من اوراق شهادات او ادوات.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 4,
+          "bm25_score": 23.490764617919922,
+          "fused_score": 0.015625,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_51",
+          "local_name": "article_51",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 51"
+          ],
+          "labels_en": [],
+          "article_number": 51,
+          "text_preview": "أ . 1. تعتبر الاجور والمبالغ المستحقة بموجب احكام هذا القانون ، للعامل او ورثته او أي مستحقين لها بعد وفاته ، ديونا\n\n        ممتازة امتيازا عاما من الدرجة الاولى بالمعنى القانوني لهذه الكلمة .\n\n    2. يفقد العامل حقه في الامتياز العام المنصوص عليه في البند (1) من هذه الفقرة اذا ثبت للمحكمة المختصة ان\n\n        الاجور والمبالغ المتحققة له والتي يشملها هذا الامتياز لا تستند الى أي اساس قانوني .\n\nب. في حالة تصفية المؤسسة او افلاس صاحب العمل يدفع المصفي او وكيل التفليسة للعامل او لورثته فورا وبمجرد وضع\n\n    يده على اموال صاحب العمل ما يعادل اجر شهر واحد من المبالغ المستحقة له وذلك قبل تسديد اي مصروفات اخرى بما\n\n    في ذلك المصروفات القضائية ومصروفات التفليسة او التصفية.",
+          "vector_rank": 5,
+          "vector_distance": 0.4868990182876587,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.015384615384615385,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_30_paragraph_1",
+          "local_name": "article_30_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 30"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "على صاحب العمل ان يعطي للعامل عند انتهاء خدمته بناء على طلبه ذلك شهادة خدمة يذكر فيها اسم العامل ونوع عمله وتاريخ التحاقه بالخدمة وتاريخ انتهاء الخدمة كما ويلزم صاحب العمل برد ما اودعه العامل لديه من اوراق شهادات او ادوات.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 5,
+          "bm25_score": 23.282976150512695,
+          "fused_score": 0.015384615384615385,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_87",
+          "local_name": "article_87",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 87"
+          ],
+          "labels_en": [],
+          "article_number": 87,
+          "text_preview": "أ . اذا اصيب عامل باصابة عمل ادت الى وفاته او الحقت به ضررا جسمانيا حال دون استمراره في العمل فعلى صاحب\n\n    العمل نقل المصاب الى مستشفى او اي مركز طبي وتبليغ الجهات الامنية المختصة بالحادث وان يرسل اشعارا الى\n\n    الوزارة بذلك خلال مدة لا تزيد على (48) ساعة من وقوع الحادث ويتحمل صاحب العمل نفقات نقل المصاب الى\n\n    المستشفى او المركز الطبي لمعالجته.\n\nب. يعاقب صاحب العمل او مدير المؤسسة او من يمثلها في حالة مخالفته لاحكام الفقرة (أ) من هذه المادة بغرامة لا تقل عن\n\n    مائة دينار ولا تزيد على خمسمائة دينار عن كل مخالفة وتضاعف العقوبة في حالة التكرار.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 6,
+          "bm25_score": 21.771869659423828,
+          "fused_score": 0.015151515151515152,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_42_paragraph_2",
+          "local_name": "article_42_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 42 - البند 1"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اصحاب العمل وخلفهم بمن فيهم ورثتهم والاشخاص الذين انتقلت اليهم المؤسسة باي صورة من الصور او عند اندماجها بغيرها.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 7,
+          "bm25_score": 21.113117218017578,
+          "fused_score": 0.014925373134328358,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ]
+    }
+  }
+}

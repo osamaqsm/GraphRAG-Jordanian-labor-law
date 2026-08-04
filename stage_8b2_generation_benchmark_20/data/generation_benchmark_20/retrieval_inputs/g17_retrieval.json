@@ -1,0 +1,76 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "أريد تشغيل شاب عمره خمسة عشر عاماً؛ هل يجوز تشغيله، وما المستندات المطلوبة لو كان في السن المسموح؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "Oracle-frozen generation benchmark input with complete gold article evidence.",
+    "clarification_question_ar": "",
+    "planner_used": false,
+    "planner_confidence": 1.0
+  },
+  "embedding": {
+    "model": "oracle-generation-benchmark",
+    "dimensions": 0,
+    "input_tokens": 0
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_73",
+      "local_name": "article_73",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 73"
+      ],
+      "labels_en": [],
+      "article_number": 73,
+      "text": "مع مراعاة الاحكام المتعلقة بالتدريب المهني لا يجوز باي حال تشغيل الحدث الذي لم يكمل السادسة عشرة من عمره باي صورة من الصور.",
+      "final_score": 1.0,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#article_76",
+      "local_name": "article_76",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 76"
+      ],
+      "labels_en": [],
+      "article_number": 76,
+      "text": "على صاحب العمل قبل تشغيل اي حدث ان يطلب منه او من وليه تقديم المستندات التالية :\n\nأ . صورة مصدقة عن شهادة الميلاد.\n\nب. شهادة بلياقة الحدث الصحية للعمل المطلوب صادرة عن طبيب مختص ومصدقة من وزارة الصحة.\n\nج. موافقة ولي امر الحدث الخطية على العمل في المؤسسة، وتحفظ هذه المستندات في ملف خاص للحدث مع بيانات كافية\n\n    عن محل اقامته وتاريخ استخدامه والعمل الذي استخدم فيه واجره واجازاته.",
+      "final_score": 0.99,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "concepts": [],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      73,
+      76
+    ],
+    "concept_local_names": [],
+    "graph_supported_articles": [
+      73,
+      76
+    ],
+    "concept_count": 0,
+    "expanded_concept_count": 0,
+    "article_count": 2
+  },
+  "elapsed_ms": 0,
+  "debug": {
+    "benchmark_mode": "oracle_frozen_generation_input",
+    "source_case_id": "UNSEEN50-U38"
+  }
+}

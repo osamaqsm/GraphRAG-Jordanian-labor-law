@@ -1,0 +1,381 @@
+{
+  "snapshot_name": "generation_real_retrieval_20",
+  "created_at_utc": "2026-08-02T18:20:02.758946+00:00",
+  "rubric_file": "/app/data/benchmarks/generation_rubric_20_for_real_retrieval.json",
+  "rubric_sha256": "3d91e44d5f36f88575c3aa94e03006862edf97272067cbc7b2fb8424226243d6",
+  "benchmark_file": "generation_benchmark_real_retrieval_20.json",
+  "benchmark_sha256": "66535ea59cc4a5c825a8dde8fe6c2106f4cd4eb94dde5dd4a5ce9c771e49cd5d",
+  "retrieval_input_count": 20,
+  "include_debug": true,
+  "context_state_counts": {
+    "complete": 18,
+    "route_mismatch": 1,
+    "partial": 1
+  },
+  "retrieval_inputs": [
+    {
+      "id": "G01",
+      "question": "كم يستطيع صاحب العمل أن يقتطع شهرياً من الأجر لاسترداد سلفة أعطاها للعامل؟",
+      "file": "g01_retrieval.json",
+      "sha256": "45c85987f257bb48428110b2b2ad7c5bffb1a10b91fd83a05826d31be85e2098",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        47
+      ],
+      "actual_articles": [
+        47
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "G02",
+      "question": "ما الحد الأقصى لمدة تجربة العامل، وماذا يصبح العقد إذا استمر بعد انتهاء التجربة؟",
+      "file": "g02_retrieval.json",
+      "sha256": "2f07d0a64fcb355b122dabf8c851894e0e9fed62844aece749c6da21db918505",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        35
+      ],
+      "actual_articles": [
+        35
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "G03",
+      "question": "أعمل لدى صاحب العمل نفسه منذ ست سنوات، كم يوم إجازة سنوية مدفوعة أستحق؟",
+      "file": "g03_retrieval.json",
+      "sha256": "b7c5f0dd1fa0d75382907290fc9250f41b5b30d136d5afdb271873e61c35ea62",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        61
+      ],
+      "actual_articles": [
+        61
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "G04",
+      "question": "كم مدة الإجازة المرضية المدفوعة، وهل يمكن تجديدها؟",
+      "file": "g04_retrieval.json",
+      "sha256": "2ffd38ac7eac6ea3937fe5e803f9aa67e97be30f34ccb05ded435fc176ef6ad0",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        65
+      ],
+      "actual_articles": [
+        65
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "G05",
+      "question": "ما مدة إجازة الأمومة المدفوعة، وكم يجب أن يكون منها بعد الولادة؟",
+      "file": "g05_retrieval.json",
+      "sha256": "1c289ae45486066bff7620936d290948f9cb8ea108f70dc24e23da37fd03a6a7",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        70
+      ],
+      "actual_articles": [
+        70
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "G06",
+      "question": "كم يجب أن أتقاضى عن ساعة العمل الإضافية وعن العمل في يوم العطلة الأسبوعية؟",
+      "file": "g06_retrieval.json",
+      "sha256": "d5eb1e3f1ee9576f489a33d1cb845fb7ef40261b3717b43e7af299f0a41d3211",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        59
+      ],
+      "actual_articles": [
+        59
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "G07",
+      "question": "المصنع وقف مؤقت غصب عن صاحبه، شو بصير برواتبنا بأول عشر أيام وبعدها؟",
+      "file": "g07_retrieval.json",
+      "sha256": "99768acc03e45ae021c06c331ef3a7d4e8a2f6d9395eea0ecaa46aed751973f5",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        50
+      ],
+      "actual_articles": [
+        50
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "G08",
+      "question": "مؤسسة فيها 250 عاملاً؛ ما الحد الأدنى لعدد العمال ذوي الإعاقة المؤهلين مهنياً الواجب تشغيلهم إذا كانت طبيعة العمل تسمح؟",
+      "file": "g08_retrieval.json",
+      "sha256": "acd8a90cbe6e8b8de499a8f8b2187524cf9e09e23b567d24e87508a75c298c4c",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        13
+      ],
+      "actual_articles": [
+        13
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "G09",
+      "question": "ما الحدود القانونية العادية لساعات العمل اليومية والأسبوعية، وما الحد الأقصى لمجموع العمل والراحة في اليوم؟",
+      "file": "g09_retrieval.json",
+      "sha256": "e35670af8d7a8182d544df5dd71cc60135de9b38e47368fabcc5aaabd20cf75e",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        56
+      ],
+      "actual_articles": [
+        56
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "G10",
+      "question": "اطّلع مفتش العمل أثناء التفتيش على أسرار المنشأة؛ ما الالتزام الذي يسبق مباشرته العمل وما واجبه تجاه تلك الأسرار؟",
+      "file": "g10_retrieval.json",
+      "sha256": "15902308986a60fa701efbf9bd8ccc866b47fdb2181f0b01929c42e2e3b59fe9",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        6
+      ],
+      "actual_articles": [
+        19,
+        6
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [
+        19
+      ],
+      "context_state": "complete"
+    },
+    {
+      "id": "G11",
+      "question": "مفتش العمل أنذر صاحب الشغل يشيل المخالفة وما شالها؛ قديش المهلة وشو ممكن يصير بالمؤسسة والغرامة؟",
+      "file": "g11_retrieval.json",
+      "sha256": "a5e6213a8411ac57de3171cf994de46f63b63b1e88e20d8d28a85973fdf0a923",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        9
+      ],
+      "actual_articles": [
+        9
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "G12",
+      "question": "كم يجب أن يكون عدد مؤسسي نقابة أصحاب العمل، وما الحد الأدنى لعمر المؤسس وطالب الانتساب؟",
+      "file": "g12_retrieval.json",
+      "sha256": "d942ceff3f8b9050c67799b86acbf28f6645f3c09212a315882dcb3b9f20dcfc",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "abstain",
+      "required_articles": [
+        108
+      ],
+      "actual_articles": [],
+      "missing_required_articles": [
+        108
+      ],
+      "extra_articles": [],
+      "context_state": "route_mismatch"
+    },
+    {
+      "id": "G13",
+      "question": "إذا أرادت النقابة حل نفسها اختيارياً، ما نسبة موافقة الأعضاء المطلوبة وخلال كم يوماً يجب إشعار الوزير والاتحاد؟",
+      "file": "g13_retrieval.json",
+      "sha256": "6698ffe7ccc2a40a03d6df30c8d39917cda745b2042ead34d31f9f38c4f78b01",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        106
+      ],
+      "actual_articles": [
+        106
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "G14",
+      "question": "ما الموضوعات الأساسية التي يجب أن يتضمنها النظام الداخلي لنقابة العمال؟",
+      "file": "g14_retrieval.json",
+      "sha256": "7ea16ec4918bc2d8ef179a8ba5c4eaf8f6fc8581cc4aa4b98cc4016fe15e85b2",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        100
+      ],
+      "actual_articles": [
+        100
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "G15",
+      "question": "صدر قرار من المحكمة العمالية وفيه غموض وخطأ حسابي؛ كيف يمكن تفسيره أو تصحيحه ومن يطلب ذلك؟",
+      "file": "g15_retrieval.json",
+      "sha256": "0ad1de312b5f2f04f97715001fbe3ca155341cf156d9b510c2d0e9764401dd43",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        126
+      ],
+      "actual_articles": [
+        126
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    },
+    {
+      "id": "G16",
+      "question": "كيف يوثق عقد العمل الجماعي لدى الوزارة، وما أقصى مدة للعقد المحدد وكيف ينهى العقد غير المحدد؟",
+      "file": "g16_retrieval.json",
+      "sha256": "c428676348782e91fa0d32ddc02a00d556026a62277b44de6f843d872e472c17",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        39,
+        40
+      ],
+      "actual_articles": [
+        39,
+        40,
+        41
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [
+        41
+      ],
+      "context_state": "complete"
+    },
+    {
+      "id": "G17",
+      "question": "أريد تشغيل شاب عمره خمسة عشر عاماً؛ هل يجوز تشغيله، وما المستندات المطلوبة لو كان في السن المسموح؟",
+      "file": "g17_retrieval.json",
+      "sha256": "d788d0704389afdd5ad5b783adaeebdbdd2e2f219191c7aacf6df4ca30f14fc9",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        73,
+        76
+      ],
+      "actual_articles": [
+        73
+      ],
+      "missing_required_articles": [
+        76
+      ],
+      "extra_articles": [],
+      "context_state": "partial"
+    },
+    {
+      "id": "G18",
+      "question": "ما الذي يجب تحديده في عقد التدريب بشأن المدة والمراحل والأجر، ومتى يجوز إنهاؤه إذا تعذر التنفيذ أو أصبح الاستمرار خطراً على صحة المتدرب؟",
+      "file": "g18_retrieval.json",
+      "sha256": "b5d990725d7429a47d98dd17b8703ce338f08ae987c063cf805ca5d0743e45b6",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        37,
+        38
+      ],
+      "actual_articles": [
+        36,
+        37,
+        38
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [
+        36
+      ],
+      "context_state": "complete"
+    },
+    {
+      "id": "G19",
+      "question": "إذا وصل النزاع إلى مجلس التوفيق، ما التقرير والمهلة المطلوبة عند نجاح التسوية أو فشلها، وهل يحق للطرفين توكيل محامين أمام المجلس؟",
+      "file": "g19_retrieval.json",
+      "sha256": "4c12fef092b75c8e0bf600ac71523481a603c2915f686ea7b7dbf6aac045b172",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        122,
+        123
+      ],
+      "actual_articles": [
+        121,
+        122,
+        123
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [
+        121
+      ],
+      "context_state": "complete"
+    },
+    {
+      "id": "G20",
+      "question": "على من تكون تسوية التوفيق أو قرار المحكمة العمالية ملزمين، ومن أي تاريخ يبدأ تنفيذ كل منهما؟",
+      "file": "g20_retrieval.json",
+      "sha256": "86d3f7719ca6644a5c4c49f6ddc493c1fcd86517ca71b2bf23834c7cf40cccdc",
+      "expected_behavior": "retrieve",
+      "actual_behavior": "retrieve",
+      "required_articles": [
+        130,
+        131
+      ],
+      "actual_articles": [
+        130,
+        131
+      ],
+      "missing_required_articles": [],
+      "extra_articles": [],
+      "context_state": "complete"
+    }
+  ],
+  "freeze_rule": "Do not modify the retrieval JSON files. The generation runner verifies every SHA-256 hash before testing."
+}

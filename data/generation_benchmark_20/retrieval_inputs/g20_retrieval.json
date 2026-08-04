@@ -1,0 +1,76 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "على من تكون تسوية التوفيق أو قرار المحكمة العمالية ملزمين، ومن أي تاريخ يبدأ تنفيذ كل منهما؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "Oracle-frozen generation benchmark input with complete gold article evidence.",
+    "clarification_question_ar": "",
+    "planner_used": false,
+    "planner_confidence": 1.0
+  },
+  "embedding": {
+    "model": "oracle-generation-benchmark",
+    "dimensions": 0,
+    "input_tokens": 0
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_130",
+      "local_name": "article_130",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 130"
+      ],
+      "labels_en": [],
+      "article_number": 130,
+      "text": "تكون التسوية التي تم التوصل اليها بنتيجة اجراءات التوفيق بمقتضى احكام هذا القانون او قرار المحكمة العمالية ملزمين للفئات التالية:\n\nأ . لاطراف النزاع العمالي.\n\nب. لخلف صاحب العمل بمن في ذلك ورثته الذين انتقلت اليهم المؤسسة التي يتعلق بها النزاع.\n\nج. لجميع الاشخاص الذين كانوا يعملون في المؤسسة التي يتعلق بها النزاع في تاريخ حدوثه او في قسم منها حسب\n\n    مقتضى الحال ولجميع الاشخاص الذين يستخدمون فيما بعد في تلك المؤسسة او في اي قسم منها اذا ورد في تقرير\n\n    التسوية او قرار المحكمة العمالية بما يقضي بذلك ولم يكن في هذا القانون او الانظمة الصادرة بمقتضاه ما يحول دون\n\n    ذلك.",
+      "final_score": 1.0,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#article_131",
+      "local_name": "article_131",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 131"
+      ],
+      "labels_en": [],
+      "article_number": 131,
+      "text": "أ . ينفذ قرار المحكمة العمالية اعتباراً من التاريخ الذي تعينه.\n\nب. يعمل بالتسوية التي تم التوصل اليها نتيجة اجراءات التوفيق اعتباراً من التاريخ الذي اتفق عليه اطراف النزاع العمالي\n\n    واذا لم يتم الاتفاق على ذلك فيعمل بالتسوية اعتباراً من تاريخ التوقيع على تقرير التسوية وتكون ملزمة لجميع اطرافها\n\n    وبالشروط المنصوص عليها فيها.",
+      "final_score": 0.99,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "concepts": [],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      130,
+      131
+    ],
+    "concept_local_names": [],
+    "graph_supported_articles": [
+      130,
+      131
+    ],
+    "concept_count": 0,
+    "expanded_concept_count": 0,
+    "article_count": 2
+  },
+  "elapsed_ms": 0,
+  "debug": {
+    "benchmark_mode": "oracle_frozen_generation_input",
+    "source_case_id": "HOLDOUT20-H14"
+  }
+}

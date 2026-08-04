@@ -1,0 +1,56 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "إذا أرادت النقابة حل نفسها اختيارياً، ما نسبة موافقة الأعضاء المطلوبة وخلال كم يوماً يجب إشعار الوزير والاتحاد؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "Oracle-frozen generation benchmark input with complete gold article evidence.",
+    "clarification_question_ar": "",
+    "planner_used": false,
+    "planner_confidence": 1.0
+  },
+  "embedding": {
+    "model": "oracle-generation-benchmark",
+    "dimensions": 0,
+    "input_tokens": 0
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_106",
+      "local_name": "article_106",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 106"
+      ],
+      "labels_en": [],
+      "article_number": 106,
+      "text": "تحل النقابة او نقابة اصحاب العمل اختيارياً بموافقة ثلثي اعضائها المسددين لاشتراكاتهم في اجتماع غير عادي تعقده الهيئة العامة للنقابة او  نقابة اصحاب العمل لهذه الغاية دون غيرها وتتم تصفية اموالها وحقوقها والتصرف بها في هذه الحالة وفقاً لاحكام النظام الداخلي ويجب اشعار الوزير والاتحاد العام لنقابات العمال بقرار الحل خلال خمسة عشر يوماً من تاريخ صدوره وينشر في الجريدة الرسمية.",
+      "final_score": 1.0,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "concepts": [],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      106
+    ],
+    "concept_local_names": [],
+    "graph_supported_articles": [
+      106
+    ],
+    "concept_count": 0,
+    "expanded_concept_count": 0,
+    "article_count": 1
+  },
+  "elapsed_ms": 0,
+  "debug": {
+    "benchmark_mode": "oracle_frozen_generation_input",
+    "source_case_id": "HOLDOUT20-H13"
+  }
+}

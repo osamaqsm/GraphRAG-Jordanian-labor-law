@@ -1,0 +1,1206 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "كم مدة الإجازة المرضية المدفوعة، وهل يمكن تجديدها؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "سؤال عن مدة الإجازة المرضية المدفوعة وإمكانية تجديدها ضمن قانون العمل الأردني؛ يحتاج لتحديد النصوص ذات العلاقة دون وجود عوامل خارج النطاق.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.82
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 36
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_65",
+      "local_name": "article_65",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 65"
+      ],
+      "labels_en": [],
+      "article_number": 65,
+      "text": "لكل عامل الحق في اجازة مرضية مدتها اربعة عشر يوماً خلال السنة الواحدة باجر كامل بناء على تقرير من الطبيب المعتمد من قبل المؤسسة، ويجوز تجديدها لمدة اربعة عشر يوماً اخرى باجر كامل اذا كان نزيل احد المستشفيات وبنصف الاجر اذا كان بناء على تقرير لجنة طبية تعتمدها المؤسسة ولم يكن نزيل احد المستشفيات.",
+      "final_score": 1.0,
+      "fused_score": 0.2222356525899625,
+      "direct_score": 0.2222356525899625,
+      "graph_score": 3.25,
+      "paragraph_score": 0.09090909090909091,
+      "graph_supported": true,
+      "support_paths": [
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#sick_leave_right_concept",
+          "seed_label": "حق الإجازة المرضية",
+          "article_uri": "http://example.org/jordan-labor-law#article_65",
+          "score": 2.6,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#sick_leave_right_concept",
+              "relation": "regulatedBy",
+              "target_uri": "http://example.org/jordan-labor-law#article_65"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#sick_leave_right_concept",
+          "seed_label": "حق الإجازة المرضية",
+          "article_uri": "http://example.org/jordan-labor-law#article_65",
+          "score": 3.25,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#sick_leave_right_concept",
+              "relation": "supportedByArticle",
+              "target_uri": "http://example.org/jordan-labor-law#article_65"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#sick_leave_right_concept",
+          "seed_label": "حق الإجازة المرضية",
+          "article_uri": "http://example.org/jordan-labor-law#article_65",
+          "score": 1.625,
+          "steps": [
+            {
+              "direction": "incoming",
+              "source_uri": "http://example.org/jordan-labor-law#article_65",
+              "relation": "regulates",
+              "target_uri": "http://example.org/jordan-labor-law#sick_leave_right_concept"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#leave_right_concept",
+          "seed_label": "حق الإجازة",
+          "article_uri": "http://example.org/jordan-labor-law#article_65",
+          "score": 0.6828887910967032,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#leave_right_concept",
+              "relation": "regulatedBy",
+              "target_uri": "http://example.org/jordan-labor-law#article_65"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#leave_right_concept",
+          "seed_label": "حق الإجازة",
+          "article_uri": "http://example.org/jordan-labor-law#article_65",
+          "score": 0.853610988870879,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#leave_right_concept",
+              "relation": "supportedByArticle",
+              "target_uri": "http://example.org/jordan-labor-law#article_65"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#sick_leave_right_concept",
+      "local_name": "sick_leave_right_concept",
+      "node_kind": "SickLeaveRight",
+      "labels_ar": [
+        "حق الإجازة المرضية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#sick_leave_right_concept\nLocal name: sick_leave_right_concept\nNode kind: SickLeaveRight\nRDF types: SickLeaveRight\nArabic labels: حق الإجازة المرضية",
+      "final_score": 0.0,
+      "fused_score": 0.07377049180327869,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#leave_right_concept",
+      "local_name": "leave_right_concept",
+      "node_kind": "LeaveRight",
+      "labels_ar": [
+        "حق الإجازة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#leave_right_concept\nLocal name: leave_right_concept\nNode kind: LeaveRight\nRDF types: LeaveRight\nArabic labels: حق الإجازة",
+      "final_score": 0.0,
+      "fused_score": 0.06922043010752688,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#leave_request_event",
+      "local_name": "leave_request_event",
+      "node_kind": "LeaveRequest",
+      "labels_ar": [
+        "حدث طلب الإجازة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#leave_request_event\nLocal name: leave_request_event\nNode kind: LeaveRequest\nRDF types: LeaveRequest\nArabic labels: حدث طلب الإجازة",
+      "final_score": 0.0,
+      "fused_score": 0.06935817805383022,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_payment_event",
+      "local_name": "wage_payment_event",
+      "node_kind": "WagePayment",
+      "labels_ar": [
+        "حدث دفع الأجر"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_payment_event\nLocal name: wage_payment_event\nNode kind: WagePayment\nRDF types: WagePayment\nArabic labels: حدث دفع الأجر",
+      "final_score": 0.0,
+      "fused_score": 0.024193548387096774,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+      "local_name": "wage_delay_violation",
+      "node_kind": "WageDelay",
+      "labels_ar": [
+        "مخالفة تأخر دفع الأجور"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_delay_violation\nLocal name: wage_delay_violation\nNode kind: WageDelay\nRDF types: WageDelay\nArabic labels: مخالفة تأخر دفع الأجور",
+      "final_score": 0.0,
+      "fused_score": 0.023809523809523808,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#contract_fixed_term_condition",
+      "local_name": "contract_fixed_term_condition",
+      "node_kind": "ContractIsFixedTerm",
+      "labels_ar": [
+        "شرط كون العقد محدد المدة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#contract_fixed_term_condition\nLocal name: contract_fixed_term_condition\nNode kind: ContractIsFixedTerm\nRDF types: ContractIsFixedTerm\nArabic labels: شرط كون العقد محدد المدة",
+      "final_score": 0.0,
+      "fused_score": 0.0234375,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#pay_wages_obligation",
+      "local_name": "pay_wages_obligation",
+      "node_kind": "PayWages",
+      "labels_ar": [
+        "التزام دفع الأجور"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#pay_wages_obligation\nLocal name: pay_wages_obligation\nNode kind: PayWages\nRDF types: PayWages\nArabic labels: التزام دفع الأجور",
+      "final_score": 0.0,
+      "fused_score": 0.023076923076923078,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#weekly_rest_right_concept",
+      "local_name": "weekly_rest_right_concept",
+      "node_kind": "WeeklyRestRight",
+      "labels_ar": [
+        "حق العطلة الأسبوعية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#weekly_rest_right_concept\nLocal name: weekly_rest_right_concept\nNode kind: WeeklyRestRight\nRDF types: WeeklyRestRight\nArabic labels: حق العطلة الأسبوعية",
+      "final_score": 0.0,
+      "fused_score": 0.022727272727272728,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#occupational_disease_concept",
+      "local_name": "occupational_disease_concept",
+      "node_kind": "LegalEvent",
+      "labels_ar": [
+        "المرض المهني"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#occupational_disease_concept\nLocal name: occupational_disease_concept\nNode kind: LegalEvent\nRDF types: LegalEvent\nArabic labels: المرض المهني",
+      "final_score": 0.0,
+      "fused_score": 0.022388059701492536,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+      "local_name": "delay_exceeds_seven_days_condition",
+      "node_kind": "DelayExceedsSevenDays",
+      "labels_ar": [
+        "شرط تجاوز التأخير سبعة أيام"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition\nLocal name: delay_exceeds_seven_days_condition\nNode kind: DelayExceedsSevenDays\nRDF types: DelayExceedsSevenDays\nArabic labels: شرط تجاوز التأخير سبعة أيام",
+      "final_score": 0.0,
+      "fused_score": 0.022058823529411766,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_concept",
+      "local_name": "wage_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "الأجر"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_concept\nLocal name: wage_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: الأجر",
+      "final_score": 0.0,
+      "fused_score": 0.02142857142857143,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#end_of_service_benefit_consequence",
+      "local_name": "end_of_service_benefit_consequence",
+      "node_kind": "EndOfServiceBenefit",
+      "labels_ar": [
+        "مكافأة نهاية الخدمة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#end_of_service_benefit_consequence\nLocal name: end_of_service_benefit_consequence\nNode kind: EndOfServiceBenefit\nRDF types: EndOfServiceBenefit\nArabic labels: مكافأة نهاية الخدمة",
+      "final_score": 0.0,
+      "fused_score": 0.02112676056338028,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      65
+    ],
+    "concept_local_names": [
+      "sick_leave_right_concept",
+      "leave_right_concept",
+      "leave_request_event",
+      "wage_payment_event",
+      "wage_delay_violation",
+      "contract_fixed_term_condition",
+      "pay_wages_obligation",
+      "weekly_rest_right_concept",
+      "occupational_disease_concept",
+      "delay_exceeds_seven_days_condition",
+      "wage_concept",
+      "end_of_service_benefit_consequence"
+    ],
+    "graph_supported_articles": [
+      65
+    ],
+    "concept_count": 12,
+    "expanded_concept_count": 0,
+    "article_count": 1
+  },
+  "elapsed_ms": 16828,
+  "debug": {
+    "analysis": {
+      "normalized_question": "كم مده الاجازه المرضيه المدفوعه وهل يمكن تجديدها مده الاجازه المرضيه المدفوعه وهل يمكن تجديدها مده الاجازه المرضيه المدفوعه وامكانيه تجديدها مده الاجازه المرضيه المدفوعه الاردن تجديدها",
+      "issue_ids": [
+        "sick_leave"
+      ],
+      "planner_queries": [
+        "مدة الإجازة المرضية المدفوعة الأردن تجديدها"
+      ],
+      "planner_issue_labels": [
+        "مدة الإجازة المرضية المدفوعة وإمكانية تجديدها"
+      ],
+      "max_final_articles": 3
+    },
+    "query_plan": {
+      "decision": "retrieve",
+      "confidence": 0.82,
+      "decision_reason": "سؤال عن مدة الإجازة المرضية المدفوعة وإمكانية تجديدها ضمن قانون العمل الأردني؛ يحتاج لتحديد النصوص ذات العلاقة دون وجود عوامل خارج النطاق.",
+      "normalized_question_ar": "مدة الإجازة المرضية المدفوعة وهل يمكن تجديدها",
+      "legal_domain": "Jordanian Labor Law",
+      "atomic_issues": [
+        {
+          "issue_ar": "مدة الإجازة المرضية المدفوعة وإمكانية تجديدها",
+          "retrieval_query_ar": "مدة الإجازة المرضية المدفوعة الأردن تجديدها",
+          "actors": [],
+          "conditions": [],
+          "numbers": [
+            "مدة الإجازة",
+            "عدد أيام الإجازة",
+            "إمكانية التجديد"
+          ],
+          "requested_result_ar": "تحديد مدة الإجازة المرضية المدفوعة وهل يمكن تجديدها"
+        }
+      ],
+      "minimum_articles": 1,
+      "maximum_articles": 3,
+      "clarification_question_ar": ""
+    },
+    "raw_preview": {
+      "question": "كم مدة الإجازة المرضية المدفوعة، وهل يمكن تجديدها؟",
+      "embedding_model": "text-embedding-3-small",
+      "embedding_dimensions": 1536,
+      "embedding_input_tokens": 36,
+      "concept_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#sick_leave_right_concept",
+          "local_name": "sick_leave_right_concept",
+          "node_kind": "SickLeaveRight",
+          "labels_ar": [
+            "حق الإجازة المرضية"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#sick_leave_right_concept\nLocal name: sick_leave_right_concept\nNode kind: SickLeaveRight\nRDF types: SickLeaveRight\nArabic labels: حق الإجازة المرضية",
+          "vector_rank": 1,
+          "vector_distance": 0.741767168045044,
+          "bm25_rank": 1,
+          "bm25_score": 58.042930603027344,
+          "fused_score": 0.07377049180327869,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#leave_right_concept",
+          "local_name": "leave_right_concept",
+          "node_kind": "LeaveRight",
+          "labels_ar": [
+            "حق الإجازة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#leave_right_concept\nLocal name: leave_right_concept\nNode kind: LeaveRight\nRDF types: LeaveRight\nArabic labels: حق الإجازة",
+          "vector_rank": 12,
+          "vector_distance": 0.8301580548286438,
+          "bm25_rank": 2,
+          "bm25_score": 31.289440155029297,
+          "fused_score": 0.06922043010752688,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#leave_request_event",
+          "local_name": "leave_request_event",
+          "node_kind": "LeaveRequest",
+          "labels_ar": [
+            "حدث طلب الإجازة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#leave_request_event\nLocal name: leave_request_event\nNode kind: LeaveRequest\nRDF types: LeaveRequest\nArabic labels: حدث طلب الإجازة",
+          "vector_rank": 9,
+          "vector_distance": 0.8245980739593506,
+          "bm25_rank": 3,
+          "bm25_score": 27.814363479614258,
+          "fused_score": 0.06935817805383022,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#wage_payment_event",
+          "local_name": "wage_payment_event",
+          "node_kind": "WagePayment",
+          "labels_ar": [
+            "حدث دفع الأجر"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#wage_payment_event\nLocal name: wage_payment_event\nNode kind: WagePayment\nRDF types: WagePayment\nArabic labels: حدث دفع الأجر",
+          "vector_rank": 2,
+          "vector_distance": 0.7896482944488525,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.024193548387096774,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+          "local_name": "wage_delay_violation",
+          "node_kind": "WageDelay",
+          "labels_ar": [
+            "مخالفة تأخر دفع الأجور"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#wage_delay_violation\nLocal name: wage_delay_violation\nNode kind: WageDelay\nRDF types: WageDelay\nArabic labels: مخالفة تأخر دفع الأجور",
+          "vector_rank": 3,
+          "vector_distance": 0.7907328605651855,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.023809523809523808,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#contract_fixed_term_condition",
+          "local_name": "contract_fixed_term_condition",
+          "node_kind": "ContractIsFixedTerm",
+          "labels_ar": [
+            "شرط كون العقد محدد المدة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#contract_fixed_term_condition\nLocal name: contract_fixed_term_condition\nNode kind: ContractIsFixedTerm\nRDF types: ContractIsFixedTerm\nArabic labels: شرط كون العقد محدد المدة",
+          "vector_rank": 4,
+          "vector_distance": 0.8131551742553711,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.0234375,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#pay_wages_obligation",
+          "local_name": "pay_wages_obligation",
+          "node_kind": "PayWages",
+          "labels_ar": [
+            "التزام دفع الأجور"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#pay_wages_obligation\nLocal name: pay_wages_obligation\nNode kind: PayWages\nRDF types: PayWages\nArabic labels: التزام دفع الأجور",
+          "vector_rank": 5,
+          "vector_distance": 0.8139232397079468,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.023076923076923078,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#weekly_rest_right_concept",
+          "local_name": "weekly_rest_right_concept",
+          "node_kind": "WeeklyRestRight",
+          "labels_ar": [
+            "حق العطلة الأسبوعية"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#weekly_rest_right_concept\nLocal name: weekly_rest_right_concept\nNode kind: WeeklyRestRight\nRDF types: WeeklyRestRight\nArabic labels: حق العطلة الأسبوعية",
+          "vector_rank": 6,
+          "vector_distance": 0.8139660358428955,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.022727272727272728,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#occupational_disease_concept",
+          "local_name": "occupational_disease_concept",
+          "node_kind": "LegalEvent",
+          "labels_ar": [
+            "المرض المهني"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#occupational_disease_concept\nLocal name: occupational_disease_concept\nNode kind: LegalEvent\nRDF types: LegalEvent\nArabic labels: المرض المهني",
+          "vector_rank": 7,
+          "vector_distance": 0.8159641623497009,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.022388059701492536,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+          "local_name": "delay_exceeds_seven_days_condition",
+          "node_kind": "DelayExceedsSevenDays",
+          "labels_ar": [
+            "شرط تجاوز التأخير سبعة أيام"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition\nLocal name: delay_exceeds_seven_days_condition\nNode kind: DelayExceedsSevenDays\nRDF types: DelayExceedsSevenDays\nArabic labels: شرط تجاوز التأخير سبعة أيام",
+          "vector_rank": 8,
+          "vector_distance": 0.8229010105133057,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.022058823529411766,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#wage_concept",
+          "local_name": "wage_concept",
+          "node_kind": "LaborDomainConcept",
+          "labels_ar": [
+            "الأجر"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#wage_concept\nLocal name: wage_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: الأجر",
+          "vector_rank": 10,
+          "vector_distance": 0.826474130153656,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.02142857142857143,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#end_of_service_benefit_consequence",
+          "local_name": "end_of_service_benefit_consequence",
+          "node_kind": "EndOfServiceBenefit",
+          "labels_ar": [
+            "مكافأة نهاية الخدمة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#end_of_service_benefit_consequence\nLocal name: end_of_service_benefit_consequence\nNode kind: EndOfServiceBenefit\nRDF types: EndOfServiceBenefit\nArabic labels: مكافأة نهاية الخدمة",
+          "vector_rank": 11,
+          "vector_distance": 0.8270121812820435,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.02112676056338028,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ],
+      "expanded_concept_hits": [],
+      "article_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#article_65",
+          "local_name": "article_65",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 65"
+          ],
+          "labels_en": [],
+          "article_number": 65,
+          "text_preview": "لكل عامل الحق في اجازة مرضية مدتها اربعة عشر يوماً خلال السنة الواحدة باجر كامل بناء على تقرير من الطبيب المعتمد من قبل المؤسسة، ويجوز تجديدها لمدة اربعة عشر يوماً اخرى باجر كامل اذا كان نزيل احد المستشفيات وبنصف الاجر اذا كان بناء على تقرير لجنة طبية تعتمدها المؤسسة ولم يكن نزيل احد المستشفيات.",
+          "vector_rank": 1,
+          "vector_distance": 0.49882835149765015,
+          "bm25_rank": 1,
+          "bm25_score": 28.852611541748047,
+          "fused_score": 0.2222356525899625,
+          "direct_score": 0.2222356525899625,
+          "graph_score": 3.25,
+          "paragraph_score": 0.09090909090909091,
+          "final_score": 1.0,
+          "graph_supported": true,
+          "support_paths": [
+            {
+              "seed_uri": "http://example.org/jordan-labor-law#sick_leave_right_concept",
+              "seed_label": "حق الإجازة المرضية",
+              "article_uri": "http://example.org/jordan-labor-law#article_65",
+              "score": 2.6,
+              "steps": [
+                {
+                  "direction": "outgoing",
+                  "source_uri": "http://example.org/jordan-labor-law#sick_leave_right_concept",
+                  "relation": "regulatedBy",
+                  "target_uri": "http://example.org/jordan-labor-law#article_65"
+                }
+              ]
+            },
+            {
+              "seed_uri": "http://example.org/jordan-labor-law#sick_leave_right_concept",
+              "seed_label": "حق الإجازة المرضية",
+              "article_uri": "http://example.org/jordan-labor-law#article_65",
+              "score": 3.25,
+              "steps": [
+                {
+                  "direction": "outgoing",
+                  "source_uri": "http://example.org/jordan-labor-law#sick_leave_right_concept",
+                  "relation": "supportedByArticle",
+                  "target_uri": "http://example.org/jordan-labor-law#article_65"
+                }
+              ]
+            },
+            {
+              "seed_uri": "http://example.org/jordan-labor-law#sick_leave_right_concept",
+              "seed_label": "حق الإجازة المرضية",
+              "article_uri": "http://example.org/jordan-labor-law#article_65",
+              "score": 1.625,
+              "steps": [
+                {
+                  "direction": "incoming",
+                  "source_uri": "http://example.org/jordan-labor-law#article_65",
+                  "relation": "regulates",
+                  "target_uri": "http://example.org/jordan-labor-law#sick_leave_right_concept"
+                }
+              ]
+            },
+            {
+              "seed_uri": "http://example.org/jordan-labor-law#leave_right_concept",
+              "seed_label": "حق الإجازة",
+              "article_uri": "http://example.org/jordan-labor-law#article_65",
+              "score": 0.6828887910967032,
+              "steps": [
+                {
+                  "direction": "outgoing",
+                  "source_uri": "http://example.org/jordan-labor-law#leave_right_concept",
+                  "relation": "regulatedBy",
+                  "target_uri": "http://example.org/jordan-labor-law#article_65"
+                }
+              ]
+            },
+            {
+              "seed_uri": "http://example.org/jordan-labor-law#leave_right_concept",
+              "seed_label": "حق الإجازة",
+              "article_uri": "http://example.org/jordan-labor-law#article_65",
+              "score": 0.853610988870879,
+              "steps": [
+                {
+                  "direction": "outgoing",
+                  "source_uri": "http://example.org/jordan-labor-law#leave_right_concept",
+                  "relation": "supportedByArticle",
+                  "target_uri": "http://example.org/jordan-labor-law#article_65"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "raw_mixed_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#article_65_paragraph_1",
+          "local_name": "article_65_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 65"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "لكل عامل الحق في اجازة مرضية مدتها اربعة عشر يوماً خلال السنة الواحدة باجر كامل بناء على تقرير من الطبيب المعتمد من قبل المؤسسة، ويجوز تجديدها لمدة اربعة عشر يوماً اخرى باجر كامل اذا كان نزيل احد المستشفيات وبنصف الاجر اذا كان بناء على تقرير لجنة طبية تعتمدها المؤسسة ولم يكن نزيل احد المستشفيات.",
+          "vector_rank": 1,
+          "vector_distance": 0.4923306107521057,
+          "bm25_rank": 8,
+          "bm25_score": 6.920111656188965,
+          "fused_score": 0.031099324975891997,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_65",
+          "local_name": "article_65",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 65"
+          ],
+          "labels_en": [],
+          "article_number": 65,
+          "text_preview": "لكل عامل الحق في اجازة مرضية مدتها اربعة عشر يوماً خلال السنة الواحدة باجر كامل بناء على تقرير من الطبيب المعتمد من قبل المؤسسة، ويجوز تجديدها لمدة اربعة عشر يوماً اخرى باجر كامل اذا كان نزيل احد المستشفيات وبنصف الاجر اذا كان بناء على تقرير لجنة طبية تعتمدها المؤسسة ولم يكن نزيل احد المستشفيات.",
+          "vector_rank": 2,
+          "vector_distance": 0.49882835149765015,
+          "bm25_rank": 7,
+          "bm25_score": 6.985906600952148,
+          "fused_score": 0.031054405392392875,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_66_paragraph_3",
+          "local_name": "article_66_paragraph_3",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 66 - البند 2"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "لاداء فريضة الحج ويشترط لمنح هذه الاجازة ان يكون العامل قد عمل مدة خمس سنوات متواصلة على الاقل لدى صاحب العمل، ولا تعطى هذه الاجازة الا لمرة واحدة خلال مدة الخدمة.",
+          "vector_rank": 9,
+          "vector_distance": 0.6342225670814514,
+          "bm25_rank": 14,
+          "bm25_score": 4.615208625793457,
+          "fused_score": 0.028006267136701922,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_66",
+          "local_name": "article_66",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 66"
+          ],
+          "labels_en": [],
+          "article_number": 66,
+          "text_preview": "أ . لكل عامل الحق في اجازة مدتها اربعة عشر يوماً في السنة مدفوعة الاجر في اي من الحالات التالية :\n\n     1. اذا التحق بدورة للثقافة العمالية معتمدة من الوزارة بناء على ترشيح صاحب العمل او مدير المؤسسة بالتنسيق مع\n\n         النقابة المعنية.\n\n      2. لاداء فريضة الحج ويشترط لمنح هذه الاجازة ان يكون العامل قد عمل مدة خمس سنوات متواصلة على الاقل لدى\n\n          صاحب العمل، ولا تعطى هذه الاجازة الا لمرة واحدة خلال مدة الخدمة.\n\nب. يحق للعامل الحصول على اجازة مدتها اربعة اشهر دون اجر اذا التحق للدراسة في جامعة او معهد او كلية معترف بها\n\n    بصورة رسمية.",
+          "vector_rank": 3,
+          "vector_distance": 0.524873673915863,
+          "bm25_rank": 34,
+          "bm25_score": 3.3322019577026367,
+          "fused_score": 0.0265113137453563,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_32_paragraph_1",
+          "local_name": "article_32_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 32"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "مع مراعاة احكام المادة (28) من هذا القانون يحق للعامل الذي يعمل لمدة غير محدودة ولا يخضع لاحكام قانون الضمان الاجتماعي وتنتهي خدماته لاي سبب من الاسباب الحصول على مكافأة نهاية الخدمة بمعدل اجر شهر عن كل سنة من خدمته الفعلية ويعطى عن كسور السنة مكافأة نسبية وتحتسب المكافأة على اساس آخر اجر تقاضاه خلال مدة استخدامه اما اذا كان الاجر كله او بعضه يحسب على اساس العمولة او القطعة فيعتمد لحساب المكافأة المتوسط الشهري لما تقاضاه العامل فعلاً خلال الاثني عشر شهراً السابقة لانتهاء خدمته واذا لم تبلغ خدمته هذا الحد فالمتوسط الشهري لمجموع خدمته وتعتبر الفواصل التي تقع بين عمل وآخر ولا تزيد على شهر كانها مدة استخدام متصلة عند حساب المكافأة.",
+          "vector_rank": 15,
+          "vector_distance": 0.6495077610015869,
+          "bm25_rank": 39,
+          "bm25_score": 3.073228359222412,
+          "fused_score": 0.023434343434343436,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_32",
+          "local_name": "article_32",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 32"
+          ],
+          "labels_en": [],
+          "article_number": 32,
+          "text_preview": "مع مراعاة احكام المادة (28) من هذا القانون يحق للعامل الذي يعمل لمدة غير محدودة ولا يخضع لاحكام قانون الضمان الاجتماعي وتنتهي خدماته لاي سبب من الاسباب الحصول على مكافأة نهاية الخدمة بمعدل اجر شهر عن كل سنة من خدمته الفعلية ويعطى عن كسور السنة مكافأة نسبية وتحتسب المكافأة على اساس آخر اجر تقاضاه خلال مدة استخدامه اما اذا كان الاجر كله او بعضه يحسب على اساس العمولة او القطعة فيعتمد لحساب المكافأة المتوسط الشهري لما تقاضاه العامل فعلاً خلال الاثني عشر شهراً السابقة لانتهاء خدمته واذا لم تبلغ خدمته هذا الحد فالمتوسط الشهري لمجموع خدمته وتعتبر الفواصل التي تقع بين عمل وآخر ولا تزيد على شهر كانها مدة استخدام متصلة عند حساب المكافأة.",
+          "vector_rank": 17,
+          "vector_distance": 0.6543745994567871,
+          "bm25_rank": 38,
+          "bm25_score": 3.090918779373169,
+          "fused_score": 0.02319109461966605,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_46_paragraph_1",
+          "local_name": "article_46_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 46 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يدفع الاجر خلال مدة لا تزيد على سبعة ايام من تاريخ استحقاقه ولا يجوز لصاحب العمل حسم اي جزء منه الا في الحالات التي يجيزها القانون.",
+          "vector_rank": 37,
+          "vector_distance": 0.6840871572494507,
+          "bm25_rank": 25,
+          "bm25_score": 3.6298351287841797,
+          "fused_score": 0.022073984232868403,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#SickLeaveRight",
+          "local_name": "SickLeaveRight",
+          "node_kind": "OntologyClass",
+          "labels_ar": [
+            "حق الإجازة المرضية"
+          ],
+          "labels_en": [
+            "Sick Leave Right"
+          ],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#SickLeaveRight\nLocal name: SickLeaveRight\nNode kind: OntologyClass\nRDF types: Class\nArabic labels: حق الإجازة المرضية\nEnglish labels: Sick Leave Right",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 1,
+          "bm25_score": 25.26991844177246,
+          "fused_score": 0.01639344262295082,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#sick_leave_right_concept",
+          "local_name": "sick_leave_right_concept",
+          "node_kind": "SickLeaveRight",
+          "labels_ar": [
+            "حق الإجازة المرضية"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#sick_leave_right_concept\nLocal name: sick_leave_right_concept\nNode kind: SickLeaveRight\nRDF types: SickLeaveRight\nArabic labels: حق الإجازة المرضية",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 2,
+          "bm25_score": 25.218196868896484,
+          "fused_score": 0.016129032258064516,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#LeaveRight",
+          "local_name": "LeaveRight",
+          "node_kind": "OntologyClass",
+          "labels_ar": [
+            "حق الإجازة"
+          ],
+          "labels_en": [
+            "Leave Right"
+          ],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#LeaveRight\nLocal name: LeaveRight\nNode kind: OntologyClass\nRDF types: Class\nArabic labels: حق الإجازة\nEnglish labels: Leave Right",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 3,
+          "bm25_score": 13.096296310424805,
+          "fused_score": 0.015873015873015872,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_61",
+          "local_name": "article_61",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 61"
+          ],
+          "labels_en": [],
+          "article_number": 61,
+          "text_preview": "أ .  لكل عامل الحق باجازة سنوية باجر كامل لمدة اربعة عشر يوماً عن كل سنة خدمة الا اذا تم الاتفاق على اكثر من ذلك\n\n    على ان تصبح مدة الاجازة السنوية واحداً وعشرين يوماً اذا امضى في الخدمة لدى صاحب العمل نفسه خمس سنوات\n\n     متصلة، ولا تحسب ايام العطل الرسمية والاعياد الدينية وايام العطل الاسبوعية من الاجازة السنوية الا اذا وقعت خلالها.\n\nب. اذا لم تبلغ مدة خدمة العامل السنة فيحق له الحصول على اجازة باجر بنسبة المدة التي عمل خلالها في السنة.\n\nج. يجوز تاجيل اجازة العامل عن اي سنة بالاتفاق بين العامل وصاحب العمل الى السنة التالية مباشرة لتلك السنة ويسقط\n\n    حق العامل في الاجازة المؤجلة على هذا الوجه اذا انقضت السنة التي اجلت اليها ولم يطلب استعمالها خلال تلك السنة،\n\n    ولا يجوز لصاحب العمل رفض طلب العامل للحصول على اجازته.\n\nد. لصاحب العمل ان يحدد خلال الشهر الاول من السنة تاريخ الاجازة السنوية لكل عامل وكيفية استعمالها للعامل في\n\n    مؤسسته وذلك حسب مقتضيات العمل فيها على ان يراعى في ذلك مصلحة العامل.",
+          "vector_rank": 4,
+          "vector_distance": 0.5642253756523132,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.015625,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#leave_right_concept",
+          "local_name": "leave_right_concept",
+          "node_kind": "LeaveRight",
+          "labels_ar": [
+            "حق الإجازة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#leave_right_concept\nLocal name: leave_right_concept\nNode kind: LeaveRight\nRDF types: LeaveRight\nArabic labels: حق الإجازة",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 4,
+          "bm25_score": 13.096296310424805,
+          "fused_score": 0.015625,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_61_paragraph_1",
+          "local_name": "article_61_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 61 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "لكل عامل الحق باجازة سنوية باجر كامل لمدة اربعة عشر يوماً عن كل سنة خدمة الا اذا تم الاتفاق على اكثر من ذلك على ان تصبح مدة الاجازة السنوية واحداً وعشرين يوماً اذا امضى في الخدمة لدى صاحب العمل نفسه خمس سنوات متصلة، ولا تحسب ايام العطل الرسمية والاعياد الدينية وايام العطل الاسبوعية من الاجازة السنوية الا اذا وقعت خلالها.",
+          "vector_rank": 5,
+          "vector_distance": 0.5868000388145447,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.015384615384615385,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#leave_request_event",
+          "local_name": "leave_request_event",
+          "node_kind": "LeaveRequest",
+          "labels_ar": [
+            "حدث طلب الإجازة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#leave_request_event\nLocal name: leave_request_event\nNode kind: LeaveRequest\nRDF types: LeaveRequest\nArabic labels: حدث طلب الإجازة",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 5,
+          "bm25_score": 11.701321601867676,
+          "fused_score": 0.015384615384615385,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_66_paragraph_1",
+          "local_name": "article_66_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 66 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "لكل عامل الحق في اجازة مدتها اربعة عشر يوماً في السنة مدفوعة الاجر في اي من الحالات التالية :",
+          "vector_rank": 6,
+          "vector_distance": 0.5975486040115356,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.015151515151515152,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_27_paragraph_4",
+          "local_name": "article_27_paragraph_4",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 27 - البند 3"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "العامل في اثناء اجازته السنوية او المرضية او الاجازة الممنوحة له لاغراض الثقافة العمالية او الحج او في اثناء اجازته المتفق عليها بين الطرفين للتفرغ للعمل النقابي او للالتحاق بمعهد او كلية او جامعة معترف بها.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 6,
+          "bm25_score": 8.000221252441406,
+          "fused_score": 0.015151515151515152,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_90",
+          "local_name": "article_90",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 90"
+          ],
+          "labels_en": [],
+          "article_number": 90,
+          "text_preview": "أ . اذا نشا عن اصابة العمل وفاة العامل او عجزه الكلي فيستحق على صاحب العمل تعويض يساوي اجر الف ومئتي يوم\n\n    عمل على ان لا يتجاوز التعويض خمسة الاف دينار ولا يقل عن الفي دينار.\n\nب. اذا نشا عن اصابة العمل عجز مؤقت للعامل فيستحق بدلاً يومياً يعادل (75%) من معدل اجره اليومي اعتباراً من اليوم\n\n    الذي وقعت فيه الاصابة وذلك خلال مدة المعالجة التي تحدد بناء على تقرير من المرجع الطبي اذا كانت معالجته خارج\n\n     المستشفى ويخفض ذلك البدل الى (65%) من ذلك الاجر اذا كان المصاب يعالج لدى احد مراكز العلاج المعتمدة.\n\nج. اذا نتج عن اصابة العمل عجز جزئي دائم بناء على تقرير من المرجع الطبي فيدفع للعامل تعويض على اساس نسبة\n\n    ذلك العجز الى التعويض المقرر للعجز الكلي بموجب الجدول رقم (2) الملحق بهذا القانون.\n\nد. اذا نتج عن اصابة العمل الواحدة اكثر من ضرر جسماني واحد فيستحق العامل المصاب التعويض عن كل ضرر من هذه\n\n   الاضرار وفقاً للاسس المنصوص عليها في هذا القانون على ان لا يتجاوز مجموع المبلغ الواجب دفعه في هذه الحالة\n\n   مقدار التعويض الواجب دفعه في حالة العجز الكلي.",
+          "vector_rank": 7,
+          "vector_distance": 0.6250338554382324,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.014925373134328358,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_90_paragraph_2",
+          "local_name": "article_90_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 90 - الفقرة ب"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اذا نشا عن اصابة العمل عجز مؤقت للعامل فيستحق بدلاً يومياً يعادل (75%) من معدل اجره اليومي اعتباراً من اليوم الذي وقعت فيه الاصابة وذلك خلال مدة المعالجة التي تحدد بناء على تقرير من المرجع الطبي اذا كانت معالجته خارج المستشفى ويخفض ذلك البدل الى (65%) من ذلك الاجر اذا كان المصاب يعالج لدى احد مراكز العلاج المعتمدة.",
+          "vector_rank": 8,
+          "vector_distance": 0.62807297706604,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.014705882352941176,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_23_paragraph_2",
+          "local_name": "article_23_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 23 - الفقرة ب"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يبقى عقد العمل ساري المفعول طوال مدة الاشعار وتعتبر مدة الاشعار من مدة الخدمة.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 9,
+          "bm25_score": 5.6345367431640625,
+          "fused_score": 0.014492753623188406,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_60",
+          "local_name": "article_60",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 60"
+          ],
+          "labels_en": [],
+          "article_number": 60,
+          "text_preview": "أ . يكون يوم الجمعة من كل اسبوع يوم العطلة الاسبوعية للعامل الا اذا اقتضت طبيعة العمل غير ذلك.\n\nب. يجوز للعامل بموافقة صاحب العمل جمع ايام عطلته الاسبوعية والحصول عليها خلال مدة لا تزيد على شهر.\n\nج. يكون يوم العطلة الاسبوعية للعامل باجر كامل، الا اذا كان يعمل على اساس يومي او اسبوعي فيستحق في كلتا\n\n    الحالتين اجر يوم العطلة الاسبوعية اذا عمل ستة ايام متصلة قبل اليوم المحدد للعطلة، ويستحق من ذلك الاجر بنسبة\n\n    الايام التي عمل فيها خلال الاسبوع اذا كانت ثلاثة ايام او اكثر.",
+          "vector_rank": 10,
+          "vector_distance": 0.6373871564865112,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.014285714285714285,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1229 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "ما دور الوزارة في تنظيم سوق العمل وتشغيل الأردنيين، وهل يمكن إنشاء مكاتب عامة أو ترخيص مكاتب خاصة للتشغيل؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "الأسئلة داخل نطاق قانون العمل الأردني وتتطلب استخراج أحكام الوزارة وتنظيم وتحويل مكاتب التشغيل.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.92
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 77
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_10",
+      "local_name": "article_10",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 10"
+      ],
+      "labels_en": [],
+      "article_number": 10,
+      "text": "أ . تتولى الوزارة ، بالتنسيق والتعاون مع الجهات المختصة ، مهام تنظيم سوق العمل والتوجيه المهني وتوفير فرص\n\n    العمل والتشغيل للاردنيين داخل المملكة وخارجها ولهذه الغاية يجوز لها انشاء مكاتب لتشغيل الاردنيين او الترخيص\n\n    بانشاء مكاتب خاصة لهذه الغاية .\n\nب. مع مراعاة احكام أي تشريع اخر ، يجوز للوزير الترخيص بانشاء مكاتب خاصة لتنظيم استخدام واستقدام خدم المنازل\n\n    وبستانييها وطهاتها ومن هم في حكمهم من غير الاردنيين .\n\nج. تحدد احكام وشروط انشاء المكاتب الخاصة المشار اليها في الفقرتين (أ) و(ب) من هذه المادة بما في ذلك كيفية ادارتها\n\n    واشراف الوزارة عليها وتحديد بدل الخدمات التي تقدمها هذه المكاتب بمقتضى انظمة تصدر لهذه الغاية .",
+      "final_score": 1.0,
+      "fused_score": 0.07704918032786887,
+      "direct_score": 0.07704918032786887,
+      "graph_score": 0.0,
+      "paragraph_score": 0.17424242424242425,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#article_11",
+      "local_name": "article_11",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 11"
+      ],
+      "labels_en": [],
+      "article_number": 11,
+      "text": "لا يجوز لغير مديريات التشغيل العامة ومكاتب التشغيل الخاصة المرخصة القيام باعمال الوساطة لتشغيل او تسهيل تشغيل العمال في داخل المملكة وخارجها، وللوزير اغلاق المحل المخالف لاحكام هذه المادة واحالته الى المحكمة ويعاقب كل من يخالف احكام هذه المادة بغرامة لا تقل عن مئتي دينار ولا تزيد على الف دينار او بالحبس لمدة لا تقل عن ثلاثين يوماً او بكلتا العقوبتين واقفال اي محل يستعمل لهذه الغاية ومصادرة موجوداته المتعلقة بغرض التشغيل.",
+      "final_score": 0.99,
+      "fused_score": 0.06095859133833817,
+      "direct_score": 0.06095859133833817,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+      "local_name": "work_negligence_violation",
+      "node_kind": "WorkNegligence",
+      "labels_ar": [
+        "مخالفة الإهمال في العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#work_negligence_violation\nLocal name: work_negligence_violation\nNode kind: WorkNegligence\nRDF types: WorkNegligence\nArabic labels: مخالفة الإهمال في العمل",
+      "final_score": 0.0,
+      "fused_score": 0.031129032258064515,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#work_concept",
+      "local_name": "work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#work_concept\nLocal name: work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06813108038914491,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#ministry_concept",
+      "local_name": "ministry_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "الوزارة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#ministry_concept\nLocal name: ministry_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الوزارة",
+      "final_score": 0.0,
+      "fused_score": 0.07377049180327869,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#occasional_work_concept",
+      "local_name": "occasional_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل العرضي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#occasional_work_concept\nLocal name: occasional_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل العرضي",
+      "final_score": 0.0,
+      "fused_score": 0.06942195182445543,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+      "local_name": "temporary_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل المؤقت"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#temporary_work_concept\nLocal name: temporary_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل المؤقت",
+      "final_score": 0.0,
+      "fused_score": 0.06830880562223846,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#seasonal_work_concept",
+      "local_name": "seasonal_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل الموسمي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#seasonal_work_concept\nLocal name: seasonal_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل الموسمي",
+      "final_score": 0.0,
+      "fused_score": 0.06629575905638051,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+      "local_name": "employment_contract_concept",
+      "node_kind": "EmploymentContract",
+      "labels_ar": [
+        "عقد العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employment_contract_concept\nLocal name: employment_contract_concept\nNode kind: EmploymentContract\nRDF types: EmploymentContract\nArabic labels: عقد العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06611513486513487,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_concept",
+      "local_name": "employer_concept",
+      "node_kind": "Employer",
+      "labels_ar": [
+        "صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_concept\nLocal name: employer_concept\nNode kind: Employer\nRDF types: Employer\nArabic labels: صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06588955026455026,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+      "local_name": "perform_work_obligation",
+      "node_kind": "PerformWork",
+      "labels_ar": [
+        "التزام أداء العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#perform_work_obligation\nLocal name: perform_work_obligation\nNode kind: PerformWork\nRDF types: PerformWork\nArabic labels: التزام أداء العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06318466353677621,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+      "local_name": "employer_liability_consequence",
+      "node_kind": "EmployerLiability",
+      "labels_ar": [
+        "مسؤولية صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_liability_consequence\nLocal name: employer_liability_consequence\nNode kind: EmployerLiability\nRDF types: EmployerLiability\nArabic labels: مسؤولية صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.061405935613682086,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#oral_contract_concept",
+      "local_name": "oral_contract_concept",
+      "node_kind": "OralContract",
+      "labels_ar": [
+        "عقد العمل الشفهي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#oral_contract_concept\nLocal name: oral_contract_concept\nNode kind: OralContract\nRDF types: OralContract\nArabic labels: عقد العمل الشفهي",
+      "final_score": 0.0,
+      "fused_score": 0.061346378794187036,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+      "local_name": "employers_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "نقابة أصحاب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06052206052206052,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#disclosure_employer_secrets_violation",
+      "local_name": "disclosure_employer_secrets_violation",
+      "node_kind": "DisclosureOfEmployerSecrets",
+      "labels_ar": [
+        "مخالفة إفشاء أسرار صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#disclosure_employer_secrets_violation\nLocal name: disclosure_employer_secrets_violation\nNode kind: DisclosureOfEmployerSecrets\nRDF types: DisclosureOfEmployerSecrets\nArabic labels: مخالفة إفشاء أسرار صاحب العمل",
+      "final_score": 2.640625,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 2.640625,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#follow_lawful_instructions_obligation",
+      "local_name": "follow_lawful_instructions_obligation",
+      "node_kind": "FollowLawfulInstructions",
+      "labels_ar": [
+        "التزام اتباع التعليمات المشروعة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#follow_lawful_instructions_obligation\nLocal name: follow_lawful_instructions_obligation\nNode kind: FollowLawfulInstructions\nRDF types: FollowLawfulInstructions\nArabic labels: التزام اتباع التعليمات المشروعة",
+      "final_score": 1.9500000000000002,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.9500000000000002,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#disciplinary_action_consequence",
+      "local_name": "disciplinary_action_consequence",
+      "node_kind": "DisciplinaryAction",
+      "labels_ar": [
+        "الإجراء التأديبي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#disciplinary_action_consequence\nLocal name: disciplinary_action_consequence\nNode kind: DisciplinaryAction\nRDF types: DisciplinaryAction\nArabic labels: الإجراء التأديبي",
+      "final_score": 1.625,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.625,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "diagnostics": {
+    "article_numbers": [
+      10,
+      11
+    ],
+    "concept_local_names": [
+      "work_negligence_violation",
+      "work_concept",
+      "ministry_concept",
+      "occasional_work_concept",
+      "temporary_work_concept",
+      "seasonal_work_concept",
+      "employment_contract_concept",
+      "employer_concept",
+      "perform_work_obligation",
+      "employer_liability_consequence",
+      "oral_contract_concept",
+      "employers_union_concept"
+    ],
+    "graph_supported_articles": [],
+    "concept_count": 12,
+    "expanded_concept_count": 3,
+    "article_count": 2
+  },
+  "elapsed_ms": 12554,
+  "debug": {
+    "analysis": {
+      "normalized_question": "ما دور الوزاره في تنظيم سوق العمل وتشغيل الاردنيين وهل يمكن انشاء مكاتب عامه او ترخيص مكاتب خاصه للتشغيل ما دور الوزاره في تنظيم سوق العمل وتشغيل الاردنيين وهل يمكن انشاء مكاتب عامه او ترخيص مكاتب خاصه للتشغيل دور الوزاره في تنظيم سوق العمل وتشغيل الاردنيين امكانيه انشاء مكاتب تشغيل عامه وترخيص مكاتب تشغيل خاصه دور الوزاره تنظيم سوق العمل الاردني وتوظيف الاردنيين امكانيه انشاء مكاتب تشغيل عامه وترخيص مكاتب تشغيل خاصه",
+      "issue_ids": [],
+      "planner_queries": [
+        "دور الوزارة تنظيم سوق العمل الأردني وتوظيف الأردنيين",
+        "إمكانية إنشاء مكاتب تشغيل عامة وترخيص مكاتب تشغيل خاصة"
+      ],
+      "planner_issue_labels": [
+        "دور الوزارة في تنظيم سوق العمل وتشغيل الأردنيين",
+        "إمكانية إنشاء مكاتب تشغيل عامة وترخيص مكاتب تشغيل خاصة"
+      ],
+      "max_final_articles": 3
+    },
+    "query_plan": {
+      "decision": "retrieve",
+      "confidence": 0.92,
+      "decision_reason": "الأسئلة داخل نطاق قانون العمل الأردني وتتطلب استخراج أحكام الوزارة وتنظيم وتحويل مكاتب التشغيل.",
+      "normalized_question_ar": "ما دور الوزارة في تنظيم سوق العمل وتشغيل الأردنيين، وهل يمكن إنشاء مكاتب عامة أو ترخيص مكاتب خاصة للتشغيل؟",
+      "legal_domain": "قانون العمل الأردني",
+      "atomic_issues": [
+        {
+          "issue_ar": "دور الوزارة في تنظيم سوق العمل وتشغيل الأردنيين",
+          "retrieval_query_ar": "دور الوزارة تنظيم سوق العمل الأردني وتوظيف الأردنيين",
+          "actors": [
+            "الوزارة"
+          ],
+          "conditions": [],
+          "numbers": [],
+          "requested_result_ar": "دور الوزارة في تنظيم سوق العمل وتوظيف الأردنيين"
+        },
+        {
+          "issue_ar": "إمكانية إنشاء مكاتب تشغيل عامة وترخيص مكاتب تشغيل خاصة",
+          "retrieval_query_ar": "إمكانية إنشاء مكاتب تشغيل عامة وترخيص مكاتب تشغيل خاصة",
+          "actors": [
+            "الوزارة"
+          ],
+          "conditions": [],
+          "numbers": [],
+          "requested_result_ar": "إمكانية إنشاء مكاتب تشغيل عامة والترخيص للمكاتب الخاصة"
+        }
+      ],
+      "minimum_articles": 1,
+      "maximum_articles": 3,
+      "clarification_question_ar": ""
+    },
+    "raw_preview": {
+      "question": "ما دور الوزارة في تنظيم سوق العمل وتشغيل الأردنيين، وهل يمكن إنشاء مكاتب عامة أو ترخيص مكاتب خاصة للتشغيل؟",
+      "embedding_model": "text-embedding-3-small",
+      "embedding_dimensions": 1536,
+      "embedding_input_tokens": 77,
+      "concept_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+          "local_name": "work_negligence_violation",
+          "node_kind": "WorkNegligence",
+          "labels_ar": [
+            "مخالفة الإهمال في العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#work_negligence_violation\nLocal name: work_negligence_violation\nNode kind: WorkNegligence\nRDF types: WorkNegligence\nArabic labels: مخالفة الإهمال في العمل",
+          "vector_rank": 40,
+          "vector_distance": 0.864255428314209,
+          "bm25_rank": 2,
+          "bm25_score": 10.845681190490723,
+          "fused_score": 0.031129032258064515,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#work_concept",
+          "local_name": "work_concept",
+          "node_kind": "LaborDomainConcept",
+          "labels_ar": [
+            "العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#work_concept\nLocal name: work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل",
+          "vector_rank": 15,
+          "vector_distance": 0.7999840974807739,
+          "bm25_rank": 3,
+          "bm25_score": 10.311227798461914,
+          "fused_score": 0.06813108038914491,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#ministry_concept",
+          "local_name": "ministry_concept",
+          "node_kind": "LegalActor",
+          "labels_ar": [
+            "الوزارة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#ministry_concept\nLocal name: ministry_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الوزارة",
+          "vector_rank": 1,
+          "vector_distance": 0.7471572160720825,
+          "bm25_rank": 1,
+          "bm25_score": 25.878795623779297,
+          "fused_score": 0.07377049180327869,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#occasional_work_concept",
+          "local_name": "occasional_work_concept",
+          "node_kind": "LaborDomainConcept",
+          "labels_ar": [
+            "العمل العرضي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#occasional_work_concept\nLocal name: occasional_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل العرضي",
+          "vector_rank": 2,
+          "vector_distance": 0.7639213800430298,
+          "bm25_rank": 7,
+          "bm25_score": 8.930204391479492,
+          "fused_score": 0.06942195182445543,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+          "local_name": "temporary_work_concept",
+          "node_kind": "LaborDomainConcept",
+          "labels_ar": [
+            "العمل المؤقت"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#temporary_work_concept\nLocal name: temporary_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل المؤقت",
+          "vector_rank": 7,
+          "vector_distance": 0.779370129108429,
+          "bm25_rank": 6,
+          "bm25_score": 8.930204391479492,
+          "fused_score": 0.06830880562223846,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#seasonal_work_concept",
+          "local_name": "seasonal_work_concept",
+          "node_kind": "LaborDomainConcept",
+          "labels_ar": [
+            "العمل الموسمي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#seasonal_work_concept\nLocal name: seasonal_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل الموسمي",
+          "vector_rank": 9,
+          "vector_distance": 0.7880523800849915,
+          "bm25_rank": 8,
+          "bm25_score": 8.930204391479492,
+          "fused_score": 0.06629575905638051,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "local_name": "employment_contract_concept",
+          "node_kind": "EmploymentContract",
+          "labels_ar": [
+            "عقد العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#employment_contract_concept\nLocal name: employment_contract_concept\nNode kind: EmploymentContract\nRDF types: EmploymentContract\nArabic labels: عقد العمل",
+          "vector_rank": 17,
+          "vector_distance": 0.8046797513961792,
+          "bm25_rank": 5,
+          "bm25_score": 8.930204391479492,
+          "fused_score": 0.06611513486513487,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#employer_concept",
+          "local_name": "employer_concept",
+          "node_kind": "Employer",
+          "labels_ar": [
+            "صاحب العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#employer_concept\nLocal name: employer_concept\nNode kind: Employer\nRDF types: Employer\nArabic labels: صاحب العمل",
+          "vector_rank": 21,
+          "vector_distance": 0.817931056022644,
+          "bm25_rank": 4,
+          "bm25_score": 8.9591703414917,
+          "fused_score": 0.06588955026455026,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+          "local_name": "perform_work_obligation",
+          "node_kind": "PerformWork",
+          "labels_ar": [
+            "التزام أداء العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#perform_work_obligation\nLocal name: perform_work_obligation\nNode kind: PerformWork\nRDF types: PerformWork\nArabic labels: التزام أداء العمل",
+          "vector_rank": 11,
+          "vector_distance": 0.7909826040267944,
+          "bm25_rank": 12,
+          "bm25_score": 7.9383955001831055,
+          "fused_score": 0.06318466353677621,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+          "local_name": "employer_liability_consequence",
+          "node_kind": "EmployerLiability",
+          "labels_ar": [
+            "مسؤولية صاحب العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#employer_liability_consequence\nLocal name: employer_liability_consequence\nNode kind: EmployerLiability\nRDF types: EmployerLiability\nArabic labels: مسؤولية صاحب العمل",
+          "vector_rank": 20,
+          "vector_distance": 0.8179047107696533,
+          "bm25_rank": 11,
+          "bm25_score": 7.9383955001831055,
+          "fused_score": 0.061405935613682086,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#oral_contract_concept",
+          "local_name": "oral_contract_concept",
+          "node_kind": "OralContract",
+          "labels_ar": [
+            "عقد العمل الشفهي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#oral_contract_concept\nLocal name: oral_contract_concept\nNode kind: OralContract\nRDF types: OralContract\nArabic labels: عقد العمل الشفهي",
+          "vector_rank": 26,
+          "vector_distance": 0.8358235359191895,
+          "bm25_rank": 9,
+          "bm25_score": 7.9383955001831055,
+          "fused_score": 0.061346378794187036,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+          "local_name": "employers_union_concept",
+          "node_kind": "LegalActor",
+          "labels_ar": [
+            "نقابة أصحاب العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+          "vector_rank": 18,
+          "vector_distance": 0.8057442903518677,
+          "bm25_rank": 14,
+          "bm25_score": 7.9383955001831055,
+          "fused_score": 0.06052206052206052,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ],
+      "expanded_concept_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#disclosure_employer_secrets_violation",
+          "local_name": "disclosure_employer_secrets_violation",
+          "node_kind": "DisclosureOfEmployerSecrets",
+          "labels_ar": [
+            "مخالفة إفشاء أسرار صاحب العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#disclosure_employer_secrets_violation\nLocal name: disclosure_employer_secrets_violation\nNode kind: DisclosureOfEmployerSecrets\nRDF types: DisclosureOfEmployerSecrets\nArabic labels: مخالفة إفشاء أسرار صاحب العمل",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.0,
+          "direct_score": 0.0,
+          "graph_score": 2.640625,
+          "paragraph_score": 0.0,
+          "final_score": 2.640625,
+          "graph_supported": true,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#follow_lawful_instructions_obligation",
+          "local_name": "follow_lawful_instructions_obligation",
+          "node_kind": "FollowLawfulInstructions",
+          "labels_ar": [
+            "التزام اتباع التعليمات المشروعة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#follow_lawful_instructions_obligation\nLocal name: follow_lawful_instructions_obligation\nNode kind: FollowLawfulInstructions\nRDF types: FollowLawfulInstructions\nArabic labels: التزام اتباع التعليمات المشروعة",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.0,
+          "direct_score": 0.0,
+          "graph_score": 1.9500000000000002,
+          "paragraph_score": 0.0,
+          "final_score": 1.9500000000000002,
+          "graph_supported": true,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#disciplinary_action_consequence",
+          "local_name": "disciplinary_action_consequence",
+          "node_kind": "DisciplinaryAction",
+          "labels_ar": [
+            "الإجراء التأديبي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#disciplinary_action_consequence\nLocal name: disciplinary_action_consequence\nNode kind: DisciplinaryAction\nRDF types: DisciplinaryAction\nArabic labels: الإجراء التأديبي",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.0,
+          "direct_score": 0.0,
+          "graph_score": 1.625,
+          "paragraph_score": 0.0,
+          "final_score": 1.625,
+          "graph_supported": true,
+          "support_paths": []
+        }
+      ],
+      "article_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#article_10",
+          "local_name": "article_10",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 10"
+          ],
+          "labels_en": [],
+          "article_number": 10,
+          "text_preview": "أ . تتولى الوزارة ، بالتنسيق والتعاون مع الجهات المختصة ، مهام تنظيم سوق العمل والتوجيه المهني وتوفير فرص\n\n    العمل والتشغيل للاردنيين داخل المملكة وخارجها ولهذه الغاية يجوز لها انشاء مكاتب لتشغيل الاردنيين او الترخيص\n\n    بانشاء مكاتب خاصة لهذه الغاية .\n\nب. مع مراعاة احكام أي تشريع اخر ، يجوز للوزير الترخيص بانشاء مكاتب خاصة لتنظيم استخدام واستقدام خدم المنازل\n\n    وبستانييها وطهاتها ومن هم في حكمهم من غير الاردنيين .\n\nج. تحدد احكام وشروط انشاء المكاتب الخاصة المشار اليها في الفقرتين (أ) و(ب) من هذه المادة بما في ذلك كيفية ادارتها\n\n    واشراف الوزارة عليها وتحديد بدل الخدمات التي تقدمها هذه المكاتب بمقتضى انظمة تصدر لهذه الغاية .",
+          "vector_rank": 1,
+          "vector_distance": 0.3219618797302246,
+          "bm25_rank": 1,
+          "bm25_score": 80.90078735351562,
+          "fused_score": 0.07704918032786887,
+          "direct_score": 0.07704918032786887,
+          "graph_score": 0.0,
+          "paragraph_score": 0.17424242424242425,
+          "final_score": 1.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_11",
+          "local_name": "article_11",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 11"
+          ],
+          "labels_en": [],
+          "article_number": 11,
+          "text_preview": "لا يجوز لغير مديريات التشغيل العامة ومكاتب التشغيل الخاصة المرخصة القيام باعمال الوساطة لتشغيل او تسهيل تشغيل العمال في داخل المملكة وخارجها، وللوزير اغلاق المحل المخالف لاحكام هذه المادة واحالته الى المحكمة ويعاقب كل من يخالف احكام هذه المادة بغرامة لا تقل عن مئتي دينار ولا تزيد على الف دينار او بالحبس لمدة لا تقل عن ثلاثين يوماً او بكلتا العقوبتين واقفال اي محل يستعمل لهذه الغاية ومصادرة موجوداته المتعلقة بغرض التشغيل.",
+          "vector_rank": 10,
+          "vector_distance": 0.6621846556663513,
+          "bm25_rank": 39,
+          "bm25_score": 8.800481796264648,
+          "fused_score": 0.06095859133833817,
+          "direct_score": 0.06095859133833817,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.99,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ],
+      "raw_mixed_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#article_10",
+          "local_name": "article_10",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 10"
+          ],
+          "labels_en": [],
+          "article_number": 10,
+          "text_preview": "أ . تتولى الوزارة ، بالتنسيق والتعاون مع الجهات المختصة ، مهام تنظيم سوق العمل والتوجيه المهني وتوفير فرص\n\n    العمل والتشغيل للاردنيين داخل المملكة وخارجها ولهذه الغاية يجوز لها انشاء مكاتب لتشغيل الاردنيين او الترخيص\n\n    بانشاء مكاتب خاصة لهذه الغاية .\n\nب. مع مراعاة احكام أي تشريع اخر ، يجوز للوزير الترخيص بانشاء مكاتب خاصة لتنظيم استخدام واستقدام خدم المنازل\n\n    وبستانييها وطهاتها ومن هم في حكمهم من غير الاردنيين .\n\nج. تحدد احكام وشروط انشاء المكاتب الخاصة المشار اليها في الفقرتين (أ) و(ب) من هذه المادة بما في ذلك كيفية ادارتها\n\n    واشراف الوزارة عليها وتحديد بدل الخدمات التي تقدمها هذه المكاتب بمقتضى انظمة تصدر لهذه الغاية .",
+          "vector_rank": 1,
+          "vector_distance": 0.3219618797302246,
+          "bm25_rank": 2,
+          "bm25_score": 41.41228103637695,
+          "fused_score": 0.03252247488101534,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_10_paragraph_1",
+          "local_name": "article_10_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 10 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "تتولى الوزارة ، بالتنسيق والتعاون مع الجهات المختصة ، مهام تنظيم سوق العمل والتوجيه المهني وتوفير فرص العمل والتشغيل للاردنيين داخل المملكة وخارجها ولهذه الغاية يجوز لها انشاء مكاتب لتشغيل الاردنيين او الترخيص بانشاء مكاتب خاصة لهذه الغاية .",
+          "vector_rank": 2,
+          "vector_distance": 0.46321237087249756,
+          "bm25_rank": 1,
+          "bm25_score": 47.740936279296875,
+          "fused_score": 0.03252247488101534,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_10_paragraph_2",
+          "local_name": "article_10_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 10 - الفقرة ب"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "مع مراعاة احكام أي تشريع اخر ، يجوز للوزير الترخيص بانشاء مكاتب خاصة لتنظيم استخدام واستقدام خدم المنازل وبستانييها وطهاتها ومن هم في حكمهم من غير الاردنيين .",
+          "vector_rank": 3,
+          "vector_distance": 0.48141127824783325,
+          "bm25_rank": 3,
+          "bm25_score": 24.947532653808594,
+          "fused_score": 0.031746031746031744,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_52_paragraph_1",
+          "local_name": "article_52_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 52 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يشكل مجلس الوزراء بناء على تنسيب الوزير لجنة تتالف من عدد متساو من ممثلين عن الوزارة والعمال واصحاب العمل ويعين المجلس رئيساً لها من بين اعضائها تتولى تحديد الحد الادنى للاجور مقدرا بالنقد الاردني وذلك بصفة عامة او بالنسبة لمنطقة معينة او مهنة معينة وتكون مدة العضوية فيها سنتين قابلة للتجديد.",
+          "vector_rank": 7,
+          "vector_distance": 0.6183415651321411,
+          "bm25_rank": 5,
+          "bm25_score": 11.395461082458496,
+          "fused_score": 0.030309988518943745,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_52",
+          "local_name": "article_52",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 52"
+          ],
+          "labels_en": [],
+          "article_number": 52,
+          "text_preview": "أ . يشكل مجلس الوزراء بناء على تنسيب الوزير لجنة تتالف من عدد متساو من ممثلين عن الوزارة والعمال واصحاب\n\n    العمل ويعين المجلس رئيساً لها من بين اعضائها تتولى تحديد الحد الادنى للاجور مقدرا بالنقد الاردني وذلك بصفة عامة\n\n    او بالنسبة لمنطقة معينة او مهنة معينة وتكون مدة العضوية فيها سنتين قابلة للتجديد.\n\nب. تعقد اللجنة اجتماعاتها كلما دعت الحاجة الى ذلك بدعوة من رئيسها وتقدم قراراتها الى الوزير اذا لم تكن بالاجماع\n\n    ليتولى رفعها الى مجلس الوزراء ليتخذ القرار بشانها على ان تاخذ بعين الاعتبار في تقديرها للاجر تكاليف المعيشة\n\n    التي تضعها الجهات المختصة وتنشر القرارات النهائية التي تصدر بمقتضى هذه المادة في الجريدة الرسمية بما في ذلك\n\n    تاريخ بدء العمل بها.",
+          "vector_rank": 6,
+          "vector_distance": 0.5871704816818237,
+          "bm25_rank": 10,
+          "bm25_score": 10.257516860961914,
+          "fused_score": 0.029437229437229435,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_108",
+          "local_name": "article_108",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 108"
+          ],
+          "labels_en": [],
+          "article_number": 108,
+          "text_preview": "أ . يحق لاصحاب العمل في اي مهنة تاسيس نقابة اصحاب العمل لهم لرعاية مصالحهم المهنية في ما يتعلق بتطبيق احكام\n\n    هذا القانون.\n\nب. تؤسس نقابة اصحاب العمل من قبل مؤسسين لا يقل عددهم عن ثلاثين شخصاُ من اصحاب العمل في بناء مهنة واحدة او\n\n    في مهن متماثلة او مرتبطة ببعضها او مشتركة في انتاج واحد وتحدد هذه المجموعات المهنية بقرار من الوزير\n\n    بالاتفاق مع ممثلي  نقابة اصحاب العمل  ولصاحب العمل في اي مهنة الحق في الانتساب الى نقابة اصحاب العمل  التي\n\n    تمثل مهنته او الامتناع عن ذلك.\n\nج. يشترط في المؤسس لاي نقابة من نقابات صحاب العمل ونقابات العمال وفي طالب الانتساب اليها ما يلي :\n\n    1. ان يكون اردني الجنسية.\n\n    2. ان لا يقل عمر المؤسس عن (25) سنة وعمر طالب الانتساب عن (18) سنة.\n\n    3. ان يكون غير محكوم بجناية او جنحة مخلة بالشرف والاداب العامة.",
+          "vector_rank": 8,
+          "vector_distance": 0.6203820705413818,
+          "bm25_rank": 30,
+          "bm25_score": 8.003191947937012,
+          "fused_score": 0.025816993464052286,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_12_paragraph_3",
+          "local_name": "article_12_paragraph_3",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 12 - الفقرة ج"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "تستوفي الوزارة من صاحب العمل رسماً مقابل تصريح العمل الذي تصدره لكل عامل غير اردني او تجدده بما في ذلك العمل المستثنيين من احكام هذا القانون بموجب الفقرتين (ج) و (د) من المادة (3) منه ويعتبر هذا الرسم ايراداً للخزينة ويحدد مقداره بموجب نظام.",
+          "vector_rank": 13,
+          "vector_distance": 0.6354455947875977,
+          "bm25_rank": 23,
+          "bm25_score": 8.281527519226074,
+          "fused_score": 0.02574682290807064,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_33",
+          "local_name": "article_33",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 33"
+          ],
+          "labels_en": [],
+          "article_number": 33,
+          "text_preview": "أ .  بالاضافة الى مكافاة نهاية الخدمة يحق للعامل الخاضع لانظمة خاصة للمؤسسة التي يعمل فيها تتعلق بصناديق الادخار\n\n     او التوفير او التقاعد او اي صندوق آخر مماثل الحصول على جميع الاستحقاقات الممنوحة له بموجب هذه الانظمة في\n\n     حالة انتهاء الخدمة.\n\nب.  تعتمد الانظمة الخاصة بالصناديق المنصوص عليها في الفقرة (أ) من هذه المادة من قبل الوزير او من يفوضه .\n\nج. يجوز ان ينص نظام اي من الصناديق المنصوص عليها في الفقرة (أ) من هذه المادة على ان يكون استثمار امواله كليا\n\n    او جزئيا في اسهم او حصص الشركة التي اسس فيها ذلك الصندوق .\n\nد . يكون للصناديق المنصوص عليها في الفقرة (أ) من هذه المادة شخصية اعتبارية مستقلة ويجب ان يتضمن نظام اي منها\n\n    على الامور المتعلقة بادارة الصندوق بما في ذلك ما يلي :\n\n    1. وجود هيئة عامة للصندوق تتالف من جميع العاملين الاعضاء في الصندوق تجتمع مرة واحدة على الاقل سنويا\n\n        لاقرار حسابات الصندوق ومناقشة الامور الادارية والمالية وانتخاب ممثليها في لجنة ادارة الصندوق .\n\n    2. ادارة اموال الصندوق واستثماراته من قبل لجنة يكون اعضائها من عمال المؤسسة الاعضاء في الصندوق .",
+          "vector_rank": 27,
+          "vector_distance": 0.6636300086975098,
+          "bm25_rank": 12,
+          "bm25_score": 9.962732315063477,
+          "fused_score": 0.025383141762452106,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_127_paragraph_1",
+          "local_name": "article_127_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 127"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "تعقد جلسات المحكمة العمالية ومجلس التوفيق في الوزارة وتكون الوزارة مسؤولة عن توفير المتطلبات الادارية والتسهيلات والاجهزة التي تمكنها من اعمالها.",
+          "vector_rank": 19,
+          "vector_distance": 0.652664065361023,
+          "bm25_rank": 21,
+          "bm25_score": 8.662703514099121,
+          "fused_score": 0.025003906860446942,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_33_paragraph_5",
+          "local_name": "article_33_paragraph_5",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 33 - البند 1"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "وجود هيئة عامة للصندوق تتالف من جميع العاملين الاعضاء في الصندوق تجتمع مرة واحدة على الاقل سنويا لاقرار حسابات الصندوق ومناقشة الامور الادارية والمالية وانتخاب ممثليها في لجنة ادارة الصندوق .",
+          "vector_rank": 28,
+          "vector_distance": 0.6655915975570679,
+          "bm25_rank": 14,
+          "bm25_score": 9.261323928833008,
+          "fused_score": 0.024877149877149878,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_127",
+          "local_name": "article_127",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 127"
+          ],
+          "labels_en": [],
+          "article_number": 127,
+          "text_preview": "تعقد جلسات المحكمة العمالية ومجلس التوفيق في الوزارة وتكون الوزارة مسؤولة عن توفير المتطلبات الادارية والتسهيلات والاجهزة التي تمكنها من اعمالها.",
+          "vector_rank": 30,
+          "vector_distance": 0.6675297617912292,
+          "bm25_rank": 20,
+          "bm25_score": 8.733750343322754,
+          "fused_score": 0.02361111111111111,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_10_paragraph_3",
+          "local_name": "article_10_paragraph_3",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 10 - الفقرة ج"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "تحدد احكام وشروط انشاء المكاتب الخاصة المشار اليها في الفقرتين (أ) و(ب) من هذه المادة بما في ذلك كيفية ادارتها واشراف الوزارة عليها وتحديد بدل الخدمات التي تقدمها هذه المكاتب بمقتضى انظمة تصدر لهذه الغاية .",
+          "vector_rank": 4,
+          "vector_distance": 0.5523487329483032,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.015625,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_8",
+          "local_name": "article_8",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 8"
+          ],
+          "labels_en": [],
+          "article_number": 8,
+          "text_preview": "على صاحب العمل او من ينوب عنه ما يلي :\n\nأ . ان يرسل اشعاراً الى الوزارة او الى اي من مديرياتها في منطقة العمل يتضمن عدد العمال لديه وموقع عمل كل منهم\n\n     وطبيعة عمله وتاريخ مباشرته العمل واجره وذلك في الشهر الاول من كل سنة.\n\nب. ان يحتفظ في مؤسسته بالسجلات الواجب عليه الاحتفاظ بها بما في ذلك سجلات العمال والمتدربين منهم.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 4,
+          "bm25_score": 11.417562484741211,
+          "fused_score": 0.015625,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_12",
+          "local_name": "article_12",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 12"
+          ],
+          "labels_en": [],
+          "article_number": 12,
+          "text_preview": "أ . لا يجوز استخدام اي عامل غير اردني الا بموافقة الوزير او من يفوضه شريطة ان يتطلب العمل خبرة وكفاءة غير\n\n    متوفرة لدى العمال الاردنيين او كان العدد المتوفر منهم لا يفي بالحاجة وتعطى الاولوية للخبراء والفنيين والعمال العرب.\n\nب. يجب ان يحصل العامل غير الاردني على تصريح عمل من الوزير او من يفوضه قبل استقدامه او استخدامه ولا يجوز\n\n     ان تزيد مدة التصريح على سنة واحدة قابلة للتجديد.\n\nج. تستوفي الوزارة من صاحب العمل رسماً مقابل تصريح العمل الذي تصدره لكل عامل غير اردني او تجدده بما في ذلك\n\n    العمل المستثنيين من احكام هذا القانون بموجب الفقرتين (ج) و (د) من المادة (3) منه ويعتبر هذا الرسم ايراداً للخزينة\n\n     ويحدد مقداره بموجب نظام.\n\nد. للوزير بناء على توصية من وزارة التنمية الاجتماعية ان يعفي المعوق شديد الاعاقة او ولي امره او وصيه من دفع رسم\n\n    تصريح العمل لعامل غير اردني واحد اذا كان المعوق بحاجة ماسة دائمة الى المساعدة من الغير للقيام باعباء حياته\n\n    اليومية واذا كانت مهام العامل غير الاردني تقتصر على تقديم العون للمعوق.\n\nهـ. يعاقب صاحب العمل او مدير المؤسسة حسب مقتضى الحال بغرامة لا تقل عن خمسين ديناراً ولا تزيد على مئة دينار\n\n      عن كل شهر او الجزء من الشهر عن كل عامل غير اردني يستخدم بصورة تخالف احكام هذا القانون ولا يجوز\n\n      تخفيض الغرامة عن حدها الادنى في اي حالة من الحالات او لاي سبب من الاسباب.\n\nو. تعتبر مخالفة لاحكام هذا القانون استخدام العامل غير الاردني في اي من الحالات التالية:\n\n    1. استخدامه دون الحصول على تصريح عمل.\n\n    2. استخدامه لدى صاحب عمل غير المصرح له بالعمل لديه ما لم يكن حاصلا على اذن بذلك من الجهة المختصة في\n\n        الوزارة.\n\n    3. استخدامه في مهنة غير المهنة المصرح له العمل بها.\n\nز. يصدر الوزير قرارا بتسفير العامل المخالف لاحكام هذه المادة الى خارج المملكة على نفقة صاحب العمل او مدير\n\n   المؤسسة ويتم تنفيذ هذا القرار من قبل السلطات المختصة ولا يجوز اعادة استقدام او استخدام العامل غير الاردني الذي\n\n    تم تسفيره قبل مضي ثلاث سنوات على الاقل من تاريخ تنفيذ قرار التسفير.",
+          "vector_rank": 5,
+          "vector_distance": 0.5729800462722778,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.015384615384615385,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_12_paragraph_7",
+          "local_name": "article_12_paragraph_7",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 12 - البند 2"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "استخدامه لدى صاحب عمل غير المصرح له بالعمل لديه ما لم يكن حاصلا على اذن بذلك من الجهة المختصة في الوزارة.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 6,
+          "bm25_score": 11.072847366333008,
+          "fused_score": 0.015151515151515152,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_2_definition_1",
+          "local_name": "article_2_definition_1",
+          "node_kind": "Definition",
+          "labels_ar": [
+            "الوزارة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "وزارة العمل.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 7,
+          "bm25_score": 10.563236236572266,
+          "fused_score": 0.014925373134328358,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_39",
+          "local_name": "article_39",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 39"
+          ],
+          "labels_en": [],
+          "article_number": 39,
+          "text_preview": "ينظم عقد العمل الجماعي على ثلاث نسخ اصلية على الاقل ويحتفظ كل طرف بنسخة منه وتودع النسخة الثالثة لدى الوزارة لتسجيلها في سجل خاص ويكون عقد العمل الجماعي ملزماً من التاريخ المحدد فيه وفي حالة عدم تحديد التاريخ فمن تاريخ تسجيله في الوزارة.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 8,
+          "bm25_score": 10.316542625427246,
+          "fused_score": 0.014705882352941176,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_110",
+          "local_name": "article_110",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 110"
+          ],
+          "labels_en": [],
+          "article_number": 110,
+          "text_preview": "أ . تشكل النقابات العمالية الاتحاد العام لنقابات العمال وتكون له شخصية اعتبارية وتحتفظ فيه كل نقابة بحقوقها الخاصة.\n\nب. يتكون الاتحاد من اعضاء النقابات التي يتالف منها الاتحاد ويتمتع بجميع الحقوق التي تتمتع بها النقابة.\n\nج. يحق لنقابتين او اكثر بموافقة الاتحاد العام لنقابات العمال تشكيل اتحاد مهني على ان تحصل كل منها على موافقة\n\n    الاكثرية العادية لهيئتها العامة وان تحيط المسجل علماً بذلك خطياً.\n\nد. يحق للاتحاد العام لنقابات العمال وللاتحادات المهنية المسجلة الانضمام الى اي منظمة عمالية عربية او دولية ذات اهداف\n\n   ووسائل مشروعة.\n\nهـ. تنظيم شؤون الاتحاد العام والاتحادات المهنية بنظام خاص يصدر لهذه الغاية.",
+          "vector_rank": 9,
+          "vector_distance": 0.6236340403556824,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.014492753623188406,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_2_definition_18",
+          "local_name": "article_2_definition_18",
+          "node_kind": "Definition",
+          "labels_ar": [
+            "اصابة العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اصابة العامل نتيجة حادث اثناء تادية العمل او بسببه ويعتبر في حكم ذلك الحادث ما يقع للعامل اثناء ذهابه لمباشرة عمله او عودته منه.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 9,
+          "bm25_score": 10.265483856201172,
+          "fused_score": 0.014492753623188406,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_54",
+          "local_name": "article_54",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 54"
+          ],
+          "labels_en": [],
+          "article_number": 54,
+          "text_preview": "أ . لمجلس الوزراء بناء على تنسيب الوزير ان يعين سلطة من ذوي الخبرة والاختصاص في شؤون العمل تسمى (سلطة\n\n    الاجور) تتالف من شخص او اكثر للنظر في الدعاوى المتعلقة بالاجور في منطقة معينة ومنها النقص في الاجر المدفوع\n\n    او الحسميات غير القانونية منه او تاخير دفعه او اجور ساعات العمل الاضافية على ان يتم الفصل فيها بصورة\n\n    مستعجلة.  ويشترط في قبول الدعوى ان يكون العامل على راس عمله او لم يمض على انتهاء عمله مدة تزيد على\n\n    ستة اشهر وفي حالة عدم توفر هذا الشرط فللعامل الحق في اللجوء الى المحكمة النظامية المختصة.\n\nب. لا تكون سلطة الاجور ملزمة بتطبيق الاجراءات والاصول المتبعة في المحاكم وتكون لها نفس الصلاحيات الممنوحة\n\n     للمحاكم النظامية في الامور التالية :\n\n     1. دعوة اي شخص لسماع شهادته بعد القسم واحضاره بواسطة سلطات الامن المختصة في حالة تخلفه عن الحضور.\n\n     2. الطلب من اطراف الدعوى تقديم المستندات والبيانات التي تراها ضرورية للفصل في الدعوى.\n\nج. يقدم العامل نفسه او نقابة العمال بالنيابة عنه الادعاء خطياً ويجوز تقديم ادعاء واحد من عدد من العمال اذا كانوا\n\n    يعملون في المؤسسة ذاتها وكان سبب دعواهم واحداً ولكل من الطرفين المتنازعين توكيل من ينوب عنه امام سلطة\n\n    الاجور المختصة كما يتوجب على صاحب العمل وخلال مدة لا تتجاوز سبعة ايام من تاريخ تبلغه اوراق الدعوى ، ان\n\n    يقدم الى سلطة الاجور جوابا مفصلا على لائحة الدعوى عن كل واقعة من وقائعها مرفقا به المستندات والبيانات التي\n\n    تثبت وفاءه بالاجور التي يطالب بها العامل او عدم استحقاقه لها . وللسلطة وقبل عقد جلساتها للنظر في الادعاء ان\n\n    تطلب من أي من الطرفين تزويدها باي ايضاحات او مستندات او بيانات تراها ضرورية للفصل في الدعوى .\n\nد. يجوز لسلطة الاجور ان تطلب الى صاحب العمل ضمن فترة تحددها ان يدفع للعامل الاجور المحسومة بصورة غير قانونية\n\n    او الاجور غير المدفوعة او المستحقة الاداء او التي تاخر عن دفعها في المدة المعينة لهذا الغرض ولها ان تضيف\n\n    تعويضاً تقدره شريطة ان لا يتجاوز مبلغ التعويض المبلغ المحسوم او غير المدفوع عن المدة المطالب باجور عنها،\n\n    ويشترط في ذلك ان لا يلزم صاحب العمل بدفع تعويض عن الاجور الناقصة او المتاخر دفعها اذا اقتنعت السلطة ان\n\n    التاخر كان ناجماً عن خطا بحسن نية، او عن نزاع على المبلغ الواجب دفعه او عن حدوث حالة طارئة او عن تخلف\n\n    العامل عن المطالبة بدفع الاجور او قبولها.\n\nهـ. تنظر سلطة الاجور في الدعوى المقدمة اليها بحضور الطرفين او من ينوب عنهما وتسقط الدعوى اذا تغيب العامل\n\n      المدعي وتنظر فيها بحضوره اذا غاب صاحب العمل المدعى عليه وتصدر قرارها بحق الاخير في هذه الحالة غيابياً\n\n      ويكون قرارها قابلاً للاستئناف لدى محكمة الاستئناف خلال عشرة ايام من تاريخ تبليغه اذا كان المبلغ المحكوم به\n\n      للعامل يزيد على مئة دينار.\n\nو. يتم تنفيذ قرارات سلطة ا",
+          "vector_rank": 10,
+          "vector_distance": 0.6255447864532471,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.014285714285714285,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ]
+    }
+  }
+}

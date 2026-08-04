@@ -1,0 +1,1797 @@
+{
+  "benchmark_name": "Jordanian Labor Law Generation Benchmark — Frozen Real Retrieval 20",
+  "benchmark_version": "1.1.0",
+  "created_at_utc": "2026-08-02T18:20:02.758946+00:00",
+  "frozen": true,
+  "input_contract": "retrieval.v1",
+  "output_contract": "generation.v1",
+  "input_mode": "frozen_actual_retrieval_outputs",
+  "question_count": 20,
+  "scope": "Generation is evaluated from the exact retrieval.v1 JSON outputs created by the deployed retrieval pipeline. The generation runner does not rerun retrieval.",
+  "interpretation": {
+    "retrieval_context_complete": "All required gold articles were present in the actual retrieval output.",
+    "retrieval_limited": "The actual retrieval route or articles were incomplete; generation fact completeness is not attributed to the prompt.",
+    "generation_evaluable": "Only complete retrieval contexts are included in strict generation-quality accuracy."
+  },
+  "cases": [
+    {
+      "id": "G01",
+      "source_case_id": "UNSEEN50-U06",
+      "question": "كم يستطيع صاحب العمل أن يقتطع شهرياً من الأجر لاسترداد سلفة أعطاها للعامل؟",
+      "articles": [
+        47
+      ],
+      "reference_answer_ar": "يجوز لصاحب العمل حسم أقساط من أجر العامل لاسترداد السلفة التي قدمها له، بشرط ألا يزيد كل قسط على 10% من الأجر [المادة 47].",
+      "required_facts": [
+        {
+          "name": "deduction is for recovering an employer advance",
+          "any_of": [
+            [
+              "استرداد",
+              "سلف",
+              "اجر"
+            ],
+            [
+              "حسم",
+              "سلف",
+              "اجر"
+            ]
+          ]
+        },
+        {
+          "name": "limit applies to each installment",
+          "any_of": [
+            [
+              "كل قسط",
+              "10%"
+            ],
+            [
+              "القسط",
+              "10%"
+            ],
+            [
+              "كل قسط",
+              "عشره",
+              "بالمئه"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "advance incorrectly presented as the only lawful deduction",
+          "pattern": "لا يجوز .* الا .*استرداد .*سلف"
+        },
+        {
+          "name": "10 percent incorrectly converted into a monthly cap",
+          "pattern": "(10%.*شهري|شهري.*10%)"
+        }
+      ],
+      "key_points_policy": "empty",
+      "max_answer_chars": 450,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g01_retrieval.json",
+      "retrieval_sha256": "45c85987f257bb48428110b2b2ad7c5bffb1a10b91fd83a05826d31be85e2098",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          47
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 13662
+      }
+    },
+    {
+      "id": "G02",
+      "source_case_id": "UNSEEN50-U03",
+      "question": "ما الحد الأقصى لمدة تجربة العامل، وماذا يصبح العقد إذا استمر بعد انتهاء التجربة؟",
+      "articles": [
+        35
+      ],
+      "reference_answer_ar": "لا يجوز أن تتجاوز مدة التجربة ثلاثة أشهر. وإذا استمر العامل في عمله بعد انتهائها، يصبح العقد غير محدد المدة، وتُحسب مدة التجربة ضمن خدمته [المادة 35].",
+      "required_facts": [
+        {
+          "name": "maximum trial period is three months",
+          "any_of": [
+            [
+              "ثلاثه اشهر"
+            ],
+            [
+              "3 اشهر"
+            ]
+          ]
+        },
+        {
+          "name": "continued work converts the contract to indefinite duration",
+          "any_of": [
+            [
+              "استمر",
+              "غير محدد"
+            ],
+            [
+              "بعد انتهاء",
+              "غير محدوده"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [],
+      "key_points_policy": "empty",
+      "max_answer_chars": 500,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g02_retrieval.json",
+      "retrieval_sha256": "2f07d0a64fcb355b122dabf8c851894e0e9fed62844aece749c6da21db918505",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          35
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 14068
+      }
+    },
+    {
+      "id": "G03",
+      "source_case_id": "DEV20-Q10",
+      "question": "أعمل لدى صاحب العمل نفسه منذ ست سنوات، كم يوم إجازة سنوية مدفوعة أستحق؟",
+      "articles": [
+        61
+      ],
+      "reference_answer_ar": "تستحق إجازة سنوية مدفوعة مدتها 21 يوماً، لأن خدمتك لدى صاحب العمل نفسه تجاوزت خمس سنوات متصلة [المادة 61].",
+      "required_facts": [
+        {
+          "name": "entitlement is 21 days",
+          "any_of": [
+            [
+              "21 يوما"
+            ],
+            [
+              "واحد وعشرين يوما"
+            ]
+          ]
+        },
+        {
+          "name": "threshold is five continuous years with the same employer",
+          "any_of": [
+            [
+              "خمس سنوات",
+              "متصله",
+              "صاحب العمل نفسه"
+            ],
+            [
+              "5 سنوات",
+              "متصله",
+              "صاحب العمل نفسه"
+            ],
+            [
+              "خمس سنوات",
+              "متواصله",
+              "صاحب العمل نفسه"
+            ]
+          ]
+        },
+        {
+          "name": "leave is fully paid",
+          "any_of": [
+            [
+              "باجر كامل"
+            ],
+            [
+              "مدفوع"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [],
+      "key_points_policy": "empty",
+      "max_answer_chars": 450,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g03_retrieval.json",
+      "retrieval_sha256": "b7c5f0dd1fa0d75382907290fc9250f41b5b30d136d5afdb271873e61c35ea62",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          61
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 10723
+      }
+    },
+    {
+      "id": "G04",
+      "source_case_id": "DEV20-Q11",
+      "question": "كم مدة الإجازة المرضية المدفوعة، وهل يمكن تجديدها؟",
+      "articles": [
+        65
+      ],
+      "reference_answer_ar": "للعامل إجازة مرضية لمدة 14 يوماً في السنة بأجر كامل بناءً على تقرير الطبيب المعتمد. ويمكن تجديدها 14 يوماً أخرى بأجر كامل إذا كان العامل نزيل مستشفى، أو بنصف الأجر إذا استند التجديد إلى تقرير لجنة طبية معتمدة ولم يكن العامل نزيل مستشفى [المادة 65].",
+      "required_facts": [
+        {
+          "name": "initial leave is fourteen days",
+          "any_of": [
+            [
+              "14 يوما",
+              "اجازه مرضيه"
+            ],
+            [
+              "اربعه عشر يوما",
+              "اجازه مرضيه"
+            ],
+            [
+              "14 يوما",
+              "الاجازه المرضيه"
+            ]
+          ]
+        },
+        {
+          "name": "initial leave is full pay",
+          "any_of": [
+            [
+              "14 يوما",
+              "اجر كامل"
+            ]
+          ]
+        },
+        {
+          "name": "renewal is another fourteen days",
+          "any_of": [
+            [
+              "تجديد",
+              "14 يوما"
+            ],
+            [
+              "تجديد",
+              "اربعه عشر يوما"
+            ]
+          ]
+        },
+        {
+          "name": "hospitalized renewal is full pay",
+          "any_of": [
+            [
+              "مستشفى",
+              "اجر كامل"
+            ],
+            [
+              "نزيل",
+              "اجر كامل"
+            ]
+          ]
+        },
+        {
+          "name": "non-hospital medical committee renewal is half pay",
+          "any_of": [
+            [
+              "لجنه طبيه",
+              "نصف الاجر",
+              "لم يكن",
+              "مستشفى"
+            ],
+            [
+              "لجنه طبيه",
+              "نصف اجر",
+              "غير نزيل"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "hospitalized worker incorrectly assigned half pay",
+          "pattern": "(مستشفى.*نصف الاجر|نصف الاجر.*مستشفى)(?!.*لم يكن)"
+        }
+      ],
+      "key_points_policy": "optional",
+      "max_answer_chars": 900,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g04_retrieval.json",
+      "retrieval_sha256": "2ffd38ac7eac6ea3937fe5e803f9aa67e97be30f34ccb05ded435fc176ef6ad0",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          65
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 16828
+      }
+    },
+    {
+      "id": "G05",
+      "source_case_id": "DEV20-Q12",
+      "question": "ما مدة إجازة الأمومة المدفوعة، وكم يجب أن يكون منها بعد الولادة؟",
+      "articles": [
+        70
+      ],
+      "reference_answer_ar": "إجازة الأمومة مدفوعة الأجر مجموعها عشرة أسابيع قبل الولادة وبعدها، على ألا تقل المدة بعد الولادة عن ستة أسابيع [المادة 70].",
+      "required_facts": [
+        {
+          "name": "total maternity leave is ten weeks",
+          "any_of": [
+            [
+              "عشره اسابيع"
+            ],
+            [
+              "10 اسابيع"
+            ]
+          ]
+        },
+        {
+          "name": "at least six weeks must follow birth",
+          "any_of": [
+            [
+              "بعد",
+              "سته اسابيع"
+            ],
+            [
+              "بعد",
+              "6 اسابيع"
+            ]
+          ]
+        },
+        {
+          "name": "leave is fully paid",
+          "any_of": [
+            [
+              "باجر كامل"
+            ],
+            [
+              "مدفوعه الاجر"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "six weeks incorrectly placed before birth",
+          "pattern": "سته اسابيع.*قبل (الوضع|الولاده)"
+        }
+      ],
+      "key_points_policy": "empty",
+      "max_answer_chars": 450,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g05_retrieval.json",
+      "retrieval_sha256": "1c289ae45486066bff7620936d290948f9cb8ea108f70dc24e23da37fd03a6a7",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          70
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 15319
+      }
+    },
+    {
+      "id": "G06",
+      "source_case_id": "DEV20-Q14",
+      "question": "كم يجب أن أتقاضى عن ساعة العمل الإضافية وعن العمل في يوم العطلة الأسبوعية؟",
+      "articles": [
+        59
+      ],
+      "reference_answer_ar": "يستحق العامل عن ساعة العمل الإضافية أجراً لا يقل عن 125% من أجره المعتاد، وعن العمل في يوم العطلة الأسبوعية أجراً إضافياً لا يقل عن 150% من أجره المعتاد [المادة 59].",
+      "required_facts": [
+        {
+          "name": "overtime rate is at least 125 percent",
+          "any_of": [
+            [
+              "اضافيه",
+              "125%"
+            ]
+          ]
+        },
+        {
+          "name": "weekly holiday rate is at least 150 percent",
+          "any_of": [
+            [
+              "العطله الاسبوعيه",
+              "150%"
+            ],
+            [
+              "عطلته الاسبوعيه",
+              "150%"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "weekly holiday incorrectly assigned 125 percent",
+          "pattern": "العطله الاسبوعيه.*125%"
+        }
+      ],
+      "key_points_policy": "optional",
+      "max_answer_chars": 550,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g06_retrieval.json",
+      "retrieval_sha256": "d5eb1e3f1ee9576f489a33d1cb845fb7ef40261b3717b43e7af299f0a41d3211",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          59
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 15223
+      }
+    },
+    {
+      "id": "G07",
+      "source_case_id": "UNSEEN50-U28",
+      "question": "المصنع وقف مؤقت غصب عن صاحبه، شو بصير برواتبنا بأول عشر أيام وبعدها؟",
+      "articles": [
+        50
+      ],
+      "reference_answer_ar": "إذا كان توقف العمل المؤقت بسبب لا يُعزى إلى صاحب العمل ولا يستطيع دفعه، يستحق العامل الأجر الكامل عن الأيام العشرة الأولى من التوقف خلال السنة، ثم نصف الأجر عن المدة الزائدة، على ألا يتجاوز مجموع التعطل المدفوع الأجر ستين يوماً في السنة [المادة 50].",
+      "required_facts": [
+        {
+          "name": "rule requires an unavoidable cause not attributable to employer",
+          "any_of": [
+            [
+              "سبب",
+              "لا يعزى",
+              "صاحب العمل"
+            ],
+            [
+              "خارج",
+              "اراده",
+              "صاحب العمل"
+            ],
+            [
+              "سبب",
+              "لا يعزوه",
+              "صاحب العمل"
+            ]
+          ]
+        },
+        {
+          "name": "first ten days receive full wage",
+          "any_of": [
+            [
+              "عشره ايام",
+              "الاجر الكامل"
+            ],
+            [
+              "10 ايام",
+              "اجر كامل"
+            ],
+            [
+              "الايام العشره",
+              "الاجر الكامل"
+            ],
+            [
+              "عشره ايام",
+              "اجره كاملا"
+            ]
+          ]
+        },
+        {
+          "name": "later period receives half wage",
+          "any_of": [
+            [
+              "بعد",
+              "نصف اجر"
+            ],
+            [
+              "المده الزائده",
+              "نصف الاجر"
+            ],
+            [
+              "نصف اجره",
+              "المده التي تزيد"
+            ]
+          ]
+        },
+        {
+          "name": "paid stoppage is capped at sixty days per year",
+          "any_of": [
+            [
+              "ستين يوما",
+              "السنه"
+            ],
+            [
+              "60 يوما",
+              "السنه"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [],
+      "key_points_policy": "optional",
+      "max_answer_chars": 800,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g07_retrieval.json",
+      "retrieval_sha256": "99768acc03e45ae021c06c331ef3a7d4e8a2f6d9395eea0ecaa46aed751973f5",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          50
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 17204
+      }
+    },
+    {
+      "id": "G08",
+      "source_case_id": "UNSEEN50-U31",
+      "question": "مؤسسة فيها 250 عاملاً؛ ما الحد الأدنى لعدد العمال ذوي الإعاقة المؤهلين مهنياً الواجب تشغيلهم إذا كانت طبيعة العمل تسمح؟",
+      "articles": [
+        13
+      ],
+      "reference_answer_ar": "الحد الأدنى هو خمسة عمال مؤهلين مهنياً؛ لأن النسبة المطلوبة لا تقل عن 2% من مجموع 250 عاملاً، متى كانت طبيعة العمل تسمح بذلك [المادة 13].",
+      "required_facts": [
+        {
+          "name": "calculated minimum is five workers",
+          "any_of": [
+            [
+              "خمسه عمال"
+            ],
+            [
+              "5 عمال"
+            ]
+          ]
+        },
+        {
+          "name": "statutory percentage is two percent",
+          "any_of": [
+            [
+              "2%"
+            ]
+          ]
+        },
+        {
+          "name": "nature of work must permit employing them",
+          "any_of": [
+            [
+              "طبيعه العمل",
+              "تسمح"
+            ],
+            [
+              "سمحت",
+              "طبيعه العمل"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "incorrect answer of two workers",
+          "pattern": "الحد الادنى.*عاملين"
+        }
+      ],
+      "key_points_policy": "empty",
+      "max_answer_chars": 500,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g08_retrieval.json",
+      "retrieval_sha256": "acd8a90cbe6e8b8de499a8f8b2187524cf9e09e23b567d24e87508a75c298c4c",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          13
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 14570
+      }
+    },
+    {
+      "id": "G09",
+      "source_case_id": "UNSEEN50-U32",
+      "question": "ما الحدود القانونية العادية لساعات العمل اليومية والأسبوعية، وما الحد الأقصى لمجموع العمل والراحة في اليوم؟",
+      "articles": [
+        56
+      ],
+      "reference_answer_ar": "الحد العادي هو ثماني ساعات يومياً أو 48 ساعة أسبوعياً، ولا يدخل وقت الطعام والراحة في ساعات العمل. ويجوز توزيع العمل والراحة بحيث لا يزيد مجموعهما على 11 ساعة في اليوم [المادة 56].",
+      "required_facts": [
+        {
+          "name": "daily work limit is eight hours",
+          "any_of": [
+            [
+              "ثماني ساعات",
+              "يوم"
+            ],
+            [
+              "8 ساعات",
+              "يوم"
+            ]
+          ]
+        },
+        {
+          "name": "weekly work limit is forty-eight hours",
+          "any_of": [
+            [
+              "48 ساعه",
+              "اسبوع"
+            ]
+          ]
+        },
+        {
+          "name": "meal and rest time is excluded from work hours",
+          "any_of": [
+            [
+              "لا يحسب",
+              "الطعام",
+              "الراحه"
+            ],
+            [
+              "لا يدخل",
+              "الطعام",
+              "الراحه"
+            ],
+            [
+              "لا يحتسب",
+              "الطعام",
+              "الراحه"
+            ]
+          ]
+        },
+        {
+          "name": "combined work and rest maximum is eleven hours",
+          "any_of": [
+            [
+              "العمل",
+              "الراحه",
+              "11 ساعه"
+            ],
+            [
+              "مجموع",
+              "احدى عشره ساعه"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "eleven hours incorrectly described as actual work",
+          "pattern": "11 ساعه (عمل|عمل فعلي)"
+        }
+      ],
+      "key_points_policy": "optional",
+      "max_answer_chars": 650,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g09_retrieval.json",
+      "retrieval_sha256": "e35670af8d7a8182d544df5dd71cc60135de9b38e47368fabcc5aaabd20cf75e",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          56
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 9973
+      }
+    },
+    {
+      "id": "G10",
+      "source_case_id": "HOLDOUT20-H05",
+      "question": "اطّلع مفتش العمل أثناء التفتيش على أسرار المنشأة؛ ما الالتزام الذي يسبق مباشرته العمل وما واجبه تجاه تلك الأسرار؟",
+      "articles": [
+        6
+      ],
+      "reference_answer_ar": "يجب على من يتولى التفتيش أن يوقّع تصريحاً مشفوعاً بالقسم بأن يؤدي عمله بأمانة وإخلاص، وأن يمتنع عن إفشاء الأسرار التي يطلع عليها بحكم عمله [المادة 6].",
+      "required_facts": [
+        {
+          "name": "sworn declaration is required",
+          "any_of": [
+            [
+              "تصريح",
+              "القسم"
+            ],
+            [
+              "تصريح",
+              "مشبوعا",
+              "قسم"
+            ]
+          ]
+        },
+        {
+          "name": "work must be performed honestly and faithfully",
+          "any_of": [
+            [
+              "امانه",
+              "اخلاص"
+            ]
+          ]
+        },
+        {
+          "name": "secrets must not be disclosed",
+          "any_of": [
+            [
+              "لا يفشي",
+              "الاسرار"
+            ],
+            [
+              "يمتنع",
+              "افشاء",
+              "الاسرار"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [],
+      "key_points_policy": "empty",
+      "max_answer_chars": 500,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g10_retrieval.json",
+      "retrieval_sha256": "15902308986a60fa701efbf9bd8ccc866b47fdb2181f0b01929c42e2e3b59fe9",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          19,
+          6
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [
+          19
+        ],
+        "context_state": "complete",
+        "elapsed_ms": 19406
+      }
+    },
+    {
+      "id": "G11",
+      "source_case_id": "HOLDOUT20-H10",
+      "question": "مفتش العمل أنذر صاحب الشغل يشيل المخالفة وما شالها؛ قديش المهلة وشو ممكن يصير بالمؤسسة والغرامة؟",
+      "articles": [
+        9
+      ],
+      "reference_answer_ar": "يجوز للمفتش أن يطلب إزالة المخالفة خلال مدة لا تتجاوز سبعة أيام من تبليغ الإنذار الخطي. فإذا لم تُزل، يجوز للوزير أو من يفوضه إغلاق المؤسسة حتى إزالة المخالفة أو صدور قرار المحكمة. وتحكم المحكمة بإزالة المخالفة وبغرامة من 50 إلى 500 دينار، ولا يجوز تخفيضها عن حدها الأدنى [المادة 9].",
+      "required_facts": [
+        {
+          "name": "removal period is at most seven days",
+          "any_of": [
+            [
+              "لا تزيد",
+              "سبعه ايام"
+            ],
+            [
+              "لا تتجاوز",
+              "7 ايام"
+            ],
+            [
+              "لا تتجاوز",
+              "سبعه ايام"
+            ]
+          ]
+        },
+        {
+          "name": "period starts from written warning notification",
+          "any_of": [
+            [
+              "تبليغ",
+              "انذار",
+              "خطي"
+            ],
+            [
+              "تبلغه",
+              "الانذار",
+              "الخطي"
+            ]
+          ]
+        },
+        {
+          "name": "minister or delegate may close establishment",
+          "any_of": [
+            [
+              "الوزير",
+              "يفوض",
+              "اغلاق"
+            ],
+            [
+              "الوزير",
+              "اغلاق المؤسسه"
+            ],
+            [
+              "الوزير",
+              "من يفوضه",
+              "اغلاق"
+            ],
+            [
+              "للوزير",
+              "من يفوضه",
+              "اغلاق"
+            ]
+          ]
+        },
+        {
+          "name": "closure lasts until removal or court decision",
+          "any_of": [
+            [
+              "لحين",
+              "ازاله",
+              "قرار المحكمه"
+            ],
+            [
+              "حتى",
+              "ازاله",
+              "صدور قرار"
+            ]
+          ]
+        },
+        {
+          "name": "fine range is 50 to 500 dinars",
+          "any_of": [
+            [
+              "50",
+              "500",
+              "دينار"
+            ],
+            [
+              "خمسين",
+              "خمسمائه",
+              "دينار"
+            ],
+            [
+              "خمسين",
+              "خمسمائة",
+              "دينار"
+            ]
+          ]
+        },
+        {
+          "name": "fine may not be reduced below minimum",
+          "any_of": [
+            [
+              "لا يجوز",
+              "تخفيض",
+              "الحد الادنى"
+            ],
+            [
+              "لا يجوز",
+              "تخفيضها",
+              "الحد الادنى"
+            ],
+            [
+              "لا يجوز",
+              "تخفيضها",
+              "الحد الادني"
+            ],
+            [
+              "لا يجوز",
+              "تخفيضها",
+              "حدها الادني"
+            ],
+            [
+              "لا يجوز تخفيض",
+              "الحد الادنى"
+            ],
+            [
+              "لا يجوز",
+              "تخفيض",
+              "حدها الادني"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "seven days incorrectly stated as minimum",
+          "pattern": "سبعه ايام.*على الاقل"
+        },
+        {
+          "name": "incorrect 5000 dinar maximum",
+          "pattern": "5000"
+        }
+      ],
+      "key_points_policy": "optional",
+      "max_answer_chars": 950,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g11_retrieval.json",
+      "retrieval_sha256": "a5e6213a8411ac57de3171cf994de46f63b63b1e88e20d8d28a85973fdf0a923",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          9
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 14176
+      }
+    },
+    {
+      "id": "G12",
+      "source_case_id": "HOLDOUT20-H12",
+      "question": "كم يجب أن يكون عدد مؤسسي نقابة أصحاب العمل، وما الحد الأدنى لعمر المؤسس وطالب الانتساب؟",
+      "articles": [
+        108
+      ],
+      "reference_answer_ar": "يجب ألا يقل عدد المؤسسين عن 30 شخصاً من أصحاب العمل. ويجب ألا يقل عمر المؤسس عن 25 سنة، وعمر طالب الانتساب عن 18 سنة [المادة 108].",
+      "required_facts": [
+        {
+          "name": "minimum founders is thirty",
+          "any_of": [
+            [
+              "30",
+              "مؤسس"
+            ],
+            [
+              "ثلاثين",
+              "مؤسس"
+            ]
+          ]
+        },
+        {
+          "name": "founder minimum age is twenty-five",
+          "any_of": [
+            [
+              "المؤسس",
+              "25"
+            ]
+          ]
+        },
+        {
+          "name": "applicant minimum age is eighteen",
+          "any_of": [
+            [
+              "طالب الانتساب",
+              "18"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "founder and applicant ages reversed",
+          "pattern": "المؤسس.*18"
+        },
+        {
+          "name": "applicant incorrectly set to twenty-five",
+          "pattern": "طالب الانتساب.*25"
+        }
+      ],
+      "key_points_policy": "empty",
+      "max_answer_chars": 550,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g12_retrieval.json",
+      "retrieval_sha256": "d942ceff3f8b9050c67799b86acbf28f6645f3c09212a315882dcb3b9f20dcfc",
+      "actual_retrieval": {
+        "behavior": "abstain",
+        "article_numbers": [],
+        "missing_required_articles": [
+          108
+        ],
+        "extra_articles": [],
+        "context_state": "route_mismatch",
+        "elapsed_ms": 10734
+      }
+    },
+    {
+      "id": "G13",
+      "source_case_id": "HOLDOUT20-H13",
+      "question": "إذا أرادت النقابة حل نفسها اختيارياً، ما نسبة موافقة الأعضاء المطلوبة وخلال كم يوماً يجب إشعار الوزير والاتحاد؟",
+      "articles": [
+        106
+      ],
+      "reference_answer_ar": "يستلزم الحل الاختياري موافقة ثلثي الأعضاء المسددين لاشتراكاتهم في اجتماع غير عادي للهيئة العامة مخصص للحل. ويجب إشعار الوزير والاتحاد العام لنقابات العمال خلال 15 يوماً من صدور القرار [المادة 106].",
+      "required_facts": [
+        {
+          "name": "approval requires two thirds",
+          "any_of": [
+            [
+              "ثلثي",
+              "الاعضاء"
+            ],
+            [
+              "ثلثي",
+              "اعضائها"
+            ]
+          ]
+        },
+        {
+          "name": "members must have paid subscriptions",
+          "any_of": [
+            [
+              "المسددين",
+              "اشتراكات"
+            ],
+            [
+              "مسددي",
+              "اشتراكات"
+            ]
+          ]
+        },
+        {
+          "name": "decision occurs in an extraordinary general assembly meeting",
+          "any_of": [
+            [
+              "اجتماع",
+              "غير عادي",
+              "الهيئه العامه"
+            ],
+            [
+              "اجتماع",
+              "غير عادي",
+              "للهيئه العامه"
+            ]
+          ]
+        },
+        {
+          "name": "minister and federation are notified within fifteen days",
+          "any_of": [
+            [
+              "الوزير",
+              "الاتحاد",
+              "15 يوما"
+            ],
+            [
+              "الوزير",
+              "الاتحاد",
+              "خمسه عشر يوما"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "simple majority incorrectly sufficient",
+          "pattern": "الاغلبيه البسيطه"
+        },
+        {
+          "name": "incorrect thirty-day notice",
+          "pattern": "30 يوما|ثلاثين يوما"
+        }
+      ],
+      "key_points_policy": "optional",
+      "max_answer_chars": 800,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g13_retrieval.json",
+      "retrieval_sha256": "6698ffe7ccc2a40a03d6df30c8d39917cda745b2042ead34d31f9f38c4f78b01",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          106
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 20176
+      }
+    },
+    {
+      "id": "G14",
+      "source_case_id": "HOLDOUT20-H04",
+      "question": "ما الموضوعات الأساسية التي يجب أن يتضمنها النظام الداخلي لنقابة العمال؟",
+      "articles": [
+        100
+      ],
+      "reference_answer_ar": "يجب أن يتضمن النظام الداخلي للنقابة: اسمها وعنوان مركزها، وغاياتها، وإجراءات الانتساب والفصل، وإنشاء الفروع واللجان، وتنظيم الهيئة الإدارية وانتخابها واجتماعاتها وشواغرها وصلاحياتها، وحقوق الأعضاء والتزاماتهم وعقوباتهم، والخدمات والمساعدات المالية، وتعيين موظفي النقابة وإنهاء خدماتهم، وحفظ الأموال والدفاتر والقيود المالية، وإجراءات اجتماعات الهيئة العامة العادية وغير العادية [المادة 100].",
+      "required_facts": [
+        {
+          "name": "union name and headquarters address",
+          "any_of": [
+            [
+              "اسم النقابه",
+              "عنوان",
+              "مركز"
+            ],
+            [
+              "اسمها",
+              "عنوان مركزها"
+            ]
+          ]
+        },
+        {
+          "name": "union purposes",
+          "any_of": [
+            [
+              "غايات"
+            ]
+          ]
+        },
+        {
+          "name": "membership admission and dismissal",
+          "any_of": [
+            [
+              "انتساب",
+              "فصل"
+            ]
+          ]
+        },
+        {
+          "name": "branches and committees",
+          "any_of": [
+            [
+              "فروع",
+              "لجان"
+            ]
+          ]
+        },
+        {
+          "name": "administrative board governance",
+          "any_of": [
+            [
+              "الهيئه الاداريه",
+              "انتخاب",
+              "اجتماعات"
+            ]
+          ]
+        },
+        {
+          "name": "member rights obligations and discipline",
+          "any_of": [
+            [
+              "حقوق",
+              "التزامات",
+              "عقوبات"
+            ]
+          ]
+        },
+        {
+          "name": "services and financial assistance",
+          "any_of": [
+            [
+              "الخدمات",
+              "مساعدات",
+              "ماليه"
+            ]
+          ]
+        },
+        {
+          "name": "appointment and termination of union staff",
+          "any_of": [
+            [
+              "تعيين",
+              "موظف",
+              "انهاء"
+            ]
+          ]
+        },
+        {
+          "name": "funds books and financial records",
+          "any_of": [
+            [
+              "اموال",
+              "دفاتر",
+              "قيود"
+            ]
+          ]
+        },
+        {
+          "name": "ordinary and extraordinary general assembly meetings",
+          "any_of": [
+            [
+              "الهيئه العامه",
+              "العاديه",
+              "غير العاديه"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [],
+      "key_points_policy": "optional",
+      "max_answer_chars": 2300,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g14_retrieval.json",
+      "retrieval_sha256": "7ea16ec4918bc2d8ef179a8ba5c4eaf8f6fc8581cc4aa4b98cc4016fe15e85b2",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          100
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 15644
+      }
+    },
+    {
+      "id": "G15",
+      "source_case_id": "HOLDOUT20-H07",
+      "question": "صدر قرار من المحكمة العمالية وفيه غموض وخطأ حسابي؛ كيف يمكن تفسيره أو تصحيحه ومن يطلب ذلك؟",
+      "articles": [
+        126
+      ],
+      "reference_answer_ar": "تفسر المحكمة العمالية قرارها لإزالة الغموض بناءً على طلب الوزير أو أحد أطراف النزاع، من دون الخروج عن النتائج التي توصل إليها القرار. ولها في أي وقت تصحيح الأخطاء الكتابية أو الحسابية من تلقاء نفسها أو بناءً على طلب الوزير أو أحد الخصوم [المادة 126].",
+      "required_facts": [
+        {
+          "name": "interpretation requested by minister or dispute party",
+          "any_of": [
+            [
+              "تفسير",
+              "الوزير",
+              "اطراف النزاع"
+            ],
+            [
+              "تفسير",
+              "الوزير",
+              "احد الاطراف"
+            ],
+            [
+              "تفسير",
+              "الوزير",
+              "احد اطراف النزاع"
+            ],
+            [
+              "تفسر",
+              "الوزير",
+              "احد اطراف النزاع"
+            ]
+          ]
+        },
+        {
+          "name": "interpretation removes ambiguity without changing outcome",
+          "any_of": [
+            [
+              "الغموض",
+              "لا يخرج",
+              "النتائج"
+            ],
+            [
+              "الغموض",
+              "دون",
+              "النتائج"
+            ]
+          ]
+        },
+        {
+          "name": "court may correct clerical or arithmetic errors at any time",
+          "any_of": [
+            [
+              "اي وقت",
+              "الاخطاء",
+              "الحسابيه"
+            ],
+            [
+              "اي وقت",
+              "الكتابيه",
+              "الحسابيه"
+            ],
+            [
+              "في كل وقت",
+              "الاخطاء",
+              "الحسابيه"
+            ]
+          ]
+        },
+        {
+          "name": "correction may be sua sponte or requested",
+          "any_of": [
+            [
+              "من تلقاء نفسها",
+              "الوزير",
+              "الخصوم"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "any person incorrectly allowed to request",
+          "pattern": "اي شخص.*طلب"
+        }
+      ],
+      "key_points_policy": "optional",
+      "max_answer_chars": 950,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g15_retrieval.json",
+      "retrieval_sha256": "0ad1de312b5f2f04f97715001fbe3ca155341cf156d9b510c2d0e9764401dd43",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          126
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 18816
+      }
+    },
+    {
+      "id": "G16",
+      "source_case_id": "UNSEEN50-U36",
+      "question": "كيف يوثق عقد العمل الجماعي لدى الوزارة، وما أقصى مدة للعقد المحدد وكيف ينهى العقد غير المحدد؟",
+      "articles": [
+        39,
+        40
+      ],
+      "reference_answer_ar": "ينظم عقد العمل الجماعي في ثلاث نسخ أصلية على الأقل؛ يحتفظ كل طرف بنسخة وتودع الثالثة لدى الوزارة لتسجيلها [المادة 39]. ولا يجوز أن تتجاوز مدة العقد المحدد سنتين. أما العقد غير المحدد، فيجوز لأي طرف إنهاؤه بعد مضي سنتين على الأقل من تنفيذه، بإشعار الطرف الآخر قبل شهر على الأقل وإبلاغ الوزارة بنسخة من الإشعار [المادة 40].",
+      "required_facts": [
+        {
+          "name": "at least three original copies",
+          "any_of": [
+            [
+              "ثلاث نسخ",
+              "اصليه"
+            ],
+            [
+              "3 نسخ",
+              "اصليه"
+            ],
+            [
+              "النسخ الثلاث",
+              "اصليه"
+            ]
+          ]
+        },
+        {
+          "name": "each party keeps a copy and third goes to ministry",
+          "any_of": [
+            [
+              "كل طرف",
+              "نسخه",
+              "الوزاره"
+            ]
+          ]
+        },
+        {
+          "name": "fixed-term collective agreement maximum is two years",
+          "any_of": [
+            [
+              "العقد المحدد",
+              "سنتين"
+            ],
+            [
+              "مده معينه",
+              "سنتين"
+            ]
+          ]
+        },
+        {
+          "name": "indefinite agreement can be ended after two years",
+          "any_of": [
+            [
+              "غير المحدد",
+              "بعد",
+              "سنتين"
+            ],
+            [
+              "غير معينه",
+              "سنتان",
+              "انهائه"
+            ],
+            [
+              "غير محدده",
+              "سنتان",
+              "انهائه"
+            ]
+          ]
+        },
+        {
+          "name": "at least one month notice to other party",
+          "any_of": [
+            [
+              "اشعار",
+              "شهر",
+              "الطرف الاخر"
+            ]
+          ]
+        },
+        {
+          "name": "copy of notice sent to ministry",
+          "any_of": [
+            [
+              "الوزاره",
+              "نسخه",
+              "الاشعار"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "incorrect three-year maximum",
+          "pattern": "ثلاث سنوات|3 سنوات"
+        },
+        {
+          "name": "incorrect one-week termination notice",
+          "pattern": "اشعار.*اسبوع"
+        }
+      ],
+      "key_points_policy": "optional",
+      "max_answer_chars": 1100,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g16_retrieval.json",
+      "retrieval_sha256": "c428676348782e91fa0d32ddc02a00d556026a62277b44de6f843d872e472c17",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          39,
+          40,
+          41
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [
+          41
+        ],
+        "context_state": "complete",
+        "elapsed_ms": 20414
+      }
+    },
+    {
+      "id": "G17",
+      "source_case_id": "UNSEEN50-U38",
+      "question": "أريد تشغيل شاب عمره خمسة عشر عاماً؛ هل يجوز تشغيله، وما المستندات المطلوبة لو كان في السن المسموح؟",
+      "articles": [
+        73,
+        76
+      ],
+      "reference_answer_ar": "لا يجوز تشغيل من لم يكمل السادسة عشرة من عمره، ولذلك لا يجوز تشغيل الشاب البالغ 15 عاماً [المادة 73]. وإذا كان الحدث في السن المسموح، فيجب تقديم صورة مصدقة عن شهادة الميلاد، وشهادة لياقة صحية للعمل من طبيب مختص مصدقة من وزارة الصحة، وموافقة خطية من ولي الأمر، مع حفظها في ملف خاص بالحدث [المادة 76].",
+      "required_facts": [
+        {
+          "name": "fifteen-year-old may not be employed",
+          "any_of": [
+            [
+              "لا يجوز",
+              "15"
+            ],
+            [
+              "لم يكمل",
+              "السادسه عشره"
+            ]
+          ]
+        },
+        {
+          "name": "certified birth certificate copy",
+          "any_of": [
+            [
+              "صوره",
+              "مصدقه",
+              "شهاده الميلاد"
+            ]
+          ]
+        },
+        {
+          "name": "health fitness certificate from specialist ratified by health ministry",
+          "any_of": [
+            [
+              "شهاده",
+              "لياقه",
+              "طبيب مختص",
+              "وزاره الصحه"
+            ]
+          ]
+        },
+        {
+          "name": "written guardian consent",
+          "any_of": [
+            [
+              "موافقه",
+              "ولي",
+              "خطيه"
+            ]
+          ]
+        },
+        {
+          "name": "documents retained in special file",
+          "any_of": [
+            [
+              "ملف خاص",
+              "الحدث"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [],
+      "key_points_policy": "optional",
+      "max_answer_chars": 1050,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g17_retrieval.json",
+      "retrieval_sha256": "d788d0704389afdd5ad5b783adaeebdbdd2e2f219191c7aacf6df4ca30f14fc9",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          73
+        ],
+        "missing_required_articles": [
+          76
+        ],
+        "extra_articles": [],
+        "context_state": "partial",
+        "elapsed_ms": 19586
+      }
+    },
+    {
+      "id": "G18",
+      "source_case_id": "FINAL30-F20",
+      "question": "ما الذي يجب تحديده في عقد التدريب بشأن المدة والمراحل والأجر، ومتى يجوز إنهاؤه إذا تعذر التنفيذ أو أصبح الاستمرار خطراً على صحة المتدرب؟",
+      "articles": [
+        37,
+        38
+      ],
+      "reference_answer_ar": "يجب أن يحدد عقد التدريب مدته ومراحله المتعاقبة والأجر المستحق في كل مرحلة، وألا يقل أجر المرحلة الأخيرة عن الحد الأدنى لعمل مماثل، وألا يحدد الأجر على أساس القطعة أو الإنتاج [المادة 37]. ويجوز لأي من الطرفين طلب إنهائه إذا استحال تنفيذ شروطه لأسباب خارجة عن إرادتهما، أو إذا كان استمرار المتدرب يهدد سلامته أو صحته وثبت ذلك بتقرير مفتش العمل أو لجنة طبية معتمدة [المادة 38].",
+      "required_facts": [
+        {
+          "name": "contract states duration and successive stages",
+          "any_of": [
+            [
+              "مدته",
+              "مراحله"
+            ]
+          ]
+        },
+        {
+          "name": "contract states wage for every stage",
+          "any_of": [
+            [
+              "الاجر",
+              "كل مرحله"
+            ]
+          ]
+        },
+        {
+          "name": "final-stage wage not below minimum for similar work",
+          "any_of": [
+            [
+              "المرحله الاخيره",
+              "الحد الادنى",
+              "عمل مماثل"
+            ]
+          ]
+        },
+        {
+          "name": "wage may not be based on piecework or production",
+          "any_of": [
+            [
+              "لا",
+              "القطعه",
+              "الانتاج"
+            ]
+          ]
+        },
+        {
+          "name": "termination allowed if performance becomes impossible for external reasons",
+          "any_of": [
+            [
+              "استحال",
+              "تنفيذ",
+              "خارجه",
+              "اراده"
+            ],
+            [
+              "استحال",
+              "تنفيذ",
+              "خارجه",
+              "ارادت"
+            ]
+          ]
+        },
+        {
+          "name": "health or safety threat must be proven by inspector or medical committee",
+          "any_of": [
+            [
+              "سلامته",
+              "صحته",
+              "مفتش العمل",
+              "لجنه طبيه"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "piecework incorrectly permitted as training wage basis",
+          "pattern": "يجوز.*الاجر.*(القطعه|الانتاج)"
+        }
+      ],
+      "key_points_policy": "optional",
+      "max_answer_chars": 1250,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g18_retrieval.json",
+      "retrieval_sha256": "b5d990725d7429a47d98dd17b8703ce338f08ae987c063cf805ca5d0743e45b6",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          36,
+          37,
+          38
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [
+          36
+        ],
+        "context_state": "complete",
+        "elapsed_ms": 14782
+      }
+    },
+    {
+      "id": "G19",
+      "source_case_id": "FINAL30-F23",
+      "question": "إذا وصل النزاع إلى مجلس التوفيق، ما التقرير والمهلة المطلوبة عند نجاح التسوية أو فشلها، وهل يحق للطرفين توكيل محامين أمام المجلس؟",
+      "articles": [
+        122,
+        123
+      ],
+      "reference_answer_ar": "عند التوصل إلى تسوية كلية أو جزئية، يقدم مجلس التوفيق للوزير تقريراً مرفقاً بالتسوية الموقعة. وعند فشل التسوية، يقدم تقريراً يبين أسباب النزاع والإجراءات المتخذة وأسباب عدم إنهائه وتوصيات المجلس. ويجب إنهاء إجراءات التوفيق وتقديم التقرير خلال مدة لا تتجاوز 21 يوماً من إحالة النزاع [المادة 122]. ولا يجوز لأي من الطرفين توكيل محامين أمام مجلس التوفيق [المادة 123].",
+      "required_facts": [
+        {
+          "name": "successful settlement report includes signed settlement",
+          "any_of": [
+            [
+              "تسويه",
+              "تقرير",
+              "موقعه"
+            ]
+          ]
+        },
+        {
+          "name": "failed settlement report explains dispute procedures failure and recommendations",
+          "any_of": [
+            [
+              "اسباب النزاع",
+              "الاجراءات",
+              "عدم",
+              "التوصيات"
+            ],
+            [
+              "اسباب النزاع",
+              "الاجراءات",
+              "عدم",
+              "توصيات"
+            ]
+          ]
+        },
+        {
+          "name": "conciliation must finish and report within twenty-one days",
+          "any_of": [
+            [
+              "21 يوما",
+              "احاله النزاع"
+            ],
+            [
+              "واحد وعشرين يوما",
+              "احاله"
+            ]
+          ]
+        },
+        {
+          "name": "lawyers may not be appointed before council",
+          "any_of": [
+            [
+              "لا يجوز",
+              "توكيل",
+              "محامين"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [
+        {
+          "name": "lawyers incorrectly allowed before council",
+          "pattern": "(?<!لا )يجوز .*توكيل .*محامين"
+        }
+      ],
+      "key_points_policy": "optional",
+      "max_answer_chars": 1250,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g19_retrieval.json",
+      "retrieval_sha256": "4c12fef092b75c8e0bf600ac71523481a603c2915f686ea7b7dbf6aac045b172",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          121,
+          122,
+          123
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [
+          121
+        ],
+        "context_state": "complete",
+        "elapsed_ms": 16477
+      }
+    },
+    {
+      "id": "G20",
+      "source_case_id": "HOLDOUT20-H14",
+      "question": "على من تكون تسوية التوفيق أو قرار المحكمة العمالية ملزمين، ومن أي تاريخ يبدأ تنفيذ كل منهما؟",
+      "articles": [
+        130,
+        131
+      ],
+      "reference_answer_ar": "تلزم التسوية أو قرار المحكمة العمالية أطراف النزاع، وخلف صاحب العمل بمن فيهم الورثة الذين انتقلت إليهم المؤسسة، والعاملين وقت النزاع، وكذلك من يُستخدمون لاحقاً إذا نص التقرير أو القرار على ذلك ولم يوجد مانع قانوني [المادة 130]. وينفذ قرار المحكمة من التاريخ الذي تعينه، أما التسوية فتسري من التاريخ المتفق عليه، أو من تاريخ توقيع تقريرها إذا لم يتفق الأطراف على تاريخ [المادة 131].",
+      "required_facts": [
+        {
+          "name": "binding on dispute parties",
+          "any_of": [
+            [
+              "اطراف النزاع"
+            ]
+          ]
+        },
+        {
+          "name": "binding on employer successor including heirs",
+          "any_of": [
+            [
+              "خلف",
+              "صاحب العمل",
+              "ورث"
+            ]
+          ]
+        },
+        {
+          "name": "binding on current and later workers conditionally",
+          "any_of": [
+            [
+              "العاملين",
+              "لاحقا",
+              "اذا",
+              "القرار"
+            ],
+            [
+              "الاشخاص",
+              "يستخدمون",
+              "فيما بعد",
+              "اذا"
+            ],
+            [
+              "كانوا يعملون",
+              "يوظف فيما بعد",
+              "اذا ورد"
+            ]
+          ]
+        },
+        {
+          "name": "court decision begins on date set by court",
+          "any_of": [
+            [
+              "قرار المحكمه",
+              "التاريخ",
+              "تعينه"
+            ]
+          ]
+        },
+        {
+          "name": "settlement begins on agreed date or signature date",
+          "any_of": [
+            [
+              "التسويه",
+              "التاريخ المتفق",
+              "تاريخ التوقيع"
+            ],
+            [
+              "التسويه",
+              "التاريخ المتفق",
+              "تاريخ توقيع"
+            ],
+            [
+              "التسويه",
+              "التاريخ الذي اتفق",
+              "تاريخ التوقيع"
+            ]
+          ]
+        }
+      ],
+      "forbidden_patterns": [],
+      "key_points_policy": "optional",
+      "max_answer_chars": 1300,
+      "expected_behavior": "retrieve",
+      "retrieval_file": "g20_retrieval.json",
+      "retrieval_sha256": "86d3f7719ca6644a5c4c49f6ddc493c1fcd86517ca71b2bf23834c7cf40cccdc",
+      "actual_retrieval": {
+        "behavior": "retrieve",
+        "article_numbers": [
+          130,
+          131
+        ],
+        "missing_required_articles": [],
+        "extra_articles": [],
+        "context_state": "complete",
+        "elapsed_ms": 14974
+      }
+    }
+  ],
+  "evaluation_rubric_revision": {
+    "base_benchmark_version": "1.0.0",
+    "retrieval_snapshot_changed": false,
+    "retrieval_hashes_changed": false,
+    "changes": [
+      "Arabic digit/word equivalence for G09 and G11.",
+      "Arabic morphology and word-order alternatives for G07 and G16.",
+      "No genuine legal requirement was removed; G15 and the remaining G16 omissions are still strict failures."
+    ]
+  }
+}

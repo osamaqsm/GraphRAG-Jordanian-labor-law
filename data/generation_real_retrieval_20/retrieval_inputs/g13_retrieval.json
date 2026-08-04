@@ -1,0 +1,1073 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "إذا أرادت النقابة حل نفسها اختيارياً، ما نسبة موافقة الأعضاء المطلوبة وخلال كم يوماً يجب إشعار الوزير والاتحاد؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "المسألة ضمن نطاق قانون العمل الأردني وتتعلق بإجراءات حل نقابة اختيارياً، وتستلزم استخراج أحكام تتعلق بنسبة موافقة الأعضاء وفترة إشعار الجهات المختصة.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.82
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 81
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_106",
+      "local_name": "article_106",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 106"
+      ],
+      "labels_en": [],
+      "article_number": 106,
+      "text": "تحل النقابة او نقابة اصحاب العمل اختيارياً بموافقة ثلثي اعضائها المسددين لاشتراكاتهم في اجتماع غير عادي تعقده الهيئة العامة للنقابة او  نقابة اصحاب العمل لهذه الغاية دون غيرها وتتم تصفية اموالها وحقوقها والتصرف بها في هذه الحالة وفقاً لاحكام النظام الداخلي ويجب اشعار الوزير والاتحاد العام لنقابات العمال بقرار الحل خلال خمسة عشر يوماً من تاريخ صدوره وينشر في الجريدة الرسمية.",
+      "final_score": 1.0,
+      "fused_score": 0.07652035959809625,
+      "direct_score": 0.07652035959809625,
+      "graph_score": 0.0,
+      "paragraph_score": 0.09090909090909091,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#collective_labor_dispute_concept",
+      "local_name": "collective_labor_dispute_concept",
+      "node_kind": "LegalEvent",
+      "labels_ar": [
+        "النزاع العمالي الجماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#collective_labor_dispute_concept\nLocal name: collective_labor_dispute_concept\nNode kind: LegalEvent\nRDF types: LegalEvent\nArabic labels: النزاع العمالي الجماعي",
+      "final_score": 0.0,
+      "fused_score": 0.024193548387096774,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#trade_union_concept",
+      "local_name": "trade_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "النقابة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#trade_union_concept\nLocal name: trade_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: النقابة",
+      "final_score": 0.0,
+      "fused_score": 0.07377049180327869,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#minister_concept",
+      "local_name": "minister_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "الوزير"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#minister_concept\nLocal name: minister_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الوزير",
+      "final_score": 0.0,
+      "fused_score": 0.07111436950146627,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+      "local_name": "employers_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "نقابة أصحاب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.023809523809523808,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+      "local_name": "collective_employment_contract_concept",
+      "node_kind": "EmploymentRelation",
+      "labels_ar": [
+        "عقد العمل الجماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#collective_employment_contract_concept\nLocal name: collective_employment_contract_concept\nNode kind: EmploymentRelation\nRDF types: EmploymentRelation\nArabic labels: عقد العمل الجماعي",
+      "final_score": 0.0,
+      "fused_score": 0.0234375,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#general_secretary_concept",
+      "local_name": "general_secretary_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "الأمين العام"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#general_secretary_concept\nLocal name: general_secretary_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الأمين العام",
+      "final_score": 0.0,
+      "fused_score": 0.023076923076923078,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+      "local_name": "assign_agreed_work_obligation",
+      "node_kind": "AssignAgreedWork",
+      "labels_ar": [
+        "التزام إسناد العمل المتفق عليه"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#assign_agreed_work_obligation\nLocal name: assign_agreed_work_obligation\nNode kind: AssignAgreedWork\nRDF types: AssignAgreedWork\nArabic labels: التزام إسناد العمل المتفق عليه",
+      "final_score": 0.0,
+      "fused_score": 0.022388059701492536,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#weekly_rest_right_concept",
+      "local_name": "weekly_rest_right_concept",
+      "node_kind": "WeeklyRestRight",
+      "labels_ar": [
+        "حق العطلة الأسبوعية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#weekly_rest_right_concept\nLocal name: weekly_rest_right_concept\nNode kind: WeeklyRestRight\nRDF types: WeeklyRestRight\nArabic labels: حق العطلة الأسبوعية",
+      "final_score": 0.0,
+      "fused_score": 0.022058823529411766,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#leave_request_event",
+      "local_name": "leave_request_event",
+      "node_kind": "LeaveRequest",
+      "labels_ar": [
+        "حدث طلب الإجازة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#leave_request_event\nLocal name: leave_request_event\nNode kind: LeaveRequest\nRDF types: LeaveRequest\nArabic labels: حدث طلب الإجازة",
+      "final_score": 0.0,
+      "fused_score": 0.021739130434782608,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_concept",
+      "local_name": "wage_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "الأجر"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_concept\nLocal name: wage_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: الأجر",
+      "final_score": 0.0,
+      "fused_score": 0.02142857142857143,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#dismissal_event",
+      "local_name": "dismissal_event",
+      "node_kind": "Dismissal",
+      "labels_ar": [
+        "حدث الفصل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#dismissal_event\nLocal name: dismissal_event\nNode kind: Dismissal\nRDF types: Dismissal\nArabic labels: حدث الفصل",
+      "final_score": 0.0,
+      "fused_score": 0.02112676056338028,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#ministry_concept",
+      "local_name": "ministry_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "الوزارة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#ministry_concept\nLocal name: ministry_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الوزارة",
+      "final_score": 0.0,
+      "fused_score": 0.020833333333333332,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      106
+    ],
+    "concept_local_names": [
+      "collective_labor_dispute_concept",
+      "trade_union_concept",
+      "minister_concept",
+      "employers_union_concept",
+      "collective_employment_contract_concept",
+      "general_secretary_concept",
+      "assign_agreed_work_obligation",
+      "weekly_rest_right_concept",
+      "leave_request_event",
+      "wage_concept",
+      "dismissal_event",
+      "ministry_concept"
+    ],
+    "graph_supported_articles": [],
+    "concept_count": 12,
+    "expanded_concept_count": 0,
+    "article_count": 1
+  },
+  "elapsed_ms": 20176,
+  "debug": {
+    "analysis": {
+      "normalized_question": "اذا ارادت النقابه حل نفسها اختياريا ما نسبه موافقه الاعضاء المطلوبه وخلال كم يوما يجب اشعار الوزير والاتحاد اذا ارادت النقابه حل نفسها اختياريا ما نسبه موافقه الاعضاء المطلوبه وخلال كم يوما يجب اشعار الوزير والاتحاد نسبه موافقه الاعضاء اللازمه لحل النقابه اختياريا مده اشعار الوزير والاتحاد بقرار حل النقابه نسبه موافقه الاعضاء لحل النقابه اختياريا مده اشعار الوزير والاتحاد بقرار الحل",
+      "issue_ids": [],
+      "planner_queries": [
+        "نسبة موافقة الأعضاء لحل النقابة اختيارياً",
+        "مدة إشعار الوزير والاتحاد بقرار الحل"
+      ],
+      "planner_issue_labels": [
+        "نسبة موافقة الأعضاء اللازمة لحل النقابة اختيارياً",
+        "مدة إشعار الوزير والاتحاد بقرار حل النقابة"
+      ],
+      "max_final_articles": 3
+    },
+    "query_plan": {
+      "decision": "retrieve",
+      "confidence": 0.82,
+      "decision_reason": "المسألة ضمن نطاق قانون العمل الأردني وتتعلق بإجراءات حل نقابة اختيارياً، وتستلزم استخراج أحكام تتعلق بنسبة موافقة الأعضاء وفترة إشعار الجهات المختصة.\n",
+      "normalized_question_ar": "إذا أرادت النقابة حل نفسها اختيارياً، ما نسبة موافقة الأعضاء المطلوبة وخلال كم يوماً يجب إشعار الوزير والاتحاد؟",
+      "legal_domain": "Labor Law (Jordan)",
+      "atomic_issues": [
+        {
+          "issue_ar": "نسبة موافقة الأعضاء اللازمة لحل النقابة اختيارياً",
+          "retrieval_query_ar": "نسبة موافقة الأعضاء لحل النقابة اختيارياً",
+          "actors": [
+            "النقابة",
+            "الجهة التنظيمية المعنية"
+          ],
+          "conditions": [
+            "حل النقابة اختيارياً"
+          ],
+          "numbers": [],
+          "requested_result_ar": "النسبة المطلوبة"
+        },
+        {
+          "issue_ar": "مدة إشعار الوزير والاتحاد بقرار حل النقابة",
+          "retrieval_query_ar": "مدة إشعار الوزير والاتحاد بقرار الحل",
+          "actors": [
+            "النقابة",
+            "الوزير",
+            "الاتحاد"
+          ],
+          "conditions": [
+            "حل النقابة اختيارياً"
+          ],
+          "numbers": [],
+          "requested_result_ar": "المدة الزمنية للإشعار"
+        }
+      ],
+      "minimum_articles": 1,
+      "maximum_articles": 3,
+      "clarification_question_ar": ""
+    },
+    "raw_preview": {
+      "question": "إذا أرادت النقابة حل نفسها اختيارياً، ما نسبة موافقة الأعضاء المطلوبة وخلال كم يوماً يجب إشعار الوزير والاتحاد؟",
+      "embedding_model": "text-embedding-3-small",
+      "embedding_dimensions": 1536,
+      "embedding_input_tokens": 81,
+      "concept_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#collective_labor_dispute_concept",
+          "local_name": "collective_labor_dispute_concept",
+          "node_kind": "LegalEvent",
+          "labels_ar": [
+            "النزاع العمالي الجماعي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#collective_labor_dispute_concept\nLocal name: collective_labor_dispute_concept\nNode kind: LegalEvent\nRDF types: LegalEvent\nArabic labels: النزاع العمالي الجماعي",
+          "vector_rank": 2,
+          "vector_distance": 0.7818641662597656,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.024193548387096774,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#trade_union_concept",
+          "local_name": "trade_union_concept",
+          "node_kind": "LegalActor",
+          "labels_ar": [
+            "النقابة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#trade_union_concept\nLocal name: trade_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: النقابة",
+          "vector_rank": 1,
+          "vector_distance": 0.7640682458877563,
+          "bm25_rank": 1,
+          "bm25_score": 23.183456420898438,
+          "fused_score": 0.07377049180327869,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#minister_concept",
+          "local_name": "minister_concept",
+          "node_kind": "LegalActor",
+          "labels_ar": [
+            "الوزير"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#minister_concept\nLocal name: minister_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الوزير",
+          "vector_rank": 6,
+          "vector_distance": 0.8120667338371277,
+          "bm25_rank": 2,
+          "bm25_score": 21.899778366088867,
+          "fused_score": 0.07111436950146627,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+          "local_name": "employers_union_concept",
+          "node_kind": "LegalActor",
+          "labels_ar": [
+            "نقابة أصحاب العمل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+          "vector_rank": 3,
+          "vector_distance": 0.7959240078926086,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.023809523809523808,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+          "local_name": "collective_employment_contract_concept",
+          "node_kind": "EmploymentRelation",
+          "labels_ar": [
+            "عقد العمل الجماعي"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#collective_employment_contract_concept\nLocal name: collective_employment_contract_concept\nNode kind: EmploymentRelation\nRDF types: EmploymentRelation\nArabic labels: عقد العمل الجماعي",
+          "vector_rank": 4,
+          "vector_distance": 0.8007749915122986,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.0234375,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#general_secretary_concept",
+          "local_name": "general_secretary_concept",
+          "node_kind": "LegalActor",
+          "labels_ar": [
+            "الأمين العام"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#general_secretary_concept\nLocal name: general_secretary_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الأمين العام",
+          "vector_rank": 5,
+          "vector_distance": 0.8050582408905029,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.023076923076923078,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#assign_agreed_work_obligation",
+          "local_name": "assign_agreed_work_obligation",
+          "node_kind": "AssignAgreedWork",
+          "labels_ar": [
+            "التزام إسناد العمل المتفق عليه"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#assign_agreed_work_obligation\nLocal name: assign_agreed_work_obligation\nNode kind: AssignAgreedWork\nRDF types: AssignAgreedWork\nArabic labels: التزام إسناد العمل المتفق عليه",
+          "vector_rank": 7,
+          "vector_distance": 0.8235250115394592,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.022388059701492536,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#weekly_rest_right_concept",
+          "local_name": "weekly_rest_right_concept",
+          "node_kind": "WeeklyRestRight",
+          "labels_ar": [
+            "حق العطلة الأسبوعية"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#weekly_rest_right_concept\nLocal name: weekly_rest_right_concept\nNode kind: WeeklyRestRight\nRDF types: WeeklyRestRight\nArabic labels: حق العطلة الأسبوعية",
+          "vector_rank": 8,
+          "vector_distance": 0.8292706608772278,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.022058823529411766,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#leave_request_event",
+          "local_name": "leave_request_event",
+          "node_kind": "LeaveRequest",
+          "labels_ar": [
+            "حدث طلب الإجازة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#leave_request_event\nLocal name: leave_request_event\nNode kind: LeaveRequest\nRDF types: LeaveRequest\nArabic labels: حدث طلب الإجازة",
+          "vector_rank": 9,
+          "vector_distance": 0.8318347334861755,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.021739130434782608,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#wage_concept",
+          "local_name": "wage_concept",
+          "node_kind": "LaborDomainConcept",
+          "labels_ar": [
+            "الأجر"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#wage_concept\nLocal name: wage_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: الأجر",
+          "vector_rank": 10,
+          "vector_distance": 0.8320176005363464,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.02142857142857143,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#dismissal_event",
+          "local_name": "dismissal_event",
+          "node_kind": "Dismissal",
+          "labels_ar": [
+            "حدث الفصل"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#dismissal_event\nLocal name: dismissal_event\nNode kind: Dismissal\nRDF types: Dismissal\nArabic labels: حدث الفصل",
+          "vector_rank": 11,
+          "vector_distance": 0.8423598408699036,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.02112676056338028,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#ministry_concept",
+          "local_name": "ministry_concept",
+          "node_kind": "LegalActor",
+          "labels_ar": [
+            "الوزارة"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "URI: http://example.org/jordan-labor-law#ministry_concept\nLocal name: ministry_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الوزارة",
+          "vector_rank": 12,
+          "vector_distance": 0.8444746136665344,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.020833333333333332,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ],
+      "expanded_concept_hits": [],
+      "article_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#article_106",
+          "local_name": "article_106",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 106"
+          ],
+          "labels_en": [],
+          "article_number": 106,
+          "text_preview": "تحل النقابة او نقابة اصحاب العمل اختيارياً بموافقة ثلثي اعضائها المسددين لاشتراكاتهم في اجتماع غير عادي تعقده الهيئة العامة للنقابة او  نقابة اصحاب العمل لهذه الغاية دون غيرها وتتم تصفية اموالها وحقوقها والتصرف بها في هذه الحالة وفقاً لاحكام النظام الداخلي ويجب اشعار الوزير والاتحاد العام لنقابات العمال بقرار الحل خلال خمسة عشر يوماً من تاريخ صدوره وينشر في الجريدة الرسمية.",
+          "vector_rank": 1,
+          "vector_distance": 0.47073471546173096,
+          "bm25_rank": 1,
+          "bm25_score": 52.73143005371094,
+          "fused_score": 0.07652035959809625,
+          "direct_score": 0.07652035959809625,
+          "graph_score": 0.0,
+          "paragraph_score": 0.09090909090909091,
+          "final_score": 1.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ],
+      "raw_mixed_hits": [
+        {
+          "uri": "http://example.org/jordan-labor-law#article_106",
+          "local_name": "article_106",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 106"
+          ],
+          "labels_en": [],
+          "article_number": 106,
+          "text_preview": "تحل النقابة او نقابة اصحاب العمل اختيارياً بموافقة ثلثي اعضائها المسددين لاشتراكاتهم في اجتماع غير عادي تعقده الهيئة العامة للنقابة او  نقابة اصحاب العمل لهذه الغاية دون غيرها وتتم تصفية اموالها وحقوقها والتصرف بها في هذه الحالة وفقاً لاحكام النظام الداخلي ويجب اشعار الوزير والاتحاد العام لنقابات العمال بقرار الحل خلال خمسة عشر يوماً من تاريخ صدوره وينشر في الجريدة الرسمية.",
+          "vector_rank": 1,
+          "vector_distance": 0.47073471546173096,
+          "bm25_rank": 1,
+          "bm25_score": 22.27003288269043,
+          "fused_score": 0.03278688524590164,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_106_paragraph_1",
+          "local_name": "article_106_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 106"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "تحل النقابة او نقابة اصحاب العمل اختيارياً بموافقة ثلثي اعضائها المسددين لاشتراكاتهم في اجتماع غير عادي تعقده الهيئة العامة للنقابة او نقابة اصحاب العمل لهذه الغاية دون غيرها وتتم تصفية اموالها وحقوقها والتصرف بها في هذه الحالة وفقاً لاحكام النظام الداخلي ويجب اشعار الوزير والاتحاد العام لنقابات العمال بقرار الحل خلال خمسة عشر يوماً من تاريخ صدوره وينشر في الجريدة الرسمية.",
+          "vector_rank": 2,
+          "vector_distance": 0.4722405672073364,
+          "bm25_rank": 2,
+          "bm25_score": 22.066003799438477,
+          "fused_score": 0.03225806451612903,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_113",
+          "local_name": "article_113",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 113"
+          ],
+          "labels_en": [],
+          "article_number": 113,
+          "text_preview": "أ . يجب على كل نقابة عمال  او نقابة اصحاب عمل ان تعد السجلات والدفاتر حسب الاوضاع والشروط التي يقررها الوزير.\n\nب. لمفتش العمل الاطلاع في اي وقت على دفاتر حسابات اي نقابة وعلى غيرها من الدفاتر والسجلات التي تحتفظ بها\n\n    النقابة وعلى قوائم الاعضاء فيها كما يحق لاي موظف في النقابة ولاي عضو فيها الاطلاع على تلك الدفاتر والسجلات\n\n    وعلى تلك القوائم وذلك في الاوقات المحددة في النظام الداخلي للنقابة على ان تجري تلك الاجراءات في مقر النقابة.",
+          "vector_rank": 14,
+          "vector_distance": 0.5958234667778015,
+          "bm25_rank": 6,
+          "bm25_score": 12.248434066772461,
+          "fused_score": 0.028665028665028666,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_117",
+          "local_name": "article_117",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 117"
+          ],
+          "labels_en": [],
+          "article_number": 117,
+          "text_preview": "اذا حلت النقابة بصورة غير اختيارية لاي سبب من الاسباب فتودع اموالها في البنك الذي يعينه الاتحاد العام لنقابات العمال الى ان تؤسس نقابة جديدة للمهنة او للمهن نفسها فاذا لم يتم تاسيس مثل هذه النقابة خلال سنة واحدة من حل النقابة الاولى فتؤول اموالها المنقولة وغير المنقولة الى الاتحاد العام لنقابات العمال.",
+          "vector_rank": 28,
+          "vector_distance": 0.6414998769760132,
+          "bm25_rank": 3,
+          "bm25_score": 17.544458389282227,
+          "fused_score": 0.027236652236652236,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_103",
+          "local_name": "article_103",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 103"
+          ],
+          "labels_en": [],
+          "article_number": 103,
+          "text_preview": "أ . تعتبر النقابة او نقابة اصحاب العمل قائمة بالاسم الذي سجلت به وتكتسب الشخصية الاعتبارية وتمارس بهذه الصفة\n\n    جميع الاعمال المصرح لها بممارستها وفقاً لاحكام هذا القانون والانظمة الصادرة بموجبه وبمقتضى النظام الداخلي لها\n\n    اعتباراً من تاريخ :\n\n     1. نشر قرار مسجل النقابات ونقابات اصحاب العمل بتسجيل النقابة او نقابة اصحاب العمل في الجريدة الرسمية.\n\n     2. او صدور قرار محكمة العدل العليا بالغاء قرار المسجل برفض تسجيل النقابة او نقابة اصحاب العمل .\n\n     3. او انقضاء مدة الطعن المنصوص عليها في المادة (102) من هذا القانون.\n\nب. على النقابة او نقابة اصحاب العمل تزويد مسجل النقابات ونقابات  اصحاب العمل باي تغيير او تعديل يطرا على نظامها\n\n    الداخلي وذلك خلال خمسة عشر يوماً من تاريخ اجرائه.",
+          "vector_rank": 4,
+          "vector_distance": 0.5382843017578125,
+          "bm25_rank": 29,
+          "bm25_score": 7.609517574310303,
+          "fused_score": 0.026860955056179775,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_102_paragraph_5",
+          "local_name": "article_102_paragraph_5",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 102 - الفقرة ج"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يترتب على مسجل النقابات ونقابات اصحاب العمل ان يصدر قراره بشان طلب تسجيل اي نقابة او نقابة اصحاب العمل خلال مدة لا تتجاوز ثلاثين يوماً من تاريخ تقديم الطلب اليه فاذا وافق على الطلب اصدر شهادة بتسجيل النقابة او الجمعية وينشر قرار التسجيل في الجريدة الرسمية واذا قرر رفض الطلب فللمؤسسين الطعن في قراراه لدى محكمة العدل العليا خلال ثلاثين يوماً من تاريخ تبليغ القرار.",
+          "vector_rank": 6,
+          "vector_distance": 0.5488793849945068,
+          "bm25_rank": 26,
+          "bm25_score": 7.673981666564941,
+          "fused_score": 0.026779422128259338,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_107_paragraph_2",
+          "local_name": "article_107_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 107 - الفقرة ب"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اذا خالفت النقابة او نقابة اصحاب العمل احكام نظامها الداخلي فعليها تصويب الوضع خلال مدة لا تتجاوز ثلاثة اشهر اما بنفسها او بطلب من الوزارة او الاتحاد العام لنقابات العمال فاذا لم تقم بتصويب الوضع خلال المدة المقررة فتحال من قبل الوزير او من ينيبه الى محكمة البداية المختصة لمحاكمتها من اجل تلك المخالفة وللمحكمة ان توقف النقابة او الجمعية عن العمل لحين صدور قرارها في الدعوى.",
+          "vector_rank": 8,
+          "vector_distance": 0.5700345039367676,
+          "bm25_rank": 27,
+          "bm25_score": 7.65800666809082,
+          "fused_score": 0.026200135226504394,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_116",
+          "local_name": "article_116",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 116"
+          ],
+          "labels_en": [],
+          "article_number": 116,
+          "text_preview": "أ . للوزير ان يتقدم بدعوى الى محكمة البداية طالباً فيها حل اي نقابة في اي من الحالات التالية :\n\n   1. اذا ارتكبت اي مخالفة لاحكام هذا القانون على ان يكون قد وجه انذاراً خطياً للنقابة قبل تقديم الدعوى طالباً فيه منها\n\n       ازالة المخالفة خلال المدة التي يحددها لها ولكنها لم تستجب للطلب.\n\n    2. التحريض على ترك العمل او الامتناع عنه او الاعتصام او التظاهر في الحالات التي يحظر فيها القيام بهذه الاعمال\n\n         بمقتضى هذا القانون وسائر التشريعات المعمول بها.\n\n     3. استعمال القوة او العنف او التهديد او التدابير غير المشروعة في الاعتداء او الشروع في الاعتداء على حق الغير\n\n         في العمل او على حق آخر من حقوقه.\n\nب. يجوز استئناف قرار محكمة البداية بحل النقابة الى محكمة الاستئناف خلال ثلاثين يوماً من تفهيمه اذا كان وجاهياً ومن\n\n    تاريخ تبليغه اذا كان بمثابة الوجاهي ويكون قرار محكمة الاستئناف قطعياً.",
+          "vector_rank": 15,
+          "vector_distance": 0.596483588218689,
+          "bm25_rank": 25,
+          "bm25_score": 7.818791389465332,
+          "fused_score": 0.025098039215686277,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_107",
+          "local_name": "article_107",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 107"
+          ],
+          "labels_en": [],
+          "article_number": 107,
+          "text_preview": "أ . اذا تخلفت النقابة او نقابة اصحاب العمل عن تقديم اي اشعار او كشف او ميزانية عمومية او اي من الحسابات او\n\n    المستندات التي يوجب هذا القانون والانظمة الصادرة بمقتضاه تقديمها الى الوزارة فتعاقب النقابة او نقابة اصحاب العمل\n\n    او من يمثلهما قانونا بغرامة لا تقل عن خمسين ديناراً ولا تزيد على مائة دينار ولا يجوز تخفيض الغرامة المحكوم بها\n\n    لاي سبب من الاسباب.\n\nب. اذا خالفت النقابة او نقابة اصحاب العمل احكام نظامها الداخلي فعليها تصويب الوضع خلال مدة لا تتجاوز ثلاثة اشهر\n\n    اما بنفسها او بطلب من الوزارة او الاتحاد العام لنقابات العمال فاذا لم تقم بتصويب الوضع خلال المدة المقررة فتحال من\n\n    قبل الوزير او من ينيبه الى محكمة البداية المختصة لمحاكمتها من اجل تلك المخالفة وللمحكمة ان توقف النقابة او\n\n    الجمعية عن العمل لحين صدور قرارها في الدعوى.",
+          "vector_rank": 10,
+          "vector_distance": 0.583871603012085,
+          "bm25_rank": 39,
+          "bm25_score": 7.118865966796875,
+          "fused_score": 0.024386724386724387,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_110",
+          "local_name": "article_110",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 110"
+          ],
+          "labels_en": [],
+          "article_number": 110,
+          "text_preview": "أ . تشكل النقابات العمالية الاتحاد العام لنقابات العمال وتكون له شخصية اعتبارية وتحتفظ فيه كل نقابة بحقوقها الخاصة.\n\nب. يتكون الاتحاد من اعضاء النقابات التي يتالف منها الاتحاد ويتمتع بجميع الحقوق التي تتمتع بها النقابة.\n\nج. يحق لنقابتين او اكثر بموافقة الاتحاد العام لنقابات العمال تشكيل اتحاد مهني على ان تحصل كل منها على موافقة\n\n    الاكثرية العادية لهيئتها العامة وان تحيط المسجل علماً بذلك خطياً.\n\nد. يحق للاتحاد العام لنقابات العمال وللاتحادات المهنية المسجلة الانضمام الى اي منظمة عمالية عربية او دولية ذات اهداف\n\n   ووسائل مشروعة.\n\nهـ. تنظيم شؤون الاتحاد العام والاتحادات المهنية بنظام خاص يصدر لهذه الغاية.",
+          "vector_rank": 22,
+          "vector_distance": 0.6205658912658691,
+          "bm25_rank": 33,
+          "bm25_score": 7.373807907104492,
+          "fused_score": 0.022947810123262524,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_118_paragraph_1",
+          "local_name": "article_118_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 118 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يجب على كل نقابة عمال او نقابة اصحاب عمل ان ترسل الى المسجل قبل اول نيسان من كل سنة نسخة من ميزانيتها العمومية على النموذج المقرر مدققة حسب الاصول من مدقق حسابات قانوني تبين فيه وارداتها ومصروفاتها وموجوداتها والتزاماتها خلال السنة السابقة والمنتهية في الحادي والثلاثين من شهر كانون الاول ولمسجل النقابات ان يطلب من النقابة تزويده ببيانات او ايضاحات اضافية للميزانية.",
+          "vector_rank": 38,
+          "vector_distance": 0.6533037424087524,
+          "bm25_rank": 24,
+          "bm25_score": 7.880617141723633,
+          "fused_score": 0.022108843537414963,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_121",
+          "local_name": "article_121",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 121"
+          ],
+          "labels_en": [],
+          "article_number": 121,
+          "text_preview": "أ . اذا وقع نزاع عمالي جماعي فعلى مندوب التوفيق ان يبدا اجراءات الوساطة بين الطرفين لتسوية ذلك النزاع فاذا تم\n\n    الاتفاق بشانه بعقد جماعي او بغيره يحتفظ مندوب التوفيق بنسخة منه مصادق عليها من الطرفين.\n\nب. اذا تعذر اجراء المفاوضات بين الطرفين لاي سبب من الاسباب او تبين ان الاستمرار فيها لن يؤدي الى تسوية النزاع\n\n    فيترتب على مندوب التوفيق ان يقدم تقريراً الى الوزير يضمن اسباب النزاع والمفاوضات التي تمت بين الطرفين\n\n    والنتيجة التي توصل اليها وذلك خلال مدة لا تزيد على واحد وعشرين يوماً من تاريخ احالة النزاع اليه.\n\nج. اذا لم يتمكن الوزير بدوره من تسوية النزاع فعليه ان يحيله الى مجلس توفيق يشكله على النحو التالي :\n\n    1. رئيس يعينه الوزير على ان لا يكون من ذوي العلاقة بالنزاع او بنقابات العمال او نقابات اصحاب العمل.\n\n    2. عضوان او اكثر يمثلون كلا من اصحاب العمل والعمال باعداد متساوية يسمي كل من الطرفين ممثليه في المجلس.",
+          "vector_rank": 3,
+          "vector_distance": 0.5284904837608337,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.015873015873015872,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_117_paragraph_1",
+          "local_name": "article_117_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 117"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "اذا حلت النقابة بصورة غير اختيارية لاي سبب من الاسباب فتودع اموالها في البنك الذي يعينه الاتحاد العام لنقابات العمال الى ان تؤسس نقابة جديدة للمهنة او للمهن نفسها فاذا لم يتم تاسيس مثل هذه النقابة خلال سنة واحدة من حل النقابة الاولى فتؤول اموالها المنقولة وغير المنقولة الى الاتحاد العام لنقابات العمال.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 4,
+          "bm25_score": 17.40319061279297,
+          "fused_score": 0.015625,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_102",
+          "local_name": "article_102",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 102"
+          ],
+          "labels_en": [],
+          "article_number": 102,
+          "text_preview": "أ . يقدم طلب تاسيس اي نقابة للعمال او نقابة اصحاب العمل موقعاً من قبل المؤسسين الى مسجل النقابات و نقابات اصحاب\n\n    العمل  في الوزارة مرفقاً بما يلي :\n\n    1. النظام الداخلي للنقابة او نقابة اصحاب العمل مدرجاً فيه اسمها ومركزها الرئيسي وعنوانها.\n\n    2. اعضاء الهيئة الادارية الاولى لها المنتخبة من قبل المؤسسين.\n\nب. لمسجل النقابات و نقابات اصحاب العمل ان يكلف الهيئة الادارية بتزويده باي تفاصيل اضافية يراها ضرورية لدراسة\n\n    الطلب واتمام اجراءات تسجيل النقابة او نقابة اصحاب العمل .\n\nج. يترتب على مسجل النقابات ونقابات اصحاب العمل ان يصدر قراره بشان طلب تسجيل اي نقابة او نقابة اصحاب العمل\n\n    خلال مدة لا تتجاوز ثلاثين يوماً من تاريخ تقديم الطلب اليه فاذا وافق على الطلب اصدر شهادة بتسجيل النقابة او\n\n    الجمعية وينشر قرار التسجيل في الجريدة الرسمية واذا قرر رفض الطلب فللمؤسسين الطعن في قراراه لدى محكمة\n\n    العدل العليا خلال ثلاثين يوماً من تاريخ تبليغ القرار.\n\nد.  يجوز للاشخاص الذين تضرروا من تسجيل اي نقابة او نقابة اصحاب العمل الطعن في قرار تسجيلها لدى محكمة العدل\n\n    العليا خلال ثلاثين يوماً من تاريخ نشر القرار في الجريدة الرسمية.",
+          "vector_rank": 5,
+          "vector_distance": 0.5444722175598145,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.015384615384615385,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_36_paragraph_1",
+          "local_name": "article_36_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 36 - الفقرة أ"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يجب ان يكون عقد التدريب المهني خطياً بين العامل وصاحب العمل وان يكون المدرب حائزا على المؤهلات والخبرات الكافية في المهنة او الحرفة المراد تدريب العامل فيها كما يجب ان تتوفر في المؤسسة نفسها الشروط المناسبة للتدريب.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 5,
+          "bm25_score": 14.095645904541016,
+          "fused_score": 0.015384615384615385,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_98",
+          "local_name": "article_98",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 98"
+          ],
+          "labels_en": [],
+          "article_number": 98,
+          "text_preview": "أ . مع مراعاة احكام الفقرة (ب) من هذه المادة تؤسس النقابة من قبل مؤسسين لا يقل عددهم عن خمسين شخصاً من\n\n    العاملين في المهنة الواحدة او المهن المتماثلة او المرتبط بعضها ببعض في انتاج واحد.\n\nب. للوزير ان يصدر قراراً بتصنيف المهن والصناعات التي يحق لعمالها تاسيس نقابة لهم وذلك بالاتفاق مع الاتحاد العام\n\n    لنقابات العمال وان يحدد في قراره مجموعات المهن والصناعات التي لا يجوز تاسيس اكثر من نقابة عامة واحدة لجميع\n\n    العمال فيها وذلك بحكم تماثلها او المرتبط بعضها ببعض او اشتراكها في انتاج واحد او متكامل وان يجعل قراره بذلك\n\n    ساري المفعول على النقابات القائمة.",
+          "vector_rank": 7,
+          "vector_distance": 0.5608174204826355,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.014925373134328358,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_105",
+          "local_name": "article_105",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 105"
+          ],
+          "labels_en": [],
+          "article_number": 105,
+          "text_preview": "يقوم المسجل بالغاء شهادة تسجيل النقابة او نقابة اصحاب العمل اذا ثبت انها اصبحت غير قائمة اما لحلها اختيارياً او لانها حلت وفقا لاحكام هذا القانون او بقرار قضائي.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 7,
+          "bm25_score": 12.14344596862793,
+          "fused_score": 0.014925373134328358,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_105_paragraph_1",
+          "local_name": "article_105_paragraph_1",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "نص المادة 105"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "يقوم المسجل بالغاء شهادة تسجيل النقابة او نقابة اصحاب العمل اذا ثبت انها اصبحت غير قائمة اما لحلها اختيارياً او لانها حلت وفقا لاحكام هذا القانون او بقرار قضائي.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 8,
+          "bm25_score": 12.017000198364258,
+          "fused_score": 0.014705882352941176,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_98_paragraph_2",
+          "local_name": "article_98_paragraph_2",
+          "node_kind": "Paragraph",
+          "labels_ar": [
+            "المادة 98 - الفقرة ب"
+          ],
+          "labels_en": [],
+          "article_number": null,
+          "text_preview": "للوزير ان يصدر قراراً بتصنيف المهن والصناعات التي يحق لعمالها تاسيس نقابة لهم وذلك بالاتفاق مع الاتحاد العام لنقابات العمال وان يحدد في قراره مجموعات المهن والصناعات التي لا يجوز تاسيس اكثر من نقابة عامة واحدة لجميع العمال فيها وذلك بحكم تماثلها او المرتبط بعضها ببعض او اشتراكها في انتاج واحد او متكامل وان يجعل قراره بذلك ساري المفعول على النقابات القائمة.",
+          "vector_rank": 9,
+          "vector_distance": 0.5738171935081482,
+          "bm25_rank": null,
+          "bm25_score": null,
+          "fused_score": 0.014492753623188406,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        },
+        {
+          "uri": "http://example.org/jordan-labor-law#article_79",
+          "local_name": "article_79",
+          "node_kind": "Article",
+          "labels_ar": [
+            "المادة 79"
+          ],
+          "labels_en": [],
+          "article_number": 79,
+          "text_preview": "يحدد الوزير بعد استطلاع راي الجهات الرسمية المختصة بتعليمات يصدرها ما يلي :\n\nأ . الاحتياطات والتدابير التي يجب اتخاذها او توفيرها في جميع المؤسسات او في اي منها لحماية العمال والمؤسسات من\n\n    اخطار العمل وامراض المهنة.\n\nب. الاجهزة والوسائل التي يجب توفيرها في المؤسسات او في اي منها لحماية العاملين فيها من اخطار العمل وامراض\n\n    المهنة ووقايتهم منها.\n\nج. الاسس والمعايير الواجب توافرها في المؤسسات الصناعية لضمان بيئة خالية من التلوث بجميع اشكاله والوقاية من\n\n    الضوضاء والاهتزازات وكل ما يضر بصحة العامل ضمن المعايير الدولية المعتمدة وتحديد طرق الفحص والاختبار\n\n    الخاصة لضبط هذه المعايير.",
+          "vector_rank": null,
+          "vector_distance": null,
+          "bm25_rank": 9,
+          "bm25_score": 11.749765396118164,
+          "fused_score": 0.014492753623188406,
+          "direct_score": 0.0,
+          "graph_score": 0.0,
+          "paragraph_score": 0.0,
+          "final_score": 0.0,
+          "graph_supported": false,
+          "support_paths": []
+        }
+      ]
+    }
+  }
+}

@@ -212,6 +212,9 @@ RULES
    or add a generic legal disclaimer.
 9. Keep a simple answer to one short paragraph. Use short separate paragraphs
    only when the question contains multiple distinct parts.
+10. If the retrieval result indicates that the question is out of scope,
+    write the entire user-facing answer in Arabic only, without using any
+    English words or phrases.   
 
 CITATIONS
 

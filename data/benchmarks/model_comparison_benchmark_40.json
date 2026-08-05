@@ -1,0 +1,1140 @@
+{
+  "benchmark_name": "Jordanian Labor Law KG End-to-End Model Comparison Benchmark — 40 Questions",
+  "benchmark_version": "2.0.0",
+  "created_date": "2026-08-05",
+  "language": "Arabic",
+  "frozen": true,
+  "scope": "Jordanian Labor Law represented by jordan_labor_law_full_knowledge_graph.ttl",
+  "warning": "Official fixed model-comparison benchmark. Freeze prompts, KG, retrieval settings, judge model, and evaluation code before the first model run.",
+  "evaluation_notes": {
+    "total_cases": 40,
+    "retrieve_cases": 32,
+    "clarify_cases": 0,
+    "abstain_cases": 8,
+    "behavior_policy": "Only retrieve and abstain cases are included, as requested.",
+    "gold_article_policy": "The 32 unique required/acceptable articles in this holdout were absent from both required_articles and acceptable_articles across retrieval_benchmark_20.json, retrieval_benchmark_unseen_50.json, retrieval_benchmark_unseen_30_final.json, and retrieval_benchmark_unseen_20_stage_7_7d.json.",
+    "question_policy": "Forty newly worded Arabic questions for the final multi-model end-to-end comparison. No exact normalized question duplicates the prior 120-question master suite or the earlier 40-question holdout.",
+    "difficulty_policy": "Includes direct single-article questions and hard multi-article questions requiring linked legal issues; the largest gold set contains five articles.",
+    "api_input_policy": "Send only the question text to /retrieve. Gold articles, required facts, expected results, citations, and forbidden claims are evaluation metadata and must never be sent to retrieval or generation.",
+    "generation_metadata": "required_facts supports atomic fact coverage; required_citations supports citation recall/exact-set scoring; forbidden_claims supports contradiction checks.",
+    "runner_note": "Run only with scripts/run_full_pipeline_evaluation.py. The runner sends only question text to /retrieve, passes the exact retrieval.v1 result to /generate, evaluates both stages, and writes one final JSON file per model.",
+    "generation_evaluation": "A fixed external judge model scores required-fact coverage, answer correctness, and evidence faithfulness. Citation and out-of-scope metrics are deterministic."
+  },
+  "distribution": {
+    "straightforward": 8,
+    "paraphrased": 6,
+    "typo": 2,
+    "numerical": 4,
+    "colloquial": 4,
+    "multi_article": 8,
+    "out_of_scope": 8
+  },
+  "difficulty_distribution": {
+    "easy": 6,
+    "hard": 21,
+    "medium": 13
+  },
+  "questions": [
+    {
+      "id": "MC40-01",
+      "test_type": "straightforward",
+      "category": "law_commencement",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "اذكر التسمية الرسمية لقانون العمل، وحدد المدة التي تفصل بين نشره في الجريدة الرسمية وبدء نفاذه.",
+      "primary_article": 1,
+      "required_articles": [
+        1
+      ],
+      "acceptable_articles": [
+        1
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يسمى قانون العمل لسنة 1996.",
+        "يعمل به بعد مرور ستين يوماً على تاريخ نشره في الجريدة الرسمية."
+      ],
+      "required_citations": [
+        1
+      ],
+      "forbidden_claims": [
+        "يعمل بالقانون فور نشره.",
+        "تبدأ أحكامه بعد ثلاثين يوماً."
+      ],
+      "expected_result": "يسمى قانون العمل لسنة 1996، ويبدأ العمل به بعد مرور ستين يوماً على نشره في الجريدة الرسمية."
+    },
+    {
+      "id": "MC40-02",
+      "test_type": "straightforward",
+      "category": "employment_offices",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "ما الدور الذي تقوم به وزارة العمل لتنظيم سوق العمل وتشغيل الأردنيين، وما المكاتب التي يجيز القانون إنشاءها أو ترخيصها للتشغيل والاستقدام؟",
+      "primary_article": 10,
+      "required_articles": [
+        10
+      ],
+      "acceptable_articles": [
+        10
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تتولى الوزارة بالتنسيق مع الجهات المختصة تنظيم سوق العمل والتوجيه المهني وتوفير فرص العمل والتشغيل للأردنيين داخل المملكة وخارجها.",
+        "يجوز للوزارة إنشاء مكاتب لتشغيل الأردنيين أو ترخيص مكاتب خاصة لهذه الغاية.",
+        "يجوز للوزير ترخيص مكاتب خاصة لتنظيم استخدام واستقدام خدم المنازل وبستانييها وطهاتها ومن في حكمهم من غير الأردنيين.",
+        "تحدد شروط إنشاء وإدارة وإشراف الوزارة وبدل خدمات هذه المكاتب بموجب أنظمة."
+      ],
+      "required_citations": [
+        10
+      ],
+      "forbidden_claims": [
+        "يجوز لأي مكتب ممارسة الاستقدام دون ترخيص.",
+        "تقتصر مسؤولية الوزارة على التشغيل داخل المملكة."
+      ],
+      "expected_result": "تنظم الوزارة سوق العمل والتوجيه والتشغيل للأردنيين داخل المملكة وخارجها، ويمكنها إنشاء مكاتب تشغيل أو ترخيصها، كما يجوز ترخيص مكاتب لاستقدام خدم المنازل غير الأردنيين، وتحدد تفاصيل هذه المكاتب بأنظمة."
+    },
+    {
+      "id": "MC40-03",
+      "test_type": "straightforward",
+      "category": "juvenile_work_penalty",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "إذا خالف صاحب العمل أو مدير المنشأة الأحكام الخاصة بتشغيل الأحداث، فما حدود الغرامة، وماذا يحدث عند تكرار المخالفة أو طلب أسباب مخففة؟",
+      "primary_article": 77,
+      "required_articles": [
+        77
+      ],
+      "acceptable_articles": [
+        77
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "الغرامة لا تقل عن مائة دينار ولا تزيد على خمسمائة دينار.",
+        "تضاعف العقوبة في حالة التكرار.",
+        "لا يجوز تخفيض العقوبة عن حدها الأدنى للأسباب التقديرية المخففة."
+      ],
+      "required_citations": [
+        77
+      ],
+      "forbidden_claims": [
+        "الغرامة من خمسين إلى مائة دينار.",
+        "لا تتضاعف العقوبة عند التكرار.",
+        "يجوز دائماً تخفيضها دون الحد الأدنى."
+      ],
+      "expected_result": "يعاقب صاحب العمل أو مدير المؤسسة بغرامة من 100 إلى 500 دينار، وتضاعف عند التكرار، ولا يجوز النزول عن الحد الأدنى للأسباب المخففة."
+    },
+    {
+      "id": "MC40-04",
+      "test_type": "straightforward",
+      "category": "work_injury_additional_claims",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "في إصابة العمل، هل يستطيع العامل المصاب أو ورثته المطالبة بتعويض إضافي من صاحب العمل، وما الاستثناء الذي يسمح بذلك؟",
+      "primary_article": 89,
+      "required_articles": [
+        89
+      ],
+      "acceptable_articles": [
+        89
+      ],
+      "expected_concepts_any": [
+        "compensation_consequence",
+        "employer_liability_consequence",
+        "litigation_right_concept",
+        "work_injury_event"
+      ],
+      "required_facts": [
+        "الأصل عدم أحقية المصاب أو المستحقين عنه بمطالبة صاحب العمل بتعويضات أخرى غير الواردة في القانون عن إصابة العمل.",
+        "الاستثناء أن تكون الإصابة ناشئة عن خطأ صاحب العمل.",
+        "يراعى ما ورد في أي قانون أو تشريع آخر."
+      ],
+      "required_citations": [
+        89
+      ],
+      "forbidden_claims": [
+        "يجوز دائماً الجمع بين جميع التعويضات دون شرط.",
+        "لا يوجد أي استثناء يسمح بمطالبة إضافية."
+      ],
+      "expected_result": "الأصل عدم جواز المطالبة بتعويضات أخرى عن إصابة العمل خارج ما يقرره القانون، إلا إذا نشأت الإصابة عن خطأ صاحب العمل، مع مراعاة التشريعات الأخرى."
+    },
+    {
+      "id": "MC40-05",
+      "test_type": "straightforward",
+      "category": "death_compensation_distribution",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "عند وفاة العامل بسبب إصابة عمل، لمن يدفع التعويض، وكيف تحدد حصة كل مستحق، وما المادة التي يجب مراعاتها؟",
+      "primary_article": 96,
+      "required_articles": [
+        96
+      ],
+      "acceptable_articles": [
+        96
+      ],
+      "expected_concepts_any": [
+        "compensation_consequence",
+        "work_injury_event"
+      ],
+      "required_facts": [
+        "يوزع التعويض على المستحقين عن العامل.",
+        "تحدد الأنصبة وفق الجدول رقم 3 الملحق بالقانون.",
+        "يتم التوزيع مع مراعاة أحكام المادة 95."
+      ],
+      "required_citations": [
+        96
+      ],
+      "forbidden_claims": [
+        "يوزع التعويض بالتساوي دائماً بين جميع الأقارب.",
+        "يحدد صاحب العمل الأنصبة من تلقاء نفسه."
+      ],
+      "expected_result": "يوزع التعويض على المستحقين وفق الأنصبة المحددة في الجدول رقم 3 الملحق بالقانون، مع مراعاة أحكام المادة 95."
+    },
+    {
+      "id": "MC40-06",
+      "test_type": "straightforward",
+      "category": "union_objectives",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "ما الوظائف التي يسمح القانون لنقابة العمال بممارستها لحماية أعضائها وخدمتهم، وهل يحق لها إنشاء عيادات ومؤسسات اجتماعية وفروع؟",
+      "primary_article": 99,
+      "required_articles": [
+        99
+      ],
+      "acceptable_articles": [
+        99
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "ترعى النقابة مصالح العاملين في المهنة وتدافع عن حقوقهم ضمن القانون.",
+        "تقدم خدمات صحية واجتماعية للمنتسبين ويمكنها إنشاء عيادات ومؤسسات رعاية اجتماعية واستهلاكية.",
+        "تعمل على رفع المستوى الاقتصادي والمهني والثقافي للعمال.",
+        "يجوز لها فتح فروع في المملكة، وتحدد علاقتها بفروعها في نظامها الداخلي."
+      ],
+      "required_citations": [
+        99
+      ],
+      "forbidden_claims": [
+        "يحظر على النقابة تقديم خدمات اجتماعية.",
+        "لا يجوز للنقابة فتح فروع."
+      ],
+      "expected_result": "تشمل أهداف النقابة حماية مصالح العمال وحقوقهم، وتقديم الخدمات الصحية والاجتماعية، ورفع مستواهم الاقتصادي والمهني والثقافي، ويجوز لها فتح فروع تنظم علاقتها بها في نظامها الداخلي."
+    },
+    {
+      "id": "MC40-07",
+      "test_type": "straightforward",
+      "category": "union_registration_cancellation",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "ما الحالات التي يترتب عليها شطب شهادة تسجيل نقابة العمال أو أصحاب العمل من قبل المسجل؟",
+      "primary_article": 105,
+      "required_articles": [
+        105
+      ],
+      "acceptable_articles": [
+        105
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يلغي المسجل شهادة التسجيل إذا ثبت أن النقابة أصبحت غير قائمة.",
+        "يشمل ذلك حلها اختيارياً أو حلها وفق أحكام القانون أو بقرار قضائي."
+      ],
+      "required_citations": [
+        105
+      ],
+      "forbidden_claims": [
+        "تلغى الشهادة تلقائياً بمجرد تغيير الهيئة الإدارية.",
+        "لا يجوز إلغاء شهادة التسجيل بعد الحل القضائي."
+      ],
+      "expected_result": "يلغي المسجل شهادة التسجيل إذا ثبت أن النقابة لم تعد قائمة، سواء حلت اختيارياً أو وفق القانون أو بقرار قضائي."
+    },
+    {
+      "id": "MC40-08",
+      "test_type": "straightforward",
+      "category": "labor_body_remuneration",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "أي جهة تعتمد مكافآت أعضاء المحكمة العمالية ومجلس التوفيق وكاتب الجلسات، وبناءً على تنسيب من؟",
+      "primary_article": 129,
+      "required_articles": [
+        129
+      ],
+      "acceptable_articles": [
+        129
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يقرر مجلس الوزراء المكافآت.",
+        "يكون القرار بناء على تنسيب من الوزير.",
+        "تشمل المكافآت رئيس وأعضاء المحكمة العمالية ورئيس مجلس التوفيق وكاتب الجلسات."
+      ],
+      "required_citations": [
+        129
+      ],
+      "forbidden_claims": [
+        "يقرر أصحاب النزاع المكافآت.",
+        "يقرر رئيس المحكمة المكافآت منفرداً."
+      ],
+      "expected_result": "يقرر مجلس الوزراء هذه المكافآت بناء على تنسيب من الوزير."
+    },
+    {
+      "id": "MC40-09",
+      "test_type": "paraphrased",
+      "category": "union_compliance_penalties",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "نقابة لم تسلم الميزانية والوثائق المطلوبة ثم امتنعت عن تصويب مخالفة في نظامها الداخلي؛ ما الغرامة والإجراء القضائي والمهلة القانونية؟",
+      "primary_article": 107,
+      "required_articles": [
+        107
+      ],
+      "acceptable_articles": [
+        107
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "عدم تقديم الإشعار أو الكشف أو الميزانية أو الحسابات أو المستندات المطلوبة يعاقب بغرامة من خمسين إلى مائة دينار.",
+        "لا يجوز تخفيض الغرامة لأي سبب.",
+        "مهلة تصويب مخالفة النظام الداخلي لا تتجاوز ثلاثة أشهر.",
+        "عند عدم التصويب يحيل الوزير أو من ينيبه النقابة إلى محكمة البداية المختصة، وللمحكمة وقفها عن العمل حتى صدور القرار."
+      ],
+      "required_citations": [
+        107
+      ],
+      "forbidden_claims": [
+        "غرامة التأخير من 500 إلى 1000 دينار.",
+        "مهلة التصويب سنة.",
+        "الإحالة تكون حصراً إلى المحكمة العمالية."
+      ],
+      "expected_result": "غرامة عدم تقديم المستندات 50–100 دينار ولا تخفض، ومهلة تصويب مخالفة النظام الداخلي ثلاثة أشهر كحد أقصى؛ وإلا تحال النقابة إلى محكمة البداية التي قد توقفها مؤقتاً."
+    },
+    {
+      "id": "MC40-10",
+      "test_type": "paraphrased",
+      "category": "union_fund_spending",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "بيّن الأغراض التي يجوز تمويلها من أموال النقابة، بما فيها الإدارة والتقاضي والنزاعات والإعانات والخدمات التعليمية والاجتماعية.",
+      "primary_article": 109,
+      "required_articles": [
+        109
+      ],
+      "acceptable_articles": [
+        109
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا تنفق أموال النقابة إلا في غايات مشروعة مرتبطة بمصلحتها.",
+        "تشمل الغايات الرواتب والعلاوات والنفقات الإدارية وتدقيق الحسابات.",
+        "تشمل رسوم ونفقات الدعاوى المرتبطة بحقوق النقابة أو أعضائها ونفقات النزاعات العمالية.",
+        "تشمل تعويض الأعضاء عن خسائر النزاع والإعانات بسبب الوفاة أو الشيخوخة أو المرض أو البطالة أو الحوادث.",
+        "تشمل نفقات الخدمات التعليمية والاجتماعية للأعضاء."
+      ],
+      "required_citations": [
+        109
+      ],
+      "forbidden_claims": [
+        "يجوز إنفاق أموال النقابة لأي غرض شخصي.",
+        "يحظر دفع إعانات للأعضاء أو أسرهم."
+      ],
+      "expected_result": "نعم، تعد هذه أوجهاً مشروعة متى ارتبطت بمصلحة النقابة، بما يشمل الرواتب والإدارة والتدقيق والدعاوى والنزاعات والتعويضات والإعانات والخدمات التعليمية والاجتماعية."
+    },
+    {
+      "id": "MC40-11",
+      "test_type": "paraphrased",
+      "category": "union_federations",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "كيف يتشكل الاتحاد العام لنقابات العمال، ومتى يجوز لنقابتين أو أكثر تأسيس اتحاد مهني، وهل يسمح بالانتساب إلى تنظيم عمالي عربي أو دولي؟",
+      "primary_article": 110,
+      "required_articles": [
+        110
+      ],
+      "acceptable_articles": [
+        110
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تشكل النقابات العمالية الاتحاد العام وتكون له شخصية اعتبارية مع احتفاظ كل نقابة بحقوقها.",
+        "يتكون الاتحاد من أعضاء النقابات المكونة له ويتمتع بحقوق النقابة.",
+        "يجوز لنقابتين أو أكثر تشكيل اتحاد مهني بموافقة الاتحاد العام، وموافقة الأكثرية العادية لهيئاتهما العامة، وإبلاغ المسجل خطياً.",
+        "يجوز للاتحاد العام والاتحادات المهنية المسجلة الانضمام إلى منظمة عمالية عربية أو دولية ذات أهداف ووسائل مشروعة.",
+        "تنظم شؤون الاتحادات بنظام خاص."
+      ],
+      "required_citations": [
+        110
+      ],
+      "forbidden_claims": [
+        "يجوز لنقابة واحدة تشكيل اتحاد مهني منفردة.",
+        "لا يجوز الانضمام إلى أي منظمة عمالية دولية."
+      ],
+      "expected_result": "تشكل النقابات الاتحاد العام ذي الشخصية الاعتبارية، ويجوز لنقابتين أو أكثر إنشاء اتحاد مهني بالشروط المحددة، كما يجوز للاتحادات الانضمام إلى منظمات عمالية عربية أو دولية مشروعة."
+    },
+    {
+      "id": "MC40-12",
+      "test_type": "paraphrased",
+      "category": "union_member_immunity",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "إذا اشترك عضو أو موظف نقابي في اتفاق يهدف إلى غاية نقابية قانونية، فهل تنشأ مسؤوليته المدنية أو الجزائية بمجرد هذا الاشتراك؟",
+      "primary_article": 111,
+      "required_articles": [
+        111
+      ],
+      "acceptable_articles": [
+        111
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا يعاقب موظف النقابة أو عضوها ولا تتخذ بحقه إجراءات قانونية أو قضائية بسبب اتفاق بين الأعضاء بشأن غاية مشروعة للنقابة.",
+        "يشترط ألا يخالف الاتفاق القوانين والأنظمة المعمول بها."
+      ],
+      "required_citations": [
+        111
+      ],
+      "forbidden_claims": [
+        "تمتد الحماية إلى الاتفاقات المخالفة للقانون.",
+        "كل اتفاق نقابي يؤدي تلقائياً إلى مسؤولية جنائية."
+      ],
+      "expected_result": "لا تنشأ المسؤولية لمجرد الاتفاق على غاية نقابية مشروعة، بشرط ألا يخالف الاتفاق القوانين والأنظمة."
+    },
+    {
+      "id": "MC40-13",
+      "test_type": "paraphrased",
+      "category": "union_legality",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "هل يصبح تنظيم العمال غير مشروع فقط لأن أحد أهدافه قد يؤثر في حرية التجارة؟ وضح الحكم القانوني.",
+      "primary_article": 112,
+      "required_articles": [
+        112
+      ],
+      "acceptable_articles": [
+        112
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا تعتبر نقابة العمال غير مشروعة لمجرد هذا الادعاء."
+      ],
+      "required_citations": [
+        112
+      ],
+      "forbidden_claims": [
+        "مجرد الادعاء يكفي لحل النقابة.",
+        "يؤدي الادعاء تلقائياً إلى إلغاء التسجيل."
+      ],
+      "expected_result": "لا، مجرد الادعاء بأن هدفاً للنقابة يقيد حرية التجارة لا يجعلها هيئة غير مشروعة."
+    },
+    {
+      "id": "MC40-14",
+      "test_type": "paraphrased",
+      "category": "labor_dispute_evidence",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "ما الوسائل التي يملكها مجلس التوفيق والمحكمة العمالية لجمع الأدلة، وسماع الأشخاص، والاستعانة بالخبراء، وطلب الوثائق؟",
+      "primary_article": 125,
+      "required_articles": [
+        125
+      ],
+      "acceptable_articles": [
+        125
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لهما سماع أقوال أي شخص أو الاستعانة بخبرته بعد القسم.",
+        "لهما تكليف أي طرف بإبراز المستندات والبيانات الضرورية للنظر أو الفصل في النزاع."
+      ],
+      "required_citations": [
+        125
+      ],
+      "forbidden_claims": [
+        "لا يملكان طلب مستندات من الأطراف.",
+        "تسمع الخبرة دون قسم فقط."
+      ],
+      "expected_result": "يجوز لهما سماع الأشخاص والاستعانة بالخبرة بعد القسم، وإلزام أي طرف بإبراز المستندات والبيانات الضرورية."
+    },
+    {
+      "id": "MC40-15",
+      "test_type": "typo",
+      "category": "union_records_access",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "من يحدد شكل سجلات النقابة، ومن يملك حق فحص دفاترها وحساباتها وقائمة أعضائها، وفي أي مكان يتم الفحص؟",
+      "primary_article": 113,
+      "required_articles": [
+        113
+      ],
+      "acceptable_articles": [
+        113
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تعد النقابات السجلات والدفاتر وفق الأوضاع والشروط التي يقررها الوزير.",
+        "لمفتش العمل الاطلاع في أي وقت على دفاتر الحسابات والسجلات وقوائم الأعضاء.",
+        "يحق لموظف النقابة وعضوها الاطلاع في الأوقات المحددة في النظام الداخلي.",
+        "يتم الاطلاع في مقر النقابة."
+      ],
+      "required_citations": [
+        113
+      ],
+      "forbidden_claims": [
+        "لا يحق لمفتش العمل الاطلاع على حسابات النقابة.",
+        "يجوز الاطلاع فقط خارج مقر النقابة."
+      ],
+      "expected_result": "يحدد الوزير أوضاع السجلات، ويستطيع مفتش العمل الاطلاع عليها في أي وقت، كما يحق للموظفين والأعضاء الاطلاع وفق مواعيد النظام الداخلي، ويتم ذلك في مقر النقابة."
+    },
+    {
+      "id": "MC40-16",
+      "test_type": "typo",
+      "category": "union_board_eligibility",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "ما شروط أهلية المرشح لعضوية الهيئة الإدارية للنقابة، وما أثر الحكم بجناية أو بجريمة مخلة بالشرف أو الأمانة؟",
+      "primary_article": 114,
+      "required_articles": [
+        114
+      ],
+      "acceptable_articles": [
+        114
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يشترط أن يكون المرشح عاملاً مسجلاً لدى النقابة أو مستخدماً فيها متفرغاً طوال الوقت.",
+        "لا يجوز انتخاب من صدر بحقه حكم في جريمة جنائية أو جريمة تمس الشرف والآداب العامة."
+      ],
+      "required_citations": [
+        114
+      ],
+      "forbidden_claims": [
+        "يجوز انتخاب أي شخص من خارج النقابة.",
+        "الحكم الجنائي لا يؤثر في الأهلية."
+      ],
+      "expected_result": "لا ينتخب إلا عامل مسجل لدى النقابة أو مستخدم متفرغ فيها، ويمنع انتخاب من صدر بحقه حكم جنائي أو جريمة تمس الشرف والآداب."
+    },
+    {
+      "id": "MC40-17",
+      "test_type": "numerical",
+      "category": "legacy_unions_transition",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "كم أعطى القانون النقابات القائمة قبل نفاذه لتعديل أوضاعها وأنظمتها، وما وضعها القانوني خلال هذه الفترة؟",
+      "primary_article": 101,
+      "required_articles": [
+        101
+      ],
+      "acceptable_articles": [
+        101
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تعتبر نقابات العمال ونقابات أصحاب العمل المسجلة قبل النفاذ قائمة وكأنها مسجلة بمقتضى القانون.",
+        "يجب توفيق أوضاعها وأنظمتها خلال مدة لا تتجاوز ستة أشهر من تاريخ النفاذ."
+      ],
+      "required_citations": [
+        101
+      ],
+      "forbidden_claims": [
+        "يجب إعادة تسجيل النقابات القديمة من الصفر.",
+        "المهلة سنة كاملة."
+      ],
+      "expected_result": "تعد النقابات السابقة قائمة ومسجلة بمقتضى القانون، وعليها توفيق أوضاعها وأنظمتها خلال ستة أشهر من نفاذه."
+    },
+    {
+      "id": "MC40-18",
+      "test_type": "numerical",
+      "category": "union_legal_personality",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "في أي وقت تصبح النقابة شخصاً اعتبارياً، وما الموعد المحدد لإشعار المسجل بأي تغيير يطرأ على نظامها الداخلي؟",
+      "primary_article": 103,
+      "required_articles": [
+        103
+      ],
+      "acceptable_articles": [
+        103
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تكتسب النقابة الشخصية الاعتبارية وتمارس أعمالها من تاريخ نشر قرار التسجيل في الجريدة الرسمية، أو صدور قرار محكمة العدل العليا بإلغاء رفض التسجيل، أو انقضاء مدة الطعن المنصوص عليها في المادة 102.",
+        "يجب تزويد المسجل بأي تغيير أو تعديل في النظام الداخلي خلال خمسة عشر يوماً من إجرائه."
+      ],
+      "required_citations": [
+        103
+      ],
+      "forbidden_claims": [
+        "تكتسب الشخصية الاعتبارية بمجرد تقديم الطلب.",
+        "مهلة الإبلاغ ستة أشهر."
+      ],
+      "expected_result": "تكتسب النقابة الشخصية الاعتبارية في إحدى حالات النفاذ المحددة قانوناً، ويجب إبلاغ المسجل بتعديل النظام الداخلي خلال 15 يوماً."
+    },
+    {
+      "id": "MC40-19",
+      "test_type": "numerical",
+      "category": "union_document_fraud",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "ما العقوبة عند الامتناع عن تقديم وثيقة نقابية مطلوبة، وما عقوبة تقديم بيانات كاذبة أو تزوير النظام أو الميزانية، وكيف يعامل التكرار؟",
+      "primary_article": 119,
+      "required_articles": [
+        119
+      ],
+      "acceptable_articles": [
+        119
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "عدم تقديم المستند المطلوب يعاقب المسؤول بغرامة من خمسين إلى مائة دينار.",
+        "عند تكرار عدم التقديم تضاعف الغرامة بالقياس إلى حدها الأعلى.",
+        "إدخال بيان غير صحيح عمداً أو تزوير النظام الداخلي أو إغفال نص يعاقب بغرامة من خمسمائة إلى ألف دينار أو بالحبس من ثلاثة أشهر إلى سنة.",
+        "تضاعف عقوبة البيان الكاذب أو التزوير بالقياس إلى حدها الأعلى عند التكرار."
+      ],
+      "required_citations": [
+        119
+      ],
+      "forbidden_claims": [
+        "المخالفتان لهما العقوبة نفسها.",
+        "لا توجد عقوبة حبس.",
+        "الحد الأعلى للحبس ثلاثة أشهر فقط."
+      ],
+      "expected_result": "عدم الإرسال يعاقب بغرامة 50–100 دينار، أما البيان الكاذب أو التزوير فبعقوبة 500–1000 دينار أو الحبس 3–12 شهراً، وتضاعف العقوبات وفق النص عند التكرار."
+    },
+    {
+      "id": "MC40-20",
+      "test_type": "numerical",
+      "category": "labor_decision_publication",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "ما المدة المحددة لنشر تقرير مجلس التوفيق أو حكم المحكمة العمالية، وما الشروط الشكلية للقرار المكتوب والتوقيع وتسجيل الرأي المخالف؟",
+      "primary_article": 128,
+      "required_articles": [
+        128
+      ],
+      "acceptable_articles": [
+        128
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يكون التقرير أو القرار كتابياً.",
+        "يوقعه جميع أعضاء المجلس أو المحكمة بحسب الحال.",
+        "يصدر قرار المحكمة بالإجماع أو الأكثرية.",
+        "يثبت العضو المخالف رأيه كتابة.",
+        "ينشر التقرير أو القرار في صحيفة محلية أو أكثر على نفقة أصحاب النزاع خلال ثلاثين يوماً من تسلم الوزير له."
+      ],
+      "required_citations": [
+        128
+      ],
+      "forbidden_claims": [
+        "النشر خلال سبعة أيام.",
+        "لا يلزم توقيع جميع الأعضاء.",
+        "تتحمل الوزارة نفقة النشر دائماً."
+      ],
+      "expected_result": "يكون القرار أو التقرير مكتوباً وموقعاً، ويثبت الرأي المخالف كتابة، وينشر خلال 30 يوماً من تسلم الوزير له وعلى نفقة أصحاب النزاع."
+    },
+    {
+      "id": "MC40-21",
+      "test_type": "colloquial",
+      "category": "union_branches",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "هل يجوز لنقابة العمال إنشاء فروع في مناطق المملكة، وأين توضع القواعد المنظمة لعلاقتها بهذه الفروع وبالاتحاد العام؟",
+      "primary_article": 115,
+      "required_articles": [
+        115
+      ],
+      "acceptable_articles": [
+        115
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يجوز للنقابة فتح فروع في جميع أنحاء المملكة.",
+        "يحدد النظام الداخلي للنقابة علاقتها بفروعها وعلاقتها بالاتحاد العام لنقابات العمال."
+      ],
+      "required_citations": [
+        115
+      ],
+      "forbidden_claims": [
+        "لا يجوز فتح فروع خارج المقر الرئيسي.",
+        "الوزارة تنظم العلاقة دون النظام الداخلي."
+      ],
+      "expected_result": "يجوز فتح فروع في أنحاء المملكة، وينظم النظام الداخلي علاقة النقابة بفروعها وبالاتحاد العام."
+    },
+    {
+      "id": "MC40-22",
+      "test_type": "colloquial",
+      "category": "labor_court_venue",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "أين تعقد اجتماعات مجلس التوفيق والمحكمة العمالية، وأي جهة تتحمل مسؤولية توفير المكان والمعدات والتسهيلات اللازمة؟",
+      "primary_article": 127,
+      "required_articles": [
+        127
+      ],
+      "acceptable_articles": [
+        127
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تعقد الجلسات في الوزارة.",
+        "تكون الوزارة مسؤولة عن المتطلبات الإدارية والتسهيلات والأجهزة اللازمة."
+      ],
+      "required_citations": [
+        127
+      ],
+      "forbidden_claims": [
+        "تعقد الجلسات حصراً في محكمة البداية.",
+        "يتحمل أطراف النزاع وحدهم توفير التجهيزات."
+      ],
+      "expected_result": "تعقد الجلسات في الوزارة، وهي المسؤولة عن توفير المتطلبات الإدارية والتسهيلات والأجهزة."
+    },
+    {
+      "id": "MC40-23",
+      "test_type": "colloquial",
+      "category": "employer_conduct_during_dispute",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "أثناء نظر النزاع العمالي، هل يجوز لصاحب العمل تعديل شروط الاستخدام أو إنهاء خدمة عامل دون موافقة كتابية، وما نطاق الحظر؟",
+      "primary_article": 132,
+      "required_articles": [
+        132
+      ],
+      "acceptable_articles": [
+        132
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يحظر على صاحب العمل تغيير شروط الاستخدام السارية أثناء نظر النزاع.",
+        "يحظر فصل أي عامل دون إذن كتابي من مندوب التوفيق أو مجلس التوفيق أو المحكمة العمالية بحسب الحال."
+      ],
+      "required_citations": [
+        132
+      ],
+      "forbidden_claims": [
+        "يجوز تغيير الشروط أثناء النزاع دون قيد.",
+        "يجوز الفصل دون إذن مكتوب."
+      ],
+      "expected_result": "لا يجوز لصاحب العمل تغيير شروط الاستخدام أو فصل عامل دون إذن كتابي من الجهة التي تنظر النزاع."
+    },
+    {
+      "id": "MC40-24",
+      "test_type": "colloquial",
+      "category": "settlement_violation_penalties",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "ما الغرامة المقررة للعامل ولصاحب العمل عند مخالفة تسوية نافذة أو قرار ملزم صادر عن المحكمة العمالية، وكيف تتشدد عند التكرار؟",
+      "primary_article": 133,
+      "required_articles": [
+        133
+      ],
+      "acceptable_articles": [
+        133
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "غرامة العامل للمرة الأولى من خمسين إلى مائتي دينار.",
+        "غرامة صاحب العمل للمرة الأولى من مائتين إلى أربعمائة دينار.",
+        "تضاعف الغرامة عند التكرار.",
+        "لا يجوز تخفيض الغرامة عن حدها الأدنى للأسباب التقديرية المخففة."
+      ],
+      "required_citations": [
+        133
+      ],
+      "forbidden_claims": [
+        "العامل وصاحب العمل يعاقبان بالمقدار نفسه.",
+        "العقوبة حبس إلزامي.",
+        "يجوز النزول عن الحد الأدنى."
+      ],
+      "expected_result": "غرامة العامل 50–200 دينار وصاحب العمل 200–400 دينار للمرة الأولى، وتضاعف عند التكرار ولا تنخفض عن الحد الأدنى."
+    },
+    {
+      "id": "MC40-25",
+      "test_type": "multi_article",
+      "category": "labor_inspection_framework",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "لخص الإطار القانوني للتفتيش العمالي: الجهة القائمة به، شروط المفتشين، صلاحياتهم، مكافآتهم، وما يجب على صاحب العمل تقديمه لهم.",
+      "primary_article": 5,
+      "required_articles": [
+        5,
+        7
+      ],
+      "acceptable_articles": [
+        5,
+        7
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تتولى وزارة العمل مهام التفتيش تطبيقاً للقانون.",
+        "تحدد مؤهلات مفتشي العمل ومهامهم وصلاحياتهم ومكافآتهم بموجب أنظمة.",
+        "تحدد الأنظمة أيضاً التزامات صاحب العمل تجاه المفتشين."
+      ],
+      "required_citations": [
+        5,
+        7
+      ],
+      "forbidden_claims": [
+        "تتولى المحاكم التفتيش اليومي.",
+        "تحدد كل مؤسسة صلاحيات المفتش من تلقاء نفسها."
+      ],
+      "expected_result": "تتولى الوزارة مهام التفتيش، بينما تنظم الأنظمة مؤهلات المفتشين ومهامهم وصلاحياتهم ومكافآتهم والتزامات أصحاب العمل تجاههم."
+    },
+    {
+      "id": "MC40-26",
+      "test_type": "multi_article",
+      "category": "occupational_safety_enforcement",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "عند وجود خطر جسيم على السلامة في منشأة، ما سلطة الوزير في الإغلاق أو وقف الآلة، وكيف تعالج أجور العمال، وما المسائل التي تنظمها أنظمة الوقاية والعناية الطبية؟",
+      "primary_article": 84,
+      "required_articles": [
+        84,
+        85
+      ],
+      "acceptable_articles": [
+        84,
+        85
+      ],
+      "expected_concepts_any": [
+        "employer_liability_consequence",
+        "pay_wages_obligation",
+        "provide_safe_work_environment_obligation",
+        "safe_work_environment_right_concept",
+        "wage_payment_event",
+        "wage_right_concept",
+        "work_injury_event"
+      ],
+      "required_facts": [
+        "يجوز للوزير إغلاق المؤسسة أو مكان العمل كلياً أو جزئياً أو إيقاف آلة إذا عرضت المخالفة العمال أو المؤسسة أو الآلات للخطر حتى إزالة المخالفة.",
+        "يجب توجيه إنذار لصاحب العمل لإزالة المخالفة خلال مدة يحددها وفق جسامتها وخطورتها قبل القرار.",
+        "لا يخل الإغلاق أو الإيقاف بحق العمال في الأجور الكاملة خلال مدته.",
+        "يجوز إحالة المخالف إلى المحكمة، وتكون الغرامة من مائة إلى خمسمائة دينار وتتضاعف عند التكرار ولا تخفض عن الحد الأدنى.",
+        "تصدر أنظمة بشأن لجان السلامة والمشرفين والعناية الطبية والوحدات الطبية والفحوص الدورية والوقاية من الآلات ومواقع العمل."
+      ],
+      "required_citations": [
+        84,
+        85
+      ],
+      "forbidden_claims": [
+        "يجوز الإغلاق دون إنذار في جميع الحالات وفق النص.",
+        "يسقط أجر العمال أثناء الإغلاق.",
+        "لا تشمل الأنظمة الفحوص الطبية الدورية."
+      ],
+      "expected_result": "يسبق الإغلاق إنذار بإزالة المخالفة، ويجوز الإغلاق أو إيقاف الآلة حتى التصويب مع بقاء الأجور كاملة، وقد تفرض غرامة 100–500 دينار. وتنظم الأنظمة لجان السلامة والعناية الطبية والفحوص والوقاية."
+    },
+    {
+      "id": "MC40-27",
+      "test_type": "multi_article",
+      "category": "union_legal_lifecycle",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "ما المراحل القانونية التي تمر بها نقابة كانت قائمة قبل نفاذ القانون، من استمرارها وتوفيق أوضاعها واكتساب الشخصية الاعتبارية إلى تعديل نظامها أو إلغاء تسجيلها؟",
+      "primary_article": 101,
+      "required_articles": [
+        101,
+        103,
+        105
+      ],
+      "acceptable_articles": [
+        101,
+        103,
+        105
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تعتبر النقابات المسجلة قبل نفاذ القانون قائمة وكأنها مسجلة بمقتضاه.",
+        "يجب توفيق أوضاعها وأنظمتها خلال ستة أشهر.",
+        "تكتسب الشخصية الاعتبارية وفق نقاط النفاذ المحددة في المادة 103.",
+        "يجب إبلاغ المسجل بتعديل النظام الداخلي خلال خمسة عشر يوماً.",
+        "تلغى شهادة التسجيل إذا أصبحت النقابة غير قائمة بسبب الحل الاختياري أو القانوني أو القضائي."
+      ],
+      "required_citations": [
+        101,
+        103,
+        105
+      ],
+      "forbidden_claims": [
+        "يجب إعادة تسجيل النقابة القديمة من الصفر.",
+        "مهلة إبلاغ التعديل سنة.",
+        "لا تلغى الشهادة بعد الحل القضائي."
+      ],
+      "expected_result": "تبقى النقابة القديمة قائمة وعليها توفيق أوضاعها خلال ستة أشهر، وتكتسب الشخصية الاعتبارية وفق حالات المادة 103، وتبلغ تعديل النظام خلال 15 يوماً، وتلغى شهادتها إذا أصبحت غير قائمة."
+    },
+    {
+      "id": "MC40-28",
+      "test_type": "multi_article",
+      "category": "union_financial_governance",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "اعرض قواعد الرقابة المالية على النقابة: مصارف الأموال المسموحة، حق الاطلاع على السجلات، وعقوبات حجب الوثائق أو تزوير الحسابات والنظام الداخلي.",
+      "primary_article": 109,
+      "required_articles": [
+        109,
+        113,
+        119
+      ],
+      "acceptable_articles": [
+        109,
+        113,
+        119
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تقصر أموال النقابة على الغايات المشروعة المرتبطة بمصلحتها وتشمل الأوجه المحددة في المادة 109.",
+        "تعد النقابة سجلاتها وفق شروط الوزير.",
+        "لمفتش العمل الاطلاع في أي وقت، وللموظف أو العضو الاطلاع وفق النظام الداخلي وفي مقر النقابة.",
+        "عدم تقديم المستند المطلوب يعاقب بغرامة 50–100 دينار وتضاعف وفق النص عند التكرار.",
+        "البيان الكاذب أو التزوير يعاقب بغرامة 500–1000 دينار أو الحبس 3 أشهر–سنة، وتضاعف العقوبة عند التكرار."
+      ],
+      "required_citations": [
+        109,
+        113,
+        119
+      ],
+      "forbidden_claims": [
+        "يجوز إخفاء الدفاتر عن مفتش العمل.",
+        "لا يعاقب تزوير الميزانية بالحبس.",
+        "يجوز الإنفاق الشخصي غير المرتبط بمصلحة النقابة."
+      ],
+      "expected_result": "تنفق الأموال فقط في الغايات المشروعة، وتخضع السجلات للاطلاع المحدد قانوناً، ويعاقب عدم التقديم بغرامة 50–100 دينار، بينما يعاقب التزوير أو البيان الكاذب بغرامة 500–1000 دينار أو الحبس 3–12 شهراً."
+    },
+    {
+      "id": "MC40-29",
+      "test_type": "multi_article",
+      "category": "union_structure_and_branches",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "كيف ينظم القانون علاقة النقابات بالاتحاد العام والاتحادات المهنية، وما الحد الأدنى لتأسيس اتحاد مهني، وأين تضبط علاقة الفروع بالنقابة؟",
+      "primary_article": 110,
+      "required_articles": [
+        110,
+        115
+      ],
+      "acceptable_articles": [
+        110,
+        115
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تشكل النقابات العمالية الاتحاد العام الذي تكون له شخصية اعتبارية وتحتفظ كل نقابة بحقوقها.",
+        "يجوز لنقابتين أو أكثر تشكيل اتحاد مهني بموافقة الاتحاد العام والأكثرية العادية لهيئاتهما العامة وإبلاغ المسجل خطياً.",
+        "يجوز للنقابة فتح فروع في أنحاء المملكة.",
+        "يحدد النظام الداخلي العلاقة بين النقابة وفروعها وبينها وبين الاتحاد العام."
+      ],
+      "required_citations": [
+        110,
+        115
+      ],
+      "forbidden_claims": [
+        "تكفي نقابة واحدة لتشكيل اتحاد مهني.",
+        "لا يجوز فتح فروع.",
+        "العلاقة بالفروع لا تنظم في النظام الداخلي."
+      ],
+      "expected_result": "تشكل النقابات الاتحاد العام، ويمكن لنقابتين أو أكثر إنشاء اتحاد مهني بالشروط المحددة، ويجوز فتح الفروع، وينظم النظام الداخلي علاقة النقابة بها وبالاتحاد العام."
+    },
+    {
+      "id": "MC40-30",
+      "test_type": "multi_article",
+      "category": "union_mission_and_structure",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "نقابة جديدة تريد الدفاع عن العمال وتقديم رعاية صحية واجتماعية وفتح فروع ثم الارتباط باتحاد عام أو مهني؛ ما الخيارات التي يجيزها القانون؟",
+      "primary_article": 99,
+      "required_articles": [
+        99,
+        110,
+        115
+      ],
+      "acceptable_articles": [
+        99,
+        110,
+        115
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يجوز للنقابة رعاية مصالح العمال والدفاع عن حقوقهم وتقديم الخدمات الصحية والاجتماعية ورفع مستواهم الاقتصادي والمهني والثقافي.",
+        "يجوز للنقابة فتح فروع وتنظم علاقتها بها وبالاتحاد العام في نظامها الداخلي.",
+        "تشكل النقابات الاتحاد العام ذي الشخصية الاعتبارية مع احتفاظ كل نقابة بحقوقها.",
+        "يجوز لنقابتين أو أكثر تشكيل اتحاد مهني بالشروط القانونية المحددة.",
+        "يجوز للاتحادات الانضمام إلى منظمات عمالية عربية أو دولية ذات أهداف ووسائل مشروعة."
+      ],
+      "required_citations": [
+        99,
+        110,
+        115
+      ],
+      "forbidden_claims": [
+        "يحظر تقديم الخدمات الاجتماعية.",
+        "لا يجوز فتح فروع.",
+        "لا يجوز تشكيل اتحادات مهنية أو الانضمام لمنظمات عمالية خارجية."
+      ],
+      "expected_result": "يسمح القانون للنقابة بالدفاع عن العمال وتقديم الخدمات وفتح الفروع، وبالانخراط في الاتحاد العام، كما يسمح لنقابتين أو أكثر بتشكيل اتحاد مهني بالشروط المحددة والانضمام إلى منظمات عمالية مشروعة."
+    },
+    {
+      "id": "MC40-31",
+      "test_type": "multi_article",
+      "category": "collective_dispute_procedure",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "في نزاع عمالي منظور، وضح صلاحيات جهة الفصل في الإثبات، ومكان الجلسات، وشكل نشر القرار، والقيود على صاحب العمل، وعقوبة مخالفة الحكم.",
+      "primary_article": 125,
+      "required_articles": [
+        125,
+        127,
+        128,
+        132,
+        133
+      ],
+      "acceptable_articles": [
+        125,
+        127,
+        128,
+        132,
+        133
+      ],
+      "expected_concepts_any": [
+        "dismissal_event",
+        "legal_claim_consequence",
+        "litigation_right_concept"
+      ],
+      "required_facts": [
+        "للمحكمة العمالية ومجلس التوفيق سماع الأشخاص والاستعانة بالخبرة بعد القسم وطلب المستندات والبيانات.",
+        "تعقد الجلسات في الوزارة وتوفر الوزارة المتطلبات والتسهيلات والأجهزة.",
+        "يكون التقرير أو القرار مكتوباً وموقعاً، ويثبت الرأي المخالف كتابة، وينشر خلال ثلاثين يوماً على نفقة أصحاب النزاع.",
+        "يحظر على صاحب العمل تغيير شروط الاستخدام أو فصل عامل دون إذن كتابي أثناء نظر النزاع.",
+        "غرامة العامل عند مخالفة التسوية أو القرار 50–200 دينار، وغرامة صاحب العمل 200–400 دينار، وتتضاعف عند التكرار ولا تخفض عن الحد الأدنى."
+      ],
+      "required_citations": [
+        125,
+        127,
+        128,
+        132,
+        133
+      ],
+      "forbidden_claims": [
+        "يجوز لصاحب العمل الفصل أثناء النزاع دون إذن.",
+        "تنشر القرارات خلال ستة أشهر.",
+        "غرامة العامل أعلى من غرامة صاحب العمل في المرة الأولى."
+      ],
+      "expected_result": "تملك جهات النزاع سماع الأدلة وطلب المستندات، وتعقد الجلسات في الوزارة، ويصدر القرار مكتوباً وينشر خلال 30 يوماً. ويحظر تغيير الشروط أو الفصل دون إذن، وتطبق الغرامات المحددة على مخالفة القرار."
+    },
+    {
+      "id": "MC40-32",
+      "test_type": "multi_article",
+      "category": "final_and_transitional_provisions",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "إذا خلا قانون العمل من عقوبة خاصة لمخالفة معينة، فما أداة إصدار أحكام التنفيذ، وما التشريع الذي ألغي، ومن الجهات المكلفة بتنفيذ القانون؟",
+      "primary_article": 139,
+      "required_articles": [
+        139,
+        140,
+        141,
+        142
+      ],
+      "acceptable_articles": [
+        139,
+        140,
+        141,
+        142
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "المخالفة التي لم تحدد لها عقوبة تعاقب بغرامة من خمسين إلى مائة دينار، مع تطبيق العقوبة الأشد في قانون العقوبات إن وجدت.",
+        "لمجلس الوزراء بناء على تنسيب الوزير إصدار الأنظمة اللازمة لتنفيذ القانون.",
+        "يلغى قانون العمل رقم 21 لسنة 1960 وتعديلاته.",
+        "تبقى الأنظمة والتعليمات والقرارات السابقة غير المخالفة سارية لمدة لا تزيد على سنتين إلى حين إلغائها أو استبدالها.",
+        "رئيس الوزراء والوزراء مكلفون بتنفيذ القانون."
+      ],
+      "required_citations": [
+        139,
+        140,
+        141,
+        142
+      ],
+      "forbidden_claims": [
+        "لا توجد عقوبة للمخالفات غير المنصوص عليها.",
+        "تبقى التشريعات السابقة نافذة بلا مدة.",
+        "الوزير وحده مكلف بالتنفيذ."
+      ],
+      "expected_result": "تطبق غرامة 50–100 دينار على المخالفة بلا عقوبة خاصة مع مراعاة العقوبة الأشد، ويصدر مجلس الوزراء أنظمة التنفيذ، ويلغى قانون 1960 مع استمرار التشريعات الفرعية غير المخالفة لمدة أقصاها سنتان، ويكلف رئيس الوزراء والوزراء بالتنفيذ."
+    },
+    {
+      "id": "MC40-33",
+      "test_type": "out_of_scope",
+      "category": "social_security_retirement",
+      "difficulty": "hard",
+      "expected_behavior": "abstain",
+      "question": "هل يحدد قانون العمل شروط استحقاق راتب التقاعد المبكر من الضمان الاجتماعي وطريقة احتساب الاقتطاع من الراتب التقاعدي؟",
+      "expected_scope": "outside Jordanian Labor Law; Social Security legislation",
+      "expected_result": "السؤال يتعلق بشروط التقاعد المبكر وحساب راتب الضمان الاجتماعي، وهي مسائل يحكمها قانون الضمان الاجتماعي وليست ضمن قانون العمل الأردني الممثل في النظام."
+    },
+    {
+      "id": "MC40-34",
+      "test_type": "out_of_scope",
+      "category": "civil_service_discipline",
+      "difficulty": "hard",
+      "expected_behavior": "abstain",
+      "question": "صدر بحق موظف حكومي قرار تأديبي بالحسم وتأخير الترفيع؛ هل يبين قانون العمل طريق الاعتراض على هذا القرار الإداري؟",
+      "expected_scope": "outside Jordanian Labor Law; public-sector civil service rules",
+      "expected_result": "المسألة تخص موظفاً عاماً وإجراءات تأديبية وترفيعاً في القطاع العام، وليست من نطاق قانون العمل الأردني الممثل."
+    },
+    {
+      "id": "MC40-35",
+      "test_type": "out_of_scope",
+      "category": "criminal_assault_at_work",
+      "difficulty": "hard",
+      "expected_behavior": "abstain",
+      "question": "ما وصف جريمة الضرب التي يرتكبها زميل داخل المنشأة، وما مدة الحبس والتعويض وفق قانون العقوبات؟",
+      "expected_scope": "outside Jordanian Labor Law; criminal law and procedure",
+      "expected_result": "رغم وقوع الحادث في مكان العمل، فإن تحديد الجريمة وعقوبة الحبس والتعويض الجزائي مسألة من قانون العقوبات والإجراءات الجزائية، لا من قانون العمل الممثل."
+    },
+    {
+      "id": "MC40-36",
+      "test_type": "out_of_scope",
+      "category": "social_security_work_injury_benefits",
+      "difficulty": "hard",
+      "expected_behavior": "abstain",
+      "question": "هل يحدد قانون العمل مقدار راتب الاعتلال وبدل التعطل الذي تدفعه مؤسسة الضمان وإجراءات الطعن في قراراتها؟",
+      "expected_scope": "outside Jordanian Labor Law; Social Security benefits and appeals",
+      "expected_result": "السؤال يطلب منافع وإجراءات اعتراض لدى مؤسسة الضمان الاجتماعي، وهي خارج نطاق قانون العمل الأردني الممثل في النظام."
+    },
+    {
+      "id": "MC40-37",
+      "test_type": "out_of_scope",
+      "category": "data_protection_employment",
+      "difficulty": "medium",
+      "expected_behavior": "abstain",
+      "question": "كيف يعالج قانون حماية البيانات نشر الرقم الوطني وصورة الهوية دون موافقة، وأين تقدم الشكوى؟",
+      "expected_scope": "outside Jordanian Labor Law; personal data protection",
+      "expected_result": "السؤال يتعلق بحقوق وإجراءات قانون حماية البيانات الشخصية، وهي خارج نطاق قانون العمل الأردني الممثل."
+    },
+    {
+      "id": "MC40-38",
+      "test_type": "out_of_scope",
+      "category": "banking_salary_loan",
+      "difficulty": "medium",
+      "expected_behavior": "abstain",
+      "question": "هل ينظم قانون العمل صحة عقد قرض بنكي واقتطاع الأقساط والفوائد من حساب الراتب وإجراءات الاعتراض لدى البنك المركزي؟",
+      "expected_scope": "outside Jordanian Labor Law; banking and consumer finance",
+      "expected_result": "المسألة تتعلق بعقد قرض وخدمات مصرفية ورقابة البنك المركزي، وليست من نطاق قانون العمل الأردني الممثل."
+    },
+    {
+      "id": "MC40-39",
+      "test_type": "out_of_scope",
+      "category": "residency_visa",
+      "difficulty": "medium",
+      "expected_behavior": "abstain",
+      "question": "ما إجراءات تجديد إقامة عامل أجنبي وتأشيرته ولم شمل أسرته لدى وزارة الداخلية؟",
+      "expected_scope": "outside Jordanian Labor Law; immigration and residency",
+      "expected_result": "السؤال يتعلق بالإقامة والتأشيرات ولمّ الشمل وإجراءات وزارة الداخلية، وهي خارج نطاق قانون العمل الأردني الممثل."
+    },
+    {
+      "id": "MC40-40",
+      "test_type": "out_of_scope",
+      "category": "company_share_transfer",
+      "difficulty": "medium",
+      "expected_behavior": "abstain",
+      "question": "كيف تنقل حصص شركة محدودة المسؤولية إلى شريك آخر، وما خطوات تعديل عقد التأسيس لدى مراقب الشركات؟",
+      "expected_scope": "outside Jordanian Labor Law; companies law",
+      "expected_result": "المسألة تتعلق بقانون الشركات وإجراءات نقل الحصص وتعديل عقد التأسيس، وهي خارج نطاق قانون العمل الأردني الممثل."
+    }
+  ]
+}

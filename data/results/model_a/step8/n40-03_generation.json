@@ -1,0 +1,29 @@
+{
+  "schema_version": "generation.v1",
+  "status": "generated",
+  "question": "بأي أداة قانونية تحدد مؤهلات مفتشي العمل وصلاحياتهم ومكافآتهم والتزامات أصحاب العمل تجاههم؟",
+  "retrieval_schema_version": "retrieval.v1",
+  "answer_ar": "تنص [المادة 7]على أن مؤهلات مفتشي العمل وصلاحياتهم ومكافآتهم والتزامات صاحب العمل تجاههم محددة بموجب أنظمة تصدر لهذه الغاية. [المادة 7]",
+  "key_points": [],
+  "citations": [
+    {
+      "article_number": 7,
+      "label_ar": "المادة 7",
+      "uri": "http://example.org/jordan-labor-law#article_7",
+      "excerpt": "تحدد مؤهلات مفتشي العمل ومهامهم وصلاحياتهم ومكافآتهم كما تحدد التزامات صاحب العمل تجاههم بموجب انظمة تصدر لهذه الغاية."
+    }
+  ],
+  "cited_article_numbers": [
+    7
+  ],
+  "grounded": true,
+  "warnings": [],
+  "model": "gpt-5-nano",
+  "usage": {
+    "input_tokens": 2749,
+    "output_tokens": 235,
+    "total_tokens": 2984
+  },
+  "elapsed_ms": 3014,
+  "debug": null
+}

@@ -1,0 +1,336 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "كيف يصدر تقرير مجلس التوفيق أو قرار المحكمة العمالية، وخلال كم يوماً يجب نشره وعلى نفقة من؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "السؤال ضمن نطاق قانون العمل الأردني ويطلب إجراءات ونشر وتكاليف قرارات/تقريرات عمالية، مما يستلزم استرجاعاً من النصوص التنظيمية دون الحاجة لتوضيح إضافي.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.85
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 65
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_128",
+      "local_name": "article_128",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 128"
+      ],
+      "labels_en": [],
+      "article_number": 128,
+      "text": "أ . يكون تقرير مجلس التوفيق وقرار المحكمة العمالية كتابياً ويوقعه جميع اعضاء المجلس او المحكمة وفقاً لمقتضى الحال\n\n    ويصدر قرار المحكمة بالاجماع او بالاكثرية ويجب على كل عضو مخالف من اعضاء المجلس او المحكمة ان يثبت رايه\n\n    كتابة في التقرير او القرار.\n\nب. ينشر تقرير المجلس او قرار المحكمة العمالية في صحيفة محلية او اكثر على نفقة اصحاب النزاع خلال ثلاثين يوماً من\n\n    تاريخ تسلم الوزير التقرير او القرار.",
+      "final_score": 1.0,
+      "fused_score": 0.07503152585119799,
+      "direct_score": 0.07503152585119799,
+      "graph_score": 0.0,
+      "paragraph_score": 0.12937062937062938,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#disclosure_employer_secrets_violation",
+      "local_name": "disclosure_employer_secrets_violation",
+      "node_kind": "DisclosureOfEmployerSecrets",
+      "labels_ar": [
+        "مخالفة إفشاء أسرار صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#disclosure_employer_secrets_violation\nLocal name: disclosure_employer_secrets_violation\nNode kind: DisclosureOfEmployerSecrets\nRDF types: DisclosureOfEmployerSecrets\nArabic labels: مخالفة إفشاء أسرار صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.02459016393442623,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#pay_wages_obligation",
+      "local_name": "pay_wages_obligation",
+      "node_kind": "PayWages",
+      "labels_ar": [
+        "التزام دفع الأجور"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#pay_wages_obligation\nLocal name: pay_wages_obligation\nNode kind: PayWages\nRDF types: PayWages\nArabic labels: التزام دفع الأجور",
+      "final_score": 0.0,
+      "fused_score": 0.024193548387096774,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#collective_labor_dispute_concept",
+      "local_name": "collective_labor_dispute_concept",
+      "node_kind": "LegalEvent",
+      "labels_ar": [
+        "النزاع العمالي الجماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#collective_labor_dispute_concept\nLocal name: collective_labor_dispute_concept\nNode kind: LegalEvent\nRDF types: LegalEvent\nArabic labels: النزاع العمالي الجماعي",
+      "final_score": 0.0,
+      "fused_score": 0.023809523809523808,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+      "local_name": "employers_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "نقابة أصحاب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.0234375,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_right_concept",
+      "local_name": "wage_right_concept",
+      "node_kind": "WageRight",
+      "labels_ar": [
+        "حق الأجر"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_right_concept\nLocal name: wage_right_concept\nNode kind: WageRight\nRDF types: WageRight\nArabic labels: حق الأجر",
+      "final_score": 0.0,
+      "fused_score": 0.023076923076923078,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#trade_union_concept",
+      "local_name": "trade_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "النقابة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#trade_union_concept\nLocal name: trade_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: النقابة",
+      "final_score": 0.0,
+      "fused_score": 0.022727272727272728,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+      "local_name": "wage_delay_violation",
+      "node_kind": "WageDelay",
+      "labels_ar": [
+        "مخالفة تأخر دفع الأجور"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_delay_violation\nLocal name: wage_delay_violation\nNode kind: WageDelay\nRDF types: WageDelay\nArabic labels: مخالفة تأخر دفع الأجور",
+      "final_score": 0.0,
+      "fused_score": 0.022388059701492536,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+      "local_name": "collective_employment_contract_concept",
+      "node_kind": "EmploymentRelation",
+      "labels_ar": [
+        "عقد العمل الجماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#collective_employment_contract_concept\nLocal name: collective_employment_contract_concept\nNode kind: EmploymentRelation\nRDF types: EmploymentRelation\nArabic labels: عقد العمل الجماعي",
+      "final_score": 0.0,
+      "fused_score": 0.022058823529411766,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_concept",
+      "local_name": "wage_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "الأجر"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_concept\nLocal name: wage_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: الأجر",
+      "final_score": 0.0,
+      "fused_score": 0.021739130434782608,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_payment_event",
+      "local_name": "wage_payment_event",
+      "node_kind": "WagePayment",
+      "labels_ar": [
+        "حدث دفع الأجر"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_payment_event\nLocal name: wage_payment_event\nNode kind: WagePayment\nRDF types: WagePayment\nArabic labels: حدث دفع الأجر",
+      "final_score": 0.0,
+      "fused_score": 0.02142857142857143,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+      "local_name": "employer_liability_consequence",
+      "node_kind": "EmployerLiability",
+      "labels_ar": [
+        "مسؤولية صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_liability_consequence\nLocal name: employer_liability_consequence\nNode kind: EmployerLiability\nRDF types: EmployerLiability\nArabic labels: مسؤولية صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.02112676056338028,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#weekly_rest_right_concept",
+      "local_name": "weekly_rest_right_concept",
+      "node_kind": "WeeklyRestRight",
+      "labels_ar": [
+        "حق العطلة الأسبوعية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#weekly_rest_right_concept\nLocal name: weekly_rest_right_concept\nNode kind: WeeklyRestRight\nRDF types: WeeklyRestRight\nArabic labels: حق العطلة الأسبوعية",
+      "final_score": 0.0,
+      "fused_score": 0.020833333333333332,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+      "local_name": "work_negligence_violation",
+      "node_kind": "WorkNegligence",
+      "labels_ar": [
+        "مخالفة الإهمال في العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#work_negligence_violation\nLocal name: work_negligence_violation\nNode kind: WorkNegligence\nRDF types: WorkNegligence\nArabic labels: مخالفة الإهمال في العمل",
+      "final_score": 2.640625,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 2.640625,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#preserve_confidentiality_obligation",
+      "local_name": "preserve_confidentiality_obligation",
+      "node_kind": "PreserveConfidentiality",
+      "labels_ar": [
+        "التزام حفظ السرية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#preserve_confidentiality_obligation\nLocal name: preserve_confidentiality_obligation\nNode kind: PreserveConfidentiality\nRDF types: PreserveConfidentiality\nArabic labels: التزام حفظ السرية",
+      "final_score": 1.9500000000000002,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.9500000000000002,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#disciplinary_action_consequence",
+      "local_name": "disciplinary_action_consequence",
+      "node_kind": "DisciplinaryAction",
+      "labels_ar": [
+        "الإجراء التأديبي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#disciplinary_action_consequence\nLocal name: disciplinary_action_consequence\nNode kind: DisciplinaryAction\nRDF types: DisciplinaryAction\nArabic labels: الإجراء التأديبي",
+      "final_score": 1.625,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.625,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "diagnostics": {
+    "article_numbers": [
+      128
+    ],
+    "concept_local_names": [
+      "disclosure_employer_secrets_violation",
+      "pay_wages_obligation",
+      "collective_labor_dispute_concept",
+      "employers_union_concept",
+      "wage_right_concept",
+      "trade_union_concept",
+      "wage_delay_violation",
+      "collective_employment_contract_concept",
+      "wage_concept",
+      "wage_payment_event",
+      "employer_liability_consequence",
+      "weekly_rest_right_concept"
+    ],
+    "graph_supported_articles": [],
+    "concept_count": 12,
+    "expanded_concept_count": 3,
+    "article_count": 1
+  },
+  "elapsed_ms": 44018,
+  "debug": null
+}

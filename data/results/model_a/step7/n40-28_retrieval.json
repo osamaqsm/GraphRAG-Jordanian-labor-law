@@ -1,0 +1,354 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "ما الغرامات التي تفرض على العامل وعلى صاحب العمل عند مخالفة شرط ملزم في تسوية نزاع عمالي أو قرار محكمة عمالية، وماذا يحدث عند التكرار؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "المسألة ضمن قانون العمل الأردني وتتطلب العثور على نصوص الغرامات والعقوبات المرتبطة بمخالفة شروط ملزمة في تسويات نزاع عمالي أو قرارات محكمة عمالية، بما في ذلك حالات التكرار.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.92
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 91
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_133",
+      "local_name": "article_133",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 133"
+      ],
+      "labels_en": [],
+      "article_number": 133,
+      "text": "أ . اذا خالف اي عامل شرطاً من شروط التسوية او قرار المحكمة العمالية الملزم له بمقتضى هذا القانون فيعاقب بغرامة لا\n\n    تقل عن خمسين دينارا ولا تزيد على مائتي دينار للمرة الاولى وتضاعف في حالة التكرار ولا يجوز تخفيض الغرامة عن\n\n    حدها الادنى للاسباب التقديرية المخففة.\n\nب. اذا خالف صاحب العمل اي شرط من شروط التسوية او قرار المحكمة العمالية الملزم له بمقتضى هذا القانون فيعاقب\n\n    بغرامة لا تقل عن مائتي دينار ولا تزيد على اربعمائة دينار للمرة الاولى وتضاعف في حالة التكرار ولا يجوز تخفيض\n\n    الغرامة عن حدها الادنى للاسباب التقديرية المخففة.",
+      "final_score": 1.0,
+      "fused_score": 0.07416217662119301,
+      "direct_score": 0.07416217662119301,
+      "graph_score": 0.0,
+      "paragraph_score": 0.12662337662337664,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#work_negligence_violation",
+      "local_name": "work_negligence_violation",
+      "node_kind": "WorkNegligence",
+      "labels_ar": [
+        "مخالفة الإهمال في العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#work_negligence_violation\nLocal name: work_negligence_violation\nNode kind: WorkNegligence\nRDF types: WorkNegligence\nArabic labels: مخالفة الإهمال في العمل",
+      "final_score": 0.0,
+      "fused_score": 0.07298985167837627,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#disclosure_employer_secrets_violation",
+      "local_name": "disclosure_employer_secrets_violation",
+      "node_kind": "DisclosureOfEmployerSecrets",
+      "labels_ar": [
+        "مخالفة إفشاء أسرار صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#disclosure_employer_secrets_violation\nLocal name: disclosure_employer_secrets_violation\nNode kind: DisclosureOfEmployerSecrets\nRDF types: DisclosureOfEmployerSecrets\nArabic labels: مخالفة إفشاء أسرار صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06685366993922394,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#arbitrary_dismissal_violation",
+      "local_name": "arbitrary_dismissal_violation",
+      "node_kind": "ArbitraryDismissal",
+      "labels_ar": [
+        "مخالفة الفصل التعسفي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#arbitrary_dismissal_violation\nLocal name: arbitrary_dismissal_violation\nNode kind: ArbitraryDismissal\nRDF types: ArbitraryDismissal\nArabic labels: مخالفة الفصل التعسفي",
+      "final_score": 0.0,
+      "fused_score": 0.07232462877624168,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+      "local_name": "wage_delay_violation",
+      "node_kind": "WageDelay",
+      "labels_ar": [
+        "مخالفة تأخر دفع الأجور"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_delay_violation\nLocal name: wage_delay_violation\nNode kind: WageDelay\nRDF types: WageDelay\nArabic labels: مخالفة تأخر دفع الأجور",
+      "final_score": 0.0,
+      "fused_score": 0.07172081106507336,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#assignment_different_work_violation",
+      "local_name": "assignment_different_work_violation",
+      "node_kind": "AssignmentOfDifferentWork",
+      "labels_ar": [
+        "مخالفة التكليف بعمل مختلف"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#assignment_different_work_violation\nLocal name: assignment_different_work_violation\nNode kind: AssignmentOfDifferentWork\nRDF types: AssignmentOfDifferentWork\nArabic labels: مخالفة التكليف بعمل مختلف",
+      "final_score": 0.0,
+      "fused_score": 0.06947843822843823,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#dismissal_without_lawful_ground_condition",
+      "local_name": "dismissal_without_lawful_ground_condition",
+      "node_kind": "DismissalWithoutLawfulGround",
+      "labels_ar": [
+        "شرط الفصل دون سبب مشروع"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#dismissal_without_lawful_ground_condition\nLocal name: dismissal_without_lawful_ground_condition\nNode kind: DismissalWithoutLawfulGround\nRDF types: DismissalWithoutLawfulGround\nArabic labels: شرط الفصل دون سبب مشروع",
+      "final_score": 0.0,
+      "fused_score": 0.06673155959333765,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#worker_not_covered_social_security_condition",
+      "local_name": "worker_not_covered_social_security_condition",
+      "node_kind": "WorkerNotCoveredBySocialSecurity",
+      "labels_ar": [
+        "شرط عدم شمول العامل بالضمان الاجتماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#worker_not_covered_social_security_condition\nLocal name: worker_not_covered_social_security_condition\nNode kind: WorkerNotCoveredBySocialSecurity\nRDF types: WorkerNotCoveredBySocialSecurity\nArabic labels: شرط عدم شمول العامل بالضمان الاجتماعي",
+      "final_score": 0.0,
+      "fused_score": 0.06367694805194805,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#contract_fixed_term_condition",
+      "local_name": "contract_fixed_term_condition",
+      "node_kind": "ContractIsFixedTerm",
+      "labels_ar": [
+        "شرط كون العقد محدد المدة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#contract_fixed_term_condition\nLocal name: contract_fixed_term_condition\nNode kind: ContractIsFixedTerm\nRDF types: ContractIsFixedTerm\nArabic labels: شرط كون العقد محدد المدة",
+      "final_score": 0.0,
+      "fused_score": 0.06069460390355913,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+      "local_name": "delay_exceeds_seven_days_condition",
+      "node_kind": "DelayExceedsSevenDays",
+      "labels_ar": [
+        "شرط تجاوز التأخير سبعة أيام"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition\nLocal name: delay_exceeds_seven_days_condition\nNode kind: DelayExceedsSevenDays\nRDF types: DelayExceedsSevenDays\nArabic labels: شرط تجاوز التأخير سبعة أيام",
+      "final_score": 0.0,
+      "fused_score": 0.045008912655971484,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#contract_indefinite_term_condition",
+      "local_name": "contract_indefinite_term_condition",
+      "node_kind": "ContractIsIndefiniteTerm",
+      "labels_ar": [
+        "شرط كون العقد غير محدد المدة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#contract_indefinite_term_condition\nLocal name: contract_indefinite_term_condition\nNode kind: ContractIsIndefiniteTerm\nRDF types: ContractIsIndefiniteTerm\nArabic labels: شرط كون العقد غير محدد المدة",
+      "final_score": 0.0,
+      "fused_score": 0.043697478991596636,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+      "local_name": "employer_liability_consequence",
+      "node_kind": "EmployerLiability",
+      "labels_ar": [
+        "مسؤولية صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_liability_consequence\nLocal name: employer_liability_consequence\nNode kind: EmployerLiability\nRDF types: EmployerLiability\nArabic labels: مسؤولية صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.03501564945226917,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+      "local_name": "temporary_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل المؤقت"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#temporary_work_concept\nLocal name: temporary_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل المؤقت",
+      "final_score": 0.0,
+      "fused_score": 0.03315789473684211,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#follow_lawful_instructions_obligation",
+      "local_name": "follow_lawful_instructions_obligation",
+      "node_kind": "FollowLawfulInstructions",
+      "labels_ar": [
+        "التزام اتباع التعليمات المشروعة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#follow_lawful_instructions_obligation\nLocal name: follow_lawful_instructions_obligation\nNode kind: FollowLawfulInstructions\nRDF types: FollowLawfulInstructions\nArabic labels: التزام اتباع التعليمات المشروعة",
+      "final_score": 1.9500000000000002,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.9500000000000002,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#perform_work_obligation",
+      "local_name": "perform_work_obligation",
+      "node_kind": "PerformWork",
+      "labels_ar": [
+        "التزام أداء العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#perform_work_obligation\nLocal name: perform_work_obligation\nNode kind: PerformWork\nRDF types: PerformWork\nArabic labels: التزام أداء العمل",
+      "final_score": 1.9500000000000002,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.9500000000000002,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#disciplinary_action_consequence",
+      "local_name": "disciplinary_action_consequence",
+      "node_kind": "DisciplinaryAction",
+      "labels_ar": [
+        "الإجراء التأديبي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#disciplinary_action_consequence\nLocal name: disciplinary_action_consequence\nNode kind: DisciplinaryAction\nRDF types: DisciplinaryAction\nArabic labels: الإجراء التأديبي",
+      "final_score": 1.625,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.625,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#preserve_confidentiality_obligation",
+      "local_name": "preserve_confidentiality_obligation",
+      "node_kind": "PreserveConfidentiality",
+      "labels_ar": [
+        "التزام حفظ السرية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#preserve_confidentiality_obligation\nLocal name: preserve_confidentiality_obligation\nNode kind: PreserveConfidentiality\nRDF types: PreserveConfidentiality\nArabic labels: التزام حفظ السرية",
+      "final_score": 0.9750000000000001,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 0.9750000000000001,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "diagnostics": {
+    "article_numbers": [
+      133
+    ],
+    "concept_local_names": [
+      "work_negligence_violation",
+      "disclosure_employer_secrets_violation",
+      "arbitrary_dismissal_violation",
+      "wage_delay_violation",
+      "assignment_different_work_violation",
+      "dismissal_without_lawful_ground_condition",
+      "worker_not_covered_social_security_condition",
+      "contract_fixed_term_condition",
+      "delay_exceeds_seven_days_condition",
+      "contract_indefinite_term_condition",
+      "employer_liability_consequence",
+      "temporary_work_concept"
+    ],
+    "graph_supported_articles": [],
+    "concept_count": 12,
+    "expanded_concept_count": 4,
+    "article_count": 1
+  },
+  "elapsed_ms": 12804,
+  "debug": null
+}

@@ -1,0 +1,390 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "من يحدد أوضاع سجلات النقابة، ومن يحق له الاطلاع على دفاترها وقوائم أعضائها وأين يتم ذلك؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "السؤال ضمن نطاق قانون العمل الأردني ويطلب قاعدة عامة حول تنظيم سجلات النقابة وحقوق الاطلاع مما يستدعي استرجاع نصوص قانونية محددة.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 0.85
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 68
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_113",
+      "local_name": "article_113",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 113"
+      ],
+      "labels_en": [],
+      "article_number": 113,
+      "text": "أ . يجب على كل نقابة عمال  او نقابة اصحاب عمل ان تعد السجلات والدفاتر حسب الاوضاع والشروط التي يقررها الوزير.\n\nب. لمفتش العمل الاطلاع في اي وقت على دفاتر حسابات اي نقابة وعلى غيرها من الدفاتر والسجلات التي تحتفظ بها\n\n    النقابة وعلى قوائم الاعضاء فيها كما يحق لاي موظف في النقابة ولاي عضو فيها الاطلاع على تلك الدفاتر والسجلات\n\n    وعلى تلك القوائم وذلك في الاوقات المحددة في النظام الداخلي للنقابة على ان تجري تلك الاجراءات في مقر النقابة.",
+      "final_score": 1.0,
+      "fused_score": 0.07704918032786887,
+      "direct_score": 0.07704918032786887,
+      "graph_score": 0.0,
+      "paragraph_score": 0.09090909090909091,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_right_concept",
+      "local_name": "wage_right_concept",
+      "node_kind": "WageRight",
+      "labels_ar": [
+        "حق الأجر"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_right_concept\nLocal name: wage_right_concept\nNode kind: WageRight\nRDF types: WageRight\nArabic labels: حق الأجر",
+      "final_score": 0.0,
+      "fused_score": 0.06635551948051949,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#leave_right_concept",
+      "local_name": "leave_right_concept",
+      "node_kind": "LeaveRight",
+      "labels_ar": [
+        "حق الإجازة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#leave_right_concept\nLocal name: leave_right_concept\nNode kind: LeaveRight\nRDF types: LeaveRight\nArabic labels: حق الإجازة",
+      "final_score": 0.0,
+      "fused_score": 0.0646914446002805,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#trade_union_concept",
+      "local_name": "trade_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "النقابة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#trade_union_concept\nLocal name: trade_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: النقابة",
+      "final_score": 0.0,
+      "fused_score": 0.07377049180327869,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#social_security_related_right_concept",
+      "local_name": "social_security_related_right_concept",
+      "node_kind": "SocialSecurityRelatedRight",
+      "labels_ar": [
+        "حق متعلق بالضمان الاجتماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#social_security_related_right_concept\nLocal name: social_security_related_right_concept\nNode kind: SocialSecurityRelatedRight\nRDF types: SocialSecurityRelatedRight\nArabic labels: حق متعلق بالضمان الاجتماعي",
+      "final_score": 0.0,
+      "fused_score": 0.06477611940298507,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#litigation_right_concept",
+      "local_name": "litigation_right_concept",
+      "node_kind": "LitigationRight",
+      "labels_ar": [
+        "حق التقاضي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#litigation_right_concept\nLocal name: litigation_right_concept\nNode kind: LitigationRight\nRDF types: LitigationRight\nArabic labels: حق التقاضي",
+      "final_score": 0.0,
+      "fused_score": 0.06466450216450216,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#weekly_rest_right_concept",
+      "local_name": "weekly_rest_right_concept",
+      "node_kind": "WeeklyRestRight",
+      "labels_ar": [
+        "حق العطلة الأسبوعية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#weekly_rest_right_concept\nLocal name: weekly_rest_right_concept\nNode kind: WeeklyRestRight\nRDF types: WeeklyRestRight\nArabic labels: حق العطلة الأسبوعية",
+      "final_score": 0.0,
+      "fused_score": 0.06228287841191067,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#sick_leave_right_concept",
+      "local_name": "sick_leave_right_concept",
+      "node_kind": "SickLeaveRight",
+      "labels_ar": [
+        "حق الإجازة المرضية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#sick_leave_right_concept\nLocal name: sick_leave_right_concept\nNode kind: SickLeaveRight\nRDF types: SickLeaveRight\nArabic labels: حق الإجازة المرضية",
+      "final_score": 0.0,
+      "fused_score": 0.06076066790352505,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#safe_work_environment_right_concept",
+      "local_name": "safe_work_environment_right_concept",
+      "node_kind": "SafeWorkEnvironmentRight",
+      "labels_ar": [
+        "حق بيئة العمل الآمنة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#safe_work_environment_right_concept\nLocal name: safe_work_environment_right_concept\nNode kind: SafeWorkEnvironmentRight\nRDF types: SafeWorkEnvironmentRight\nArabic labels: حق بيئة العمل الآمنة",
+      "final_score": 0.0,
+      "fused_score": 0.059117647058823525,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#end_of_service_benefit_right_concept",
+      "local_name": "end_of_service_benefit_right_concept",
+      "node_kind": "EndOfServiceBenefitRight",
+      "labels_ar": [
+        "حق مكافأة نهاية الخدمة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#end_of_service_benefit_right_concept\nLocal name: end_of_service_benefit_right_concept\nNode kind: EndOfServiceBenefitRight\nRDF types: EndOfServiceBenefitRight\nArabic labels: حق مكافأة نهاية الخدمة",
+      "final_score": 0.0,
+      "fused_score": 0.043478260869565216,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employers_union_concept",
+      "local_name": "employers_union_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "نقابة أصحاب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employers_union_concept\nLocal name: employers_union_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: نقابة أصحاب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.024193548387096774,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#general_secretary_concept",
+      "local_name": "general_secretary_concept",
+      "node_kind": "LegalActor",
+      "labels_ar": [
+        "الأمين العام"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#general_secretary_concept\nLocal name: general_secretary_concept\nNode kind: LegalActor\nRDF types: LegalActor\nArabic labels: الأمين العام",
+      "final_score": 0.0,
+      "fused_score": 0.023809523809523808,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#disclosure_employer_secrets_violation",
+      "local_name": "disclosure_employer_secrets_violation",
+      "node_kind": "DisclosureOfEmployerSecrets",
+      "labels_ar": [
+        "مخالفة إفشاء أسرار صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#disclosure_employer_secrets_violation\nLocal name: disclosure_employer_secrets_violation\nNode kind: DisclosureOfEmployerSecrets\nRDF types: DisclosureOfEmployerSecrets\nArabic labels: مخالفة إفشاء أسرار صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.0234375,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition",
+      "local_name": "delay_exceeds_seven_days_condition",
+      "node_kind": "DelayExceedsSevenDays",
+      "labels_ar": [
+        "شرط تجاوز التأخير سبعة أيام"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#delay_exceeds_seven_days_condition\nLocal name: delay_exceeds_seven_days_condition\nNode kind: DelayExceedsSevenDays\nRDF types: DelayExceedsSevenDays\nArabic labels: شرط تجاوز التأخير سبعة أيام",
+      "final_score": 3.8025000000000007,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 3.8025000000000007,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#pay_wages_obligation",
+      "local_name": "pay_wages_obligation",
+      "node_kind": "PayWages",
+      "labels_ar": [
+        "التزام دفع الأجور"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#pay_wages_obligation\nLocal name: pay_wages_obligation\nNode kind: PayWages\nRDF types: PayWages\nArabic labels: التزام دفع الأجور",
+      "final_score": 3.8025000000000007,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 3.8025000000000007,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+      "local_name": "employer_liability_consequence",
+      "node_kind": "EmployerLiability",
+      "labels_ar": [
+        "مسؤولية صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_liability_consequence\nLocal name: employer_liability_consequence\nNode kind: EmployerLiability\nRDF types: EmployerLiability\nArabic labels: مسؤولية صاحب العمل",
+      "final_score": 3.16875,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 3.16875,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#legal_claim_consequence",
+      "local_name": "legal_claim_consequence",
+      "node_kind": "LegalClaim",
+      "labels_ar": [
+        "المطالبة القانونية"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#legal_claim_consequence\nLocal name: legal_claim_consequence\nNode kind: LegalClaim\nRDF types: LegalClaim\nArabic labels: المطالبة القانونية",
+      "final_score": 3.16875,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 3.16875,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_payment_event",
+      "local_name": "wage_payment_event",
+      "node_kind": "WagePayment",
+      "labels_ar": [
+        "حدث دفع الأجر"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_payment_event\nLocal name: wage_payment_event\nNode kind: WagePayment\nRDF types: WagePayment\nArabic labels: حدث دفع الأجر",
+      "final_score": 3.16875,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 3.16875,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#wage_delay_violation",
+      "local_name": "wage_delay_violation",
+      "node_kind": "WageDelay",
+      "labels_ar": [
+        "مخالفة تأخر دفع الأجور"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#wage_delay_violation\nLocal name: wage_delay_violation\nNode kind: WageDelay\nRDF types: WageDelay\nArabic labels: مخالفة تأخر دفع الأجور",
+      "final_score": 1.9500000000000002,
+      "fused_score": 0.0,
+      "direct_score": 0.0,
+      "graph_score": 1.9500000000000002,
+      "paragraph_score": 0.0,
+      "graph_supported": true,
+      "support_paths": []
+    }
+  ],
+  "diagnostics": {
+    "article_numbers": [
+      113
+    ],
+    "concept_local_names": [
+      "wage_right_concept",
+      "leave_right_concept",
+      "trade_union_concept",
+      "social_security_related_right_concept",
+      "litigation_right_concept",
+      "weekly_rest_right_concept",
+      "sick_leave_right_concept",
+      "safe_work_environment_right_concept",
+      "end_of_service_benefit_right_concept",
+      "employers_union_concept",
+      "general_secretary_concept",
+      "disclosure_employer_secrets_violation"
+    ],
+    "graph_supported_articles": [],
+    "concept_count": 12,
+    "expanded_concept_count": 6,
+    "article_count": 1
+  },
+  "elapsed_ms": 18523,
+  "debug": null
+}

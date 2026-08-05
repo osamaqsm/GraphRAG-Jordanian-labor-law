@@ -1,0 +1,29 @@
+{
+  "schema_version": "generation.v1",
+  "status": "generated",
+  "question": "ما الاسم الرسمي لقانون العمل، وبعد كم يوماً من نشره في الجريدة الرسمية يبدأ العمل به؟",
+  "retrieval_schema_version": "retrieval.v1",
+  "answer_ar": "يسمى هذا القانون قانون العمل لسنة 1996، ويبدأ العمل به بعد مرور ستين يوماً على تاريخ نشره في الجريدة الرسمية. [المادة 1]",
+  "key_points": [],
+  "citations": [
+    {
+      "article_number": 1,
+      "label_ar": "المادة 1",
+      "uri": "http://example.org/jordan-labor-law#article_1",
+      "excerpt": "يسمى هذا القانون (قانون العمل لسنة 1996) ويعمل به بعد مرور ستين يوما على تاريخ نشره في الجريدة الرسمية."
+    }
+  ],
+  "cited_article_numbers": [
+    1
+  ],
+  "grounded": true,
+  "warnings": [],
+  "model": "gpt-5-nano",
+  "usage": {
+    "input_tokens": 3273,
+    "output_tokens": 204,
+    "total_tokens": 3477
+  },
+  "elapsed_ms": 2810,
+  "debug": null
+}

@@ -20,7 +20,7 @@ class RetrievalRequestV1(FrozenContractModel):
 
 
 class RetrievalDecisionV1(FrozenContractModel):
-    behavior: Literal["retrieve", "clarify", "abstain"]
+    behavior: Literal["retrieve", "abstain"]
     reason: str = ""
     clarification_question_ar: str = ""
     planner_used: bool = False

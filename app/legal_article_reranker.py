@@ -19,13 +19,12 @@ class ArticleSelection(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
-    behavior: Literal["retrieve", "clarify", "abstain"]
+    behavior: Literal["retrieve", "abstain"]
     selected_article_numbers: list[int] = Field(
-        max_length=3,
+        max_length=5,
     )
     confidence: float = Field(ge=0.0, le=1.0)
     reason: str
-    clarification_question: str
 
 
 @dataclass(frozen=True, slots=True)
@@ -123,29 +122,35 @@ Your task is retrieval only, not legal advice and not answer generation.
 
 Rules:
 1. Select only article numbers present in the supplied catalogue.
-2. Select the smallest complete set of articles needed to answer every
-   independent legal part of the question.
-3. Usually select one article. Select two or three only when the question
-   genuinely asks about distinct legal rules, procedures, consequences, or
-   stages governed by different provisions.
-4. Order the principal substantive provision first, then supporting,
-   procedural, remedy, or consequence provisions.
-5. Distinguish neighbouring provisions in the same chapter by their exact
-   facts, conditions, numbers, deadlines, actors, procedures, and legal
-   consequences. Do not select a broad related provision merely because it
-   shares the same topic.
-6. Handle Arabic paraphrases, Jordanian colloquial wording, spelling errors,
-   attached prefixes, and Western or Arabic digits.
-7. Ignore any deterministic ranking when the exact statutory text supports a
-   different article; ranking data is only a weak hint.
-8. If the question is genuinely too vague to identify the relevant rule,
-   return behavior=clarify, no articles, and one concise Arabic clarification
-   question.
-9. If the question is outside Jordanian labor law, return behavior=abstain and
-   no articles.
-10. Never rely on knowledge not contained in the supplied article catalogue.
-11. Return no more than three article numbers and do not add optional or merely
-   related articles.
+2. Identify each independently requested legal fact, rule, procedure,
+   consequence, stage, authority, condition, or penalty before selecting.
+3. Select the smallest complete set that covers all requested parts. The
+   five-article limit is a ceiling, never a target.
+4. One article may cover several requested parts. When it does, do not add
+   neighbouring or background articles merely to create one article per part.
+5. Add a second or later article only when its text supplies an independently
+   requested answer element that the already selected articles do not supply.
+6. Before returning, verify issue by issue:
+   - every requested part is covered by at least one selected article;
+   - every selected article contributes a requested part;
+   - removing any selected article would make the answer incomplete.
+7. Order the principal substantive provisions first, followed only by necessary
+   procedural, remedy, consequence, or penalty provisions.
+8. Distinguish neighbouring provisions in the same chapter by their exact
+   actors, facts, conditions, numbers, deadlines, procedures, and legal
+   consequences. Shared topic or chapter proximity is not sufficient.
+9. Do not select introductory, definitional, adjacent, or generally useful
+   provisions unless the question expressly asks for what they contain.
+10. Handle Arabic paraphrases, Jordanian colloquial wording, spelling errors,
+    attached prefixes, and Western or Arabic digits.
+11. Ignore deterministic ranking when exact statutory text supports a different
+    article; ranking data is only a weak hint.
+12. For every in-scope question, return behavior=retrieve and the minimal
+    complete article set; never request clarification.
+13. If the question is outside Jordanian labor law, return behavior=abstain and
+    no articles.
+14. Never rely on knowledge not contained in the supplied article catalogue.
+15. Return no more than five article numbers.
 """.strip()
 
     def _payload(
@@ -258,7 +263,7 @@ Rules:
 
             return selection.model_copy(
                 update={
-                    "selected_article_numbers": ordered_unique[:3],
+                    "selected_article_numbers": ordered_unique[:5],
                 }
             )
         except Exception as exc:  # safe deterministic fallback

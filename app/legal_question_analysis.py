@@ -861,10 +861,9 @@ def _route_question(
     """
     Decide whether retrieval is appropriate before searching the KG.
 
-    The router is deliberately conservative. Strong non-labour-domain
-    phrases cause abstention. Broad labour questions that omit a legally
-    decisive fact cause clarification. Everything else proceeds to
-    retrieval.
+    The router has exactly two outcomes. Strong non-labour-domain phrases
+    cause abstention; every in-scope question proceeds to retrieval, including
+    ambiguous or factually incomplete questions.
     """
 
     for group in _OUT_OF_SCOPE_GROUPS:
@@ -883,8 +882,8 @@ def _route_question(
         )
     ):
         return (
-            "clarify",
-            "The type of leave is not specified.",
+            "retrieve",
+            "السؤال ضمن نطاق قانون العمل الأردني وسيتم استرجاع الأحكام العامة الأكثر صلة.",
         )
 
     if (
@@ -898,8 +897,8 @@ def _route_question(
         )
     ):
         return (
-            "clarify",
-            "The reason and circumstances of dismissal are not specified.",
+            "retrieve",
+            "السؤال ضمن نطاق قانون العمل الأردني وسيتم استرجاع الأحكام العامة الأكثر صلة.",
         )
 
     if (
@@ -910,8 +909,8 @@ def _route_question(
         )
     ):
         return (
-            "clarify",
-            "The legal event giving rise to compensation is not specified.",
+            "retrieve",
+            "السؤال ضمن نطاق قانون العمل الأردني وسيتم استرجاع الأحكام العامة الأكثر صلة.",
         )
 
     if (
@@ -925,8 +924,8 @@ def _route_question(
         )
     ):
         return (
-            "clarify",
-            "The reason and amount of the wage deduction are not specified.",
+            "retrieve",
+            "السؤال ضمن نطاق قانون العمل الأردني وسيتم استرجاع الأحكام العامة الأكثر صلة.",
         )
 
     if (
@@ -941,8 +940,8 @@ def _route_question(
         )
     ):
         return (
-            "clarify",
-            "The contract issue or requested right is not specified.",
+            "retrieve",
+            "السؤال ضمن نطاق قانون العمل الأردني وسيتم استرجاع الأحكام العامة الأكثر صلة.",
         )
 
     return ("retrieve", "")
@@ -1014,14 +1013,15 @@ def analyze_legal_question(
         numeric_tokens=frozenset(
             numeric_tokens
         ),
-        max_final_articles=(
+        max_final_articles=min(
+            5,
             max(
                 (
                     profile.max_final_articles
                     for profile in matched_profiles
                 ),
                 default=1,
-            )
+            ),
         ),
         behavior=behavior,
         behavior_reason=behavior_reason,

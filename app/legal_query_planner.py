@@ -43,17 +43,17 @@ class LegalQueryPlan(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
-    decision: Literal["retrieve", "clarify", "abstain"]
+    decision: Literal["retrieve", "abstain"]
     confidence: float = Field(ge=0.0, le=1.0)
     decision_reason: str = Field(min_length=1)
     normalized_question_ar: str = ""
     legal_domain: str = ""
     atomic_issues: list[AtomicLegalIssue] = Field(
         default_factory=list,
-        max_length=3,
+        max_length=5,
     )
-    minimum_articles: int = Field(ge=0, le=3)
-    maximum_articles: int = Field(ge=0, le=3)
+    minimum_articles: int = Field(ge=0, le=5)
+    maximum_articles: int = Field(ge=0, le=5)
     clarification_question_ar: str = ""
 
     @property
@@ -128,7 +128,7 @@ class LegalQueryPlanner:
 
         verify_value = os.getenv(
             "OPENAI_QUERY_PLANNER_VERIFY_NON_ANSWER",
-            "true",
+            "false",
         ).strip().lower()
         self.verify_non_answer = verify_value not in {
             "0",
@@ -146,7 +146,7 @@ class LegalQueryPlanner:
 
         verify_retrieve_value = os.getenv(
             "OPENAI_QUERY_PLANNER_VERIFY_LOW_CONFIDENCE_RETRIEVE",
-            "true",
+            "false",
         ).strip().lower()
         self.verify_low_confidence_retrieve = verify_retrieve_value not in {
             "0",
@@ -229,329 +229,140 @@ class LegalQueryPlanner:
     @staticmethod
     def _instructions() -> str:
         return r"""
-You are a pre-retrieval routing and query-planning component for a legal
-information system.
+You are the routing and query-planning component for a Jordanian Labor Law
+knowledge-graph retrieval system.
 
-The system's knowledge base contains only the Jordanian Labor Law represented
-in the supplied project.
-
-You must not answer the user's legal question.
-You must not provide legal advice.
-You must not select, infer, mention, or guess article numbers.
-
-Your task is limited to:
-
-1. deciding whether retrieval should occur;
-2. identifying whether clarification is required;
-3. identifying whether the question is outside the represented legal scope;
-4. generating concise Arabic retrieval queries when retrieval is appropriate.
+Return structured JSON that follows the supplied schema. Never answer the legal
+question, provide legal advice, or select, infer, mention, or guess article
+numbers.
 
 Choose exactly one decision:
 
 - retrieve
-- clarify
 - abstain
 
-Apply the following decision process in the exact order shown.
+ROUTING POLICY
 
-STEP 1 — SCOPE
-
-First determine whether the substance of the question is governed by the
+Choose retrieve whenever the substantive legal issue may be governed by the
 Jordanian Labor Law represented in this system.
 
-Choose abstain when the question principally concerns an unsupported legal or
-non-legal domain, including consumer protection, sale of goods, company
-registration, academic decisions, tenancy, taxation, family law, criminal law,
-or another domain outside Jordanian Labor Law.
+This includes direct, general, ambiguous, incomplete, colloquial, misspelled,
+paraphrased, numerical, and multi-issue labor-law questions.
 
-The presence of words such as worker, institution, contract, dispute, decision,
-or compensation does not by itself make a question a labor-law question.
+KNOWLEDGE-BASE SCOPE
 
-Do not abstain merely because a labor-law provision overlaps with another
-legal field. Questions remain potentially within scope when the employment
-relationship is central, including worker-created inventions or intellectual
-property, vocational training, medical fitness for work, occupational safety,
-collective agreements, trade unions, and work-injury compensation.
+The knowledge base contains the complete Jordanian Labor Law represented as a
+knowledge graph. It covers rules expressly contained in that law, including:
 
-Examples:
+- the law's definitions, application, and commencement;
+- employment relationships and employment contracts;
+- wages and deductions made from wages;
+- working hours, rest periods, and leave;
+- occupational safety, occupational injuries, and compensation under Labor Law;
+- labor inspection, violations, penalties, and closure procedures;
+- vocational training and employment organization;
+- employment of non-Jordanian workers and work permits;
+- collective labor disputes, conciliation boards, and labor courts;
+- trade unions and employers' unions, including their establishment,
+  registration, legal personality, administration, funds, federations,
+  liabilities, offences, and dissolution;
+- authorities, procedures, remedies, and transitional provisions expressly
+  stated in the Jordanian Labor Law.
 
-- A question about ownership of an invention created by a worker using the
-  establishment's tools and experience is potentially within Jordanian Labor
-  Law and must be retrieved rather than rejected as general intellectual
-  property law.
-- A question asking which authority determines jobs that require a medical
-  fitness examination and how that determination is published asks for a
-  general labor-law rule. The user does not need to name the job first.
+The knowledge base does not contain the complete text or independent rules of
+other Jordanian legal regimes, such as:
 
-For abstain:
+- Social Security Law and its retirement, pension, disability, unemployment,
+  benefit-calculation, and appeal rules;
+- banking and financial law, including loans, interest, bank accounts, and
+  Central Bank complaint procedures;
+- residence and immigration law, including residence permits, visas, family
+  reunification, and Ministry of Interior procedures;
+- tax, company, family, inheritance, tenancy, traffic, consumer-protection,
+  academic, and unrelated medical rules.
+
+Choose retrieve when the substantive answer can be supported by rules expressly
+contained in the represented Jordanian Labor Law.
+
+Choose abstain when the principal requested answer depends on independent rules
+from a legal regime that is not contained in this knowledge base.
+
+Do not classify a question only from isolated words such as worker, salary,
+contract, compensation, bank, pension, residence, court, or union. Judge the
+substantive legal issue requested by the user.
+
+When uncertain, prefer retrieve unless the principal issue is clearly outside
+the represented Labor Law.
+
+The system does not ask clarification questions. When an in-scope question
+lacks facts, retrieve the most useful generally applicable provisions that can
+be identified from the available wording.
+
+FOR ABSTAIN
 
 - atomic_issues must be an empty list;
-- minimum_articles must be 0;
-- maximum_articles must be 0;
+- minimum_articles and maximum_articles must both be 0;
+- normalized_question_ar and clarification_question_ar must be empty strings;
+- legal_domain must briefly identify the unsupported domain;
+- decision_reason must be one concise Arabic sentence;
+- all user-facing Arabic fields must be fully Arabic.
+
+FOR RETRIEVE
+
+- identify every independent legal issue, using one to five atomic issues;
+- produce one focused Arabic retrieval query for each issue;
+- preserve material actors, conditions, numbers, dates, deadlines, amounts,
+  procedures, and requested consequences;
+- do not select article numbers;
+- minimum_articles must be between 1 and 5;
+- maximum_articles must be between minimum_articles and 5;
+- request multiple articles only when separate requested issues are likely
+  governed by separate provisions;
 - clarification_question_ar must be an empty string;
-- normalized_question_ar must be an empty string;
-- briefly identify the actual unsupported domain in legal_domain;
-- explain the scope reason in one concise sentence.
+- decision_reason and all Arabic fields must be fully Arabic.
 
-STEP 2 — FACTUAL SUFFICIENCY
-
-If the question is within Jordanian Labor Law, determine whether it includes
-enough legally decisive facts to identify a governing rule safely.
-
-A missing decisive fact must be a concrete real-world fact about the user's
-situation that the user can supply. It must not be the legal classification,
-legal validity, legal ownership, legal threshold, applicable authority,
-waivability, consequence, exception, or time condition that the user is asking
-the system to retrieve from the law.
-
-Choose clarify only when an omitted real-world fact could change the applicable
-rule, procedure, remedy, consequence, responsible actor, or governing
-provision.
-
-Do not choose clarify merely because:
-
-- the user asks whether a right or agreement is legally valid or waivable;
-- the user asks who owns a right created in an employment relationship;
-- the user asks for a statutory threshold, responsible authority, required
-  publication method, time condition, or legal consequence;
-- the user asks a general legal rule without naming a particular sector,
-  establishment, person, or date;
-- the answer requires reading the law.
-
-Those are retrieval questions, not missing facts.
-
-Missing background details that do not affect the governing legal rule do not
-require clarification.
-
-Clarification is mandatory in the following situations:
-
-- the user asks whether an unspecified decision is lawful without identifying
-  the type of decision or its factual basis;
-- the user asks for the next step in a multi-stage legal procedure without
-  stating the current procedural stage;
-- the user mentions a violation without identifying its type or responsible
-  actor when different rules may apply;
-- the user asks about dismissal, leave, deduction, injury, compensation,
-  disciplinary action, union action, or another legal consequence while
-  omitting a concrete fact that determines which rule applies.
-
-Examples:
-
-- "النقابة اتخذت قراراً ضدي، هل هو قانوني؟" requires clarification because
-  the type and basis of the decision are real-world facts known to the user.
-- "صار نزاع عمالي جماعي، ما الخطوة التالية؟" requires clarification because
-  the current procedural stage is a real-world fact known to the user.
-- "هل التنازل عن حقي العمالي صحيح أم باطل؟" requires retrieval because legal
-  waivability is the legal issue to be found, not a fact the user must supply.
-- "هل يمكن تعميم اتفاق جماعي، ومن يقرر ذلك وما الشرط الزمني؟" requires
-  retrieval because it asks for the general statutory rule; naming a sector or
-  establishments is not required to retrieve that rule.
-- "من يحدد الأعمال التي تتطلب فحص لياقة طبية وكيف يعلن عنها؟" requires
-  retrieval because the authority and publication method are the legal rule.
-- "في مخالفة سلامة داخل مكان العمل، من المسؤول وما العقوبة؟" requires
-  clarification because the type of safety violation and responsible conduct
-  are missing real-world facts and different provisions may apply.
-
-For clarify:
-
-- atomic_issues must be an empty list;
-- minimum_articles must be 0;
-- maximum_articles must be 0;
-- ask exactly one concise Arabic clarification question;
-- the clarification question must request the missing concrete real-world
-  fact;
-- do not ask the user to supply the legal conclusion that retrieval should
-  determine;
-- do not generate retrieval queries;
-- do not attempt to retrieve all possible procedural stages or legal outcomes.
-
-STEP 3 — RETRIEVAL PLANNING
-
-Choose retrieve only when:
-
-- the question is within Jordanian Labor Law; and
-- the question contains enough concrete facts to search for the governing
-  provision without guessing about the user's situation.
-
-For retrieve decisions:
-
-1. Produce a concise normalized Arabic version of the question.
-2. Preserve every explicit actor, number, percentage, duration, deadline,
-   condition, exception, and requested result.
-3. Do not add any fact, actor, institution, remedy, condition, procedure,
-   document, compensation, exception, or possible outcome that the user did
-   not state.
-4. Decompose the question into the smallest possible set of independent legal
-   mechanisms explicitly requested by the user.
-5. Do not create one issue for every grammatical clause or requested detail.
-6. Group threshold, scope, contents, responsible authority, publication,
-   effective date, exception, and consequence into one issue when they concern
-   the same legal mechanism or statutory rule.
-7. Create separate issues only when the user explicitly asks about genuinely
-   distinct legal mechanisms, procedures, duties, rights, remedies, or
-   chronological stages.
-8. Produce exactly one retrieval_query_ar for each atomic issue.
-9. Each retrieval query must contain approximately 5 to 20 Arabic words.
-10. Each retrieval query must contain legal search terms, not an explanation
-    or a complete answer.
-11. Do not include generic phrases such as:
-    "وفق قانون العمل الأردني",
-    "حدد الأحكام القانونية",
-    "ما هي النصوص التنظيمية",
-    or "الجهات المختصة".
-12. Do not repeat the entire user question inside every retrieval query.
-13. Do not generate alternative hypothetical interpretations.
-
-ATOMIC ISSUE FIELDS
-
-For each atomic issue:
-
-- issue_ar must be a short description of one requested legal mechanism;
-- retrieval_query_ar must be a concise search phrase;
-- actors must contain only actors explicitly stated by the user;
-- conditions must contain only conditions explicitly stated by the user;
-- numbers must contain only numbers, percentages, durations, or deadlines
-  explicitly stated by the user;
-- requested_result_ar must state only what the user explicitly wants to know.
-
-Use empty lists or an empty string when the corresponding information was not
-explicitly stated.
-
-Never infer additional actors or conditions merely because they may commonly
-appear in the relevant legal procedure.
-
-ARTICLE-COUNT ESTIMATION
-
-Estimate the smallest plausible number of governing provisions independently
-from the number of grammatical subquestions.
-
-Several requested details or retrieval queries may be governed by one article.
-
-Use one article when the question concerns one legal mechanism even if it asks
-for several elements such as a threshold, contents, authority, publication,
-effective date, exception, or consequence.
-
-Use two or three articles only when the question clearly requires independent
-legal mechanisms or chronological provisions that are unlikely to be governed
-by one provision.
-
-Do not increase maximum_articles merely because neighboring, introductory,
-definitional, or generally related provisions may exist.
-
-The article-count range must never exceed 3.
-
-CONFIDENCE
-
-Confidence represents confidence in the routing decision, not confidence in
-the final legal answer.
-
-Use:
-
-- 0.90 to 1.00 when the scope and routing decision are explicit and
-  unambiguous;
-- 0.80 to 0.89 when the routing decision is strongly supported;
-- 0.60 to 0.79 when some routing uncertainty remains;
-- below 0.60 only when the routing decision itself is materially uncertain.
-
-When uncertainty is caused by a missing concrete real-world fact, choose
-clarify instead of retrieve.
-
-OUTPUT CONSISTENCY
-
-For retrieve:
-
-- atomic_issues must contain between 1 and 3 issues;
-- minimum_articles must be at least 1;
-- maximum_articles must be greater than or equal to minimum_articles;
-- clarification_question_ar must be an empty string.
-
-For clarify or abstain:
-
-- atomic_issues must be empty;
-- minimum_articles must be 0;
-- maximum_articles must be 0.
-
-Handle Modern Standard Arabic, Jordanian colloquial Arabic, spelling mistakes,
-attached Arabic prefixes, Arabic digits, and Western digits.
+Return the smallest complete retrieval plan that can answer all requested legal
+issues.
 """.strip()
 
     @staticmethod
     def _route_verifier_instructions() -> str:
         return r"""
-You are a second-pass route verifier for a legal retrieval system whose
-knowledge base contains only Jordanian Labor Law.
+You verify routing for a Jordanian Labor Law knowledge-graph system.
 
-You receive the original user question, the first proposed LegalQueryPlan, and
-why verification was requested. Re-evaluate the route from scratch and return
-a complete LegalQueryPlan. Do not merely repeat the proposed plan.
+Return a complete corrected plan using exactly one decision:
 
-Choose exactly one route:
+- retrieve
+- abstain
 
-- retrieve: the question is within Jordanian Labor Law and has enough concrete
-  facts to search for the governing provision;
-- clarify: the question is within scope but a concrete real-world fact known to
-  the user is missing and could change the governing rule or procedural step;
-- abstain: the substance is outside Jordanian Labor Law.
+The knowledge base contains the complete Jordanian Labor Law, including
+employment contracts, wages, working time and leave, occupational safety and
+injuries, inspection and penalties, non-Jordanian work permits, labor disputes,
+labor courts, conciliation, and trade-union and employers'-union rules.
 
-IMPORTANT SCOPE BOUNDARY
+It does not contain the complete independent rules of Social Security Law,
+banking law, residence and immigration law, tax law, company law, family and
+inheritance law, tenancy law, traffic law, consumer-protection law, academic
+regulations, or unrelated medical rules.
 
-Do not abstain merely because a labor-law provision overlaps another legal
-field. The represented Jordanian Labor Law includes employment-related rules
-concerning worker-created inventions or intellectual property, vocational
-training, medical fitness, occupational safety, collective agreements, trade
-unions, and work-injury compensation.
+Choose retrieve when the requested answer can be supported by a rule expressly
+contained in the represented Jordanian Labor Law.
 
-Therefore:
+Choose abstain when the principal requested answer depends on an independent
+rule from another legal regime not contained in the knowledge base.
 
-- an invention created by a worker using the establishment's tools and
-  experience is potentially a labor-law retrieval question;
-- a general question about who determines jobs requiring medical fitness and
-  how the determination is published is a labor-law retrieval question;
-- consumer purchases, company formation, university academic decisions,
-  tenancy, family law, taxation, and unrelated criminal matters remain outside
-  scope.
+Do not classify from isolated words such as worker, salary, contract,
+compensation, bank, pension, residence, court, or union. Judge the substantive
+legal issue requested by the user.
 
-IMPORTANT CLARIFICATION BOUNDARY
+When uncertain, prefer retrieve unless the principal issue is clearly outside
+the represented Labor Law.
 
-A legal conclusion is not a missing fact. Do not clarify merely to ask the
-user:
+For retrieve, provide one to five focused Arabic atomic issues and request one
+to five articles. For abstain, provide no issues and request zero articles.
 
-- whether a right or agreement is valid or waivable;
-- who legally owns an employment-related right;
-- what statutory threshold, authority, publication method, deadline,
-  consequence, or exception applies;
-- which sector, job title, establishment, person, or date is involved when the
-  question asks for the general statutory rule and those details would not
-  change the rule being searched.
-
-Clarify only when a concrete fact about the user's situation is missing, such
-as:
-
-- the type or factual basis of an unspecified union or disciplinary decision;
-- the current stage of a multi-stage dispute procedure;
-- the type of safety violation or conduct when different responsibility and
-  penalty provisions may apply;
-- the actual dismissal reason, leave type, injury circumstance, or responsible
-  actor when the question does not state it and different rules may apply.
-
-Examples:
-
-- "النقابة اتخذت قراراً ضدي، هل هو قانوني؟" -> clarify.
-- "صار نزاع عمالي جماعي، ما الخطوة التالية؟" without the current stage ->
-  clarify.
-- "في مخالفة سلامة داخل مكان العمل، من المسؤول وما العقوبة؟" without the
-  violation type -> clarify.
-- "لمن تكون ملكية ابتكار العامل المرتبط بعمل المنشأة؟" -> retrieve.
-- "من يحدد الأعمال التي تتطلب فحص لياقة طبية وكيف يعلن عنها؟" -> retrieve.
-- a defective consumer product, company registration, or academic suspension
-  -> abstain.
-
-For retrieve, generate concise Arabic retrieval queries, preserve the user's
-facts, do not invent actors or conditions, and group multiple details governed
-by one legal mechanism into one issue where possible. Estimate the smallest
-plausible number of articles independently from the number of clauses.
-
-Never answer the legal question and never mention article numbers.
+Never answer the question, never mention or guess article numbers, and keep
+clarification_question_ar empty.
 """.strip()
 
     @staticmethod
@@ -561,35 +372,38 @@ Never answer the legal question and never mention article numbers.
 
     @staticmethod
     def _validate_plan(plan: LegalQueryPlan) -> LegalQueryPlan:
-        if plan.decision == "retrieve":
-            if not plan.atomic_issues:
-                raise ValueError(
-                    "A retrieve plan must contain at least one atomic issue."
-                )
-            if plan.minimum_articles < 1:
-                raise ValueError(
-                    "A retrieve plan must request at least one article."
-                )
-            if plan.maximum_articles < plan.minimum_articles:
-                raise ValueError(
-                    "maximum_articles cannot be smaller than minimum_articles."
-                )
-        else:
+        if plan.clarification_question_ar.strip():
+            raise ValueError(
+                "clarification_question_ar must always be empty in the two-route planner."
+            )
+
+        if plan.decision == "abstain":
             if plan.atomic_issues:
                 raise ValueError(
-                    "Clarify/abstain plans cannot contain retrieval issues."
+                    "An abstention plan must not contain atomic issues."
                 )
             if plan.minimum_articles != 0 or plan.maximum_articles != 0:
                 raise ValueError(
-                    "Clarify/abstain plans must use zero article counts."
+                    "An abstention plan must request zero articles."
                 )
-            if (
-                plan.decision == "clarify"
-                and not plan.clarification_question_ar.strip()
-            ):
-                raise ValueError(
-                    "A clarification plan must include a question."
-                )
+            return plan
+
+        if not plan.atomic_issues:
+            raise ValueError(
+                "A retrieval plan must contain at least one atomic issue."
+            )
+        if plan.minimum_articles < 1:
+            raise ValueError(
+                "A retrieval plan must request at least one article."
+            )
+        if plan.maximum_articles < plan.minimum_articles:
+            raise ValueError(
+                "maximum_articles cannot be smaller than minimum_articles."
+            )
+        if plan.maximum_articles > 5:
+            raise ValueError(
+                "A retrieval plan cannot request more than five articles."
+            )
         return plan
 
     def _request_plan(
@@ -650,7 +464,7 @@ Never answer the legal question and never mention article numbers.
             return None
 
         verification_reason = ""
-        if first_plan.decision in {"clarify", "abstain"}:
+        if first_plan.decision == "abstain":
             if self.verify_non_answer:
                 verification_reason = "proposed_non_answer"
         elif (
@@ -711,43 +525,25 @@ Never answer the legal question and never mention article numbers.
     ) -> LegalQuestionAnalysis:
         """Merge a validated plan conservatively into deterministic analysis."""
 
-        if plan is None or plan.confidence < self.route_confidence:
+        if plan is None:
             return analysis
 
         deterministic_behavior = analysis.behavior
         planned_behavior = plan.decision
 
-        # A deterministic abstention is never weakened by an LLM retrieve
-        # decision. This keeps clear non-labor rules as a hard safety floor.
-        if deterministic_behavior == "abstain" and planned_behavior == "retrieve":
+        # The final router has exactly two states. A deterministic abstention is
+        # retained as a safety floor; otherwise the validated planner decides.
+        if deterministic_behavior == "abstain":
             final_behavior = "abstain"
             final_reason = analysis.behavior_reason
-        elif planned_behavior in {"clarify", "abstain"}:
-            # A high-confidence LLM non-answer may add generalization beyond
-            # the narrow deterministic keyword rules.
-            if deterministic_behavior == "abstain":
-                final_behavior = "abstain"
-                final_reason = analysis.behavior_reason
-            else:
-                final_behavior = planned_behavior
-                final_reason = plan.decision_reason.strip()
-        elif deterministic_behavior == "clarify":
-            # Recover a deterministic false clarification only when the plan
-            # is especially confident and contains a concrete issue query.
-            if (
-                plan.confidence >= self.retrieve_override_confidence
-                and plan.retrieval_queries
-            ):
-                final_behavior = "retrieve"
-                final_reason = plan.decision_reason.strip()
-            else:
-                final_behavior = "clarify"
-                final_reason = analysis.behavior_reason
+        elif planned_behavior == "abstain":
+            final_behavior = "abstain"
+            final_reason = plan.decision_reason.strip()
         else:
             final_behavior = "retrieve"
             final_reason = plan.decision_reason.strip()
 
-        if final_behavior != "retrieve":
+        if final_behavior == "abstain":
             return LegalQuestionAnalysis(
                 original_question=analysis.original_question,
                 normalized_question=analysis.normalized_question,
@@ -761,15 +557,13 @@ Never answer the legal question and never mention article numbers.
                 meaningful_tokens=analysis.meaningful_tokens,
                 numeric_tokens=analysis.numeric_tokens,
                 max_final_articles=0,
-                behavior=final_behavior,
+                behavior="abstain",
                 behavior_reason=final_reason,
                 planner_queries=(),
                 planner_issue_labels=(),
                 planner_used=True,
                 planner_confidence=plan.confidence,
-                clarification_question=(
-                    plan.clarification_question_ar.strip()
-                ),
+                clarification_question="",
             )
 
         retrieval_queries = plan.retrieval_queries
@@ -808,7 +602,7 @@ Never answer the legal question and never mention article numbers.
         article_limit = max(
             1,
             min(
-                3,
+                5,
                 plan.maximum_articles
                 or len(retrieval_queries)
                 or analysis.max_final_articles,

@@ -144,49 +144,57 @@ def post_json(session: requests.Session, url: str, payload: dict[str, Any], time
     return value, elapsed
 
 
-def evaluate_retrieval(
-    case: dict[str, Any],
-    retrieval: dict[str, Any],
-    elapsed: float,
-) -> dict[str, Any]:
+def evaluate_retrieval(case: dict[str, Any], retrieval: dict[str, Any], elapsed: float) -> dict[str, Any]:
     expected_behavior = str(case.get('expected_behavior', 'retrieve'))
     actual_behavior = get_behavior(retrieval)
-    actual = actual_article_numbers(retrieval)[:5]
+    valid_behaviors = {'retrieve', 'abstain'}
+    if expected_behavior not in valid_behaviors:
+        raise ValueError(f'Unsupported benchmark behavior: {expected_behavior}')
+    actual = actual_article_numbers(retrieval)
     required = [int(x) for x in case.get('required_articles', [])]
     acceptable = [int(x) for x in case.get('acceptable_articles', required)]
 
-    routing_correct = actual_behavior == expected_behavior
-
     if expected_behavior == 'retrieve':
         required_set = set(required)
-        relevant_set = set(required) | set(acceptable)
+        acceptable_set = set(acceptable)
         actual_set = set(actual)
-        hit_at_1 = bool(actual and actual[0] in relevant_set)
-        article_recall_at_5 = (
-            len(actual_set & required_set) / len(required_set)
-            if required_set else 1.0
-        )
-        article_precision = (
-            len(actual_set & relevant_set) / len(actual_set)
-            if actual_set else 0.0
-        )
+        hit1 = bool(actual and actual[0] in acceptable_set)
+        hit3 = bool(set(actual[:3]) & required_set)
+        hit5 = bool(set(actual[:5]) & required_set)
+        recall = len(actual_set & required_set) / len(required_set) if required_set else 1.0
+        precision = len(actual_set & acceptable_set) / len(actual_set) if actual_set else 0.0
+        f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
+        exact_set = actual_set == required_set
+        reciprocal_rank = 0.0
+        for rank, number in enumerate(actual, start=1):
+            if number in required_set:
+                reciprocal_rank = 1.0 / rank
+                break
+        passed = actual_behavior == 'retrieve' and hit1 and recall == 1.0
     else:
-        hit_at_1 = False
-        article_recall_at_5 = 0.0
-        article_precision = 0.0
+        hit1 = hit3 = hit5 = False
+        recall = precision = f1 = reciprocal_rank = 0.0
+        exact_set = not actual
+        passed = actual_behavior == expected_behavior and not actual
 
     return {
         'expected_behavior': expected_behavior,
         'actual_behavior': actual_behavior,
         'required_articles': required,
         'acceptable_articles': acceptable,
-        'actual_articles_at_5': actual,
-        'routing_correct': routing_correct,
-        'hit_at_1': hit_at_1,
-        'article_recall_at_5': round(article_recall_at_5, 6),
-        'article_precision': round(article_precision, 6),
+        'actual_articles': actual,
+        'passed': passed,
+        'hit_at_1': hit1,
+        'hit_at_3': hit3,
+        'hit_at_5': hit5,
+        'reciprocal_rank': round(reciprocal_rank, 6),
+        'exact_set': exact_set,
+        'required_article_recall': round(recall, 6),
+        'strict_precision': round(precision, 6),
+        'strict_f1': round(f1, 6),
         'elapsed_seconds': round(elapsed, 3),
     }
+
 
 def response_text(response: Any) -> str:
     text = str(getattr(response, 'output_text', '') or '')
@@ -202,6 +210,8 @@ def judge_generation(
     retrieval: dict[str, Any],
     generation: dict[str, Any],
 ) -> dict[str, Any]:
+    required_facts = [str(x) for x in case.get('required_facts', [])]
+    forbidden_claims = [str(x) for x in case.get('forbidden_claims', [])]
     evidence = [
         {
             'article_number': to_int(article.get('article_number')),
@@ -209,65 +219,48 @@ def judge_generation(
         }
         for article in get_articles(retrieval)
     ]
-
     schema = {
         'type': 'object',
         'additionalProperties': False,
         'properties': {
-            'correctness_grade': {'type': 'integer', 'enum': [0, 1, 2]},
-            'faithfulness_grade': {'type': 'integer', 'enum': [0, 1, 2]},
-            'missing_required_facts': {
+            'required_fact_supported': {
                 'type': 'array',
-                'items': {'type': 'string'},
+                'items': {'type': 'boolean'},
             },
-            'unsupported_claims': {
+            'forbidden_claim_present': {
                 'type': 'array',
-                'items': {'type': 'string'},
+                'items': {'type': 'boolean'},
             },
-            'reason_ar': {'type': 'string'},
+            'answer_correctness_score': {'type': 'number', 'minimum': 0, 'maximum': 1},
+            'faithfulness_score': {'type': 'number', 'minimum': 0, 'maximum': 1},
+            'rationale_ar': {'type': 'string'},
         },
         'required': [
-            'correctness_grade',
-            'faithfulness_grade',
-            'missing_required_facts',
-            'unsupported_claims',
-            'reason_ar',
+            'required_fact_supported',
+            'forbidden_claim_present',
+            'answer_correctness_score',
+            'faithfulness_score',
+            'rationale_ar',
         ],
     }
-
     payload = {
         'question': case.get('question'),
-        'required_facts': [str(x) for x in case.get('required_facts', [])],
+        'required_facts': required_facts,
+        'forbidden_claims': forbidden_claims,
         'retrieved_legal_evidence': evidence,
-        'generated_answer': str(generation.get('answer_ar') or ''),
+        'generated_answer': generation.get('answer_ar', ''),
         'generated_citations': extract_citations(generation),
     }
-
-    instructions = """
-You evaluate an Arabic legal question-answering system.
-
-Use only:
-1. the user question;
-2. the required facts;
-3. the retrieved legal evidence;
-4. the generated answer.
-
-Correctness:
-2 = all required facts are correct and the answer fully answers the question.
-1 = the answer is partially correct but misses or weakens an important part.
-0 = the answer is substantially incorrect, misleading, or does not answer.
-
-Faithfulness:
-2 = every substantive legal claim is supported by the retrieved evidence.
-1 = the main answer is supported, but there is a minor unsupported addition,
-    overstatement, or imprecision.
-0 = there is a major unsupported or contradictory legal claim.
-
-Do not use external legal knowledge.
-Do not penalize wording, style, or harmless paraphrasing differences.
-Return the required strict JSON only.
-""".strip()
-
+    instructions = (
+        'You are a strict evaluator of Arabic legal question answering. '
+        'Use only the supplied retrieved legal evidence and rubric. '
+        'For each required fact, return true only if the generated answer states it correctly. '
+        'For each forbidden claim, return true only if the answer makes that claim. '
+        'Answer correctness measures correctness and completeness against required facts. '
+        'Faithfulness measures whether every substantive legal claim is supported by the supplied evidence. '
+        'Do not reward verbosity. Do not use outside legal knowledge. '
+        'The two boolean arrays must have exactly the same lengths and order as their input arrays.'
+    )
     response = client.responses.create(
         model=judge_model,
         instructions=instructions,
@@ -275,25 +268,26 @@ Return the required strict JSON only.
         text={
             'format': {
                 'type': 'json_schema',
-                'name': 'simple_legal_generation_evaluation',
+                'name': 'legal_generation_evaluation',
                 'schema': schema,
                 'strict': True,
             }
         },
         store=False,
     )
-
     result = json.loads(response_text(response))
+    facts = list(result.get('required_fact_supported', []))
+    forbidden = list(result.get('forbidden_claim_present', []))
+    if len(facts) != len(required_facts):
+        raise ValueError('Judge returned wrong required_fact_supported length.')
+    if len(forbidden) != len(forbidden_claims):
+        raise ValueError('Judge returned wrong forbidden_claim_present length.')
     return {
-        'correctness_grade': int(result['correctness_grade']),
-        'faithfulness_grade': int(result['faithfulness_grade']),
-        'missing_required_facts': [
-            str(x) for x in result.get('missing_required_facts', [])
-        ],
-        'unsupported_claims': [
-            str(x) for x in result.get('unsupported_claims', [])
-        ],
-        'reason_ar': str(result.get('reason_ar', '')),
+        'required_fact_supported': [bool(x) for x in facts],
+        'forbidden_claim_present': [bool(x) for x in forbidden],
+        'answer_correctness_score': round(float(result['answer_correctness_score']), 6),
+        'faithfulness_score': round(float(result['faithfulness_score']), 6),
+        'rationale_ar': str(result.get('rationale_ar', '')),
     }
 
 
@@ -306,75 +300,91 @@ def evaluate_generation(
     judge_model: str,
 ) -> dict[str, Any]:
     expected_behavior = str(case.get('expected_behavior', 'retrieve'))
+    if expected_behavior not in {'retrieve', 'abstain'}:
+        raise ValueError(f'Unsupported benchmark behavior: {expected_behavior}')
     answer = str(generation.get('answer_ar') or '').strip()
     status = str(generation.get('status') or '')
     citations = extract_citations(generation)
-    retrieved_set = set(actual_article_numbers(retrieval))
-    required_set = set(
-        int(x)
-        for x in case.get(
-            'required_citations',
-            case.get('required_articles', []),
-        )
-    )
-    citation_set = set(citations)
+    required_citations = [int(x) for x in case.get('required_citations', case.get('required_articles', []))]
+    retrieved_numbers = actual_article_numbers(retrieval)
 
+    citations_set = set(citations)
+    required_set = set(required_citations)
+    retrieved_set = set(retrieved_numbers)
     citation_validity = (
-        len(citation_set & retrieved_set) / len(citation_set)
-        if citation_set else (1.0 if expected_behavior == 'abstain' else 0.0)
+        len(citations_set & retrieved_set) / len(citations_set)
+        if citations_set else (1.0 if expected_behavior != 'retrieve' else 0.0)
+    )
+    citation_precision = (
+        len(citations_set & required_set) / len(citations_set)
+        if citations_set else (1.0 if not required_set else 0.0)
     )
     citation_recall = (
-        len(citation_set & required_set) / len(required_set)
-        if required_set else 1.0
+        len(citations_set & required_set) / len(required_set)
+        if required_set else (1.0 if not citations_set else 0.0)
     )
+    citation_exact_set = citations_set == required_set
+    generation_success = bool(answer)
 
     if expected_behavior == 'abstain':
-        response_correct = (
-            get_behavior(retrieval) == 'abstain'
-            and status == 'out_of_scope'
-            and bool(answer)
-            and is_arabic_only(answer)
-            and not citations
-        )
+        arabic_only = is_arabic_only(answer)
+        status_correct = status == 'out_of_scope'
+        strict_pass = generation_success and arabic_only and status_correct and not citations
         return {
             'status': status,
             'answer_ar': answer,
             'cited_article_numbers': citations,
-            'out_of_scope_response_correct': response_correct,
-            'correctness_grade': None,
-            'faithfulness_grade': None,
-            'correctness': None,
-            'faithfulness': None,
+            'generation_success': generation_success,
+            'status_correct': status_correct,
+            'arabic_only': arabic_only,
             'citation_validity': round(citation_validity, 6),
+            'citation_precision': round(citation_precision, 6),
             'citation_recall': round(citation_recall, 6),
+            'citation_exact_set': citation_exact_set,
+            'required_fact_coverage': 1.0 if strict_pass else 0.0,
+            'answer_correctness': 1.0 if strict_pass else 0.0,
+            'faithfulness': 1.0 if strict_pass else 0.0,
+            'forbidden_claim_rate': 0.0,
+            'strict_pass': strict_pass,
             'elapsed_seconds': round(elapsed, 3),
             'judge': None,
         }
 
-    judge = judge_generation(
-        client,
-        judge_model,
-        case,
-        retrieval,
-        generation,
+    judge = judge_generation(client, judge_model, case, retrieval, generation)
+    fact_flags = judge['required_fact_supported']
+    forbidden_flags = judge['forbidden_claim_present']
+    fact_coverage = sum(fact_flags) / len(fact_flags) if fact_flags else 1.0
+    forbidden_rate = sum(forbidden_flags) / len(forbidden_flags) if forbidden_flags else 0.0
+    status_correct = status in {'answered', 'success', 'grounded_answer'} or bool(generation.get('grounded'))
+    strict_pass = (
+        generation_success
+        and status_correct
+        and fact_coverage == 1.0
+        and forbidden_rate == 0.0
+        and judge['faithfulness_score'] >= 0.999
+        and citation_recall == 1.0
+        and citation_validity == 1.0
     )
-    correctness_grade = judge['correctness_grade']
-    faithfulness_grade = judge['faithfulness_grade']
-
     return {
         'status': status,
         'answer_ar': answer,
         'cited_article_numbers': citations,
-        'out_of_scope_response_correct': None,
-        'correctness_grade': correctness_grade,
-        'faithfulness_grade': faithfulness_grade,
-        'correctness': round(correctness_grade / 2.0, 6),
-        'faithfulness': round(faithfulness_grade / 2.0, 6),
+        'generation_success': generation_success,
+        'status_correct': status_correct,
+        'arabic_only': is_arabic_only(answer),
         'citation_validity': round(citation_validity, 6),
+        'citation_precision': round(citation_precision, 6),
         'citation_recall': round(citation_recall, 6),
+        'citation_exact_set': citation_exact_set,
+        'required_fact_coverage': round(fact_coverage, 6),
+        'answer_correctness': judge['answer_correctness_score'],
+        'faithfulness': judge['faithfulness_score'],
+        'forbidden_claim_rate': round(forbidden_rate, 6),
+        'strict_pass': strict_pass,
         'elapsed_seconds': round(elapsed, 3),
         'judge': judge,
     }
+
 
 def mean(rows: list[dict[str, Any]], path: tuple[str, ...], default: float = 0.0) -> float:
     values: list[float] = []
@@ -397,7 +407,6 @@ def make_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
     retrieve = [row for row in completed if row['expected_behavior'] == 'retrieve']
     abstain = [row for row in completed if row['expected_behavior'] == 'abstain']
     by_type: dict[str, list[dict[str, Any]]] = defaultdict(list)
-
     for row in completed:
         by_type[str(row.get('test_type', 'unknown'))].append(row)
 
@@ -405,78 +414,51 @@ def make_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
         'questions_requested': len(rows),
         'questions_completed': len(completed),
         'questions_failed_to_run': len(rows) - len(completed),
-        'end_to_end_success_rate': mean(completed, ('end_to_end_pass',)),
+        'end_to_end_strict_accuracy': mean(completed, ('end_to_end_pass',)),
         'retrieval': {
-            'routing_accuracy': mean(
-                completed,
-                ('retrieval_evaluation', 'routing_correct'),
-            ),
-            'hit_at_1': mean(
-                retrieve,
-                ('retrieval_evaluation', 'hit_at_1'),
-            ),
-            'article_recall_at_5': mean(
-                retrieve,
-                ('retrieval_evaluation', 'article_recall_at_5'),
-            ),
-            'article_precision': mean(
-                retrieve,
-                ('retrieval_evaluation', 'article_precision'),
-            ),
-            'out_of_scope_accuracy': mean(
-                abstain,
-                ('retrieval_evaluation', 'routing_correct'),
-            ),
-            'mean_latency_seconds': mean(
-                completed,
-                ('retrieval_evaluation', 'elapsed_seconds'),
-            ),
+            'overall_accuracy': mean(completed, ('retrieval_evaluation', 'passed')),
+            'retrieve_pass_rate': mean(retrieve, ('retrieval_evaluation', 'passed')),
+            'hit_at_1': mean(retrieve, ('retrieval_evaluation', 'hit_at_1')),
+            'hit_at_3': mean(retrieve, ('retrieval_evaluation', 'hit_at_3')),
+            'hit_at_5': mean(retrieve, ('retrieval_evaluation', 'hit_at_5')),
+            'mean_reciprocal_rank': mean(retrieve, ('retrieval_evaluation', 'reciprocal_rank')),
+            'exact_set_accuracy': mean(retrieve, ('retrieval_evaluation', 'exact_set')),
+            'required_article_recall': mean(retrieve, ('retrieval_evaluation', 'required_article_recall')),
+            'mean_strict_precision': mean(retrieve, ('retrieval_evaluation', 'strict_precision')),
+            'mean_strict_f1': mean(retrieve, ('retrieval_evaluation', 'strict_f1')),
+            'out_of_scope_abstention_accuracy': mean(abstain, ('retrieval_evaluation', 'passed')),
+            'mean_latency_seconds': mean(completed, ('retrieval_evaluation', 'elapsed_seconds')),
         },
         'generation': {
-            'correctness': mean(
-                retrieve,
-                ('generation_evaluation', 'correctness'),
-            ),
-            'faithfulness': mean(
-                retrieve,
-                ('generation_evaluation', 'faithfulness'),
-            ),
-            'citation_validity': mean(
-                retrieve,
-                ('generation_evaluation', 'citation_validity'),
-            ),
-            'citation_recall': mean(
-                retrieve,
-                ('generation_evaluation', 'citation_recall'),
-            ),
-            'out_of_scope_response_accuracy': mean(
-                abstain,
-                ('generation_evaluation', 'out_of_scope_response_correct'),
-            ),
-            'mean_latency_seconds': mean(
-                completed,
-                ('generation_evaluation', 'elapsed_seconds'),
-            ),
+            'strict_accuracy': mean(completed, ('generation_evaluation', 'strict_pass')),
+            'generation_success_rate': mean(completed, ('generation_evaluation', 'generation_success')),
+            'status_accuracy': mean(completed, ('generation_evaluation', 'status_correct')),
+            'answer_correctness': mean(retrieve, ('generation_evaluation', 'answer_correctness')),
+            'required_fact_coverage': mean(retrieve, ('generation_evaluation', 'required_fact_coverage')),
+            'faithfulness': mean(retrieve, ('generation_evaluation', 'faithfulness')),
+            'citation_validity': mean(retrieve, ('generation_evaluation', 'citation_validity')),
+            'citation_precision': mean(retrieve, ('generation_evaluation', 'citation_precision')),
+            'citation_recall': mean(retrieve, ('generation_evaluation', 'citation_recall')),
+            'citation_exact_set_accuracy': mean(retrieve, ('generation_evaluation', 'citation_exact_set')),
+            'forbidden_claim_rate': mean(retrieve, ('generation_evaluation', 'forbidden_claim_rate')),
+            'arabic_only_out_of_scope_accuracy': mean(abstain, ('generation_evaluation', 'arabic_only')),
+            'mean_latency_seconds': mean(completed, ('generation_evaluation', 'elapsed_seconds')),
         },
         'by_test_type': {
             test_type: {
                 'count': len(group),
-                'end_to_end_success_rate': mean(
-                    group,
-                    ('end_to_end_pass',),
-                ),
-                'routing_accuracy': mean(
-                    group,
-                    ('retrieval_evaluation', 'routing_correct'),
-                ),
+                'end_to_end_accuracy': mean(group, ('end_to_end_pass',)),
+                'retrieval_accuracy': mean(group, ('retrieval_evaluation', 'passed')),
+                'generation_accuracy': mean(group, ('generation_evaluation', 'strict_pass')),
             }
             for test_type, group in sorted(by_type.items())
         },
     }
 
+
 def build_output(args: argparse.Namespace, benchmark: dict[str, Any], rows: list[dict[str, Any]]) -> dict[str, Any]:
     return {
-        'schema_version': 'full-pipeline-evaluation.v2',
+        'schema_version': 'full-pipeline-evaluation.v1',
         'created_at_utc': datetime.now(timezone.utc).isoformat(),
         'model_name': args.model_name,
         'judge_model': args.judge_model,
@@ -501,41 +483,22 @@ def save_output(path: Path, output: dict[str, Any]) -> None:
     temp.replace(path)
 
 
-def print_row(
-    row: dict[str, Any],
-    index: int,
-    total: int,
-) -> None:
+def print_row(row: dict[str, Any], index: int, total: int) -> None:
     if row.get('error'):
-        print(
-            f'[{index:02d}/{total:02d}] '
-            f'{row["id"]} ERROR | {row["error"]}'
-        )
+        print(f'[{index:02d}/{total:02d}] {row["id"]} ERROR | {row["error"]}')
         return
-
     r = row['retrieval_evaluation']
     g = row['generation_evaluation']
     label = 'PASS' if row['end_to_end_pass'] else 'FAIL'
-
-    if row['expected_behavior'] == 'abstain':
-        print(
-            f'[{index:02d}/{total:02d}] {row["id"]} {label} '
-            f'| Route={int(bool(r["routing_correct"]))} '
-            f'| OOS={int(bool(g["out_of_scope_response_correct"]))}'
-        )
-        return
-
     print(
         f'[{index:02d}/{total:02d}] {row["id"]} {label} '
-        f'| Route={int(bool(r["routing_correct"]))} '
-        f'| Hit@1={int(bool(r["hit_at_1"]))} '
-        f'| Recall@5={r["article_recall_at_5"]:.2f} '
-        f'| Precision={r["article_precision"]:.2f} '
-        f'| Correct={g["correctness_grade"]}/2 '
-        f'| Faith={g["faithfulness_grade"]}/2 '
-        f'| CitValid={g["citation_validity"]:.2f} '
-        f'| CitRecall={g["citation_recall"]:.2f}'
+        f'| R={int(bool(r["passed"]))} '
+        f'| G={int(bool(g["strict_pass"]))} '
+        f'| Hit@1={int(bool(r["hit_at_1"])) if row["expected_behavior"] == "retrieve" else "-"} '
+        f'| Facts={g["required_fact_coverage"]:.2f} '
+        f'| Faith={g["faithfulness"]:.2f}'
     )
+
 
 def main() -> int:
     args = parse_args()
@@ -593,21 +556,7 @@ def main() -> int:
             row.update({
                 'retrieval_evaluation': retrieval_eval,
                 'generation_evaluation': generation_eval,
-                'end_to_end_pass': bool(
-                    (
-                        retrieval_eval['routing_correct']
-                        and generation_eval['out_of_scope_response_correct']
-                    )
-                    if row['expected_behavior'] == 'abstain'
-                    else (
-                        retrieval_eval['routing_correct']
-                        and retrieval_eval['article_recall_at_5'] == 1.0
-                        and generation_eval['correctness_grade'] == 2
-                        and generation_eval['faithfulness_grade'] >= 1
-                        and generation_eval['citation_validity'] == 1.0
-                        and generation_eval['citation_recall'] == 1.0
-                    )
-                ),
+                'end_to_end_pass': bool(retrieval_eval['passed'] and generation_eval['strict_pass']),
                 'retrieval_output': retrieval,
                 'generation_output': generation,
             })

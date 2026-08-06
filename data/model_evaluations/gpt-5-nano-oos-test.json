@@ -1,0 +1,129 @@
+{
+  "schema_version": "full-pipeline-evaluation.v2",
+  "created_at_utc": "2026-08-06T02:06:21.777987+00:00",
+  "model_name": "gpt-5-nano-oos-test",
+  "judge_model": "gpt-5.4-mini",
+  "benchmark": {
+    "name": "Jordanian Labor Law KG End-to-End Model Comparison Benchmark — 40 Questions",
+    "version": "2.0.0",
+    "sha256": "ee92e04e750dd91cac3a399f7768c3f6f87ef0d7a1ebca5a43ebfc0fb27493e4",
+    "path": "/app/data/benchmarks/model_comparison_benchmark_40.json",
+    "frozen": true
+  },
+  "summary": {
+    "questions_requested": 1,
+    "questions_completed": 1,
+    "questions_failed_to_run": 0,
+    "end_to_end_success_rate": 1.0,
+    "retrieval": {
+      "routing_accuracy": 1.0,
+      "hit_at_1": 0.0,
+      "article_recall_at_5": 0.0,
+      "article_precision": 0.0,
+      "out_of_scope_accuracy": 1.0,
+      "mean_latency_seconds": 8.116
+    },
+    "generation": {
+      "correctness": 0.0,
+      "faithfulness": 0.0,
+      "citation_validity": 0.0,
+      "citation_recall": 0.0,
+      "out_of_scope_response_accuracy": 1.0,
+      "mean_latency_seconds": 0.018
+    },
+    "by_test_type": {
+      "out_of_scope": {
+        "count": 1,
+        "end_to_end_success_rate": 1.0,
+        "routing_accuracy": 1.0
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "MC40-33",
+      "question": "هل يحدد قانون العمل شروط استحقاق راتب التقاعد المبكر من الضمان الاجتماعي وطريقة احتساب الاقتطاع من الراتب التقاعدي؟",
+      "test_type": "out_of_scope",
+      "category": "social_security_retirement",
+      "difficulty": "hard",
+      "expected_behavior": "abstain",
+      "retrieval_evaluation": {
+        "expected_behavior": "abstain",
+        "actual_behavior": "abstain",
+        "required_articles": [],
+        "acceptable_articles": [],
+        "actual_articles_at_5": [],
+        "routing_correct": true,
+        "hit_at_1": false,
+        "article_recall_at_5": 0.0,
+        "article_precision": 0.0,
+        "elapsed_seconds": 8.116
+      },
+      "generation_evaluation": {
+        "status": "out_of_scope",
+        "answer_ar": "يتطلب جواباً حول الضمان الاجتماعي والتقاعد المبكر وهو خارج نطاق قانون العمل الأردني الممثل في النظام.",
+        "cited_article_numbers": [],
+        "out_of_scope_response_correct": true,
+        "correctness_grade": null,
+        "faithfulness_grade": null,
+        "correctness": null,
+        "faithfulness": null,
+        "citation_validity": 1.0,
+        "citation_recall": 1.0,
+        "elapsed_seconds": 0.018,
+        "judge": null
+      },
+      "end_to_end_pass": true,
+      "retrieval_output": {
+        "schema_version": "retrieval.v1",
+        "status": "success",
+        "question": "هل يحدد قانون العمل شروط استحقاق راتب التقاعد المبكر من الضمان الاجتماعي وطريقة احتساب الاقتطاع من الراتب التقاعدي؟",
+        "decision": {
+          "behavior": "abstain",
+          "reason": "يتطلب جواباً حول الضمان الاجتماعي والتقاعد المبكر وهو خارج نطاق قانون العمل الأردني الممثل في النظام.",
+          "clarification_question_ar": "",
+          "planner_used": true,
+          "planner_confidence": 0.6
+        },
+        "embedding": {
+          "model": "text-embedding-3-small",
+          "dimensions": 0,
+          "input_tokens": 0
+        },
+        "articles": [],
+        "concepts": [],
+        "expanded_concepts": [],
+        "diagnostics": {
+          "article_numbers": [],
+          "concept_local_names": [],
+          "graph_supported_articles": [],
+          "concept_count": 0,
+          "expanded_concept_count": 0,
+          "article_count": 0
+        },
+        "elapsed_ms": 7693,
+        "debug": null
+      },
+      "generation_output": {
+        "schema_version": "generation.v1",
+        "status": "out_of_scope",
+        "question": "هل يحدد قانون العمل شروط استحقاق راتب التقاعد المبكر من الضمان الاجتماعي وطريقة احتساب الاقتطاع من الراتب التقاعدي؟",
+        "retrieval_schema_version": "retrieval.v1",
+        "answer_ar": "يتطلب جواباً حول الضمان الاجتماعي والتقاعد المبكر وهو خارج نطاق قانون العمل الأردني الممثل في النظام.",
+        "key_points": [],
+        "citations": [],
+        "cited_article_numbers": [],
+        "grounded": false,
+        "warnings": [],
+        "model": "",
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "total_tokens": 0
+        },
+        "elapsed_ms": 0,
+        "debug": null
+      }
+    }
+  ]
+}

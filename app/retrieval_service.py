@@ -73,7 +73,7 @@ ISSUE_CATALOG_CANDIDATES = 12
 ISSUE_TOP_MARGIN = 0.08
 ISSUE_TOP_BONUS = 0.22
 MULTI_ARTICLE_COVERAGE_BONUS = 0.50
-FINAL_ARTICLE_LIMIT = 3
+FINAL_ARTICLE_LIMIT = 5
 
 
 def _list_value(
@@ -1344,6 +1344,10 @@ class RetrievalService:
                 return []
             return None
 
+        # The reranker already returns the minimal complete set.
+        # Keep five only as a safety ceiling; do not force the output count to
+        # match the number of planner issues because one article can cover
+        # several independently requested parts.
         max_articles = min(
             FINAL_ARTICLE_LIMIT,
             self.settings.retrieval_article_top_k,
@@ -1660,9 +1664,15 @@ class RetrievalService:
         if llm_selected is not None:
             return llm_selected
 
+        requested_limit = max(
+            1,
+            analysis.max_final_articles,
+            len(analysis.planner_queries),
+        )
+
         final_limit = min(
             FINAL_ARTICLE_LIMIT,
-            analysis.max_final_articles,
+            requested_limit,
             self.settings.retrieval_article_top_k,
         )
 

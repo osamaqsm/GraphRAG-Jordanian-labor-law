@@ -54,7 +54,7 @@ services:
     volumes:
       - ./app:/app/app
       - ./scripts:/app/scripts
-      - ./data:/app/data:ro
+      - ./data:/app/data:rw
 
     command:
       - uvicorn

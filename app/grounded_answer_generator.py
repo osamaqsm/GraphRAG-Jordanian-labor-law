@@ -27,6 +27,10 @@ ARTICLE_MENTION_RE = re.compile(
     r"\[*\s*(?:المادة|مادة)\s+([0-9٠-٩]+)\s*\]*"
 )
 
+BRACKETED_CITATION_RE = re.compile(
+    r"\[+\s*(?:المادة|مادة)\s+([0-9٠-٩]+)\s*\]+"
+)
+
 
 def _setting(settings: Settings, name: str, env_name: str, default: Any) -> Any:
     value = getattr(settings, name, None)
@@ -57,7 +61,7 @@ def _to_int(value: str) -> int:
 
 
 def _canonicalize_citations(text: str, allowed_numbers: set[int]) -> str:
-    """Normalize article citation variants without changing their meaning."""
+    """Normalize valid article citation variants without changing meaning."""
 
     def replacement(match: re.Match[str]) -> str:
         number = _to_int(match.group(1))
@@ -66,6 +70,76 @@ def _canonicalize_citations(text: str, allowed_numbers: set[int]) -> str:
         return f"[المادة {number}]"
 
     return ARTICLE_MENTION_RE.sub(replacement, text)
+
+
+def _normalize_bracketed_citations(text: str) -> str:
+    """Normalize malformed bracketed citations such as [[المادة 5]."""
+
+    def replacement(match: re.Match[str]) -> str:
+        return f"[المادة {_to_int(match.group(1))}]"
+
+    normalized = BRACKETED_CITATION_RE.sub(replacement, text)
+    normalized = re.sub(r"[ \t]{2,}", " ", normalized)
+    normalized = re.sub(r"\s+([،؛,.!?])", r"\1", normalized)
+    return normalized.strip()
+
+
+def _citation_state(
+    answer: str,
+    structured_numbers: list[int],
+    allowed_numbers: set[int],
+) -> dict[str, Any]:
+    """Return a general citation-validation state for one generated draft."""
+
+    normalized_answer = _normalize_bracketed_citations(answer)
+    normalized_answer = _canonicalize_citations(
+        normalized_answer,
+        allowed_numbers,
+    )
+
+    inline_numbers = _unique_numbers(
+        [_to_int(value) for value in INLINE_CITATION_RE.findall(normalized_answer)]
+    )
+    mentioned_numbers = _unique_numbers(
+        [_to_int(value) for value in ARTICLE_MENTION_RE.findall(normalized_answer)]
+    )
+    structured_numbers = _unique_numbers(structured_numbers)
+
+    invalid_inline = sorted(set(inline_numbers) - allowed_numbers)
+    invalid_mentions = sorted(set(mentioned_numbers) - allowed_numbers)
+    invalid_structured = sorted(set(structured_numbers) - allowed_numbers)
+
+    valid_inline = [
+        number for number in inline_numbers if number in allowed_numbers
+    ]
+    valid_structured = [
+        number for number in structured_numbers if number in allowed_numbers
+    ]
+
+    # Inline citations are the source of truth when present. Otherwise the
+    # structured list can be repaired into inline citations.
+    final_numbers = valid_inline or valid_structured
+
+    needs_retry = bool(
+        invalid_inline
+        or invalid_mentions
+        or invalid_structured
+        or not final_numbers
+    )
+
+    return {
+        "answer": normalized_answer,
+        "inline_numbers": inline_numbers,
+        "mentioned_numbers": mentioned_numbers,
+        "structured_numbers": structured_numbers,
+        "valid_inline": valid_inline,
+        "valid_structured": valid_structured,
+        "final_numbers": final_numbers,
+        "invalid_inline": invalid_inline,
+        "invalid_mentions": invalid_mentions,
+        "invalid_structured": invalid_structured,
+        "needs_retry": needs_retry,
+    }
 
 
 class AnswerDraft(BaseModel):
@@ -197,24 +271,35 @@ in retrieval_result are metadata and must not be treated as legal text.
 RULES
 
 1. Answer the exact user_question directly in clear Modern Standard Arabic.
-2. Use only the supplied article texts. Do not use memory, outside legal
-   knowledge, web knowledge, or unstated facts.
-3. Use only articles necessary for the question. Ignore retrieved articles that
-   are related but do not answer a requested issue.
-4. Preserve the correct legal actor, every material condition and exception,
-   and every number, percentage, duration, deadline, and amount.
-5. Answer every distinct part of a multi-part question.
-6. When the question asks for a numerical result and supplies a quantity,
-   perform the simple calculation explicitly from the statutory number.
-7. If the retrieved articles do not contain enough evidence, answer only the
-   supported part and describe the exact missing information in limitations.
-8. Do not reproduce entire articles, add unrelated rules, add a source heading,
-   or add a generic legal disclaimer.
-9. Keep a simple answer to one short paragraph. Use short separate paragraphs
-   only when the question contains multiple distinct parts.
-10. If the retrieval result indicates that the question is out of scope,
-    write the entire user-facing answer in Arabic only, without using any
-    English words or phrases.   
+2. Use only retrieval_result.articles[].text. Do not use memory, outside legal
+   knowledge, web knowledge, metadata, graph paths, scores, or unstated facts.
+3. First split the question internally into its independently requested parts.
+   For each part, identify the article text that directly answers it.
+4. Cover every requested part, but do not summarize every retrieved article.
+   Retrieved articles are candidates, not a checklist that must all be used.
+5. Prefer the smallest sufficient evidence set. Ignore any article that supplies
+   only background, a neighbouring rule, or an unrequested consequence.
+6. When the first-ranked articles directly answer the question, prioritize them,
+   but always follow the statutory text rather than ranking alone.
+7. Preserve the correct legal actor, every material condition and exception,
+   and every number, percentage, duration, deadline, amount, procedural step,
+   authority, and penalty expressly requested.
+8. For multi-part questions, organize the answer by the question's parts. Do not
+   replace a requested part with a broadly related rule.
+9. When a supplied article contains both requested and unrequested material,
+   include only the requested material.
+10. When the question asks for a numerical result and supplies a quantity,
+    perform the simple calculation explicitly from the statutory number.
+11. If the retrieved articles do not contain enough evidence for a requested
+    part, answer the supported parts and state the precise missing part in
+    limitations. Never fill the gap from memory.
+12. Do not reproduce entire articles, add unrelated rules, add a source heading,
+    or add a generic legal disclaimer.
+13. Keep a simple answer to one short paragraph. Use short separate paragraphs
+    or compact numbered parts only when the question contains multiple distinct
+    parts.
+14. If the retrieval result indicates that the question is out of scope, write
+    the entire user-facing answer in Arabic only, without English words.
 
 CITATIONS
 
@@ -231,10 +316,28 @@ OUTPUT
 - limitations: an empty list when the retrieved evidence is sufficient;
   otherwise only specific missing evidence. No generic disclaimer.
 
-Before returning, check that the answer is direct, all requested parts are
-covered, legal actors and conditions are correct, numbers are exact, and every
-legal sentence has a valid inline citation.
+Before returning, perform this final check:
+- every requested part is explicitly answered or named in limitations;
+- every included legal statement directly serves the question;
+- no retrieved article was used merely because it was available;
+- legal actors, conditions, exceptions, procedures, and numbers are exact;
+- every legal sentence has a valid inline citation immediately after it.
 """.strip()
+
+    @staticmethod
+    def _retry_instructions(allowed_numbers: list[int]) -> str:
+        allowed = ", ".join(str(number) for number in allowed_numbers)
+        return (
+            GroundedAnswerGenerator._instructions()
+            + "\n\nRETRY CORRECTION\n"
+            + "The previous draft failed citation validation. Rewrite the answer "
+              "from scratch. Use only these article numbers in citations: "
+            + allowed
+            + ". Every legal sentence must end with a valid citation in exactly "
+              "this form: [المادة N]. Do not mention or cite any other article "
+              "number. Ensure cited_article_numbers exactly matches the unique "
+              "inline citations in first-use order."
+        )
 
     @staticmethod
     def _response_schema() -> dict[str, Any]:
@@ -312,10 +415,22 @@ legal sentence has a valid inline citation.
             "retrieval_result": retrieval.model_dump(mode="json"),
         }
 
-    def _request_kwargs(self, payload: dict[str, Any]) -> dict[str, Any]:
+    def _request_kwargs(
+        self,
+        payload: dict[str, Any],
+        *,
+        retry: bool = False,
+        allowed_numbers: list[int] | None = None,
+    ) -> dict[str, Any]:
+        instructions = self._instructions()
+        if retry:
+            instructions = self._retry_instructions(
+                allowed_numbers or []
+            )
+
         return {
             "model": self.model,
-            "instructions": self._instructions(),
+            "instructions": instructions,
             "input": [
                 {
                     "role": "user",
@@ -354,20 +469,6 @@ legal sentence has a valid inline citation.
         started = time.perf_counter()
         if not isinstance(retrieval, RetrievalResultV1):
             retrieval = RetrievalResultV1.model_validate(retrieval)
-
-        if retrieval.decision.behavior == "clarify":
-            answer = (
-                retrieval.decision.clarification_question_ar.strip()
-                or retrieval.decision.reason.strip()
-                or "يرجى توضيح الوقائع اللازمة للإجابة."
-            )
-            return self._non_model_result(
-                retrieval,
-                status="clarification_required",
-                answer_ar=answer,
-                started=started,
-                include_debug=include_debug,
-            )
 
         if retrieval.decision.behavior == "abstain":
             answer = (
@@ -426,52 +527,74 @@ legal sentence has a valid inline citation.
             )
 
         draft = AnswerDraft.model_validate(json.loads(output_text))
-        answer = _canonicalize_citations(draft.answer_ar, allowed_numbers)
-        structured_numbers = _unique_numbers(draft.cited_article_numbers)
-        inline_numbers = _unique_numbers(
-            [_to_int(value) for value in INLINE_CITATION_RE.findall(answer)]
-        )
-        mentioned_numbers = _unique_numbers(
-            [_to_int(value) for value in ARTICLE_MENTION_RE.findall(answer)]
+        state = _citation_state(
+            draft.answer_ar,
+            draft.cited_article_numbers,
+            allowed_numbers,
         )
 
-        citation_repair_applied = False
-        if (
-            not inline_numbers
-            and len(structured_numbers) == 1
-            and structured_numbers[0] in allowed_numbers
-        ):
-            answer = answer.rstrip() + f" [المادة {structured_numbers[0]}]"
-            inline_numbers = structured_numbers.copy()
-            mentioned_numbers = _unique_numbers(
-                mentioned_numbers + structured_numbers
+        retry_applied = False
+        retry_response = None
+        retry_draft = None
+
+        if state["needs_retry"]:
+            retry_applied = True
+            retry_kwargs = self._request_kwargs(
+                payload,
+                retry=True,
+                allowed_numbers=sorted(allowed_numbers),
             )
+            retry_response = self.client.responses.create(**retry_kwargs)
+            retry_output_text = str(
+                getattr(retry_response, "output_text", "") or ""
+            ).strip()
+
+            if retry_output_text:
+                retry_draft = AnswerDraft.model_validate(
+                    json.loads(retry_output_text)
+                )
+                state = _citation_state(
+                    retry_draft.answer_ar,
+                    retry_draft.cited_article_numbers,
+                    allowed_numbers,
+                )
+                draft = retry_draft
+                response = retry_response
+
+        answer = state["answer"]
+        structured_numbers = list(state["final_numbers"])
+        citation_repair_applied = (
+            answer != draft.answer_ar
+            or set(structured_numbers)
+            != set(_unique_numbers(draft.cited_article_numbers))
+        )
+
+        # If there are no inline citations but the structured list is valid,
+        # append the validated citations rather than rejecting the answer.
+        if not state["valid_inline"] and structured_numbers:
+            suffix = "".join(
+                f"[المادة {number}]"
+                for number in structured_numbers
+            )
+            answer = answer.rstrip() + " " + suffix
             citation_repair_applied = True
 
-        if not structured_numbers and inline_numbers:
-            structured_numbers = inline_numbers.copy()
-        if set(structured_numbers) == set(inline_numbers):
-            structured_numbers = inline_numbers.copy()
-
-        invalid_numbers = sorted(
-            (set(structured_numbers) | set(inline_numbers) | set(mentioned_numbers))
-            - allowed_numbers
-        )
-        mismatch = set(structured_numbers) != set(inline_numbers)
-
-        if invalid_numbers or mismatch or not structured_numbers:
+        if state["needs_retry"] or not structured_numbers:
             reasons: list[str] = []
+            invalid_numbers = sorted(
+                set(state["invalid_inline"])
+                | set(state["invalid_mentions"])
+                | set(state["invalid_structured"])
+            )
             if invalid_numbers:
                 reasons.append(
                     "Answer referenced unretrieved articles: "
                     + ", ".join(str(value) for value in invalid_numbers)
                 )
-            if mismatch:
-                reasons.append(
-                    "Inline citations do not match cited_article_numbers."
-                )
             if not structured_numbers:
                 reasons.append("Answer contains no valid article citation.")
+            if retry_applied:
+                reasons.append("Citation repair retry failed.")
 
             return self._non_model_result(
                 retrieval,
@@ -483,8 +606,15 @@ legal sentence has a valid inline citation.
                 model_called=True,
                 debug_details={
                     "allowed_article_numbers": sorted(allowed_numbers),
-                    "rejected_draft": draft.model_dump(mode="json"),
-                    "normalized_answer_ar": answer,
+                    "initial_draft": AnswerDraft.model_validate(
+                        json.loads(output_text)
+                    ).model_dump(mode="json"),
+                    "retry_draft": (
+                        retry_draft.model_dump(mode="json")
+                        if retry_draft is not None
+                        else None
+                    ),
+                    "final_citation_state": state,
                 },
             )
 
@@ -505,7 +635,8 @@ legal sentence has a valid inline citation.
         if include_debug:
             debug = {
                 "model_called": True,
-                "model_calls": 1,
+                "model_calls": 2 if retry_applied else 1,
+                "citation_retry_applied": retry_applied,
                 "input_included_exact_user_question": (
                     payload["user_question"] == retrieval.question
                 ),
@@ -526,6 +657,7 @@ legal sentence has a valid inline citation.
                 "allowed_article_numbers": sorted(allowed_numbers),
                 "cited_article_numbers": structured_numbers,
                 "citation_repair_applied": citation_repair_applied,
+                "citation_retry_applied": retry_applied,
                 "draft": draft.model_dump(mode="json"),
             }
 

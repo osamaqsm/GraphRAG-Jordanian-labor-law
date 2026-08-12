@@ -15,7 +15,9 @@ from typing import Any
 import requests
 from openai import OpenAI
 
-DEFAULT_BENCHMARK = Path('/app/data/benchmarks/model_comparison_benchmark_40.json')
+from app.config import get_settings
+
+DEFAULT_BENCHMARK = Path('/app/data/benchmarks/jordan_labor_law_final_unseen_40.json')
 DEFAULT_RESULTS_DIR = Path('/app/data/model_evaluations')
 ARABIC_RE = re.compile(r'[\u0600-\u06FF]')
 LATIN_RE = re.compile(r'[A-Za-z]')
@@ -26,21 +28,128 @@ DIGIT_TRANS = str.maketrans('٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹', '0123456
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            'Run the complete Jordanian Labor Law pipeline on the fixed '
-            '40-question benchmark and write one evaluation JSON file.'
+            'Run the complete Jordanian Labor Law model-comparison pipeline. '
+            'By default this performs three independent 40-question runs and '
+            'writes per-run JSON plus one mean/std aggregate JSON.'
         )
     )
-    parser.add_argument('--model-name', required=True, help='Label of the evaluated model.')
+    parser.add_argument(
+        '--model-name',
+        default=None,
+        help=(
+            'Optional display label. Defaults to PIPELINE_LLM_MODEL from the '
+            'active API/container configuration.'
+        ),
+    )
     parser.add_argument('--benchmark', type=Path, default=DEFAULT_BENCHMARK)
-    parser.add_argument('--output', type=Path, default=None)
+    parser.add_argument(
+        '--runs',
+        type=int,
+        default=3,
+        help='Independent repetitions for the final comparison (default: 3).',
+    )
+    parser.add_argument(
+        '--output-dir',
+        type=Path,
+        default=None,
+        help='Directory for run-1.json ... final-summary.json.',
+    )
+    parser.add_argument(
+        '--output',
+        type=Path,
+        default=None,
+        help=(
+            'Backward-compatible single-run output path. Supplying this forces '
+            'one run and is useful for smoke/diagnostic tests.'
+        ),
+    )
     parser.add_argument('--base-url', default='http://localhost:8000')
-    parser.add_argument('--judge-model', default=os.getenv('EVALUATION_JUDGE_MODEL', 'gpt-5.4-mini'))
+    parser.add_argument(
+        '--judge-model',
+        default=os.getenv('EVALUATION_JUDGE_MODEL', 'gpt-5.4-mini'),
+    )
     parser.add_argument('--timeout', type=float, default=240.0)
     parser.add_argument('--delay', type=float, default=0.0)
     parser.add_argument('--start', type=int, default=1)
     parser.add_argument('--limit', type=int, default=None)
     parser.add_argument('--stop-on-error', action='store_true')
+    parser.add_argument(
+        '--allow-llm-fallback',
+        action='store_true',
+        help=(
+            'Diagnostic only. Allow deterministic fallback when an LLM stage '
+            'fails. Final model-comparison runs should NOT use this flag.'
+        ),
+    )
     return parser.parse_args()
+
+
+class ExecutionIntegrityError(RuntimeError):
+    """Raised when a model-comparison run stops using the configured LLM."""
+
+
+def truthy(value: Any) -> bool:
+    return str(value or '').strip().lower() not in {
+        '', '0', 'false', 'no', 'off'
+    }
+
+
+def validate_execution_integrity(
+    *,
+    case_id: str,
+    expected_behavior: str,
+    retrieval: dict[str, Any],
+    generation: dict[str, Any],
+    expected_model: str,
+) -> None:
+    """Fail closed when a benchmark case silently leaves the LLM path.
+
+    The planner flag is observable in retrieval.v1. Reranker/provider failures
+    are made fatal by PIPELINE_STRICT_EVALUATION inside the API components.
+    Generation provider failures are also fatal in strict mode, while genuine
+    model-quality failures (for example invalid citations after a successful
+    model call) remain scoreable outcomes rather than infrastructure errors.
+    """
+    decision = retrieval.get('decision')
+    if not isinstance(decision, dict):
+        raise ExecutionIntegrityError(
+            f'{case_id}: retrieval output has no decision object.'
+        )
+
+    if decision.get('planner_used') is not True:
+        raise ExecutionIntegrityError(
+            f'{case_id}: query planner was not used; deterministic fallback '
+            'would make the model comparison invalid.'
+        )
+
+    warnings = generation.get('warnings')
+    warning_values = (
+        [str(value) for value in warnings]
+        if isinstance(warnings, list)
+        else []
+    )
+    infrastructure_markers = (
+        'Pipeline answer generation failed.',
+        'PIPELINE_ANSWER_ENABLED is false',
+        'no pipeline LLM provider is available',
+    )
+    if any(
+        marker in warning
+        for warning in warning_values
+        for marker in infrastructure_markers
+    ):
+        raise ExecutionIntegrityError(
+            f'{case_id}: answer-generation provider failure detected: '
+            + ' | '.join(warning_values)
+        )
+
+    if expected_behavior == 'retrieve' and generation.get('status') == 'generated':
+        actual_model = str(generation.get('model') or '')
+        if actual_model != expected_model:
+            raise ExecutionIntegrityError(
+                f'{case_id}: generated answer reports model={actual_model!r}; '
+                f'expected {expected_model!r}.'
+            )
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -474,12 +583,79 @@ def make_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
         },
     }
 
-def build_output(args: argparse.Namespace, benchmark: dict[str, Any], rows: list[dict[str, Any]]) -> dict[str, Any]:
+def build_output(
+    args: argparse.Namespace,
+    benchmark: dict[str, Any],
+    rows: list[dict[str, Any]],
+    *,
+    run_index: int,
+    runs_requested: int,
+    model_name: str,
+) -> dict[str, Any]:
+    settings = get_settings()
+
     return {
-        'schema_version': 'full-pipeline-evaluation.v2',
+        'schema_version': 'full-pipeline-evaluation.v3',
         'created_at_utc': datetime.now(timezone.utc).isoformat(),
-        'model_name': args.model_name,
+        'model_name': model_name,
+        'provider': settings.pipeline_llm_provider,
+        'run_index': run_index,
+        'runs_requested': runs_requested,
         'judge_model': args.judge_model,
+        'execution_integrity': {
+            'strict_llm_execution': not args.allow_llm_fallback,
+            'pipeline_strict_evaluation_env': truthy(
+                os.getenv('PIPELINE_STRICT_EVALUATION', 'false')
+            ),
+            'checkpoint_resume_enabled': True,
+        },
+        'pipeline_models': {
+            'query_planner': {
+                'provider': settings.pipeline_llm_provider,
+                'model': settings.pipeline_llm_model,
+            },
+            'route_verifier': {
+                'provider': settings.pipeline_llm_provider,
+                'model': settings.pipeline_llm_model,
+            },
+            'article_reranker': {
+                'provider': settings.pipeline_llm_provider,
+                'model': settings.pipeline_llm_model,
+            },
+            'answer_generator': {
+                'provider': settings.pipeline_llm_provider,
+                'model': settings.pipeline_llm_model,
+            },
+            'citation_retry': {
+                'provider': settings.pipeline_llm_provider,
+                'model': settings.pipeline_llm_model,
+            },
+            'embedding': {
+                'provider': 'openai',
+                'model': settings.openai_embedding_model,
+            },
+            'judge': {
+                'provider': 'openai',
+                'model': args.judge_model,
+            },
+        },
+        'frozen_comparison_settings': {
+            'planner_max_output_tokens': settings.planner_max_output_tokens,
+            'reranker_max_output_tokens': settings.reranker_max_output_tokens,
+            'generator_max_output_tokens': settings.generator_max_output_tokens,
+            'reranker_candidate_limit': getattr(
+                settings, 'reranker_candidate_limit', 12
+            ),
+            'reranker_total_char_budget': getattr(
+                settings, 'reranker_total_char_budget', 12000
+            ),
+            'reranker_article_char_limit': int(
+                os.getenv('PIPELINE_RERANK_ARTICLE_CHAR_LIMIT', '2500')
+            ),
+            'ollama_num_ctx': getattr(settings, 'ollama_num_ctx', None),
+            'embedding_model': settings.openai_embedding_model,
+            'judge_model': args.judge_model,
+        },
         'benchmark': {
             'name': benchmark.get('benchmark_name'),
             'version': benchmark.get('benchmark_version'),
@@ -500,6 +676,157 @@ def save_output(path: Path, output: dict[str, Any]) -> None:
         file.write('\n')
     temp.replace(path)
 
+
+
+def _nested_number(value: dict[str, Any], path: tuple[str, ...]) -> float | None:
+    current: Any = value
+    for key in path:
+        if not isinstance(current, dict):
+            return None
+        current = current.get(key)
+    if isinstance(current, bool):
+        return float(current)
+    if isinstance(current, (int, float)):
+        return float(current)
+    return None
+
+
+def _stats(values: list[float]) -> dict[str, float]:
+    if not values:
+        return {'mean': 0.0, 'std': 0.0, 'min': 0.0, 'max': 0.0}
+    return {
+        'mean': round(statistics.fmean(values), 6),
+        # Sample standard deviation across independent benchmark runs.
+        'std': round(statistics.stdev(values), 6) if len(values) > 1 else 0.0,
+        'min': round(min(values), 6),
+        'max': round(max(values), 6),
+    }
+
+
+def _aggregate_path(
+    outputs: list[dict[str, Any]],
+    path: tuple[str, ...],
+) -> dict[str, float]:
+    values: list[float] = []
+    for output in outputs:
+        value = _nested_number(output.get('summary', {}), path)
+        if value is not None:
+            values.append(value)
+    return _stats(values)
+
+
+def build_aggregate_output(
+    *,
+    args: argparse.Namespace,
+    benchmark: dict[str, Any],
+    run_outputs: list[dict[str, Any]],
+    run_paths: list[Path],
+    runs_requested: int,
+    selected_count: int,
+    model_name: str,
+) -> dict[str, Any]:
+    settings = get_settings()
+
+    valid_runs = [
+        output
+        for output in run_outputs
+        if output.get('summary', {}).get('questions_completed') == selected_count
+        and output.get('summary', {}).get('questions_failed_to_run') == 0
+    ]
+    valid = len(valid_runs) == runs_requested
+
+    retrieval_metrics = (
+        'routing_accuracy',
+        'hit_at_1',
+        'article_recall_at_5',
+        'article_precision',
+        'out_of_scope_accuracy',
+        'mean_latency_seconds',
+    )
+    generation_metrics = (
+        'correctness',
+        'faithfulness',
+        'citation_validity',
+        'citation_recall',
+        'out_of_scope_response_accuracy',
+        'mean_latency_seconds',
+    )
+
+    all_test_types: set[str] = set()
+    for output in valid_runs:
+        by_type = output.get('summary', {}).get('by_test_type', {})
+        if isinstance(by_type, dict):
+            all_test_types.update(str(key) for key in by_type)
+
+    aggregate = {
+        'end_to_end_success_rate': _aggregate_path(
+            valid_runs, ('end_to_end_success_rate',)
+        ),
+        'retrieval': {
+            metric: _aggregate_path(valid_runs, ('retrieval', metric))
+            for metric in retrieval_metrics
+        },
+        'generation': {
+            metric: _aggregate_path(valid_runs, ('generation', metric))
+            for metric in generation_metrics
+        },
+        'by_test_type': {
+            test_type: {
+                'end_to_end_success_rate': _aggregate_path(
+                    valid_runs,
+                    ('by_test_type', test_type, 'end_to_end_success_rate'),
+                ),
+                'routing_accuracy': _aggregate_path(
+                    valid_runs,
+                    ('by_test_type', test_type, 'routing_accuracy'),
+                ),
+            }
+            for test_type in sorted(all_test_types)
+        },
+    }
+
+    return {
+        'schema_version': 'model-comparison-aggregate.v1',
+        'created_at_utc': datetime.now(timezone.utc).isoformat(),
+        'status': 'valid' if valid else 'incomplete',
+        'provider': settings.pipeline_llm_provider,
+        'model': settings.pipeline_llm_model,
+        'model_name': model_name,
+        'runs_requested': runs_requested,
+        'runs_valid': len(valid_runs),
+        'questions_per_run': selected_count,
+        'std_definition': 'sample standard deviation across independent runs',
+        'benchmark': {
+            'name': benchmark.get('benchmark_name'),
+            'version': benchmark.get('benchmark_version'),
+            'sha256': sha256_file(args.benchmark),
+            'path': str(args.benchmark),
+            'frozen': benchmark.get('frozen'),
+        },
+        'pipeline_models': (run_outputs[0].get('pipeline_models') if run_outputs else {}),
+        'frozen_comparison_settings': (
+            run_outputs[0].get('frozen_comparison_settings')
+            if run_outputs
+            else {}
+        ),
+        'individual_runs': [
+            {
+                'run_index': output.get('run_index'),
+                'path': str(path),
+                'summary': output.get('summary'),
+            }
+            for output, path in zip(run_outputs, run_paths)
+        ],
+        'aggregate': aggregate if valid else None,
+        'invalid_reason': (
+            None
+            if valid
+            else (
+                f'Expected {runs_requested} complete runs of {selected_count} questions; '
+                f'only {len(valid_runs)} runs were valid. No partial mean is reported.'
+            )
+        ),
+    }
 
 def print_row(
     row: dict[str, Any],
@@ -537,37 +864,214 @@ def print_row(
         f'| CitRecall={g["citation_recall"]:.2f}'
     )
 
-def main() -> int:
-    args = parse_args()
-    benchmark = load_json(args.benchmark)
-    if not benchmark.get('frozen'):
-        raise ValueError('Benchmark must be frozen=true.')
-    questions = benchmark.get('questions')
-    if not isinstance(questions, list) or not questions:
-        raise ValueError('Benchmark has no questions.')
 
-    selected = questions[max(args.start - 1, 0):]
-    if args.limit is not None:
-        selected = selected[:max(args.limit, 0)]
-    if not selected:
-        raise ValueError('No questions selected.')
+def _case_identity(case: dict[str, Any], index: int) -> dict[str, str]:
+    return {
+        'id': str(case.get('id', f'question_{index}')),
+        'question': str(case.get('question', '')),
+        'test_type': str(case.get('test_type', 'unknown')),
+        'category': str(case.get('category', 'unknown')),
+        'difficulty': str(case.get('difficulty', 'unknown')),
+        'expected_behavior': str(case.get('expected_behavior', 'retrieve')),
+    }
 
-    output_path = args.output or (DEFAULT_RESULTS_DIR / f'{safe_slug(args.model_name)}.json')
+
+def _load_resume_checkpoint(
+    *,
+    args: argparse.Namespace,
+    benchmark: dict[str, Any],
+    selected: list[dict[str, Any]],
+    output_path: Path,
+    run_index: int,
+    runs_requested: int,
+    model_name: str,
+) -> tuple[list[dict[str, Any]], bool]:
+    """Load a compatible run checkpoint and return (rows, is_complete).
+
+    Resume is fail-closed: an existing file must match the active benchmark,
+    provider/model, judge, run index, requested repetitions, and the exact
+    selected question prefix. A trailing infrastructure-error row is discarded
+    so that the failed question is retried; completed rows are never rerun.
+    """
+    if not output_path.exists():
+        return [], False
+
+    checkpoint = load_json(output_path)
+    settings = get_settings()
+
+    expected_benchmark_sha = sha256_file(args.benchmark)
+    observed_benchmark = checkpoint.get('benchmark')
+    if not isinstance(observed_benchmark, dict):
+        raise RuntimeError(
+            f'Refusing to resume {output_path}: missing benchmark metadata.'
+        )
+    if observed_benchmark.get('sha256') != expected_benchmark_sha:
+        raise RuntimeError(
+            f'Refusing to resume {output_path}: benchmark SHA-256 mismatch.'
+        )
+
+    checks = {
+        'run_index': (checkpoint.get('run_index'), run_index),
+        'runs_requested': (checkpoint.get('runs_requested'), runs_requested),
+        'model_name': (str(checkpoint.get('model_name') or ''), model_name),
+        'provider': (
+            str(checkpoint.get('provider') or ''),
+            settings.pipeline_llm_provider,
+        ),
+        'judge_model': (
+            str(checkpoint.get('judge_model') or ''),
+            args.judge_model,
+        ),
+    }
+    for label, (observed, expected) in checks.items():
+        if observed != expected:
+            raise RuntimeError(
+                f'Refusing to resume {output_path}: {label} mismatch '
+                f'(checkpoint={observed!r}, active={expected!r}).'
+            )
+
+    pipeline_models = checkpoint.get('pipeline_models')
+    if not isinstance(pipeline_models, dict):
+        raise RuntimeError(
+            f'Refusing to resume {output_path}: missing pipeline model metadata.'
+        )
+    for stage in (
+        'query_planner',
+        'route_verifier',
+        'article_reranker',
+        'answer_generator',
+        'citation_retry',
+    ):
+        stage_meta = pipeline_models.get(stage)
+        if not isinstance(stage_meta, dict):
+            raise RuntimeError(
+                f'Refusing to resume {output_path}: missing {stage} metadata.'
+            )
+        observed_provider = str(stage_meta.get('provider') or '')
+        observed_model = str(stage_meta.get('model') or '')
+        if (
+            observed_provider != settings.pipeline_llm_provider
+            or observed_model != settings.pipeline_llm_model
+        ):
+            raise RuntimeError(
+                f'Refusing to resume {output_path}: active pipeline model '
+                f'does not match checkpoint at stage {stage}.'
+            )
+
+    rows = checkpoint.get('results')
+    if not isinstance(rows, list):
+        raise RuntimeError(
+            f'Refusing to resume {output_path}: results is not a list.'
+        )
+    rows = [dict(row) for row in rows if isinstance(row, dict)]
+    if len(rows) > len(selected):
+        raise RuntimeError(
+            f'Refusing to resume {output_path}: checkpoint contains more '
+            'questions than the active selection.'
+        )
+
+    # The only legitimate failed row in strict mode is the final attempted
+    # question. Remove it so the exact failed question is retried on resume.
+    error_indexes = [i for i, row in enumerate(rows) if row.get('error')]
+    if error_indexes:
+        if error_indexes != [len(rows) - 1]:
+            raise RuntimeError(
+                f'Refusing to resume {output_path}: checkpoint contains a '
+                'non-trailing execution error.'
+            )
+        failed = rows.pop()
+        print(
+            'Resume checkpoint found a failed final attempt; retrying '
+            f'question {failed.get("id", "unknown")} without changing prior rows.'
+        )
+
+    # Every preserved row must be a completed, exact prefix of the selected
+    # benchmark. This prevents accidental mixing after --start/--limit changes.
+    for index, row in enumerate(rows, start=1):
+        expected = _case_identity(selected[index - 1], index)
+        for field, expected_value in expected.items():
+            if str(row.get(field, '')) != expected_value:
+                raise RuntimeError(
+                    f'Refusing to resume {output_path}: saved question {index} '
+                    f'field {field} does not match the active benchmark.'
+                )
+        if (
+            'retrieval_evaluation' not in row
+            or 'generation_evaluation' not in row
+            or 'end_to_end_pass' not in row
+        ):
+            raise RuntimeError(
+                f'Refusing to resume {output_path}: saved question {index} '
+                'is not a completed evaluation row.'
+            )
+
+    is_complete = len(rows) == len(selected)
+    if is_complete:
+        print(
+            f'Resume: {output_path.name} is already complete '
+            f'({len(rows)}/{len(selected)}); no questions will be rerun.'
+        )
+    elif rows:
+        print(
+            f'Resume: preserving {len(rows)}/{len(selected)} completed '
+            f'questions from {output_path.name}; continuing at question '
+            f'{len(rows) + 1}.'
+        )
+    else:
+        print(
+            f'Resume: {output_path.name} contains no completed rows; '
+            'starting from question 1.'
+        )
+
+    return rows, is_complete
+
+
+def _run_once(
+    *,
+    args: argparse.Namespace,
+    benchmark: dict[str, Any],
+    selected: list[dict[str, Any]],
+    output_path: Path,
+    run_index: int,
+    runs_requested: int,
+    model_name: str,
+) -> dict[str, Any]:
+    strict_execution = not args.allow_llm_fallback
+    rows, is_complete = _load_resume_checkpoint(
+        args=args,
+        benchmark=benchmark,
+        selected=selected,
+        output_path=output_path,
+        run_index=run_index,
+        runs_requested=runs_requested,
+        model_name=model_name,
+    )
+    if is_complete:
+        # Rebuild from the preserved rows so summary/metadata reflect the
+        # current runner schema while the model outputs themselves remain
+        # untouched.
+        output = build_output(
+            args,
+            benchmark,
+            rows,
+            run_index=run_index,
+            runs_requested=runs_requested,
+            model_name=model_name,
+        )
+        save_output(output_path, output)
+        return output
+
     session = requests.Session()
     client = OpenAI()
-    rows: list[dict[str, Any]] = []
     retrieve_url = args.base_url.rstrip('/') + '/retrieve'
     generate_url = args.base_url.rstrip('/') + '/generate?include_debug=false'
 
-    for index, case in enumerate(selected, start=1):
-        row: dict[str, Any] = {
-            'id': str(case.get('id', f'question_{index}')),
-            'question': str(case.get('question', '')),
-            'test_type': str(case.get('test_type', 'unknown')),
-            'category': str(case.get('category', 'unknown')),
-            'difficulty': str(case.get('difficulty', 'unknown')),
-            'expected_behavior': str(case.get('expected_behavior', 'retrieve')),
-        }
+    start_offset = len(rows)
+    for index, case in enumerate(
+        selected[start_offset:],
+        start=start_offset + 1,
+    ):
+        row: dict[str, Any] = _case_identity(case, index)
         try:
             retrieval, retrieval_elapsed = post_json(
                 session,
@@ -581,7 +1085,19 @@ def main() -> int:
                 retrieval,
                 args.timeout,
             )
-            retrieval_eval = evaluate_retrieval(case, retrieval, retrieval_elapsed)
+
+            if strict_execution:
+                validate_execution_integrity(
+                    case_id=row['id'],
+                    expected_behavior=row['expected_behavior'],
+                    retrieval=retrieval,
+                    generation=generation,
+                    expected_model=get_settings().pipeline_llm_model,
+                )
+
+            retrieval_eval = evaluate_retrieval(
+                case, retrieval, retrieval_elapsed
+            )
             generation_eval = evaluate_generation(
                 case,
                 retrieval,
@@ -615,24 +1131,156 @@ def main() -> int:
             row['error'] = f'{type(exc).__name__}: {exc}'
             row['end_to_end_pass'] = False
             rows.append(row)
-            save_output(output_path, build_output(args, benchmark, rows))
+            save_output(
+                output_path,
+                build_output(
+                    args, benchmark, rows,
+                    run_index=run_index,
+                    runs_requested=runs_requested,
+                    model_name=model_name,
+                ),
+            )
             print_row(row, index, len(selected))
-            if args.stop_on_error:
+            if strict_execution or args.stop_on_error:
                 break
             continue
 
         rows.append(row)
-        save_output(output_path, build_output(args, benchmark, rows))
+        save_output(
+            output_path,
+            build_output(
+                args, benchmark, rows,
+                run_index=run_index,
+                runs_requested=runs_requested,
+                model_name=model_name,
+            ),
+        )
         print_row(row, index, len(selected))
         if args.delay > 0:
             time.sleep(args.delay)
 
-    output = build_output(args, benchmark, rows)
+    output = build_output(
+        args,
+        benchmark,
+        rows,
+        run_index=run_index,
+        runs_requested=runs_requested,
+        model_name=model_name,
+    )
     save_output(output_path, output)
-    print('\nSummary')
-    print(json.dumps(output['summary'], ensure_ascii=False, indent=2))
-    print(f'\nSaved one final file: {output_path}')
-    return 0 if output['summary']['questions_failed_to_run'] == 0 else 1
+    return output
+
+
+def main() -> int:
+    args = parse_args()
+    strict_execution = not args.allow_llm_fallback
+
+    if strict_execution and not truthy(
+        os.getenv('PIPELINE_STRICT_EVALUATION', 'false')
+    ):
+        raise RuntimeError(
+            'Final model-comparison runs require '
+            'PIPELINE_STRICT_EVALUATION=true in the API container.'
+        )
+
+    benchmark = load_json(args.benchmark)
+    if not benchmark.get('frozen'):
+        raise ValueError('Benchmark must be frozen=true.')
+    questions = benchmark.get('questions')
+    if not isinstance(questions, list) or not questions:
+        raise ValueError('Benchmark has no questions.')
+
+    selected = questions[max(args.start - 1, 0):]
+    if args.limit is not None:
+        selected = selected[:max(args.limit, 0)]
+    if not selected:
+        raise ValueError('No questions selected.')
+
+    settings = get_settings()
+    model_name = str(args.model_name or settings.pipeline_llm_model)
+
+    # Compatibility mode: an explicit --output is exactly one run. This keeps
+    # the previous smoke-test commands valid.
+    runs_requested = 1 if args.output is not None else int(args.runs)
+    if runs_requested < 1:
+        raise ValueError('--runs must be at least 1.')
+
+    if args.output is not None:
+        output_root = args.output.parent
+    else:
+        experiment_slug = safe_slug(
+            f'{settings.pipeline_llm_provider}__{model_name}'
+        )
+        output_root = args.output_dir or (
+            DEFAULT_RESULTS_DIR / experiment_slug
+        )
+    output_root.mkdir(parents=True, exist_ok=True)
+
+    run_outputs: list[dict[str, Any]] = []
+    run_paths: list[Path] = []
+
+    for run_index in range(1, runs_requested + 1):
+        output_path = (
+            args.output
+            if args.output is not None
+            else output_root / f'run-{run_index}.json'
+        )
+        assert output_path is not None
+
+        print(
+            f'\n=== {settings.pipeline_llm_provider}/{settings.pipeline_llm_model} '
+            f'| run {run_index}/{runs_requested} '
+            f'| questions={len(selected)} ==='
+        )
+        output = _run_once(
+            args=args,
+            benchmark=benchmark,
+            selected=selected,
+            output_path=output_path,
+            run_index=run_index,
+            runs_requested=runs_requested,
+            model_name=model_name,
+        )
+        run_outputs.append(output)
+        run_paths.append(output_path)
+
+        print('\nRun summary')
+        print(json.dumps(output['summary'], ensure_ascii=False, indent=2))
+        print(f'Saved run file: {output_path}')
+
+        if output['summary']['questions_failed_to_run'] != 0:
+            print(
+                '\nExecution failure detected. Remaining repetitions are not '
+                'started because a final aggregate must contain only complete runs.'
+            )
+            break
+
+    # Old explicit --output behavior: one result file and normal exit code.
+    if args.output is not None:
+        return (
+            0
+            if run_outputs
+            and run_outputs[0]['summary']['questions_failed_to_run'] == 0
+            else 1
+        )
+
+    aggregate = build_aggregate_output(
+        args=args,
+        benchmark=benchmark,
+        run_outputs=run_outputs,
+        run_paths=run_paths,
+        runs_requested=runs_requested,
+        selected_count=len(selected),
+        model_name=model_name,
+    )
+    final_path = output_root / 'final-summary.json'
+    save_output(final_path, aggregate)
+
+    print('\n=== FINAL AGGREGATE ===')
+    print(json.dumps(aggregate, ensure_ascii=False, indent=2))
+    print(f'\nSaved final summary: {final_path}')
+
+    return 0 if aggregate['status'] == 'valid' else 1
 
 
 if __name__ == '__main__':

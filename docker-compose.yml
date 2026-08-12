@@ -45,6 +45,11 @@ services:
     env_file:
       - .env
 
+    # Allows the API container to reach Ollama running on the Windows/Linux
+    # host at http://host.docker.internal:11434.
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
     depends_on:
       - weaviate
 

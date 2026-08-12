@@ -1,15 +1,14 @@
 from __future__ import annotations
 
-import json
 import os
 import re
 import time
 from typing import Any
 
-from openai import OpenAI
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.config import Settings, get_settings
+from app.llm_provider import build_pipeline_llm
 from app.generation_contract import (
     AnswerCitationV1,
     GenerationUsageV1,
@@ -165,92 +164,69 @@ class GroundedAnswerGenerator:
         self,
         settings: Settings | None = None,
         *,
-        client: OpenAI | Any | None = None,
+        client: Any | None = None,
     ) -> None:
         self.settings = settings or get_settings()
+
+        strict_value = os.getenv(
+            "PIPELINE_STRICT_EVALUATION",
+            "false",
+        ).strip().lower()
+        self.strict_evaluation = strict_value not in {
+            "0", "false", "no", "off", ""
+        }
+
         self.enabled = _truthy(
             _setting(
                 self.settings,
-                "openai_answer_enabled",
-                "OPENAI_ANSWER_ENABLED",
-                "true",
+                "answer_enabled",
+                "PIPELINE_ANSWER_ENABLED",
+                _setting(
+                    self.settings,
+                    "openai_answer_enabled",
+                    "OPENAI_ANSWER_ENABLED",
+                    "true",
+                ),
             ),
             default=True,
         )
-        self.model = str(
-            _setting(
+
+        self.provider = str(
+            getattr(
                 self.settings,
-                "openai_answer_model",
-                "OPENAI_ANSWER_MODEL",
+                "pipeline_llm_provider",
+                "openai",
+            )
+        ).strip().lower()
+
+        self.model = str(
+            getattr(
+                self.settings,
+                "pipeline_llm_model",
                 "gpt-5-nano",
             )
-        )
-        self.reasoning_effort = str(
-            _setting(
-                self.settings,
-                "openai_answer_reasoning_effort",
-                "OPENAI_ANSWER_REASONING_EFFORT",
-                "low",
-            )
-        )
-        self.verbosity = str(
-            _setting(
-                self.settings,
-                "openai_answer_verbosity",
-                "OPENAI_ANSWER_VERBOSITY",
-                "low",
-            )
-        )
+        ).strip()
+
         self.max_output_tokens = max(
             500,
             int(
-                _setting(
+                getattr(
                     self.settings,
-                    "openai_answer_max_output_tokens",
-                    "OPENAI_ANSWER_MAX_OUTPUT_TOKENS",
-                    1800,
+                    "generator_max_output_tokens",
+                    3000,
                 )
             ),
         )
 
-        self.client = client
-        if self.client is None and self.enabled:
-            self.client = OpenAI(
-                api_key=str(
-                    _setting(
-                        self.settings,
-                        "openai_api_key",
-                        "OPENAI_API_KEY",
-                        "",
-                    )
-                ),
-                timeout=float(
-                    _setting(
-                        self.settings,
-                        "openai_answer_timeout_seconds",
-                        "OPENAI_ANSWER_TIMEOUT_SECONDS",
-                        _setting(
-                            self.settings,
-                            "openai_timeout_seconds",
-                            "OPENAI_TIMEOUT_SECONDS",
-                            120,
-                        ),
-                    )
-                ),
-                max_retries=int(
-                    _setting(
-                        self.settings,
-                        "openai_answer_max_retries",
-                        "OPENAI_ANSWER_MAX_RETRIES",
-                        _setting(
-                            self.settings,
-                            "openai_max_retries",
-                            "OPENAI_MAX_RETRIES",
-                            2,
-                        ),
-                    )
-                ),
-            )
+        self.llm = client
+        self.initialization_error: str | None = None
+
+        if self.llm is None and self.enabled:
+            try:
+                self.llm = build_pipeline_llm(self.settings)
+            except Exception as exc:
+                self.llm = None
+                self.initialization_error = f"{type(exc).__name__}: {exc}"
 
     @staticmethod
     def _instructions() -> str:
@@ -262,11 +238,11 @@ INPUT
 
 The user message is one JSON object with exactly these top-level fields:
 - user_question: the exact question asked by the user.
-- retrieval_result: the complete output from the previous retrieval step,
-  following retrieval.v1.
+- retrieval_evidence: a compact provider-neutral evidence view derived from the
+  exact retrieval.v1 object produced by the previous step.
 
-Use retrieval_result.articles[].text as the only legal evidence. Other fields
-in retrieval_result are metadata and must not be treated as legal text.
+Use retrieval_evidence.articles[].text as the only legal evidence. The decision
+field is routing metadata and must not be treated as legal text.
 
 RULES
 
@@ -340,29 +316,6 @@ Before returning, perform this final check:
         )
 
     @staticmethod
-    def _response_schema() -> dict[str, Any]:
-        return {
-            "type": "object",
-            "additionalProperties": False,
-            "properties": {
-                "answer_ar": {"type": "string"},
-                "cited_article_numbers": {
-                    "type": "array",
-                    "items": {"type": "integer"},
-                },
-                "limitations": {
-                    "type": "array",
-                    "items": {"type": "string"},
-                },
-            },
-            "required": [
-                "answer_ar",
-                "cited_article_numbers",
-                "limitations",
-            ],
-        }
-
-    @staticmethod
     def _citation(article: RetrievalEvidenceV1) -> AnswerCitationV1:
         label = (
             article.labels_ar[0]
@@ -408,56 +361,31 @@ Before returning, perform this final check:
         )
 
     def _request_payload(self, retrieval: RetrievalResultV1) -> dict[str, Any]:
-        # Deliberately include both the exact user question and the complete
-        # previous-step output. This is the only model input for Step 8.
-        return {
-            "user_question": retrieval.question,
-            "retrieval_result": retrieval.model_dump(mode="json"),
-        }
-
-    def _request_kwargs(
-        self,
-        payload: dict[str, Any],
-        *,
-        retry: bool = False,
-        allowed_numbers: list[int] | None = None,
-    ) -> dict[str, Any]:
-        instructions = self._instructions()
-        if retry:
-            instructions = self._retry_instructions(
-                allowed_numbers or []
+        # /generate still consumes the exact retrieval.v1 object and never
+        # reruns retrieval.  The LLM itself receives only the fields needed for
+        # grounded answering so hosted and 8K-context local models see the same
+        # compact semantic input rather than provider-irrelevant graph metadata.
+        evidence_articles: list[dict[str, Any]] = []
+        for article in retrieval.articles:
+            if article.article_number is None or not article.text.strip():
+                continue
+            evidence_articles.append(
+                {
+                    "article_number": int(article.article_number),
+                    "labels_ar": list(article.labels_ar),
+                    "text": article.text,
+                }
             )
 
         return {
-            "model": self.model,
-            "instructions": instructions,
-            "input": [
-                {
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "input_text",
-                            "text": json.dumps(
-                                payload,
-                                ensure_ascii=False,
-                                separators=(",", ":"),
-                            ),
-                        }
-                    ],
-                }
-            ],
-            "reasoning": {"effort": self.reasoning_effort},
-            "max_output_tokens": self.max_output_tokens,
-            "text": {
-                "verbosity": self.verbosity,
-                "format": {
-                    "type": "json_schema",
-                    "name": "grounded_jordan_labor_answer",
-                    "schema": self._response_schema(),
-                    "strict": True,
+            "user_question": retrieval.question,
+            "retrieval_evidence": {
+                "decision": {
+                    "behavior": retrieval.decision.behavior,
+                    "reason": retrieval.decision.reason,
                 },
+                "articles": evidence_articles,
             },
-            "store": False,
         }
 
     def generate(
@@ -467,13 +395,18 @@ Before returning, perform this final check:
         include_debug: bool = False,
     ) -> GroundedAnswerResultV1:
         started = time.perf_counter()
+
         if not isinstance(retrieval, RetrievalResultV1):
             retrieval = RetrievalResultV1.model_validate(retrieval)
 
         if retrieval.decision.behavior == "abstain":
+            # User-facing out-of-scope behavior is deterministic and
+            # provider-independent. Keep the planner's reason only as
+            # diagnostic metadata so every evaluated model receives the same
+            # final OOS response policy.
             answer = (
-                retrieval.decision.reason.strip()
-                or "السؤال خارج نطاق قانون العمل الأردني المتاح في النظام."
+                "السؤال خارج نطاق قانون العمل الأردني "
+                "الممثل في قاعدة المعرفة المتاحة في النظام."
             )
             return self._non_model_result(
                 retrieval,
@@ -481,12 +414,16 @@ Before returning, perform this final check:
                 answer_ar=answer,
                 started=started,
                 include_debug=include_debug,
+                debug_details={
+                    "routing_reason": retrieval.decision.reason.strip(),
+                },
             )
 
         article_map = {
             int(article.article_number): article
             for article in retrieval.articles
-            if article.article_number is not None and article.text.strip()
+            if article.article_number is not None
+            and article.text.strip()
         }
         allowed_numbers = set(article_map)
 
@@ -500,33 +437,58 @@ Before returning, perform this final check:
                 include_debug=include_debug,
             )
 
-        if not self.enabled or self.client is None:
+        if not self.enabled or self.llm is None:
+            if self.strict_evaluation:
+                raise RuntimeError(
+                    "Strict evaluation aborted: answer generator is unavailable. "
+                    f"Provider={self.provider} Model={self.model} "
+                    f"Error={self.initialization_error}"
+                )
             return self._non_model_result(
                 retrieval,
                 status="insufficient_evidence",
                 answer_ar="توليد الإجابة معطل حالياً.",
                 started=started,
-                warning="OPENAI_ANSWER_ENABLED is false or no client is available.",
+                warning=(
+                    "PIPELINE_ANSWER_ENABLED is false or no pipeline "
+                    "LLM provider is available."
+                ),
                 include_debug=include_debug,
             )
 
         payload = self._request_payload(retrieval)
-        request_kwargs = self._request_kwargs(payload)
-        response = self.client.responses.create(**request_kwargs)
 
-        output_text = str(getattr(response, "output_text", "") or "").strip()
-        if not output_text:
+        try:
+            result = self.llm.generate_structured(
+                instructions=self._instructions(),
+                payload=payload,
+                response_model=AnswerDraft,
+                schema_name="grounded_jordan_labor_answer",
+                max_output_tokens=self.max_output_tokens,
+            )
+        except Exception as exc:
+            if self.strict_evaluation:
+                raise RuntimeError(
+                    "Strict evaluation aborted: answer generation failed. "
+                    f"Provider={self.provider} Model={self.model} "
+                    f"Error={type(exc).__name__}: {exc}"
+                ) from exc
             return self._non_model_result(
                 retrieval,
                 status="insufficient_evidence",
                 answer_ar="تعذر إنشاء إجابة من المواد المسترجعة.",
                 started=started,
-                warning="OpenAI returned no output text.",
+                warning=(
+                    "Pipeline answer generation failed. "
+                    f"Provider={self.provider} Model={self.model} Error={exc}"
+                ),
                 include_debug=include_debug,
                 model_called=True,
             )
 
-        draft = AnswerDraft.model_validate(json.loads(output_text))
+        draft = AnswerDraft.model_validate(result.data)
+        initial_draft = draft
+
         state = _citation_state(
             draft.answer_ar,
             draft.cited_article_numbers,
@@ -534,43 +496,57 @@ Before returning, perform this final check:
         )
 
         retry_applied = False
-        retry_response = None
+        retry_result = None
         retry_draft = None
 
         if state["needs_retry"]:
             retry_applied = True
-            retry_kwargs = self._request_kwargs(
-                payload,
-                retry=True,
-                allowed_numbers=sorted(allowed_numbers),
-            )
-            retry_response = self.client.responses.create(**retry_kwargs)
-            retry_output_text = str(
-                getattr(retry_response, "output_text", "") or ""
-            ).strip()
 
-            if retry_output_text:
-                retry_draft = AnswerDraft.model_validate(
-                    json.loads(retry_output_text)
+            try:
+                retry_result = self.llm.generate_structured(
+                    instructions=self._retry_instructions(
+                        sorted(allowed_numbers)
+                    ),
+                    payload=payload,
+                    response_model=AnswerDraft,
+                    schema_name="grounded_jordan_labor_answer_retry",
+                    max_output_tokens=self.max_output_tokens,
                 )
+
+                retry_draft = AnswerDraft.model_validate(
+                    retry_result.data
+                )
+
                 state = _citation_state(
                     retry_draft.answer_ar,
                     retry_draft.cited_article_numbers,
                     allowed_numbers,
                 )
                 draft = retry_draft
-                response = retry_response
+
+            except Exception as exc:
+                if self.strict_evaluation:
+                    raise RuntimeError(
+                        "Strict evaluation aborted: citation-repair retry failed. "
+                        f"Provider={self.provider} Model={self.model} "
+                        f"Error={type(exc).__name__}: {exc}"
+                    ) from exc
+                retry_result = None
+                retry_draft = None
 
         answer = state["answer"]
         structured_numbers = list(state["final_numbers"])
+
         citation_repair_applied = (
             answer != draft.answer_ar
             or set(structured_numbers)
-            != set(_unique_numbers(draft.cited_article_numbers))
+            != set(
+                _unique_numbers(
+                    draft.cited_article_numbers
+                )
+            )
         )
 
-        # If there are no inline citations but the structured list is valid,
-        # append the validated citations rather than rejecting the answer.
         if not state["valid_inline"] and structured_numbers:
             suffix = "".join(
                 f"[المادة {number}]"
@@ -581,20 +557,31 @@ Before returning, perform this final check:
 
         if state["needs_retry"] or not structured_numbers:
             reasons: list[str] = []
+
             invalid_numbers = sorted(
                 set(state["invalid_inline"])
                 | set(state["invalid_mentions"])
                 | set(state["invalid_structured"])
             )
+
             if invalid_numbers:
                 reasons.append(
                     "Answer referenced unretrieved articles: "
-                    + ", ".join(str(value) for value in invalid_numbers)
+                    + ", ".join(
+                        str(value)
+                        for value in invalid_numbers
+                    )
                 )
+
             if not structured_numbers:
-                reasons.append("Answer contains no valid article citation.")
+                reasons.append(
+                    "Answer contains no valid article citation."
+                )
+
             if retry_applied:
-                reasons.append("Citation repair retry failed.")
+                reasons.append(
+                    "Citation repair retry failed."
+                )
 
             return self._non_model_result(
                 retrieval,
@@ -605,12 +592,20 @@ Before returning, perform this final check:
                 include_debug=include_debug,
                 model_called=True,
                 debug_details={
-                    "allowed_article_numbers": sorted(allowed_numbers),
-                    "initial_draft": AnswerDraft.model_validate(
-                        json.loads(output_text)
-                    ).model_dump(mode="json"),
+                    "provider": self.provider,
+                    "model": self.model,
+                    "allowed_article_numbers": sorted(
+                        allowed_numbers
+                    ),
+                    "initial_draft": (
+                        initial_draft.model_dump(
+                            mode="json"
+                        )
+                    ),
                     "retry_draft": (
-                        retry_draft.model_dump(mode="json")
+                        retry_draft.model_dump(
+                            mode="json"
+                        )
                         if retry_draft is not None
                         else None
                     ),
@@ -623,38 +618,43 @@ Before returning, perform this final check:
             for number in structured_numbers
         ]
 
-        usage_obj = getattr(response, "usage", None)
-        input_tokens = int(getattr(usage_obj, "input_tokens", 0) or 0)
-        output_tokens = int(getattr(usage_obj, "output_tokens", 0) or 0)
-        total_tokens = int(
-            getattr(usage_obj, "total_tokens", 0)
-            or input_tokens + output_tokens
-        )
+        input_tokens = result.usage.input_tokens
+        output_tokens = result.usage.output_tokens
+
+        if retry_result is not None:
+            input_tokens += retry_result.usage.input_tokens
+            output_tokens += retry_result.usage.output_tokens
+
+        total_tokens = input_tokens + output_tokens
 
         debug: dict[str, Any] | None = None
+
         if include_debug:
             debug = {
                 "model_called": True,
                 "model_calls": 2 if retry_applied else 1,
+                "provider": self.provider,
+                "model": self.model,
                 "citation_retry_applied": retry_applied,
                 "input_included_exact_user_question": (
                     payload["user_question"] == retrieval.question
                 ),
-                "input_included_complete_retrieval_result": (
-                    payload["retrieval_result"]
-                    == retrieval.model_dump(mode="json")
-                ),
+                "input_used_compact_retrieval_evidence": True,
+                "model_input_article_numbers": [
+                    item["article_number"]
+                    for item in payload["retrieval_evidence"]["articles"]
+                ],
                 "model_call_config": {
+                    "provider": self.provider,
                     "model": self.model,
-                    "reasoning_effort": self.reasoning_effort,
-                    "verbosity": self.verbosity,
                     "max_output_tokens": self.max_output_tokens,
                     "temperature_sent": False,
                     "top_p_sent": False,
-                    "store": False,
-                    "structured_output_strict": True,
+                    "structured_output": True,
                 },
-                "allowed_article_numbers": sorted(allowed_numbers),
+                "allowed_article_numbers": sorted(
+                    allowed_numbers
+                ),
                 "cited_article_numbers": structured_numbers,
                 "citation_repair_applied": citation_repair_applied,
                 "citation_retry_applied": retry_applied,
@@ -680,6 +680,11 @@ Before returning, perform this final check:
                 output_tokens=output_tokens,
                 total_tokens=total_tokens,
             ),
-            elapsed_ms=max(0, round((time.perf_counter() - started) * 1000)),
+            elapsed_ms=max(
+                0,
+                round(
+                    (time.perf_counter() - started) * 1000
+                ),
+            ),
             debug=debug,
         )

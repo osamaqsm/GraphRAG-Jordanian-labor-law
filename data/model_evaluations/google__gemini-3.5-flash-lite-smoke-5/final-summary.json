@@ -1,0 +1,196 @@
+{
+  "schema_version": "model-comparison-aggregate.v1",
+  "created_at_utc": "2026-08-12T19:28:11.200030+00:00",
+  "status": "valid",
+  "provider": "google",
+  "model": "gemini-3.5-flash-lite",
+  "model_name": "gemini-3.5-flash-lite-smoke-5",
+  "runs_requested": 1,
+  "runs_valid": 1,
+  "questions_per_run": 5,
+  "std_definition": "sample standard deviation across independent runs",
+  "benchmark": {
+    "name": "Jordanian Labor Law KG Final Unseen End-to-End Benchmark — 40 Questions",
+    "version": "1.0.0",
+    "sha256": "a356c5a16c20c382aa377294105062152adbf5132dbea82801ebcd9ca2159739",
+    "path": "/app/data/benchmarks/jordan_labor_law_final_unseen_40.json",
+    "frozen": true
+  },
+  "pipeline_models": {
+    "query_planner": {
+      "provider": "google",
+      "model": "gemini-3.5-flash-lite"
+    },
+    "route_verifier": {
+      "provider": "google",
+      "model": "gemini-3.5-flash-lite"
+    },
+    "article_reranker": {
+      "provider": "google",
+      "model": "gemini-3.5-flash-lite"
+    },
+    "answer_generator": {
+      "provider": "google",
+      "model": "gemini-3.5-flash-lite"
+    },
+    "citation_retry": {
+      "provider": "google",
+      "model": "gemini-3.5-flash-lite"
+    },
+    "embedding": {
+      "provider": "openai",
+      "model": "text-embedding-3-small"
+    },
+    "judge": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini"
+    }
+  },
+  "frozen_comparison_settings": {
+    "planner_max_output_tokens": 3000,
+    "reranker_max_output_tokens": 2000,
+    "generator_max_output_tokens": 3000,
+    "reranker_candidate_limit": 12,
+    "reranker_total_char_budget": 12000,
+    "reranker_article_char_limit": 2500,
+    "ollama_num_ctx": 8192,
+    "embedding_model": "text-embedding-3-small",
+    "judge_model": "gpt-5.4-mini"
+  },
+  "individual_runs": [
+    {
+      "run_index": 1,
+      "path": "/app/data/model_evaluations/google__gemini-3.5-flash-lite-smoke-5/run-1.json",
+      "summary": {
+        "questions_requested": 5,
+        "questions_completed": 5,
+        "questions_failed_to_run": 0,
+        "end_to_end_success_rate": 0.8,
+        "retrieval": {
+          "routing_accuracy": 0.8,
+          "hit_at_1": 0.8,
+          "article_recall_at_5": 0.8,
+          "article_precision": 0.8,
+          "out_of_scope_accuracy": 0.0,
+          "mean_latency_seconds": 5.325
+        },
+        "generation": {
+          "correctness": 0.8,
+          "faithfulness": 0.8,
+          "citation_validity": 0.8,
+          "citation_recall": 0.8,
+          "out_of_scope_response_accuracy": 0.0,
+          "mean_latency_seconds": 0.9644
+        },
+        "by_test_type": {
+          "straightforward": {
+            "count": 5,
+            "end_to_end_success_rate": 0.8,
+            "routing_accuracy": 0.8
+          }
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "end_to_end_success_rate": {
+      "mean": 0.8,
+      "std": 0.0,
+      "min": 0.8,
+      "max": 0.8
+    },
+    "retrieval": {
+      "routing_accuracy": {
+        "mean": 0.8,
+        "std": 0.0,
+        "min": 0.8,
+        "max": 0.8
+      },
+      "hit_at_1": {
+        "mean": 0.8,
+        "std": 0.0,
+        "min": 0.8,
+        "max": 0.8
+      },
+      "article_recall_at_5": {
+        "mean": 0.8,
+        "std": 0.0,
+        "min": 0.8,
+        "max": 0.8
+      },
+      "article_precision": {
+        "mean": 0.8,
+        "std": 0.0,
+        "min": 0.8,
+        "max": 0.8
+      },
+      "out_of_scope_accuracy": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "mean_latency_seconds": {
+        "mean": 5.325,
+        "std": 0.0,
+        "min": 5.325,
+        "max": 5.325
+      }
+    },
+    "generation": {
+      "correctness": {
+        "mean": 0.8,
+        "std": 0.0,
+        "min": 0.8,
+        "max": 0.8
+      },
+      "faithfulness": {
+        "mean": 0.8,
+        "std": 0.0,
+        "min": 0.8,
+        "max": 0.8
+      },
+      "citation_validity": {
+        "mean": 0.8,
+        "std": 0.0,
+        "min": 0.8,
+        "max": 0.8
+      },
+      "citation_recall": {
+        "mean": 0.8,
+        "std": 0.0,
+        "min": 0.8,
+        "max": 0.8
+      },
+      "out_of_scope_response_accuracy": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "mean_latency_seconds": {
+        "mean": 0.9644,
+        "std": 0.0,
+        "min": 0.9644,
+        "max": 0.9644
+      }
+    },
+    "by_test_type": {
+      "straightforward": {
+        "end_to_end_success_rate": {
+          "mean": 0.8,
+          "std": 0.0,
+          "min": 0.8,
+          "max": 0.8
+        },
+        "routing_accuracy": {
+          "mean": 0.8,
+          "std": 0.0,
+          "min": 0.8,
+          "max": 0.8
+        }
+      }
+    }
+  },
+  "invalid_reason": null
+}

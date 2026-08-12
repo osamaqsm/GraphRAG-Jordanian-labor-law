@@ -1,15 +1,14 @@
 from __future__ import annotations
 
-import json
 import logging
 import os
 from dataclasses import dataclass
 from typing import Any, Literal
 
-from openai import OpenAI
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.config import Settings
+from app.llm_provider import build_pipeline_llm
 
 logger = logging.getLogger(__name__)
 
@@ -48,9 +47,23 @@ class LegalArticleReranker:
 
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
+
+        strict_value = os.getenv(
+            "PIPELINE_STRICT_EVALUATION",
+            "false",
+        ).strip().lower()
+        self.strict_evaluation = strict_value not in {
+            "0", "false", "no", "off", ""
+        }
+
+        # Generic enable flag for the provider-neutral pipeline.  Fall back to
+        # the historical OPENAI_* flag so existing configuration still works.
         enabled_value = os.getenv(
-            "OPENAI_RERANK_ENABLED",
-            "true",
+            "PIPELINE_RERANK_ENABLED",
+            os.getenv(
+                "OPENAI_RERANK_ENABLED",
+                "true",
+            ),
         ).strip().lower()
         self.enabled = enabled_value not in {
             "0",
@@ -59,58 +72,50 @@ class LegalArticleReranker:
             "off",
         }
 
-        self.model = os.getenv(
-            "OPENAI_RERANK_MODEL",
-            getattr(settings, "openai_chat_model", "gpt-5-nano"),
-        ).strip()
-
-        self.reasoning_effort = os.getenv(
-            "OPENAI_RERANK_REASONING_EFFORT",
-            getattr(settings, "openai_reasoning_effort", "low"),
+        # For fair end-to-end comparison, the reranker must use the same
+        # provider/model as all other LLM-dependent pipeline stages.
+        self.provider = str(
+            getattr(settings, "pipeline_llm_provider", "openai")
+        ).strip().lower()
+        self.model = str(
+            getattr(settings, "pipeline_llm_model", "gpt-5-nano")
         ).strip()
 
         self.max_article_chars = max(
             800,
             int(
                 os.getenv(
-                    "OPENAI_RERANK_ARTICLE_CHAR_LIMIT",
-                    "2500",
+                    "PIPELINE_RERANK_ARTICLE_CHAR_LIMIT",
+                    os.getenv(
+                        "OPENAI_RERANK_ARTICLE_CHAR_LIMIT",
+                        "2500",
+                    ),
                 )
             ),
         )
 
-        self.client: OpenAI | None = None
+        self.candidate_limit = int(
+            getattr(settings, "reranker_candidate_limit", 12)
+        )
+        self.total_char_budget = int(
+            getattr(settings, "reranker_total_char_budget", 12000)
+        )
+
+        self.llm = None
 
         if self.enabled:
-            api_key = str(
-                getattr(settings, "openai_api_key", "")
-                or ""
-            ).strip()
-
-            if not api_key:
+            try:
+                self.llm = build_pipeline_llm(settings)
+            except Exception as exc:
                 logger.warning(
-                    "OpenAI article reranking disabled because "
-                    "OPENAI_API_KEY is missing."
+                    "Pipeline article reranking disabled because the "
+                    "configured LLM provider could not be initialized. "
+                    "Provider=%s Model=%s Error=%s",
+                    self.provider,
+                    self.model,
+                    exc,
                 )
                 self.enabled = False
-            else:
-                self.client = OpenAI(
-                    api_key=api_key,
-                    timeout=float(
-                        getattr(
-                            settings,
-                            "openai_timeout_seconds",
-                            120,
-                        )
-                    ),
-                    max_retries=int(
-                        getattr(
-                            settings,
-                            "openai_max_retries",
-                            3,
-                        )
-                    ),
-                )
 
     @staticmethod
     def _instructions() -> str:
@@ -158,17 +163,32 @@ Rules:
         *,
         question: str,
         articles: list[CatalogArticle],
-    ) -> str:
-        catalogue = []
+    ) -> dict[str, Any]:
+        # The retrieval service supplies the strongest shared candidate pool.
+        # Enforce the same ceiling again here so every provider receives the
+        # exact same bounded reranker problem.
+        bounded_articles = list(articles[: self.candidate_limit])
+        catalogue: list[dict[str, Any]] = []
+
+        # Allocate one fixed total text budget across the candidate set. This
+        # prevents hosted models from seeing a much larger prompt than local
+        # 8B models while still giving fewer-candidate questions more text per
+        # article.
+        per_article_chars = self.max_article_chars
+        if bounded_articles:
+            per_article_chars = min(
+                self.max_article_chars,
+                max(600, self.total_char_budget // len(bounded_articles)),
+            )
 
         for article in sorted(
-            articles,
+            bounded_articles,
             key=lambda item: item.article_number,
         ):
             catalogue.append(
                 {
                     "article_number": article.article_number,
-                    "text": article.text[: self.max_article_chars],
+                    "text": article.text[:per_article_chars],
                     "deterministic_rank": article.deterministic_rank,
                     "deterministic_score": (
                         round(article.deterministic_score, 6)
@@ -179,14 +199,10 @@ Rules:
                 }
             )
 
-        return json.dumps(
-            {
-                "question": question,
-                "catalogue": catalogue,
-            },
-            ensure_ascii=False,
-            separators=(",", ":"),
-        )
+        return {
+            "question": question,
+            "catalogue": catalogue,
+        }
 
     def select(
         self,
@@ -194,7 +210,15 @@ Rules:
         question: str,
         articles: list[CatalogArticle],
     ) -> ArticleSelection | None:
-        if not self.enabled or self.client is None or not articles:
+        if not articles:
+            return None
+
+        if not self.enabled or self.llm is None:
+            if self.strict_evaluation:
+                raise RuntimeError(
+                    "Strict evaluation aborted: article reranker is unavailable. "
+                    f"Provider={self.provider} Model={self.model}"
+                )
             return None
 
         valid_numbers = {
@@ -203,35 +227,25 @@ Rules:
         }
 
         try:
-            schema = ArticleSelection.model_json_schema()
-            response = self.client.responses.create(
-                model=self.model,
+            result = self.llm.generate_structured(
                 instructions=self._instructions(),
-                input=self._payload(
+                payload=self._payload(
                     question=question,
                     articles=articles,
                 ),
-                reasoning={
-                    "effort": self.reasoning_effort,
-                },
-                text={
-                    "format": {
-                        "type": "json_schema",
-                        "name": "legal_article_selection",
-                        "schema": schema,
-                        "strict": True,
-                    }
-                },
-                store=False,
+                response_model=ArticleSelection,
+                schema_name="legal_article_selection",
+                max_output_tokens=int(
+                    getattr(
+                        self.settings,
+                        "reranker_max_output_tokens",
+                        2000,
+                    )
+                ),
             )
 
-            if not response.output_text:
-                raise RuntimeError(
-                    "OpenAI returned no reranking output."
-                )
-
             selection = ArticleSelection.model_validate(
-                json.loads(response.output_text)
+                result.data
             )
 
             ordered_unique = list(
@@ -266,10 +280,20 @@ Rules:
                     "selected_article_numbers": ordered_unique[:5],
                 }
             )
-        except Exception as exc:  # safe deterministic fallback
+
+        except Exception as exc:  # safe deterministic fallback outside strict evaluation
+            if self.strict_evaluation:
+                raise RuntimeError(
+                    "Strict evaluation aborted: article reranker failed. "
+                    f"Provider={self.provider} Model={self.model} "
+                    f"Error={type(exc).__name__}: {exc}"
+                ) from exc
+
             logger.warning(
-                "OpenAI article reranking failed; using deterministic "
-                "ranking. Error: %s",
+                "Pipeline article reranking failed; using deterministic "
+                "ranking. Provider=%s Model=%s Error=%s",
+                self.provider,
+                self.model,
                 exc,
             )
             return None

@@ -1,15 +1,13 @@
 from __future__ import annotations
 
-import copy
-import json
 import logging
 import os
 from typing import Literal
 
-from openai import OpenAI
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.config import Settings
+from app.llm_provider import build_pipeline_llm
 from app.legal_question_analysis import (
     LegalQuestionAnalysis,
     normalize_arabic,
@@ -87,9 +85,20 @@ class LegalQueryPlanner:
     def __init__(self, settings: Settings) -> None:
         self.settings = settings
 
-        enabled_value = os.getenv(
-            "OPENAI_QUERY_PLANNER_ENABLED",
+        strict_value = os.getenv(
+            "PIPELINE_STRICT_EVALUATION",
             "false",
+        ).strip().lower()
+        self.strict_evaluation = strict_value not in {
+            "0", "false", "no", "off", ""
+        }
+
+        enabled_value = os.getenv(
+            "PIPELINE_QUERY_PLANNER_ENABLED",
+            os.getenv(
+                "OPENAI_QUERY_PLANNER_ENABLED",
+                "false",
+            ),
         ).strip().lower()
         self.enabled = enabled_value not in {
             "0",
@@ -98,37 +107,42 @@ class LegalQueryPlanner:
             "off",
         }
 
-        configured_model = os.getenv(
-            "OPENAI_QUERY_PLANNER_MODEL",
-            "",
-        ).strip()
-        self.model = configured_model or str(
-            getattr(settings, "openai_chat_model", "gpt-5-nano")
-        ).strip()
-
-        self.reasoning_effort = os.getenv(
-            "OPENAI_QUERY_PLANNER_REASONING_EFFORT",
-            getattr(settings, "openai_reasoning_effort", "low"),
+        # For fair end-to-end comparison, the planner must use the same
+        # shared provider/model as the other LLM-dependent pipeline stages.
+        self.provider = str(
+            getattr(settings, "pipeline_llm_provider", "openai")
+        ).strip().lower()
+        self.model = str(
+            getattr(settings, "pipeline_llm_model", "gpt-5-nano")
         ).strip()
 
         self.route_confidence = self._bounded_float(
             os.getenv(
-                "OPENAI_QUERY_PLANNER_ROUTE_CONFIDENCE",
-                "0.80",
+                "PIPELINE_QUERY_PLANNER_ROUTE_CONFIDENCE",
+                os.getenv(
+                    "OPENAI_QUERY_PLANNER_ROUTE_CONFIDENCE",
+                    "0.80",
+                ),
             ),
             default=0.80,
         )
         self.retrieve_override_confidence = self._bounded_float(
             os.getenv(
-                "OPENAI_QUERY_PLANNER_RETRIEVE_OVERRIDE_CONFIDENCE",
-                "0.90",
+                "PIPELINE_QUERY_PLANNER_RETRIEVE_OVERRIDE_CONFIDENCE",
+                os.getenv(
+                    "OPENAI_QUERY_PLANNER_RETRIEVE_OVERRIDE_CONFIDENCE",
+                    "0.90",
+                ),
             ),
             default=0.90,
         )
 
         verify_value = os.getenv(
-            "OPENAI_QUERY_PLANNER_VERIFY_NON_ANSWER",
-            "false",
+            "PIPELINE_QUERY_PLANNER_VERIFY_NON_ANSWER",
+            os.getenv(
+                "OPENAI_QUERY_PLANNER_VERIFY_NON_ANSWER",
+                "false",
+            ),
         ).strip().lower()
         self.verify_non_answer = verify_value not in {
             "0",
@@ -136,54 +150,78 @@ class LegalQueryPlanner:
             "no",
             "off",
         }
+
         self.non_answer_verification_confidence = self._bounded_float(
             os.getenv(
-                "OPENAI_QUERY_PLANNER_NON_ANSWER_VERIFY_CONFIDENCE",
-                "0.80",
+                "PIPELINE_QUERY_PLANNER_NON_ANSWER_VERIFY_CONFIDENCE",
+                os.getenv(
+                    "OPENAI_QUERY_PLANNER_NON_ANSWER_VERIFY_CONFIDENCE",
+                    "0.80",
+                ),
             ),
             default=0.80,
         )
 
         verify_retrieve_value = os.getenv(
-            "OPENAI_QUERY_PLANNER_VERIFY_LOW_CONFIDENCE_RETRIEVE",
-            "false",
+            "PIPELINE_QUERY_PLANNER_VERIFY_LOW_CONFIDENCE_RETRIEVE",
+            os.getenv(
+                "OPENAI_QUERY_PLANNER_VERIFY_LOW_CONFIDENCE_RETRIEVE",
+                "false",
+            ),
         ).strip().lower()
-        self.verify_low_confidence_retrieve = verify_retrieve_value not in {
-            "0",
-            "false",
-            "no",
-            "off",
-        }
+        self.verify_low_confidence_retrieve = (
+            verify_retrieve_value not in {
+                "0",
+                "false",
+                "no",
+                "off",
+            }
+        )
+
         self.retrieve_verification_below = self._bounded_float(
             os.getenv(
-                "OPENAI_QUERY_PLANNER_RETRIEVE_VERIFY_BELOW",
-                "0.90",
+                "PIPELINE_QUERY_PLANNER_RETRIEVE_VERIFY_BELOW",
+                os.getenv(
+                    "OPENAI_QUERY_PLANNER_RETRIEVE_VERIFY_BELOW",
+                    "0.90",
+                ),
             ),
             default=0.90,
         )
 
-        self.client: OpenAI | None = None
+        self.llm = None
+
+        # Diagnostic state only. This does not affect routing or retrieval.
+        # It exposes the latest planner/provider failure instead of allowing
+        # a silent deterministic fallback with no inspectable reason.
+        self.last_error: str | None = None
+        self.last_error_stage: str | None = None
 
         if self.enabled:
-            api_key = str(
-                getattr(settings, "openai_api_key", "") or ""
-            ).strip()
-            if not api_key:
+            try:
+                self.llm = build_pipeline_llm(settings)
+            except Exception as exc:
                 logger.warning(
-                    "OpenAI query planning disabled because "
-                    "OPENAI_API_KEY is missing."
+                    "Pipeline query planning disabled because the configured "
+                    "LLM provider could not be initialized. Provider=%s "
+                    "Model=%s Error=%s",
+                    self.provider,
+                    self.model,
+                    exc,
                 )
                 self.enabled = False
-            else:
-                self.client = OpenAI(
-                    api_key=api_key,
-                    timeout=float(
-                        getattr(settings, "openai_timeout_seconds", 120)
-                    ),
-                    max_retries=int(
-                        getattr(settings, "openai_max_retries", 3)
-                    ),
-                )
+
+    def diagnostic_state(self) -> dict[str, object]:
+        """Return read-only planner diagnostics without changing routing behavior."""
+        return {
+            "enabled": self.enabled,
+            "provider": self.provider,
+            "model": self.model,
+            "llm_ready": self.llm is not None,
+            "strict_evaluation": self.strict_evaluation,
+            "last_error_stage": self.last_error_stage,
+            "last_error": self.last_error,
+        }
 
     @staticmethod
     def _bounded_float(value: str, *, default: float) -> float:
@@ -192,39 +230,6 @@ class LegalQueryPlanner:
         except (TypeError, ValueError):
             parsed = default
         return min(1.0, max(0.0, parsed))
-
-    @classmethod
-    def _strict_response_schema(cls) -> dict:
-        """Return an OpenAI-compatible strict JSON Schema.
-
-        Pydantic omits fields with defaults from ``required``. OpenAI strict
-        structured outputs instead require every property of every object to
-        appear in that object's ``required`` array. Optional semantic values
-        are therefore represented by empty strings or empty lists, not by
-        omitting the property.
-        """
-
-        schema = copy.deepcopy(LegalQueryPlan.model_json_schema())
-
-        def normalize(node: object) -> None:
-            if isinstance(node, dict):
-                # Pydantic defaults are application-side conveniences, not
-                # part of the strict response contract sent to OpenAI.
-                node.pop("default", None)
-
-                properties = node.get("properties")
-                if isinstance(properties, dict):
-                    node["required"] = list(properties.keys())
-                    node["additionalProperties"] = False
-
-                for value in node.values():
-                    normalize(value)
-            elif isinstance(node, list):
-                for value in node:
-                    normalize(value)
-
-        normalize(schema)
-        return schema
 
     @staticmethod
     def _instructions() -> str:
@@ -413,40 +418,47 @@ clarification_question_ar empty.
         instructions: str,
         schema_name: str,
     ) -> LegalQueryPlan:
-        if self.client is None:
-            raise RuntimeError("OpenAI query-planner client is unavailable.")
+        if self.llm is None:
+            raise RuntimeError(
+                "Pipeline query-planner LLM is unavailable."
+            )
 
-        schema = self._strict_response_schema()
-        response = self.client.responses.create(
-            model=self.model,
+        result = self.llm.generate_structured(
             instructions=instructions,
-            input=json.dumps(
-                payload,
-                ensure_ascii=False,
-                separators=(",", ":"),
+            payload=payload,
+            response_model=LegalQueryPlan,
+            schema_name=schema_name,
+            max_output_tokens=int(
+                getattr(
+                    self.settings,
+                    "planner_max_output_tokens",
+                    3000,
+                )
             ),
-            reasoning={"effort": self.reasoning_effort},
-            text={
-                "format": {
-                    "type": "json_schema",
-                    "name": schema_name,
-                    "schema": schema,
-                    "strict": True,
-                }
-            },
-            store=False,
         )
 
-        if not response.output_text:
-            raise RuntimeError("OpenAI returned no query-planning output.")
-
-        plan = LegalQueryPlan.model_validate(
-            json.loads(response.output_text)
-        )
+        plan = LegalQueryPlan.model_validate(result.data)
         return self._validate_plan(plan)
 
     def plan(self, question: str) -> LegalQueryPlan | None:
-        if not self.enabled or self.client is None:
+        # Reset diagnostics for each new request.
+        self.last_error = None
+        self.last_error_stage = None
+
+        if not self.enabled or self.llm is None:
+            if not self.enabled:
+                self.last_error_stage = "initialization"
+                self.last_error = "Query planner is disabled."
+            elif self.llm is None:
+                self.last_error_stage = "initialization"
+                self.last_error = "Pipeline LLM provider is not initialized."
+
+            if self.strict_evaluation:
+                raise RuntimeError(
+                    "Strict evaluation aborted: query planner is unavailable. "
+                    f"Provider={self.provider} Model={self.model} "
+                    f"Error={self.last_error}"
+                )
             return None
 
         try:
@@ -455,10 +467,22 @@ clarification_question_ar empty.
                 instructions=self._instructions(),
                 schema_name="jordan_labor_legal_query_plan",
             )
-        except Exception as exc:  # deterministic fallback
+        except Exception as exc:  # deterministic fallback outside strict evaluation
+            self.last_error_stage = "query_planning"
+            self.last_error = f"{type(exc).__name__}: {exc}"
+
+            if self.strict_evaluation:
+                raise RuntimeError(
+                    "Strict evaluation aborted: query planner failed. "
+                    f"Provider={self.provider} Model={self.model} "
+                    f"Error={self.last_error}"
+                ) from exc
+
             logger.warning(
-                "OpenAI query planning failed; using deterministic analysis. "
-                "Error: %s",
+                "Pipeline query planning failed; using deterministic analysis. "
+                "Provider=%s Model=%s Error=%s",
+                self.provider,
+                self.model,
                 exc,
             )
             return None
@@ -510,9 +534,21 @@ clarification_question_ar empty.
             )
             return first_plan
         except Exception as exc:
+            self.last_error_stage = "route_verification"
+            self.last_error = f"{type(exc).__name__}: {exc}"
+
+            if self.strict_evaluation:
+                raise RuntimeError(
+                    "Strict evaluation aborted: route verification failed. "
+                    f"Provider={self.provider} Model={self.model} "
+                    f"Error={self.last_error}"
+                ) from exc
+
             logger.warning(
-                "OpenAI route verification failed; keeping the first "
-                "validated plan. Error: %s",
+                "Pipeline route verification failed; keeping the first "
+                "validated plan. Provider=%s Model=%s Error=%s",
+                self.provider,
+                self.model,
                 exc,
             )
             return first_plan

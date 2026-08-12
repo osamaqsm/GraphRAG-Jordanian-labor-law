@@ -1270,62 +1270,42 @@ class RetrievalService:
         expansion: GraphExpansionResult,
         analysis: LegalQuestionAnalysis,
     ) -> list[RetrievalHit] | None:
+        """Ask the constrained LLM reranker to choose a minimal article set.
+
+        Fair-model-comparison rule: the LLM receives only the strongest common
+        hybrid-retrieval candidate pool, not the complete 142-article statute.
+        This keeps the semantic stage identical while making the exact same
+        request executable by hosted models and 8K-context local models.
         """
-        Ask the constrained reranker to choose the minimal complete set.
 
-        The whole article catalogue is supplied because the current law has
-        only 142 articles. This prevents a correct provision from being
-        excluded by the deterministic top-k candidate cut-off.
-        """
-
-        catalogue_hits = self._all_article_catalog_hits()
-
-        ranked_by_number = {
-            hit.article_number: (rank, hit)
-            for rank, hit in enumerate(ranked, start=1)
+        candidate_limit = max(
+            5,
+            int(getattr(self.settings, "reranker_candidate_limit", 12)),
+        )
+        candidate_hits = [
+            hit
+            for hit in ranked
             if hit.article_number is not None
-        }
+        ][:candidate_limit]
+
+        if not candidate_hits:
+            return None
 
         catalog_articles: list[CatalogArticle] = []
-
-        for catalog_hit in catalogue_hits:
-            article_number = catalog_hit.article_number
-
-            if article_number is None:
-                continue
-
-            ranked_item = ranked_by_number.get(article_number)
-            deterministic_rank = (
-                ranked_item[0]
-                if ranked_item is not None
-                else None
-            )
-            deterministic_hit = (
-                ranked_item[1]
-                if ranked_item is not None
-                else None
-            )
-
+        for rank, hit in enumerate(candidate_hits, start=1):
             catalog_articles.append(
                 CatalogArticle(
-                    article_number=article_number,
+                    article_number=int(hit.article_number),
                     text=" ".join(
                         [
-                            *catalog_hit.labels_ar,
-                            *catalog_hit.labels_en,
-                            catalog_hit.text_preview,
+                            *hit.labels_ar,
+                            *hit.labels_en,
+                            hit.text_preview,
                         ]
                     ),
-                    deterministic_rank=deterministic_rank,
-                    deterministic_score=(
-                        deterministic_hit.final_score
-                        if deterministic_hit is not None
-                        else None
-                    ),
-                    graph_supported=(
-                        catalog_hit.uri
-                        in expansion.article_evidence
-                    ),
+                    deterministic_rank=rank,
+                    deterministic_score=hit.final_score,
+                    graph_supported=hit.graph_supported,
                 )
             )
 
@@ -1339,55 +1319,46 @@ class RetrievalService:
 
         if selection.behavior != "retrieve":
             # Only override a deterministic retrieval decision when the model
-            # is highly confident. Otherwise preserve the safe fallback.
+            # is highly confident. Otherwise preserve the deterministic route.
             if selection.confidence >= 0.90:
                 return []
             return None
 
-        # The reranker already returns the minimal complete set.
-        # Keep five only as a safety ceiling; do not force the output count to
-        # match the number of planner issues because one article can cover
-        # several independently requested parts.
         max_articles = min(
             FINAL_ARTICLE_LIMIT,
             self.settings.retrieval_article_top_k,
         )
-
-        selected_numbers = (
-            selection.selected_article_numbers[:max_articles]
-        )
+        selected_numbers = selection.selected_article_numbers[:max_articles]
 
         if not selected_numbers:
             return None
 
-        catalog_by_number = {
-            hit.article_number: hit
-            for hit in catalogue_hits
+        # Map selected numbers back to the already-ranked candidate objects so
+        # support paths and deterministic retrieval diagnostics are preserved.
+        candidate_by_number = {
+            int(hit.article_number): hit
+            for hit in candidate_hits
             if hit.article_number is not None
         }
 
         selected_hits: list[RetrievalHit] = []
-
-        for index, article_number in enumerate(selected_numbers):
-            catalog_hit = catalog_by_number.get(article_number)
-
-            if catalog_hit is None:
-                return None
-
-            hit = article_hits.get(
-                catalog_hit.uri,
-                catalog_hit,
-            )
+        for index, number in enumerate(selected_numbers):
+            hit = candidate_by_number.get(int(number))
+            if hit is None:
+                # The reranker validates against its supplied catalogue, so this
+                # branch indicates an internal consistency error.
+                raise RuntimeError(
+                    f"Reranker selected article {number} outside the bounded "
+                    "candidate map."
+                )
 
             evidence = expansion.article_evidence.get(hit.uri)
-
             if evidence is not None:
                 hit.graph_score = float(evidence["score"])
                 hit.graph_supported = True
                 hit.support_paths = list(evidence["paths"])
 
-            # Preserve model order in diagnostics and downstream answer
-            # generation without discarding existing retrieval evidence.
+            # Preserve model order in diagnostics and downstream generation.
             hit.final_score = max(
                 hit.final_score,
                 1.0 - 0.01 * index,

@@ -1,0 +1,1256 @@
+{
+  "benchmark_name": "Jordanian Labor Law KG Fresh Final Model-Comparison Holdout — 40 Questions",
+  "benchmark_version": "1.0.0",
+  "created_date": "2026-08-13",
+  "language": "Arabic",
+  "frozen": true,
+  "scope": "Jordanian Labor Law represented by jordan_labor_law_full_knowledge_graph.ttl",
+  "pipeline_freeze_label": "multi-article-v2.3",
+  "warning": "Fresh final holdout created only after freezing the V2.3 pipeline. Record the first complete official model run before changing prompts, KG data, retrieval settings, reranking, generation logic, judge model, or evaluation code.",
+  "source_kg": {
+    "path": "data/jordan_labor_law_full_knowledge_graph.ttl",
+    "sha256": "82960a99419a0ee739a0154c0c4173f0e4caf7172f885211f3c26dbf5170ab4b",
+    "article_coverage": "1-142"
+  },
+  "preceding_diagnostic_benchmark": {
+    "path": "data/benchmarks/jordan_labor_law_final_unseen_40.json",
+    "sha256": "a356c5a16c20c382aa377294105062152adbf5132dbea82801ebcd9ca2159739",
+    "purpose": "V2.3 development/regression diagnostic benchmark; not the final model-comparison holdout."
+  },
+  "evaluation_notes": {
+    "total_cases": 40,
+    "retrieve_cases": 36,
+    "clarify_cases": 0,
+    "abstain_cases": 4,
+    "gold_article_policy": "All 60 unique required/acceptable gold articles are disjoint from the 58 gold articles in the immediately preceding V2.3 diagnostic 40-question benchmark.",
+    "question_policy": "All 40 questions are newly authored. Exact normalized Arabic question overlap is zero against 220 historical question instances across six available benchmark artifacts.",
+    "historical_gold_note": "This benchmark is not claimed to use statutes that have never appeared in any historical development benchmark. Its contamination control is new question instances plus zero gold-article overlap with the immediately preceding benchmark used to diagnose and tune V2.3.",
+    "difficulty_policy": "Includes straightforward, paraphrased, typo/noisy, numerical, colloquial, multi-article, and out-of-scope cases. Multi-article gold sets contain at most five articles.",
+    "api_input_policy": "Send only the Arabic question field to /retrieve. Gold articles, required facts, required citations, forbidden claims, and scope labels are evaluation-only metadata.",
+    "official_run_rule": "After the first official result is observed, do not modify the benchmark, prompts, KG, retrieval pipeline, generator, judge, or scoring logic and still label reruns as unseen."
+  },
+  "distribution": {
+    "straightforward": 8,
+    "paraphrased": 8,
+    "typo": 3,
+    "numerical": 5,
+    "colloquial": 5,
+    "multi_article": 7,
+    "out_of_scope": 4
+  },
+  "difficulty_distribution": {
+    "easy": 6,
+    "medium": 17,
+    "hard": 17
+  },
+  "questions": [
+    {
+      "id": "FH40-01",
+      "test_type": "straightforward",
+      "category": "law_commencement",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "ما اسم قانون العمل الوارد في النص، وبعد كم يوماً من نشره في الجريدة الرسمية يبدأ نفاذه؟",
+      "primary_article": 1,
+      "required_articles": [
+        1
+      ],
+      "acceptable_articles": [
+        1
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يسمى القانون قانون العمل لسنة 1996.",
+        "يبدأ العمل به بعد مرور ستين يوماً على تاريخ نشره في الجريدة الرسمية."
+      ],
+      "required_citations": [
+        1
+      ],
+      "forbidden_claims": [
+        "يبدأ نفاذ القانون فور نشره.",
+        "مدة بدء النفاذ ثلاثون يوماً."
+      ],
+      "expected_result": "يسمى قانون العمل لسنة 1996 ويبدأ العمل به بعد ستين يوماً من نشره في الجريدة الرسمية."
+    },
+    {
+      "id": "FH40-02",
+      "test_type": "straightforward",
+      "category": "worker_death_inheritance",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "إذا توفي العامل، إلى من تنتقل الحقوق التي قررها له قانون العمل، وماذا عن حقوقه في صناديق المؤسسة؟",
+      "primary_article": 34,
+      "required_articles": [
+        34
+      ],
+      "acceptable_articles": [
+        34
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تؤول حقوق العامل المقررة بمقتضى قانون العمل إلى ورثته الشرعيين.",
+        "تشمل أيضاً حقوقه في الصناديق المشار إليها في المادة 33."
+      ],
+      "required_citations": [
+        34
+      ],
+      "forbidden_claims": [
+        "تنقضي جميع حقوق العامل بوفاته.",
+        "تؤول حقوق الصناديق إلى صاحب العمل."
+      ],
+      "expected_result": "تنتقل الحقوق القانونية وحقوق الصناديق ذات الصلة إلى الورثة الشرعيين."
+    },
+    {
+      "id": "FH40-03",
+      "test_type": "straightforward",
+      "category": "wage_determination_without_contract_amount",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "إذا خلا عقد العمل من تحديد مقدار الأجر، ما الترتيب الذي يُتبع لتحديده؟",
+      "primary_article": 45,
+      "required_articles": [
+        45
+      ],
+      "acceptable_articles": [
+        45
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يؤخذ أجر عمل من النوع نفسه إن وجد.",
+        "إذا لم يوجد يقدر الأجر طبقاً للعرف.",
+        "إذا لم يوجد عرف تتولى المحكمة تقديره باعتباره نزاعاً عمالياً على الأجر."
+      ],
+      "required_citations": [
+        45
+      ],
+      "forbidden_claims": [
+        "يحدد صاحب العمل الأجر منفرداً عند سكوت العقد.",
+        "يطبق الحد الأدنى للأجور وحده دون أي ترتيب آخر."
+      ],
+      "expected_result": "يبدأ بأجر العمل المماثل ثم العرف، ثم تقدير المحكمة عند عدم وجود عرف."
+    },
+    {
+      "id": "FH40-04",
+      "test_type": "straightforward",
+      "category": "women_work_restrictions",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "من يحدد الأعمال والأوقات التي يُحظر فيها تشغيل النساء، وكيف يصدر هذا التحديد؟",
+      "primary_article": 69,
+      "required_articles": [
+        69
+      ],
+      "acceptable_articles": [
+        69
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يحدد ذلك بقرار من الوزير.",
+        "يصدر القرار بعد استطلاع رأي الجهات الرسمية المختصة.",
+        "يشمل القرار الصناعات والأعمال المحظورة والأوقات المحظورة والحالات المستثناة منها."
+      ],
+      "required_citations": [
+        69
+      ],
+      "forbidden_claims": [
+        "يحدد صاحب العمل وحده الأعمال المحظورة على النساء.",
+        "الحظر شامل لكل الأعمال وفي جميع الأوقات دون استثناء."
+      ],
+      "expected_result": "يحدد الوزير بقرار، بعد استطلاع الجهات الرسمية المختصة، الأعمال والأوقات المحظورة والحالات المستثناة."
+    },
+    {
+      "id": "FH40-05",
+      "test_type": "straightforward",
+      "category": "preemployment_medical_fitness",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "كيف تُحدد الأعمال التي تشترط فحص اللياقة الطبية قبل التشغيل، وأين تُنشر التعليمات الخاصة بها؟",
+      "primary_article": 83,
+      "required_articles": [
+        83
+      ],
+      "acceptable_articles": [
+        83
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يجوز للوزير بعد استطلاع آراء الجهات المعنية إصدار تعليمات تحدد الأعمال التي تتطلب فحصاً طبياً مسبقاً.",
+        "الغرض من الفحص التأكد من اللياقة الصحية للعمل.",
+        "تنشر التعليمات في صحيفتين محليتين يوميتين وفي الجريدة الرسمية."
+      ],
+      "required_citations": [
+        83
+      ],
+      "forbidden_claims": [
+        "يكفي نشر التعليمات في موقع الوزارة فقط.",
+        "يحدد صاحب العمل وحده الأعمال التي تتطلب الفحص."
+      ],
+      "expected_result": "يحدد الوزير الأعمال بتعليمات بعد استطلاع الجهات المعنية، وتنشر في صحيفتين يوميتين وفي الجريدة الرسمية."
+    },
+    {
+      "id": "FH40-06",
+      "test_type": "straightforward",
+      "category": "work_injury_additional_compensation",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "هل يستطيع المصاب بإصابة عمل أن يطالب صاحب العمل بتعويضات أخرى غير التعويضات الواردة في قانون العمل، وما الاستثناء؟",
+      "primary_article": 89,
+      "required_articles": [
+        89
+      ],
+      "acceptable_articles": [
+        89
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "الأصل عدم مطالبة صاحب العمل بتعويضات أخرى غير الواردة في القانون بشأن إصابات العمل.",
+        "يستثنى من ذلك إذا كانت الإصابة ناشئة عن خطأ صاحب العمل.",
+        "يراعى ما ورد في أي قانون أو تشريع آخر."
+      ],
+      "required_citations": [
+        89
+      ],
+      "forbidden_claims": [
+        "يجوز دائماً الجمع بين جميع التعويضات دون قيد.",
+        "لا توجد أي حالة تسمح بالمطالبة بتعويض إضافي."
+      ],
+      "expected_result": "الأصل عدم المطالبة بتعويضات أخرى، ويستثنى خطأ صاحب العمل مع مراعاة التشريعات الأخرى."
+    },
+    {
+      "id": "FH40-07",
+      "test_type": "straightforward",
+      "category": "trade_union_membership_protection",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "ما الحماية التي يمنحها قانون العمل لحرية العامل في الانتساب إلى النقابة، وما السلوك المحظور على صاحب العمل والنقابات تجاه هذه الحرية؟",
+      "primary_article": 97,
+      "required_articles": [
+        97
+      ],
+      "acceptable_articles": [
+        97
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "للعامل في المهنة حق الانتساب إلى نقابتها إذا توافرت شروط العضوية.",
+        "يحظر على صاحب العمل اشتراط عدم الانتساب أو التنازل عن العضوية أو الإضرار بالعامل بسبب العضوية أو النشاط النقابي خارج أوقات العمل.",
+        "يحظر تدخل نقابات العمال ونقابات أصحاب العمل في تكوين أو إدارة أو تسيير أعمال بعضها بصورة مباشرة أو غير مباشرة."
+      ],
+      "required_citations": [
+        97
+      ],
+      "forbidden_claims": [
+        "يجوز لصاحب العمل اشتراط عدم الانتساب إلى النقابة كشرط للتوظيف.",
+        "يجوز فصل العامل لمجرد نشاطه النقابي خارج وقت العمل."
+      ],
+      "expected_result": "يحمي النص حق الانتساب ويحظر اشتراط عدم العضوية أو الإضرار بسببها، كما يمنع تدخل النقابات في شؤون بعضها."
+    },
+    {
+      "id": "FH40-08",
+      "test_type": "straightforward",
+      "category": "union_annual_financial_reporting",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "ما الذي يجب على النقابة إرساله إلى المسجل سنوياً قبل أول نيسان، وما الكشف الذي يرفق به؟",
+      "primary_article": 118,
+      "required_articles": [
+        118
+      ],
+      "acceptable_articles": [
+        118
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "ترسل النقابة قبل أول نيسان نسخة من الميزانية العمومية المدققة حسب الأصول من مدقق حسابات قانوني.",
+        "تبين الميزانية الواردات والمصروفات والموجودات والالتزامات للسنة السابقة المنتهية في 31 كانون الأول.",
+        "يرفق كشف بأسماء الموظفين وسائر العاملين والتغييرات التي أجريت عليهم وعلى أوضاعهم خلال السنة."
+      ],
+      "required_citations": [
+        118
+      ],
+      "forbidden_claims": [
+        "يكفي إرسال ميزانية غير مدققة.",
+        "لا يلزم إرفاق أي بيانات عن موظفي النقابة."
+      ],
+      "expected_result": "ترسل ميزانية عمومية مدققة قبل أول نيسان مع كشف العاملين والتغييرات التي طرأت عليهم."
+    },
+    {
+      "id": "FH40-09",
+      "test_type": "paraphrased",
+      "category": "employment_market_offices",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "إذا أرادت جهة خاصة أن تعمل في تشغيل الأردنيين أو في تنظيم استقدام خدم المنازل غير الأردنيين، فمن يملك إنشاء أو ترخيص هذه المكاتب وكيف تُنظم شروطها؟",
+      "primary_article": 10,
+      "required_articles": [
+        10
+      ],
+      "acceptable_articles": [
+        10
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تتولى الوزارة تنظيم سوق العمل والتوجيه المهني وتوفير فرص العمل والتشغيل للأردنيين داخل المملكة وخارجها.",
+        "يجوز للوزارة إنشاء مكاتب لتشغيل الأردنيين أو الترخيص بإنشاء مكاتب خاصة لهذه الغاية.",
+        "يجوز للوزير، مع مراعاة التشريعات الأخرى، الترخيص بمكاتب خاصة لتنظيم استخدام واستقدام خدم المنازل ومن في حكمهم من غير الأردنيين.",
+        "تنظم شروط إنشاء هذه المكاتب وإدارتها وإشراف الوزارة عليها وبدل خدماتها بموجب أنظمة."
+      ],
+      "required_citations": [
+        10
+      ],
+      "forbidden_claims": [
+        "يجوز لأي جهة فتح مكتب تشغيل دون ترخيص.",
+        "لا تخضع مكاتب الاستقدام الخاصة لأي إشراف من الوزارة."
+      ],
+      "expected_result": "للوزارة إنشاء أو ترخيص مكاتب التشغيل، وللوزير ترخيص مكاتب استقدام الفئات المنزلية غير الأردنية، وتحدد الشروط بأنظمة."
+    },
+    {
+      "id": "FH40-10",
+      "test_type": "paraphrased",
+      "category": "worker_core_obligations",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "ما الالتزامات الشخصية والمهنية التي تبقى على العامل أثناء تنفيذ العمل، بما يشمل أوامر صاحب العمل والأسرار والأدوات والفحوص الطبية؟",
+      "primary_article": 19,
+      "required_articles": [
+        19
+      ],
+      "acceptable_articles": [
+        19
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يؤدي العامل العمل بنفسه بعناية الشخص العادي ويلتزم بالأوامر المتعلقة بالعمل المتفق عليه ما دامت لا تعرضه للخطر ولا تخالف القانون أو الآداب العامة.",
+        "يحافظ على الأسرار الصناعية والتجارية ولا يفشيها حتى بعد انتهاء عقد العمل وفق الاتفاق أو العرف.",
+        "يحافظ على الأدوات والمواد والأشياء المسلمة إليه لأداء العمل.",
+        "يخضع للفحوص الطبية التي تقتضيها طبيعة العمل قبل الالتحاق أو بعده للتحقق من خلوه من الأمراض المهنية والسارية."
+      ],
+      "required_citations": [
+        19
+      ],
+      "forbidden_claims": [
+        "يلتزم العامل بأي أمر ولو عرضه للخطر.",
+        "ينتهي التزام السرية تلقائياً بانتهاء عقد العمل."
+      ],
+      "expected_result": "يفرض النص أداء العمل بعناية وفي حدود مشروعة، وحفظ الأسرار والأدوات، والخضوع للفحوص اللازمة."
+    },
+    {
+      "id": "FH40-11",
+      "test_type": "paraphrased",
+      "category": "employee_special_funds",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "عامل خاضع لصندوق ادخار أو تقاعد خاص بالمؤسسة وانتهت خدمته؛ هل تحل حقوق الصندوق محل مكافأة نهاية الخدمة، ومن يعتمد نظام الصندوق وكيف تُدار أمواله؟",
+      "primary_article": 33,
+      "required_articles": [
+        33
+      ],
+      "acceptable_articles": [
+        33
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تستحق حقوق الصندوق بالإضافة إلى مكافأة نهاية الخدمة ولا تحل محلها.",
+        "تعتمد أنظمة الصناديق من الوزير أو من يفوضه.",
+        "يجوز أن ينص النظام على استثمار الأموال كلياً أو جزئياً في أسهم أو حصص الشركة المؤسسة للصندوق.",
+        "للصندوق شخصية اعتبارية مستقلة.",
+        "توجد هيئة عامة من العاملين الأعضاء تجتمع مرة واحدة على الأقل سنوياً، وتدار الأموال والاستثمارات بواسطة لجنة من عمال المؤسسة الأعضاء في الصندوق."
+      ],
+      "required_citations": [
+        33
+      ],
+      "forbidden_claims": [
+        "حقوق الصندوق تلغي مكافأة نهاية الخدمة.",
+        "يجوز لصاحب العمل إدارة أموال الصندوق منفرداً دون نظام معتمد."
+      ],
+      "expected_result": "يحصل العامل على استحقاقات الصندوق إضافة إلى مكافأة نهاية الخدمة، مع نظام معتمد وشخصية اعتبارية وإدارة يشارك فيها الأعضاء."
+    },
+    {
+      "id": "FH40-12",
+      "test_type": "paraphrased",
+      "category": "wage_authority_jurisdiction",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "عامل انتهى عمله قبل خمسة أشهر ويطالب بأجر متأخر وحسم غير قانوني وأجر إضافي؛ هل تستطيع سلطة الأجور نظر دعواه، وما أبرز سلطاتها وحدود التعويض والاستئناف؟",
+      "primary_article": 54,
+      "required_articles": [
+        54
+      ],
+      "acceptable_articles": [
+        54
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تنظر سلطة الأجور في نقص الأجر والحسميات غير القانونية وتأخير الدفع وأجور الساعات الإضافية بصورة مستعجلة.",
+        "تقبل الدعوى إذا كان العامل على رأس عمله أو لم يمض على انتهاء عمله أكثر من ستة أشهر.",
+        "يجوز للسلطة أن تأمر بدفع الأجور المحسومة أو غير المدفوعة أو المتأخرة وأن تضيف تعويضاً لا يتجاوز المبلغ المحسوم أو غير المدفوع.",
+        "يكون القرار قابلاً للاستئناف خلال عشرة أيام إذا زاد المبلغ المحكوم به للعامل على مئة دينار."
+      ],
+      "required_citations": [
+        54
+      ],
+      "forbidden_claims": [
+        "لا تختص سلطة الأجور إلا بالعامل الموجود على رأس عمله.",
+        "يجوز أن يزيد التعويض المضاف على أصل الأجر المحسوم أو غير المدفوع دون حد.",
+        "مهلة الاستئناف ثلاثون يوماً."
+      ],
+      "expected_result": "يمكن للسلطة نظر دعواه لأنه لم يمض أكثر من ستة أشهر، ولها معالجة المطالبات الأجرية مع تعويض محدود والاستئناف وفق الشروط المحددة."
+    },
+    {
+      "id": "FH40-13",
+      "test_type": "paraphrased",
+      "category": "working_hours_exempt_persons",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "هل تطبق حدود ساعات العمل المعتادة على كل من يعمل في المؤسسة، أم توجد فئات إدارية أو متنقلة مستثناة منها؟",
+      "primary_article": 58,
+      "required_articles": [
+        58
+      ],
+      "acceptable_articles": [
+        58
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا تسري أحكام المواد المتعلقة بساعات العمل على من يتولون مهام الإشراف العام أو الإدارة.",
+        "تشمل الاستثناءات من يعملون في بعض الحالات خارج المؤسسة أو تتطلب أعمالهم السفر أو التنقل داخل المملكة أو خارجها."
+      ],
+      "required_citations": [
+        58
+      ],
+      "forbidden_claims": [
+        "كل العاملين دون استثناء خاضعون لحدود ساعات العمل ذاتها.",
+        "لا يشمل الاستثناء أي عمل يتطلب السفر أو التنقل."
+      ],
+      "expected_result": "تستثنى من أحكام ساعات العمل فئات الإشراف والإدارة وبعض الأعمال الخارجية أو التي تتطلب السفر أو التنقل."
+    },
+    {
+      "id": "FH40-14",
+      "test_type": "paraphrased",
+      "category": "annual_leave_waiver_invalidity",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "لو وقع العامل ورقة يتنازل فيها عن إجازته السنوية كلها أو جزءاً منها، هل ينتج هذا الاتفاق أثراً قانونياً؟",
+      "primary_article": 64,
+      "required_articles": [
+        64
+      ],
+      "acceptable_articles": [
+        64
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "كل اتفاق يقضي بتنازل العامل عن إجازته السنوية أو أي جزء منها يعد باطلاً."
+      ],
+      "required_citations": [
+        64
+      ],
+      "forbidden_claims": [
+        "يصح التنازل إذا كان مكتوباً.",
+        "يجوز التنازل عن نصف الإجازة السنوية فقط."
+      ],
+      "expected_result": "الاتفاق على التنازل عن الإجازة السنوية كلياً أو جزئياً باطل."
+    },
+    {
+      "id": "FH40-15",
+      "test_type": "paraphrased",
+      "category": "union_registration_certificate_cancellation",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "متى يشطب المسجل شهادة تسجيل نقابة عمال أو أصحاب عمل لكونها لم تعد قائمة؟",
+      "primary_article": 105,
+      "required_articles": [
+        105
+      ],
+      "acceptable_articles": [
+        105
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يلغي المسجل شهادة التسجيل إذا ثبت أن النقابة أصبحت غير قائمة.",
+        "يشمل ذلك حلها اختيارياً أو حلها وفق أحكام القانون أو بقرار قضائي."
+      ],
+      "required_citations": [
+        105
+      ],
+      "forbidden_claims": [
+        "تلغى الشهادة لمجرد تغيير عنوان النقابة.",
+        "لا يجوز إلغاء شهادة التسجيل بعد الحل القضائي."
+      ],
+      "expected_result": "تلغى شهادة التسجيل متى ثبت أن النقابة لم تعد قائمة بسبب الحل الاختياري أو القانوني أو القضائي."
+    },
+    {
+      "id": "FH40-16",
+      "test_type": "paraphrased",
+      "category": "union_fund_permitted_spending",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "هل يجوز استخدام أموال نقابة العمال في مصروفات القضايا والنزاعات وتعويض الأعضاء والإعانات والخدمات التعليمية والاجتماعية، أم أن الإنفاق مقصور على الرواتب؟",
+      "primary_article": 109,
+      "required_articles": [
+        109
+      ],
+      "acceptable_articles": [
+        109
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا يجوز إنفاق أموال النقابة إلا في الغايات المشروعة والمتعلقة بمصلحتها.",
+        "تشمل الغايات نفقات الدعاوى القضائية المرتبطة بحقوق النقابة أو أعضائها ونفقات النزاعات العمالية.",
+        "تشمل تعويض الأعضاء عن خسائر النزاع وإعانات الوفاة والشيخوخة والمرض والبطالة والحوادث.",
+        "تشمل نفقات الخدمات التعليمية والاجتماعية للأعضاء."
+      ],
+      "required_citations": [
+        109
+      ],
+      "forbidden_claims": [
+        "إنفاق أموال النقابة مقصور على رواتب موظفيها.",
+        "يحظر دفع إعانات للأعضاء أو أسرهم في جميع الأحوال."
+      ],
+      "expected_result": "يجوز الإنفاق على مجموعة واسعة من الغايات المشروعة المرتبطة بمصلحة النقابة والأعضاء، وليس على الرواتب فقط."
+    },
+    {
+      "id": "FH40-17",
+      "test_type": "typo",
+      "category": "unlicensed_employment_mediation",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "اذا مكتب مش مرخص بوسّط لتشغيل عمال جوّا او برا الاردن، شو الاجراء والعقوبه اللي ممكن تترتب عليه؟",
+      "primary_article": 11,
+      "required_articles": [
+        11
+      ],
+      "acceptable_articles": [
+        11
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا يجوز لغير مديريات التشغيل العامة ومكاتب التشغيل الخاصة المرخصة القيام بأعمال الوساطة للتشغيل داخل المملكة أو خارجها.",
+        "يجوز للوزير إغلاق المحل المخالف وإحالته إلى المحكمة.",
+        "العقوبة غرامة من مئتي دينار إلى ألف دينار أو الحبس مدة لا تقل عن ثلاثين يوماً أو كلتا العقوبتين، مع إقفال المحل ومصادرة موجوداته المتعلقة بالتشغيل."
+      ],
+      "required_citations": [
+        11
+      ],
+      "forbidden_claims": [
+        "يجوز لأي مكتب غير مرخص ممارسة الوساطة.",
+        "لا تتجاوز الغرامة خمسين ديناراً."
+      ],
+      "expected_result": "الوساطة محصورة بالجهات المرخصة، وللمخالفة إغلاق وإحالة وعقوبات مالية أو حبسية وإقفال ومصادرة."
+    },
+    {
+      "id": "FH40-18",
+      "test_type": "typo",
+      "category": "involuntary_union_dissolution_funds",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "اذا انحلت النقابه غصب عنها مش اختياري، وين بتنحط اموالها؟ وشو بصير فيها اذا ما تأسست نقابه بديله خلال سنه؟",
+      "primary_article": 117,
+      "required_articles": [
+        117
+      ],
+      "acceptable_articles": [
+        117
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "عند حل النقابة بصورة غير اختيارية تودع أموالها في البنك الذي يعينه الاتحاد العام لنقابات العمال.",
+        "تبقى الأموال إلى أن تؤسس نقابة جديدة للمهنة أو المهن نفسها.",
+        "إذا لم تؤسس نقابة جديدة خلال سنة واحدة تؤول الأموال المنقولة وغير المنقولة إلى الاتحاد العام لنقابات العمال."
+      ],
+      "required_citations": [
+        117
+      ],
+      "forbidden_claims": [
+        "توزع الأموال فوراً على أعضاء النقابة.",
+        "تؤول الأموال إلى صاحب العمل بعد سنة."
+      ],
+      "expected_result": "تودع الأموال في بنك يعينه الاتحاد العام، وتؤول إليه إذا لم تؤسس نقابة بديلة خلال سنة."
+    },
+    {
+      "id": "FH40-19",
+      "test_type": "typo",
+      "category": "labor_claim_limitation_periods",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "قديش المهله لرفع دعوى عن مخالفه لقانون العمل؟ وقديش بتضل مسموعه مطالبه العامل بحقوقه ومنها الاضافي قبل ما تمر عليها المده؟",
+      "primary_article": 138,
+      "required_articles": [
+        138
+      ],
+      "acceptable_articles": [
+        138
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا تسمع دعوى المخالفة إذا لم ترفع خلال شهر واحد من تاريخ ارتكاب المخالفة.",
+        "لا تسمع دعوى المطالبة بالحقوق التي يرتبها القانون، بما فيها أجور العمل الإضافي، بعد مرور سنتين على نشوء سبب المطالبة."
+      ],
+      "required_citations": [
+        138
+      ],
+      "forbidden_claims": [
+        "مهلة دعوى المخالفة سنة كاملة.",
+        "تظل دعاوى الحقوق والأجور الإضافية مسموعة بلا مدة."
+      ],
+      "expected_result": "دعوى المخالفة مرتبطة بمهلة شهر، ودعاوى الحقوق ومنها الإضافي لا تسمع بعد سنتين من نشوء سبب المطالبة."
+    },
+    {
+      "id": "FH40-20",
+      "test_type": "numerical",
+      "category": "working_hours_limits",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "ما الحد الأقصى العادي لساعات العمل يومياً وأسبوعياً، وما أقصى مجموع ساعات العمل والراحة في اليوم عند توزيع الساعات الأسبوعية؟",
+      "primary_article": 56,
+      "required_articles": [
+        56
+      ],
+      "acceptable_articles": [
+        56
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "الحد الأقصى العادي ثماني ساعات يومياً.",
+        "الحد الأقصى ثمان وأربعون ساعة أسبوعياً.",
+        "لا يحسب وقت الطعام والراحة ضمن ساعات العمل.",
+        "عند توزيع الساعات الأسبوعية وفترات الراحة لا يزيد مجموعها على إحدى عشرة ساعة في اليوم."
+      ],
+      "required_citations": [
+        56
+      ],
+      "forbidden_claims": [
+        "الحد اليومي عشر ساعات كقاعدة عامة.",
+        "يجوز أن يصل مجموع العمل والراحة إلى أربع عشرة ساعة يومياً."
+      ],
+      "expected_result": "الحد العادي 8 ساعات يومياً و48 أسبوعياً، ويمكن توزيعها بحيث لا يتجاوز مجموع العمل والراحة 11 ساعة في اليوم."
+    },
+    {
+      "id": "FH40-21",
+      "test_type": "numerical",
+      "category": "employers_union_founders_and_ages",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "كم شخصاً يلزم على الأقل لتأسيس نقابة أصحاب عمل، وما الحد الأدنى لعمر المؤسس وعمر طالب الانتساب؟",
+      "primary_article": 108,
+      "required_articles": [
+        108
+      ],
+      "acceptable_articles": [
+        108
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يلزم لتأسيس نقابة أصحاب العمل ثلاثون مؤسساً على الأقل.",
+        "يشترط ألا يقل عمر المؤسس عن خمس وعشرين سنة.",
+        "يشترط ألا يقل عمر طالب الانتساب عن ثماني عشرة سنة.",
+        "يشترط أن يكون المؤسس وطالب الانتساب أردني الجنسية وغير محكوم بجناية أو جنحة مخلة بالشرف والآداب العامة."
+      ],
+      "required_citations": [
+        108
+      ],
+      "forbidden_claims": [
+        "يكفي عشرة مؤسسين.",
+        "الحد الأدنى لعمر المؤسس ثماني عشرة سنة."
+      ],
+      "expected_result": "الحد الأدنى ثلاثون مؤسساً، وعمر المؤسس 25 سنة وطالب الانتساب 18 سنة مع بقية الشروط القانونية."
+    },
+    {
+      "id": "FH40-22",
+      "test_type": "numerical",
+      "category": "strike_lockout_notice",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "إذا كان الإضراب أو إغلاق المؤسسة متعلقاً بخدمة من خدمات المصالح العامة، فكم تصبح مدة الإشعار المسبق بعد مضاعفتها؟",
+      "primary_article": 135,
+      "required_articles": [
+        135
+      ],
+      "acceptable_articles": [
+        135
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "الأصل أن الإشعار قبل الإضراب لا يقل عن أربعة عشر يوماً.",
+        "الأصل أن إشعار إغلاق المؤسسة لا يقل عن أربعة عشر يوماً.",
+        "تضاعف المدة إذا كان العمل متعلقاً بخدمات المصالح العامة، فتصبح ثمانية وعشرين يوماً."
+      ],
+      "required_citations": [
+        135
+      ],
+      "forbidden_claims": [
+        "مدة الإشعار في خدمات المصالح العامة أربعة عشر يوماً فقط.",
+        "لا يلزم صاحب العمل بإشعار قبل الإغلاق."
+      ],
+      "expected_result": "مدة الإشعار الأصلية 14 يوماً وتصبح 28 يوماً لخدمات المصالح العامة لكل من الإضراب والإغلاق."
+    },
+    {
+      "id": "FH40-23",
+      "test_type": "numerical",
+      "category": "prohibited_strike_penalty_calculation",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "عامل شارك في إضراب محظور أربعة أيام؛ وفق الحد الأدنى المنصوص عليه للغرامة، كم يصبح مجموع الغرامة عن الأيام الأربعة، وماذا يحدث لأجر تلك الأيام؟",
+      "primary_article": 136,
+      "required_articles": [
+        136
+      ],
+      "acceptable_articles": [
+        136
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "الغرامة عن اليوم الأول لا تقل عن خمسين ديناراً.",
+        "تضاف خمسة دنانير عن كل يوم يستمر فيه الإضراب بعد اليوم الأول.",
+        "لأربعة أيام يكون الحد الأدنى الحسابي 50 + 5 + 5 + 5 = 65 ديناراً.",
+        "يحرم العامل من أجر الأيام التي يضرب فيها."
+      ],
+      "required_citations": [
+        136
+      ],
+      "forbidden_claims": [
+        "الحد الأدنى لأربعة أيام هو مئتا دينار.",
+        "يحتفظ العامل بأجر أيام الإضراب المحظور."
+      ],
+      "expected_result": "الحد الأدنى الحسابي لغرامة أربعة أيام هو 65 ديناراً، مع الحرمان من أجر أيام الإضراب."
+    },
+    {
+      "id": "FH40-24",
+      "test_type": "numerical",
+      "category": "individual_labor_dispute_deadlines",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "ما المدد التي يحددها القانون للفصل في نزاع العمل الفردي أمام محكمة الصلح، ولاستئناف القرار، ثم للفصل في الاستئناف؟",
+      "primary_article": 137,
+      "required_articles": [
+        137
+      ],
+      "acceptable_articles": [
+        137
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يفصل في النزاع الفردي أمام محكمة الصلح خلال ثلاثة أشهر من تاريخ وروده للمحكمة.",
+        "يستأنف القرار خلال عشرة أيام من تفهيمه إذا كان وجاهياً أو من تبليغه إذا كان بمثابة الوجاهي.",
+        "تفصل المحكمة في الاستئناف خلال ثلاثين يوماً من تاريخ وروده إلى ديوانها.",
+        "تعفى الدعاوى أمام محكمة الصلح من الرسوم بما فيها رسوم تنفيذ القرارات."
+      ],
+      "required_citations": [
+        137
+      ],
+      "forbidden_claims": [
+        "مهلة الاستئناف ثلاثون يوماً.",
+        "لا توجد مدة للفصل في النزاع أمام محكمة الصلح."
+      ],
+      "expected_result": "المواعيد هي ثلاثة أشهر للفصل، وعشرة أيام للاستئناف، وثلاثون يوماً للفصل في الاستئناف."
+    },
+    {
+      "id": "FH40-25",
+      "test_type": "colloquial",
+      "category": "unused_annual_leave_payment",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "طلعت من الشغل ولسا عندي أيام إجازة سنوية ما استخدمتها؛ بضيعوا ولا إلي بدل عنهم؟",
+      "primary_article": 63,
+      "required_articles": [
+        63
+      ],
+      "acceptable_articles": [
+        63
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "إذا انتهت خدمة العامل قبل استعمال إجازته السنوية فله تقاضي الأجر عن الأيام التي لم يستعملها."
+      ],
+      "required_citations": [
+        63
+      ],
+      "forbidden_claims": [
+        "تسقط الأيام غير المستخدمة بمجرد انتهاء الخدمة.",
+        "يستحق العامل نصف أجر الأيام فقط."
+      ],
+      "expected_result": "يستحق العامل أجر الأيام المتبقية من إجازته السنوية عند انتهاء خدمته."
+    },
+    {
+      "id": "FH40-26",
+      "test_type": "colloquial",
+      "category": "intoxicants_at_workplace",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "بالشغل، مسموح حدا يدخل خمر أو مخدرات للمكان؟ وإذا شخص إجا أو ضل بالموقع وهو تحت تأثيرها شو الحكم؟",
+      "primary_article": 81,
+      "required_articles": [
+        81
+      ],
+      "acceptable_articles": [
+        81
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يحظر على صاحب العمل أو العامل السماح بإدخال الخمور أو المخدرات أو المؤثرات العقلية أو العقاقير الخطرة إلى مكان العمل أو عرضها فيه.",
+        "يحظر على أي شخص الدخول إلى مكان العمل أو البقاء فيه وهو تحت تأثير تلك المشروبات أو العقاقير."
+      ],
+      "required_citations": [
+        81
+      ],
+      "forbidden_claims": [
+        "يجوز إدخال هذه المواد إذا لم تستخدم أثناء الدوام.",
+        "الحظر يقتصر على العامل ولا يشمل أي شخص آخر."
+      ],
+      "expected_result": "يحظر إدخال أو عرض هذه المواد في مكان العمل ويحظر الدخول أو البقاء فيه تحت تأثيرها."
+    },
+    {
+      "id": "FH40-27",
+      "test_type": "colloquial",
+      "category": "work_injury_compensation_wage_basis",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "إذا بدهم يحسبوا تعويض إصابة العمل، على أي أجر بيعتمدوا؟ وإذا العامل شغله بالقطعة كيف بنحسب الأساس؟",
+      "primary_article": 91,
+      "required_articles": [
+        91
+      ],
+      "acceptable_articles": [
+        91
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يحسب التعويض على أساس الأجر الأخير الذي يتقاضاه العامل.",
+        "إذا كان العامل يعمل بالقطعة يحسب على أساس متوسط الأجر خلال الأشهر الستة الأخيرة من عمله."
+      ],
+      "required_citations": [
+        91
+      ],
+      "forbidden_claims": [
+        "يحسب التعويض دائماً على متوسط آخر سنة.",
+        "عامل القطعة يحسب تعويضه على أجر آخر يوم فقط."
+      ],
+      "expected_result": "الأساس هو الأجر الأخير، ولعامل القطعة متوسط الأجر خلال الأشهر الستة الأخيرة."
+    },
+    {
+      "id": "FH40-28",
+      "test_type": "colloquial",
+      "category": "lawyers_before_conciliation",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "بنزاع عمالي جماعي، بقدر أي طرف يجيب محامي معه قدام مندوب التوفيق أو مجلس التوفيق؟",
+      "primary_article": 123,
+      "required_articles": [
+        123
+      ],
+      "acceptable_articles": [
+        123
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا يجوز لأي من طرفي النزاع العمالي توكيل المحامين أمام مندوب التوفيق.",
+        "لا يجوز توكيل المحامين أمام مجلس التوفيق."
+      ],
+      "required_citations": [
+        123
+      ],
+      "forbidden_claims": [
+        "يسمح بتوكيل المحامي أمام مندوب التوفيق دون مجلس التوفيق.",
+        "يجوز للطرفين توكيل المحامين في المرحلتين بلا قيد."
+      ],
+      "expected_result": "لا يجوز للطرفين توكيل المحامين أمام مندوب التوفيق أو مجلس التوفيق."
+    },
+    {
+      "id": "FH40-29",
+      "test_type": "colloquial",
+      "category": "default_labor_law_penalty",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "إذا في مخالفة لقانون العمل وما حددوا إلها عقوبة خاصة، شو الغرامة العامة؟ وإذا قانون العقوبات بعاقبها أشد شو بصير؟",
+      "primary_article": 139,
+      "required_articles": [
+        139
+      ],
+      "acceptable_articles": [
+        139
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "المخالفة التي لم تعين لها عقوبة خاصة يعاقب مرتكبها بغرامة لا تقل عن خمسين ديناراً ولا تزيد على مئة دينار.",
+        "إذا كانت العقوبة المقررة في قانون العقوبات أشد فتفرض العقوبة الأشد المنصوص عليها فيه."
+      ],
+      "required_citations": [
+        139
+      ],
+      "forbidden_claims": [
+        "لا عقوبة على المخالفة إذا لم يرد نص خاص.",
+        "تبقى غرامة قانون العمل واجبة حتى لو كان قانون العقوبات يقرر عقوبة أشد."
+      ],
+      "expected_result": "الغرامة العامة من 50 إلى 100 دينار، مع تطبيق العقوبة الأشد في قانون العقوبات عند انطباقها."
+    },
+    {
+      "id": "FH40-30",
+      "test_type": "multi_article",
+      "category": "labor_inspection_framework",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "لخص منظومة تفتيش العمل من الجهة التي تتولى التفتيش، والتزام المفتش بالقسم والسرية، وتنظيم مؤهلاته وصلاحياته، وواجبات صاحب العمل في الإشعار والسجلات، وصولاً إلى إجراءات إزالة المخالفة وإغلاق المؤسسة والعقوبة.",
+      "primary_article": 5,
+      "required_articles": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "acceptable_articles": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تتولى وزارة العمل مهام التفتيش تطبيقاً لأحكام القانون.",
+        "يوقع من يتولى التفتيش تصريحاً مشفوعاً بالقسم بالأمانة والإخلاص وعدم إفشاء الأسرار.",
+        "تحدد مؤهلات المفتشين ومهامهم وصلاحياتهم ومكافآتهم والتزامات صاحب العمل تجاههم بموجب أنظمة.",
+        "يرسل صاحب العمل في الشهر الأول من كل سنة إشعاراً للوزارة أو مديرياتها ببيانات العمال ومواقعهم وطبيعة عملهم وتاريخ مباشرتهم وأجورهم، ويحتفظ بالسجلات المطلوبة.",
+        "للمفتش صلاحيات الضابطة العدلية، وله طلب إزالة المخالفة خلال مدة لا تزيد على سبعة أيام، ويمكن إغلاق المؤسسة عند عدم الإزالة.",
+        "تعاقب المخالفة التي تعالجها المادة 9 بغرامة من خمسين إلى خمسمائة دينار مع الحكم بإزالة المخالفة."
+      ],
+      "required_citations": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "forbidden_claims": [
+        "يجوز لمفتش العمل إفشاء أسرار المؤسسة بحكم وظيفته.",
+        "لا يملك المفتش أي صلاحية مرتبطة بإزالة المخالفة.",
+        "لا يلزم صاحب العمل بالاحتفاظ بسجلات العمال."
+      ],
+      "expected_result": "تجمع المنظومة بين اختصاص الوزارة وضمانات المفتش وتنظيمه والتزامات صاحب العمل وسلطات الإنذار والإغلاق والعقوبة."
+    },
+    {
+      "id": "FH40-31",
+      "test_type": "multi_article",
+      "category": "vocational_training_duration_and_termination",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "اشرح الأحكام التي تضبط عقد التدريب المهني من حيث مدته ومراحله وأجور المتدرب وبرنامج التدريب، ثم عدد حالات إنهائه بطلب أحد الطرفين وبيّن طبيعتها.",
+      "primary_article": 37,
+      "required_articles": [
+        37,
+        38
+      ],
+      "acceptable_articles": [
+        37,
+        38
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يحدد عقد التدريب مدته ومراحله المتعاقبة والأجور المستحقة في كل مرحلة.",
+        "لا يقل أجر المرحلة الأخيرة عن الحد الأدنى لأجر عمل مماثل ولا يحدد الأجر على أساس القطعة أو الإنتاج.",
+        "ينظم التدريب وفق برامج تحددها مؤسسة التدريب المهني بتعليمات تنشر في الجريدة الرسمية.",
+        "يجوز طلب إنهاء العقد عند مخالفة القانون أو الأنظمة، أو عدم أداء الواجبات العقدية، أو استحالة التنفيذ لأسباب خارجة عن الإرادة، أو نقل مكان التدريب بما يصعب الانتقال أو يضر المتدرب ضمن القيد الزمني، أو تهديد استمرار التدريب لسلامة المتدرب أو صحته وفق تقرير معتمد."
+      ],
+      "required_citations": [
+        37,
+        38
+      ],
+      "forbidden_claims": [
+        "يجوز تحديد أجر المرحلة الأخيرة على أساس القطعة.",
+        "لا يجوز إنهاء عقد التدريب قبل انتهاء مدته لأي سبب."
+      ],
+      "expected_result": "تنظم المادة 37 المدة والمراحل والأجور والبرامج، وتحدد المادة 38 أسباباً متعددة لإنهاء العقد بطلب أحد الطرفين."
+    },
+    {
+      "id": "FH40-32",
+      "test_type": "multi_article",
+      "category": "wage_protection_and_minimum_wage_framework",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "اربط بين خمس حالات مالية للعامل: إتلاف أدوات صاحب العمل، وتوقف العمل مؤقتاً لسبب خارج عن إرادة صاحب العمل، وأولوية الأجور عند الإفلاس أو التصفية، وآلية تحديد الحد الأدنى للأجور، ثم أثر دفع أجر أقل من الحد الأدنى.",
+      "primary_article": 49,
+      "required_articles": [
+        49,
+        50,
+        51,
+        52,
+        53
+      ],
+      "acceptable_articles": [
+        49,
+        50,
+        51,
+        52,
+        53
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "عند ثبوت تسبب العامل بخطئه أو مخالفته التعليمات في فقد أو إتلاف أدوات أو منتجات، لا يزيد الاقتطاع لهذا الغرض على أجر خمسة أيام في الشهر.",
+        "في التوقف المؤقت لسبب لا يعزى لصاحب العمل ولا يستطيع دفعه، يستحق العامل أجراً كاملاً للعشرة أيام الأولى ثم نصف الأجر لما زاد، على ألا يزيد مجموع التعطيل الكلي المدفوع الأجر على ستين يوماً في السنة.",
+        "الأجور والمبالغ المستحقة للعامل أو ورثته ديون ممتازة امتيازاً عاماً من الدرجة الأولى، وفي التصفية أو الإفلاس يدفع للعامل ما يعادل أجر شهر واحد فوراً قبل المصروفات الأخرى.",
+        "تحدد لجنة يشكلها مجلس الوزراء الحد الأدنى للأجور نقداً بصورة عامة أو لمنطقة أو مهنة، وتراعي تكاليف المعيشة وتنشر القرارات النهائية في الجريدة الرسمية.",
+        "دفع أجر أقل من الحد الأدنى يعاقب بغرامة من خمسة وعشرين إلى مئة دينار عن كل حالة إضافة إلى الحكم للعامل بفرق الأجر، وتضاعف العقوبة عند التكرار."
+      ],
+      "required_citations": [
+        49,
+        50,
+        51,
+        52,
+        53
+      ],
+      "forbidden_claims": [
+        "يجوز اقتطاع قيمة التلف كاملة من أجر شهر واحد بلا حد.",
+        "لا يستحق العامل أي أجر عند التوقف المؤقت مهما كانت مدته.",
+        "ديون الأجور عادية وليست ممتازة.",
+        "لا يستحق العامل فرق الأجر إذا دفع له أقل من الحد الأدنى."
+      ],
+      "expected_result": "تغطي المواد حماية الأجر من الاقتطاع والتوقف والإفلاس، وآلية الحد الأدنى والجزاء عند مخالفته."
+    },
+    {
+      "id": "FH40-33",
+      "test_type": "multi_article",
+      "category": "juvenile_employment_protections",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "بيّن منظومة حماية الحدث في العمل: السن الذي يمنع قبله التشغيل، والعمل الخطر لمن هم دون الثامنة عشرة، وحدود الساعات والراحة والعمل الليلي والعطل، ثم عقوبة مخالفة أحكام هذا الفصل.",
+      "primary_article": 73,
+      "required_articles": [
+        73,
+        74,
+        75,
+        77
+      ],
+      "acceptable_articles": [
+        73,
+        74,
+        75,
+        77
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا يجوز تشغيل الحدث الذي لم يكمل السادسة عشرة، مع مراعاة أحكام التدريب المهني.",
+        "لا يجوز تشغيل من لم يكمل الثامنة عشرة في الأعمال الخطرة أو المرهقة أو المضرة بالصحة، وتحدد هذه الأعمال بقرارات الوزير بعد استطلاع الجهات المختصة.",
+        "يحظر تشغيل الحدث أكثر من ست ساعات يومياً، ويعطى راحة ساعة على الأقل بعد أربع ساعات متصلة.",
+        "يحظر تشغيل الحدث بين الثامنة مساء والسادسة صباحاً، وفي الأعياد الدينية والعطل الرسمية والعطلة الأسبوعية.",
+        "مخالفة أحكام الفصل أو الأنظمة أو القرارات الصادرة بمقتضاه تعاقب بغرامة من مئة إلى خمسمائة دينار، وتضاعف عند التكرار ولا تخفض عن الحد الأدنى للأسباب التقديرية المخففة."
+      ],
+      "required_citations": [
+        73,
+        74,
+        75,
+        77
+      ],
+      "forbidden_claims": [
+        "يجوز تشغيل من لم يكمل السادسة عشرة في أي عمل غير خطر.",
+        "يجوز للحدث العمل ثماني ساعات يومياً.",
+        "يجوز تشغيل الحدث ليلاً إذا وافق وليه."
+      ],
+      "expected_result": "تضع المواد قيود العمر والعمل الخطر والساعات والليل والعطل، وتقرر غرامة خاصة لمخالفة الفصل."
+    },
+    {
+      "id": "FH40-34",
+      "test_type": "multi_article",
+      "category": "occupational_safety_prevention_and_enforcement",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "لخص إطار السلامة والصحة المهنية من واجبات صاحب العمل الوقائية ووسائل الحماية، والتعليمات الفنية التي يصدرها الوزير، والوقاية من الحريق والمواد الخطرة، إلى صلاحية الإغلاق عند المخالفة وحقوق العمال أثناءه، والأنظمة الخاصة باللجان والعناية الطبية.",
+      "primary_article": 78,
+      "required_articles": [
+        78,
+        79,
+        80,
+        84,
+        85
+      ],
+      "acceptable_articles": [
+        78,
+        79,
+        80,
+        84,
+        85
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يوفر صاحب العمل الاحتياطات والتدابير ووسائل الحماية الشخصية، ويعرّف العامل بالمخاطر ووسائل الوقاية ويوفر وسائل الإسعاف، ولا يحمل العمال نفقات ذلك.",
+        "يحدد الوزير بتعليمات الاحتياطات والأجهزة والمعايير اللازمة لحماية العمال والمؤسسات والبيئة الصناعية من المخاطر والأمراض والتلوث والضوضاء والاهتزازات.",
+        "يتخذ صاحب العمل احتياطات الحريق والانفجارات وتخزين ونقل وتداول المواد الخطرة ويوفر الوسائل والأجهزة الفنية الكافية.",
+        "يجوز للوزير بعد الإنذار إغلاق المؤسسة أو مكان العمل كلياً أو جزئياً أو إيقاف آلة إذا عرّضت المخالفة العمال أو المؤسسة أو الآلات للخطر، مع بقاء حق العمال في أجورهم كاملة أثناء الإغلاق أو الإيقاف.",
+        "يصدر مجلس الوزراء أنظمة بشأن لجان السلامة والصحة المهنية والمشرفين والعناية الطبية الوقائية والعلاجية والوحدات الطبية والوقاية من الآلات ومواقع العمل."
+      ],
+      "required_citations": [
+        78,
+        79,
+        80,
+        84,
+        85
+      ],
+      "forbidden_claims": [
+        "يجوز تحميل العمال تكلفة وسائل الوقاية الشخصية.",
+        "يسقط أجر العامل خلال الإغلاق الوقائي للمؤسسة.",
+        "لا يشترط إنذار صاحب العمل قبل الإغلاق في المادة 84."
+      ],
+      "expected_result": "الإطار يجمع الوقاية والتجهيزات والتعليمات الفنية وإدارة مخاطر الحريق، مع الإنذار والإغلاق المدفوع الأجر وأنظمة اللجان والرعاية الطبية."
+    },
+    {
+      "id": "FH40-35",
+      "test_type": "multi_article",
+      "category": "union_establishment_registration_and_voluntary_dissolution",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "رتب المسار القانوني لنقابة العمال من الحد الأدنى للمؤسسين ومحتويات نظامها الداخلي، إلى طلب التسجيل ومدة قرار المسجل والطعن، ثم اكتساب الشخصية الاعتبارية والإبلاغ عن تعديل النظام، وأخيراً شروط الحل الاختياري.",
+      "primary_article": 98,
+      "required_articles": [
+        98,
+        100,
+        102,
+        103,
+        106
+      ],
+      "acceptable_articles": [
+        98,
+        100,
+        102,
+        103,
+        106
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تؤسس نقابة العمال من خمسين مؤسساً على الأقل من العاملين في المهنة الواحدة أو المهن المتماثلة أو المرتبطة وفق الضوابط القانونية.",
+        "يتضمن النظام الداخلي بيانات مثل الاسم والمركز والغايات وإجراءات الانتساب والفروع والهيئة الإدارية وحقوق الأعضاء والتزاماتهم والشؤون المالية والاجتماعات.",
+        "يقدم طلب التأسيس موقعاً من المؤسسين مع النظام الداخلي وبيانات الهيئة الإدارية الأولى، ويصدر المسجل قراره خلال ثلاثين يوماً، مع إمكان الطعن في قرار الرفض خلال ثلاثين يوماً من التبليغ والطعن في التسجيل خلال ثلاثين يوماً من النشر.",
+        "تكتسب النقابة الشخصية الاعتبارية وفق الحالات المنصوص عليها في المادة 103، ويجب تزويد المسجل بأي تعديل في النظام الداخلي خلال خمسة عشر يوماً من إجرائه.",
+        "يكون الحل الاختياري بموافقة ثلثي الأعضاء المسددين لاشتراكاتهم في اجتماع غير عادي مخصص لذلك، ويشعر الوزير والاتحاد العام خلال خمسة عشر يوماً وينشر القرار في الجريدة الرسمية."
+      ],
+      "required_citations": [
+        98,
+        100,
+        102,
+        103,
+        106
+      ],
+      "forbidden_claims": [
+        "يكفي عشرون مؤسساً لإنشاء نقابة عمال.",
+        "لا توجد مدة قانونية لقرار المسجل في طلب التسجيل.",
+        "يتم الحل الاختياري بقرار منفرد من الهيئة الإدارية."
+      ],
+      "expected_result": "يمتد المسار من خمسين مؤسساً ونظام داخلي وطلب تسجيل محدد المدد، إلى الشخصية الاعتبارية وتحديث النظام ثم حل اختياري بضوابط مشددة."
+    },
+    {
+      "id": "FH40-36",
+      "test_type": "multi_article",
+      "category": "collective_dispute_decision_effects",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "بعد وصول النزاع العمالي الجماعي إلى مجلس التوفيق أو المحكمة العمالية، ما صلاحياتهما في الإثبات، وأين تعقد الجلسات، وكيف يصاغ وينشر التقرير أو القرار، وعلى من يكون ملزماً، ومن أي تاريخ يبدأ تنفيذه أو نفاذ التسوية؟",
+      "primary_article": 125,
+      "required_articles": [
+        125,
+        127,
+        128,
+        130,
+        131
+      ],
+      "acceptable_articles": [
+        125,
+        127,
+        128,
+        130,
+        131
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لمجلس التوفيق والمحكمة العمالية سماع أقوال الأشخاص أو الاستعانة بخبرتهم بعد القسم وتكليف الأطراف بإبراز المستندات والبيانات اللازمة.",
+        "تعقد جلسات مجلس التوفيق والمحكمة العمالية في الوزارة، والوزارة توفر المتطلبات الإدارية والتسهيلات والأجهزة.",
+        "يكون تقرير مجلس التوفيق وقرار المحكمة كتابياً وموقعاً من جميع الأعضاء، ويثبت العضو المخالف رأيه كتابة، وينشر التقرير أو القرار في صحيفة محلية أو أكثر على نفقة أصحاب النزاع خلال ثلاثين يوماً من تسلم الوزير له.",
+        "تلزم التسوية أو قرار المحكمة أطراف النزاع وخلف صاحب العمل، وقد تمتد إلى العاملين في المؤسسة ومن يستخدمون لاحقاً إذا قضى التقرير أو القرار بذلك ضمن الشروط القانونية.",
+        "ينفذ قرار المحكمة من التاريخ الذي تعينه، وتعمل التسوية من التاريخ المتفق عليه أو من تاريخ توقيع تقرير التسوية عند عدم الاتفاق على تاريخ."
+      ],
+      "required_citations": [
+        125,
+        127,
+        128,
+        130,
+        131
+      ],
+      "forbidden_claims": [
+        "تعقد جلسات مجلس التوفيق والمحكمة خارج الوزارة وجوباً.",
+        "يجوز أن يكون قرار المحكمة شفوياً وغير موقع.",
+        "لا تلزم التسوية خلف صاحب العمل بأي حال.",
+        "يبدأ قرار المحكمة دائماً من تاريخ صدوره دون أن تعين المحكمة تاريخاً."
+      ],
+      "expected_result": "تنظم المواد صلاحيات الإثبات ومكان الجلسات وشكل القرار ونشره ونطاق إلزامه وتاريخ بدء التنفيذ أو النفاذ."
+    },
+    {
+      "id": "FH40-37",
+      "test_type": "out_of_scope",
+      "category": "family_custody_law",
+      "difficulty": "hard",
+      "expected_behavior": "abstain",
+      "question": "بعد الطلاق، كيف تُحدد أولوية حضانة الطفل ومدة الحضانة وفق قانون الأحوال الشخصية الأردني؟",
+      "primary_article": null,
+      "required_articles": [],
+      "acceptable_articles": [],
+      "expected_concepts_any": [],
+      "required_facts": [],
+      "required_citations": [],
+      "forbidden_claims": [
+        "تقديم قواعد حضانة من قانون العمل الأردني."
+      ],
+      "expected_result": "السؤال يتعلق بالأحوال الشخصية وحضانة الأطفال، وهو خارج نطاق قانون العمل الأردني الممثل في النظام."
+    },
+    {
+      "id": "FH40-38",
+      "test_type": "out_of_scope",
+      "category": "cybercrime_law",
+      "difficulty": "hard",
+      "expected_behavior": "abstain",
+      "question": "ما العقوبة القانونية على الاحتيال الإلكتروني والاستيلاء على بيانات الدفع وفق التشريعات الأردنية الخاصة بالجرائم الإلكترونية؟",
+      "primary_article": null,
+      "required_articles": [],
+      "acceptable_articles": [],
+      "expected_concepts_any": [],
+      "required_facts": [],
+      "required_citations": [],
+      "forbidden_claims": [
+        "اختلاق عقوبة للجرائم الإلكترونية من مواد قانون العمل."
+      ],
+      "expected_result": "السؤال يتعلق بالجرائم الإلكترونية وليس بأحكام قانون العمل الأردني الممثلة في قاعدة المعرفة."
+    },
+    {
+      "id": "FH40-39",
+      "test_type": "out_of_scope",
+      "category": "companies_law",
+      "difficulty": "hard",
+      "expected_behavior": "abstain",
+      "question": "ما إجراءات تسجيل شركة ذات مسؤولية محدودة في الأردن، وكيف تنتقل حصص الشركاء فيها؟",
+      "primary_article": null,
+      "required_articles": [],
+      "acceptable_articles": [],
+      "expected_concepts_any": [],
+      "required_facts": [],
+      "required_citations": [],
+      "forbidden_claims": [
+        "استخدام مواد عقود العمل للإجابة عن تأسيس الشركات أو نقل الحصص."
+      ],
+      "expected_result": "السؤال من نطاق قانون الشركات وليس من نطاق قانون العمل الأردني الممثل في النظام."
+    },
+    {
+      "id": "FH40-40",
+      "test_type": "out_of_scope",
+      "category": "customs_law",
+      "difficulty": "hard",
+      "expected_behavior": "abstain",
+      "question": "كيف تُحدد الرسوم الجمركية على بضاعة مستوردة إلى الأردن، وما المستندات اللازمة لتخليصها جمركياً؟",
+      "primary_article": null,
+      "required_articles": [],
+      "acceptable_articles": [],
+      "expected_concepts_any": [],
+      "required_facts": [],
+      "required_citations": [],
+      "forbidden_claims": [
+        "تقديم قواعد جمركية استناداً إلى مواد قانون العمل."
+      ],
+      "expected_result": "السؤال يتعلق بقانون الجمارك والتخليص الجمركي، وهو خارج نطاق قانون العمل الأردني الممثل في النظام."
+    }
+  ]
+}

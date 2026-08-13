@@ -46,6 +46,8 @@ def select_graph_seeds(
     concept_hits: list[RetrievalHit],
     limit: int,
     preferred_local_names: Iterable[str] | None = None,
+    *,
+    max_effective_limit: int = 2,
 ) -> list[RetrievalHit]:
     """
     Select high-confidence, issue-specific concepts for graph traversal.
@@ -59,9 +61,10 @@ def select_graph_seeds(
     if limit < 1:
         return []
 
-    # Keep the initial graph frontier intentionally small. Broad frontiers
-    # create unrelated paths even when every individual RDF edge is valid.
-    effective_limit = min(limit, 2)
+    # Keep the initial graph frontier intentionally small by default.
+    # Multi-issue callers may raise this ceiling so each atomic issue can
+    # contribute a graph seed without changing single-issue behavior.
+    effective_limit = min(limit, max(1, max_effective_limit))
 
     preferred_order = {
         local_name: index
@@ -383,6 +386,8 @@ class GraphTraversalService:
         self,
         concept_hits: list[RetrievalHit],
         preferred_local_names: Iterable[str] | None = None,
+        *,
+        seed_limit_override: int | None = None,
     ) -> GraphExpansionResult:
         """
         Perform up to two hops from issue-specific concepts.
@@ -396,14 +401,25 @@ class GraphTraversalService:
         article_46
         """
 
+        configured_limit = (
+            self.settings.retrieval_graph_seed_count
+        )
+        effective_seed_limit = (
+            max(configured_limit, seed_limit_override)
+            if seed_limit_override is not None
+            else configured_limit
+        )
+
         issue_specific_seeds = select_graph_seeds(
             concept_hits=concept_hits,
-            limit=(
-                self.settings
-                .retrieval_graph_seed_count
-            ),
+            limit=effective_seed_limit,
             preferred_local_names=(
                 preferred_local_names
+            ),
+            max_effective_limit=(
+                seed_limit_override
+                if seed_limit_override is not None
+                else 2
             ),
         )
 

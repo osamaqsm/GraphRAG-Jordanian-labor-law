@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 from collections.abc import Iterable
+from dataclasses import replace
 import math
+import re
 from typing import Any
 
 from weaviate.classes.query import (
@@ -73,7 +75,87 @@ ISSUE_CATALOG_CANDIDATES = 12
 ISSUE_TOP_MARGIN = 0.08
 ISSUE_TOP_BONUS = 0.22
 MULTI_ARTICLE_COVERAGE_BONUS = 0.50
+ISSUE_COVERAGE_MIN_RELEVANCE = 0.10
 FINAL_ARTICLE_LIMIT = 5
+
+
+_ISSUE_QUERY_BOILERPLATE_RE = re.compile(
+    r"(?:ما\s+هي\s+احكام|ما\s+هي|ما\s+حكم|هل\s+يوجد|"
+    r"وفق\s+قانون\s+العمل\s+الاردني|في\s+قانون\s+العمل\s+الاردني|"
+    r"ضمن\s+قانون\s+العمل\s+الاردني|قانون\s+العمل\s+الاردني)",
+    flags=re.IGNORECASE,
+)
+
+
+def _focused_issue_text(label: str, query: str) -> str:
+    """Create a compact retrieval phrase for one atomic legal issue.
+
+    Planner queries are useful for decomposition but some models naturally
+    phrase them as full questions (for example, "ما هي أحكام ... وفق قانون
+    العمل الأردني؟"). Those generic words are actively harmful to BM25 and
+    semantic retrieval because they occur across the statute. Keep the concise
+    issue label and only retain non-boilerplate content from the query.
+    """
+
+    normalized_label = normalize_arabic(label)
+    normalized_query = normalize_arabic(query)
+    cleaned_query = _ISSUE_QUERY_BOILERPLATE_RE.sub(
+        " ",
+        normalized_query,
+    )
+    cleaned_query = " ".join(cleaned_query.split())
+
+    parts: list[str] = []
+    for value in (normalized_label, cleaned_query):
+        if value and value not in parts:
+            parts.append(value)
+
+    return " ".join(parts).strip() or normalized_query or normalized_label
+
+
+def _atomic_issue_analysis(label: str, query: str) -> LegalQuestionAnalysis:
+    """Build retrieval analysis from the atomic issue itself, not V1 profiles.
+
+    The deterministic V1 IssueProfile catalogue intentionally covers common
+    single-issue questions, but it is not exhaustive enough to define every
+    planner-created atomic issue. Re-running that analyzer on a new planner
+    query can therefore collapse a specific issue back to a generic legal
+    question. This V2.1 analysis remains article-number agnostic and uses the
+    planner decomposition directly.
+    """
+
+    focused = _focused_issue_text(label, query)
+    normalized = normalize_arabic(focused)
+    tokens = frozenset(
+        token
+        for token in normalized.split()
+        if len(token) > 1
+    )
+    numeric_tokens = frozenset(
+        token
+        for token in normalized.split()
+        if token.isdigit()
+    )
+
+    return LegalQuestionAnalysis(
+        original_question=focused,
+        normalized_question=normalized,
+        issue_ids=(),
+        preferred_concepts=(),
+        query_expansion_terms=(),
+        article_anchor_phrases=(focused,) if focused else (),
+        primary_article_anchor_phrases=(focused,) if focused else (),
+        meaningful_tokens=tokens,
+        numeric_tokens=numeric_tokens,
+        max_final_articles=1,
+        behavior="retrieve",
+        behavior_reason="Atomic issue retrieval",
+        planner_queries=(),
+        planner_issue_labels=(label.strip() or focused,),
+        planner_used=True,
+        planner_confidence=1.0,
+        clarification_question="",
+    )
 
 
 def _list_value(
@@ -203,6 +285,102 @@ class RetrievalService:
             settings=settings,
         )
         self._article_catalog_cache: list[RetrievalHit] | None = None
+        self.last_issue_coverage_debug: dict[str, Any] = {}
+
+    @staticmethod
+    def _merge_hit_groups(
+        groups: list[list[RetrievalHit]],
+        *,
+        limit: int | None = None,
+    ) -> list[RetrievalHit]:
+        """Interleave issue-specific rankings while de-duplicating by URI.
+
+        Interleaving prevents the strongest issue from consuming the whole
+        candidate pool before weaker atomic issues contribute candidates.
+        """
+
+        merged: list[RetrievalHit] = []
+        by_uri: dict[str, RetrievalHit] = {}
+        max_group_size = max((len(group) for group in groups), default=0)
+
+        for rank_index in range(max_group_size):
+            for group in groups:
+                if rank_index >= len(group):
+                    continue
+                source = group[rank_index]
+                if not source.uri:
+                    continue
+
+                existing = by_uri.get(source.uri)
+                if existing is None:
+                    existing = replace(source)
+                    existing.labels_ar = list(source.labels_ar)
+                    existing.labels_en = list(source.labels_en)
+                    existing.support_paths = list(source.support_paths)
+                    by_uri[source.uri] = existing
+                    merged.append(existing)
+                else:
+                    existing.fused_score = max(
+                        existing.fused_score, source.fused_score
+                    )
+                    existing.direct_score = max(
+                        existing.direct_score, source.direct_score
+                    )
+                    existing.graph_score = max(
+                        existing.graph_score, source.graph_score
+                    )
+                    existing.paragraph_score = max(
+                        existing.paragraph_score, source.paragraph_score
+                    )
+                    existing.final_score = max(
+                        existing.final_score, source.final_score
+                    )
+                    existing.graph_supported = (
+                        existing.graph_supported or source.graph_supported
+                    )
+                    if source.support_paths:
+                        known = {repr(path) for path in existing.support_paths}
+                        for path in source.support_paths:
+                            if repr(path) not in known:
+                                existing.support_paths.append(path)
+
+                if limit is not None and len(merged) >= limit:
+                    return merged
+
+        return merged
+
+    @staticmethod
+    def _merge_expansions(
+        expansions: list[GraphExpansionResult],
+    ) -> GraphExpansionResult:
+        article_evidence: dict[str, dict[str, Any]] = {}
+        related_concepts: dict[str, float] = {}
+
+        for expansion in expansions:
+            for uri, evidence in expansion.article_evidence.items():
+                target = article_evidence.setdefault(
+                    uri,
+                    {"score": 0.0, "paths": []},
+                )
+                target["score"] = max(
+                    float(target["score"]),
+                    float(evidence.get("score", 0.0)),
+                )
+                known = {repr(path) for path in target["paths"]}
+                for path in evidence.get("paths", []):
+                    if repr(path) not in known:
+                        target["paths"].append(path)
+
+            for uri, score in expansion.related_concepts.items():
+                related_concepts[uri] = max(
+                    related_concepts.get(uri, 0.0),
+                    float(score),
+                )
+
+        return GraphExpansionResult(
+            article_evidence=article_evidence,
+            related_concepts=related_concepts,
+        )
 
     @staticmethod
     def _concept_filter() -> Any:
@@ -627,15 +805,15 @@ class RetrievalService:
 
         scored: list[tuple[float, RetrievalHit]] = []
 
-        for hit in self._all_article_catalog_hits():
+        for cached_hit in self._all_article_catalog_hits():
 
             score = article_question_relevance(
                 analysis,
                 " ".join(
                     [
-                        *hit.labels_ar,
-                        *hit.labels_en,
-                        hit.text_preview,
+                        *cached_hit.labels_ar,
+                        *cached_hit.labels_en,
+                        cached_hit.text_preview,
                     ]
                 ),
             )
@@ -643,8 +821,9 @@ class RetrievalService:
             if score <= 0.0:
                 continue
 
-            # Retain the deterministic score for diagnostics.  The final
-            # article scorer recomputes it from the complete candidate union.
+            # Never mutate the cached full-law catalogue. Multi-issue retrieval
+            # scores the same article independently for several atomic queries.
+            hit = replace(cached_hit)
             hit.direct_score = score
             scored.append((score, hit))
 
@@ -1269,33 +1448,228 @@ class RetrievalService:
         article_hits: dict[str, RetrievalHit],
         expansion: GraphExpansionResult,
         analysis: LegalQuestionAnalysis,
+        issue_candidate_numbers: tuple[tuple[int, ...], ...] = (),
     ) -> list[RetrievalHit] | None:
-        """Ask the constrained LLM reranker to choose a minimal article set.
+        """Choose a complete article set from an issue-balanced catalogue.
 
-        Fair-model-comparison rule: the LLM receives only the strongest common
-        hybrid-retrieval candidate pool, not the complete 142-article statute.
-        This keeps the semantic stage identical while making the exact same
-        request executable by hosted models and 8K-context local models.
+        Multi-issue questions reserve candidate slots for every atomic issue
+        before the remaining globally ranked articles are added. The reranker
+        then returns explicit issue coverage. If an issue is still uncovered,
+        the best independently retrieved candidate for that issue is used as a
+        deterministic coverage repair.
         """
 
-        candidate_limit = max(
+        issue_pairs = tuple(
+            (label, query)
+            for label, query in zip(
+                analysis.planner_issue_labels,
+                analysis.planner_queries,
+                strict=False,
+            )
+            if query
+        )
+
+        base_limit = max(
             5,
             int(getattr(self.settings, "reranker_candidate_limit", 12)),
         )
-        candidate_hits = [
-            hit
+        candidate_limit = base_limit
+        if len(issue_pairs) > 1:
+            candidate_limit = max(
+                base_limit,
+                int(
+                    getattr(
+                        self.settings,
+                        "reranker_multi_issue_candidate_limit",
+                        15,
+                    )
+                ),
+            )
+        candidate_limit = min(30, candidate_limit)
+
+        ranked_by_number = {
+            int(hit.article_number): hit
             for hit in ranked
             if hit.article_number is not None
-        ][:candidate_limit]
+        }
+
+        candidate_hits: list[RetrievalHit] = []
+        seen_numbers: set[int] = set()
+
+        # First reserve a small balanced seed set for every atomic issue.
+        # We intentionally do not exhaust the whole candidate budget here;
+        # remaining slots are used for structural statutory-neighbour recovery.
+        max_issue_candidates = max(
+            (len(values) for values in issue_candidate_numbers),
+            default=0,
+        )
+        seed_ranks = min(3, max_issue_candidates)
+        structural_seed_numbers: list[int] = []
+
+        for candidate_rank in range(seed_ranks):
+            for values in issue_candidate_numbers:
+                if candidate_rank >= len(values):
+                    continue
+                number = int(values[candidate_rank])
+                hit = ranked_by_number.get(number)
+                if hit is None or number in seen_numbers:
+                    continue
+                seen_numbers.add(number)
+                structural_seed_numbers.append(number)
+                candidate_hits.append(hit)
+                if len(candidate_hits) >= candidate_limit:
+                    break
+            if len(candidate_hits) >= candidate_limit:
+                break
+
+        # Reserve part of the multi-issue catalogue for the strongest GLOBAL
+        # GraphRAG ranking before adding statutory neighbours.  V2.2 could spend
+        # the whole 30-slot budget on per-issue seeds + neighbours and therefore
+        # hide strong graph/global evidence (especially when an atomic lexical
+        # query was weak).  Keeping a bounded global arm preserves the original
+        # hybrid retriever as an independent source of recall.
+        global_reserved_numbers: list[int] = []
+        if len(issue_pairs) > 1 and len(candidate_hits) < candidate_limit:
+            global_reserve = min(8, candidate_limit - len(candidate_hits))
+            for hit in ranked:
+                if hit.article_number is None:
+                    continue
+                number = int(hit.article_number)
+                if number in seen_numbers:
+                    continue
+                seen_numbers.add(number)
+                global_reserved_numbers.append(number)
+                candidate_hits.append(hit)
+                if len(global_reserved_numbers) >= global_reserve:
+                    break
+
+        # Legal provisions that jointly define a process/framework are often
+        # structurally adjacent. Recover a small issue-specific neighbourhood
+        # around each issue's strongest seeds. Neighbours are scored against the
+        # atomic issue text and added only to the candidate catalogue; they are
+        # never selected automatically.
+        structural_neighbor_numbers: list[int] = []
+        issue_structural_neighbors: list[tuple[int, ...]] = []
+        if len(issue_pairs) > 1 and len(candidate_hits) < candidate_limit:
+            neighbor_radius = int(
+                getattr(self.settings, "retrieval_issue_neighbor_radius", 2)
+            )
+            full_catalog = {
+                int(hit.article_number): hit
+                for hit in self._all_article_catalog_hits()
+                if hit.article_number is not None
+            }
+
+            for issue_index, (label, query) in enumerate(issue_pairs):
+                values = (
+                    issue_candidate_numbers[issue_index]
+                    if issue_index < len(issue_candidate_numbers)
+                    else ()
+                )
+                issue_analysis = _atomic_issue_analysis(label, query)
+                scored_neighbors: list[tuple[float, int]] = []
+                considered: set[int] = set()
+
+                for seed_number in list(values)[:seed_ranks]:
+                    seed_number = int(seed_number)
+                    for distance in range(1, neighbor_radius + 1):
+                        for number in (seed_number - distance, seed_number + distance):
+                            if number in considered or number in values:
+                                continue
+                            considered.add(number)
+                            catalog_hit = full_catalog.get(number)
+                            if catalog_hit is None:
+                                continue
+                            relevance = article_question_relevance(
+                                issue_analysis,
+                                " ".join(
+                                    [
+                                        *catalog_hit.labels_ar,
+                                        *catalog_hit.labels_en,
+                                        catalog_hit.text_preview,
+                                    ]
+                                ),
+                            )
+                            # Relevance dominates; proximity is only a weak tie-break.
+                            score = relevance + (0.01 / float(distance))
+                            scored_neighbors.append((score, number))
+
+                scored_neighbors.sort(key=lambda item: (-item[0], item[1]))
+                best_neighbors = tuple(
+                    number
+                    for _score, number in scored_neighbors[:2]
+                )
+                issue_structural_neighbors.append(best_neighbors)
+
+            max_neighbor_count = max(
+                (len(values) for values in issue_structural_neighbors),
+                default=0,
+            )
+            for neighbor_rank in range(max_neighbor_count):
+                for values in issue_structural_neighbors:
+                    if neighbor_rank >= len(values):
+                        continue
+                    number = int(values[neighbor_rank])
+                    if number in seen_numbers:
+                        continue
+                    catalog_hit = full_catalog.get(number)
+                    if catalog_hit is None:
+                        continue
+                    hit = replace(catalog_hit)
+                    ranked_by_number.setdefault(number, hit)
+                    seen_numbers.add(number)
+                    structural_neighbor_numbers.append(number)
+                    candidate_hits.append(hit)
+                    if len(candidate_hits) >= candidate_limit:
+                        break
+                if len(candidate_hits) >= candidate_limit:
+                    break
+
+        # Add any remaining deeper issue-specific candidates after the structural
+        # recovery pass, then fill with the strongest global ranking.
+        if len(candidate_hits) < candidate_limit:
+            for candidate_rank in range(seed_ranks, max_issue_candidates):
+                for values in issue_candidate_numbers:
+                    if candidate_rank >= len(values):
+                        continue
+                    number = int(values[candidate_rank])
+                    hit = ranked_by_number.get(number)
+                    if hit is None or number in seen_numbers:
+                        continue
+                    seen_numbers.add(number)
+                    candidate_hits.append(hit)
+                    if len(candidate_hits) >= candidate_limit:
+                        break
+                if len(candidate_hits) >= candidate_limit:
+                    break
+
+        if len(candidate_hits) < candidate_limit:
+            for hit in ranked:
+                if hit.article_number is None:
+                    continue
+                number = int(hit.article_number)
+                if number in seen_numbers:
+                    continue
+                seen_numbers.add(number)
+                candidate_hits.append(hit)
+                if len(candidate_hits) >= candidate_limit:
+                    break
 
         if not candidate_hits:
             return None
 
+        global_rank_by_number = {
+            int(hit.article_number): rank
+            for rank, hit in enumerate(ranked, start=1)
+            if hit.article_number is not None
+        }
+
         catalog_articles: list[CatalogArticle] = []
-        for rank, hit in enumerate(candidate_hits, start=1):
+        for hit in candidate_hits:
+            number = int(hit.article_number)
             catalog_articles.append(
                 CatalogArticle(
-                    article_number=int(hit.article_number),
+                    article_number=number,
                     text=" ".join(
                         [
                             *hit.labels_ar,
@@ -1303,7 +1677,7 @@ class RetrievalService:
                             hit.text_preview,
                         ]
                     ),
-                    deterministic_rank=rank,
+                    deterministic_rank=global_rank_by_number.get(number),
                     deterministic_score=hit.final_score,
                     graph_supported=hit.graph_supported,
                 )
@@ -1312,14 +1686,14 @@ class RetrievalService:
         selection = self.article_reranker.select(
             question=analysis.reranker_question,
             articles=catalog_articles,
+            issue_pairs=issue_pairs,
+            issue_candidate_numbers=issue_candidate_numbers,
         )
 
         if selection is None:
             return None
 
         if selection.behavior != "retrieve":
-            # Only override a deterministic retrieval decision when the model
-            # is highly confident. Otherwise preserve the deterministic route.
             if selection.confidence >= 0.90:
                 return []
             return None
@@ -1328,13 +1702,243 @@ class RetrievalService:
             FINAL_ARTICLE_LIMIT,
             self.settings.retrieval_article_top_k,
         )
-        selected_numbers = selection.selected_article_numbers[:max_articles]
 
-        if not selected_numbers:
+        selected_numbers = list(
+            dict.fromkeys(
+                int(number)
+                for number in selection.selected_article_numbers
+            )
+        )
+
+        coverage_by_index = {
+            item.issue_index: item
+            for item in selection.issue_coverage
+        }
+
+        # V2.3 rule: a complete, self-consistent reranker selection is FINAL.
+        # Coverage repair is only allowed when the reranker actually left an
+        # issue uncovered or when there is spare evidence capacity and a compact
+        # challenger check shows that an additional independently-retrieved
+        # provision is necessary.  This prevents post-processing from corrupting
+        # correct five-article sets.
+        all_issues_covered = bool(issue_pairs) and all(
+            (coverage_by_index.get(index) is not None)
+            and bool(coverage_by_index[index].covered)
+            and bool(coverage_by_index[index].supporting_article_numbers)
+            for index in range(1, len(issue_pairs) + 1)
+        )
+
+        required_numbers: list[int] = []
+        coverage_debug: list[dict[str, Any]] = []
+
+        # If the reranker already produced a full-cap, issue-complete set, do not
+        # second-guess it with a broader repair catalogue.  The atomic verifier
+        # is intentionally a recovery mechanism, not a second reranker.
+        preserve_complete_selection = (
+            all_issues_covered
+            and len(selected_numbers) >= max_articles
+        )
+
+        if issue_pairs:
+            full_catalog = {
+                int(hit.article_number): hit
+                for hit in self._all_article_catalog_hits()
+                if hit.article_number is not None
+            }
+
+            for issue_index, (label, query) in enumerate(
+                issue_pairs,
+                start=1,
+            ):
+                coverage = coverage_by_index.get(issue_index)
+                support_numbers: list[int] = []
+                source = "uncovered"
+
+                if (
+                    coverage is not None
+                    and coverage.covered
+                    and coverage.supporting_article_numbers
+                ):
+                    support_numbers = list(
+                        dict.fromkeys(
+                            int(number)
+                            for number in coverage.supporting_article_numbers
+                        )
+                    )[:5]
+                    source = "reranker_coverage"
+
+                values = (
+                    issue_candidate_numbers[issue_index - 1]
+                    if issue_index - 1 < len(issue_candidate_numbers)
+                    else ()
+                )
+
+                if not preserve_complete_selection:
+                    if not support_numbers:
+                        # Uncovered issue: search a focused recovery catalogue.
+                        # Include the issue's own candidates, the globally selected
+                        # evidence, and statutory neighbours around BOTH groups.
+                        verification_numbers: list[int] = []
+                        for number in [*values, *selected_numbers]:
+                            number = int(number)
+                            if number not in verification_numbers:
+                                verification_numbers.append(number)
+
+                        neighbor_radius = int(
+                            getattr(self.settings, "retrieval_issue_neighbor_radius", 2)
+                        )
+                        seed_values = list(verification_numbers)
+                        for distance in range(1, neighbor_radius + 1):
+                            for seed_number in seed_values:
+                                for number in (seed_number - distance, seed_number + distance):
+                                    if (
+                                        number in full_catalog
+                                        and number not in verification_numbers
+                                    ):
+                                        verification_numbers.append(number)
+
+                        repair_catalog: list[CatalogArticle] = []
+                        for candidate_number in verification_numbers[:16]:
+                            hit = ranked_by_number.get(int(candidate_number))
+                            if hit is None:
+                                catalog_hit = full_catalog.get(int(candidate_number))
+                                hit = (
+                                    replace(catalog_hit)
+                                    if catalog_hit is not None
+                                    else None
+                                )
+                            if hit is None:
+                                continue
+                            repair_catalog.append(
+                                CatalogArticle(
+                                    article_number=int(candidate_number),
+                                    text=" ".join(
+                                        [
+                                            *hit.labels_ar,
+                                            *hit.labels_en,
+                                            hit.text_preview,
+                                        ]
+                                    ),
+                                    deterministic_rank=None,
+                                    deterministic_score=hit.final_score,
+                                    graph_supported=hit.graph_supported,
+                                )
+                            )
+
+                        if repair_catalog:
+                            verified = self.article_reranker.verify_issue_support(
+                                question=_focused_issue_text(label, query),
+                                articles=repair_catalog,
+                            )
+                            if verified is not None and verified.covered:
+                                support_numbers = list(
+                                    dict.fromkeys(
+                                        int(number)
+                                        for number in verified.supporting_article_numbers
+                                    )
+                                )[:5]
+                                source = "targeted_support_recovery"
+
+                    elif len(selected_numbers) < max_articles and values:
+                        # Covered-but-suspicious issue: only compare the reranker's
+                        # support with the top independent issue candidates.  Do NOT
+                        # inject statutory neighbours here; V2.2's broad challenger
+                        # catalogue caused false additions such as Articles 27/125.
+                        top_candidate = int(values[0])
+                        if top_candidate not in support_numbers:
+                            challenger_numbers: list[int] = []
+                            for number in [*support_numbers, *list(values)[:2]]:
+                                number = int(number)
+                                if number not in challenger_numbers:
+                                    challenger_numbers.append(number)
+
+                            challenge_catalog: list[CatalogArticle] = []
+                            for candidate_number in challenger_numbers:
+                                hit = ranked_by_number.get(candidate_number)
+                                if hit is None:
+                                    catalog_hit = full_catalog.get(candidate_number)
+                                    hit = (
+                                        replace(catalog_hit)
+                                        if catalog_hit is not None
+                                        else None
+                                    )
+                                if hit is None:
+                                    continue
+                                challenge_catalog.append(
+                                    CatalogArticle(
+                                        article_number=candidate_number,
+                                        text=" ".join(
+                                            [
+                                                *hit.labels_ar,
+                                                *hit.labels_en,
+                                                hit.text_preview,
+                                            ]
+                                        ),
+                                        deterministic_rank=None,
+                                        deterministic_score=hit.final_score,
+                                        graph_supported=hit.graph_supported,
+                                    )
+                                )
+
+                            if challenge_catalog:
+                                verified = self.article_reranker.verify_issue_support(
+                                    question=_focused_issue_text(label, query),
+                                    articles=challenge_catalog,
+                                )
+                                if verified is not None and verified.covered:
+                                    verified_numbers = list(
+                                        dict.fromkeys(
+                                            int(number)
+                                            for number in verified.supporting_article_numbers
+                                        )
+                                    )[:5]
+                                    # Challenger verification may ADD necessary
+                                    # support, but it must never erase reranker
+                                    # evidence that was already accepted.
+                                    merged_support = list(support_numbers)
+                                    for number in verified_numbers:
+                                        if number not in merged_support:
+                                            merged_support.append(number)
+                                    support_numbers = merged_support[:5]
+                                    if any(
+                                        number not in selection.selected_article_numbers
+                                        for number in verified_numbers
+                                    ):
+                                        source = "targeted_support_challenge"
+
+                for support_number in support_numbers:
+                    if support_number not in required_numbers:
+                        required_numbers.append(support_number)
+
+                coverage_debug.append(
+                    {
+                        "issue_index": issue_index,
+                        "issue_ar": label,
+                        "retrieval_query_ar": query,
+                        "support_article": (
+                            support_numbers[0] if support_numbers else None
+                        ),
+                        "support_articles": support_numbers,
+                        "source": source,
+                    }
+                )
+
+        if preserve_complete_selection:
+            final_numbers = selected_numbers[:max_articles]
+        else:
+            # Preserve the reranker's ordering first, then append only verified
+            # missing evidence while capacity remains.  This prevents recovery
+            # noise from crowding out a correct reranker selection.
+            final_numbers: list[int] = []
+            for number in [*selected_numbers, *required_numbers]:
+                if number not in final_numbers:
+                    final_numbers.append(number)
+                if len(final_numbers) >= max_articles:
+                    break
+
+        if not final_numbers:
             return None
 
-        # Map selected numbers back to the already-ranked candidate objects so
-        # support paths and deterministic retrieval diagnostics are preserved.
         candidate_by_number = {
             int(hit.article_number): hit
             for hit in candidate_hits
@@ -1342,14 +1946,13 @@ class RetrievalService:
         }
 
         selected_hits: list[RetrievalHit] = []
-        for index, number in enumerate(selected_numbers):
+        for index, number in enumerate(final_numbers):
             hit = candidate_by_number.get(int(number))
             if hit is None:
-                # The reranker validates against its supplied catalogue, so this
-                # branch indicates an internal consistency error.
+                hit = ranked_by_number.get(int(number))
+            if hit is None:
                 raise RuntimeError(
-                    f"Reranker selected article {number} outside the bounded "
-                    "candidate map."
+                    f"Selected article {number} is outside the ranked candidate map."
                 )
 
             evidence = expansion.article_evidence.get(hit.uri)
@@ -1358,12 +1961,27 @@ class RetrievalService:
                 hit.graph_supported = True
                 hit.support_paths = list(evidence["paths"])
 
-            # Preserve model order in diagnostics and downstream generation.
             hit.final_score = max(
                 hit.final_score,
                 1.0 - 0.01 * index,
             )
             selected_hits.append(hit)
+
+        self.last_issue_coverage_debug = {
+            "issue_pairs": [
+                {"issue_ar": label, "retrieval_query_ar": query}
+                for label, query in issue_pairs
+            ],
+            "issue_candidate_numbers": [
+                list(values)
+                for values in issue_candidate_numbers
+            ],
+            "reranker_selected_numbers": selected_numbers,
+            "global_reserved_numbers": global_reserved_numbers,
+            "structural_neighbor_numbers": structural_neighbor_numbers,
+            "coverage": coverage_debug,
+            "final_numbers": final_numbers,
+        }
 
         return selected_hits
 
@@ -1373,6 +1991,10 @@ class RetrievalService:
         paragraph_hits: list[RetrievalHit],
         expansion: GraphExpansionResult,
         analysis: LegalQuestionAnalysis,
+        *,
+        allow_llm_selection: bool = True,
+        final_limit_override: int | None = None,
+        issue_candidate_numbers: tuple[tuple[int, ...], ...] = (),
     ) -> list[RetrievalHit]:
         """
         Rank the union of graph, direct-article, and paragraph evidence.
@@ -1625,15 +2247,17 @@ class RetrievalService:
             ),
         )
 
-        llm_selected = self._llm_article_selection(
-            ranked=ranked,
-            article_hits=article_hits,
-            expansion=expansion,
-            analysis=analysis,
-        )
+        if allow_llm_selection:
+            llm_selected = self._llm_article_selection(
+                ranked=ranked,
+                article_hits=article_hits,
+                expansion=expansion,
+                analysis=analysis,
+                issue_candidate_numbers=issue_candidate_numbers,
+            )
 
-        if llm_selected is not None:
-            return llm_selected
+            if llm_selected is not None:
+                return llm_selected
 
         requested_limit = max(
             1,
@@ -1641,11 +2265,14 @@ class RetrievalService:
             len(analysis.planner_queries),
         )
 
-        final_limit = min(
-            FINAL_ARTICLE_LIMIT,
-            requested_limit,
-            self.settings.retrieval_article_top_k,
-        )
+        if final_limit_override is not None:
+            final_limit = max(1, int(final_limit_override))
+        else:
+            final_limit = min(
+                FINAL_ARTICLE_LIMIT,
+                requested_limit,
+                self.settings.retrieval_article_top_k,
+            )
 
         return self._select_complementary_articles(
             ranked=ranked,
@@ -1662,6 +2289,9 @@ class RetrievalService:
         embedding_dimensions: int,
         embedding_input_tokens: int,
         analysis: LegalQuestionAnalysis | None = None,
+        issue_query_vectors: tuple[
+            tuple[str, str, list[float]], ...
+        ] = (),
     ) -> RetrievalPreview:
         # Stage 8-A: callers may provide the already-routed analysis so the
         # planner runs exactly once. Existing callers that omit it preserve
@@ -1676,6 +2306,8 @@ class RetrievalService:
                 plan=query_plan,
             )
 
+        self.last_issue_coverage_debug = {}
+
         if analysis.behavior != "retrieve":
             return RetrievalPreview(
                 question=question,
@@ -1688,41 +2320,147 @@ class RetrievalService:
                 raw_mixed_hits=[],
             )
 
-        concept_hits = self.search_concepts(
+        # -------------------------------------------------------------
+        # Global retrieval path (preserves the original V1 behavior).
+        # -------------------------------------------------------------
+        global_concepts = self.search_concepts(
+            question,
+            query_vector,
+            analysis,
+        )
+        global_direct_hits = self.search_articles_direct(
+            question,
+            query_vector,
+            analysis,
+        )
+        global_paragraph_hits = self.search_paragraphs(
             question,
             query_vector,
             analysis,
         )
 
-        expansion = (
-            self.graph.expand_from_concepts(
-                concept_hits,
-                preferred_local_names=(
-                    analysis.preferred_concepts
+        concept_groups: list[list[RetrievalHit]] = [global_concepts]
+        direct_groups: list[list[RetrievalHit]] = [global_direct_hits]
+        paragraph_groups: list[list[RetrievalHit]] = [global_paragraph_hits]
+        expansion_groups: list[GraphExpansionResult] = []
+        issue_candidate_numbers: list[tuple[int, ...]] = []
+        issue_analyses: list[LegalQuestionAnalysis] = []
+
+        # -------------------------------------------------------------
+        # V2: independently retrieve evidence for every atomic issue.
+        # Each issue gets its own embedding, BM25 query, concept linking,
+        # KG traversal, paragraph search, and deterministic article ranking.
+        # -------------------------------------------------------------
+        per_issue_limit = int(
+            getattr(
+                self.settings,
+                "retrieval_issue_candidates_per_issue",
+                3,
+            )
+        )
+
+        for _label, issue_query, issue_vector in issue_query_vectors:
+            issue_focus = _focused_issue_text(_label, issue_query)
+            issue_analysis = _atomic_issue_analysis(_label, issue_query)
+            issue_analyses.append(issue_analysis)
+
+            issue_concepts = self.search_concepts(
+                issue_focus,
+                issue_vector,
+                issue_analysis,
+            )
+            issue_expansion = self.graph.expand_from_concepts(
+                issue_concepts,
+                preferred_local_names=issue_analysis.preferred_concepts,
+            )
+            issue_direct_hits = self.search_articles_direct(
+                issue_focus,
+                issue_vector,
+                issue_analysis,
+            )
+            issue_paragraph_hits = self.search_paragraphs(
+                issue_focus,
+                issue_vector,
+                issue_analysis,
+            )
+
+            issue_ranked = self._rank_articles(
+                direct_hits=issue_direct_hits,
+                paragraph_hits=issue_paragraph_hits,
+                expansion=issue_expansion,
+                analysis=issue_analysis,
+                allow_llm_selection=False,
+                final_limit_override=per_issue_limit,
+            )
+
+            # Keep the strongest bounded candidates for the issue and let the
+            # constrained reranker verify legal support from article text. Do
+            # not use a weak lexical threshold as a proof of coverage.
+            strong_issue_numbers = [
+                int(hit.article_number)
+                for hit in issue_ranked
+                if hit.article_number is not None
+            ][:per_issue_limit]
+
+            issue_candidate_numbers.append(
+                tuple(strong_issue_numbers)
+            )
+            concept_groups.append(issue_concepts)
+            direct_groups.append(issue_direct_hits)
+            paragraph_groups.append(issue_paragraph_hits)
+            expansion_groups.append(issue_expansion)
+
+        # Interleave groups so no one issue dominates the shared ranking.
+        concept_limit = max(
+            self.settings.retrieval_concept_top_k,
+            len(issue_query_vectors) * 3,
+        )
+        concept_hits = self._merge_hit_groups(
+            concept_groups,
+            limit=concept_limit,
+        )
+
+        # Run one combined graph expansion as well. For genuine multi-issue
+        # questions the seed ceiling grows with the issue count, while the
+        # original two-seed behavior remains unchanged for simple questions.
+        combined_preferred = list(analysis.preferred_concepts)
+        for issue_analysis in issue_analyses:
+            for concept in issue_analysis.preferred_concepts:
+                if concept not in combined_preferred:
+                    combined_preferred.append(concept)
+
+        seed_limit_override: int | None = None
+        if len(issue_query_vectors) > 1:
+            seed_limit_override = min(
+                int(
+                    getattr(
+                        self.settings,
+                        "retrieval_issue_graph_seed_limit",
+                        5,
+                    )
                 ),
+                max(2, len(issue_query_vectors)),
             )
+
+        combined_expansion = self.graph.expand_from_concepts(
+            concept_hits,
+            preferred_local_names=tuple(combined_preferred),
+            seed_limit_override=seed_limit_override,
+        )
+        expansion_groups.insert(0, combined_expansion)
+        expansion = self._merge_expansions(expansion_groups)
+
+        expanded_concepts = self._expanded_concepts(
+            expansion
         )
 
-        expanded_concepts = (
-            self._expanded_concepts(
-                expansion
-            )
+        direct_article_hits = self._merge_hit_groups(
+            direct_groups,
+            limit=max(80, len(issue_query_vectors) * 20),
         )
-
-        direct_article_hits = (
-            self.search_articles_direct(
-                question,
-                query_vector,
-                analysis,
-            )
-        )
-
-        paragraph_hits = (
-            self.search_paragraphs(
-                question,
-                query_vector,
-                analysis,
-            )
+        paragraph_hits = self._merge_hit_groups(
+            paragraph_groups,
+            limit=max(60, len(issue_query_vectors) * 20),
         )
 
         article_hits = self._rank_articles(
@@ -1730,12 +2468,27 @@ class RetrievalService:
             paragraph_hits=paragraph_hits,
             expansion=expansion,
             analysis=analysis,
+            issue_candidate_numbers=tuple(issue_candidate_numbers),
         )
 
         mixed_hits = self.search_mixed(
             question,
             query_vector,
         )
+
+        if issue_query_vectors:
+            self.last_issue_coverage_debug.setdefault(
+                "issue_query_vectors",
+                [
+                    {
+                        "issue_ar": label,
+                        "retrieval_query_ar": query,
+                        "focused_retrieval_text": _focused_issue_text(label, query),
+                        "embedding_dimensions": len(vector),
+                    }
+                    for label, query, vector in issue_query_vectors
+                ],
+            )
 
         return RetrievalPreview(
             question=question,

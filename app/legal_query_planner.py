@@ -55,22 +55,39 @@ class LegalQueryPlan(BaseModel):
     clarification_question_ar: str = ""
 
     @property
-    def retrieval_queries(self) -> tuple[str, ...]:
-        queries: list[str] = []
+    def retrieval_issue_pairs(self) -> tuple[tuple[str, str], ...]:
+        """Return de-duplicated (issue label, retrieval query) pairs.
+
+        Keeping the label and query together prevents independent de-duplication
+        from misaligning planner issues in downstream issue-wise retrieval.
+        """
+
+        pairs: list[tuple[str, str]] = []
+        seen_queries: set[str] = set()
+
         for issue in self.atomic_issues:
+            label = issue.issue_ar.strip()
             query = issue.retrieval_query_ar.strip()
-            if query and query not in queries:
-                queries.append(query)
-        return tuple(queries)
+            if not query or query in seen_queries:
+                continue
+            seen_queries.add(query)
+            pairs.append((label or query, query))
+
+        return tuple(pairs)
+
+    @property
+    def retrieval_queries(self) -> tuple[str, ...]:
+        return tuple(
+            query
+            for _, query in self.retrieval_issue_pairs
+        )
 
     @property
     def issue_labels(self) -> tuple[str, ...]:
-        labels: list[str] = []
-        for issue in self.atomic_issues:
-            label = issue.issue_ar.strip()
-            if label and label not in labels:
-                labels.append(label)
-        return tuple(labels)
+        return tuple(
+            label
+            for label, _ in self.retrieval_issue_pairs
+        )
 
 
 class LegalQueryPlanner:
@@ -314,8 +331,23 @@ FOR ABSTAIN
 
 FOR RETRIEVE
 
-- identify every independent legal issue, using one to five atomic issues;
-- produce one focused Arabic retrieval query for each issue;
+- identify every independently supportable requested legal element, using one
+  to five atomic issues;
+- preserve the user's explicit enumeration. If the user names separate items
+  after a colon, comma, conjunction, or sequence marker, do NOT merge two
+  separately requested items merely because they share a topic;
+- for a sequential legal process, create a separate atomic issue for each named
+  stage when the stages may be governed by separate provisions;
+- do not compress distinct protections, remedies, procedures, stages,
+  exceptions, or consequences into one broad issue such as "framework" or
+  "protection" when the question requests them separately;
+- one atomic issue should correspond to one independently verifiable retrieval
+  target whenever possible;
+- produce one compact Arabic retrieval phrase for each issue, optimized for
+  lexical/semantic search over statutory text rather than conversational QA;
+- retrieval_query_ar should normally be 3-12 content words and must not add
+  generic boilerplate such as "ما هي أحكام", "وفق قانون العمل الأردني",
+  "في قانون العمل الأردني", or "هل يوجد" unless those words are legally material;
 - preserve material actors, conditions, numbers, dates, deadlines, amounts,
   procedures, and requested consequences;
 - do not select article numbers;
@@ -326,8 +358,8 @@ FOR RETRIEVE
 - clarification_question_ar must be an empty string;
 - decision_reason and all Arabic fields must be fully Arabic.
 
-Return the smallest complete retrieval plan that can answer all requested legal
-issues.
+Return a complete retrieval plan that preserves every independently requested
+legal element without inventing issues that the user did not request.
 """.strip()
 
     @staticmethod
@@ -364,7 +396,10 @@ When uncertain, prefer retrieve unless the principal issue is clearly outside
 the represented Labor Law.
 
 For retrieve, provide one to five focused Arabic atomic issues and request one
-to five articles. For abstain, provide no issues and request zero articles.
+to five articles. Preserve separately named requested items as separate atomic
+issues whenever they can be verified independently. For a named multi-stage
+procedure, do not collapse several stages into one issue. For abstain, provide
+no issues and request zero articles.
 
 Never answer the question, never mention or guess article numbers, and keep
 clarification_question_ar empty.

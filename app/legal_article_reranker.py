@@ -13,6 +13,47 @@ from app.llm_provider import build_pipeline_llm
 logger = logging.getLogger(__name__)
 
 
+
+
+class BasicArticleSelection(BaseModel):
+    """Original V1 selection schema used for single-issue questions."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    behavior: Literal["retrieve", "abstain"]
+    selected_article_numbers: list[int] = Field(max_length=5)
+    confidence: float = Field(ge=0.0, le=1.0)
+    reason: str
+
+
+class IssueCoverage(BaseModel):
+    """Coverage judgment for one planner-decomposed atomic issue."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    issue_index: int = Field(ge=1, le=5)
+    covered: bool
+    supporting_article_numbers: list[int] = Field(
+        default_factory=list,
+        max_length=5,
+    )
+    reason: str = ""
+
+
+class AtomicIssueSupport(BaseModel):
+    """Independent verification that candidate text directly supports one issue."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    covered: bool
+    supporting_article_numbers: list[int] = Field(
+        default_factory=list,
+        max_length=5,
+    )
+    confidence: float = Field(ge=0.0, le=1.0)
+    reason: str = ""
+
+
 class ArticleSelection(BaseModel):
     """Strict model output for constrained legal-article selection."""
 
@@ -20,6 +61,10 @@ class ArticleSelection(BaseModel):
 
     behavior: Literal["retrieve", "abstain"]
     selected_article_numbers: list[int] = Field(
+        max_length=5,
+    )
+    issue_coverage: list[IssueCoverage] = Field(
+        default_factory=list,
         max_length=5,
     )
     confidence: float = Field(ge=0.0, le=1.0)
@@ -39,10 +84,9 @@ class LegalArticleReranker:
     """
     Select the minimum complete article set from the supplied catalogue.
 
-    The model never generates database queries and cannot invent article
-    numbers: Python validates every returned number against the catalogue.
-    Any API, parsing, or validation failure returns an empty selection so the
-    deterministic retriever remains the safe fallback.
+    Multi-issue questions also receive the planner's atomic issue plan. The
+    reranker must report one coverage judgment per issue, and Python validates
+    all cited article numbers against the supplied catalogue.
     """
 
     def __init__(self, settings: Settings) -> None:
@@ -56,8 +100,6 @@ class LegalArticleReranker:
             "0", "false", "no", "off", ""
         }
 
-        # Generic enable flag for the provider-neutral pipeline.  Fall back to
-        # the historical OPENAI_* flag so existing configuration still works.
         enabled_value = os.getenv(
             "PIPELINE_RERANK_ENABLED",
             os.getenv(
@@ -72,8 +114,6 @@ class LegalArticleReranker:
             "off",
         }
 
-        # For fair end-to-end comparison, the reranker must use the same
-        # provider/model as all other LLM-dependent pipeline stages.
         self.provider = str(
             getattr(settings, "pipeline_llm_provider", "openai")
         ).strip().lower()
@@ -97,6 +137,9 @@ class LegalArticleReranker:
         self.candidate_limit = int(
             getattr(settings, "reranker_candidate_limit", 12)
         )
+        self.multi_issue_candidate_limit = int(
+            getattr(settings, "reranker_multi_issue_candidate_limit", 15)
+        )
         self.total_char_budget = int(
             getattr(settings, "reranker_total_char_budget", 12000)
         )
@@ -118,7 +161,7 @@ class LegalArticleReranker:
                 self.enabled = False
 
     @staticmethod
-    def _instructions() -> str:
+    def _basic_instructions() -> str:
         return """
 You are a constrained Jordanian Labor Law article selector.
 
@@ -146,11 +189,11 @@ Rules:
    consequences. Shared topic or chapter proximity is not sufficient.
 9. Do not select introductory, definitional, adjacent, or generally useful
    provisions unless the question expressly asks for what they contain.
-10. Handle Arabic paraphrases, Jordanian colloquial wording, spelling errors,
+12. Handle Arabic paraphrases, Jordanian colloquial wording, spelling errors,
     attached prefixes, and Western or Arabic digits.
 11. Ignore deterministic ranking when exact statutory text supports a different
     article; ranking data is only a weak hint.
-12. For every in-scope question, return behavior=retrieve and the minimal
+14. For every in-scope question, return behavior=retrieve and the minimal
     complete article set; never request clarification.
 13. If the question is outside Jordanian labor law, return behavior=abstain and
     no articles.
@@ -158,22 +201,74 @@ Rules:
 15. Return no more than five article numbers.
 """.strip()
 
+    @staticmethod
+    def _instructions() -> str:
+        return """
+You are a constrained Jordanian Labor Law article selector.
+
+You receive:
+- one user question;
+- an optional issue_plan containing independently requested legal issues;
+- a bounded catalogue containing exact article text.
+
+Your task is retrieval only, not legal advice and not answer generation.
+
+Rules:
+1. Select only article numbers present in the supplied catalogue.
+2. When issue_plan is non-empty, evaluate EVERY issue independently before
+   selecting the final article set.
+3. Select the smallest complete set that covers all requested issues. The
+   five-article limit is a ceiling, never a target.
+4. One article may cover several issues. Do not add neighbouring/background
+   articles merely to create one article per issue.
+5. For each issue_plan item, return exactly one issue_coverage item using the
+   same issue_index. Set covered=true only when the supplied statutory text
+   directly provides the requested rule/fact/procedure/consequence.
+6. One atomic issue MAY require multiple articles. supporting_article_numbers
+   must contain every supplied article that is independently necessary to make
+   that issue complete, up to five. Do not collapse a multi-stage procedure,
+   framework, set of rules, or separately named protections into one article
+   merely because one candidate is topically related.
+7. Every supporting article must also be in selected_article_numbers. If two
+   different provisions supply different requested elements, include both.
+8. candidate_article_numbers in the issue plan are retrieval hints, not proof.
+   Prefer them when their exact text supports the issue, but you may use another
+   supplied catalogue article when its text is a better direct match.
+9. When covered=false, supporting_article_numbers must be empty. Never pretend
+   an issue is covered by a merely related article, shared chapter, or nearby
+   article number.
+10. Before returning, verify issue by issue that each requested part is either
+   fully covered by the necessary selected article(s) or explicitly uncovered.
+11. Distinguish neighbouring provisions by exact actors, facts, conditions,
+   numbers, deadlines, procedures and legal consequences. Shared topic or
+   chapter proximity is not sufficient.
+12. Handle Arabic paraphrases, Jordanian colloquial wording, spelling errors,
+    attached prefixes, and Western or Arabic digits.
+13. Deterministic ranking is only a weak hint. Exact statutory text controls.
+14. For every in-scope question, return behavior=retrieve. If the question is
+    outside Jordanian labor law, return behavior=abstain with no articles.
+15. Never rely on knowledge outside the supplied catalogue.
+16. Return no more than five selected article numbers.
+""".strip()
+
     def _payload(
         self,
         *,
         question: str,
         articles: list[CatalogArticle],
+        issue_pairs: tuple[tuple[str, str], ...] = (),
+        issue_candidate_numbers: tuple[tuple[int, ...], ...] = (),
     ) -> dict[str, Any]:
-        # The retrieval service supplies the strongest shared candidate pool.
-        # Enforce the same ceiling again here so every provider receives the
-        # exact same bounded reranker problem.
-        bounded_articles = list(articles[: self.candidate_limit])
+        candidate_limit = self.candidate_limit
+        if len(issue_pairs) > 1:
+            candidate_limit = max(
+                candidate_limit,
+                self.multi_issue_candidate_limit,
+            )
+
+        bounded_articles = list(articles[:candidate_limit])
         catalogue: list[dict[str, Any]] = []
 
-        # Allocate one fixed total text budget across the candidate set. This
-        # prevents hosted models from seeing a much larger prompt than local
-        # 8B models while still giving fewer-candidate questions more text per
-        # article.
         per_article_chars = self.max_article_chars
         if bounded_articles:
             per_article_chars = min(
@@ -199,16 +294,132 @@ Rules:
                 }
             )
 
+        issue_plan = []
+        for index, (label, query) in enumerate(issue_pairs, start=1):
+            candidates = (
+                issue_candidate_numbers[index - 1]
+                if index - 1 < len(issue_candidate_numbers)
+                else ()
+            )
+            issue_plan.append(
+                {
+                    "issue_index": index,
+                    "issue_ar": label,
+                    "retrieval_query_ar": query,
+                    "candidate_article_numbers": list(candidates),
+                }
+            )
+
         return {
             "question": question,
+            "issue_plan": issue_plan,
             "catalogue": catalogue,
         }
+
+    @staticmethod
+    def _atomic_issue_support_instructions() -> str:
+        return """
+You verify evidence for ONE atomic Jordanian Labor Law issue.
+
+You receive the exact text of a bounded set of candidate articles.
+Return covered=true only if the supplied text directly answers the exact issue.
+A shared topic, chapter, actor, or nearby article is not enough.
+
+An issue may need more than one article when distinct supplied provisions are
+independently necessary for the requested rule, framework, stages, exceptions,
+or consequences. Include all necessary article numbers, up to five.
+
+If none of the supplied articles directly supports the issue, return
+covered=false and an empty supporting_article_numbers list. Do not force a
+selection merely because the issue is generally within labor law.
+
+Use only the supplied statutory text. Never infer missing legal rules from
+outside knowledge or from article numbering.
+""".strip()
+
+    def verify_issue_support(
+        self,
+        *,
+        question: str,
+        articles: list[CatalogArticle],
+    ) -> AtomicIssueSupport | None:
+        if not articles:
+            return AtomicIssueSupport(
+                covered=False,
+                supporting_article_numbers=[],
+                confidence=1.0,
+                reason="No candidate articles were supplied.",
+            )
+
+        if not self.enabled or self.llm is None:
+            if self.strict_evaluation:
+                raise RuntimeError(
+                    "Strict evaluation aborted: article reranker is unavailable. "
+                    f"Provider={self.provider} Model={self.model}"
+                )
+            return None
+
+        bounded = list(articles[: max(5, self.candidate_limit)])
+        valid_numbers = {item.article_number for item in bounded}
+        catalogue = self._payload(
+            question=question,
+            articles=bounded,
+            issue_pairs=(),
+            issue_candidate_numbers=(),
+        )["catalogue"]
+
+        try:
+            result = self.llm.generate_structured(
+                instructions=self._atomic_issue_support_instructions(),
+                payload={"issue": question, "catalogue": catalogue},
+                response_model=AtomicIssueSupport,
+                schema_name="atomic_issue_support_v2_2",
+                max_output_tokens=int(
+                    getattr(self.settings, "reranker_max_output_tokens", 2000)
+                ),
+            )
+            support = AtomicIssueSupport.model_validate(result.data)
+            numbers = list(
+                dict.fromkeys(
+                    int(number)
+                    for number in support.supporting_article_numbers
+                )
+            )
+            if any(number not in valid_numbers for number in numbers):
+                raise ValueError(
+                    "Atomic issue verifier referenced an article outside the catalogue."
+                )
+            if not support.covered:
+                numbers = []
+            elif not numbers:
+                return support.model_copy(
+                    update={"covered": False, "supporting_article_numbers": []}
+                )
+            return support.model_copy(
+                update={"supporting_article_numbers": numbers[:5]}
+            )
+        except Exception as exc:
+            if self.strict_evaluation:
+                raise RuntimeError(
+                    "Strict evaluation aborted: atomic issue verification failed. "
+                    f"Provider={self.provider} Model={self.model} "
+                    f"Error={type(exc).__name__}: {exc}"
+                ) from exc
+            logger.warning(
+                "Atomic issue verification failed. Provider=%s Model=%s Error=%s",
+                self.provider,
+                self.model,
+                exc,
+            )
+            return None
 
     def select(
         self,
         *,
         question: str,
         articles: list[CatalogArticle],
+        issue_pairs: tuple[tuple[str, str], ...] = (),
+        issue_candidate_numbers: tuple[tuple[int, ...], ...] = (),
     ) -> ArticleSelection | None:
         if not articles:
             return None
@@ -221,32 +432,73 @@ Rules:
                 )
             return None
 
+        candidate_limit = self.candidate_limit
+        if len(issue_pairs) > 1:
+            candidate_limit = max(
+                candidate_limit,
+                self.multi_issue_candidate_limit,
+            )
+
+        bounded_articles = list(articles[:candidate_limit])
         valid_numbers = {
             article.article_number
-            for article in articles
+            for article in bounded_articles
         }
 
         try:
-            result = self.llm.generate_structured(
-                instructions=self._instructions(),
-                payload=self._payload(
-                    question=question,
-                    articles=articles,
-                ),
-                response_model=ArticleSelection,
-                schema_name="legal_article_selection",
-                max_output_tokens=int(
-                    getattr(
-                        self.settings,
-                        "reranker_max_output_tokens",
-                        2000,
-                    )
-                ),
+            max_output_tokens = int(
+                getattr(
+                    self.settings,
+                    "reranker_max_output_tokens",
+                    2000,
+                )
             )
 
-            selection = ArticleSelection.model_validate(
-                result.data
-            )
+            if len(issue_pairs) <= 1:
+                # Preserve the exact V1 reranker contract for simple questions.
+                result = self.llm.generate_structured(
+                    instructions=self._basic_instructions(),
+                    payload={
+                        "question": question,
+                        "catalogue": self._payload(
+                            question=question,
+                            articles=bounded_articles,
+                            issue_pairs=(),
+                            issue_candidate_numbers=(),
+                        )["catalogue"],
+                    },
+                    response_model=BasicArticleSelection,
+                    schema_name="legal_article_selection",
+                    max_output_tokens=max_output_tokens,
+                )
+                basic_selection = BasicArticleSelection.model_validate(
+                    result.data
+                )
+                selection = ArticleSelection(
+                    behavior=basic_selection.behavior,
+                    selected_article_numbers=(
+                        basic_selection.selected_article_numbers
+                    ),
+                    issue_coverage=[],
+                    confidence=basic_selection.confidence,
+                    reason=basic_selection.reason,
+                )
+            else:
+                result = self.llm.generate_structured(
+                    instructions=self._instructions(),
+                    payload=self._payload(
+                        question=question,
+                        articles=bounded_articles,
+                        issue_pairs=issue_pairs,
+                        issue_candidate_numbers=issue_candidate_numbers,
+                    ),
+                    response_model=ArticleSelection,
+                    schema_name="legal_article_selection_v2",
+                    max_output_tokens=max_output_tokens,
+                )
+                selection = ArticleSelection.model_validate(
+                    result.data
+                )
 
             ordered_unique = list(
                 dict.fromkeys(
@@ -264,6 +516,51 @@ Rules:
                     "the supplied catalogue."
                 )
 
+            valid_issue_indices = set(range(1, len(issue_pairs) + 1))
+            seen_issue_indices: set[int] = set()
+            normalized_coverage: list[IssueCoverage] = []
+
+            for coverage in selection.issue_coverage:
+                if coverage.issue_index not in valid_issue_indices:
+                    continue
+                if coverage.issue_index in seen_issue_indices:
+                    continue
+                seen_issue_indices.add(coverage.issue_index)
+
+                support_numbers = list(
+                    dict.fromkeys(
+                        int(number)
+                        for number in coverage.supporting_article_numbers
+                    )
+                )
+                if any(number not in valid_numbers for number in support_numbers):
+                    raise ValueError(
+                        "Issue coverage referenced an article outside the "
+                        "supplied catalogue."
+                    )
+
+                if coverage.covered and not support_numbers:
+                    coverage = coverage.model_copy(
+                        update={"covered": False}
+                    )
+                    support_numbers = []
+
+                if not coverage.covered:
+                    support_numbers = []
+
+                if coverage.covered:
+                    for number in support_numbers:
+                        if number not in ordered_unique:
+                            ordered_unique.append(number)
+
+                normalized_coverage.append(
+                    coverage.model_copy(
+                        update={
+                            "supporting_article_numbers": support_numbers[:5],
+                        }
+                    )
+                )
+
             if selection.behavior == "retrieve" and not ordered_unique:
                 raise ValueError(
                     "The reranker chose retrieve without an article."
@@ -278,10 +575,11 @@ Rules:
             return selection.model_copy(
                 update={
                     "selected_article_numbers": ordered_unique[:5],
+                    "issue_coverage": normalized_coverage,
                 }
             )
 
-        except Exception as exc:  # safe deterministic fallback outside strict evaluation
+        except Exception as exc:
             if self.strict_evaluation:
                 raise RuntimeError(
                     "Strict evaluation aborted: article reranker failed. "

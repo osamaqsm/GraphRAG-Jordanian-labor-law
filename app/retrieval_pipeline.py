@@ -191,16 +191,59 @@ class RetrievalOnlyPipeline:
             "text-embedding-3-small",
         ))
         vector: list[float] = []
+        issue_query_vectors: tuple[
+            tuple[str, str, list[float]], ...
+        ] = ()
         input_tokens = 0
         preview: Any | None = None
 
         if analysis.behavior == "retrieve":
+            issue_pairs = tuple(
+                (label, query)
+                for label, query in zip(
+                    analysis.planner_issue_labels,
+                    analysis.planner_queries,
+                    strict=False,
+                )
+                if query
+            )
+
+            # Activate the V2 path only for genuine multi-issue plans. A
+            # one-issue question keeps the original V1 embedding/retrieval path
+            # exactly, minimizing regression risk on simple questions.
+            multi_issue_pairs = (
+                issue_pairs
+                if len(issue_pairs) > 1
+                else ()
+            )
+
+            # Embed the original question plus each concise atomic-issue label.
+            # The label is intentionally used instead of the planner's verbose
+            # retrieval sentence so generic boilerplate cannot dilute the
+            # semantic vector for a narrow legal issue.
+            embedding_inputs = [
+                question,
+                *(label for label, _ in multi_issue_pairs),
+            ]
             embedding_response = self.openai_client.embeddings.create(
                 model=embedding_model,
-                input=[question],
+                input=embedding_inputs,
                 encoding_format="float",
             )
-            vector = list(embedding_response.data[0].embedding)
+            vectors = [
+                list(item.embedding)
+                for item in embedding_response.data
+            ]
+            vector = vectors[0]
+            issue_query_vectors = tuple(
+                (label, query, vectors[index])
+                for index, (label, query) in enumerate(
+                    multi_issue_pairs,
+                    start=1,
+                )
+                if index < len(vectors)
+            )
+
             usage = getattr(embedding_response, "usage", None)
             input_tokens = int(
                 getattr(usage, "prompt_tokens", 0)
@@ -214,6 +257,7 @@ class RetrievalOnlyPipeline:
                 embedding_dimensions=len(vector),
                 embedding_input_tokens=input_tokens,
                 analysis=analysis,
+                issue_query_vectors=issue_query_vectors,
             )
 
         article_hits = list(getattr(preview, "article_hits", []) or [])
@@ -248,6 +292,24 @@ class RetrievalOnlyPipeline:
                     "max_final_articles": analysis.max_final_articles,
                 },
                 "query_plan": _dump(query_plan) if query_plan is not None else None,
+                "issue_wise_retrieval": {
+                    "enabled": bool(issue_query_vectors),
+                    "issues": [
+                        {
+                            "issue_ar": label,
+                            "retrieval_query_ar": query,
+                            "embedding_dimensions": len(issue_vector),
+                        }
+                        for label, query, issue_vector in issue_query_vectors
+                    ],
+                    "coverage": dict(
+                        getattr(
+                            self.service,
+                            "last_issue_coverage_debug",
+                            {},
+                        )
+                    ),
+                },
                 "raw_preview": _dump(preview) if preview is not None else None,
             }
 
@@ -285,3 +347,4 @@ class RetrievalOnlyPipeline:
             elapsed_ms=elapsed_ms,
             debug=debug,
         )
+

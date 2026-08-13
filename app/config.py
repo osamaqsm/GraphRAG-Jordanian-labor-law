@@ -307,6 +307,33 @@ class Settings(BaseSettings):
         le=10.0,
     )
 
+    # Multi-issue retrieval controls. These defaults preserve the existing
+    # single-issue behavior while giving planner-decomposed questions an
+    # independent candidate path per atomic legal issue.
+    retrieval_issue_candidates_per_issue: int = Field(
+        default=6,
+        ge=1,
+        le=10,
+    )
+
+    retrieval_issue_graph_seed_limit: int = Field(
+        default=5,
+        ge=2,
+        le=10,
+    )
+
+    retrieval_issue_neighbor_radius: int = Field(
+        default=2,
+        ge=0,
+        le=3,
+    )
+
+    reranker_multi_issue_candidate_limit: int = Field(
+        default=30,
+        ge=12,
+        le=30,
+    )
+
     # ---------------------------------------------------------
     # KG file
     # ---------------------------------------------------------

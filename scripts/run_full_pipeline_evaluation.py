@@ -291,21 +291,16 @@ def _is_model_contract_failure(
     detail: str,
 ) -> bool:
     """
-    Distinguish deterministic model-output/schema failures from
-    infrastructure/provider failures.
+    Distinguish model-produced contract/validation failures from
+    infrastructure/provider execution failures.
 
-    Only structured-output validation violations are scored here.
-    Timeouts, network failures, rate limits, and provider HTTP failures
-    remain execution errors and retain the existing retry/resume policy.
+    Model contract failures are scored as failed benchmark cases.
+    Infrastructure failures retain the checkpoint/retry policy.
     """
     if status_code != 500:
         return False
 
     normalized = detail.lower()
-
-    model_contract_markers = (
-        'structured-output validation failed',
-    )
 
     infrastructure_markers = (
         'cohere request failed.',
@@ -320,14 +315,40 @@ def _is_model_contract_failure(
         'connectionerror',
     )
 
+    if any(
+        marker in normalized
+        for marker in infrastructure_markers
+    ):
+        return False
+
+    # Pydantic / structured JSON contract violation.
+    if 'structured-output validation failed' in normalized:
+        return True
+
+    # The legal query planner performs additional semantic contract
+    # validation after the structured JSON has passed Pydantic.
+    # Examples include an abstain plan containing atomic issues or
+    # requesting articles. Those ValueErrors are model-output failures,
+    # not provider/infrastructure failures.
+    planner_stage_markers = (
+        'strict evaluation aborted: query planner failed.',
+        'strict evaluation aborted: route verification failed.',
+    )
+
+    validation_error_markers = (
+        'error=valueerror:',
+        'error=validationerror:',
+        'validationerror:',
+    )
+
     return (
         any(
             marker in normalized
-            for marker in model_contract_markers
+            for marker in planner_stage_markers
         )
-        and not any(
+        and any(
             marker in normalized
-            for marker in infrastructure_markers
+            for marker in validation_error_markers
         )
     )
 
@@ -350,7 +371,12 @@ def post_json(session: requests.Session, url: str, payload: dict[str, Any], time
                 elapsed=elapsed,
             )
 
-        response.raise_for_status()
+        try:
+            response.raise_for_status()
+        except requests.HTTPError as exc:
+            raise requests.HTTPError(
+                f"{exc} | response_detail={detail[:2000]}"
+            ) from exc
 
     value = response.json()
     if not isinstance(value, dict):

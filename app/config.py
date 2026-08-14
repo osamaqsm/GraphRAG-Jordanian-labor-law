@@ -30,6 +30,7 @@ class Settings(BaseSettings):
         "anthropic",
         "google",
         "opencode",
+        "cohere",
         "ollama",
     ] = "openai"
 
@@ -109,6 +110,20 @@ class Settings(BaseSettings):
     opencode_base_url: str = "https://opencode.ai/zen/go"
 
     opencode_timeout_seconds: float = Field(
+        default=120.0,
+        ge=1.0,
+    )
+
+    # ---------------------------------------------------------
+    # Cohere (hosted Aya)
+    # ---------------------------------------------------------
+
+    # Required only when PIPELINE_LLM_PROVIDER=cohere.
+    cohere_api_key: str = ""
+
+    cohere_base_url: str = "https://api.cohere.com"
+
+    cohere_timeout_seconds: float = Field(
         default=120.0,
         ge=1.0,
     )

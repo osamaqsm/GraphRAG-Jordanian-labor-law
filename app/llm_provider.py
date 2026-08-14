@@ -107,6 +107,7 @@ class StructuredLLMProvider:
       - anthropic -> Claude models (kept for compatibility; not required now)
       - google   -> Gemini models through the official google-genai SDK
       - opencode -> hosted Qwen models through OpenCode Go /v1/messages
+      - cohere   -> hosted Aya models through Cohere Chat API V2
       - ollama   -> local models through Ollama's native REST API
 
     Planner, route verifier, reranker, generator, and citation retry depend only
@@ -122,11 +123,14 @@ class StructuredLLMProvider:
         anthropic_api_key: str | None = None,
         google_api_key: str | None = None,
         opencode_api_key: str | None = None,
+        cohere_api_key: str | None = None,
         openai_timeout_seconds: float = 120.0,
         anthropic_timeout_seconds: float = 120.0,
         google_timeout_seconds: float = 120.0,
         opencode_base_url: str = "https://opencode.ai/zen/go",
         opencode_timeout_seconds: float = 120.0,
+        cohere_base_url: str = "https://api.cohere.com",
+        cohere_timeout_seconds: float = 120.0,
         openai_max_retries: int = 3,
         anthropic_max_retries: int = 3,
         ollama_base_url: str = "http://host.docker.internal:11434",
@@ -134,7 +138,14 @@ class StructuredLLMProvider:
         ollama_num_ctx: int = 8192,
     ) -> None:
         provider = provider.strip().lower()
-        allowed = {"openai", "anthropic", "google", "opencode", "ollama"}
+        allowed = {
+            "openai",
+            "anthropic",
+            "google",
+            "opencode",
+            "cohere",
+            "ollama",
+        }
         if provider not in allowed:
             raise ValueError(
                 "pipeline_llm_provider must be one of: "
@@ -148,6 +159,11 @@ class StructuredLLMProvider:
         self.opencode_api_key = (opencode_api_key or "").strip()
         self.opencode_base_url = opencode_base_url.rstrip("/")
         self.opencode_timeout_seconds = float(opencode_timeout_seconds)
+
+        self.cohere_api_key = (cohere_api_key or "").strip()
+        self.cohere_base_url = cohere_base_url.rstrip("/")
+        self.cohere_timeout_seconds = float(cohere_timeout_seconds)
+
         self.ollama_base_url = ollama_base_url.rstrip("/")
         self.ollama_timeout_seconds = float(ollama_timeout_seconds)
         self.ollama_num_ctx = int(ollama_num_ctx)
@@ -156,6 +172,7 @@ class StructuredLLMProvider:
         self._anthropic_client: Anthropic | None = None
         self._google_client: Any | None = None
         self._opencode_session: requests.Session | None = None
+        self._cohere_session: requests.Session | None = None
         self._ollama_session: requests.Session | None = None
 
         if provider == "openai":
@@ -209,6 +226,14 @@ class StructuredLLMProvider:
                 )
             self._opencode_session = requests.Session()
 
+        elif provider == "cohere":
+            if not self.cohere_api_key:
+                raise ValueError(
+                    "COHERE_API_KEY is required when "
+                    "PIPELINE_LLM_PROVIDER=cohere."
+                )
+            self._cohere_session = requests.Session()
+
         else:  # ollama
             self._ollama_session = requests.Session()
 
@@ -250,6 +275,14 @@ class StructuredLLMProvider:
             )
         if self.provider == "opencode":
             return self._call_opencode(
+                instructions=instructions,
+                payload=payload,
+                response_model=response_model,
+                schema_name=schema_name,
+                max_output_tokens=max_output_tokens,
+            )
+        if self.provider == "cohere":
+            return self._call_cohere(
                 instructions=instructions,
                 payload=payload,
                 response_model=response_model,
@@ -718,6 +751,224 @@ class StructuredLLMProvider:
             raw_text=raw_text,
         )
 
+
+    # ------------------------------------------------------------------
+    # Cohere (hosted Aya through Chat API V2)
+    # ------------------------------------------------------------------
+
+    def _call_cohere(
+        self,
+        *,
+        instructions: str,
+        payload: dict[str, Any],
+        response_model: type[BaseModel],
+        schema_name: str,
+        max_output_tokens: int,
+    ) -> StructuredLLMResult:
+        if self._cohere_session is None:
+            raise RuntimeError("Cohere session is not initialized.")
+
+        schema = _strict_schema(response_model.model_json_schema())
+        user_content = json.dumps(
+            payload,
+            ensure_ascii=False,
+            separators=(",", ":"),
+        )
+        schema_text = json.dumps(
+            schema,
+            ensure_ascii=False,
+            separators=(",", ":"),
+        )
+
+        # Aya Expanse is not documented by Cohere as supporting guaranteed
+        # native JSON-Schema structured outputs. Keep the same logical output
+        # contract by placing the schema in the system instruction, then
+        # enforce it locally with the same Pydantic response model.
+        #
+        # There is no semantic repair retry. The only retry allowed below is
+        # the frozen provider-neutral recovery for an output-token ceiling or
+        # an empty otherwise-normal completion.
+        structured_instructions = (
+            instructions
+            + "\n\nSTRUCTURED OUTPUT CONTRACT\n"
+            + f"Return exactly one JSON object matching schema {schema_name!r}. "
+              "Return JSON only: no Markdown fences, commentary, or extra keys.\n"
+            + "JSON Schema:\n"
+            + schema_text
+        )
+
+        url = f"{self.cohere_base_url}/v2/chat"
+        headers = {
+            "Authorization": f"Bearer {self.cohere_api_key}",
+            "Content-Type": "application/json",
+        }
+
+        def call_once(token_limit: int) -> dict[str, Any]:
+            # Aya Expanse 32B exposes a 4K maximum output window.
+            effective_limit = min(int(token_limit), 4000)
+
+            body = {
+                "model": self.model,
+                "messages": [
+                    {
+                        "role": "system",
+                        "content": structured_instructions,
+                    },
+                    {
+                        "role": "user",
+                        "content": user_content,
+                    },
+                ],
+                "max_tokens": effective_limit,
+            }
+
+            response = self._cohere_session.post(
+                url,
+                headers=headers,
+                json=body,
+                timeout=self.cohere_timeout_seconds,
+            )
+
+            if response.status_code >= 400:
+                preview = response.text[:1600]
+                raise RuntimeError(
+                    "Cohere request failed. "
+                    f"status={response.status_code} "
+                    f"body_preview={preview!r}"
+                )
+
+            value = response.json()
+
+            if not isinstance(value, dict):
+                raise RuntimeError(
+                    "Cohere returned a non-object JSON response."
+                )
+
+            return value
+
+        def usage_from(value: dict[str, Any]) -> LLMUsage:
+            usage = value.get("usage")
+            if not isinstance(usage, dict):
+                usage = {}
+
+            tokens = usage.get("tokens")
+            if not isinstance(tokens, dict):
+                tokens = usage.get("billed_units")
+            if not isinstance(tokens, dict):
+                tokens = {}
+
+            return LLMUsage(
+                input_tokens=int(tokens.get("input_tokens") or 0),
+                output_tokens=int(tokens.get("output_tokens") or 0),
+            )
+
+        def text_from(value: dict[str, Any]) -> str:
+            message = value.get("message")
+            if not isinstance(message, dict):
+                return ""
+
+            content = message.get("content")
+            if not isinstance(content, list):
+                return ""
+
+            parts: list[str] = []
+
+            for block in content:
+                if not isinstance(block, dict):
+                    continue
+                if block.get("type") == "text" and block.get("text"):
+                    parts.append(str(block["text"]))
+
+            return "".join(parts).strip()
+
+        response = call_once(max_output_tokens)
+        total_usage = usage_from(response)
+        raw_text = text_from(response)
+        finish_reason = str(
+            response.get("finish_reason") or ""
+        ).lower()
+
+        if finish_reason in {"error", "timeout"}:
+            raise RuntimeError(
+                "Cohere generation failed. "
+                f"finish_reason={finish_reason!r}"
+            )
+
+        budget_limited = finish_reason in {
+            "max_tokens",
+            "length",
+            "max_output_tokens",
+        }
+
+        if budget_limited or (
+            not raw_text
+            and finish_reason in {"", "complete", "stop_sequence"}
+        ):
+            retry_limit = min(
+                max(max_output_tokens * 2, 3000),
+                4000,
+            )
+
+            retry_response = call_once(retry_limit)
+
+            total_usage = _combine_usage(
+                total_usage,
+                usage_from(retry_response),
+            )
+
+            response = retry_response
+            raw_text = text_from(response)
+            finish_reason = str(
+                response.get("finish_reason") or ""
+            ).lower()
+
+            if finish_reason in {"error", "timeout"}:
+                raise RuntimeError(
+                    "Cohere generation failed during the fixed "
+                    "output-budget recovery attempt. "
+                    f"finish_reason={finish_reason!r}"
+                )
+
+            budget_limited = finish_reason in {
+                "max_tokens",
+                "length",
+                "max_output_tokens",
+            }
+
+        if not raw_text:
+            raise RuntimeError(
+                "Cohere returned empty structured output after the "
+                "fixed recovery policy. "
+                f"finish_reason={finish_reason!r}"
+            )
+
+        if budget_limited:
+            raise RuntimeError(
+                "Cohere structured output remained incomplete after "
+                "the fixed one-retry output-budget policy. "
+                f"raw_text_preview={raw_text[:1200]!r}"
+            )
+
+        try:
+            json_text = _extract_json_object(raw_text)
+            validated = response_model.model_validate_json(json_text)
+        except Exception as exc:
+            raise RuntimeError(
+                "Cohere structured-output validation failed. "
+                f"schema_name={schema_name!r} "
+                f"finish_reason={finish_reason!r} "
+                f"raw_text_preview={raw_text[:1200]!r} "
+                f"validation_error={type(exc).__name__}: {exc}"
+            ) from exc
+
+        return StructuredLLMResult(
+            data=validated.model_dump(mode="json"),
+            usage=total_usage,
+            provider=self.provider,
+            model=self.model,
+            raw_text=raw_text,
+        )
+
     # ------------------------------------------------------------------
     # Ollama (Qwen / Aya)
     # ------------------------------------------------------------------
@@ -839,6 +1090,7 @@ def build_pipeline_llm(settings: Any) -> StructuredLLMProvider:
         anthropic_api_key=getattr(settings, "anthropic_api_key", ""),
         google_api_key=getattr(settings, "google_api_key", ""),
         opencode_api_key=getattr(settings, "opencode_api_key", ""),
+        cohere_api_key=getattr(settings, "cohere_api_key", ""),
         openai_timeout_seconds=settings.openai_timeout_seconds,
         anthropic_timeout_seconds=getattr(
             settings, "anthropic_timeout_seconds", 120.0
@@ -849,6 +1101,16 @@ def build_pipeline_llm(settings: Any) -> StructuredLLMProvider:
         ),
         opencode_timeout_seconds=getattr(
             settings, "opencode_timeout_seconds", 120.0
+        ),
+        cohere_base_url=getattr(
+            settings,
+            "cohere_base_url",
+            "https://api.cohere.com",
+        ),
+        cohere_timeout_seconds=getattr(
+            settings,
+            "cohere_timeout_seconds",
+            120.0,
         ),
         openai_max_retries=settings.openai_max_retries,
         anthropic_max_retries=getattr(settings, "anthropic_max_retries", 3),

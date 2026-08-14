@@ -1,0 +1,436 @@
+{
+  "schema_version": "model-comparison-aggregate.v1",
+  "created_at_utc": "2026-08-13T18:39:51.387460+00:00",
+  "status": "valid",
+  "provider": "openai",
+  "model": "gpt-5-nano",
+  "model_name": "gpt-5-nano",
+  "runs_requested": 3,
+  "runs_valid": 3,
+  "questions_per_run": 40,
+  "std_definition": "sample standard deviation across independent runs",
+  "benchmark": {
+    "name": "Jordanian Labor Law KG Fresh Final Model-Comparison Holdout — 40 Questions",
+    "version": "1.0.0",
+    "sha256": "547d4636800043e14cd9254b566cbcf6aabfc464f046c798011ea3edd72077c7",
+    "path": "/app/data/benchmarks/jordan_labor_law_fresh_final_40_v2_3.json",
+    "frozen": true
+  },
+  "pipeline_models": {
+    "query_planner": {
+      "provider": "openai",
+      "model": "gpt-5-nano"
+    },
+    "route_verifier": {
+      "provider": "openai",
+      "model": "gpt-5-nano"
+    },
+    "article_reranker": {
+      "provider": "openai",
+      "model": "gpt-5-nano"
+    },
+    "answer_generator": {
+      "provider": "openai",
+      "model": "gpt-5-nano"
+    },
+    "citation_retry": {
+      "provider": "openai",
+      "model": "gpt-5-nano"
+    },
+    "embedding": {
+      "provider": "openai",
+      "model": "text-embedding-3-small"
+    },
+    "judge": {
+      "provider": "openai",
+      "model": "gpt-5.4-mini"
+    }
+  },
+  "frozen_comparison_settings": {
+    "planner_max_output_tokens": 3000,
+    "reranker_max_output_tokens": 2000,
+    "generator_max_output_tokens": 3000,
+    "reranker_candidate_limit": 12,
+    "reranker_total_char_budget": 12000,
+    "reranker_article_char_limit": 2500,
+    "ollama_num_ctx": 8192,
+    "embedding_model": "text-embedding-3-small",
+    "judge_model": "gpt-5.4-mini"
+  },
+  "individual_runs": [
+    {
+      "run_index": 1,
+      "path": "/app/data/model_evaluations/fresh_final_v2_3/openai__gpt-5-nano/run-1.json",
+      "summary": {
+        "questions_requested": 40,
+        "questions_completed": 40,
+        "questions_failed_to_run": 0,
+        "end_to_end_success_rate": 0.85,
+        "retrieval": {
+          "routing_accuracy": 1.0,
+          "hit_at_1": 0.972222,
+          "article_recall_at_5": 0.976389,
+          "article_precision": 0.906481,
+          "out_of_scope_accuracy": 1.0,
+          "mean_latency_seconds": 23.563325
+        },
+        "generation": {
+          "correctness": 0.944444,
+          "faithfulness": 0.944444,
+          "citation_validity": 1.0,
+          "citation_recall": 0.976389,
+          "out_of_scope_response_accuracy": 1.0,
+          "mean_latency_seconds": 6.551325
+        },
+        "by_test_type": {
+          "colloquial": {
+            "count": 5,
+            "end_to_end_success_rate": 1.0,
+            "routing_accuracy": 1.0
+          },
+          "multi_article": {
+            "count": 7,
+            "end_to_end_success_rate": 0.428571,
+            "routing_accuracy": 1.0
+          },
+          "numerical": {
+            "count": 5,
+            "end_to_end_success_rate": 0.8,
+            "routing_accuracy": 1.0
+          },
+          "out_of_scope": {
+            "count": 4,
+            "end_to_end_success_rate": 1.0,
+            "routing_accuracy": 1.0
+          },
+          "paraphrased": {
+            "count": 8,
+            "end_to_end_success_rate": 1.0,
+            "routing_accuracy": 1.0
+          },
+          "straightforward": {
+            "count": 8,
+            "end_to_end_success_rate": 0.875,
+            "routing_accuracy": 1.0
+          },
+          "typo": {
+            "count": 3,
+            "end_to_end_success_rate": 1.0,
+            "routing_accuracy": 1.0
+          }
+        }
+      }
+    },
+    {
+      "run_index": 2,
+      "path": "/app/data/model_evaluations/fresh_final_v2_3/openai__gpt-5-nano/run-2.json",
+      "summary": {
+        "questions_requested": 40,
+        "questions_completed": 40,
+        "questions_failed_to_run": 0,
+        "end_to_end_success_rate": 0.825,
+        "retrieval": {
+          "routing_accuracy": 1.0,
+          "hit_at_1": 0.916667,
+          "article_recall_at_5": 0.994444,
+          "article_precision": 0.811574,
+          "out_of_scope_accuracy": 1.0,
+          "mean_latency_seconds": 23.353675
+        },
+        "generation": {
+          "correctness": 0.902778,
+          "faithfulness": 0.916667,
+          "citation_validity": 1.0,
+          "citation_recall": 0.994444,
+          "out_of_scope_response_accuracy": 1.0,
+          "mean_latency_seconds": 6.57075
+        },
+        "by_test_type": {
+          "colloquial": {
+            "count": 5,
+            "end_to_end_success_rate": 0.8,
+            "routing_accuracy": 1.0
+          },
+          "multi_article": {
+            "count": 7,
+            "end_to_end_success_rate": 0.857143,
+            "routing_accuracy": 1.0
+          },
+          "numerical": {
+            "count": 5,
+            "end_to_end_success_rate": 0.6,
+            "routing_accuracy": 1.0
+          },
+          "out_of_scope": {
+            "count": 4,
+            "end_to_end_success_rate": 1.0,
+            "routing_accuracy": 1.0
+          },
+          "paraphrased": {
+            "count": 8,
+            "end_to_end_success_rate": 0.875,
+            "routing_accuracy": 1.0
+          },
+          "straightforward": {
+            "count": 8,
+            "end_to_end_success_rate": 0.75,
+            "routing_accuracy": 1.0
+          },
+          "typo": {
+            "count": 3,
+            "end_to_end_success_rate": 1.0,
+            "routing_accuracy": 1.0
+          }
+        }
+      }
+    },
+    {
+      "run_index": 3,
+      "path": "/app/data/model_evaluations/fresh_final_v2_3/openai__gpt-5-nano/run-3.json",
+      "summary": {
+        "questions_requested": 40,
+        "questions_completed": 40,
+        "questions_failed_to_run": 0,
+        "end_to_end_success_rate": 0.775,
+        "retrieval": {
+          "routing_accuracy": 1.0,
+          "hit_at_1": 0.916667,
+          "article_recall_at_5": 0.970833,
+          "article_precision": 0.858796,
+          "out_of_scope_accuracy": 1.0,
+          "mean_latency_seconds": 24.71915
+        },
+        "generation": {
+          "correctness": 0.888889,
+          "faithfulness": 0.861111,
+          "citation_validity": 1.0,
+          "citation_recall": 0.963889,
+          "out_of_scope_response_accuracy": 1.0,
+          "mean_latency_seconds": 6.44715
+        },
+        "by_test_type": {
+          "colloquial": {
+            "count": 5,
+            "end_to_end_success_rate": 1.0,
+            "routing_accuracy": 1.0
+          },
+          "multi_article": {
+            "count": 7,
+            "end_to_end_success_rate": 0.428571,
+            "routing_accuracy": 1.0
+          },
+          "numerical": {
+            "count": 5,
+            "end_to_end_success_rate": 0.8,
+            "routing_accuracy": 1.0
+          },
+          "out_of_scope": {
+            "count": 4,
+            "end_to_end_success_rate": 1.0,
+            "routing_accuracy": 1.0
+          },
+          "paraphrased": {
+            "count": 8,
+            "end_to_end_success_rate": 0.75,
+            "routing_accuracy": 1.0
+          },
+          "straightforward": {
+            "count": 8,
+            "end_to_end_success_rate": 0.75,
+            "routing_accuracy": 1.0
+          },
+          "typo": {
+            "count": 3,
+            "end_to_end_success_rate": 1.0,
+            "routing_accuracy": 1.0
+          }
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "end_to_end_success_rate": {
+      "mean": 0.816667,
+      "std": 0.038188,
+      "min": 0.775,
+      "max": 0.85
+    },
+    "retrieval": {
+      "routing_accuracy": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "hit_at_1": {
+        "mean": 0.935185,
+        "std": 0.032075,
+        "min": 0.916667,
+        "max": 0.972222
+      },
+      "article_recall_at_5": {
+        "mean": 0.980555,
+        "std": 0.012345,
+        "min": 0.970833,
+        "max": 0.994444
+      },
+      "article_precision": {
+        "mean": 0.85895,
+        "std": 0.047454,
+        "min": 0.811574,
+        "max": 0.906481
+      },
+      "out_of_scope_accuracy": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "mean_latency_seconds": {
+        "mean": 23.878717,
+        "std": 0.735346,
+        "min": 23.353675,
+        "max": 24.71915
+      }
+    },
+    "generation": {
+      "correctness": {
+        "mean": 0.912037,
+        "std": 0.028912,
+        "min": 0.888889,
+        "max": 0.944444
+      },
+      "faithfulness": {
+        "mean": 0.907407,
+        "std": 0.042431,
+        "min": 0.861111,
+        "max": 0.944444
+      },
+      "citation_validity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "citation_recall": {
+        "mean": 0.978241,
+        "std": 0.015361,
+        "min": 0.963889,
+        "max": 0.994444
+      },
+      "out_of_scope_response_accuracy": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "mean_latency_seconds": {
+        "mean": 6.523075,
+        "std": 0.066466,
+        "min": 6.44715,
+        "max": 6.57075
+      }
+    },
+    "by_test_type": {
+      "colloquial": {
+        "end_to_end_success_rate": {
+          "mean": 0.933333,
+          "std": 0.11547,
+          "min": 0.8,
+          "max": 1.0
+        },
+        "routing_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0
+        }
+      },
+      "multi_article": {
+        "end_to_end_success_rate": {
+          "mean": 0.571428,
+          "std": 0.247436,
+          "min": 0.428571,
+          "max": 0.857143
+        },
+        "routing_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0
+        }
+      },
+      "numerical": {
+        "end_to_end_success_rate": {
+          "mean": 0.733333,
+          "std": 0.11547,
+          "min": 0.6,
+          "max": 0.8
+        },
+        "routing_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0
+        }
+      },
+      "out_of_scope": {
+        "end_to_end_success_rate": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "routing_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0
+        }
+      },
+      "paraphrased": {
+        "end_to_end_success_rate": {
+          "mean": 0.875,
+          "std": 0.125,
+          "min": 0.75,
+          "max": 1.0
+        },
+        "routing_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0
+        }
+      },
+      "straightforward": {
+        "end_to_end_success_rate": {
+          "mean": 0.791667,
+          "std": 0.072169,
+          "min": 0.75,
+          "max": 0.875
+        },
+        "routing_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0
+        }
+      },
+      "typo": {
+        "end_to_end_success_rate": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "routing_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0
+        }
+      }
+    }
+  },
+  "invalid_reason": null
+}

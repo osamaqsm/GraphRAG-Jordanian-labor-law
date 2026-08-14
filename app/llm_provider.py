@@ -951,7 +951,19 @@ class StructuredLLMProvider:
 
         try:
             json_text = _extract_json_object(raw_text)
-            validated = response_model.model_validate_json(json_text)
+
+            # Aya may emit literal ASCII control characters such as
+            # newlines inside JSON string values. Python's lenient JSON
+            # decoder accepts those characters without changing their
+            # semantic content. Pydantic still performs the same strict
+            # schema/type validation on the resulting object.
+            parsed_json = json.loads(
+                json_text,
+                strict=False,
+            )
+            validated = response_model.model_validate(
+                parsed_json
+            )
         except Exception as exc:
             raise RuntimeError(
                 "Cohere structured-output validation failed. "

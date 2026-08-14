@@ -242,11 +242,116 @@ def is_arabic_only(text: str) -> bool:
     return bool(clean and ARABIC_RE.search(clean) and not LATIN_RE.search(clean))
 
 
+class ModelContractFailure(RuntimeError):
+    """
+    A model-produced response violated the frozen structured-output contract.
+
+    This is scored as a model/pipeline failure rather than an infrastructure
+    execution failure. Provider/network failures remain ordinary exceptions.
+    """
+
+    def __init__(
+        self,
+        *,
+        url: str,
+        detail: str,
+        elapsed: float,
+    ) -> None:
+        super().__init__(detail)
+        self.url = url
+        self.detail = detail
+        self.elapsed = elapsed
+
+        endpoint = url.split('?', 1)[0].rstrip('/')
+
+        if endpoint.endswith('/retrieve'):
+            self.stage = 'retrieval'
+        elif endpoint.endswith('/generate'):
+            self.stage = 'generation'
+        else:
+            self.stage = 'pipeline'
+
+
+def _http_error_detail(response: requests.Response) -> str:
+    try:
+        value = response.json()
+    except Exception:
+        return response.text[:4000]
+
+    if isinstance(value, dict):
+        detail = value.get('detail')
+        if detail is not None:
+            return str(detail)
+
+    return response.text[:4000]
+
+
+def _is_model_contract_failure(
+    status_code: int,
+    detail: str,
+) -> bool:
+    """
+    Distinguish deterministic model-output/schema failures from
+    infrastructure/provider failures.
+
+    Only structured-output validation violations are scored here.
+    Timeouts, network failures, rate limits, and provider HTTP failures
+    remain execution errors and retain the existing retry/resume policy.
+    """
+    if status_code != 500:
+        return False
+
+    normalized = detail.lower()
+
+    model_contract_markers = (
+        'structured-output validation failed',
+    )
+
+    infrastructure_markers = (
+        'cohere request failed.',
+        'status=429',
+        'status=500',
+        'status=502',
+        'status=503',
+        'status=504',
+        'timeout',
+        'timed out',
+        'connection error',
+        'connectionerror',
+    )
+
+    return (
+        any(
+            marker in normalized
+            for marker in model_contract_markers
+        )
+        and not any(
+            marker in normalized
+            for marker in infrastructure_markers
+        )
+    )
+
+
 def post_json(session: requests.Session, url: str, payload: dict[str, Any], timeout: float) -> tuple[dict[str, Any], float]:
     started = time.perf_counter()
     response = session.post(url, json=payload, timeout=timeout)
     elapsed = time.perf_counter() - started
-    response.raise_for_status()
+
+    if response.status_code >= 400:
+        detail = _http_error_detail(response)
+
+        if _is_model_contract_failure(
+            response.status_code,
+            detail,
+        ):
+            raise ModelContractFailure(
+                url=url,
+                detail=detail,
+                elapsed=elapsed,
+            )
+
+        response.raise_for_status()
+
     value = response.json()
     if not isinstance(value, dict):
         raise ValueError(f'Expected JSON object from {url}')
@@ -296,6 +401,106 @@ def evaluate_retrieval(
         'article_precision': round(article_precision, 6),
         'elapsed_seconds': round(elapsed, 3),
     }
+
+def model_contract_failure_evaluations(
+    case: dict[str, Any],
+    *,
+    stage: str,
+    retrieval: dict[str, Any] | None,
+    retrieval_elapsed: float | None,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """
+    Convert a deterministic model contract violation into a completed
+    failed benchmark case.
+
+    Retrieval-stage contract failures:
+      - penalize routing/retrieval
+      - do not invent generation-quality scores because generation
+        was never reached
+
+    Generation-stage contract failures:
+      - preserve the real retrieval metrics
+      - score generation as failed
+    """
+    expected_behavior = str(
+        case.get('expected_behavior', 'retrieve')
+    )
+
+    required = [
+        int(x)
+        for x in case.get('required_articles', [])
+    ]
+
+    acceptable = [
+        int(x)
+        for x in case.get(
+            'acceptable_articles',
+            required,
+        )
+    ]
+
+    if (
+        stage == 'generation'
+        and retrieval is not None
+        and retrieval_elapsed is not None
+    ):
+        retrieval_eval = evaluate_retrieval(
+            case,
+            retrieval,
+            retrieval_elapsed,
+        )
+    else:
+        retrieval_eval = {
+            'expected_behavior': expected_behavior,
+            'actual_behavior': 'model_contract_failure',
+            'required_articles': required,
+            'acceptable_articles': acceptable,
+            'actual_articles_at_5': [],
+            'routing_correct': False,
+            'hit_at_1': False,
+            'article_recall_at_5': 0.0,
+            'article_precision': 0.0,
+            'elapsed_seconds': None,
+        }
+
+    generation_reached = stage == 'generation'
+
+    generation_eval = {
+        'status': 'model_contract_failure',
+        'answer_ar': '',
+        'cited_article_numbers': [],
+        'out_of_scope_response_correct': (
+            False
+            if (
+                generation_reached
+                and expected_behavior == 'abstain'
+            )
+            else None
+        ),
+        'correctness_grade': (
+            0 if generation_reached else None
+        ),
+        'faithfulness_grade': (
+            0 if generation_reached else None
+        ),
+        'correctness': (
+            0.0 if generation_reached else None
+        ),
+        'faithfulness': (
+            0.0 if generation_reached else None
+        ),
+        'citation_validity': (
+            0.0 if generation_reached else None
+        ),
+        'citation_recall': (
+            0.0 if generation_reached else None
+        ),
+        'elapsed_seconds': None,
+        'judge': None,
+    }
+
+    return retrieval_eval, generation_eval
+
 
 def response_text(response: Any) -> str:
     text = str(getattr(response, 'output_text', '') or '')
@@ -840,6 +1045,15 @@ def print_row(
         )
         return
 
+    if row.get('model_contract_failure'):
+        print(
+            f'[{index:02d}/{total:02d}] '
+            f'{row["id"]} FAIL '
+            f'| MODEL_CONTRACT_FAILURE '
+            f'| Stage={row.get("model_contract_stage", "unknown")}'
+        )
+        return
+
     r = row['retrieval_evaluation']
     g = row['generation_evaluation']
     label = 'PASS' if row['end_to_end_pass'] else 'FAIL'
@@ -1072,6 +1286,12 @@ def _run_once(
         start=start_offset + 1,
     ):
         row: dict[str, Any] = _case_identity(case, index)
+
+        retrieval: dict[str, Any] | None = None
+        retrieval_elapsed: float | None = None
+        generation: dict[str, Any] | None = None
+        generation_elapsed: float | None = None
+
         try:
             retrieval, retrieval_elapsed = post_json(
                 session,
@@ -1127,6 +1347,52 @@ def _run_once(
                 'retrieval_output': retrieval,
                 'generation_output': generation,
             })
+        except ModelContractFailure as exc:
+            retrieval_eval, generation_eval = (
+                model_contract_failure_evaluations(
+                    case,
+                    stage=exc.stage,
+                    retrieval=retrieval,
+                    retrieval_elapsed=retrieval_elapsed,
+                )
+            )
+
+            row.update({
+                'model_contract_failure': True,
+                'model_contract_stage': exc.stage,
+                'model_contract_detail': exc.detail[:4000],
+                'retrieval_evaluation': retrieval_eval,
+                'generation_evaluation': generation_eval,
+                'end_to_end_pass': False,
+            })
+
+            if retrieval is not None:
+                row['retrieval_output'] = retrieval
+
+            rows.append(row)
+
+            save_output(
+                output_path,
+                build_output(
+                    args,
+                    benchmark,
+                    rows,
+                    run_index=run_index,
+                    runs_requested=runs_requested,
+                    model_name=model_name,
+                ),
+            )
+
+            print_row(row, index, len(selected))
+
+            if args.delay > 0:
+                time.sleep(args.delay)
+
+            if args.stop_on_error:
+                break
+
+            continue
+
         except Exception as exc:
             row['error'] = f'{type(exc).__name__}: {exc}'
             row['end_to_end_pass'] = False

@@ -1,0 +1,1254 @@
+{
+  "benchmark_name": "Jordanian Labor Law KG Final Unseen End-to-End Benchmark — 40 Questions",
+  "benchmark_version": "1.0.0",
+  "created_date": "2026-08-06",
+  "language": "Arabic",
+  "frozen": true,
+  "scope": "Jordanian Labor Law represented by jordan_labor_law_full_knowledge_graph.ttl",
+  "warning": "Final unseen benchmark. Freeze prompts, KG, retrieval settings, generation logic, judge model, and evaluation code before the first run. Do not modify the system after seeing results and still call a rerun unseen.",
+  "evaluation_notes": {
+    "total_cases": 40,
+    "retrieve_cases": 36,
+    "clarify_cases": 0,
+    "abstain_cases": 4,
+    "behavior_policy": "Only retrieve and abstain cases are included. Out-of-scope cases were reduced to four.",
+    "gold_article_policy": "All 58 unique required/acceptable articles in this benchmark were absent from required_articles and acceptable_articles in model_comparison_benchmark_40.json.",
+    "question_policy": "Forty newly worded Arabic questions. No exact normalized question duplicates the previous frozen 40-question model-comparison benchmark.",
+    "difficulty_policy": "Includes direct, paraphrased, noisy, colloquial, numerical, and seven multi-article cases; the largest gold set contains five articles.",
+    "api_input_policy": "Send only question text to /retrieve. Gold metadata must never be sent to retrieval or generation.",
+    "generation_metadata": "required_facts supports atomic coverage; required_citations supports citation scoring; forbidden_claims supports contradiction checks.",
+    "runner_note": "Run only with scripts/run_full_pipeline_evaluation.py and write one final JSON result per model.",
+    "final_test_rule": "After the first result is observed, do not change prompts, retrieval, KG, generator, rubric, or judge and rerun under the unseen label."
+  },
+  "distribution": {
+    "straightforward": 8,
+    "paraphrased": 8,
+    "typo": 3,
+    "numerical": 5,
+    "colloquial": 5,
+    "multi_article": 7,
+    "out_of_scope": 4
+  },
+  "difficulty_distribution": {
+    "medium": 17,
+    "hard": 17,
+    "easy": 6
+  },
+  "questions": [
+    {
+      "id": "FM40-01",
+      "test_type": "straightforward",
+      "category": "scope_exclusions",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "ما الفئات التي استثناها قانون العمل من نطاق تطبيقه، وما وضع عمال الزراعة؟",
+      "primary_article": 3,
+      "required_articles": [
+        3
+      ],
+      "acceptable_articles": [
+        3
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يستثنى الموظفون العامون وموظفو البلديات.",
+        "يستثنى أفراد عائلة صاحب العمل الذين يعملون دون أجر.",
+        "يستثنى خدم المنازل وبستانيوها وطهاتها ومن في حكمهم.",
+        "يستثنى عمال الزراعة، مع إمكان إخضاع فئات منهم وأحكامهم بموجب نظام."
+      ],
+      "required_citations": [
+        3
+      ],
+      "forbidden_claims": [
+        "يسري القانون بلا استثناء على جميع العاملين.",
+        "يخضع جميع عمال الزراعة حكماً لكامل القانون."
+      ],
+      "expected_result": "يحدد النص الفئات المستثناة، ويجعل إخضاع بعض فئات عمال الزراعة وأحكامهم رهناً بنظام."
+    },
+    {
+      "id": "FM40-02",
+      "test_type": "straightforward",
+      "category": "employment_contract_form",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "كيف ينظم عقد العمل من حيث اللغة والنسخ، وكيف يثبت العامل حقوقه إذا لم يكن العقد مكتوباً؟",
+      "primary_article": 15,
+      "required_articles": [
+        15
+      ],
+      "acceptable_articles": [
+        15
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "ينظم العقد باللغة العربية.",
+        "يحرر على نسختين على الأقل يحتفظ كل طرف بنسخة.",
+        "يجوز للعامل إثبات حقوقه بجميع طرق الإثبات القانونية إذا لم يحرر العقد كتابة."
+      ],
+      "required_citations": [
+        15
+      ],
+      "forbidden_claims": [
+        "يشترط القانون عقداً مكتوباً وإلا سقطت حقوق العامل.",
+        "يحرر العقد بنسخة واحدة لدى صاحب العمل فقط."
+      ],
+      "expected_result": "العقد عربي وبنسختين على الأقل، وغياب الكتابة لا يمنع العامل من إثبات حقوقه قانوناً."
+    },
+    {
+      "id": "FM40-03",
+      "test_type": "straightforward",
+      "category": "business_transfer_liability",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "ما أثر بيع المشروع أو إرثه أو دمج المؤسسة في استمرار عقد العمل ومسؤولية صاحب العمل القديم والجديد؟",
+      "primary_article": 16,
+      "required_articles": [
+        16
+      ],
+      "acceptable_articles": [
+        16
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يبقى عقد العمل نافذاً رغم تغير صاحب العمل.",
+        "يسأل صاحب العمل الأصلي والجديد بالتضامن مدة ستة أشهر عن الالتزامات المستحقة قبل التغيير.",
+        "بعد الستة أشهر يتحمل صاحب العمل الجديد المسؤولية وحده."
+      ],
+      "required_citations": [
+        16
+      ],
+      "forbidden_claims": [
+        "ينتهي العقد تلقائياً بمجرد بيع المشروع.",
+        "تبقى المسؤولية التضامنية بلا حد زمني."
+      ],
+      "expected_result": "لا ينهي انتقال المشروع العقد، وتستمر المسؤولية التضامنية ستة أشهر ثم تنفرد مسؤولية صاحب العمل الجديد."
+    },
+    {
+      "id": "FM40-04",
+      "test_type": "straightforward",
+      "category": "employee_invention_ownership",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "متى تكون حقوق الملكية الفكرية الناتجة عن ابتكار العامل لصاحب العمل، ومتى تبقى للعامل؟",
+      "primary_article": 20,
+      "required_articles": [
+        20
+      ],
+      "acceptable_articles": [
+        20
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تكون لصاحب العمل إذا تعلق الابتكار بأعماله أو استخدم العامل خبراته أو معلوماته أو أدواته أو آلاته أو مواده.",
+        "تكون للعامل إذا لم يتعلق الابتكار بأعمال صاحب العمل ولم يستخدم موارده.",
+        "يجوز الاتفاق خطياً على خلاف ذلك."
+      ],
+      "required_citations": [
+        20
+      ],
+      "forbidden_claims": [
+        "كل ابتكار للعامل ملك لصاحب العمل دون شروط.",
+        "لا يمكن للطرفين الاتفاق خطياً على خلاف القاعدة."
+      ],
+      "expected_result": "تتحدد الملكية بحسب صلة الابتكار بالعمل واستخدام موارد صاحب العمل، مع جواز اتفاق خطي مخالف."
+    },
+    {
+      "id": "FM40-05",
+      "test_type": "straightforward",
+      "category": "service_certificate",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "ما الذي يجب أن تتضمنه شهادة الخدمة التي يطلبها العامل عند انتهاء خدمته، وماذا يجب ردّه إليه؟",
+      "primary_article": 30,
+      "required_articles": [
+        30
+      ],
+      "acceptable_articles": [
+        30
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يعطي صاحب العمل شهادة خدمة بناء على طلب العامل.",
+        "تذكر اسم العامل ونوع عمله وتاريخ التحاقه وتاريخ انتهاء الخدمة.",
+        "يرد صاحب العمل ما أودعه العامل لديه من أوراق أو شهادات أو أدوات."
+      ],
+      "required_citations": [
+        30
+      ],
+      "forbidden_claims": [
+        "يجوز لصاحب العمل رفض شهادة الخدمة مطلقاً.",
+        "تتضمن الشهادة سبب الفصل حكماً."
+      ],
+      "expected_result": "يستحق العامل شهادة تتضمن بيانات خدمته الأساسية، كما يسترد أوراقه وشهاداته وأدواته المودعة."
+    },
+    {
+      "id": "FM40-06",
+      "test_type": "straightforward",
+      "category": "vocational_training_contract",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "ما الشكل المطلوب لعقد التدريب المهني، وما الشروط الواجب توافرها في المدرب والمؤسسة؟",
+      "primary_article": 36,
+      "required_articles": [
+        36
+      ],
+      "acceptable_articles": [
+        36
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يجب أن يكون عقد التدريب خطياً بين العامل وصاحب العمل.",
+        "يجب أن يكون المدرب حائزاً على المؤهلات والخبرات الكافية.",
+        "يجب أن تتوفر في المؤسسة الشروط المناسبة للتدريب.",
+        "ينظم العقد وفق الشروط التي يحددها نظام."
+      ],
+      "required_citations": [
+        36
+      ],
+      "forbidden_claims": [
+        "يجوز أن يكون عقد التدريب شفهياً فقط.",
+        "لا يشترط القانون خبرة المدرب."
+      ],
+      "expected_result": "يشترط عقد خطي ومدرب مؤهل ومؤسسة مناسبة، وفق التنظيم القانوني الخاص بالتدريب."
+    },
+    {
+      "id": "FM40-07",
+      "test_type": "straightforward",
+      "category": "collective_contract_registration",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "من يحدد طريقة تسجيل عقود العمل الجماعية والانضمام إليها، وما البيان الذي يجب تعليقه في مكان العمل؟",
+      "primary_article": 44,
+      "required_articles": [
+        44
+      ],
+      "acceptable_articles": [
+        44
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يصدر الوزير تعليمات تحدد كيفية التسجيل والانضمام واستخراج الصور والأمور التنظيمية.",
+        "يعلق بيان يشير إلى وجود العقد الجماعي وطرفيه وتاريخه ومكان إجراء المفاوضات."
+      ],
+      "required_citations": [
+        44
+      ],
+      "forbidden_claims": [
+        "تحدد المحكمة طريقة تسجيل العقد الجماعي.",
+        "لا يلزم تعليق أي بيان في مكان العمل."
+      ],
+      "expected_result": "ينظم الوزير إجراءات التسجيل بتعليمات، ويجب تعليق بيان بالمعلومات الأساسية للعقد الجماعي."
+    },
+    {
+      "id": "FM40-08",
+      "test_type": "straightforward",
+      "category": "compensation_protection",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "هل يجوز رهن تعويض إصابة العمل أو الحجز عليه أو إحالته للغير؟",
+      "primary_article": 95,
+      "required_articles": [
+        95
+      ],
+      "acceptable_articles": [
+        95
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا يجوز رهن التعويض.",
+        "لا يجوز الحجز عليه إلا لدين النفقة وبما لا يتجاوز ثلثه.",
+        "لا يجوز إحالته لغير العامل أو المستحقين عنه.",
+        "لا يجوز الادعاء بتقاص التعويض المستحق بعد وفاة العامل."
+      ],
+      "required_citations": [
+        95
+      ],
+      "forbidden_claims": [
+        "يجوز الحجز على كامل التعويض لأي دين.",
+        "يجوز إحالة التعويض لأي شخص."
+      ],
+      "expected_result": "يحمي القانون التعويض من الرهن والحجز والإحالة، مع استثناء محدود لدين النفقة حتى الثلث."
+    },
+    {
+      "id": "FM40-09",
+      "test_type": "paraphrased",
+      "category": "better_worker_rights",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "إذا منح عقد أو اتفاق العامل ميزة أفضل من الحد القانوني، فهل تضيع هذه الميزة؟ وما مصير التنازل عن حقوق القانون؟",
+      "primary_article": 4,
+      "required_articles": [
+        4
+      ],
+      "acceptable_articles": [
+        4
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا يمس القانون الحق الأفضل المقرر بقانون آخر أو عقد أو اتفاق أو قرار.",
+        "يبطل كل شرط يتنازل به العامل عن حق منحه إياه القانون سواء أبرم قبل القانون أو بعده."
+      ],
+      "required_citations": [
+        4
+      ],
+      "forbidden_claims": [
+        "يلغي القانون أي حق أفضل مصدره العقد.",
+        "يصح تنازل العامل عن حقوقه القانونية إذا وقع عليه."
+      ],
+      "expected_result": "تبقى المزايا الأفضل نافذة، ويبطل التنازل عن الحقوق التي قررها القانون."
+    },
+    {
+      "id": "FM40-10",
+      "test_type": "paraphrased",
+      "category": "different_work_assignment",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "هل يستطيع صاحب العمل تكليف العامل بمهمة مختلفة جذرياً عن المتفق عليها، وما الاستثناءات؟",
+      "primary_article": 17,
+      "required_articles": [
+        17
+      ],
+      "acceptable_articles": [
+        17
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "الأصل عدم إلزام العامل بعمل يختلف اختلافاً بيناً عن المتفق عليه.",
+        "يجوز عند الضرورة لمنع حادث أو إصلاح آثاره أو القوة القاهرة أو الحالات القانونية.",
+        "يبقى التكليف في حدود طاقة العامل والظرف الذي اقتضاه."
+      ],
+      "required_citations": [
+        17
+      ],
+      "forbidden_claims": [
+        "يجوز تغيير العمل جذرياً في أي وقت.",
+        "لا يراعى مدى قدرة العامل على المهمة الجديدة."
+      ],
+      "expected_result": "لا يجوز التكليف المختلف جذرياً إلا لضرورة محددة وبحدود قدرة العامل والظرف المؤقت."
+    },
+    {
+      "id": "FM40-11",
+      "test_type": "paraphrased",
+      "category": "workplace_relocation",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "متى لا يكون العامل ملزماً بالانتقال إلى موقع عمل آخر يغيّر مكان سكنه؟",
+      "primary_article": 18,
+      "required_articles": [
+        18
+      ],
+      "acceptable_articles": [
+        18
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا يلزم العامل بالعمل في مكان آخر إذا أدى ذلك إلى تغيير مكان إقامته.",
+        "يستثنى وجود نص صريح في عقد العمل يجيز ذلك."
+      ],
+      "required_citations": [
+        18
+      ],
+      "forbidden_claims": [
+        "يجوز نقل العامل بما يغير سكنه دون أي شرط.",
+        "لا قيمة لأي نص صريح في العقد بشأن مكان العمل."
+      ],
+      "expected_result": "يحمي النص العامل من النقل المغير لإقامته ما لم يسمح العقد بذلك صراحة."
+    },
+    {
+      "id": "FM40-12",
+      "test_type": "paraphrased",
+      "category": "employer_death_contract",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "هل تؤدي وفاة صاحب العمل وحدها إلى انتهاء عقد العامل؟",
+      "primary_article": 22,
+      "required_articles": [
+        22
+      ],
+      "acceptable_articles": [
+        22
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا ينتهي العقد بوفاة صاحب العمل.",
+        "ينتهي فقط إذا كانت شخصية صاحب العمل قد روعيت في العقد."
+      ],
+      "required_citations": [
+        22
+      ],
+      "forbidden_claims": [
+        "ينتهي كل عقد فور وفاة صاحب العمل."
+      ],
+      "expected_result": "الأصل استمرار العقد بعد وفاة صاحب العمل، إلا إذا كان قائماً على شخصه تحديداً."
+    },
+    {
+      "id": "FM40-13",
+      "test_type": "paraphrased",
+      "category": "complaint_retaliation",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "هل يجوز معاقبة العامل أو فصله لأنه اشتكى للجهات المختصة بشأن تطبيق قانون العمل عليه؟",
+      "primary_article": 24,
+      "required_articles": [
+        24
+      ],
+      "acceptable_articles": [
+        24
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا يجوز فصل العامل أو اتخاذ إجراء تأديبي بحقه لأسباب تتصل بشكاواه أو مطالبه المقدمة للجهات المختصة.",
+        "يرتبط الحظر بالشكاوى والمطالبات المتعلقة بتطبيق القانون عليه، مع مراعاة المادة 31."
+      ],
+      "required_citations": [
+        24
+      ],
+      "forbidden_claims": [
+        "يجوز الفصل بسبب تقديم شكوى عمالية.",
+        "الحماية تشمل أي شكوى لا علاقة لها بالعمل."
+      ],
+      "expected_result": "يحظر الانتقام من العامل بسبب شكوى أو مطالبة قانونية عمالية قدمها للجهة المختصة."
+    },
+    {
+      "id": "FM40-14",
+      "test_type": "paraphrased",
+      "category": "collective_contract_binding_scope",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "على من يمتد أثر عقد العمل الجماعي عند انتقال المؤسسة أو انسحاب العامل من النقابة؟",
+      "primary_article": 42,
+      "required_articles": [
+        42
+      ],
+      "acceptable_articles": [
+        42
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يلزم أصحاب العمل وخلفهم بمن فيهم الورثة ومن انتقلت إليهم المؤسسة أو اندمجت بغيرها.",
+        "يلزم العمال المشمولين حتى عند انسحابهم من النقابة.",
+        "يلزم العمال في المؤسسة الذين ينضمون إلى النقابة بعد نفاذه."
+      ],
+      "required_citations": [
+        42
+      ],
+      "forbidden_claims": [
+        "يسقط العقد الجماعي عند انتقال المؤسسة.",
+        "يخرج العامل من أثر العقد بمجرد انسحابه من النقابة."
+      ],
+      "expected_result": "يمتد الإلزام إلى خلف صاحب العمل وإلى العمال المشمولين حتى مع الانسحاب، وفق الفئات المحددة بالنص."
+    },
+    {
+      "id": "FM40-15",
+      "test_type": "paraphrased",
+      "category": "disciplinary_fines",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "ما القيود على فرض غرامة تأديبية على العامل، ومن يستفيد من حصيلة هذه الغرامات؟",
+      "primary_article": 48,
+      "required_articles": [
+        48
+      ],
+      "acceptable_articles": [
+        48
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا تفرض عقوبة عن مخالفة غير منصوص عليها في لائحة الجزاءات المعتمدة.",
+        "لا تزيد الغرامة على أجر ثلاثة أيام في الشهر.",
+        "لا يعاقب العامل عن المخالفة بعد مضي خمسة عشر يوماً على ارتكابها.",
+        "تخصص الغرامات لخدمات اجتماعية للعمال وفق ما يقرره الوزير."
+      ],
+      "required_citations": [
+        48
+      ],
+      "forbidden_claims": [
+        "يجوز فرض غرامة بلا لائحة معتمدة.",
+        "تؤول حصيلة الغرامات مباشرة إلى صاحب العمل."
+      ],
+      "expected_result": "تقيد الغرامة بلائحة معتمدة وحدود زمنية ومالية، وتخصص حصيلتها لخدمات اجتماعية للعمال."
+    },
+    {
+      "id": "FM40-16",
+      "test_type": "paraphrased",
+      "category": "worker_safety_duties",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "ما واجب العامل تجاه تعليمات وأجهزة الوقاية والسلامة، وما أثر العبث بها؟",
+      "primary_article": 82,
+      "required_articles": [
+        82
+      ],
+      "acceptable_articles": [
+        82
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يلتزم العامل بتعليمات وقرارات الوقاية والسلامة والصحة المهنية.",
+        "يستعمل أجهزة الوقاية ويحافظ عليها.",
+        "يمتنع عن تعطيل تنفيذ التعليمات أو إتلاف وسائل الوقاية.",
+        "قد يتعرض للعقوبات التأديبية في النظام الداخلي."
+      ],
+      "required_citations": [
+        82
+      ],
+      "forbidden_claims": [
+        "يجوز للعامل تعطيل أجهزة الوقاية دون مساءلة.",
+        "مسؤولية السلامة تقع على صاحب العمل وحده دون التزام على العامل."
+      ],
+      "expected_result": "يلتزم العامل بالتعليمات والأجهزة والمحافظة عليها، ويترتب على مخالفتها جزاء تأديبي."
+    },
+    {
+      "id": "FM40-17",
+      "test_type": "typo",
+      "category": "probation_period",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "كم اقصى مده للعامل تحت التجربه، وهل بقدر صاحب العمل ينهي شغله خلالها؟",
+      "primary_article": 35,
+      "required_articles": [
+        35
+      ],
+      "acceptable_articles": [
+        35
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يجوز استخدام العامل تحت التجربة للتحقق من كفاءته.",
+        "لا تزيد مدة التجربة على ثلاثة أشهر.",
+        "لا يقل الأجر عن الحد الأدنى.",
+        "يجوز لصاحب العمل إنهاء الاستخدام خلال التجربة دون إشعار أو مكافأة.",
+        "لا يستخدم العامل تحت التجربة أكثر من مرة لدى صاحب العمل نفسه."
+      ],
+      "required_citations": [
+        35
+      ],
+      "forbidden_claims": [
+        "يجوز تمديد التجربة بلا حد.",
+        "يجوز تكرار تجربة العامل لدى صاحب العمل نفسه."
+      ],
+      "expected_result": "مدة التجربة القصوى ثلاثة أشهر، ويجوز الإنهاء خلالها بالشروط القانونية، مع منع تكرار التجربة لدى صاحب العمل نفسه."
+    },
+    {
+      "id": "FM40-18",
+      "test_type": "typo",
+      "category": "juvenile_documents",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "شو الاوراق الي لازم يطلبها صاحب العمل قبل ما يشغل حدث، ووين يحفظها؟",
+      "primary_article": 76,
+      "required_articles": [
+        76
+      ],
+      "acceptable_articles": [
+        76
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يطلب صورة مصدقة عن شهادة الميلاد.",
+        "يطلب شهادة لياقة صحية من طبيب مختص مصدقة من وزارة الصحة.",
+        "يطلب موافقة ولي الأمر الخطية.",
+        "تحفظ المستندات في ملف خاص مع بيانات كافية عن الحدث."
+      ],
+      "required_citations": [
+        76
+      ],
+      "forbidden_claims": [
+        "يكفي تصريح شفهي من الحدث.",
+        "لا يلزم حفظ المستندات في المؤسسة."
+      ],
+      "expected_result": "يتطلب التشغيل مستندات عمر وصحة وموافقة ولي الأمر، وتحفظ في ملف خاص."
+    },
+    {
+      "id": "FM40-19",
+      "test_type": "typo",
+      "category": "union_address_change",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "اذا النقابه غيرت عنوانها، خلال قديش لازم تبلغ المسجل وشو بصير اذا ما بلغت؟",
+      "primary_article": 104,
+      "required_articles": [
+        104
+      ],
+      "acceptable_articles": [
+        104
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يبلغ المسجل بأي تغيير في العنوان خلال سبعة أيام من حدوثه.",
+        "يدرج التغيير في السجل.",
+        "إذا لم يبلغ التغيير اعتبر العنوان المسجل أصلاً قائماً."
+      ],
+      "required_citations": [
+        104
+      ],
+      "forbidden_claims": [
+        "يجب الإبلاغ خلال ثلاثين يوماً.",
+        "يبطل تسجيل النقابة تلقائياً عند عدم الإبلاغ."
+      ],
+      "expected_result": "يجب الإبلاغ خلال سبعة أيام، وإلا بقي العنوان الأصلي معتمداً."
+    },
+    {
+      "id": "FM40-20",
+      "test_type": "numerical",
+      "category": "end_of_service_calculation",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "عامل غير خاضع للضمان خدم 7 سنوات كاملة وكان أجره الأخير 600 دينار؛ ما مكافأة نهاية الخدمة الأساسية؟",
+      "primary_article": 32,
+      "required_articles": [
+        32
+      ],
+      "acceptable_articles": [
+        32
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "المعدل أجر شهر عن كل سنة خدمة فعلية.",
+        "يحسب كسر السنة بنسبة مدته.",
+        "في المثال: 7 × 600 = 4200 دينار."
+      ],
+      "required_citations": [
+        32
+      ],
+      "forbidden_claims": [
+        "المكافأة نصف شهر عن كل سنة.",
+        "المبلغ في المثال 2100 دينار."
+      ],
+      "expected_result": "تساوي المكافأة 4200 دينار وفق أجر شهر عن كل سنة من السنوات السبع."
+    },
+    {
+      "id": "FM40-21",
+      "test_type": "numerical",
+      "category": "wage_payment_deadline",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "استحق أجر العامل يوم 1 من الشهر؛ ما آخر مدة قانونية لدفعه، وهل يجوز الحسم من دون سند قانوني؟",
+      "primary_article": 46,
+      "required_articles": [
+        46
+      ],
+      "acceptable_articles": [
+        46
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يدفع الأجر خلال مدة لا تزيد على سبعة أيام من تاريخ الاستحقاق.",
+        "إذا استحق يوم 1 فيجب دفعه في موعد لا يتجاوز يوم 8.",
+        "لا يجوز الحسم إلا في الحالات التي يجيزها القانون.",
+        "التوقيع على كشف الأجور لا يعني التنازل عن أي فرق مستحق."
+      ],
+      "required_citations": [
+        46
+      ],
+      "forbidden_claims": [
+        "يجوز تأخير الأجر شهراً كاملاً.",
+        "يجوز الحسم لأي سبب يراه صاحب العمل."
+      ],
+      "expected_result": "الحد الأقصى سبعة أيام من الاستحقاق، أي حتى يوم 8 في المثال، والحسم مقيد بالقانون."
+    },
+    {
+      "id": "FM40-22",
+      "test_type": "numerical",
+      "category": "overtime_calculation",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "إذا كان أجر الساعة المعتاد 4 دنانير، فكم الحد الأدنى لأجر ساعة إضافية عادية وكم أجرها في يوم العطلة الأسبوعية؟",
+      "primary_article": 59,
+      "required_articles": [
+        59
+      ],
+      "acceptable_articles": [
+        59
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "الساعة الإضافية العادية لا تقل عن 125% من الأجر المعتاد.",
+        "4 × 1.25 = 5 دنانير.",
+        "العمل في العطلة الأسبوعية أو الرسمية لا يقل عن 150%.",
+        "4 × 1.50 = 6 دنانير."
+      ],
+      "required_citations": [
+        59
+      ],
+      "forbidden_claims": [
+        "الساعة الإضافية العادية تساوي 4 دنانير فقط.",
+        "العمل في يوم العطلة يدفع بنسبة 125% فقط."
+      ],
+      "expected_result": "الحد الأدنى 5 دنانير للساعة الإضافية العادية و6 دنانير في يوم العطلة."
+    },
+    {
+      "id": "FM40-23",
+      "test_type": "numerical",
+      "category": "sick_leave_duration",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "عامل حصل على 14 يوماً مرضية بأجر كامل ثم احتاج 14 يوماً إضافية بتقرير لجنة طبية ولم يكن نزيل مستشفى؛ كيف تدفع المدة الإضافية؟",
+      "primary_article": 65,
+      "required_articles": [
+        65
+      ],
+      "acceptable_articles": [
+        65
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "الإجازة الأولى أربعة عشر يوماً بأجر كامل بناء على تقرير الطبيب المعتمد.",
+        "يمكن تجديدها أربعة عشر يوماً أخرى.",
+        "تدفع المدة الإضافية بنصف الأجر إذا كانت بتقرير لجنة طبية ولم يكن العامل نزيل مستشفى."
+      ],
+      "required_citations": [
+        65
+      ],
+      "forbidden_claims": [
+        "تدفع المدة الإضافية بأجر كامل في جميع الحالات.",
+        "لا يجوز تجديد الإجازة المرضية."
+      ],
+      "expected_result": "تدفع الأيام الأربعة عشر الإضافية بنصف الأجر في الحالة المذكورة."
+    },
+    {
+      "id": "FM40-24",
+      "test_type": "numerical",
+      "category": "work_injury_compensation",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "عامل أجره اليومي 20 ديناراً وتوفي بسبب إصابة عمل؛ ما التعويض وفق قاعدة 1200 يوم مع مراعاة الحدين الأدنى والأقصى؟",
+      "primary_article": 90,
+      "required_articles": [
+        90
+      ],
+      "acceptable_articles": [
+        90
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "التعويض النظري يساوي أجر 1200 يوم.",
+        "20 × 1200 = 24000 دينار.",
+        "لا يتجاوز التعويض 5000 دينار ولا يقل عن 2000 دينار.",
+        "المستحق في المثال 5000 دينار بسبب الحد الأقصى."
+      ],
+      "required_citations": [
+        90
+      ],
+      "forbidden_claims": [
+        "يدفع 24000 دينار رغم الحد الأقصى.",
+        "الحد الأقصى 2000 دينار."
+      ],
+      "expected_result": "رغم أن الحساب النظري 24000 دينار، يطبق الحد الأقصى فيكون التعويض 5000 دينار."
+    },
+    {
+      "id": "FM40-25",
+      "test_type": "colloquial",
+      "category": "notice_period",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "أنا عقدي مفتوح وبدي أترك الشغل؛ قبل بكم لازم أخبر، وإذا تركت قبل ما تخلص المدة شو بصير؟",
+      "primary_article": 23,
+      "required_articles": [
+        23
+      ],
+      "acceptable_articles": [
+        23
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "الإشعار الخطي قبل شهر على الأقل.",
+        "لا يسحب الإشعار إلا بموافقة الطرفين.",
+        "يبقى العقد سارياً خلال الإشعار وتحتسب المدة من الخدمة.",
+        "إذا كان الإشعار من العامل وترك قبل انتهائه فلا يستحق أجر فترة الترك ويعوض صاحب العمل بما يعادل أجرها."
+      ],
+      "required_citations": [
+        23
+      ],
+      "forbidden_claims": [
+        "لا يلزم العامل بأي إشعار.",
+        "يستحق العامل أجر كامل مدة الإشعار رغم تركه المبكر."
+      ],
+      "expected_result": "يلزم إشعار خطي قبل شهر، ويترتب على الترك المبكر فقد أجر المدة وتعويض مماثل لصاحب العمل."
+    },
+    {
+      "id": "FM40-26",
+      "test_type": "colloquial",
+      "category": "dismissal_without_notice",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "متى صاحب الشغل بقدر يفصل العامل فوراً من غير إنذار؟",
+      "primary_article": 28,
+      "required_articles": [
+        28
+      ],
+      "acceptable_articles": [
+        28
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يجوز الفصل دون إشعار في الحالات المحددة حصراً بالنص.",
+        "منها انتحال الهوية أو تقديم وثائق مزورة، وعدم الوفاء بالالتزامات العقدية، والخطأ الجسيم المسبب لخسارة، ومخالفة النظام الداخلي رغم الإنذارات، والغياب ضمن الحدود القانونية، وإفشاء الأسرار، والإدانة بجناية أو جنحة مخلة، والوجود في حالة سكر أو مخدر، والاعتداء."
+      ],
+      "required_citations": [
+        28
+      ],
+      "forbidden_claims": [
+        "يجوز الفصل دون إشعار لأي سبب يقدره صاحب العمل.",
+        "يكفي غياب يوم واحد للفصل الفوري دائماً."
+      ],
+      "expected_result": "الفصل الفوري استثناء محصور بحالات قانونية محددة، لا سلطة مطلقة لصاحب العمل."
+    },
+    {
+      "id": "FM40-27",
+      "test_type": "colloquial",
+      "category": "worker_leave_without_notice",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "متى العامل بقدر يترك الشغل فوراً ويضل محتفظ بحقوقه وتعويضاته؟",
+      "primary_article": 29,
+      "required_articles": [
+        29
+      ],
+      "acceptable_articles": [
+        29
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يجوز ترك العمل دون إشعار في الحالات المحددة بالنص.",
+        "منها التكليف بعمل مختلف جوهرياً، أو النقل المغير للإقامة دون نص، أو تنزيل الدرجة أو الأجر، أو ثبوت خطر صحي، أو الاعتداء، أو عدم تطبيق القانون بعد التبليغ.",
+        "يحتفظ العامل بحقوق نهاية الخدمة والتعويضات المقررة."
+      ],
+      "required_citations": [
+        29
+      ],
+      "forbidden_claims": [
+        "يخسر العامل جميع حقوقه إذا ترك بلا إشعار حتى في الحالات القانونية.",
+        "يجوز الترك الفوري لأي خلاف بسيط."
+      ],
+      "expected_result": "يجوز الترك دون إشعار عند تحقق إحدى الحالات القانونية، مع الاحتفاظ بالحقوق والتعويضات."
+    },
+    {
+      "id": "FM40-28",
+      "test_type": "colloquial",
+      "category": "wage_deductions",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "شو الحالات اللي مسموح فيها ينخصم من راتبي، وقديش أعلى قسط لسلفة من صاحب العمل؟",
+      "primary_article": 47,
+      "required_articles": [
+        47
+      ],
+      "acceptable_articles": [
+        47
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا يجوز الحسم إلا في الحالات المحددة.",
+        "يجوز استرداد السلفة على ألا يزيد كل قسط على 10% من الأجر.",
+        "تشمل الحالات المبالغ المدفوعة زيادة، واشتراكات الضمان أو الصناديق، وديون القضاء، والغرامات والضرر ضمن الحدود، والسكن والخدمات والمزايا المتفق عليها."
+      ],
+      "required_citations": [
+        47
+      ],
+      "forbidden_claims": [
+        "يجوز حسم أي مبلغ دون قيد.",
+        "يجوز أن يبلغ قسط السلفة نصف الأجر."
+      ],
+      "expected_result": "الحسم محصور قانوناً، وقسط استرداد السلفة لا يتجاوز 10% من الأجر."
+    },
+    {
+      "id": "FM40-29",
+      "test_type": "colloquial",
+      "category": "maternity_leave",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "قديش إجازة الأمومة المدفوعة، وكم لازم يكون منها بعد الولادة؟",
+      "primary_article": 70,
+      "required_articles": [
+        70
+      ],
+      "acceptable_articles": [
+        70
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "إجازة الأمومة بأجر كامل مجموعها عشرة أسابيع قبل الوضع وبعده.",
+        "لا تقل المدة بعد الوضع عن ستة أسابيع.",
+        "يحظر تشغيلها قبل انقضاء المدة المقررة بعد الوضع."
+      ],
+      "required_citations": [
+        70
+      ],
+      "forbidden_claims": [
+        "إجازة الأمومة ستة أسابيع فقط.",
+        "يجوز تشغيل العاملة مباشرة بعد الولادة."
+      ],
+      "expected_result": "الإجازة عشرة أسابيع بأجر كامل، منها ستة أسابيع على الأقل بعد الوضع."
+    },
+    {
+      "id": "FM40-30",
+      "test_type": "multi_article",
+      "category": "non_jordanian_and_disability_employment",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "اعرض التزامات صاحب العمل في تشغيل غير الأردنيين وتشغيل الأشخاص ذوي الإعاقة مهنياً، ثم بيّن واجبه إذا أصيب عامل بعجز جزئي دائم يسمح بعمل آخر.",
+      "primary_article": 12,
+      "required_articles": [
+        12,
+        13,
+        14
+      ],
+      "acceptable_articles": [
+        12,
+        13,
+        14
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يحتاج العامل غير الأردني موافقة وتصريح عمل قبل الاستقدام أو الاستخدام، ومدة التصريح سنة قابلة للتجديد.",
+        "تحدد المادة 12 صور الاستخدام المخالف والعقوبة والتسفير.",
+        "على صاحب العمل الذي يستخدم خمسين عاملاً فأكثر، إذا سمحت طبيعة العمل، تشغيل مؤهلين من ذوي الإعاقة بنسبة لا تقل عن 2% وإرسال بيان للوزارة.",
+        "إذا أصيب العامل بعجز جزئي دائم لا يمنعه من عمل آخر، يشغله صاحب العمل في عمل مناسب إن وجد وبأجره المخصص، وتحسب الحقوق السابقة على أجره الأخير قبل الإصابة."
+      ],
+      "required_citations": [
+        12,
+        13,
+        14
+      ],
+      "forbidden_claims": [
+        "يجوز تشغيل غير الأردني دون تصريح.",
+        "نسبة تشغيل المؤهلين من ذوي الإعاقة 10%.",
+        "يسقط التزام صاحب العمل تجاه العامل ذي العجز الجزئي دائماً."
+      ],
+      "expected_result": "يجمع الإطار بين تصريح العمل لغير الأردني، ونسبة 2% في المنشآت المؤهلة، وإعادة تشغيل المصاب في عمل مناسب عند توافره."
+    },
+    {
+      "id": "FM40-31",
+      "test_type": "multi_article",
+      "category": "employment_termination_framework",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "لخص الإطار القانوني لانتهاء عقد العمل: الأسباب العامة للانتهاء، الفصل التعسفي، آثار إنهاء العقد المحدد قبل أجله، الحماية المؤقتة من الإنهاء، والإجراءات عند التقليص الاقتصادي أو الفني.",
+      "primary_article": 21,
+      "required_articles": [
+        21,
+        25,
+        26,
+        27,
+        31
+      ],
+      "acceptable_articles": [
+        21,
+        25,
+        26,
+        27,
+        31
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "ينتهي العقد بالاتفاق أو انتهاء المدة أو العمل أو وفاة العامل أو عجزه المثبت طبياً.",
+        "ترفع دعوى الفصل التعسفي خلال ستين يوماً، وللمحكمة الإعادة أو التعويض ضمن القواعد القانونية.",
+        "إذا أنهى صاحب العمل العقد المحدد قبل أجله يستحق العامل حقوقه وأجوره حتى نهاية المدة ضمن القيود القانونية.",
+        "يحظر الإنهاء أو الإشعار في حالات الحماية المحددة كالحمل وإجازات معينة والخدمة العسكرية.",
+        "في التقليص الاقتصادي أو الفني يبلغ صاحب العمل الوزير خطياً وتفحص لجنة الطلب قبل القرار."
+      ],
+      "required_citations": [
+        21,
+        25,
+        26,
+        27,
+        31
+      ],
+      "forbidden_claims": [
+        "يجوز إنهاء العقد المحدد بلا أي أثر مالي.",
+        "لا حماية للعامل أثناء الإجازات المحددة.",
+        "يجوز التقليص الجماعي دون إبلاغ الوزارة."
+      ],
+      "expected_result": "يتطلب الجواب الجمع بين أسباب الانتهاء، علاج الفصل التعسفي، آثار العقد المحدد، الحماية المؤقتة، ومسار التقليص الاقتصادي."
+    },
+    {
+      "id": "FM40-32",
+      "test_type": "multi_article",
+      "category": "collective_contract_lifecycle",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "اشرح دورة عقد العمل الجماعي من تنظيمه وتسجيله، إلى مدته وإنهائه، واستمراره أثناء مفاوضات التجديد، والفئات الملزمة به، وإمكان توسيع نطاقه.",
+      "primary_article": 39,
+      "required_articles": [
+        39,
+        40,
+        41,
+        42,
+        43
+      ],
+      "acceptable_articles": [
+        39,
+        40,
+        41,
+        42,
+        43
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "ينظم العقد على ثلاث نسخ أصلية على الأقل وتودع نسخة لدى الوزارة للتسجيل.",
+        "قد يكون محدد المدة بما لا يتجاوز سنتين أو غير محدد، وله قواعد إشعار للإنهاء.",
+        "يستمر مفعوله أثناء مفاوضات التجديد أو التعديل ضمن المدة القانونية.",
+        "يلزم أصحاب العمل وخلفهم والعمال والفئات المحددة.",
+        "يجوز للوزير توسيع نطاق الشمول بعد الطلب والدراسة والتوصيات والشروط القانونية."
+      ],
+      "required_citations": [
+        39,
+        40,
+        41,
+        42,
+        43
+      ],
+      "forbidden_claims": [
+        "لا يسجل العقد لدى الوزارة.",
+        "يجوز أن تتجاوز مدة العقد المحدد خمس سنوات.",
+        "ينتهي أثر العقد فور بدء مفاوضات التجديد."
+      ],
+      "expected_result": "تغطي الدورة إبرام العقد ومدته واستمراره وإلزامه وتوسيع نطاقه وفق المواد الخمس."
+    },
+    {
+      "id": "FM40-33",
+      "test_type": "multi_article",
+      "category": "working_time_and_rest",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "بيّن قواعد ساعات العمل الإضافي، والراحة الأسبوعية، والإجازة السنوية، وأثر عمل العامل في يوم العطلة أو العيد.",
+      "primary_article": 57,
+      "required_articles": [
+        57,
+        59,
+        60,
+        61
+      ],
+      "acceptable_articles": [
+        57,
+        59,
+        60,
+        61
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "ساعات العمل العادية لا تتجاوز ثماني ساعات يومياً وثماني وأربعين أسبوعياً، مع الاستثناءات التنظيمية.",
+        "العمل الإضافي بموافقة العامل لا يقل أجره عن 125%، والعمل في العطلة أو العيد لا يقل عن 150%.",
+        "للعامل يوم راحة أسبوعية بأجر كامل ويكون الجمعة عادة إلا إذا اقتضت طبيعة العمل غير ذلك.",
+        "الإجازة السنوية أربعة عشر يوماً وتصبح واحداً وعشرين بعد خمس سنوات متصلة، ولا تحسب العطل ضمنها."
+      ],
+      "required_citations": [
+        57,
+        59,
+        60,
+        61
+      ],
+      "forbidden_claims": [
+        "أجر العمل الإضافي يساوي الأجر المعتاد فقط.",
+        "لا يستحق العامل راحة أسبوعية مدفوعة.",
+        "الإجازة السنوية سبعة أيام فقط."
+      ],
+      "expected_result": "يجمع الإطار حدود الوقت، ونسب الإضافي، والراحة الأسبوعية، والإجازة السنوية."
+    },
+    {
+      "id": "FM40-34",
+      "test_type": "multi_article",
+      "category": "family_and_maternity_leaves",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "قارن بين إجازة تربية الأطفال، وإجازة مرافقة الزوج، وإجازة الأمومة، وساعة الرضاعة، والتزام توفير مكان لرعاية أطفال العاملات.",
+      "primary_article": 67,
+      "required_articles": [
+        67,
+        68,
+        70,
+        71,
+        72
+      ],
+      "acceptable_articles": [
+        67,
+        68,
+        70,
+        71,
+        72
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "في المنشأة التي تستخدم عشرة عمال فأكثر للمرأة إجازة دون أجر حتى سنة لتربية أطفالها والعودة، مع فقد الحق إذا عملت بأجر لدى مؤسسة أخرى خلال المدة.",
+        "لكل من الزوجين إجازة دون أجر لمرة واحدة حتى سنتين لمرافقة الزوج المنتقل.",
+        "إجازة الأمومة عشرة أسابيع بأجر كامل، منها ستة أسابيع على الأقل بعد الوضع.",
+        "خلال سنة من الولادة تستحق العاملة فترة أو فترات رضاعة مدفوعة لا يتجاوز مجموعها ساعة يومياً.",
+        "يلتزم صاحب العمل بشروط النص بتهيئة مكان لرعاية الأطفال عند تحقق أعداد العاملات والأطفال."
+      ],
+      "required_citations": [
+        67,
+        68,
+        70,
+        71,
+        72
+      ],
+      "forbidden_claims": [
+        "إجازة تربية الأطفال مدفوعة الأجر.",
+        "ساعة الرضاعة غير مدفوعة.",
+        "لا يوجد أي التزام بمكان لرعاية الأطفال."
+      ],
+      "expected_result": "يميز الجواب مدد كل إجازة وأجرها وشروطها، ويبين حق الرضاعة ومكان رعاية الأطفال."
+    },
+    {
+      "id": "FM40-35",
+      "test_type": "multi_article",
+      "category": "work_injury_claim_process",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "اعرض مسار إصابة العمل لغير المشمولين بالضمان: نطاق الفصل، التبليغ والنقل، مرض المهنة، مهلة طلب التعويض، وحالات سقوط الحق والاستثناء منها.",
+      "primary_article": 86,
+      "required_articles": [
+        86,
+        87,
+        88,
+        93,
+        94
+      ],
+      "acceptable_articles": [
+        86,
+        87,
+        88,
+        93,
+        94
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تطبق أحكام الفصل على العمال غير الخاضعين للضمان الاجتماعي.",
+        "ينقل صاحب العمل المصاب ويبلغ الجهات الأمنية والوزارة خلال 48 ساعة ويتحمل نفقات النقل، مع عقوبة المخالفة.",
+        "يسأل صاحب العمل عن تعويض مرض المهنة وفق تقرير المرجع الطبي.",
+        "يقدم طلب التعويض خلال سنتين، مع جواز قبول التأخير لعذر مشروع.",
+        "قد يسقط البدل والتعويض عند الفعل المتعمد أو الخطأ الجسيم أو السكر أو مخالفة التعليمات، لكن لا يسقط إذا نتجت وفاة أو عجز دائم لا يقل عن 30%."
+      ],
+      "required_citations": [
+        86,
+        87,
+        88,
+        93,
+        94
+      ],
+      "forbidden_claims": [
+        "تطبق هذه المواد على جميع المشمولين بالضمان أيضاً.",
+        "مهلة الطلب ستة أشهر فقط.",
+        "يسقط الحق حتى عند الوفاة دائماً."
+      ],
+      "expected_result": "المسار يبدأ بتحديد النطاق ثم واجبات الحادث ومرض المهنة والمهلة وأسباب السقوط واستثناءاته."
+    },
+    {
+      "id": "FM40-36",
+      "test_type": "multi_article",
+      "category": "collective_dispute_escalation",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "رتب مراحل تسوية النزاع العمالي الجماعي من تعيين مندوب التوفيق، مروراً بالوساطة ومجلس التوفيق، وصولاً إلى المحكمة العمالية، ثم وضح سلطة المحكمة في تفسير قرارها وتصحيح أخطائه.",
+      "primary_article": 120,
+      "required_articles": [
+        120,
+        121,
+        122,
+        124,
+        126
+      ],
+      "acceptable_articles": [
+        120,
+        121,
+        122,
+        124,
+        126
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يعين الوزير مندوب توفيق أو أكثر للمنطقة والمدة المناسبة.",
+        "يبدأ المندوب الوساطة، ويقدم تقريره خلال 21 يوماً عند التعذر، ثم قد يشكل مجلس توفيق.",
+        "ينهي مجلس التوفيق إجراءاته وتقريره خلال 21 يوماً.",
+        "عند فشل المجلس يحال النزاع لمحكمة عمالية من ثلاثة قضاة، تباشر خلال سبعة أيام وتصدر قرارها خلال ثلاثين يوماً ويكون قطعياً.",
+        "للمحكمة تفسير قرارها دون الخروج عن نتائجه وتصحيح الأخطاء الكتابية والحسابية."
+      ],
+      "required_citations": [
+        120,
+        121,
+        122,
+        124,
+        126
+      ],
+      "forbidden_claims": [
+        "يبدأ النزاع مباشرة أمام المحكمة دون توفيق.",
+        "قرار المحكمة قابل للطعن دائماً.",
+        "لا تملك المحكمة تصحيح الأخطاء الكتابية."
+      ],
+      "expected_result": "يبين التسلسل من المندوب إلى المجلس ثم المحكمة، مع المدد وسلطة التفسير والتصحيح."
+    },
+    {
+      "id": "FM40-37",
+      "test_type": "out_of_scope",
+      "category": "inheritance_law",
+      "difficulty": "medium",
+      "expected_behavior": "abstain",
+      "question": "كيف توزع تركة الأب بين الأبناء والبنات وفق قانون الأحوال الشخصية الأردني؟",
+      "primary_article": null,
+      "required_articles": [],
+      "acceptable_articles": [],
+      "expected_concepts_any": [],
+      "required_facts": [],
+      "required_citations": [],
+      "forbidden_claims": [
+        "تقديم قواعد ميراث من قانون العمل."
+      ],
+      "expected_result": "السؤال يتعلق بالميراث والأحوال الشخصية وليس بقانون العمل الأردني."
+    },
+    {
+      "id": "FM40-38",
+      "test_type": "out_of_scope",
+      "category": "traffic_law",
+      "difficulty": "easy",
+      "expected_behavior": "abstain",
+      "question": "ما قيمة مخالفة تجاوز الإشارة الحمراء وكم نقطة مرورية تترتب عليها؟",
+      "primary_article": null,
+      "required_articles": [],
+      "acceptable_articles": [],
+      "expected_concepts_any": [],
+      "required_facts": [],
+      "required_citations": [],
+      "forbidden_claims": [
+        "اختلاق غرامة مرورية من مواد قانون العمل."
+      ],
+      "expected_result": "السؤال مروري وخارج نطاق قانون العمل الأردني."
+    },
+    {
+      "id": "FM40-39",
+      "test_type": "out_of_scope",
+      "category": "tenant_law",
+      "difficulty": "medium",
+      "expected_behavior": "abstain",
+      "question": "هل يحق للمالك إخلاء المستأجر بسبب تأخره في دفع أجرة المنزل شهرين؟",
+      "primary_article": null,
+      "required_articles": [],
+      "acceptable_articles": [],
+      "expected_concepts_any": [],
+      "required_facts": [],
+      "required_citations": [],
+      "forbidden_claims": [
+        "تطبيق أحكام فصل العامل على المستأجر."
+      ],
+      "expected_result": "السؤال يتعلق بالإيجارات وليس بعلاقة العمل."
+    },
+    {
+      "id": "FM40-40",
+      "test_type": "out_of_scope",
+      "category": "tax_law",
+      "difficulty": "medium",
+      "expected_behavior": "abstain",
+      "question": "كيف تحسب ضريبة الدخل السنوية على أرباح شركة تجارية في الأردن؟",
+      "primary_article": null,
+      "required_articles": [],
+      "acceptable_articles": [],
+      "expected_concepts_any": [],
+      "required_facts": [],
+      "required_citations": [],
+      "forbidden_claims": [
+        "احتساب الضريبة من أحكام الأجور."
+      ],
+      "expected_result": "السؤال ضريبي وتجاري وخارج نطاق قانون العمل."
+    }
+  ]
+}

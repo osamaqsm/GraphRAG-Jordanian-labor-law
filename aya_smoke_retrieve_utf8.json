@@ -1,0 +1,473 @@
+{
+  "schema_version": "retrieval.v1",
+  "status": "success",
+  "question": "كم أقصى مدة للعامل تحت التجربة، وهل يستطيع صاحب العمل إنهاء عمله خلالها؟",
+  "decision": {
+    "behavior": "retrieve",
+    "reason": "يتعلق السؤال بمدة عقد التجربة وحقوق صاحب العمل في إنهائه، وهي مواضيع مشمولة بقانون العمل الأردني.",
+    "clarification_question_ar": "",
+    "planner_used": true,
+    "planner_confidence": 1.0
+  },
+  "embedding": {
+    "model": "text-embedding-3-small",
+    "dimensions": 1536,
+    "input_tokens": 102
+  },
+  "articles": [
+    {
+      "uri": "http://example.org/jordan-labor-law#article_35",
+      "local_name": "article_35",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 35"
+      ],
+      "labels_en": [],
+      "article_number": 35,
+      "text": "أ . لصاحب العمل استخدام اي عامل قيد التجربة وذلك للتحقق من كفاءته وامكاناته للقيام بالعمل المطلوب ويشترط في ذلك\n\n    ان لا تزيد مدة التجربة في اي حالة من الحالات على ثلاثة اشهر وان لا يقل اجر العامل قيد التجربة عن الحد الادنى\n\n     المقرر للاجور.\n\nب. يحق لصاحب العمل انهاء استخدام العامل تحت التجربة دون اشعار او مكافاة خلال مدة التجربة.\n\nج. اذا استمر العامل في عمله بعد انتهاء مدة التجربة اعتبر العقد عقد عمل ولمدة غير محدودة وتحسب مدة التجربة ضمن\n\n    مدة خدمة العامل لدى صاحب العمل.",
+      "final_score": 1.0,
+      "fused_score": 0.09246430460074034,
+      "direct_score": 0.09246430460074034,
+      "graph_score": 1.4176778979059552,
+      "paragraph_score": 0.23926073926073926,
+      "graph_supported": true,
+      "support_paths": [
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "seed_label": "عقد العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_35",
+          "score": 0.567071159162382,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+              "relation": "regulatedBy",
+              "target_uri": "http://example.org/jordan-labor-law#article_35"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "seed_label": "عقد العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_35",
+          "score": 0.7088389489529776,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+              "relation": "supportedByArticle",
+              "target_uri": "http://example.org/jordan-labor-law#article_35"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "seed_label": "عقد العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_35",
+          "score": 0.3544194744764888,
+          "steps": [
+            {
+              "direction": "incoming",
+              "source_uri": "http://example.org/jordan-labor-law#article_35",
+              "relation": "regulates",
+              "target_uri": "http://example.org/jordan-labor-law#employment_contract_concept"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "seed_label": "عقد العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_35",
+          "score": 1.134142318324764,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+              "relation": "regulatedBy",
+              "target_uri": "http://example.org/jordan-labor-law#article_35"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "seed_label": "عقد العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_35",
+          "score": 1.4176778979059552,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+              "relation": "supportedByArticle",
+              "target_uri": "http://example.org/jordan-labor-law#article_35"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "seed_label": "عقد العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_35",
+          "score": 0.7088389489529776,
+          "steps": [
+            {
+              "direction": "incoming",
+              "source_uri": "http://example.org/jordan-labor-law#article_35",
+              "relation": "regulates",
+              "target_uri": "http://example.org/jordan-labor-law#employment_contract_concept"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#article_23",
+      "local_name": "article_23",
+      "node_kind": "Article",
+      "labels_ar": [
+        "المادة 23"
+      ],
+      "labels_en": [],
+      "article_number": 23,
+      "text": "أ . اذا رغب احد الطرفين في انهاء عقد العمل غير المحدد المدة فيترتب عليه اشعار الطرف الاخر خطياً برغبته في انهاء\n\n    العقد قبل شهر واحد على الاقل ولا يجوز سحب الاشعار الا بموافقة الطرفين.\n\nب. يبقى عقد العمل ساري المفعول طوال مدة الاشعار وتعتبر مدة الاشعار من مدة الخدمة.\n\nج. اذا كان الاشعار من طرف صاحب العمل فله ان يعفي العامل من العمل خلال مدته وله ان يشغله الا في الايام السبعة\n\n     الاخيرة منها ويستحق العامل اجره عن مدة الاشعار في جميع هذه الاحوال.\n\nد. اذا كان الاشعار من طرف العامل وترك العمل قبل انقضاء مدة الاشعار فلا يستحق اجراً عن فترة تركه العمل وعليه\n\n    تعويض صاحب العمل عن تلك الفترة بما يعادل اجره عنها.",
+      "final_score": 0.99,
+      "fused_score": 0.09095876800794833,
+      "direct_score": 0.09095876800794833,
+      "graph_score": 1.4176778979059552,
+      "paragraph_score": 0.15284062342885874,
+      "graph_supported": true,
+      "support_paths": [
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "seed_label": "عقد العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_23",
+          "score": 0.567071159162382,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+              "relation": "regulatedBy",
+              "target_uri": "http://example.org/jordan-labor-law#article_23"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "seed_label": "عقد العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_23",
+          "score": 0.7088389489529776,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+              "relation": "supportedByArticle",
+              "target_uri": "http://example.org/jordan-labor-law#article_23"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "seed_label": "عقد العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_23",
+          "score": 0.3544194744764888,
+          "steps": [
+            {
+              "direction": "incoming",
+              "source_uri": "http://example.org/jordan-labor-law#article_23",
+              "relation": "regulates",
+              "target_uri": "http://example.org/jordan-labor-law#employment_contract_concept"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "seed_label": "عقد العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_23",
+          "score": 1.134142318324764,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+              "relation": "regulatedBy",
+              "target_uri": "http://example.org/jordan-labor-law#article_23"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "seed_label": "عقد العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_23",
+          "score": 1.4176778979059552,
+          "steps": [
+            {
+              "direction": "outgoing",
+              "source_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+              "relation": "supportedByArticle",
+              "target_uri": "http://example.org/jordan-labor-law#article_23"
+            }
+          ]
+        },
+        {
+          "seed_uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+          "seed_label": "عقد العمل",
+          "article_uri": "http://example.org/jordan-labor-law#article_23",
+          "score": 0.7088389489529776,
+          "steps": [
+            {
+              "direction": "incoming",
+              "source_uri": "http://example.org/jordan-labor-law#article_23",
+              "relation": "regulates",
+              "target_uri": "http://example.org/jordan-labor-law#employment_contract_concept"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "uri": "http://example.org/jordan-labor-law#employment_contract_concept",
+      "local_name": "employment_contract_concept",
+      "node_kind": "EmploymentContract",
+      "labels_ar": [
+        "عقد العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employment_contract_concept\nLocal name: employment_contract_concept\nNode kind: EmploymentContract\nRDF types: EmploymentContract\nArabic labels: عقد العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06865275960922931,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#oral_contract_concept",
+      "local_name": "oral_contract_concept",
+      "node_kind": "OralContract",
+      "labels_ar": [
+        "عقد العمل الشفهي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#oral_contract_concept\nLocal name: oral_contract_concept\nNode kind: OralContract\nRDF types: OralContract\nArabic labels: عقد العمل الشفهي",
+      "final_score": 0.0,
+      "fused_score": 0.06544332090265825,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#fixed_term_contract_concept",
+      "local_name": "fixed_term_contract_concept",
+      "node_kind": "FixedTermContract",
+      "labels_ar": [
+        "عقد العمل محدد المدة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#fixed_term_contract_concept\nLocal name: fixed_term_contract_concept\nNode kind: FixedTermContract\nRDF types: FixedTermContract\nArabic labels: عقد العمل محدد المدة",
+      "final_score": 0.0,
+      "fused_score": 0.06836615243112171,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#indefinite_term_contract_concept",
+      "local_name": "indefinite_term_contract_concept",
+      "node_kind": "IndefiniteTermContract",
+      "labels_ar": [
+        "عقد العمل غير محدد المدة"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#indefinite_term_contract_concept\nLocal name: indefinite_term_contract_concept\nNode kind: IndefiniteTermContract\nRDF types: IndefiniteTermContract\nArabic labels: عقد العمل غير محدد المدة",
+      "final_score": 0.0,
+      "fused_score": 0.06809806671616753,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#termination_contract_consequence",
+      "local_name": "termination_contract_consequence",
+      "node_kind": "TerminationOfContract",
+      "labels_ar": [
+        "إنهاء العقد"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#termination_contract_consequence\nLocal name: termination_contract_consequence\nNode kind: TerminationOfContract\nRDF types: TerminationOfContract\nArabic labels: إنهاء العقد",
+      "final_score": 0.0,
+      "fused_score": 0.06813202661959933,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#temporary_work_concept",
+      "local_name": "temporary_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل المؤقت"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#temporary_work_concept\nLocal name: temporary_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل المؤقت",
+      "final_score": 0.0,
+      "fused_score": 0.037569676700111486,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#written_contract_concept",
+      "local_name": "written_contract_concept",
+      "node_kind": "WrittenContract",
+      "labels_ar": [
+        "عقد العمل الخطي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#written_contract_concept\nLocal name: written_contract_concept\nNode kind: WrittenContract\nRDF types: WrittenContract\nArabic labels: عقد العمل الخطي",
+      "final_score": 0.0,
+      "fused_score": 0.06387599469496022,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_concept",
+      "local_name": "employer_concept",
+      "node_kind": "Employer",
+      "labels_ar": [
+        "صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_concept\nLocal name: employer_concept\nNode kind: Employer\nRDF types: Employer\nArabic labels: صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.06691251691251691,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#employer_liability_consequence",
+      "local_name": "employer_liability_consequence",
+      "node_kind": "EmployerLiability",
+      "labels_ar": [
+        "مسؤولية صاحب العمل"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#employer_liability_consequence\nLocal name: employer_liability_consequence\nNode kind: EmployerLiability\nRDF types: EmployerLiability\nArabic labels: مسؤولية صاحب العمل",
+      "final_score": 0.0,
+      "fused_score": 0.0356994603569946,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#occasional_work_concept",
+      "local_name": "occasional_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل العرضي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#occasional_work_concept\nLocal name: occasional_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل العرضي",
+      "final_score": 0.0,
+      "fused_score": 0.0642036806420368,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#collective_employment_contract_concept",
+      "local_name": "collective_employment_contract_concept",
+      "node_kind": "EmploymentRelation",
+      "labels_ar": [
+        "عقد العمل الجماعي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#collective_employment_contract_concept\nLocal name: collective_employment_contract_concept\nNode kind: EmploymentRelation\nRDF types: EmploymentRelation\nArabic labels: عقد العمل الجماعي",
+      "final_score": 0.0,
+      "fused_score": 0.03645833333333333,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    },
+    {
+      "uri": "http://example.org/jordan-labor-law#seasonal_work_concept",
+      "local_name": "seasonal_work_concept",
+      "node_kind": "LaborDomainConcept",
+      "labels_ar": [
+        "العمل الموسمي"
+      ],
+      "labels_en": [],
+      "article_number": null,
+      "text": "URI: http://example.org/jordan-labor-law#seasonal_work_concept\nLocal name: seasonal_work_concept\nNode kind: LaborDomainConcept\nRDF types: LaborDomainConcept\nArabic labels: العمل الموسمي",
+      "final_score": 0.0,
+      "fused_score": 0.034632452247732974,
+      "direct_score": 0.0,
+      "graph_score": 0.0,
+      "paragraph_score": 0.0,
+      "graph_supported": false,
+      "support_paths": []
+    }
+  ],
+  "expanded_concepts": [],
+  "diagnostics": {
+    "article_numbers": [
+      35,
+      23
+    ],
+    "concept_local_names": [
+      "employment_contract_concept",
+      "oral_contract_concept",
+      "fixed_term_contract_concept",
+      "indefinite_term_contract_concept",
+      "termination_contract_consequence",
+      "temporary_work_concept",
+      "written_contract_concept",
+      "employer_concept",
+      "employer_liability_consequence",
+      "occasional_work_concept",
+      "collective_employment_contract_concept",
+      "seasonal_work_concept"
+    ],
+    "graph_supported_articles": [
+      35,
+      23
+    ],
+    "concept_count": 12,
+    "expanded_concept_count": 0,
+    "article_count": 2
+  },
+  "elapsed_ms": 18433,
+  "debug": null
+}

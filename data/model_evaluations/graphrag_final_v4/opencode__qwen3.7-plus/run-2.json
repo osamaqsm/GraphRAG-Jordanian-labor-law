@@ -1,6 +1,6 @@
 {
   "schema_version": "full-pipeline-evaluation.v4",
-  "created_at_utc": "2026-08-25T15:40:44.082981+00:00",
+  "created_at_utc": "2026-08-25T15:41:11.287836+00:00",
   "model_name": "qwen3.7-plus",
   "provider": "opencode",
   "run_index": 2,
@@ -59,17 +59,17 @@
     "frozen": true
   },
   "summary": {
-    "questions_requested": 39,
-    "questions_completed": 39,
+    "questions_requested": 40,
+    "questions_completed": 40,
     "questions_failed_to_run": 0,
-    "end_to_end_success_rate": 0.897436,
+    "end_to_end_success_rate": 0.9,
     "retrieval": {
-      "routing_accuracy": 0.974359,
+      "routing_accuracy": 0.975,
       "hit_at_1": 0.888889,
       "article_recall_at_5": 0.930556,
       "article_precision": 0.886574,
       "out_of_scope_accuracy": 1.0,
-      "mean_latency_seconds": 52.565846
+      "mean_latency_seconds": 51.9211
     },
     "generation": {
       "correctness": 0.916667,
@@ -77,7 +77,7 @@
       "citation_validity": 0.972222,
       "citation_recall": 0.930556,
       "out_of_scope_response_accuracy": 1.0,
-      "mean_latency_seconds": 17.401974
+      "mean_latency_seconds": 16.9672
     },
     "by_test_type": {
       "colloquial": {
@@ -96,7 +96,7 @@
         "routing_accuracy": 1.0
       },
       "out_of_scope": {
-        "count": 3,
+        "count": 4,
         "end_to_end_success_rate": 1.0,
         "routing_accuracy": 1.0
       },
@@ -24118,6 +24118,94 @@
         "schema_version": "generation.v2",
         "status": "out_of_scope",
         "question": "تعرضت لحادث سير وتضررت سيارتي، كيف أطالب شركة التأمين بالتعويض؟",
+        "retrieval_schema_version": "retrieval.v2",
+        "answer_ar": "السؤال خارج نطاق قانون العمل الأردني الممثل في قاعدة المعرفة المتاحة في النظام.",
+        "key_points": [],
+        "citations": [],
+        "cited_article_numbers": [],
+        "grounded": false,
+        "warnings": [],
+        "model": "",
+        "usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "total_tokens": 0
+        },
+        "elapsed_ms": 0,
+        "debug": null
+      }
+    },
+    {
+      "id": "M40-40",
+      "question": "وصلتني مخالفة سير بسبب تجاوز السرعة، كيف أعترض عليها؟",
+      "test_type": "out_of_scope",
+      "category": "out_of_scope",
+      "difficulty": "easy",
+      "expected_behavior": "abstain",
+      "retrieval_evaluation": {
+        "expected_behavior": "abstain",
+        "actual_behavior": "abstain",
+        "required_articles": [],
+        "acceptable_articles": [],
+        "actual_articles_at_5": [],
+        "routing_correct": true,
+        "hit_at_1": false,
+        "article_recall_at_5": 0.0,
+        "article_precision": 0.0,
+        "elapsed_seconds": 26.776
+      },
+      "generation_evaluation": {
+        "status": "out_of_scope",
+        "answer_ar": "السؤال خارج نطاق قانون العمل الأردني الممثل في قاعدة المعرفة المتاحة في النظام.",
+        "cited_article_numbers": [],
+        "out_of_scope_response_correct": true,
+        "correctness_grade": null,
+        "faithfulness_grade": null,
+        "correctness": null,
+        "faithfulness": null,
+        "citation_validity": 1.0,
+        "citation_recall": 1.0,
+        "elapsed_seconds": 0.011,
+        "judge": null
+      },
+      "end_to_end_pass": true,
+      "retrieval_output": {
+        "schema_version": "retrieval.v2",
+        "status": "success",
+        "question": "وصلتني مخالفة سير بسبب تجاوز السرعة، كيف أعترض عليها؟",
+        "decision": {
+          "behavior": "abstain",
+          "reason": "The question pertains to traffic violations and objection procedures, which fall under Traffic Law and are outside the scope of Jordanian Labor Law.",
+          "planner_used": true,
+          "planner_verified": true,
+          "planner_confidence": 1.0
+        },
+        "embedding": {
+          "model": "text-embedding-3-small",
+          "dimensions": 0,
+          "input_tokens": 0
+        },
+        "articles": [],
+        "concepts": [],
+        "expanded_concepts": [],
+        "diagnostics": {
+          "article_numbers": [],
+          "graph_candidate_article_numbers": [],
+          "concept_local_names": [],
+          "selected_seed_local_names": [],
+          "graph_supported_articles": [],
+          "concept_count": 0,
+          "expanded_concept_count": 0,
+          "graph_candidate_count": 0,
+          "article_count": 0
+        },
+        "elapsed_ms": 26743,
+        "debug": null
+      },
+      "generation_output": {
+        "schema_version": "generation.v2",
+        "status": "out_of_scope",
+        "question": "وصلتني مخالفة سير بسبب تجاوز السرعة، كيف أعترض عليها؟",
         "retrieval_schema_version": "retrieval.v2",
         "answer_ar": "السؤال خارج نطاق قانون العمل الأردني الممثل في قاعدة المعرفة المتاحة في النظام.",
         "key_points": [],

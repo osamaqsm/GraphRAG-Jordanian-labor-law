@@ -2,22 +2,22 @@ from __future__ import annotations
 
 from fastapi import APIRouter, FastAPI, HTTPException
 
-from app.generation_contract import GroundedAnswerResultV1
+from app.generation_contract import GroundedAnswerResultV2
 from app.grounded_answer_generator import GroundedAnswerGenerator
-from app.retrieval_contract import RetrievalResultV1
+from app.retrieval_contract import RetrievalResultV2
 
 
 router = APIRouter(tags=["generation"])
 
 
-@router.post("/generate", response_model=GroundedAnswerResultV1)
+@router.post("/generate", response_model=GroundedAnswerResultV2)
 def generate(
-    retrieval: RetrievalResultV1,
+    retrieval: RetrievalResultV2,
     include_debug: bool = False,
-) -> GroundedAnswerResultV1:
+) -> GroundedAnswerResultV2:
     """
-    Generate directly from the complete retrieval.v1 object
-    produced by Step 7.
+    Generate directly from the complete retrieval.v2 object
+    produced by the graph-only retrieval stage.
 
     The request body must be the exact output returned by /retrieve.
 

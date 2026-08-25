@@ -2,28 +2,12 @@ from __future__ import annotations
 
 from typing import Any
 
-from weaviate.classes.config import (
-    Configure,
-    DataType,
-    Property,
-    Tokenization,
-    VectorDistances,
-)
+from weaviate.classes.config import Configure, DataType, Property, Tokenization, VectorDistances
 
 from app.config import Settings
 
 
-def _exact_text_property(
-    name: str,
-    description: str,
-) -> Property:
-    """
-    Create a text property intended for exact filtering.
-
-    FIELD tokenization stores the complete string as one field.
-    This is suitable for URIs, identifiers and controlled values.
-    """
-
+def _exact_text_property(name: str, description: str) -> Property:
     return Property(
         name=name,
         description=description,
@@ -34,14 +18,7 @@ def _exact_text_property(
     )
 
 
-def _searchable_text_property(
-    name: str,
-    description: str,
-) -> Property:
-    """
-    Create a text property suitable for BM25 keyword search.
-    """
-
+def _searchable_text_property(name: str, description: str) -> Property:
     return Property(
         name=name,
         description=description,
@@ -52,14 +29,7 @@ def _searchable_text_property(
     )
 
 
-def _searchable_text_array_property(
-    name: str,
-    description: str,
-) -> Property:
-    """
-    Create a searchable array of text values.
-    """
-
+def _searchable_text_array_property(name: str, description: str) -> Property:
     return Property(
         name=name,
         description=description,
@@ -70,14 +40,7 @@ def _searchable_text_array_property(
     )
 
 
-def _exact_text_array_property(
-    name: str,
-    description: str,
-) -> Property:
-    """
-    Create a text-array property intended for exact filters.
-    """
-
+def _exact_text_array_property(name: str, description: str) -> Property:
     return Property(
         name=name,
         description=description,
@@ -88,329 +51,116 @@ def _exact_text_array_property(
     )
 
 
-def create_node_collection(
-    client: Any,
-    settings: Settings,
-) -> None:
-    """
-    Create the collection that stores RDF URI resources.
-
-    Examples:
-        Articles
-        Paragraphs
-        Definitions
-        Rights
-        Obligations
-        Violations
-        Conditions
-        Consequences
-        Actors
-        OWL classes and properties
-
-    Vectors will be generated later using:
-        text-embedding-3-small
-
-    Therefore, Weaviate is configured to accept
-    self-provided vectors.
-    """
-
+def create_node_collection(client: Any, settings: Settings) -> None:
     client.collections.create(
         name=settings.weaviate_node_collection,
         description=(
-            "URI resources extracted from the Jordanian "
-            "Labour Law ontology and knowledge graph."
+            "RDF URI resources for the final Jordanian Labor Law GraphRAG. "
+            "Only retrievalEligible=true semantic concept individuals may be "
+            "used by vector/BM25 concept linking."
         ),
-        vector_config=(
-    Configure.Vectors.self_provided(
-        vector_index_config=(
-            Configure.VectorIndex.hnsw(
-                distance_metric=(
-                    VectorDistances.COSINE
-                )
+        vector_config=Configure.Vectors.self_provided(
+            vector_index_config=Configure.VectorIndex.hnsw(
+                distance_metric=VectorDistances.COSINE
             )
-        )
-    )
-),
+        ),
         properties=[
-            _exact_text_property(
-                name="uri",
-                description=(
-                    "Complete globally unique RDF URI."
-                ),
-            ),
-            _exact_text_property(
-                name="localName",
-                description=(
-                    "Final fragment or path component "
-                    "of the RDF URI."
-                ),
-            ),
-            _exact_text_property(
-                name="nodeKind",
-                description=(
-                    "High-level resource type such as "
-                    "Article, Paragraph or Definition."
-                ),
-            ),
-            _exact_text_array_property(
-                name="rdfTypes",
-                description=(
-                    "Complete rdf:type URIs assigned "
-                    "to the resource."
-                ),
-            ),
-            _searchable_text_array_property(
-                name="labelsAr",
-                description="Arabic rdfs:label values.",
-            ),
-            _searchable_text_array_property(
-                name="labelsEn",
-                description="English rdfs:label values.",
-            ),
-            _searchable_text_array_property(
-                name="labelsOther",
-                description=(
-                    "Labels without Arabic or English "
-                    "language tags."
-                ),
-            ),
-            _searchable_text_array_property(
-                name="commentsAr",
-                description=(
-                    "Arabic rdfs:comment values, including "
-                    "complete legal article content."
-                ),
-            ),
-            _searchable_text_array_property(
-                name="commentsEn",
-                description="English rdfs:comment values.",
-            ),
-            _searchable_text_array_property(
-                name="commentsOther",
-                description=(
-                    "Comments without Arabic or English "
-                    "language tags."
-                ),
-            ),
+            _exact_text_property("uri", "Complete RDF URI."),
+            _exact_text_property("localName", "RDF local name."),
+            _exact_text_property("nodeKind", "High-level RDF/legal node kind."),
+            _exact_text_array_property("rdfTypes", "Complete rdf:type URIs."),
+            _searchable_text_array_property("labelsAr", "Arabic rdfs:label values."),
+            _searchable_text_array_property("labelsEn", "English rdfs:label values."),
+            _searchable_text_array_property("labelsOther", "Other rdfs:label values."),
+            _searchable_text_array_property("aliasesAr", "Arabic skos:altLabel values."),
+            _searchable_text_array_property("aliasesEn", "English skos:altLabel values."),
+            _searchable_text_array_property("aliasesOther", "Other skos:altLabel values."),
+            _searchable_text_array_property("commentsAr", "Arabic rdfs:comment values."),
+            _searchable_text_array_property("commentsEn", "English rdfs:comment values."),
+            _searchable_text_array_property("commentsOther", "Other rdfs:comment values."),
             Property(
                 name="articleNumber",
-                description=(
-                    "Numeric article number when the "
-                    "resource is a legal article."
-                ),
+                description="Numeric legal article number when nodeKind=Article.",
                 data_type=DataType.INT,
                 index_filterable=True,
                 index_range_filters=True,
             ),
-            _searchable_text_property(
-                name="searchableText",
+            Property(
+                name="retrievalEligible",
                 description=(
-                    "Combined labels, types and legal "
-                    "text used for BM25 and embedding."
+                    "True only for semantic concept individuals eligible for "
+                    "ontology concept linking. Article/Paragraph/Law/schema nodes are false."
                 ),
+                data_type=DataType.BOOL,
+                index_filterable=True,
+            ),
+            _searchable_text_property(
+                "searchableText",
+                "Combined semantic labels, aliases, types and descriptive text.",
             ),
         ],
     )
 
 
-def create_edge_collection(
-    client: Any,
-    settings: Settings,
-) -> None:
-    """
-    Create the collection that preserves every RDF triple.
-
-    URI triple:
-        sourceUri -> predicateUri -> targetUri
-
-    Literal triple:
-        sourceUri -> predicateUri -> literalValue
-
-    We do not need semantic vectors for edge objects,
-    but self-provided vector configuration allows objects
-    to exist without an internal vectorizer module.
-    """
-
+def create_edge_collection(client: Any, settings: Settings) -> None:
     client.collections.create(
         name=settings.weaviate_edge_collection,
-        description=(
-            "RDF triples extracted from the Jordanian "
-            "Labour Law ontology and knowledge graph."
+        description="All RDF triples for relation-aware graph traversal.",
+        vector_config=Configure.Vectors.self_provided(
+            vector_index_config=Configure.VectorIndex.none()
         ),
-        vector_config=(
-    Configure.Vectors.self_provided(
-        vector_index_config=(
-            Configure.VectorIndex.none()
-        )
-    )
-),
         properties=[
-            _exact_text_property(
-                name="sourceUri",
-                description=(
-                    "URI of the RDF triple subject."
-                ),
-            ),
-            _exact_text_property(
-                name="predicateUri",
-                description=(
-                    "Complete URI of the RDF predicate."
-                ),
-            ),
-            _exact_text_property(
-                name="predicateLocalName",
-                description=(
-                    "Local name of the RDF predicate."
-                ),
-            ),
-            _exact_text_property(
-                name="objectKind",
-                description=(
-                    "Whether the RDF object is a URI "
-                    "or a literal."
-                ),
-            ),
-            _exact_text_property(
-                name="targetUri",
-                description=(
-                    "URI of the RDF object when "
-                    "objectKind is uri."
-                ),
-            ),
-            _searchable_text_property(
-                name="literalValue",
-                description=(
-                    "Literal RDF value when objectKind "
-                    "is literal."
-                ),
-            ),
-            _exact_text_property(
-                name="literalLanguage",
-                description=(
-                    "Language tag of a literal, such "
-                    "as ar or en."
-                ),
-            ),
-            _exact_text_property(
-                name="literalDatatype",
-                description=(
-                    "Datatype URI assigned to a literal."
-                ),
-            ),
+            _exact_text_property("sourceUri", "RDF subject URI."),
+            _exact_text_property("predicateUri", "Complete RDF predicate URI."),
+            _exact_text_property("predicateLocalName", "RDF predicate local name."),
+            _exact_text_property("objectKind", "uri or literal."),
+            _exact_text_property("targetUri", "RDF object URI for URI edges."),
+            _searchable_text_property("literalValue", "Literal RDF object value."),
+            _exact_text_property("literalLanguage", "Literal language tag."),
+            _exact_text_property("literalDatatype", "Literal datatype URI."),
         ],
     )
 
 
-def ensure_collections(
-    client: Any,
-    settings: Settings,
-    reset: bool = False,
-) -> dict[str, Any]:
-    """
-    Create both collections.
-
-    When reset is False:
-        Existing collections are retained.
-
-    When reset is True:
-        Existing node and edge collections are deleted
-        and recreated.
-
-    Warning:
-        reset=True deletes all objects currently stored
-        inside these two collections.
-    """
-
-    collection_names = (
-        settings.weaviate_node_collection,
-        settings.weaviate_edge_collection,
-    )
-
+def ensure_collections(client: Any, settings: Settings, reset: bool = False) -> dict[str, Any]:
+    names = (settings.weaviate_node_collection, settings.weaviate_edge_collection)
     deleted: list[str] = []
     created: list[str] = []
     retained: list[str] = []
 
     if reset:
-        for collection_name in collection_names:
-            if client.collections.exists(
-                collection_name
-            ):
-                client.collections.delete(
-                    collection_name
-                )
-                deleted.append(collection_name)
+        for name in names:
+            if client.collections.exists(name):
+                client.collections.delete(name)
+                deleted.append(name)
 
-    if client.collections.exists(
-        settings.weaviate_node_collection
-    ):
-        retained.append(
-            settings.weaviate_node_collection
-        )
+    if client.collections.exists(settings.weaviate_node_collection):
+        retained.append(settings.weaviate_node_collection)
     else:
-        create_node_collection(
-            client=client,
-            settings=settings,
-        )
-        created.append(
-            settings.weaviate_node_collection
-        )
+        create_node_collection(client, settings)
+        created.append(settings.weaviate_node_collection)
 
-    if client.collections.exists(
-        settings.weaviate_edge_collection
-    ):
-        retained.append(
-            settings.weaviate_edge_collection
-        )
+    if client.collections.exists(settings.weaviate_edge_collection):
+        retained.append(settings.weaviate_edge_collection)
     else:
-        create_edge_collection(
-            client=client,
-            settings=settings,
-        )
-        created.append(
-            settings.weaviate_edge_collection
-        )
+        create_edge_collection(client, settings)
+        created.append(settings.weaviate_edge_collection)
 
-    return {
-        "deleted": deleted,
-        "created": created,
-        "retained": retained,
-    }
+    return {"deleted": deleted, "created": created, "retained": retained}
 
 
-def inspect_collection(
-    client: Any,
-    collection_name: str,
-) -> dict[str, Any]:
-    """
-    Return a simple readable summary of one collection.
-    """
-
-    collection = client.collections.use(
-        collection_name
-    )
-
-    configuration = collection.config.get()
-
+def inspect_collection(client: Any, collection_name: str) -> dict[str, Any]:
+    configuration = client.collections.use(collection_name).config.get()
     return {
         "name": collection_name,
         "description": configuration.description,
         "properties": [
             {
                 "name": prop.name,
-                "data_type": str(
-                    prop.data_type
-                ),
-                "tokenization": (
-                    str(prop.tokenization)
-                    if prop.tokenization
-                    else None
-                ),
-                "index_filterable": (
-                    prop.index_filterable
-                ),
-                "index_searchable": (
-                    prop.index_searchable
-                ),
+                "data_type": str(prop.data_type),
+                "tokenization": str(prop.tokenization) if prop.tokenization else None,
+                "index_filterable": prop.index_filterable,
+                "index_searchable": prop.index_searchable,
             }
             for prop in configuration.properties
         ],

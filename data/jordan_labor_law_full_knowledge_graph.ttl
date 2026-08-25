@@ -3,11 +3,12 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://example.org/jordan-labor-law> rdf:type owl:Ontology ;
     rdfs:label "Jordanian Labor Law Two-Layer Ontology"@en , "أنطولوجيا قانون العمل الأردني ذات الطبقتين"@ar ;
-    rdfs:comment "A two-layer ontology for Jordanian labor law: legal source layer and labor-domain layer, with bridge relations between them."@en ,
-                 "أنطولوجيا من طبقتين لقانون العمل الأردني: طبقة المصدر القانوني وطبقة مجال العمل، مع علاقات ربط بينهما."@ar .
+    rdfs:comment "A two-layer ontology for Jordanian labor law: a legal-source layer and a semantic legal-concept layer containing labor-domain and statutory concepts, with explicit evidence bridges between them."@en ,
+                 "أنطولوجيا من طبقتين لقانون العمل الأردني: طبقة المصدر القانوني وطبقة المفاهيم القانونية الدلالية التي تشمل مفاهيم مجال العمل والمفاهيم التشريعية، مع علاقات استدلال وربط صريحة بينهما."@ar .
 
 ########## Classes ##########
 
@@ -4371,4 +4372,377 @@
 :collective_labor_dispute_concept :definedIn :article_2_definition_22 ;
     :supportedByArticle :article_2 ;
     :regulatedBy :article_2 .
+
+########## FINAL GRAPHRAG SEMANTIC COVERAGE LAYER ##########
+# Semantic concepts added systematically for graph-only legal-evidence retrieval.
+# Article and Paragraph nodes remain legal-source nodes and are never semantic-search seeds.
+
+:LegalConcept rdf:type owl:Class ;
+    rdfs:label "Legal Concept"@en , "مفهوم قانوني"@ar .
+
+:StatutoryConcept rdf:type owl:Class ;
+    rdfs:subClassOf :LegalConcept ;
+    rdfs:label "Statutory Concept"@en , "مفهوم تشريعي"@ar .
+
+:LaborDomainConcept rdfs:subClassOf :LegalConcept .
+
+:law_identity_concept rdf:type :StatutoryConcept ;
+    rdfs:label "هوية قانون العمل"@ar ;
+    skos:altLabel "اسم قانون العمل"@ar ;
+    skos:altLabel "تسمية قانون العمل"@ar ;
+    skos:altLabel "قانون العمل لسنة 1996"@ar ;
+    :supportedByArticle :article_1 .
+
+:law_commencement_concept rdf:type :StatutoryConcept ;
+    rdfs:label "نفاذ قانون العمل"@ar ;
+    skos:altLabel "سريان القانون"@ar ;
+    skos:altLabel "بدء العمل بالقانون"@ar ;
+    skos:altLabel "تاريخ نفاذ القانون"@ar ;
+    skos:altLabel "النشر في الجريدة الرسمية"@ar ;
+    :supportedByArticle :article_1 .
+
+:labor_law_scope_concept rdf:type :StatutoryConcept ;
+    rdfs:label "نطاق تطبيق قانون العمل"@ar ;
+    skos:altLabel "سريان قانون العمل على العمال وأصحاب العمل"@ar ;
+    skos:altLabel "الاستثناءات من تطبيق قانون العمل"@ar ;
+    :supportedByArticle :article_3 .
+
+:worker_favorable_rights_nonwaiver_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حماية الحقوق الأفضل وعدم التنازل عنها"@ar ;
+    skos:altLabel "الحقوق الأفضل للعامل"@ar ;
+    skos:altLabel "بطلان التنازل عن حقوق العامل"@ar ;
+    skos:altLabel "عدم الانتقاص من حقوق العامل"@ar ;
+    :supportedByArticle :article_4 .
+
+:labor_inspection_ministry_role_concept rdf:type :StatutoryConcept ;
+    rdfs:label "اختصاص الوزارة بالتفتيش العمالي"@ar ;
+    skos:altLabel "مهام التفتيش"@ar ;
+    skos:altLabel "تفتيش العمل"@ar ;
+    skos:altLabel "الوزارة والتفتيش"@ar ;
+    :supportedByArticle :article_5 .
+
+:labor_inspector_confidentiality_concept rdf:type :StatutoryConcept ;
+    rdfs:label "سرية وأمانة مفتش العمل"@ar ;
+    skos:altLabel "قسم مفتش العمل"@ar ;
+    skos:altLabel "عدم إفشاء أسرار العمل"@ar ;
+    skos:altLabel "التزام مفتش العمل بالسرية"@ar ;
+    :supportedByArticle :article_6 .
+
+:labor_inspector_qualifications_powers_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مؤهلات وصلاحيات مفتشي العمل"@ar ;
+    skos:altLabel "مهام مفتشي العمل"@ar ;
+    skos:altLabel "مكافآت مفتشي العمل"@ar ;
+    skos:altLabel "التزامات صاحب العمل تجاه المفتش"@ar ;
+    :supportedByArticle :article_7 .
+
+:employer_inspection_records_notice_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إشعارات وسجلات صاحب العمل للتفتيش"@ar ;
+    skos:altLabel "بيان العمال للوزارة"@ar ;
+    skos:altLabel "سجلات العمال والمتدربين"@ar ;
+    skos:altLabel "إشعار الوزارة بالعمال"@ar ;
+    :supportedByArticle :article_8 .
+
+:labor_inspector_enforcement_concept rdf:type :StatutoryConcept ;
+    rdfs:label "صلاحيات مفتش العمل في إزالة المخالفات"@ar ;
+    skos:altLabel "الضابطة العدلية لمفتش العمل"@ar ;
+    skos:altLabel "إنذار إزالة المخالفة"@ar ;
+    skos:altLabel "إغلاق المؤسسة بسبب المخالفة"@ar ;
+    skos:altLabel "غرامة مخالفة التفتيش"@ar ;
+    :supportedByArticle :article_9 .
+
+:labor_market_employment_services_concept rdf:type :StatutoryConcept ;
+    rdfs:label "تنظيم سوق العمل ومكاتب التشغيل"@ar ;
+    skos:altLabel "التوجيه المهني"@ar ;
+    skos:altLabel "توفير فرص العمل"@ar ;
+    skos:altLabel "مكاتب تشغيل الأردنيين"@ar ;
+    skos:altLabel "مكاتب استقدام خدم المنازل"@ar ;
+    :supportedByArticle :article_10 .
+
+:employment_mediation_restriction_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حصر الوساطة في التشغيل بالمكاتب المرخصة"@ar ;
+    skos:altLabel "منع وساطة التشغيل غير المرخصة"@ar ;
+    skos:altLabel "مكاتب التشغيل المرخصة"@ar ;
+    skos:altLabel "عقوبة الوساطة غير المرخصة"@ar ;
+    :supportedByArticle :article_11 .
+
+:non_jordanian_work_permit_concept rdf:type :StatutoryConcept ;
+    rdfs:label "تصريح عمل العامل غير الأردني"@ar ;
+    skos:altLabel "استخدام العامل غير الأردني"@ar ;
+    skos:altLabel "رسوم تصريح العمل"@ar ;
+    skos:altLabel "مدة تصريح العمل"@ar ;
+    skos:altLabel "استقدام العمال غير الأردنيين"@ar ;
+    :supportedByArticle :article_12 .
+
+:disabled_worker_employment_quota_concept rdf:type :StatutoryConcept ;
+    rdfs:label "نسبة تشغيل العمال ذوي الإعاقة المؤهلين مهنيا"@ar ;
+    skos:altLabel "تشغيل العمال المعوقين المؤهلين"@ar ;
+    skos:altLabel "نسبة اثنين بالمائة للعمال المعوقين"@ar ;
+    skos:altLabel "بيان تشغيل ذوي الإعاقة"@ar ;
+    :supportedByArticle :article_13 .
+
+:vocational_training_contract_terms_concept rdf:type :StatutoryConcept ;
+    rdfs:label "شروط عقد التدريب المهني وأجر المتدرب"@ar ;
+    skos:altLabel "مدة ومراحل التدريب"@ar ;
+    skos:altLabel "أجر المتدرب"@ar ;
+    skos:altLabel "برامج التدريب المهني"@ar ;
+    skos:altLabel "تعليمات التدريب المنشورة"@ar ;
+    :supportedByArticle :article_37 .
+
+:internal_work_regulation_concept rdf:type :StatutoryConcept ;
+    rdfs:label "النظام الداخلي لتنظيم العمل في المؤسسة"@ar ;
+    skos:altLabel "نظام العمل الداخلي"@ar ;
+    skos:altLabel "تصديق النظام الداخلي"@ar ;
+    skos:altLabel "الدوام وفترات الراحة والعقوبات الداخلية"@ar ;
+    :supportedByArticle :article_55 .
+
+:normal_working_hours_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الحد الأقصى لساعات العمل"@ar ;
+    skos:altLabel "ثماني ساعات يوميا"@ar ;
+    skos:altLabel "ثمان وأربعون ساعة أسبوعيا"@ar ;
+    skos:altLabel "ساعات العمل اليومية والأسبوعية"@ar ;
+    :supportedByArticle :article_56 .
+
+:overtime_exception_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حالات تشغيل العامل ساعات إضافية"@ar ;
+    skos:altLabel "العمل الإضافي"@ar ;
+    skos:altLabel "تجاوز ساعات العمل للجرد"@ar ;
+    skos:altLabel "تجاوز ساعات العمل لتلافي الخسارة"@ar ;
+    :supportedByArticle :article_57 .
+
+:working_hours_exemption_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الفئات المستثناة من أحكام ساعات العمل"@ar ;
+    skos:altLabel "المشرفون والمديرون وساعات العمل"@ar ;
+    skos:altLabel "العمل خارج المؤسسة والسفر"@ar ;
+    skos:altLabel "استثناءات ساعات العمل"@ar ;
+    :supportedByArticle :article_58 .
+
+:employer_childcare_facility_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مكان رعاية أطفال العاملات"@ar ;
+    skos:altLabel "حضانة أطفال العاملات"@ar ;
+    skos:altLabel "عشرون عاملة متزوجة"@ar ;
+    skos:altLabel "مربية مؤهلة لأطفال العاملات"@ar ;
+    :supportedByArticle :article_72 .
+
+:child_labour_minimum_age_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الحد الأدنى لسن تشغيل الحدث"@ar ;
+    skos:altLabel "منع تشغيل من دون السادسة عشرة"@ar ;
+    skos:altLabel "سن تشغيل الأحداث"@ar ;
+    skos:altLabel "تشغيل الحدث"@ar ;
+    :supportedByArticle :article_73 .
+
+:protected_worker_chapter_penalty_concept rdf:type :StatutoryConcept ;
+    rdfs:label "عقوبة مخالفة أحكام حماية الفئات المشمولة بالفصل"@ar ;
+    skos:altLabel "غرامة مخالفة أحكام الفصل"@ar ;
+    skos:altLabel "تضاعف العقوبة عند التكرار"@ar ;
+    skos:altLabel "عقوبة صاحب العمل أو مدير المؤسسة"@ar ;
+    :supportedByArticle :article_77 .
+
+:worker_union_right_membership_protection_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حق العمال في تأسيس النقابة وحماية العضوية"@ar ;
+    skos:altLabel "الانتساب إلى نقابة العمال"@ar ;
+    skos:altLabel "منع التمييز بسبب العضوية النقابية"@ar ;
+    skos:altLabel "منع تدخل النقابات ببعضها"@ar ;
+    :supportedByArticle :article_97 .
+
+:worker_union_formation_concept rdf:type :StatutoryConcept ;
+    rdfs:label "شروط تأسيس نقابة العمال"@ar ;
+    skos:altLabel "خمسون مؤسسا للنقابة"@ar ;
+    skos:altLabel "تصنيف المهن والصناعات النقابية"@ar ;
+    skos:altLabel "تأسيس النقابة العامة"@ar ;
+    :supportedByArticle :article_98 .
+
+:union_objectives_concept rdf:type :StatutoryConcept ;
+    rdfs:label "أهداف نقابة العمال"@ar ;
+    skos:altLabel "رعاية مصالح العمال"@ar ;
+    skos:altLabel "الخدمات الصحية والاجتماعية للنقابة"@ar ;
+    skos:altLabel "رفع المستوى الاقتصادي والمهني"@ar ;
+    skos:altLabel "فروع النقابة"@ar ;
+    :supportedByArticle :article_99 .
+
+:union_internal_bylaws_concept rdf:type :StatutoryConcept ;
+    rdfs:label "النظام الداخلي للنقابات والاتحاد"@ar ;
+    skos:altLabel "محتويات النظام الداخلي للنقابة"@ar ;
+    skos:altLabel "إجراءات العضوية والانتخاب"@ar ;
+    skos:altLabel "حفظ أموال النقابة"@ar ;
+    skos:altLabel "اجتماعات الهيئة العامة"@ar ;
+    :supportedByArticle :article_100 .
+
+:preexisting_union_transition_concept rdf:type :StatutoryConcept ;
+    rdfs:label "توفيق أوضاع النقابات القائمة قبل نفاذ القانون"@ar ;
+    skos:altLabel "استمرار النقابات المسجلة سابقا"@ar ;
+    skos:altLabel "مهلة ستة أشهر لتوفيق الأوضاع"@ar ;
+    :supportedByArticle :article_101 .
+
+:union_registration_procedure_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إجراءات تسجيل النقابة والطعن في القرار"@ar ;
+    skos:altLabel "طلب تأسيس النقابة"@ar ;
+    skos:altLabel "مسجل النقابات"@ar ;
+    skos:altLabel "شهادة تسجيل النقابة"@ar ;
+    skos:altLabel "الطعن في رفض التسجيل"@ar ;
+    skos:altLabel "نشر قرار التسجيل"@ar ;
+    :supportedByArticle :article_102 .
+
+:union_legal_personality_concept rdf:type :StatutoryConcept ;
+    rdfs:label "اكتساب النقابة الشخصية الاعتبارية"@ar ;
+    skos:altLabel "قيام النقابة قانونا"@ar ;
+    skos:altLabel "تاريخ اكتساب الشخصية الاعتبارية"@ar ;
+    skos:altLabel "تعديل النظام الداخلي للنقابة"@ar ;
+    :supportedByArticle :article_103 .
+
+:union_registered_address_concept rdf:type :StatutoryConcept ;
+    rdfs:label "العنوان المسجل للنقابة"@ar ;
+    skos:altLabel "تغيير عنوان النقابة"@ar ;
+    skos:altLabel "مراسلات وإشعارات النقابة"@ar ;
+    :supportedByArticle :article_104 .
+
+:union_registration_cancellation_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إلغاء شهادة تسجيل النقابة"@ar ;
+    skos:altLabel "إلغاء تسجيل النقابة"@ar ;
+    skos:altLabel "زوال النقابة وحلها"@ar ;
+    :supportedByArticle :article_105 .
+
+:union_voluntary_dissolution_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الحل الاختياري للنقابة"@ar ;
+    skos:altLabel "موافقة ثلثي الأعضاء على الحل"@ar ;
+    skos:altLabel "تصفية أموال النقابة"@ar ;
+    skos:altLabel "إشعار الوزير بقرار الحل"@ar ;
+    skos:altLabel "نشر حل النقابة"@ar ;
+    :supportedByArticle :article_106 .
+
+:union_compliance_penalty_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مخالفات النقابة والتصويب والعقوبة"@ar ;
+    skos:altLabel "عدم تقديم حسابات النقابة"@ar ;
+    skos:altLabel "مخالفة النظام الداخلي للنقابة"@ar ;
+    skos:altLabel "تصويب وضع النقابة"@ar ;
+    skos:altLabel "وقف النقابة عن العمل"@ar ;
+    :supportedByArticle :article_107 .
+
+:employers_union_formation_concept rdf:type :StatutoryConcept ;
+    rdfs:label "تأسيس نقابة أصحاب العمل وشروط العضوية"@ar ;
+    skos:altLabel "ثلاثون مؤسسا لنقابة أصحاب العمل"@ar ;
+    skos:altLabel "شروط مؤسس النقابة"@ar ;
+    skos:altLabel "عضوية نقابة أصحاب العمل"@ar ;
+    :supportedByArticle :article_108 .
+
+:union_funds_permitted_uses_concept rdf:type :StatutoryConcept ;
+    rdfs:label "أوجه إنفاق أموال نقابة العمال"@ar ;
+    skos:altLabel "نفقات إدارة النقابة"@ar ;
+    skos:altLabel "نفقات الدعاوى والنزاعات العمالية"@ar ;
+    skos:altLabel "إعانات أعضاء النقابة"@ar ;
+    :supportedByArticle :article_109 .
+
+:general_federation_unions_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الاتحاد العام لنقابات العمال والاتحادات المهنية"@ar ;
+    skos:altLabel "تشكيل الاتحاد العام"@ar ;
+    skos:altLabel "الاتحاد المهني"@ar ;
+    skos:altLabel "الانضمام إلى منظمات عمالية عربية ودولية"@ar ;
+    :supportedByArticle :article_110 .
+
+:union_member_agreement_immunity_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الحماية من العقوبة بسبب الاتفاق النقابي المشروع"@ar ;
+    skos:altLabel "عدم معاقبة عضو النقابة"@ar ;
+    skos:altLabel "اتفاق أعضاء النقابة المشروع"@ar ;
+    skos:altLabel "الحماية القانونية للنشاط النقابي"@ar ;
+    :supportedByArticle :article_111 .
+
+:union_trade_restraint_status_concept rdf:type :StatutoryConcept ;
+    rdfs:label "عدم عدم مشروعية النقابة بسبب تقييد التجارة"@ar ;
+    skos:altLabel "حرية التجارة والنقابة"@ar ;
+    skos:altLabel "مشروعية نقابة العمال"@ar ;
+    :supportedByArticle :article_112 .
+
+:union_records_inspection_concept rdf:type :StatutoryConcept ;
+    rdfs:label "سجلات ودفاتر النقابة وحق الاطلاع عليها"@ar ;
+    skos:altLabel "دفاتر حسابات النقابة"@ar ;
+    skos:altLabel "اطلاع مفتش العمل على سجلات النقابة"@ar ;
+    skos:altLabel "قوائم أعضاء النقابة"@ar ;
+    :supportedByArticle :article_113 .
+
+:union_board_eligibility_concept rdf:type :StatutoryConcept ;
+    rdfs:label "شروط عضوية الهيئة الإدارية للنقابة"@ar ;
+    skos:altLabel "انتخاب الهيئة الإدارية للنقابة"@ar ;
+    skos:altLabel "أهلية عضو إدارة النقابة"@ar ;
+    skos:altLabel "السوابق الجنائية وعضوية الإدارة"@ar ;
+    :supportedByArticle :article_114 .
+
+:union_branches_concept rdf:type :StatutoryConcept ;
+    rdfs:label "فروع نقابة العمال"@ar ;
+    skos:altLabel "فتح فروع النقابة"@ar ;
+    skos:altLabel "علاقة النقابة بفروعها"@ar ;
+    skos:altLabel "علاقة النقابة بالاتحاد العام"@ar ;
+    :supportedByArticle :article_115 .
+
+:union_judicial_dissolution_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الحل القضائي للنقابة"@ar ;
+    skos:altLabel "دعوى الوزير لحل النقابة"@ar ;
+    skos:altLabel "أسباب حل النقابة"@ar ;
+    skos:altLabel "استئناف قرار حل النقابة"@ar ;
+    :supportedByArticle :article_116 .
+
+:union_assets_after_dissolution_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مصير أموال النقابة بعد الحل غير الاختياري"@ar ;
+    skos:altLabel "إيداع أموال النقابة المحلولة"@ar ;
+    skos:altLabel "انتقال أموال النقابة إلى الاتحاد العام"@ar ;
+    :supportedByArticle :article_117 .
+
+:union_annual_financial_reporting_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الميزانية العمومية السنوية للنقابة"@ar ;
+    skos:altLabel "إرسال ميزانية النقابة للمسجل"@ar ;
+    skos:altLabel "تدقيق حسابات النقابة"@ar ;
+    skos:altLabel "كشف موظفي النقابة"@ar ;
+    :supportedByArticle :article_118 .
+
+:union_reporting_fraud_penalties_concept rdf:type :StatutoryConcept ;
+    rdfs:label "عقوبات مخالفات التقارير والتزوير النقابي"@ar ;
+    skos:altLabel "غرامة عدم تقديم مستندات النقابة"@ar ;
+    skos:altLabel "بيان غير صحيح في ميزانية النقابة"@ar ;
+    skos:altLabel "تزوير النظام الداخلي للنقابة"@ar ;
+    :supportedByArticle :article_119 .
+
+:conciliation_delegate_concept rdf:type :StatutoryConcept ;
+    rdfs:label "تعيين مندوب التوفيق للنزاعات العمالية الجماعية"@ar ;
+    skos:altLabel "مندوب التوفيق"@ar ;
+    skos:altLabel "الوساطة في النزاع العمالي الجماعي"@ar ;
+    skos:altLabel "تسوية النزاعات العمالية الجماعية"@ar ;
+    :supportedByArticle :article_120 .
+
+:strike_lockout_prohibition_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حالات حظر الإضراب والإغلاق"@ar ;
+    skos:altLabel "منع الإضراب أثناء التوفيق أو المحكمة العمالية"@ar ;
+    skos:altLabel "منع الإغلاق أثناء التسوية"@ar ;
+    skos:altLabel "حظر الإضراب والإغلاق"@ar ;
+    :supportedByArticle :article_134 .
+
+:strike_lockout_notice_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إشعار الإضراب وإغلاق المؤسسة"@ar ;
+    skos:altLabel "إشعار أربعة عشر يوما قبل الإضراب"@ar ;
+    skos:altLabel "إشعار أربعة عشر يوما قبل الإغلاق"@ar ;
+    skos:altLabel "خدمات المصالح العامة والإضراب"@ar ;
+    :supportedByArticle :article_135 .
+
+:residual_labor_law_penalty_concept rdf:type :StatutoryConcept ;
+    rdfs:label "العقوبة العامة للمخالفة غير المعين لها عقوبة"@ar ;
+    skos:altLabel "الغرامة العامة لمخالفة قانون العمل"@ar ;
+    skos:altLabel "المخالفة التي لم تحدد لها عقوبة"@ar ;
+    skos:altLabel "تطبيق العقوبة الأشد"@ar ;
+    :supportedByArticle :article_139 .
+
+:implementing_regulations_authority_concept rdf:type :StatutoryConcept ;
+    rdfs:label "صلاحية إصدار الأنظمة لتنفيذ قانون العمل"@ar ;
+    skos:altLabel "مجلس الوزراء وإصدار الأنظمة"@ar ;
+    skos:altLabel "تنسيب الوزير للأنظمة التنفيذية"@ar ;
+    :supportedByArticle :article_140 .
+
+:repeal_transitional_rules_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إلغاء قانون العمل السابق والأحكام الانتقالية"@ar ;
+    skos:altLabel "إلغاء قانون العمل رقم 21 لسنة 1960"@ar ;
+    skos:altLabel "استمرار الأنظمة والتعليمات السابقة"@ar ;
+    skos:altLabel "مدة السنتين الانتقالية"@ar ;
+    :supportedByArticle :article_141 .
+
+:law_execution_responsibility_concept rdf:type :StatutoryConcept ;
+    rdfs:label "تكليف رئيس الوزراء والوزراء بتنفيذ القانون"@ar ;
+    skos:altLabel "تنفيذ أحكام قانون العمل"@ar ;
+    skos:altLabel "رئيس الوزراء والوزراء"@ar ;
+    :supportedByArticle :article_142 .
 

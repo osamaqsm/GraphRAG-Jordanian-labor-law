@@ -23,8 +23,8 @@ class OpenAIService:
     """
     Wrapper around the OpenAI Python client.
 
-    This class will later also contain the gpt-5-nano
-    question parser and grounded-answer generator.
+    This service is used only for fixed embedding generation during KG ingestion.
+    Pipeline LLM stages use the provider-neutral adapter in app.llm_provider.
     """
 
     def __init__(

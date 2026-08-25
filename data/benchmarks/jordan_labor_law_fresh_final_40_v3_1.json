@@ -1,0 +1,1093 @@
+{
+  "benchmark_name": "Jordanian Labor Law KG Master-Derived Balanced Evaluation — 40 Questions",
+  "benchmark_version": "1.0.0",
+  "created_date": "2026-08-25",
+  "language": "Arabic",
+  "frozen": true,
+  "scope": "Jordanian Labor Law represented by jordan_labor_law_full_knowledge_graph.ttl",
+  "pipeline_freeze_label": "stage1-enriched-graph-only",
+  "warning": "This 40-question set is sampled from the previously existing 120-question master regression benchmark. It is suitable for additional regression/model evaluation but must not be described as a newly authored or pristine unseen holdout.",
+  "source_kg": {
+    "path": "data/jordan_labor_law_full_knowledge_graph.ttl",
+    "sha256": null,
+    "article_coverage": "1-142"
+  },
+  "preceding_diagnostic_benchmark": {
+    "path": "retrieval_benchmark_master_all_120.json",
+    "sha256": "3e87f2828356fbf1f13bedf99012dec1ecde77962e08d93b3af4f80625adfcd9",
+    "purpose": "Source master regression suite from which this balanced 40-question subset was selected."
+  },
+  "evaluation_notes": {
+    "total_cases": 40,
+    "retrieve_cases": 36,
+    "clarify_cases": 0,
+    "abstain_cases": 4,
+    "gold_article_policy": "Selection favors diversity of required gold articles within each test type. All selected question instances come directly from the 120-question master.",
+    "question_policy": "Zero exact normalized Arabic question overlap with jordan_labor_law_fresh_final_40_v2_3. Question wording is preserved verbatim from the 120-question master.",
+    "historical_gold_note": "Because the source 120-question suite has already been used historically, this benchmark is a regression/evaluation subset rather than an unseen holdout.",
+    "difficulty_policy": "Mirrors the prior 40-question file's test-type distribution: 8 straightforward, 8 paraphrased, 3 typo/noisy, 5 numerical, 5 colloquial, 7 multi-article, and 4 out-of-scope.",
+    "api_input_policy": "Send only the Arabic question field to /retrieve. Gold articles, expected concepts, required facts, required citations, forbidden claims, and scope labels are evaluation-only metadata.",
+    "official_run_rule": "Freeze this file before comparing models. Do not change its selected questions or scoring metadata between model runs."
+  },
+  "distribution": {
+    "straightforward": 8,
+    "paraphrased": 8,
+    "typo": 3,
+    "numerical": 5,
+    "colloquial": 5,
+    "multi_article": 7,
+    "out_of_scope": 4
+  },
+  "difficulty_distribution": {
+    "medium": 16,
+    "hard": 18,
+    "easy": 6
+  },
+  "questions": [
+    {
+      "id": "M40-01",
+      "test_type": "straightforward",
+      "category": "employer_records",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "ما المعلومات التي يرسلها صاحب العمل إلى وزارة العمل في بداية كل سنة، وما السجلات التي يجب أن يحتفظ بها داخل المؤسسة؟",
+      "primary_article": 8,
+      "required_articles": [
+        8
+      ],
+      "acceptable_articles": [
+        8
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يرسل في الشهر الأول إشعاراً بعدد العمال ومواقعهم وأعمالهم وتواريخ مباشرتهم وأجورهم، ويحتفظ بسجلات العمال والمتدربين."
+      ],
+      "required_citations": [
+        8
+      ],
+      "forbidden_claims": [],
+      "expected_result": "يرسل في الشهر الأول إشعاراً بعدد العمال ومواقعهم وأعمالهم وتواريخ مباشرتهم وأجورهم، ويحتفظ بسجلات العمال والمتدربين."
+    },
+    {
+      "id": "M40-02",
+      "test_type": "straightforward",
+      "category": "intellectual_property",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "ابتكر عامل منتجاً مرتبطاً بعمل المنشأة مستخدماً أدواتها وخبراتها؛ لمن تكون الملكية الفكرية إذا لم يوجد اتفاق خطي مختلف؟",
+      "primary_article": 20,
+      "required_articles": [
+        20
+      ],
+      "acceptable_articles": [
+        20
+      ],
+      "expected_concepts_any": [
+        "employment_contract_concept"
+      ],
+      "required_facts": [
+        "تكون الحقوق لصاحب العمل إذا ارتبط الابتكار بأعماله أو استُخدمت خبراته أو معلوماته أو أدواته، ما لم يوجد اتفاق خطي مخالف."
+      ],
+      "required_citations": [
+        20
+      ],
+      "forbidden_claims": [],
+      "expected_result": "تكون الحقوق لصاحب العمل إذا ارتبط الابتكار بأعماله أو استُخدمت خبراته أو معلوماته أو أدواته، ما لم يوجد اتفاق خطي مخالف."
+    },
+    {
+      "id": "M40-03",
+      "test_type": "straightforward",
+      "category": "internal_regulations",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "مؤسسة تشغّل اثني عشر عاملاً، هل يلزمها نظام داخلي للعمل، وما الموضوعات التي يجب أن يتضمنها ومتى يصبح نافذاً؟",
+      "primary_article": 55,
+      "required_articles": [
+        55
+      ],
+      "acceptable_articles": [
+        55
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يلزم النظام الداخلي عند تشغيل عشرة عمال فأكثر، ويبين الدوام والراحة والمخالفات والعقوبات والتدابير، ويعمل به بعد تصديق الوزير أو من ينيبه."
+      ],
+      "required_citations": [
+        55
+      ],
+      "forbidden_claims": [],
+      "expected_result": "يلزم النظام الداخلي عند تشغيل عشرة عمال فأكثر، ويبين الدوام والراحة والمخالفات والعقوبات والتدابير، ويعمل به بعد تصديق الوزير أو من ينيبه."
+    },
+    {
+      "id": "M40-04",
+      "test_type": "straightforward",
+      "category": "collective_contract_registration",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "كيف تُسجل عقود العمل الجماعية، وما البيان الذي يجب تعليقه داخل المؤسسة وأماكن العمل؟",
+      "primary_article": 44,
+      "required_articles": [
+        44
+      ],
+      "acceptable_articles": [
+        44
+      ],
+      "expected_concepts_any": [
+        "collective_employment_contract_concept",
+        "contract_formation_event"
+      ],
+      "required_facts": [
+        "تنظم تعليمات الوزير تسجيل العقود الجماعية والانضمام إليها واستخراج صورها، ويعلق بيان بوجود العقد وطرفيه وتاريخه ومكان إجرائه."
+      ],
+      "required_citations": [
+        44
+      ],
+      "forbidden_claims": [],
+      "expected_result": "تنظم تعليمات الوزير تسجيل العقود الجماعية والانضمام إليها واستخراج صورها، ويعلق بيان بوجود العقد وطرفيه وتاريخه ومكان إجرائه."
+    },
+    {
+      "id": "M40-05",
+      "test_type": "straightforward",
+      "category": "union_bylaws",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "ما الموضوعات الأساسية التي يجب أن يتضمنها النظام الداخلي لنقابة العمال؟",
+      "primary_article": 100,
+      "required_articles": [
+        100
+      ],
+      "acceptable_articles": [
+        100
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "تحدد المادة 100 عناصر النظام الداخلي، ومنها الاسم والعنوان والغايات والعضوية والفروع والهيئة الإدارية والحقوق والالتزامات والعقوبات والخدمات والشؤون المالية."
+      ],
+      "required_citations": [
+        100
+      ],
+      "forbidden_claims": [],
+      "expected_result": "تحدد المادة 100 عناصر النظام الداخلي، ومنها الاسم والعنوان والغايات والعضوية والفروع والهيئة الإدارية والحقوق والالتزامات والعقوبات والخدمات والشؤون المالية."
+    },
+    {
+      "id": "M40-06",
+      "test_type": "straightforward",
+      "category": "termination",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "عند انتهاء خدمتي، هل يلتزم صاحب العمل بإعطائي شهادة خدمة وإعادة أوراقي وشهاداتي؟",
+      "primary_article": 30,
+      "required_articles": [
+        30
+      ],
+      "acceptable_articles": [
+        30
+      ],
+      "expected_concepts_any": [
+        "employment_contract_concept",
+        "termination_contract_consequence",
+        "dismissal_event"
+      ],
+      "required_facts": [
+        "يلتزم صاحب العمل، بناء على طلب العامل، بإصدار شهادة خدمة ورد الأوراق والشهادات والأدوات المودعة لديه."
+      ],
+      "required_citations": [
+        30
+      ],
+      "forbidden_claims": [],
+      "expected_result": "يلتزم صاحب العمل، بناء على طلب العامل، بإصدار شهادة خدمة ورد الأوراق والشهادات والأدوات المودعة لديه."
+    },
+    {
+      "id": "M40-07",
+      "test_type": "straightforward",
+      "category": "wage_deductions",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "كم يستطيع صاحب العمل أن يقتطع شهرياً من الأجر لاسترداد سلفة أعطاها للعامل؟",
+      "primary_article": 47,
+      "required_articles": [
+        47
+      ],
+      "acceptable_articles": [
+        47
+      ],
+      "expected_concepts_any": [
+        "wage_right_concept"
+      ],
+      "required_facts": [
+        "لا يزيد القسط المسترد من السلفة على عشرة بالمائة من الأجر."
+      ],
+      "required_citations": [
+        47
+      ],
+      "forbidden_claims": [],
+      "expected_result": "لا يزيد القسط المسترد من السلفة على عشرة بالمائة من الأجر."
+    },
+    {
+      "id": "M40-08",
+      "test_type": "straightforward",
+      "category": "leave",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "إذا قسمت إجازتي السنوية على أكثر من مرة، ما أقل مدة للجزء الواحد؟",
+      "primary_article": 62,
+      "required_articles": [
+        62
+      ],
+      "acceptable_articles": [
+        62
+      ],
+      "expected_concepts_any": [
+        "leave_right_concept",
+        "leave_request_event"
+      ],
+      "required_facts": [
+        "لا يجوز أن يقل أي جزء من الإجازة السنوية عن يومين."
+      ],
+      "required_citations": [
+        62
+      ],
+      "forbidden_claims": [],
+      "expected_result": "لا يجوز أن يقل أي جزء من الإجازة السنوية عن يومين."
+    },
+    {
+      "id": "M40-09",
+      "test_type": "paraphrased",
+      "category": "partial_disability",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "أصيب موظف بعجز جزئي دائم يمنعه من وظيفته القديمة لكنه يستطيع أداء مهمة أخرى؛ ماذا يجب على المنشأة أن تفعل وكيف تُحسب حقوق الفترة السابقة؟",
+      "primary_article": 14,
+      "required_articles": [
+        14
+      ],
+      "acceptable_articles": [
+        14
+      ],
+      "expected_concepts_any": [
+        "work_injury_event"
+      ],
+      "required_facts": [
+        "يشغله صاحب العمل في عمل آخر مناسب إن وجد وبأجر ذلك العمل، وتحسب حقوقه السابقة على أساس آخر أجر قبل الإصابة."
+      ],
+      "required_citations": [
+        14
+      ],
+      "forbidden_claims": [],
+      "expected_result": "يشغله صاحب العمل في عمل آخر مناسب إن وجد وبأجر ذلك العمل، وتحسب حقوقه السابقة على أساس آخر أجر قبل الإصابة."
+    },
+    {
+      "id": "M40-10",
+      "test_type": "paraphrased",
+      "category": "collective_contract",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "هل يمكن تعميم شروط اتفاق عمل جماعي نافذ على بقية منشآت وعمال قطاع معين، ومن يملك إصدار هذا القرار وما الشرط الزمني؟",
+      "primary_article": 43,
+      "required_articles": [
+        43
+      ],
+      "acceptable_articles": [
+        43
+      ],
+      "expected_concepts_any": [
+        "collective_employment_contract_concept",
+        "contract_formation_event"
+      ],
+      "required_facts": [
+        "يجوز للوزير بعد الطلب والدراسة توسيع نطاق عقد جماعي مضى على تنفيذه شهران على الأقل، وينشر القرار في الجريدة الرسمية."
+      ],
+      "required_citations": [
+        43
+      ],
+      "forbidden_claims": [],
+      "expected_result": "يجوز للوزير بعد الطلب والدراسة توسيع نطاق عقد جماعي مضى على تنفيذه شهران على الأقل، وينشر القرار في الجريدة الرسمية."
+    },
+    {
+      "id": "M40-11",
+      "test_type": "paraphrased",
+      "category": "labor_inspection",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "اطّلع مفتش العمل أثناء التفتيش على أسرار المنشأة؛ ما الالتزام الذي يسبق مباشرته العمل وما واجبه تجاه تلك الأسرار؟",
+      "primary_article": 6,
+      "required_articles": [
+        6
+      ],
+      "acceptable_articles": [
+        6
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يوقع القائم بالتفتيش تصريحاً مشفوعاً بالقسم بأداء العمل بأمانة وإخلاص، ويلتزم بعدم إفشاء الأسرار التي يطلع عليها بحكم عمله."
+      ],
+      "required_citations": [
+        6
+      ],
+      "forbidden_claims": [],
+      "expected_result": "يوقع القائم بالتفتيش تصريحاً مشفوعاً بالقسم بأداء العمل بأمانة وإخلاص، ويلتزم بعدم إفشاء الأسرار التي يطلع عليها بحكم عمله."
+    },
+    {
+      "id": "M40-12",
+      "test_type": "paraphrased",
+      "category": "occupational_safety",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "من يحدد تدابير الوقاية وأجهزة الحماية ومعايير بيئة المصانع من التلوث والضوضاء والاهتزازات؟",
+      "primary_article": 79,
+      "required_articles": [
+        79
+      ],
+      "acceptable_articles": [
+        79
+      ],
+      "expected_concepts_any": [
+        "safe_work_environment_right_concept",
+        "provide_safe_work_environment_obligation",
+        "work_injury_event"
+      ],
+      "required_facts": [
+        "يحدد الوزير بعد استطلاع رأي الجهات الرسمية المختصة هذه التدابير والأجهزة والمعايير بتعليمات يصدرها."
+      ],
+      "required_citations": [
+        79
+      ],
+      "forbidden_claims": [],
+      "expected_result": "يحدد الوزير بعد استطلاع رأي الجهات الرسمية المختصة هذه التدابير والأجهزة والمعايير بتعليمات يصدرها."
+    },
+    {
+      "id": "M40-13",
+      "test_type": "paraphrased",
+      "category": "labor_court_decisions",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "صدر قرار من المحكمة العمالية وفيه غموض وخطأ حسابي؛ كيف يمكن تفسيره أو تصحيحه ومن يطلب ذلك؟",
+      "primary_article": 126,
+      "required_articles": [
+        126
+      ],
+      "acceptable_articles": [
+        126
+      ],
+      "expected_concepts_any": [
+        "litigation_right_concept",
+        "legal_claim_consequence"
+      ],
+      "required_facts": [
+        "تفسر المحكمة قرارها بناء على طلب الوزير أو أحد أطراف النزاع لإزالة الغموض، وتصحح الأخطاء الكتابية أو الحسابية من تلقاء نفسها أو بناء على طلب."
+      ],
+      "required_citations": [
+        126
+      ],
+      "forbidden_claims": [],
+      "expected_result": "تفسر المحكمة قرارها بناء على طلب الوزير أو أحد أطراف النزاع لإزالة الغموض، وتصحح الأخطاء الكتابية أو الحسابية من تلقاء نفسها أو بناء على طلب."
+    },
+    {
+      "id": "M40-14",
+      "test_type": "paraphrased",
+      "category": "end_of_service",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "أنا مشترك في صندوق ادخار خاص بالمؤسسة؛ هل استحقاقاته تحل محل مكافأة نهاية الخدمة أم تضاف إليها؟",
+      "primary_article": 33,
+      "required_articles": [
+        33
+      ],
+      "acceptable_articles": [
+        32,
+        33
+      ],
+      "expected_concepts_any": [
+        "end_of_service_benefit_right_concept",
+        "end_of_service_benefit_consequence"
+      ],
+      "required_facts": [
+        "استحقاقات الصندوق الخاص تضاف إلى مكافأة نهاية الخدمة ولا تستبدلها."
+      ],
+      "required_citations": [
+        33
+      ],
+      "forbidden_claims": [],
+      "expected_result": "استحقاقات الصندوق الخاص تضاف إلى مكافأة نهاية الخدمة ولا تستبدلها."
+    },
+    {
+      "id": "M40-15",
+      "test_type": "paraphrased",
+      "category": "leave",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "انتهت علاقة العمل قبل أن أستخدم رصيد الإجازة السنوية؛ ماذا يحدث للأيام المتبقية؟",
+      "primary_article": 63,
+      "required_articles": [
+        63
+      ],
+      "acceptable_articles": [
+        61,
+        63
+      ],
+      "expected_concepts_any": [
+        "leave_right_concept",
+        "wage_right_concept",
+        "leave_request_event"
+      ],
+      "required_facts": [
+        "يستحق العامل أجراً عن أيام الإجازة السنوية التي لم يستعملها."
+      ],
+      "required_citations": [
+        63
+      ],
+      "forbidden_claims": [],
+      "expected_result": "يستحق العامل أجراً عن أيام الإجازة السنوية التي لم يستعملها."
+    },
+    {
+      "id": "M40-16",
+      "test_type": "paraphrased",
+      "category": "work_injury",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "عامل غير خاضع للضمان الاجتماعي أصيب أثناء العمل؛ هل تسري عليه أحكام إصابات العمل في قانون العمل؟",
+      "primary_article": 86,
+      "required_articles": [
+        86
+      ],
+      "acceptable_articles": [
+        86
+      ],
+      "expected_concepts_any": [
+        "worker_not_covered_social_security_condition",
+        "social_security_related_right_concept",
+        "work_injury_event"
+      ],
+      "required_facts": [
+        "نعم، فصل إصابات العمل والأمراض المهنية يطبق على العمال غير المشمولين بالضمان الاجتماعي."
+      ],
+      "required_citations": [
+        86
+      ],
+      "forbidden_claims": [],
+      "expected_result": "نعم، فصل إصابات العمل والأمراض المهنية يطبق على العمال غير المشمولين بالضمان الاجتماعي."
+    },
+    {
+      "id": "M40-17",
+      "test_type": "typo",
+      "category": "annual_leave",
+      "difficulty": "easy",
+      "expected_behavior": "retrieve",
+      "question": "وقعت ورقه بتقول اني متنازل عن الاجازه السنويه كلها، هل هالتنازل معتَبر ولا باطل؟",
+      "primary_article": 64,
+      "required_articles": [
+        64
+      ],
+      "acceptable_articles": [
+        64
+      ],
+      "expected_concepts_any": [
+        "leave_right_concept",
+        "leave_request_event"
+      ],
+      "required_facts": [
+        "يبطل كل اتفاق يتنازل فيه العامل عن إجازته السنوية أو أي جزء منها."
+      ],
+      "required_citations": [
+        64
+      ],
+      "forbidden_claims": [],
+      "expected_result": "يبطل كل اتفاق يتنازل فيه العامل عن إجازته السنوية أو أي جزء منها."
+    },
+    {
+      "id": "M40-18",
+      "test_type": "typo",
+      "category": "union_registration",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "قدمنا طلب تسجيل نقابه؛ خلال قديش لازم المسجل يقرر، وقديش معنا للطعن لو انرفض الطلب؟",
+      "primary_article": 102,
+      "required_articles": [
+        102
+      ],
+      "acceptable_articles": [
+        102
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يصدر المسجل قراره خلال ثلاثين يوماً، وللمؤسسين الطعن في الرفض خلال ثلاثين يوماً من التبليغ."
+      ],
+      "required_citations": [
+        102
+      ],
+      "forbidden_claims": [],
+      "expected_result": "يصدر المسجل قراره خلال ثلاثين يوماً، وللمؤسسين الطعن في الرفض خلال ثلاثين يوماً من التبليغ."
+    },
+    {
+      "id": "M40-19",
+      "test_type": "typo",
+      "category": "women_employment",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "مين بحدد الصناعات والاعمال الممنوع تشغبل النساء فيها، والاوقات الي ما بجوز تشغيلهن خلالها والاستثنائات؟",
+      "primary_article": 69,
+      "required_articles": [
+        69
+      ],
+      "acceptable_articles": [
+        69
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يحدد الوزير بقرار، بعد استطلاع رأي الجهات الرسمية المختصة، الأعمال المحظورة على النساء والأوقات المحظورة والحالات المستثناة."
+      ],
+      "required_citations": [
+        69
+      ],
+      "forbidden_claims": [],
+      "expected_result": "يحدد الوزير بقرار، بعد استطلاع رأي الجهات الرسمية المختصة، الأعمال المحظورة على النساء والأوقات المحظورة والحالات المستثناة."
+    },
+    {
+      "id": "M40-20",
+      "test_type": "numerical",
+      "category": "exceptional_overtime",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "عند الجرد السنوي وإعداد الحسابات، ما الحد الأقصى لعدد الأيام في السنة وما أقصى ساعات العمل الفعلية في اليوم ضمن هذا الاستثناء؟",
+      "primary_article": 57,
+      "required_articles": [
+        57
+      ],
+      "acceptable_articles": [
+        57
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا يزيد الاستثناء على ثلاثين يوماً في السنة، ولا تزيد ساعات العمل الفعلية على عشر ساعات في اليوم، مع استحقاق الأجر الإضافي."
+      ],
+      "required_citations": [
+        57
+      ],
+      "forbidden_claims": [],
+      "expected_result": "لا يزيد الاستثناء على ثلاثين يوماً في السنة، ولا تزيد ساعات العمل الفعلية على عشر ساعات في اليوم، مع استحقاق الأجر الإضافي."
+    },
+    {
+      "id": "M40-21",
+      "test_type": "numerical",
+      "category": "employers_union_formation",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "كم يجب أن يكون عدد مؤسسي نقابة أصحاب العمل، وما الحد الأدنى لعمر المؤسس وطالب الانتساب؟",
+      "primary_article": 108,
+      "required_articles": [
+        108
+      ],
+      "acceptable_articles": [
+        108
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "لا يقل عدد المؤسسين عن ثلاثين صاحب عمل، ولا يقل عمر المؤسس عن خمس وعشرين سنة وعمر طالب الانتساب عن ثماني عشرة سنة."
+      ],
+      "required_citations": [
+        108
+      ],
+      "forbidden_claims": [],
+      "expected_result": "لا يقل عدد المؤسسين عن ثلاثين صاحب عمل، ولا يقل عمر المؤسس عن خمس وعشرين سنة وعمر طالب الانتساب عن ثماني عشرة سنة."
+    },
+    {
+      "id": "M40-22",
+      "test_type": "numerical",
+      "category": "voluntary_union_dissolution",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "إذا أرادت النقابة حل نفسها اختيارياً، ما نسبة موافقة الأعضاء المطلوبة وخلال كم يوماً يجب إشعار الوزير والاتحاد؟",
+      "primary_article": 106,
+      "required_articles": [
+        106
+      ],
+      "acceptable_articles": [
+        106
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "يتطلب الحل الاختياري موافقة ثلثي الأعضاء المسددين لاشتراكاتهم في اجتماع غير عادي، ويبلغ الوزير والاتحاد خلال خمسة عشر يوماً."
+      ],
+      "required_citations": [
+        106
+      ],
+      "forbidden_claims": [],
+      "expected_result": "يتطلب الحل الاختياري موافقة ثلثي الأعضاء المسددين لاشتراكاتهم في اجتماع غير عادي، ويبلغ الوزير والاتحاد خلال خمسة عشر يوماً."
+    },
+    {
+      "id": "M40-23",
+      "test_type": "numerical",
+      "category": "disability_employment",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "مؤسسة فيها 250 عاملاً؛ ما الحد الأدنى لعدد العمال ذوي الإعاقة المؤهلين مهنياً الواجب تشغيلهم إذا كانت طبيعة العمل تسمح؟",
+      "primary_article": 13,
+      "required_articles": [
+        13
+      ],
+      "acceptable_articles": [
+        13
+      ],
+      "expected_concepts_any": [
+        "worker_concept",
+        "employer_concept"
+      ],
+      "required_facts": [
+        "النسبة لا تقل عن 2%؛ في المثال تساوي خمسة عمال."
+      ],
+      "required_citations": [
+        13
+      ],
+      "forbidden_claims": [],
+      "expected_result": "النسبة لا تقل عن 2%؛ في المثال تساوي خمسة عمال."
+    },
+    {
+      "id": "M40-24",
+      "test_type": "numerical",
+      "category": "labor_litigation",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "كم المهلة المستهدفة للفصل في نزاع العمل الفردي أمام محكمة الصلح، وما مدة الاستئناف والفصل فيه؟",
+      "primary_article": 137,
+      "required_articles": [
+        137
+      ],
+      "acceptable_articles": [
+        137
+      ],
+      "expected_concepts_any": [
+        "litigation_right_concept",
+        "legal_claim_consequence"
+      ],
+      "required_facts": [
+        "الفصل خلال ثلاثة أشهر، والاستئناف خلال عشرة أيام، والفصل في الاستئناف خلال ثلاثين يوماً."
+      ],
+      "required_citations": [
+        137
+      ],
+      "forbidden_claims": [],
+      "expected_result": "الفصل خلال ثلاثة أشهر، والاستئناف خلال عشرة أيام، والفصل في الاستئناف خلال ثلاثين يوماً."
+    },
+    {
+      "id": "M40-25",
+      "test_type": "colloquial",
+      "category": "medical_fitness",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "في شغل معيّن قالوا ما بقدر أبلّش قبل فحص لياقة طبي؛ مين بحدد الأشغال اللي لازم إلها هالفحص وكيف بنعلن عنها؟",
+      "primary_article": 83,
+      "required_articles": [
+        83
+      ],
+      "acceptable_articles": [
+        83
+      ],
+      "expected_concepts_any": [
+        "medical_examination_event",
+        "safe_work_environment_right_concept"
+      ],
+      "required_facts": [
+        "يحدد الوزير بتعليمات، بعد استطلاع الجهات المعنية، الأعمال التي تتطلب فحصاً طبياً مسبقاً، وتنشر التعليمات في صحيفتين يوميتين وفي الجريدة الرسمية."
+      ],
+      "required_citations": [
+        83
+      ],
+      "forbidden_claims": [],
+      "expected_result": "يحدد الوزير بتعليمات، بعد استطلاع الجهات المعنية، الأعمال التي تتطلب فحصاً طبياً مسبقاً، وتنشر التعليمات في صحيفتين يوميتين وفي الجريدة الرسمية."
+    },
+    {
+      "id": "M40-26",
+      "test_type": "colloquial",
+      "category": "inspection_enforcement",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "مفتش العمل أنذر صاحب الشغل يشيل المخالفة وما شالها؛ قديش المهلة وشو ممكن يصير بالمؤسسة والغرامة؟",
+      "primary_article": 9,
+      "required_articles": [
+        9
+      ],
+      "acceptable_articles": [
+        9
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "للمفتش طلب إزالة المخالفة خلال مدة لا تزيد على سبعة أيام، ثم يجوز إغلاق المؤسسة، وتحكم المحكمة بإزالة المخالفة وغرامة من خمسين إلى خمسمائة دينار."
+      ],
+      "required_citations": [
+        9
+      ],
+      "forbidden_claims": [],
+      "expected_result": "للمفتش طلب إزالة المخالفة خلال مدة لا تزيد على سبعة أيام، ثم يجوز إغلاق المؤسسة، وتحكم المحكمة بإزالة المخالفة وغرامة من خمسين إلى خمسمائة دينار."
+    },
+    {
+      "id": "M40-27",
+      "test_type": "colloquial",
+      "category": "union_financial_reporting",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "النقابة كل سنة شو لازم تبعث للمسجل قبل أول نيسان، وشو الكشف اللي لازم يكون مرفق معها؟",
+      "primary_article": 118,
+      "required_articles": [
+        118
+      ],
+      "acceptable_articles": [
+        118
+      ],
+      "expected_concepts_any": [],
+      "required_facts": [
+        "ترسل ميزانيتها العمومية المدققة قبل أول نيسان، ويرفق بها كشف بأسماء الموظفين والعاملين والتغييرات التي طرأت عليهم وأوضاعهم."
+      ],
+      "required_citations": [
+        118
+      ],
+      "forbidden_claims": [],
+      "expected_result": "ترسل ميزانيتها العمومية المدققة قبل أول نيسان، ويرفق بها كشف بأسماء الموظفين والعاملين والتغييرات التي طرأت عليهم وأوضاعهم."
+    },
+    {
+      "id": "M40-28",
+      "test_type": "colloquial",
+      "category": "contracts",
+      "difficulty": "medium",
+      "expected_behavior": "retrieve",
+      "question": "صاحب الشغل توفّى، هيك عقدي بخلص لحاله ولا بضل شغّال؟",
+      "primary_article": 22,
+      "required_articles": [
+        22
+      ],
+      "acceptable_articles": [
+        22
+      ],
+      "expected_concepts_any": [
+        "employment_contract_concept",
+        "termination_contract_consequence",
+        "dismissal_event"
+      ],
+      "required_facts": [
+        "لا ينتهي العقد بوفاة صاحب العمل إلا إذا كانت شخصيته محل اعتبار في العقد."
+      ],
+      "required_citations": [
+        22
+      ],
+      "forbidden_claims": [],
+      "expected_result": "لا ينتهي العقد بوفاة صاحب العمل إلا إذا كانت شخصيته محل اعتبار في العقد."
+    },
+    {
+      "id": "M40-29",
+      "test_type": "colloquial",
+      "category": "work_injury",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "عليّ ديون، بقدروا يحجزوا على تعويض إصابة الشغل كله؟",
+      "primary_article": 95,
+      "required_articles": [
+        95
+      ],
+      "acceptable_articles": [
+        95
+      ],
+      "expected_concepts_any": [
+        "compensation_consequence",
+        "litigation_right_concept",
+        "legal_claim_consequence"
+      ],
+      "required_facts": [
+        "لا يرهن أو يحجز التعويض إلا لدين النفقة وبحد أقصى ثلثه."
+      ],
+      "required_citations": [
+        95
+      ],
+      "forbidden_claims": [],
+      "expected_result": "لا يرهن أو يحجز التعويض إلا لدين النفقة وبحد أقصى ثلثه."
+    },
+    {
+      "id": "M40-30",
+      "test_type": "multi_article",
+      "category": "vocational_training",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "ما الذي يجب تحديده في عقد التدريب بشأن المدة والمراحل والأجر، ومتى يجوز إنهاؤه إذا تعذر التنفيذ أو أصبح الاستمرار خطراً على صحة المتدرب؟",
+      "primary_article": 37,
+      "required_articles": [
+        37,
+        38
+      ],
+      "acceptable_articles": [
+        37,
+        38
+      ],
+      "expected_concepts_any": [
+        "termination_contract_consequence",
+        "medical_examination_event",
+        "safe_work_environment_right_concept"
+      ],
+      "required_facts": [
+        "المادة 37 تنظم مدة التدريب ومراحله وأجر كل مرحلة وحد المرحلة الأخيرة، والمادة 38 تحدد حالات إنهاء عقد التدريب ومنها تعذر التنفيذ أو تهديد السلامة والصحة."
+      ],
+      "required_citations": [
+        37,
+        38
+      ],
+      "forbidden_claims": [],
+      "expected_result": "المادة 37 تنظم مدة التدريب ومراحله وأجر كل مرحلة وحد المرحلة الأخيرة، والمادة 38 تحدد حالات إنهاء عقد التدريب ومنها تعذر التنفيذ أو تهديد السلامة والصحة."
+    },
+    {
+      "id": "M40-31",
+      "test_type": "multi_article",
+      "category": "collective_disputes",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "إذا وصل النزاع إلى مجلس التوفيق، ما التقرير والمهلة المطلوبة عند نجاح التسوية أو فشلها، وهل يحق للطرفين توكيل محامين أمام المجلس؟",
+      "primary_article": 122,
+      "required_articles": [
+        122,
+        123
+      ],
+      "acceptable_articles": [
+        122,
+        123
+      ],
+      "expected_concepts_any": [
+        "litigation_right_concept",
+        "legal_claim_consequence"
+      ],
+      "required_facts": [
+        "المادة 122 تلزم المجلس بالسعي للتسوية وتقديم التقرير خلال واحد وعشرين يوماً، والمادة 123 تمنع توكيل المحامين أمام مندوب التوفيق أو مجلس التوفيق."
+      ],
+      "required_citations": [
+        122,
+        123
+      ],
+      "forbidden_claims": [],
+      "expected_result": "المادة 122 تلزم المجلس بالسعي للتسوية وتقديم التقرير خلال واحد وعشرين يوماً، والمادة 123 تمنع توكيل المحامين أمام مندوب التوفيق أو مجلس التوفيق."
+    },
+    {
+      "id": "M40-32",
+      "test_type": "multi_article",
+      "category": "strike_lockout",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "متى يكون الإضراب أو إغلاق المؤسسة محظوراً أثناء معالجة النزاع، وما الغرامات والآثار المالية على العامل أو صاحب العمل عند المخالفة؟",
+      "primary_article": 134,
+      "required_articles": [
+        134,
+        136
+      ],
+      "acceptable_articles": [
+        134,
+        136
+      ],
+      "expected_concepts_any": [
+        "wage_right_concept",
+        "pay_wages_obligation",
+        "employer_liability_consequence"
+      ],
+      "required_facts": [
+        "المادة 134 تحدد حالات الحظر أثناء الإحالة أو سريان التسوية والقرار، والمادة 136 تحدد غرامات الإضراب أو الإغلاق المحظور وآثار الأجر."
+      ],
+      "required_citations": [
+        134,
+        136
+      ],
+      "forbidden_claims": [],
+      "expected_result": "المادة 134 تحدد حالات الحظر أثناء الإحالة أو سريان التسوية والقرار، والمادة 136 تحدد غرامات الإضراب أو الإغلاق المحظور وآثار الأجر."
+    },
+    {
+      "id": "M40-33",
+      "test_type": "multi_article",
+      "category": "collective_dispute_effects",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "على من تكون تسوية التوفيق أو قرار المحكمة العمالية ملزمين، ومن أي تاريخ يبدأ تنفيذ كل منهما؟",
+      "primary_article": 130,
+      "required_articles": [
+        130,
+        131
+      ],
+      "acceptable_articles": [
+        130,
+        131
+      ],
+      "expected_concepts_any": [
+        "litigation_right_concept",
+        "legal_claim_consequence"
+      ],
+      "required_facts": [
+        "المادة 130 تحدد الفئات الملزمة بالتسوية أو القرار، والمادة 131 تحدد تاريخ تنفيذ قرار المحكمة وتاريخ بدء العمل بالتسوية."
+      ],
+      "required_citations": [
+        130,
+        131
+      ],
+      "forbidden_claims": [],
+      "expected_result": "المادة 130 تحدد الفئات الملزمة بالتسوية أو القرار، والمادة 131 تحدد تاريخ تنفيذ قرار المحكمة وتاريخ بدء العمل بالتسوية."
+    },
+    {
+      "id": "M40-34",
+      "test_type": "multi_article",
+      "category": "collective_contract",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "كيف يوثق عقد العمل الجماعي لدى الوزارة، وما أقصى مدة للعقد المحدد وكيف ينهى العقد غير المحدد؟",
+      "primary_article": 39,
+      "required_articles": [
+        39,
+        40
+      ],
+      "acceptable_articles": [
+        39,
+        40
+      ],
+      "expected_concepts_any": [
+        "collective_employment_contract_concept",
+        "contract_formation_event",
+        "termination_contract_consequence"
+      ],
+      "required_facts": [
+        "المادة 39 لتنظيم النسخ والتسجيل، والمادة 40 للمدة القصوى والإشعار عند الإنهاء."
+      ],
+      "required_citations": [
+        39,
+        40
+      ],
+      "forbidden_claims": [],
+      "expected_result": "المادة 39 لتنظيم النسخ والتسجيل، والمادة 40 للمدة القصوى والإشعار عند الإنهاء."
+    },
+    {
+      "id": "M40-35",
+      "test_type": "multi_article",
+      "category": "juvenile_work",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "أريد تشغيل شاب عمره خمسة عشر عاماً؛ هل يجوز تشغيله، وما المستندات المطلوبة لو كان في السن المسموح؟",
+      "primary_article": 73,
+      "required_articles": [
+        73,
+        76
+      ],
+      "acceptable_articles": [
+        73,
+        76
+      ],
+      "expected_concepts_any": [
+        "juvenile_concept",
+        "medical_examination_event"
+      ],
+      "required_facts": [
+        "المادة 73 تمنع تشغيل من لم يكمل السادسة عشرة، والمادة 76 تحدد وثائق الحدث عند جواز تشغيله."
+      ],
+      "required_citations": [
+        73,
+        76
+      ],
+      "forbidden_claims": [],
+      "expected_result": "المادة 73 تمنع تشغيل من لم يكمل السادسة عشرة، والمادة 76 تحدد وثائق الحدث عند جواز تشغيله."
+    },
+    {
+      "id": "M40-36",
+      "test_type": "multi_article",
+      "category": "collective_disputes",
+      "difficulty": "hard",
+      "expected_behavior": "retrieve",
+      "question": "اشرح مسار النزاع العمالي الجماعي من تعيين مندوب التوفيق، مروراً بفشل الوساطة، حتى إحالته إلى المحكمة العمالية.",
+      "primary_article": 120,
+      "required_articles": [
+        120,
+        121,
+        124
+      ],
+      "acceptable_articles": [
+        120,
+        121,
+        124
+      ],
+      "expected_concepts_any": [
+        "collective_labor_dispute_concept",
+        "litigation_right_concept",
+        "legal_claim_consequence",
+        "ministry_concept"
+      ],
+      "required_facts": [
+        "المادة 120 للتعيين، 121 للوساطة والإحالة إلى مجلس التوفيق، و124 للإحالة إلى المحكمة العمالية عند فشل المجلس."
+      ],
+      "required_citations": [
+        120,
+        121,
+        124
+      ],
+      "forbidden_claims": [],
+      "expected_result": "المادة 120 للتعيين، 121 للوساطة والإحالة إلى مجلس التوفيق، و124 للإحالة إلى المحكمة العمالية عند فشل المجلس."
+    },
+    {
+      "id": "M40-37",
+      "test_type": "out_of_scope",
+      "category": "out_of_scope",
+      "difficulty": "medium",
+      "expected_behavior": "abstain",
+      "question": "الجامعة أوقفت تسجيلي بسبب المعدل، كيف أعترض على القرار الأكاديمي؟",
+      "primary_article": null,
+      "required_articles": [],
+      "acceptable_articles": [],
+      "expected_concepts_any": [],
+      "required_facts": [],
+      "required_citations": [],
+      "forbidden_claims": [
+        "تقديم إجابة قانونية موضوعية من قانون العمل الأردني لسؤال خارج نطاقه."
+      ],
+      "expected_result": "مسألة تعليم عالٍ وقرارات أكاديمية، وليست مسألة عمالية ضمن الرسم الحالي."
+    },
+    {
+      "id": "M40-38",
+      "test_type": "out_of_scope",
+      "category": "tax",
+      "difficulty": "medium",
+      "expected_behavior": "abstain",
+      "question": "رفضت دائرة ضريبة الدخل اعتراضاً قدمته على التقدير، كيف أتابع الطعن؟",
+      "primary_article": null,
+      "required_articles": [],
+      "acceptable_articles": [],
+      "expected_concepts_any": [],
+      "required_facts": [],
+      "required_citations": [],
+      "forbidden_claims": [
+        "تقديم إجابة قانونية موضوعية من قانون العمل الأردني لسؤال خارج نطاقه."
+      ],
+      "expected_result": "المسألة تتعلق بالإجراءات الضريبية والطعن في تقدير الضريبة، وهي خارج نطاق قانون العمل الأردني."
+    },
+    {
+      "id": "M40-39",
+      "test_type": "out_of_scope",
+      "category": "traffic_insurance",
+      "difficulty": "easy",
+      "expected_behavior": "abstain",
+      "question": "تعرضت لحادث سير وتضررت سيارتي، كيف أطالب شركة التأمين بالتعويض؟",
+      "primary_article": null,
+      "required_articles": [],
+      "acceptable_articles": [],
+      "expected_concepts_any": [],
+      "required_facts": [],
+      "required_citations": [],
+      "forbidden_claims": [
+        "تقديم إجابة قانونية موضوعية من قانون العمل الأردني لسؤال خارج نطاقه."
+      ],
+      "expected_result": "المسألة تتعلق بحادث سير وتأمين مركبات، وهي خارج نطاق قانون العمل الأردني."
+    },
+    {
+      "id": "M40-40",
+      "test_type": "out_of_scope",
+      "category": "out_of_scope",
+      "difficulty": "easy",
+      "expected_behavior": "abstain",
+      "question": "وصلتني مخالفة سير بسبب تجاوز السرعة، كيف أعترض عليها؟",
+      "primary_article": null,
+      "required_articles": [],
+      "acceptable_articles": [],
+      "expected_concepts_any": [],
+      "required_facts": [],
+      "required_citations": [],
+      "forbidden_claims": [
+        "تقديم إجابة قانونية موضوعية من قانون العمل الأردني لسؤال خارج نطاقه."
+      ],
+      "expected_result": "خارج نطاق قانون العمل الأردني الممثل في الرسم المعرفي."
+    }
+  ]
+}

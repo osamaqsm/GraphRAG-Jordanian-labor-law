@@ -208,19 +208,14 @@ Latency values represent measured pipeline-stage latency and may include API/net
 
 # Running the Project
 
-## 1. Prerequisites
+## Requirements
 
-Recommended environment:
-
-- Python 3.12+
+- Python 3.12
 - Docker / Docker Compose
+- FastAPI
 - Weaviate
-- An OpenAI API key for the fixed embedding model
-- API credentials for the LLM provider you want to use
-
-The pipeline requires OpenAI embeddings even when the evaluated LLM is Gemini, Qwen, Aya, or a local model.
-
----
+- API access for the selected LLM provider
+- OpenAI API access for the fixed embedding model and evaluation judge
 
 ## 2. Clone the repository
 
@@ -231,7 +226,16 @@ cd <YOUR_REPOSITORY_DIRECTORY>
 
 ---
 
-## 3. Create a Python environment
+## 3. Create and activate a Python virtual environment
+
+### Requirements
+
+- Python 3.12
+- Docker / Docker Compose
+- FastAPI
+- Weaviate
+- API access for the selected LLM provider
+- OpenAI API access for the fixed embedding model and evaluation judge
 
 ### Windows
 

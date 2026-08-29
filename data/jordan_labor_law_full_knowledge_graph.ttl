@@ -3,11 +3,12 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 <http://example.org/jordan-labor-law> rdf:type owl:Ontology ;
     rdfs:label "Jordanian Labor Law Two-Layer Ontology"@en , "أنطولوجيا قانون العمل الأردني ذات الطبقتين"@ar ;
-    rdfs:comment "A two-layer ontology for Jordanian labor law: legal source layer and labor-domain layer, with bridge relations between them."@en ,
-                 "أنطولوجيا من طبقتين لقانون العمل الأردني: طبقة المصدر القانوني وطبقة مجال العمل، مع علاقات ربط بينهما."@ar .
+    rdfs:comment "A two-layer ontology for Jordanian labor law: a legal-source layer and a semantic legal-concept layer containing labor-domain and statutory concepts, with explicit evidence bridges between them."@en ,
+                 "أنطولوجيا من طبقتين لقانون العمل الأردني: طبقة المصدر القانوني وطبقة المفاهيم القانونية الدلالية التي تشمل مفاهيم مجال العمل والمفاهيم التشريعية، مع علاقات استدلال وربط صريحة بينهما."@ar .
 
 ########## Classes ##########
 
@@ -4371,4 +4372,1229 @@
 :collective_labor_dispute_concept :definedIn :article_2_definition_22 ;
     :supportedByArticle :article_2 ;
     :regulatedBy :article_2 .
+
+########## FINAL GRAPHRAG SEMANTIC COVERAGE LAYER ##########
+# Semantic concepts added systematically for graph-only legal-evidence retrieval.
+# Article and Paragraph nodes remain legal-source nodes and are never semantic-search seeds.
+
+:LegalConcept rdf:type owl:Class ;
+    rdfs:label "Legal Concept"@en , "مفهوم قانوني"@ar .
+
+:StatutoryConcept rdf:type owl:Class ;
+    rdfs:subClassOf :LegalConcept ;
+    rdfs:label "Statutory Concept"@en , "مفهوم تشريعي"@ar .
+
+:LaborDomainConcept rdfs:subClassOf :LegalConcept .
+
+:law_identity_concept rdf:type :StatutoryConcept ;
+    rdfs:label "هوية قانون العمل"@ar ;
+    skos:altLabel "اسم قانون العمل"@ar ;
+    skos:altLabel "تسمية قانون العمل"@ar ;
+    skos:altLabel "قانون العمل لسنة 1996"@ar ;
+    :supportedByArticle :article_1 .
+
+:law_commencement_concept rdf:type :StatutoryConcept ;
+    rdfs:label "نفاذ قانون العمل"@ar ;
+    skos:altLabel "سريان القانون"@ar ;
+    skos:altLabel "بدء العمل بالقانون"@ar ;
+    skos:altLabel "تاريخ نفاذ القانون"@ar ;
+    skos:altLabel "النشر في الجريدة الرسمية"@ar ;
+    :supportedByArticle :article_1 .
+
+:labor_law_scope_concept rdf:type :StatutoryConcept ;
+    rdfs:label "نطاق تطبيق قانون العمل"@ar ;
+    skos:altLabel "سريان قانون العمل على العمال وأصحاب العمل"@ar ;
+    skos:altLabel "الاستثناءات من تطبيق قانون العمل"@ar ;
+    :supportedByArticle :article_3 .
+
+:worker_favorable_rights_nonwaiver_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حماية الحقوق الأفضل وعدم التنازل عنها"@ar ;
+    skos:altLabel "الحقوق الأفضل للعامل"@ar ;
+    skos:altLabel "بطلان التنازل عن حقوق العامل"@ar ;
+    skos:altLabel "عدم الانتقاص من حقوق العامل"@ar ;
+    :supportedByArticle :article_4 .
+
+:labor_inspection_ministry_role_concept rdf:type :StatutoryConcept ;
+    rdfs:label "اختصاص الوزارة بالتفتيش العمالي"@ar ;
+    skos:altLabel "مهام التفتيش"@ar ;
+    skos:altLabel "تفتيش العمل"@ar ;
+    skos:altLabel "الوزارة والتفتيش"@ar ;
+    :supportedByArticle :article_5 .
+
+:labor_inspector_confidentiality_concept rdf:type :StatutoryConcept ;
+    rdfs:label "سرية وأمانة مفتش العمل"@ar ;
+    skos:altLabel "قسم مفتش العمل"@ar ;
+    skos:altLabel "عدم إفشاء أسرار العمل"@ar ;
+    skos:altLabel "التزام مفتش العمل بالسرية"@ar ;
+    :supportedByArticle :article_6 .
+
+:labor_inspector_qualifications_powers_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مؤهلات وصلاحيات مفتشي العمل"@ar ;
+    skos:altLabel "مهام مفتشي العمل"@ar ;
+    skos:altLabel "مكافآت مفتشي العمل"@ar ;
+    skos:altLabel "التزامات صاحب العمل تجاه المفتش"@ar ;
+    :supportedByArticle :article_7 .
+
+:employer_inspection_records_notice_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إشعارات وسجلات صاحب العمل للتفتيش"@ar ;
+    skos:altLabel "بيان العمال للوزارة"@ar ;
+    skos:altLabel "سجلات العمال والمتدربين"@ar ;
+    skos:altLabel "إشعار الوزارة بالعمال"@ar ;
+    :supportedByArticle :article_8 .
+
+:labor_inspector_enforcement_concept rdf:type :StatutoryConcept ;
+    rdfs:label "صلاحيات مفتش العمل في إزالة المخالفات"@ar ;
+    skos:altLabel "الضابطة العدلية لمفتش العمل"@ar ;
+    skos:altLabel "إنذار إزالة المخالفة"@ar ;
+    skos:altLabel "إغلاق المؤسسة بسبب المخالفة"@ar ;
+    skos:altLabel "غرامة مخالفة التفتيش"@ar ;
+    :supportedByArticle :article_9 .
+
+:labor_market_employment_services_concept rdf:type :StatutoryConcept ;
+    rdfs:label "تنظيم سوق العمل ومكاتب التشغيل"@ar ;
+    skos:altLabel "التوجيه المهني"@ar ;
+    skos:altLabel "توفير فرص العمل"@ar ;
+    skos:altLabel "مكاتب تشغيل الأردنيين"@ar ;
+    skos:altLabel "مكاتب استقدام خدم المنازل"@ar ;
+    :supportedByArticle :article_10 .
+
+:employment_mediation_restriction_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حصر الوساطة في التشغيل بالمكاتب المرخصة"@ar ;
+    skos:altLabel "منع وساطة التشغيل غير المرخصة"@ar ;
+    skos:altLabel "مكاتب التشغيل المرخصة"@ar ;
+    skos:altLabel "عقوبة الوساطة غير المرخصة"@ar ;
+    :supportedByArticle :article_11 .
+
+:non_jordanian_work_permit_concept rdf:type :StatutoryConcept ;
+    rdfs:label "تصريح عمل العامل غير الأردني"@ar ;
+    skos:altLabel "استخدام العامل غير الأردني"@ar ;
+    skos:altLabel "رسوم تصريح العمل"@ar ;
+    skos:altLabel "مدة تصريح العمل"@ar ;
+    skos:altLabel "استقدام العمال غير الأردنيين"@ar ;
+    :supportedByArticle :article_12 .
+
+:disabled_worker_employment_quota_concept rdf:type :StatutoryConcept ;
+    rdfs:label "نسبة تشغيل العمال ذوي الإعاقة المؤهلين مهنيا"@ar ;
+    skos:altLabel "تشغيل العمال المعوقين المؤهلين"@ar ;
+    skos:altLabel "نسبة اثنين بالمائة للعمال المعوقين"@ar ;
+    skos:altLabel "بيان تشغيل ذوي الإعاقة"@ar ;
+    :supportedByArticle :article_13 .
+
+:vocational_training_contract_terms_concept rdf:type :StatutoryConcept ;
+    rdfs:label "شروط عقد التدريب المهني وأجر المتدرب"@ar ;
+    skos:altLabel "مدة ومراحل التدريب"@ar ;
+    skos:altLabel "أجر المتدرب"@ar ;
+    skos:altLabel "برامج التدريب المهني"@ar ;
+    skos:altLabel "تعليمات التدريب المنشورة"@ar ;
+    :supportedByArticle :article_37 .
+
+:internal_work_regulation_concept rdf:type :StatutoryConcept ;
+    rdfs:label "النظام الداخلي لتنظيم العمل في المؤسسة"@ar ;
+    skos:altLabel "نظام العمل الداخلي"@ar ;
+    skos:altLabel "تصديق النظام الداخلي"@ar ;
+    skos:altLabel "الدوام وفترات الراحة والعقوبات الداخلية"@ar ;
+    :supportedByArticle :article_55 .
+
+:normal_working_hours_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الحد الأقصى لساعات العمل"@ar ;
+    skos:altLabel "ثماني ساعات يوميا"@ar ;
+    skos:altLabel "ثمان وأربعون ساعة أسبوعيا"@ar ;
+    skos:altLabel "ساعات العمل اليومية والأسبوعية"@ar ;
+    :supportedByArticle :article_56 .
+
+:overtime_exception_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حالات تشغيل العامل ساعات إضافية"@ar ;
+    skos:altLabel "العمل الإضافي"@ar ;
+    skos:altLabel "تجاوز ساعات العمل للجرد"@ar ;
+    skos:altLabel "تجاوز ساعات العمل لتلافي الخسارة"@ar ;
+    :supportedByArticle :article_57 .
+
+:working_hours_exemption_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الفئات المستثناة من أحكام ساعات العمل"@ar ;
+    skos:altLabel "المشرفون والمديرون وساعات العمل"@ar ;
+    skos:altLabel "العمل خارج المؤسسة والسفر"@ar ;
+    skos:altLabel "استثناءات ساعات العمل"@ar ;
+    :supportedByArticle :article_58 .
+
+:employer_childcare_facility_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مكان رعاية أطفال العاملات"@ar ;
+    skos:altLabel "حضانة أطفال العاملات"@ar ;
+    skos:altLabel "عشرون عاملة متزوجة"@ar ;
+    skos:altLabel "مربية مؤهلة لأطفال العاملات"@ar ;
+    :supportedByArticle :article_72 .
+
+:child_labour_minimum_age_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الحد الأدنى لسن تشغيل الحدث"@ar ;
+    skos:altLabel "منع تشغيل من دون السادسة عشرة"@ar ;
+    skos:altLabel "سن تشغيل الأحداث"@ar ;
+    skos:altLabel "تشغيل الحدث"@ar ;
+    :supportedByArticle :article_73 .
+
+:protected_worker_chapter_penalty_concept rdf:type :StatutoryConcept ;
+    rdfs:label "عقوبة مخالفة أحكام حماية الفئات المشمولة بالفصل"@ar ;
+    skos:altLabel "غرامة مخالفة أحكام الفصل"@ar ;
+    skos:altLabel "تضاعف العقوبة عند التكرار"@ar ;
+    skos:altLabel "عقوبة صاحب العمل أو مدير المؤسسة"@ar ;
+    :supportedByArticle :article_77 .
+
+:worker_union_right_membership_protection_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حق العمال في تأسيس النقابة وحماية العضوية"@ar ;
+    skos:altLabel "الانتساب إلى نقابة العمال"@ar ;
+    skos:altLabel "منع التمييز بسبب العضوية النقابية"@ar ;
+    skos:altLabel "منع تدخل النقابات ببعضها"@ar ;
+    :supportedByArticle :article_97 .
+
+:worker_union_formation_concept rdf:type :StatutoryConcept ;
+    rdfs:label "شروط تأسيس نقابة العمال"@ar ;
+    skos:altLabel "خمسون مؤسسا للنقابة"@ar ;
+    skos:altLabel "تصنيف المهن والصناعات النقابية"@ar ;
+    skos:altLabel "تأسيس النقابة العامة"@ar ;
+    :supportedByArticle :article_98 .
+
+:union_objectives_concept rdf:type :StatutoryConcept ;
+    rdfs:label "أهداف نقابة العمال"@ar ;
+    skos:altLabel "رعاية مصالح العمال"@ar ;
+    skos:altLabel "الخدمات الصحية والاجتماعية للنقابة"@ar ;
+    skos:altLabel "رفع المستوى الاقتصادي والمهني"@ar ;
+    skos:altLabel "فروع النقابة"@ar ;
+    :supportedByArticle :article_99 .
+
+:union_internal_bylaws_concept rdf:type :StatutoryConcept ;
+    rdfs:label "النظام الداخلي للنقابات والاتحاد"@ar ;
+    skos:altLabel "محتويات النظام الداخلي للنقابة"@ar ;
+    skos:altLabel "إجراءات العضوية والانتخاب"@ar ;
+    skos:altLabel "حفظ أموال النقابة"@ar ;
+    skos:altLabel "اجتماعات الهيئة العامة"@ar ;
+    :supportedByArticle :article_100 .
+
+:preexisting_union_transition_concept rdf:type :StatutoryConcept ;
+    rdfs:label "توفيق أوضاع النقابات القائمة قبل نفاذ القانون"@ar ;
+    skos:altLabel "استمرار النقابات المسجلة سابقا"@ar ;
+    skos:altLabel "مهلة ستة أشهر لتوفيق الأوضاع"@ar ;
+    :supportedByArticle :article_101 .
+
+:union_registration_procedure_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إجراءات تسجيل النقابة والطعن في القرار"@ar ;
+    skos:altLabel "طلب تأسيس النقابة"@ar ;
+    skos:altLabel "مسجل النقابات"@ar ;
+    skos:altLabel "شهادة تسجيل النقابة"@ar ;
+    skos:altLabel "الطعن في رفض التسجيل"@ar ;
+    skos:altLabel "نشر قرار التسجيل"@ar ;
+    :supportedByArticle :article_102 .
+
+:union_legal_personality_concept rdf:type :StatutoryConcept ;
+    rdfs:label "اكتساب النقابة الشخصية الاعتبارية"@ar ;
+    skos:altLabel "قيام النقابة قانونا"@ar ;
+    skos:altLabel "تاريخ اكتساب الشخصية الاعتبارية"@ar ;
+    skos:altLabel "تعديل النظام الداخلي للنقابة"@ar ;
+    :supportedByArticle :article_103 .
+
+:union_registered_address_concept rdf:type :StatutoryConcept ;
+    rdfs:label "العنوان المسجل للنقابة"@ar ;
+    skos:altLabel "تغيير عنوان النقابة"@ar ;
+    skos:altLabel "مراسلات وإشعارات النقابة"@ar ;
+    :supportedByArticle :article_104 .
+
+:union_registration_cancellation_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إلغاء شهادة تسجيل النقابة"@ar ;
+    skos:altLabel "إلغاء تسجيل النقابة"@ar ;
+    skos:altLabel "زوال النقابة وحلها"@ar ;
+    :supportedByArticle :article_105 .
+
+:union_voluntary_dissolution_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الحل الاختياري للنقابة"@ar ;
+    skos:altLabel "موافقة ثلثي الأعضاء على الحل"@ar ;
+    skos:altLabel "تصفية أموال النقابة"@ar ;
+    skos:altLabel "إشعار الوزير بقرار الحل"@ar ;
+    skos:altLabel "نشر حل النقابة"@ar ;
+    :supportedByArticle :article_106 .
+
+:union_compliance_penalty_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مخالفات النقابة والتصويب والعقوبة"@ar ;
+    skos:altLabel "عدم تقديم حسابات النقابة"@ar ;
+    skos:altLabel "مخالفة النظام الداخلي للنقابة"@ar ;
+    skos:altLabel "تصويب وضع النقابة"@ar ;
+    skos:altLabel "وقف النقابة عن العمل"@ar ;
+    :supportedByArticle :article_107 .
+
+:employers_union_formation_concept rdf:type :StatutoryConcept ;
+    rdfs:label "تأسيس نقابة أصحاب العمل وشروط العضوية"@ar ;
+    skos:altLabel "ثلاثون مؤسسا لنقابة أصحاب العمل"@ar ;
+    skos:altLabel "شروط مؤسس النقابة"@ar ;
+    skos:altLabel "عضوية نقابة أصحاب العمل"@ar ;
+    :supportedByArticle :article_108 .
+
+:union_funds_permitted_uses_concept rdf:type :StatutoryConcept ;
+    rdfs:label "أوجه إنفاق أموال نقابة العمال"@ar ;
+    skos:altLabel "نفقات إدارة النقابة"@ar ;
+    skos:altLabel "نفقات الدعاوى والنزاعات العمالية"@ar ;
+    skos:altLabel "إعانات أعضاء النقابة"@ar ;
+    :supportedByArticle :article_109 .
+
+:general_federation_unions_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الاتحاد العام لنقابات العمال والاتحادات المهنية"@ar ;
+    skos:altLabel "تشكيل الاتحاد العام"@ar ;
+    skos:altLabel "الاتحاد المهني"@ar ;
+    skos:altLabel "الانضمام إلى منظمات عمالية عربية ودولية"@ar ;
+    :supportedByArticle :article_110 .
+
+:union_member_agreement_immunity_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الحماية من العقوبة بسبب الاتفاق النقابي المشروع"@ar ;
+    skos:altLabel "عدم معاقبة عضو النقابة"@ar ;
+    skos:altLabel "اتفاق أعضاء النقابة المشروع"@ar ;
+    skos:altLabel "الحماية القانونية للنشاط النقابي"@ar ;
+    :supportedByArticle :article_111 .
+
+:union_trade_restraint_status_concept rdf:type :StatutoryConcept ;
+    rdfs:label "عدم اعتبار نقابة العمال غير مشروعة بسبب تقييد التجارة"@ar ;
+    skos:altLabel "حرية التجارة والنقابة"@ar ;
+    skos:altLabel "مشروعية نقابة العمال"@ar ;
+    :supportedByArticle :article_112 .
+
+:union_records_inspection_concept rdf:type :StatutoryConcept ;
+    rdfs:label "سجلات ودفاتر النقابة وحق الاطلاع عليها"@ar ;
+    skos:altLabel "دفاتر حسابات النقابة"@ar ;
+    skos:altLabel "اطلاع مفتش العمل على سجلات النقابة"@ar ;
+    skos:altLabel "قوائم أعضاء النقابة"@ar ;
+    :supportedByArticle :article_113 .
+
+:union_board_eligibility_concept rdf:type :StatutoryConcept ;
+    rdfs:label "شروط عضوية الهيئة الإدارية للنقابة"@ar ;
+    skos:altLabel "انتخاب الهيئة الإدارية للنقابة"@ar ;
+    skos:altLabel "أهلية عضو إدارة النقابة"@ar ;
+    skos:altLabel "السوابق الجنائية وعضوية الإدارة"@ar ;
+    :supportedByArticle :article_114 .
+
+:union_branches_concept rdf:type :StatutoryConcept ;
+    rdfs:label "فروع نقابة العمال"@ar ;
+    skos:altLabel "فتح فروع النقابة"@ar ;
+    skos:altLabel "علاقة النقابة بفروعها"@ar ;
+    skos:altLabel "علاقة النقابة بالاتحاد العام"@ar ;
+    :supportedByArticle :article_115 .
+
+:union_judicial_dissolution_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الحل القضائي للنقابة"@ar ;
+    skos:altLabel "دعوى الوزير لحل النقابة"@ar ;
+    skos:altLabel "أسباب حل النقابة"@ar ;
+    skos:altLabel "استئناف قرار حل النقابة"@ar ;
+    :supportedByArticle :article_116 .
+
+:union_assets_after_dissolution_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مصير أموال النقابة بعد الحل غير الاختياري"@ar ;
+    skos:altLabel "إيداع أموال النقابة المحلولة"@ar ;
+    skos:altLabel "انتقال أموال النقابة إلى الاتحاد العام"@ar ;
+    :supportedByArticle :article_117 .
+
+:union_annual_financial_reporting_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الميزانية العمومية السنوية للنقابة"@ar ;
+    skos:altLabel "إرسال ميزانية النقابة للمسجل"@ar ;
+    skos:altLabel "تدقيق حسابات النقابة"@ar ;
+    skos:altLabel "كشف موظفي النقابة"@ar ;
+    :supportedByArticle :article_118 .
+
+:union_reporting_fraud_penalties_concept rdf:type :StatutoryConcept ;
+    rdfs:label "عقوبات مخالفات التقارير والتزوير النقابي"@ar ;
+    skos:altLabel "غرامة عدم تقديم مستندات النقابة"@ar ;
+    skos:altLabel "بيان غير صحيح في ميزانية النقابة"@ar ;
+    skos:altLabel "تزوير النظام الداخلي للنقابة"@ar ;
+    :supportedByArticle :article_119 .
+
+:conciliation_delegate_concept rdf:type :StatutoryConcept ;
+    rdfs:label "تعيين مندوب التوفيق للنزاعات العمالية الجماعية"@ar ;
+    skos:altLabel "مندوب التوفيق"@ar ;
+    skos:altLabel "الوساطة في النزاع العمالي الجماعي"@ar ;
+    skos:altLabel "تسوية النزاعات العمالية الجماعية"@ar ;
+    :supportedByArticle :article_120 .
+
+:strike_lockout_prohibition_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حالات حظر الإضراب والإغلاق"@ar ;
+    skos:altLabel "منع الإضراب أثناء التوفيق أو المحكمة العمالية"@ar ;
+    skos:altLabel "منع الإغلاق أثناء التسوية"@ar ;
+    skos:altLabel "حظر الإضراب والإغلاق"@ar ;
+    :supportedByArticle :article_134 .
+
+:strike_lockout_notice_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إشعار الإضراب وإغلاق المؤسسة"@ar ;
+    skos:altLabel "إشعار أربعة عشر يوما قبل الإضراب"@ar ;
+    skos:altLabel "إشعار أربعة عشر يوما قبل الإغلاق"@ar ;
+    skos:altLabel "خدمات المصالح العامة والإضراب"@ar ;
+    :supportedByArticle :article_135 .
+
+:residual_labor_law_penalty_concept rdf:type :StatutoryConcept ;
+    rdfs:label "العقوبة العامة للمخالفة غير المعين لها عقوبة"@ar ;
+    skos:altLabel "الغرامة العامة لمخالفة قانون العمل"@ar ;
+    skos:altLabel "المخالفة التي لم تحدد لها عقوبة"@ar ;
+    skos:altLabel "تطبيق العقوبة الأشد"@ar ;
+    :supportedByArticle :article_139 .
+
+:implementing_regulations_authority_concept rdf:type :StatutoryConcept ;
+    rdfs:label "صلاحية إصدار الأنظمة لتنفيذ قانون العمل"@ar ;
+    skos:altLabel "مجلس الوزراء وإصدار الأنظمة"@ar ;
+    skos:altLabel "تنسيب الوزير للأنظمة التنفيذية"@ar ;
+    :supportedByArticle :article_140 .
+
+:repeal_transitional_rules_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إلغاء قانون العمل السابق والأحكام الانتقالية"@ar ;
+    skos:altLabel "إلغاء قانون العمل رقم 21 لسنة 1960"@ar ;
+    skos:altLabel "استمرار الأنظمة والتعليمات السابقة"@ar ;
+    skos:altLabel "مدة السنتين الانتقالية"@ar ;
+    :supportedByArticle :article_141 .
+
+:law_execution_responsibility_concept rdf:type :StatutoryConcept ;
+    rdfs:label "تكليف رئيس الوزراء والوزراء بتنفيذ القانون"@ar ;
+    skos:altLabel "تنفيذ أحكام قانون العمل"@ar ;
+    skos:altLabel "رئيس الوزراء والوزراء"@ar ;
+    :supportedByArticle :article_142 .
+
+
+########## Stage 1 — Systematic Statute-Driven Semantic Enrichment ##########
+# Semantic concepts below are derived from the legal functions expressed in the statute.
+# They use descriptive legal-function names, Arabic labels, paraphrastic aliases, and explicit evidence bridges.
+
+:partial_disability_alternative_work_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إعادة تشغيل المصاب بعجز جزئي دائم في عمل مناسب"@ar ;
+    skos:altLabel "العمل البديل للمصاب بعجز جزئي"@ar ;
+    skos:altLabel "تشغيل المصاب في عمل يناسب حالته"@ar ;
+    skos:altLabel "حقوق العامل بعد العجز الجزئي"@ar ;
+    rdfs:comment "ينظم التزام صاحب العمل بإسناد عمل مناسب للعامل ذي العجز الجزئي الدائم عند توافره وحساب حقوقه السابقة على أساس أجره قبل الإصابة."@ar ;
+    :supportedByArticle :article_14 .
+
+:employment_contract_form_and_proof_concept rdf:type :StatutoryConcept ;
+    rdfs:label "شكل عقد العمل وإثبات حقوق العامل"@ar ;
+    skos:altLabel "كتابة عقد العمل بالعربية"@ar ;
+    skos:altLabel "نسخ عقد العمل"@ar ;
+    skos:altLabel "إثبات حقوق العامل دون عقد مكتوب"@ar ;
+    rdfs:comment "ينظم شكل عقد العمل وعدد نسخه وإمكان إثبات العامل لحقوقه بطرق الإثبات القانونية عند عدم تحرير العقد كتابة."@ar ;
+    :supportedByArticle :article_15 .
+
+:fixed_term_contract_conversion_concept rdf:type :StatutoryConcept ;
+    rdfs:label "استمرار وتجديد عقد العمل محدد المدة"@ar ;
+    skos:altLabel "تحول العقد المحدد إلى غير محدد"@ar ;
+    skos:altLabel "استمرار العمل بعد انتهاء مدة العقد"@ar ;
+    skos:altLabel "العامل بالقطعة وعقد غير محدد المدة"@ar ;
+    rdfs:comment "ينظم استمرار علاقة العمل وتجدد العقد محدد المدة إلى عقد غير محدد المدة في الحالات التي يقررها القانون."@ar ;
+    :supportedByArticle :article_15 .
+
+:contractor_workers_direct_claim_concept rdf:type :StatutoryConcept ;
+    rdfs:label "المطالبة المباشرة لعمال المقاول بحقوقهم"@ar ;
+    skos:altLabel "حقوق عمال المقاول لدى صاحب المشروع"@ar ;
+    skos:altLabel "دعوى عمال المقاول الفرعي"@ar ;
+    skos:altLabel "امتياز مستحقات عمال المقاول"@ar ;
+    rdfs:comment "ينظم حق عمال المقاول والمقاول الفرعي في المطالبة المباشرة بالمستحقات وحدود المسؤولية وامتياز استيفاء الحقوق."@ar ;
+    :supportedByArticle :article_15 .
+
+:employment_contract_business_transfer_continuity_concept rdf:type :StatutoryConcept ;
+    rdfs:label "استمرار عقد العمل عند انتقال المشروع"@ar ;
+    skos:altLabel "تغيير صاحب العمل لا ينهي العقد"@ar ;
+    skos:altLabel "بيع المشروع وانتقال عقد العمل"@ar ;
+    skos:altLabel "المسؤولية التضامنية لصاحب العمل القديم والجديد"@ar ;
+    rdfs:comment "ينظم استمرار عقد العمل عند تغير صاحب العمل ومسؤولية صاحب العمل الأصلي والجديد عن الالتزامات السابقة على الانتقال."@ar ;
+    :supportedByArticle :article_16 .
+
+:different_work_assignment_exception_concept rdf:type :StatutoryConcept ;
+    rdfs:label "ضوابط تكليف العامل بعمل مختلف"@ar ;
+    skos:altLabel "العمل المختلف عن المتفق عليه"@ar ;
+    skos:altLabel "حالات الضرورة لتغيير العمل"@ar ;
+    skos:altLabel "القوة القاهرة وتكليف العامل بعمل آخر"@ar ;
+    rdfs:comment "ينظم حظر تكليف العامل بعمل يختلف اختلافاً بيناً عن المتفق عليه والاستثناءات المرتبطة بالضرورة والحوادث والقوة القاهرة."@ar ;
+    :supportedByArticle :article_17 .
+
+:workplace_relocation_residence_change_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حظر نقل العامل بما يغير محل إقامته"@ar ;
+    skos:altLabel "تغيير مكان العمل"@ar ;
+    skos:altLabel "نقل العامل إلى مكان آخر"@ar ;
+    skos:altLabel "تغيير محل إقامة العامل بسبب العمل"@ar ;
+    rdfs:comment "ينظم عدم إلزام العامل بالعمل في مكان يغير محل إقامته ما لم يجز عقد العمل ذلك صراحة."@ar ;
+    :supportedByArticle :article_18 .
+
+:worker_core_duties_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الواجبات الأساسية للعامل أثناء علاقة العمل"@ar ;
+    skos:altLabel "أداء العمل بعناية"@ar ;
+    skos:altLabel "حفظ أسرار صاحب العمل"@ar ;
+    skos:altLabel "المحافظة على أدوات العمل"@ar ;
+    skos:altLabel "الفحوص الطبية للعامل"@ar ;
+    rdfs:comment "يجمع الواجبات الأساسية للعامل بشأن أداء العمل واتباع التعليمات المشروعة والمحافظة على الأسرار والأدوات والخضوع للفحوص اللازمة."@ar ;
+    :supportedByArticle :article_19 .
+
+:employee_intellectual_property_ownership_concept rdf:type :StatutoryConcept ;
+    rdfs:label "ملكية الابتكارات وحقوق الملكية الفكرية في العمل"@ar ;
+    skos:altLabel "حقوق الملكية الفكرية للعامل"@ar ;
+    skos:altLabel "حقوق الملكية الفكرية لصاحب العمل"@ar ;
+    skos:altLabel "ابتكار العامل أثناء العمل"@ar ;
+    rdfs:comment "ينظم تحديد صاحب حقوق الملكية الفكرية الناتجة عن ابتكار العامل وفق صلة الابتكار بعمل صاحب العمل والموارد المستخدمة والاتفاق المكتوب."@ar ;
+    :supportedByArticle :article_20 .
+
+:employment_contract_termination_grounds_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الأسباب العامة لانتهاء عقد العمل"@ar ;
+    skos:altLabel "حالات انتهاء عقد العمل"@ar ;
+    skos:altLabel "انتهاء مدة العقد"@ar ;
+    skos:altLabel "وفاة العامل أو عجزه"@ar ;
+    skos:altLabel "اتفاق الطرفين على إنهاء العقد"@ar ;
+    rdfs:comment "يحدد الأسباب العامة لانتهاء عقد العمل، ومنها اتفاق الطرفين وانتهاء المدة أو العمل ووفاة العامل أو ثبوت عجزه."@ar ;
+    :supportedByArticle :article_21 .
+
+:employer_death_contract_continuity_concept rdf:type :StatutoryConcept ;
+    rdfs:label "استمرار عقد العمل بعد وفاة صاحب العمل"@ar ;
+    skos:altLabel "وفاة صاحب العمل وعقد العمل"@ar ;
+    skos:altLabel "عدم انتهاء العقد بوفاة صاحب العمل"@ar ;
+    rdfs:comment "يقرر استمرار عقد العمل رغم وفاة صاحب العمل إلا إذا كانت شخصية صاحب العمل محل اعتبار في العقد."@ar ;
+    :supportedByArticle :article_22 .
+
+:indefinite_contract_termination_notice_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إشعار إنهاء عقد العمل غير محدد المدة"@ar ;
+    skos:altLabel "مهلة إشعار إنهاء العقد"@ar ;
+    skos:altLabel "إنهاء العقد غير المحدد قبل شهر"@ar ;
+    skos:altLabel "أجر مدة الإشعار"@ar ;
+    rdfs:comment "ينظم الإشعار الكتابي لإنهاء العقد غير محدد المدة وآثاره على استمرار العقد والعمل والأجر والتعويض عن ترك العمل قبل انتهاء الإشعار."@ar ;
+    :supportedByArticle :article_23 .
+
+:anti_retaliation_dismissal_protection_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حماية العامل من الفصل بسبب الشكاوى والمطالبات"@ar ;
+    skos:altLabel "الفصل بسبب شكوى العامل"@ar ;
+    skos:altLabel "منع الإجراء التأديبي بسبب مطالبة قانونية"@ar ;
+    skos:altLabel "حماية العامل من الانتقام الوظيفي"@ar ;
+    rdfs:comment "يحظر فصل العامل أو معاقبته تأديبياً لأسباب مرتبطة بشكاواه أو مطالباته المتعلقة بتطبيق قانون العمل."@ar ;
+    :supportedByArticle :article_24 .
+
+:arbitrary_dismissal_remedy_concept rdf:type :StatutoryConcept ;
+    rdfs:label "دعوى الفصل التعسفي ووسائل جبر الضرر"@ar ;
+    skos:altLabel "مهلة دعوى الفصل التعسفي"@ar ;
+    skos:altLabel "إعادة العامل إلى العمل"@ar ;
+    skos:altLabel "تعويض الفصل التعسفي"@ar ;
+    skos:altLabel "ستون يوما من الفصل"@ar ;
+    rdfs:comment "ينظم دعوى الفصل التعسفي والمهلة لرفعها وسلطة المحكمة في الإعادة للعمل أو التعويض وحدود التعويض."@ar ;
+    :supportedByArticle :article_25 .
+
+:fixed_term_early_termination_rights_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حقوق وآثار الإنهاء المبكر للعقد محدد المدة"@ar ;
+    skos:altLabel "إنهاء العقد المحدد قبل مدته"@ar ;
+    skos:altLabel "أجور المدة المتبقية"@ar ;
+    skos:altLabel "تعويض صاحب العمل عن إنهاء العامل للعقد المحدد"@ar ;
+    rdfs:comment "ينظم الحقوق والتعويضات المترتبة على الإنهاء المبكر للعقد محدد المدة بحسب الطرف الذي أنهى العقد وسبب الإنهاء."@ar ;
+    :supportedByArticle :article_26 .
+
+:protected_periods_from_termination_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الفترات المحمية من إنهاء خدمة العامل"@ar ;
+    skos:altLabel "حظر الفصل أثناء الحمل"@ar ;
+    skos:altLabel "حظر الفصل أثناء إجازة الأمومة"@ar ;
+    skos:altLabel "حظر الفصل أثناء الإجازة"@ar ;
+    skos:altLabel "الحماية أثناء خدمة العلم"@ar ;
+    rdfs:comment "يحدد الحالات التي يحظر فيها إنهاء خدمة العامل أو توجيه إشعار بالإنهاء خلال فترات حماية قانونية محددة."@ar ;
+    :supportedByArticle :article_27 .
+
+:dismissal_without_notice_grounds_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حالات فصل العامل دون إشعار"@ar ;
+    skos:altLabel "الفصل الفوري للعامل"@ar ;
+    skos:altLabel "أسباب الفصل دون إنذار"@ar ;
+    skos:altLabel "التغيب الموجب للفصل"@ar ;
+    skos:altLabel "السكر أو المخدرات أثناء العمل"@ar ;
+    rdfs:comment "يحدد الحالات التي تجيز لصاحب العمل فصل العامل دون إشعار بسبب مخالفات أو أفعال جسيمة محددة في القانون."@ar ;
+    :supportedByArticle :article_28 .
+
+:worker_leave_without_notice_grounds_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حالات ترك العامل العمل دون إشعار مع حفظ حقوقه"@ar ;
+    skos:altLabel "استقالة العامل دون إشعار"@ar ;
+    skos:altLabel "ترك العمل بسبب مخالفة صاحب العمل"@ar ;
+    skos:altLabel "خفض الأجر وترك العمل"@ar ;
+    skos:altLabel "تغيير نوع العمل وتركه"@ar ;
+    rdfs:comment "يحدد الحالات التي تجيز للعامل ترك العمل دون إشعار مع الاحتفاظ بحقوقه القانونية والتعويضات."@ar ;
+    :supportedByArticle :article_29 .
+
+:service_certificate_return_documents_concept rdf:type :StatutoryConcept ;
+    rdfs:label "شهادة الخدمة ورد وثائق العامل عند انتهاء الخدمة"@ar ;
+    skos:altLabel "شهادة خبرة العامل"@ar ;
+    skos:altLabel "شهادة الخدمة عند انتهاء العمل"@ar ;
+    skos:altLabel "رد أوراق وشهادات العامل"@ar ;
+    rdfs:comment "يلزم صاحب العمل بإعطاء العامل شهادة خدمة عند الطلب ورد ما أودعه العامل لديه من أوراق وشهادات وأدوات."@ar ;
+    :supportedByArticle :article_30 .
+
+:economic_technical_restructuring_termination_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إجراءات تقليص العمل أو إنهائه لأسباب اقتصادية أو فنية"@ar ;
+    skos:altLabel "إنهاء العقود لأسباب اقتصادية"@ar ;
+    skos:altLabel "تقليص حجم العمل"@ar ;
+    skos:altLabel "لجنة التحقق من إجراءات صاحب العمل"@ar ;
+    skos:altLabel "الطعن بقرار الوزير في تقليص العمل"@ar ;
+    rdfs:comment "ينظم إجراءات صاحب العمل والوزارة عند تقليص العمل أو تعليق العقود أو إنهائها لأسباب اقتصادية أو فنية وحقوق العمال في العودة والطعن."@ar ;
+    :supportedByArticle :article_31 .
+
+:end_of_service_benefit_non_social_security_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مكافأة نهاية الخدمة للعامل غير المشمول بالضمان الاجتماعي"@ar ;
+    skos:altLabel "حساب مكافأة نهاية الخدمة"@ar ;
+    skos:altLabel "أجر شهر عن كل سنة خدمة"@ar ;
+    skos:altLabel "العامل غير الخاضع للضمان الاجتماعي"@ar ;
+    rdfs:comment "ينظم استحقاق وحساب مكافأة نهاية الخدمة للعامل غير المشمول بالضمان الاجتماعي في العقد غير محدد المدة."@ar ;
+    :supportedByArticle :article_32 .
+
+:establishment_employee_funds_rights_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حقوق العامل في صناديق الادخار والتوفير والتقاعد بالمؤسسة"@ar ;
+    skos:altLabel "صندوق الادخار للعامل"@ar ;
+    skos:altLabel "صندوق التقاعد في المؤسسة"@ar ;
+    skos:altLabel "استحقاقات صناديق المؤسسة عند انتهاء الخدمة"@ar ;
+    skos:altLabel "إدارة أموال صندوق العاملين"@ar ;
+    rdfs:comment "ينظم حقوق العامل في صناديق المؤسسة واعتماد أنظمتها وشخصيتها الاعتبارية وإدارتها واستثمار أموالها."@ar ;
+    :supportedByArticle :article_33 .
+
+:worker_death_statutory_rights_succession_concept rdf:type :StatutoryConcept ;
+    rdfs:label "انتقال حقوق العامل المتوفى إلى ورثته الشرعيين"@ar ;
+    skos:altLabel "حقوق العامل بعد الوفاة"@ar ;
+    skos:altLabel "ورثة العامل الشرعيون"@ar ;
+    skos:altLabel "حقوق المتوفى في صناديق المؤسسة"@ar ;
+    rdfs:comment "يقرر انتقال الحقوق التي رتبها قانون العمل للعامل المتوفى، بما فيها حقوقه في الصناديق ذات الصلة، إلى ورثته الشرعيين."@ar ;
+    :supportedByArticle :article_34 .
+
+:probationary_employment_concept rdf:type :StatutoryConcept ;
+    rdfs:label "ضوابط تشغيل العامل تحت التجربة"@ar ;
+    skos:altLabel "مدة التجربة في العمل"@ar ;
+    skos:altLabel "أجر العامل تحت التجربة"@ar ;
+    skos:altLabel "إنهاء العامل تحت التجربة"@ar ;
+    skos:altLabel "تحول عقد التجربة إلى غير محدد"@ar ;
+    rdfs:comment "ينظم مدة التجربة والحد الأدنى للأجر أثناءها وإمكان الإنهاء خلالها وأثر استمرار العامل بعد انتهائها."@ar ;
+    :supportedByArticle :article_35 .
+
+:vocational_training_contract_form_concept rdf:type :StatutoryConcept ;
+    rdfs:label "شكل وشروط عقد التدريب المهني"@ar ;
+    skos:altLabel "عقد التدريب المهني الخطي"@ar ;
+    skos:altLabel "مؤهلات المدرب"@ar ;
+    skos:altLabel "نموذج عقد التدريب"@ar ;
+    skos:altLabel "تعاقد الحدث في التدريب"@ar ;
+    rdfs:comment "ينظم كتابة عقد التدريب المهني ومؤهلات المدرب وشروط المؤسسة والنموذج المعتمد وتمثيل الحدث في التعاقد."@ar ;
+    :supportedByArticle :article_36 .
+
+:vocational_training_contract_termination_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حالات إنهاء عقد التدريب المهني"@ar ;
+    skos:altLabel "إنهاء التدريب المهني"@ar ;
+    skos:altLabel "فسخ عقد التدريب"@ar ;
+    skos:altLabel "سلامة المتدرب وإنهاء العقد"@ar ;
+    skos:altLabel "نقل مكان التدريب"@ar ;
+    rdfs:comment "يحدد الحالات التي تجيز إنهاء عقد التدريب المهني بسبب المخالفة أو عدم تنفيذ الالتزامات أو الاستحالة أو النقل أو الخطر الصحي."@ar ;
+    :supportedByArticle :article_38 .
+
+:collective_agreement_form_registration_effective_date_concept rdf:type :StatutoryConcept ;
+    rdfs:label "شكل عقد العمل الجماعي وتسجيله وتاريخ نفاذه"@ar ;
+    skos:altLabel "نسخ عقد العمل الجماعي"@ar ;
+    skos:altLabel "تسجيل العقد الجماعي"@ar ;
+    skos:altLabel "بدء سريان العقد الجماعي"@ar ;
+    rdfs:comment "ينظم عدد نسخ عقد العمل الجماعي وإيداعه لدى الوزارة وتحديد تاريخ إلزامه."@ar ;
+    :supportedByArticle :article_39 .
+
+:collective_agreement_duration_termination_notice_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مدة عقد العمل الجماعي وإشعار إنهائه"@ar ;
+    skos:altLabel "العقد الجماعي محدد المدة"@ar ;
+    skos:altLabel "إنهاء العقد الجماعي غير المحدد"@ar ;
+    skos:altLabel "إشعار إنهاء العقد الجماعي"@ar ;
+    skos:altLabel "مدة السنتين للعقد الجماعي"@ar ;
+    rdfs:comment "ينظم مدة عقد العمل الجماعي المحدد وغير المحدد وشروط إنهاء العقد غير المحدد بالإشعار."@ar ;
+    :supportedByArticle :article_40 .
+
+:collective_agreement_renegotiation_continuity_concept rdf:type :StatutoryConcept ;
+    rdfs:label "استمرار العقد الجماعي أثناء مفاوضات التجديد وحماية الحقوق المكتسبة"@ar ;
+    skos:altLabel "استمرار العقد الجماعي أثناء المفاوضات"@ar ;
+    skos:altLabel "تجديد عقد العمل الجماعي"@ar ;
+    skos:altLabel "الحقوق المكتسبة بعد انتهاء العقد الجماعي"@ar ;
+    rdfs:comment "ينظم استمرار أثر العقد الجماعي أثناء مفاوضات التجديد لمدة محددة ويحمي الحقوق التي اكتسبها العمال بموجبه."@ar ;
+    :supportedByArticle :article_41 .
+
+:collective_agreement_binding_scope_concept rdf:type :StatutoryConcept ;
+    rdfs:label "نطاق إلزام عقد العمل الجماعي وأولوية الشرط الأفضل للعامل"@ar ;
+    skos:altLabel "من يشمله عقد العمل الجماعي"@ar ;
+    skos:altLabel "إلزام خلف صاحب العمل بالعقد الجماعي"@ar ;
+    skos:altLabel "بطلان الشرط الفردي الأقل فائدة"@ar ;
+    rdfs:comment "يحدد الفئات الملزمة بعقد العمل الجماعي ويقرر بطلان الشروط الفردية المخالفة ما لم تكن أكثر فائدة للعامل."@ar ;
+    :supportedByArticle :article_42 .
+
+:collective_agreement_extension_concept rdf:type :StatutoryConcept ;
+    rdfs:label "توسيع نطاق شمول عقد العمل الجماعي بقرار الوزير"@ar ;
+    skos:altLabel "تعميم عقد العمل الجماعي"@ar ;
+    skos:altLabel "توسيع شمول العقد الجماعي"@ar ;
+    skos:altLabel "قرار الوزير بتوسيع العقد الجماعي"@ar ;
+    rdfs:comment "ينظم سلطة الوزير في توسيع نطاق عقد العمل الجماعي إلى قطاع أو فئة أو منطقة بعد الدراسة والإجراءات المقررة."@ar ;
+    :supportedByArticle :article_43 .
+
+:collective_agreement_registration_publicity_concept rdf:type :StatutoryConcept ;
+    rdfs:label "تنظيم تسجيل عقود العمل الجماعية والإعلان عنها"@ar ;
+    skos:altLabel "تعليمات تسجيل العقد الجماعي"@ar ;
+    skos:altLabel "الانضمام إلى عقد العمل الجماعي"@ar ;
+    skos:altLabel "تعليق بيان العقد الجماعي في المؤسسة"@ar ;
+    rdfs:comment "ينظم التعليمات المتعلقة بتسجيل عقود العمل الجماعية والانضمام إليها والحصول على صور منها والإعلان عن وجودها في مكان العمل."@ar ;
+    :supportedByArticle :article_44 .
+
+:wage_determination_hierarchy_concept rdf:type :StatutoryConcept ;
+    rdfs:label "ترتيب تحديد الأجر عند عدم النص عليه في العقد"@ar ;
+    skos:altLabel "تحديد الأجر عند غيابه من العقد"@ar ;
+    skos:altLabel "أجر العمل المماثل"@ar ;
+    skos:altLabel "تقدير الأجر بالعرف"@ar ;
+    skos:altLabel "تقدير المحكمة للأجر"@ar ;
+    rdfs:comment "يحدد تسلسل مصادر تقدير الأجر عند عدم تحديده في العقد: أجر العمل المماثل ثم العرف ثم تقدير المحكمة."@ar ;
+    :supportedByArticle :article_45 .
+
+:wage_payment_deadline_nonwaiver_concept rdf:type :StatutoryConcept ;
+    rdfs:label "موعد دفع الأجر وعدم إسقاط الحقوق بالتوقيع"@ar ;
+    skos:altLabel "دفع الأجر خلال سبعة أيام"@ar ;
+    skos:altLabel "موعد استحقاق الأجر"@ar ;
+    skos:altLabel "توقيع كشف الأجور لا يسقط الحق"@ar ;
+    rdfs:comment "ينظم مهلة دفع الأجر ويحظر الحسم إلا وفق القانون ويقرر أن توقيع العامل على كشف أو إيصال لا يسقط حقوقه في الزيادات المستحقة."@ar ;
+    :supportedByArticle :article_46 .
+
+:permitted_wage_deductions_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الحسميات الجائزة من أجر العامل"@ar ;
+    skos:altLabel "الحسم من الأجر"@ar ;
+    skos:altLabel "اقتطاعات الأجر المسموح بها"@ar ;
+    skos:altLabel "استرداد السلفة من الأجر"@ar ;
+    skos:altLabel "اقتطاعات الضمان وصندوق الادخار"@ar ;
+    rdfs:comment "يحدد حصراً الحالات التي يجوز فيها حسم مبالغ من أجر العامل."@ar ;
+    :supportedByArticle :article_47 .
+
+:disciplinary_penalty_procedure_limits_concept rdf:type :StatutoryConcept ;
+    rdfs:label "ضوابط الإجراءات التأديبية والغرامات على العامل"@ar ;
+    skos:altLabel "لائحة الجزاءات"@ar ;
+    skos:altLabel "حدود غرامة العامل"@ar ;
+    skos:altLabel "الاعتراض على العقوبة أمام مفتش العمل"@ar ;
+    skos:altLabel "مهلة فرض الإجراء التأديبي"@ar ;
+    rdfs:comment "ينظم مشروعية الجزاءات التأديبية وحدود الغرامات والإيقاف وحق سماع العامل واعتراضه والمدة التي يجوز خلالها فرض الجزاء."@ar ;
+    :supportedByArticle :article_48 .
+
+:employee_damage_wage_deduction_concept rdf:type :StatutoryConcept ;
+    rdfs:label "اقتطاع قيمة الضرر الذي تسبب به العامل وحدوده"@ar ;
+    skos:altLabel "إتلاف أدوات صاحب العمل"@ar ;
+    skos:altLabel "اقتطاع أجر خمسة أيام"@ar ;
+    skos:altLabel "تعويض صاحب العمل عن أضرار العامل"@ar ;
+    rdfs:comment "ينظم اقتطاع قيمة الأدوات أو المنتجات التي أتلفها العامل بسبب خطئه وحدود الاقتطاع وحق صاحب العمل في المطالبة القضائية بالتعويض."@ar ;
+    :supportedByArticle :article_49 .
+
+:temporary_work_stoppage_wage_concept rdf:type :StatutoryConcept ;
+    rdfs:label "أجر العامل عند توقف العمل المؤقت لسبب خارج عن إرادة صاحب العمل"@ar ;
+    skos:altLabel "أجر فترة توقف العمل"@ar ;
+    skos:altLabel "التعطيل المؤقت والأجر"@ar ;
+    skos:altLabel "عشرة أيام أجر كامل عند التوقف"@ar ;
+    skos:altLabel "نصف الأجر بعد توقف العمل"@ar ;
+    rdfs:comment "ينظم استحقاق العامل للأجر الكامل أو نصف الأجر أثناء توقف العمل المؤقت الذي لا يعزى إلى صاحب العمل ضمن الحدود الزمنية المقررة."@ar ;
+    :supportedByArticle :article_50 .
+
+:wage_priority_insolvency_concept rdf:type :StatutoryConcept ;
+    rdfs:label "امتياز الأجور عند تصفية المؤسسة أو إفلاس صاحب العمل"@ar ;
+    skos:altLabel "أولوية أجور العمال"@ar ;
+    skos:altLabel "ديون الأجور الممتازة"@ar ;
+    skos:altLabel "إفلاس صاحب العمل وأجر العامل"@ar ;
+    skos:altLabel "تصفية المؤسسة وحقوق العامل"@ar ;
+    rdfs:comment "ينظم مرتبة امتياز الأجور والمبالغ المستحقة للعامل أو ورثته وأولوية الدفع في التصفية أو الإفلاس."@ar ;
+    :supportedByArticle :article_51 .
+
+:minimum_wage_determination_committee_concept rdf:type :StatutoryConcept ;
+    rdfs:label "لجنة تحديد الحد الأدنى للأجور وآلية اتخاذ القرار"@ar ;
+    skos:altLabel "تحديد الحد الأدنى للأجور"@ar ;
+    skos:altLabel "لجنة الحد الأدنى للأجور"@ar ;
+    skos:altLabel "تكاليف المعيشة والحد الأدنى"@ar ;
+    skos:altLabel "نشر قرار الحد الأدنى للأجور"@ar ;
+    rdfs:comment "ينظم تشكيل لجنة تحديد الحد الأدنى للأجور واختصاصها ومعايير التقدير واعتماد القرارات ونشرها وتاريخ نفاذها."@ar ;
+    :supportedByArticle :article_52 .
+
+:minimum_wage_underpayment_penalty_concept rdf:type :StatutoryConcept ;
+    rdfs:label "عقوبة دفع أجر أقل من الحد الأدنى وحق العامل بفرق الأجر"@ar ;
+    skos:altLabel "أجر أقل من الحد الأدنى"@ar ;
+    skos:altLabel "غرامة مخالفة الحد الأدنى للأجور"@ar ;
+    skos:altLabel "فرق الأجر للعامل"@ar ;
+    skos:altLabel "تكرار مخالفة الحد الأدنى"@ar ;
+    rdfs:comment "ينظم عقوبة دفع أجر يقل عن الحد الأدنى المقرر وإلزام صاحب العمل بفرق الأجر وتشديد العقوبة عند التكرار."@ar ;
+    :supportedByArticle :article_53 .
+
+:wage_authority_jurisdiction_concept rdf:type :StatutoryConcept ;
+    rdfs:label "اختصاص سلطة الأجور وشروط قبول الدعوى"@ar ;
+    skos:altLabel "سلطة الأجور"@ar ;
+    skos:altLabel "دعوى الأجر المتأخر"@ar ;
+    skos:altLabel "الحسم غير القانوني من الأجر"@ar ;
+    skos:altLabel "أجور العمل الإضافي"@ar ;
+    skos:altLabel "ستة أشهر بعد انتهاء العمل"@ar ;
+    rdfs:comment "ينظم اختصاص سلطة الأجور في منازعات الأجور وشروط قبول الدعوى بحسب استمرار علاقة العمل أو المدة منذ انتهائها."@ar ;
+    :supportedByArticle :article_54 .
+
+:wage_authority_procedure_powers_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إجراءات وصلاحيات سلطة الأجور"@ar ;
+    skos:altLabel "صلاحيات سلطة الأجور"@ar ;
+    skos:altLabel "إثبات دعوى الأجور"@ar ;
+    skos:altLabel "تقديم جواب صاحب العمل"@ar ;
+    skos:altLabel "تنفيذ قرار سلطة الأجور"@ar ;
+    rdfs:comment "ينظم إجراءات نظر دعوى الأجور وصلاحيات السلطة في سماع الشهود وطلب المستندات وإصدار القرار وتنفيذه."@ar ;
+    :supportedByArticle :article_54 .
+
+:wage_authority_compensation_appeal_concept rdf:type :StatutoryConcept ;
+    rdfs:label "تعويض سلطة الأجور واستئناف قراراتها"@ar ;
+    skos:altLabel "تعويض الأجر غير المدفوع"@ar ;
+    skos:altLabel "استئناف قرار سلطة الأجور"@ar ;
+    skos:altLabel "مهلة عشرة أيام للاستئناف"@ar ;
+    skos:altLabel "حد التعويض في دعوى الأجر"@ar ;
+    rdfs:comment "ينظم سلطة الحكم بالأجور والتعويض وحدوده وشروط عدم التعويض وقابلية القرار للاستئناف ضمن المدة والمبلغ المقررين."@ar ;
+    :supportedByArticle :article_54 .
+
+:overtime_and_holiday_pay_rates_concept rdf:type :StatutoryConcept ;
+    rdfs:label "بدل العمل الإضافي والعمل في العطل"@ar ;
+    skos:altLabel "أجر الساعة الإضافية"@ar ;
+    skos:altLabel "125 بالمئة للعمل الإضافي"@ar ;
+    skos:altLabel "150 بالمئة للعمل في العطلة"@ar ;
+    skos:altLabel "أجر العمل يوم الجمعة أو العيد"@ar ;
+    rdfs:comment "ينظم الحد الأدنى لبدل ساعات العمل الإضافية والعمل في يوم العطلة الأسبوعية أو الأعياد والعطل الرسمية."@ar ;
+    :supportedByArticle :article_59 .
+
+:weekly_rest_entitlement_concept rdf:type :StatutoryConcept ;
+    rdfs:label "العطلة الأسبوعية وأجرها وإمكان جمعها"@ar ;
+    skos:altLabel "يوم الجمعة عطلة أسبوعية"@ar ;
+    skos:altLabel "جمع أيام العطلة الأسبوعية"@ar ;
+    skos:altLabel "أجر يوم العطلة الأسبوعية"@ar ;
+    rdfs:comment "ينظم يوم العطلة الأسبوعية وإمكان جمع أيامها وشروط استحقاق أجرها."@ar ;
+    :supportedByArticle :article_60 .
+
+:annual_leave_entitlement_scheduling_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مدة الإجازة السنوية واستحقاقها وتأجيلها وتنظيمها"@ar ;
+    skos:altLabel "أربعة عشر يوما إجازة سنوية"@ar ;
+    skos:altLabel "واحد وعشرون يوما بعد خمس سنوات"@ar ;
+    skos:altLabel "تأجيل الإجازة السنوية"@ar ;
+    skos:altLabel "تحديد موعد الإجازة"@ar ;
+    rdfs:comment "ينظم مدة الإجازة السنوية المدفوعة واستحقاقها النسبي وزيادتها مع الخدمة وتأجيلها وجدولتها."@ar ;
+    :supportedByArticle :article_61 .
+
+:annual_leave_split_minimum_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الحد الأدنى للجزء المجزأ من الإجازة السنوية"@ar ;
+    skos:altLabel "تجزئة الإجازة السنوية"@ar ;
+    skos:altLabel "يومان على الأقل من الإجازة"@ar ;
+    skos:altLabel "أخذ الإجازة على دفعات"@ar ;
+    rdfs:comment "يقرر الحد الأدنى لمدة كل جزء من الإجازة السنوية عند عدم أخذها دفعة واحدة."@ar ;
+    :supportedByArticle :article_62 .
+
+:unused_annual_leave_payout_concept rdf:type :StatutoryConcept ;
+    rdfs:label "بدل الإجازة السنوية غير المستعملة عند انتهاء الخدمة"@ar ;
+    skos:altLabel "تعويض الإجازة غير المستخدمة"@ar ;
+    skos:altLabel "أجر أيام الإجازة عند انتهاء العمل"@ar ;
+    skos:altLabel "رصيد الإجازات عند انتهاء الخدمة"@ar ;
+    rdfs:comment "يقرر حق العامل في تقاضي أجر الأيام غير المستعملة من إجازته السنوية عند انتهاء الخدمة."@ar ;
+    :supportedByArticle :article_63 .
+
+:annual_leave_nonwaiver_concept rdf:type :StatutoryConcept ;
+    rdfs:label "بطلان التنازل عن الإجازة السنوية"@ar ;
+    skos:altLabel "عدم التنازل عن الإجازة"@ar ;
+    skos:altLabel "بطلان إسقاط الإجازة السنوية"@ar ;
+    skos:altLabel "حماية حق الإجازة السنوية"@ar ;
+    rdfs:comment "يقرر بطلان أي اتفاق يتضمن تنازل العامل عن الإجازة السنوية أو جزء منها."@ar ;
+    :supportedByArticle :article_64 .
+
+:sick_leave_duration_extension_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مدة الإجازة المرضية وتجديدها وأجرها"@ar ;
+    skos:altLabel "أربعة عشر يوما إجازة مرضية"@ar ;
+    skos:altLabel "تجديد الإجازة المرضية"@ar ;
+    skos:altLabel "نصف الأجر في الإجازة المرضية"@ar ;
+    skos:altLabel "تقرير الطبيب للإجازة المرضية"@ar ;
+    rdfs:comment "ينظم مدة الإجازة المرضية المدفوعة وتجديدها وشروط الأجر الكامل أو نصف الأجر وفق الحالة الطبية."@ar ;
+    :supportedByArticle :article_65 .
+
+:special_paid_unpaid_leave_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إجازات الثقافة العمالية والحج والدراسة"@ar ;
+    skos:altLabel "إجازة الحج"@ar ;
+    skos:altLabel "إجازة الثقافة العمالية"@ar ;
+    skos:altLabel "إجازة الدراسة دون أجر"@ar ;
+    skos:altLabel "أربعة أشهر للدراسة"@ar ;
+    rdfs:comment "ينظم الإجازات الخاصة للثقافة العمالية والحج والدراسة ومددها وشروط استحقاقها وأجرها."@ar ;
+    :supportedByArticle :article_66 .
+
+:childcare_unpaid_leave_woman_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إجازة المرأة دون أجر للتفرغ لتربية أطفالها"@ar ;
+    skos:altLabel "إجازة تربية الأطفال"@ar ;
+    skos:altLabel "سنة دون أجر للمرأة"@ar ;
+    skos:altLabel "العودة للعمل بعد إجازة تربية الطفل"@ar ;
+    rdfs:comment "ينظم حق المرأة العاملة في إجازة دون أجر لرعاية أطفالها وشروط العودة إلى العمل وفقدان الحق عند العمل لدى مؤسسة أخرى."@ar ;
+    :supportedByArticle :article_67 .
+
+:spouse_accompaniment_unpaid_leave_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إجازة دون أجر لمرافقة الزوج أو الزوجة"@ar ;
+    skos:altLabel "إجازة مرافقة الزوج"@ar ;
+    skos:altLabel "إجازة سنتين دون أجر"@ar ;
+    skos:altLabel "انتقال الزوج للعمل خارج المحافظة"@ar ;
+    rdfs:comment "ينظم حق كل من الزوجين العاملين في إجازة دون أجر لمرافقة زوجه عند انتقاله للعمل داخل المملكة أو خارجها."@ar ;
+    :supportedByArticle :article_68 .
+
+:women_work_time_restrictions_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الأعمال والأوقات المحظور تشغيل النساء فيها"@ar ;
+    skos:altLabel "حظر تشغيل النساء في بعض الأعمال"@ar ;
+    skos:altLabel "الأوقات الممنوع تشغيل النساء فيها"@ar ;
+    skos:altLabel "قرار الوزير بشأن عمل النساء"@ar ;
+    skos:altLabel "استثناءات أوقات تشغيل النساء"@ar ;
+    rdfs:comment "ينظم سلطة الوزير في تحديد الصناعات والأعمال والأوقات التي يحظر تشغيل النساء فيها والحالات المستثناة."@ar ;
+    :supportedByArticle :article_69 .
+
+:maternity_leave_duration_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إجازة الأمومة ومدتها وحظر التشغيل بعد الوضع"@ar ;
+    skos:altLabel "عشرة أسابيع إجازة أمومة"@ar ;
+    skos:altLabel "ستة أسابيع بعد الوضع"@ar ;
+    skos:altLabel "حظر تشغيل المرأة بعد الولادة"@ar ;
+    skos:altLabel "أجر إجازة الأمومة"@ar ;
+    rdfs:comment "ينظم مدة إجازة الأمومة المدفوعة وتوزيعها قبل الوضع وبعده وحظر تشغيل المرأة قبل انقضاء الحد الأدنى بعد الوضع."@ar ;
+    :supportedByArticle :article_70 .
+
+:breastfeeding_break_right_concept rdf:type :StatutoryConcept ;
+    rdfs:label "فترة الرضاعة المدفوعة بعد إجازة الأمومة"@ar ;
+    skos:altLabel "ساعة رضاعة يوميا"@ar ;
+    skos:altLabel "فترة إرضاع المولود"@ar ;
+    skos:altLabel "رضاعة مدفوعة الأجر"@ar ;
+    skos:altLabel "سنة بعد الولادة"@ar ;
+    rdfs:comment "يقرر حق المرأة العاملة في فترة أو فترات رضاعة مدفوعة الأجر خلال السنة التالية للولادة ضمن الحد اليومي المقرر."@ar ;
+    :supportedByArticle :article_71 .
+
+:juvenile_hazardous_work_prohibition_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حظر تشغيل الحدث دون الثامنة عشرة في الأعمال الخطرة"@ar ;
+    skos:altLabel "الأعمال الخطرة للأحداث"@ar ;
+    skos:altLabel "منع تشغيل من دون 18 سنة"@ar ;
+    skos:altLabel "قرار الوزير بالأعمال الخطرة للأحداث"@ar ;
+    skos:altLabel "العمل المرهق أو المضر بصحة الحدث"@ar ;
+    rdfs:comment "يحظر تشغيل الحدث الذي لم يكمل الثامنة عشرة في الأعمال الخطرة أو المرهقة أو المضرة بالصحة ويخول الوزير تحديدها."@ar ;
+    :supportedByArticle :article_74 .
+
+:juvenile_hours_night_holiday_restrictions_concept rdf:type :StatutoryConcept ;
+    rdfs:label "قيود ساعات وراحة وعمل الحدث ليلاً وفي العطل"@ar ;
+    skos:altLabel "ست ساعات عمل للحدث"@ar ;
+    skos:altLabel "راحة الحدث بعد أربع ساعات"@ar ;
+    skos:altLabel "منع العمل الليلي للأحداث"@ar ;
+    skos:altLabel "منع تشغيل الحدث في العطل"@ar ;
+    rdfs:comment "ينظم الحد الأقصى لساعات عمل الحدث وفترة الراحة ويحظر تشغيله ليلاً وفي الأعياد والعطل الرسمية والأسبوعية."@ar ;
+    :supportedByArticle :article_75 .
+
+:juvenile_employment_documents_medical_fitness_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مستندات تشغيل الحدث ولياقته الصحية وموافقة وليه"@ar ;
+    skos:altLabel "شهادة ميلاد الحدث"@ar ;
+    skos:altLabel "اللياقة الصحية للحدث"@ar ;
+    skos:altLabel "موافقة ولي الأمر على عمل الحدث"@ar ;
+    skos:altLabel "ملف العامل الحدث"@ar ;
+    rdfs:comment "يلزم صاحب العمل بالحصول على مستندات محددة قبل تشغيل الحدث وحفظ بياناته، ومنها إثبات السن واللياقة الصحية وموافقة الولي."@ar ;
+    :supportedByArticle :article_76 .
+
+:employer_occupational_safety_prevention_concept rdf:type :StatutoryConcept ;
+    rdfs:label "التزامات صاحب العمل بالوقاية والحماية الشخصية والإسعاف"@ar ;
+    skos:altLabel "وسائل الحماية الشخصية"@ar ;
+    skos:altLabel "احتياطات السلامة للعمال"@ar ;
+    skos:altLabel "إرشاد العامل إلى مخاطر المهنة"@ar ;
+    skos:altLabel "الإسعاف الطبي في المؤسسة"@ar ;
+    rdfs:comment "يجمع التزامات صاحب العمل بتوفير تدابير الوقاية ومعدات الحماية والتوعية بالمخاطر ووسائل الإسعاف دون تحميل العامل تكلفتها."@ar ;
+    :supportedByArticle :article_78 .
+
+:minister_occupational_safety_instructions_concept rdf:type :StatutoryConcept ;
+    rdfs:label "التعليمات الفنية للسلامة والصحة المهنية ومعايير بيئة العمل"@ar ;
+    skos:altLabel "تعليمات الوزير للسلامة المهنية"@ar ;
+    skos:altLabel "معايير التلوث والضوضاء في العمل"@ar ;
+    skos:altLabel "وسائل الوقاية من أمراض المهنة"@ar ;
+    rdfs:comment "ينظم إصدار التعليمات الفنية بشأن الاحتياطات والأجهزة الوقائية ومعايير بيئة العمل والفحص والاختبار."@ar ;
+    :supportedByArticle :article_79 .
+
+:fire_explosion_hazardous_materials_prevention_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الوقاية من الحريق والانفجارات والمواد الخطرة في مكان العمل"@ar ;
+    skos:altLabel "السلامة من الحريق"@ar ;
+    skos:altLabel "منع أخطار الانفجار"@ar ;
+    skos:altLabel "تخزين المواد القابلة للاشتعال"@ar ;
+    skos:altLabel "تداول المواد الخطرة"@ar ;
+    rdfs:comment "يلزم صاحب العمل باتخاذ احتياطات ووسائل فنية لحماية المؤسسة والعاملين من الحريق والانفجارات ومخاطر المواد الخطرة."@ar ;
+    :supportedByArticle :article_80 .
+
+:workplace_intoxicants_prohibition_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حظر الخمور والمخدرات والمؤثرات العقلية في أماكن العمل"@ar ;
+    skos:altLabel "منع إدخال الخمر إلى العمل"@ar ;
+    skos:altLabel "منع المخدرات في مكان العمل"@ar ;
+    skos:altLabel "الدخول للعمل تحت تأثير المخدر"@ar ;
+    skos:altLabel "البقاء في مكان العمل تحت تأثير الخمر"@ar ;
+    rdfs:comment "يحظر إدخال أو عرض الخمور والمخدرات والمؤثرات والعقاقير الخطرة في مكان العمل كما يحظر الدخول أو البقاء فيه تحت تأثيرها."@ar ;
+    :supportedByArticle :article_81 .
+
+:worker_occupational_safety_compliance_concept rdf:type :StatutoryConcept ;
+    rdfs:label "التزام العمال بتعليمات وأجهزة السلامة والصحة المهنية"@ar ;
+    skos:altLabel "اتباع تعليمات السلامة"@ar ;
+    skos:altLabel "عدم العبث بأجهزة الوقاية"@ar ;
+    skos:altLabel "واجب العامل في السلامة المهنية"@ar ;
+    skos:altLabel "العقوبة التأديبية لمخالفة السلامة"@ar ;
+    rdfs:comment "يلزم العمال بالتقيد بتعليمات السلامة واستعمال وسائل الوقاية والمحافظة عليها ويحظر تعطيلها أو إتلافها تحت طائلة الجزاء التأديبي."@ar ;
+    :supportedByArticle :article_82 .
+
+:preemployment_medical_exam_restricted_work_concept rdf:type :StatutoryConcept ;
+    rdfs:label "الأعمال التي يشترط لها فحص طبي قبل التشغيل"@ar ;
+    skos:altLabel "الفحص الطبي قبل العمل"@ar ;
+    skos:altLabel "اللياقة الصحية قبل التشغيل"@ar ;
+    skos:altLabel "تعليمات الوزير للفحص الطبي"@ar ;
+    rdfs:comment "ينظم سلطة الوزير في تحديد الأعمال التي لا يجوز تشغيل الشخص فيها قبل التحقق بالفحص الطبي من لياقته الصحية."@ar ;
+    :supportedByArticle :article_83 .
+
+:occupational_safety_closure_enforcement_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إغلاق المؤسسة أو إيقاف الآلة بسبب مخالفة السلامة"@ar ;
+    skos:altLabel "إغلاق مكان العمل بسبب الخطر"@ar ;
+    skos:altLabel "إنذار صاحب العمل لإزالة مخالفة السلامة"@ar ;
+    skos:altLabel "إيقاف آلة خطرة"@ar ;
+    skos:altLabel "غرامة مخالفة السلامة المهنية"@ar ;
+    rdfs:comment "ينظم تدابير الإنذار والإغلاق أو الإيقاف عند مخالفات السلامة الخطرة وإحالة المخالف للمحكمة والعقوبة."@ar ;
+    :supportedByArticle :article_84 .
+
+:closure_worker_wage_protection_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حماية أجر العامل أثناء إغلاق المؤسسة لأسباب السلامة"@ar ;
+    skos:altLabel "أجر العامل أثناء الإغلاق"@ar ;
+    skos:altLabel "الأجر الكامل عند إيقاف العمل للسلامة"@ar ;
+    rdfs:comment "يقرر عدم الإخلال بحق العمال في الأجر الكامل خلال مدة الإغلاق أو إيقاف الآلات المتخذ كإجراء للسلامة."@ar ;
+    :supportedByArticle :article_84 .
+
+:occupational_safety_committees_medical_care_regulations_concept rdf:type :StatutoryConcept ;
+    rdfs:label "أنظمة لجان السلامة والعناية الطبية والوقاية في المؤسسات"@ar ;
+    skos:altLabel "لجان السلامة والصحة المهنية"@ar ;
+    skos:altLabel "المشرفون على السلامة"@ar ;
+    skos:altLabel "العناية الطبية الوقائية والعلاجية"@ar ;
+    skos:altLabel "الوحدات الطبية المشتركة"@ar ;
+    rdfs:comment "ينظم إصدار الأنظمة المتعلقة بلجان ومشرفي السلامة والعناية الطبية للعمال والوحدات الطبية والوقاية من مخاطر الآلات ومواقع العمل."@ar ;
+    :supportedByArticle :article_85 .
+
+:work_injury_chapter_social_security_scope_concept rdf:type :StatutoryConcept ;
+    rdfs:label "نطاق تطبيق أحكام إصابات العمل على غير المشمولين بالضمان الاجتماعي"@ar ;
+    skos:altLabel "إصابة العمل لغير المشمول بالضمان"@ar ;
+    skos:altLabel "استثناء الضمان الاجتماعي من فصل إصابات العمل"@ar ;
+    skos:altLabel "أمراض المهنة خارج الضمان"@ar ;
+    rdfs:comment "يحدد نطاق سريان أحكام إصابات العمل وأمراض المهنة على العمال الذين لا تسري عليهم أحكام الضمان الاجتماعي."@ar ;
+    :supportedByArticle :article_86 .
+
+:work_injury_notification_transport_concept rdf:type :StatutoryConcept ;
+    rdfs:label "نقل مصاب العمل والتبليغ عن الإصابة خلال المدة القانونية"@ar ;
+    skos:altLabel "تبليغ إصابة العمل خلال 48 ساعة"@ar ;
+    skos:altLabel "نقل المصاب إلى المستشفى"@ar ;
+    skos:altLabel "إشعار الوزارة بإصابة العمل"@ar ;
+    skos:altLabel "غرامة عدم التبليغ عن الإصابة"@ar ;
+    rdfs:comment "يلزم صاحب العمل بنقل مصاب العمل والتبليغ عن الحادث إلى الجهات المختصة والوزارة خلال المدة المحددة ويتضمن جزاء المخالفة."@ar ;
+    :supportedByArticle :article_87 .
+
+:occupational_disease_employer_compensation_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مسؤولية صاحب العمل عن تعويض المرض المهني"@ar ;
+    skos:altLabel "تعويض المرض المهني"@ar ;
+    skos:altLabel "مرض المهنة الناشئ عن العمل"@ar ;
+    skos:altLabel "تقرير المرجع الطبي للمرض المهني"@ar ;
+    rdfs:comment "يقرر مسؤولية صاحب العمل عن التعويض عن المرض المهني الناشئ عن العمل بالاستناد إلى تقرير المرجع الطبي."@ar ;
+    :supportedByArticle :article_88 .
+
+:work_injury_exclusive_compensation_employer_fault_exception_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حصر تعويض إصابة العمل والاستثناء عند خطأ صاحب العمل"@ar ;
+    skos:altLabel "تعويضات أخرى عن إصابة العمل"@ar ;
+    skos:altLabel "خطأ صاحب العمل وإصابة العامل"@ar ;
+    skos:altLabel "عدم الجمع بين تعويضات الإصابة"@ar ;
+    rdfs:comment "يقيد مطالبة المصاب أو المستحق بتعويضات إصابة العمل المقررة قانوناً مع استثناء الإصابة الناشئة عن خطأ صاحب العمل."@ar ;
+    :supportedByArticle :article_89 .
+
+:work_injury_compensation_amounts_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مقادير تعويض إصابة العمل بحسب الوفاة أو نوع العجز"@ar ;
+    skos:altLabel "تعويض وفاة العامل بإصابة العمل"@ar ;
+    skos:altLabel "تعويض العجز الكلي"@ar ;
+    skos:altLabel "البدل اليومي للعجز المؤقت"@ar ;
+    skos:altLabel "تعويض العجز الجزئي الدائم"@ar ;
+    rdfs:comment "ينظم مبالغ ونسب التعويض عن الوفاة والعجز الكلي والمؤقت والجزئي وتعدد الأضرار الناتجة عن إصابة العمل."@ar ;
+    :supportedByArticle :article_90 .
+
+:work_injury_compensation_wage_basis_concept rdf:type :StatutoryConcept ;
+    rdfs:label "أساس الأجر المستخدم في حساب تعويض إصابة العمل"@ar ;
+    skos:altLabel "الأجر الأخير لحساب التعويض"@ar ;
+    skos:altLabel "متوسط أجر عامل القطعة للتعويض"@ar ;
+    skos:altLabel "حساب تعويض إصابة العمل"@ar ;
+    rdfs:comment "يحدد أساس الأجر الذي يحسب عليه تعويض إصابة العمل للعامل العادي وللعامل بالقطعة."@ar ;
+    :supportedByArticle :article_91 .
+
+:work_injury_compensation_assessment_commissioner_concept rdf:type :StatutoryConcept ;
+    rdfs:label "تقدير تعويض إصابة العمل بواسطة المفوض وآلية الدفع"@ar ;
+    skos:altLabel "المفوض بتقدير التعويض"@ar ;
+    skos:altLabel "دفع التعويض خلال ثلاثين يوما"@ar ;
+    skos:altLabel "طلب تقدير تعويض الإصابة"@ar ;
+    rdfs:comment "ينظم طلب تقدير التعويض ودور المفوض عند عدم الاتفاق وموعد دفع التعويض."@ar ;
+    :supportedByArticle :article_92 .
+
+:work_injury_compensation_parallel_claim_bar_concept rdf:type :StatutoryConcept ;
+    rdfs:label "منع الدعوى القضائية الموازية أثناء نظر طلب التعويض"@ar ;
+    skos:altLabel "عدم سماع دعوى التعويض أمام المحكمة"@ar ;
+    skos:altLabel "طلب التعويض قيد نظر المفوض"@ar ;
+    skos:altLabel "التعويض ومكافأة نهاية الخدمة"@ar ;
+    rdfs:comment "ينظم أثر طلب التعويض أمام المفوض على الدعوى القضائية ويقرر عدم تعارض دفع التعويض مع مكافأة نهاية الخدمة عند استحقاقها."@ar ;
+    :supportedByArticle :article_92 .
+
+:work_injury_compensation_claim_deadline_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مهلة تقديم طلب تعويض إصابة العمل والعذر المشروع"@ar ;
+    skos:altLabel "سنتان لطلب تعويض إصابة العمل"@ar ;
+    skos:altLabel "تأخر طلب التعويض لعذر مشروع"@ar ;
+    skos:altLabel "مهلة وفاة العامل المصاب"@ar ;
+    rdfs:comment "يحدد مهلة تقديم طلب تعويض إصابة العمل إلى المفوض ويجيز قبوله بعد المدة عند قيام عذر مشروع."@ar ;
+    :supportedByArticle :article_93 .
+
+:work_injury_compensation_forfeiture_exceptions_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حالات سقوط تعويض إصابة العمل والاستثناءات"@ar ;
+    skos:altLabel "سقوط التعويض بسبب خطأ العامل"@ar ;
+    skos:altLabel "إصابة بسبب الخمر أو المخدرات"@ar ;
+    skos:altLabel "مخالفة تعليمات الوقاية وسقوط التعويض"@ar ;
+    skos:altLabel "استثناء الوفاة أو العجز الدائم"@ar ;
+    rdfs:comment "يحدد حالات سقوط البدل والتعويض بسبب سلوك المصاب ويستثني الحالات التي تنتهي بالوفاة أو بنسبة عجز دائم مقررة."@ar ;
+    :supportedByArticle :article_94 .
+
+:work_injury_compensation_protection_from_attachment_assignment_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حماية تعويض إصابة العمل من الرهن والحجز والإحالة"@ar ;
+    skos:altLabel "حجز تعويض إصابة العمل"@ar ;
+    skos:altLabel "رهن التعويض"@ar ;
+    skos:altLabel "تحويل التعويض لشخص آخر"@ar ;
+    skos:altLabel "استثناء دين النفقة"@ar ;
+    rdfs:comment "يحمي تعويض إصابة العمل من الرهن والحجز والإحالة مع استثناء محدود لدين النفقة."@ar ;
+    :supportedByArticle :article_95 .
+
+:work_injury_death_compensation_distribution_concept rdf:type :StatutoryConcept ;
+    rdfs:label "توزيع تعويض وفاة العامل على المستحقين"@ar ;
+    skos:altLabel "توزيع تعويض الوفاة"@ar ;
+    skos:altLabel "أنصبة مستحقي تعويض العامل"@ar ;
+    skos:altLabel "تعويض إصابة العمل بعد الوفاة"@ar ;
+    rdfs:comment "ينظم توزيع التعويض عند وفاة العامل على المستحقين وفق الأنصبة القانونية المحددة."@ar ;
+    :supportedByArticle :article_96 .
+
+:collective_dispute_conciliation_delegate_process_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إجراءات مندوب التوفيق في النزاع العمالي الجماعي"@ar ;
+    skos:altLabel "وساطة مندوب التوفيق"@ar ;
+    skos:altLabel "تقرير مندوب التوفيق"@ar ;
+    skos:altLabel "إحالة النزاع إلى مجلس التوفيق"@ar ;
+    skos:altLabel "مهلة 21 يوما لمندوب التوفيق"@ar ;
+    rdfs:comment "ينظم بدء الوساطة أمام مندوب التوفيق وتوثيق التسوية ورفع التقرير وإحالة النزاع غير المسوى إلى مجلس التوفيق."@ar ;
+    :supportedByArticle :article_121 .
+
+:conciliation_council_settlement_report_deadline_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إجراءات مجلس التوفيق وتسويته وتقريره والمدة المحددة"@ar ;
+    skos:altLabel "تسوية مجلس التوفيق"@ar ;
+    skos:altLabel "تقرير مجلس التوفيق"@ar ;
+    skos:altLabel "مهلة 21 يوما لمجلس التوفيق"@ar ;
+    skos:altLabel "فشل مجلس التوفيق في التسوية"@ar ;
+    rdfs:comment "ينظم سعي مجلس التوفيق لتسوية النزاع وتقاريره عند النجاح أو الفشل والمدة القصوى لإنهاء الإجراءات."@ar ;
+    :supportedByArticle :article_122 .
+
+:lawyer_representation_before_conciliation_prohibition_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حظر توكيل المحامين أمام مندوب التوفيق ومجلس التوفيق"@ar ;
+    skos:altLabel "المحامي أمام مندوب التوفيق"@ar ;
+    skos:altLabel "المحامي أمام مجلس التوفيق"@ar ;
+    skos:altLabel "منع التوكيل في التوفيق"@ar ;
+    rdfs:comment "يحظر على أطراف النزاع العمالي توكيل محامين أمام مندوب التوفيق أو مجلس التوفيق."@ar ;
+    :supportedByArticle :article_123 .
+
+:labor_court_referral_composition_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إحالة النزاع الجماعي إلى المحكمة العمالية وتشكيلها"@ar ;
+    skos:altLabel "تشكيل المحكمة العمالية"@ar ;
+    skos:altLabel "إحالة النزاع إلى المحكمة العمالية"@ar ;
+    skos:altLabel "قضاة المحكمة العمالية"@ar ;
+    rdfs:comment "ينظم إحالة النزاع الجماعي الذي لم يسوّه مجلس التوفيق إلى المحكمة العمالية وتشكيل المحكمة وطريقة انعقادها."@ar ;
+    :supportedByArticle :article_124 .
+
+:labor_court_collective_dispute_deadlines_finality_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مواعيد المحكمة العمالية وقطعية قرارها في النزاع الجماعي"@ar ;
+    skos:altLabel "سبعة أيام لبدء نظر النزاع"@ar ;
+    skos:altLabel "ثلاثون يوما لقرار المحكمة العمالية"@ar ;
+    skos:altLabel "قرار المحكمة العمالية قطعي"@ar ;
+    skos:altLabel "توكيل محام أمام المحكمة العمالية"@ar ;
+    rdfs:comment "ينظم صفة الاستعجال ومواعيد بدء النظر وإصدار القرار وقطعيته وإمكان التمثيل بمحام أمام المحكمة العمالية."@ar ;
+    :supportedByArticle :article_124 .
+
+:conciliation_labor_court_evidence_powers_concept rdf:type :StatutoryConcept ;
+    rdfs:label "صلاحيات مجلس التوفيق والمحكمة العمالية في الإثبات"@ar ;
+    skos:altLabel "سماع الشهود في النزاع العمالي"@ar ;
+    skos:altLabel "الاستعانة بالخبرة"@ar ;
+    skos:altLabel "إبراز المستندات في النزاع الجماعي"@ar ;
+    rdfs:comment "يمنح مجلس التوفيق والمحكمة العمالية صلاحيات سماع الأشخاص والخبراء وتكليف الأطراف بإبراز المستندات والبيانات."@ar ;
+    :supportedByArticle :article_125 .
+
+:labor_court_decision_interpretation_correction_concept rdf:type :StatutoryConcept ;
+    rdfs:label "تفسير وتصحيح قرارات المحكمة العمالية"@ar ;
+    skos:altLabel "تفسير قرار المحكمة العمالية"@ar ;
+    skos:altLabel "تصحيح الخطأ الكتابي في القرار"@ar ;
+    skos:altLabel "تصحيح الخطأ الحسابي"@ar ;
+    rdfs:comment "ينظم سلطة المحكمة العمالية في تفسير قراراتها لإزالة الغموض وتصحيح الأخطاء الكتابية أو الحسابية."@ar ;
+    :supportedByArticle :article_126 .
+
+:conciliation_labor_court_venue_support_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مكان جلسات مجلس التوفيق والمحكمة العمالية ودعم الوزارة"@ar ;
+    skos:altLabel "جلسات المحكمة العمالية في الوزارة"@ar ;
+    skos:altLabel "مكان مجلس التوفيق"@ar ;
+    skos:altLabel "توفير الوزارة المتطلبات الإدارية"@ar ;
+    rdfs:comment "يحدد مكان انعقاد جلسات مجلس التوفيق والمحكمة العمالية ومسؤولية الوزارة عن توفير المتطلبات والتسهيلات."@ar ;
+    :supportedByArticle :article_127 .
+
+:conciliation_report_labor_court_decision_form_publication_concept rdf:type :StatutoryConcept ;
+    rdfs:label "شكل وتوقيع ونشر تقرير التوفيق وقرار المحكمة العمالية"@ar ;
+    skos:altLabel "قرار المحكمة العمالية مكتوب"@ar ;
+    skos:altLabel "توقيع تقرير مجلس التوفيق"@ar ;
+    skos:altLabel "نشر قرار المحكمة العمالية"@ar ;
+    skos:altLabel "نشر تقرير التوفيق خلال ثلاثين يوما"@ar ;
+    rdfs:comment "ينظم كتابة وتوقيع آراء أعضاء مجلس التوفيق والمحكمة العمالية ونشر التقرير أو القرار على نفقة أطراف النزاع."@ar ;
+    :supportedByArticle :article_128 .
+
+:conciliation_labor_court_remuneration_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مكافآت أعضاء المحكمة العمالية ومجلس التوفيق"@ar ;
+    skos:altLabel "مكافأة رئيس المحكمة العمالية"@ar ;
+    skos:altLabel "مكافآت مجلس التوفيق"@ar ;
+    skos:altLabel "مكافأة كاتب الجلسات"@ar ;
+    rdfs:comment "ينظم صرف المكافآت لرئيس وأعضاء المحكمة العمالية ومجلس التوفيق وكاتب الجلسات وفق قرار مجلس الوزراء."@ar ;
+    :supportedByArticle :article_129 .
+
+:collective_dispute_settlement_binding_scope_concept rdf:type :StatutoryConcept ;
+    rdfs:label "نطاق إلزام تسوية النزاع وقرار المحكمة العمالية"@ar ;
+    skos:altLabel "من تلزمه التسوية العمالية"@ar ;
+    skos:altLabel "إلزام خلف صاحب العمل"@ar ;
+    skos:altLabel "إلزام عمال المؤسسة بقرار المحكمة العمالية"@ar ;
+    rdfs:comment "يحدد الفئات التي تلزمها التسوية الناتجة عن التوفيق أو قرار المحكمة العمالية، بما فيها الأطراف والخلف والعمال المشمولون."@ar ;
+    :supportedByArticle :article_130 .
+
+:collective_dispute_decision_settlement_effective_date_concept rdf:type :StatutoryConcept ;
+    rdfs:label "تاريخ تنفيذ قرار المحكمة العمالية ونفاذ التسوية"@ar ;
+    skos:altLabel "بدء تنفيذ قرار المحكمة العمالية"@ar ;
+    skos:altLabel "تاريخ نفاذ التسوية"@ar ;
+    skos:altLabel "تاريخ توقيع تقرير التسوية"@ar ;
+    rdfs:comment "ينظم التاريخ الذي يبدأ منه تنفيذ قرار المحكمة العمالية والتاريخ الذي تسري منه التسوية المتوصل إليها."@ar ;
+    :supportedByArticle :article_131 .
+
+:employment_conditions_freeze_during_collective_dispute_concept rdf:type :StatutoryConcept ;
+    rdfs:label "حظر تغيير شروط الاستخدام أو فصل العامل أثناء نظر النزاع الجماعي"@ar ;
+    skos:altLabel "منع تغيير شروط العمل أثناء النزاع"@ar ;
+    skos:altLabel "منع فصل العامل أثناء التوفيق"@ar ;
+    skos:altLabel "إذن كتابي للفصل أثناء النزاع"@ar ;
+    rdfs:comment "يحظر على صاحب العمل أثناء نظر النزاع الجماعي تغيير شروط الاستخدام أو فصل العامل دون الإذن الكتابي المطلوب."@ar ;
+    :supportedByArticle :article_132 .
+
+:collective_settlement_decision_violation_penalties_concept rdf:type :StatutoryConcept ;
+    rdfs:label "عقوبات مخالفة التسوية أو قرار المحكمة العمالية"@ar ;
+    skos:altLabel "غرامة العامل لمخالفة التسوية"@ar ;
+    skos:altLabel "غرامة صاحب العمل لمخالفة القرار"@ar ;
+    skos:altLabel "تكرار مخالفة قرار المحكمة العمالية"@ar ;
+    rdfs:comment "يحدد العقوبات المالية على العامل وصاحب العمل عند مخالفة شروط التسوية أو قرار المحكمة العمالية ويشددها عند التكرار."@ar ;
+    :supportedByArticle :article_133 .
+
+:prohibited_strike_lockout_penalties_concept rdf:type :StatutoryConcept ;
+    rdfs:label "عقوبات الإضراب والإغلاق المحظور وآثارهما على الأجر"@ar ;
+    skos:altLabel "غرامة الإضراب المحظور"@ar ;
+    skos:altLabel "غرامة الإغلاق المحظور"@ar ;
+    skos:altLabel "حرمان العامل من أجر أيام الإضراب"@ar ;
+    skos:altLabel "دفع أجور العمال أثناء الإغلاق المحظور"@ar ;
+    rdfs:comment "ينظم الغرامات اليومية للإضراب أو الإغلاق المحظور ويحدد أثر كل منهما على أجر العامل."@ar ;
+    :supportedByArticle :article_136 .
+
+:individual_labor_dispute_jurisdiction_deadlines_concept rdf:type :StatutoryConcept ;
+    rdfs:label "اختصاص محكمة الصلح ومواعيد الفصل والاستئناف في النزاع الفردي"@ar ;
+    skos:altLabel "النزاع العمالي الفردي أمام محكمة الصلح"@ar ;
+    skos:altLabel "ثلاثة أشهر للفصل في الدعوى العمالية"@ar ;
+    skos:altLabel "عشرة أيام للاستئناف"@ar ;
+    skos:altLabel "ثلاثون يوما للفصل في الاستئناف"@ar ;
+    rdfs:comment "ينظم اختصاص محكمة الصلح بالنزاعات العمالية الفردية ومواعيد الفصل والطعن والفصل في الاستئناف."@ar ;
+    :supportedByArticle :article_137 .
+
+:individual_labor_dispute_fee_exemption_transition_concept rdf:type :StatutoryConcept ;
+    rdfs:label "إعفاء الدعاوى العمالية من الرسوم والأحكام الانتقالية للاختصاص"@ar ;
+    skos:altLabel "إعفاء دعوى العمل من الرسوم"@ar ;
+    skos:altLabel "رسوم تنفيذ القرار العمالي"@ar ;
+    skos:altLabel "استمرار محكمة البداية بالدعاوى السابقة"@ar ;
+    rdfs:comment "ينظم إعفاء الدعاوى العمالية أمام محكمة الصلح من الرسوم واستمرار نظر الدعاوى السابقة على نفاذ القانون."@ar ;
+    :supportedByArticle :article_137 .
+
+:labor_violation_limitation_period_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مدة سماع الدعوى عن مخالفة قانون العمل"@ar ;
+    skos:altLabel "شهر واحد لرفع دعوى المخالفة"@ar ;
+    skos:altLabel "تقادم مخالفة قانون العمل"@ar ;
+    skos:altLabel "مهلة دعوى مخالفة النظام أو التعليمات"@ar ;
+    rdfs:comment "يحدد المدة التي تسمع خلالها الدعوى بشأن مخالفة قانون العمل أو الأنظمة أو التعليمات الصادرة بمقتضاه."@ar ;
+    :supportedByArticle :article_138 .
+
+:labor_rights_claim_limitation_period_concept rdf:type :StatutoryConcept ;
+    rdfs:label "مدة سماع المطالبة بالحقوق والأجور الإضافية"@ar ;
+    skos:altLabel "سنتان للمطالبة بحقوق العامل"@ar ;
+    skos:altLabel "تقادم مطالبة الأجر الإضافي"@ar ;
+    skos:altLabel "مرور سنتين على سبب المطالبة"@ar ;
+    rdfs:comment "يحدد المدة التي تسمع خلالها المطالبة بالحقوق المقررة في قانون العمل، بما فيها أجور ساعات العمل الإضافية."@ar ;
+    :supportedByArticle :article_138 .
 

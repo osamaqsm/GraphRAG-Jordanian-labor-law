@@ -1,92 +1,40 @@
-name: jordan-legal-kg
-
 services:
   weaviate:
-    image: cr.weaviate.io/semitechnologies/weaviate:1.38.2
-
-    command:
-      - --host
-      - 0.0.0.0
-      - --port
-      - "8080"
-      - --scheme
-      - http
-
+    image: cr.weaviate.io/semitechnologies/weaviate:${WEAVIATE_VERSION:-1.27.7}
     ports:
       - "8080:8080"
       - "50051:50051"
-
-    volumes:
-      - weaviate_data:/var/lib/weaviate
-
     restart: unless-stopped
-
     environment:
       QUERY_DEFAULTS_LIMIT: "25"
-      PERSISTENCE_DATA_PATH: "/var/lib/weaviate"
-      CLUSTER_HOSTNAME: "node1"
-
-      AUTOSCHEMA_ENABLED: "false"
-
       AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: "false"
-
       AUTHENTICATION_APIKEY_ENABLED: "true"
       AUTHENTICATION_APIKEY_ALLOWED_KEYS: "${WEAVIATE_API_KEY}"
       AUTHENTICATION_APIKEY_USERS: "admin"
-
-      AUTHORIZATION_RBAC_ENABLED: "true"
-      AUTHORIZATION_RBAC_ROOT_USERS: "admin"
+      AUTHORIZATION_ADMINLIST_ENABLED: "true"
+      AUTHORIZATION_ADMINLIST_USERS: "admin"
+      PERSISTENCE_DATA_PATH: "/var/lib/weaviate"
+      DEFAULT_VECTORIZER_MODULE: "none"
+      ENABLE_MODULES: ""
+      CLUSTER_HOSTNAME: "node1"
+    volumes:
+      - weaviate_data:/var/lib/weaviate
 
   api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-
+    build: .
     env_file:
       - .env
-
-    # Allows the API container to reach Ollama running on the Windows/Linux
-    # host at http://host.docker.internal:11434.
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-
     depends_on:
       - weaviate
-
     ports:
       - "8000:8000"
-
     volumes:
       - ./app:/app/app
       - ./scripts:/app/scripts
       - ./data:/app/data:rw
-
-    command:
-      - uvicorn
-      - app.main:app
-      - --host
-      - 0.0.0.0
-      - --port
-      - "8000"
-      - --reload
-
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: unless-stopped
-
-    healthcheck:
-      test:
-        - CMD
-        - python
-        - -c
-        - >
-          import urllib.request;
-          urllib.request.urlopen(
-          'http://localhost:8000/health',
-          timeout=5
-          )
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
 
 volumes:
   weaviate_data:

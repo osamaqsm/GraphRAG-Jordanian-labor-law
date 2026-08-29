@@ -1,226 +1,212 @@
-# Jordanian Labor Law Ontology-Driven GraphRAG
+# Ontology-Driven GraphRAG for Arabic Legal Question Answering
 
-An Arabic legal question-answering research system that combines a domain ontology, an RDF Knowledge Graph, hybrid retrieval, graph traversal, and large language models (LLMs) to answer questions grounded in the **Jordanian Labor Law**.
+An ontology-driven **GraphRAG framework for Arabic legal question answering over Jordanian Labor Law**.  
+The system combines an RDF knowledge graph, hybrid semantic–lexical ontology concept linking, relation-aware graph traversal, LLM-based evidence reranking, and grounded Arabic answer generation with legal article citations.
 
-> **Research status:** Experimental research prototype.  
-> **Language:** Arabic legal questions and answers; English code/documentation.  
-> **Domain:** Jordanian Labor Law.
+> **Core retrieval principle:** semantic and lexical search are used only for ontology/KG concept linking. Legal article evidence can enter the answer context **only through knowledge-graph traversal**.
 
 ---
 
 ## Overview
 
-This repository implements an **ontology-driven GraphRAG pipeline** for Arabic legal question answering.
+Legal questions frequently require evidence that is not captured by surface-level textual similarity alone. This project represents Jordanian Labor Law as an ontology-aligned RDF knowledge graph and uses semantic graph structure to retrieve legal evidence before generating a grounded answer.
 
-The system does not rely on an LLM's internal legal knowledge alone. Instead, each answer is grounded in a structured legal knowledge source consisting of:
+The framework separates the system into two stages:
 
-- a Jordanian Labor Law domain ontology;
-- the complete Arabic text of the law;
-- an RDF/Turtle Knowledge Graph (KG);
-- Weaviate-based semantic and lexical retrieval;
-- explicit KG graph traversal;
-- LLM-based query planning and article reranking; and
-- evidence-grounded answer generation with article citations.
+- **Retrieval (`retrieval.v2`)** — plans the question, links it to ontology concepts, traverses the KG, ranks graph-derived articles, and selects legal evidence.
+- **Generation (`generation.v2`)** — receives the completed retrieval object and generates an Arabic answer using only the retrieved statutory text.
 
-The repository also contains a controlled model-comparison experiment evaluating several LLMs under the same KG, retrieval architecture, embedding model, benchmark, and evaluation protocol.
-
----
-
-## Research Questions
-
-1. **To what extent can an ontology-driven GraphRAG framework support question answering over Jordanian Labor Law?**
-2. **How does the choice of LLM affect retrieval and answer-generation performance within the same framework?**
-
----
-
-## Key Features
-
-- Arabic legal question answering over Jordanian Labor Law.
-- Ontology-guided Knowledge Graph as the structured legal knowledge source.
-- RDF/Turtle as the canonical KG representation.
-- Weaviate materialization for vector, BM25, metadata, and graph-aware retrieval.
-- Arabic query planning and scope routing.
-- Atomic issue decomposition for complex and multi-part questions.
-- Ontology concept linking before graph expansion.
-- Hybrid retrieval using vector similarity, Arabic BM25, paragraph evidence, and KG graph traversal.
-- LLM article reranking over a bounded legal candidate set.
-- Grounded Arabic answer generation from the exact retrieval output.
-- Citation validation against retrieved legal articles.
-- Separate retrieval and generation evaluation.
-- Three-run controlled comparison across multiple LLMs.
+The generation stage cannot query Weaviate, perform retrieval, or introduce additional legal articles.
 
 ---
 
 ## System Architecture
 
 ```mermaid
-flowchart TB
-    A[Arabic User Question] --> B[LLM Query Planner & Scope Routing]
-    B -->|Out of scope| X[Abstain]
-    B -->|In scope| C[Arabic Normalization & Atomic Issue Decomposition]
-    C --> D[Ontology Concept Linking]
-    D --> E1[Vector Retrieval]
-    D --> E2[Arabic BM25]
-    D --> E3[Paragraph Retrieval]
-    D --> E4[KG Graph Traversal]
-    E1 --> F[Candidate Evidence Pool]
-    E2 --> F
-    E3 --> F
-    E4 --> F
-    F --> G[Evidence Fusion & Article Ranking]
-    G --> H[LLM Article Reranker]
-    H --> I[retrieval.v1]
-    I --> J[Grounded Arabic Answer Generator]
-    J --> K[Citation Validation]
-    K --> L[Arabic Answer + Legal Article Citations]
+flowchart TD
+    Q["Arabic User Question"]
+    P["1. LLM Query Planning<br/>Routing + Issue Decomposition"]
+    E["2. Issue Embeddings<br/>text-embedding-3-small"]
+    C["3. Ontology Concept Linking<br/>Vector + BM25 + Planner Hints + Specificity"]
+    S["4. Graph Seed Selection<br/>Absolute + Relative Thresholds"]
+    G["5. Relation-Aware KG Traversal<br/>Bidirectional, max 2 hops"]
+    A["6. Graph-Derived Article Ranking"]
+    R["7. LLM Evidence Reranking<br/>Minimal Sufficient Article Set"]
+    RV["RetrievalResultV2"]
+    GEN["8. Grounded Answer Generation"]
+    CV["Citation Validation<br/>+ One Repair Retry if Needed"]
+    OUT["9. Arabic Answer<br/>with [المادة N] Citations"]
+
+    Q --> P
+    P -->|retrieve| E
+    P -->|abstain| OUT
+    E --> C
+    C --> S
+    S --> G
+    G --> A
+    A --> R
+    R --> RV
+    RV --> GEN
+    GEN --> CV
+    CV --> OUT
 ```
 
-The retrieval and generation stages are deliberately separated. The generator consumes the exact `retrieval.v1` output and does **not** perform an independent second retrieval.
+### Retrieval flow
+
+For every atomic legal issue, the system:
+
+1. uses the evaluated LLM to route and decompose the question;
+2. creates an embedding for the issue representation;
+3. searches only `retrievalEligible=true` semantic concept nodes;
+4. combines:
+   - semantic similarity,
+   - BM25 lexical matching,
+   - planner concept hints,
+   - graph specificity;
+5. selects high-confidence graph seeds;
+6. traverses weighted semantic/evidence relations;
+7. creates Article candidates **exclusively from graph traversal**;
+8. ranks graph-derived Article candidates;
+9. asks the same evaluated LLM to select the smallest sufficient evidence set.
+
+### Generation flow
+
+The generator receives the user question and the final graph-derived Article evidence only. It is instructed to use the supplied Article text as its **only legal evidence**, and any citation to an unretrieved Article is rejected.
 
 ---
 
 ## Knowledge Graph
 
-### Construction
+The current Jordanian Labor Law KG contains approximately:
 
-The Knowledge Graph was constructed from:
-
-1. the project domain ontology; and
-2. the complete text of the Jordanian Labor Law.
-
-The ontology and law text were provided to **GPT-5.6 Sol through ChatGPT**, which was used as an ontology-guided KG construction assistant. The generated RDF graph was subsequently validated for structural consistency, article coverage, and preservation of the source legal text.
-
-GPT-5.6 Sol was used for **KG construction only** and was not one of the LLMs evaluated in the downstream model-comparison experiment.
-
-### Final KG Statistics
-
-| Property | Value |
+| Component | Count |
 |---|---:|
-| Legal articles covered | **142 / 142** |
-| RDF triples | **3,694** |
-| Paragraph/clause individuals | **359** |
-| Definitions | **22** |
-| Domain/canonical concepts | **61** |
-| Canonical format | **RDF/Turtle** |
+| RDF triples | 4,758 |
+| Nodes | 824 |
+| Legal Articles | 142 |
+| Paragraphs | 359 |
+| Definitions | 22 |
+| Retrieval-eligible semantic concepts | 212 |
+| Semantically reachable Articles | 142 / 142 |
 
-Canonical KG:
-
-```text
-data/jordan_labor_law_full_knowledge_graph.ttl
-```
-
-The Turtle file remains the project's source of truth.
+The KG is stored in Turtle/RDF format and ingested into Weaviate. Article and Paragraph nodes are **not retrieval-eligible** for vector/BM25 concept search.
 
 ---
 
-## Weaviate Representation
 
-The canonical RDF graph is materialized in Weaviate using two complementary storage roles.
+## Supported LLM Providers
 
-### Legal Nodes
+The pipeline supports multiple LLM backends through a shared structured-output interface. The evaluated setup can use OpenAI, Google, OpenCode-hosted models, and Cohere.
 
-The vectorized node collection stores searchable legal objects such as:
-
-- articles;
-- paragraphs;
-- ontology/domain concepts;
-- labels and URIs;
-- article numbers; and
-- searchable Arabic text.
-
-Searchable text is embedded using:
+The same selected LLM is used for the LLM-dependent stages of the evaluated pipeline:
 
 ```text
-text-embedding-3-small
+Query planner
+→ abstention verifier (when triggered)
+→ evidence reranker
+→ grounded answer generator
+→ citation-repair retry
 ```
 
-The same node collection also supports Arabic BM25 retrieval.
-
-### RDF Edges
-
-A separate non-vectorized edge collection preserves RDF relations as source–relation–target records.
-
-These edges support graph traversal over meaningful legal relations such as:
-
-```text
-hasArticle
-hasParagraph
-defines
-regulates
-regulatedBy
-hasRight
-hasObligation
-hasCondition
-resultsIn
-supportedByArticle
-```
-
-Weaviate is used as the **retrieval/materialization layer**. The repository does not claim native OWL/RDFS reasoning inside Weaviate.
+This enables controlled model comparison while keeping the rest of the GraphRAG architecture fixed.
 
 ---
 
-## Pipeline Stages
+## Experimental Evaluation
 
-### 1. Arabic User Question
+### Benchmark
 
-The system receives an Arabic legal question.
+The reported model comparison uses:
 
-During benchmark evaluation, **only the question text is supplied to the pipeline**. Gold articles, required facts, expected behavior, and expected citations remain evaluation-only metadata.
+```text
+data/benchmarks/jordan_labor_law_fresh_final_40_v3_1.json
+```
 
-### 2. Query Planning and Scope Routing
+The benchmark contains **40 Arabic questions**:
 
-The selected LLM determines whether the question is:
+| Type | Questions |
+|---|---:|
+| Straightforward | 8 |
+| Paraphrased | 8 |
+| Typographical / noisy | 3 |
+| Numerical | 5 |
+| Colloquial | 5 |
+| Multi-article | 7 |
+| Out-of-scope | 4 |
+| **Total** | **40** |
 
-- `retrieve` — answerable from the represented Jordanian Labor Law; or
-- `abstain` — outside the represented legal domain.
+Behavior distribution:
 
-For in-scope questions, the planner also produces a normalized Arabic question, atomic legal issues, focused retrieval queries, and relevant actors, conditions, and numbers when needed.
+- 36 in-scope retrieval questions
+- 4 out-of-scope abstention questions
 
-### 3. Atomic Issue Decomposition
+The benchmark is a balanced evaluation subset derived from the previously existing 120-question regression suite. It should therefore be treated as a **fixed regression/model-evaluation benchmark**, not as a pristine unseen holdout.
 
-Compound questions are decomposed into smaller independently retrievable legal issues. This is especially important for multi-article questions because a single full-question embedding can dilute individual legal sub-issues.
+Each model was evaluated in **three independent runs**. Results are reported as mean ± sample standard deviation.
 
-### 4. Ontology Concept Linking
+### Evaluation metrics
 
-The analyzed question is linked to ontology/KG concepts such as worker, employer, wage right, employment contract, obligation, violation, condition, or consequence. These concepts act as graph seeds.
+**Retrieval**
+- Routing Accuracy
+- Hit@1
+- Article Recall@5
+- Article Precision
+- Out-of-Scope Accuracy
+- Mean Retrieval Latency
 
-### 5. Semantic Vector Retrieval
+**Generation**
+- Correctness
+- Faithfulness
+- Citation Validity
+- Citation Recall
+- Out-of-Scope Response Accuracy
+- Mean Generation Latency
 
-Question and issue text is embedded using the frozen `text-embedding-3-small` model and matched against legal nodes in Weaviate.
+**Overall**
+- End-to-End Success Rate
 
-### 6. Arabic BM25 Retrieval
+Generation quality was evaluated with a fixed OpenAI judge model:
 
-BM25 complements semantic retrieval by emphasizing exact legal terminology, names, numbers, and lexical matches.
-
-### 7. Paragraph Evidence
-
-Paragraph-level matches provide local legal context and can promote the associated parent article.
-
-### 8. KG Graph Traversal
-
-Ontology-linked concepts are expanded through selected RDF relations. Graph evidence can identify legally connected provisions even when their surface wording is not highly similar to the original question.
-
-### 9. Evidence Fusion
-
-Candidates from vector search, BM25, paragraph retrieval, and graph traversal are merged into a common evidence pool.
-
-### 10. LLM Article Reranking
-
-The evaluated LLM receives a bounded catalogue of candidate articles and selects the smallest sufficient legal evidence set. The final retrieval contract allows a maximum of **five articles**.
-
-### 11. `retrieval.v1`
-
-Retrieval produces a stable structured package containing the route decision, embedding metadata, selected articles, linked concepts, expanded concepts, graph diagnostics, and timing information.
-
-### 12. Grounded Answer Generation
-
-The same evaluated LLM generates the Arabic answer using only the retrieved legal evidence and includes relevant article citations.
-
-### 13. Citation Validation
-
-The pipeline verifies that citations correspond to retrieved legal evidence and measures coverage of required citations.
+```text
+gpt-5.4-mini
+```
 
 ---
+
+## Results
+
+### Overall comparison
+
+| Model | E2E Success | Routing | Hit@1 | Recall@5 | Precision | Correctness | Faithfulness | Citation Validity | Citation Recall |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| **Gemini-3.5-Flash-Lite** | **93.33 ± 3.82%** | **99.17 ± 1.44%** | 91.67 ± 2.78% | **95.52 ± 1.49%** | **93.83 ± 2.07%** | **95.83 ± 3.67%** | **98.61 ± 1.39%** | 97.22 ± 2.78% | **95.99 ± 3.51%** |
+| **Qwen3.7-Plus** | **90.83 ± 1.44%** | 97.50 ± 0.00% | 89.81 ± 1.60% | 92.59 ± 0.80% | 89.43 ± 0.71% | 92.13 ± 0.80% | 95.83 ± 2.41% | 96.30 ± 1.60% | 92.59 ± 0.80% |
+| **GPT-5-nano** | **84.17 ± 2.89%** | 94.17 ± 1.44% | 87.04 ± 1.60% | 88.12 ± 3.99% | 83.95 ± 1.86% | 86.57 ± 2.89% | 90.74 ± 1.60% | 90.74 ± 1.60% | 88.12 ± 3.99% |
+| **Aya Expanse 32B** | **79.17 ± 2.89%** | 89.17 ± 1.44% | **93.52 ± 3.21%** | 95.37 ± 2.12% | 86.11 ± 2.42% | 92.10 ± 4.42% | 92.08 ± 2.04% | **98.15 ± 1.60%** | 94.44 ± 5.01% |
+
+### Latency
+
+| Model | Retrieval Latency | Generation Latency |
+|---|---:|---:|
+| **Gemini-3.5-Flash-Lite** | **4.19 ± 0.04 s** | **1.01 ± 0.02 s** |
+| GPT-5-nano | 8.77 ± 0.38 s | 2.97 ± 0.19 s |
+| Aya Expanse 32B | 17.12 ± 0.44 s | 3.59 ± 0.10 s |
+| Qwen3.7-Plus | 53.34 ± 1.58 s | 15.95 ± 0.89 s |
+
+Latency values represent measured pipeline-stage latency and may include API/network/provider overhead; they are not isolated model-inference benchmarks.
+
+### Main observations
+
+- **Gemini-3.5-Flash-Lite** achieved the highest overall E2E success rate and the strongest performance/latency balance.
+- **Qwen3.7-Plus** ranked second overall and showed stable retrieval/generation performance, but with substantially higher latency.
+- **GPT-5-nano** provided lower latency than Qwen and Aya but lower overall retrieval and generation quality.
+- **Aya Expanse 32B** achieved the highest Hit@1 and citation validity despite its lower overall E2E score. Its lower end-to-end score was driven primarily by routing/out-of-scope failures rather than weak graph retrieval.
+- The results show that changing the LLM affects not only final answer generation, but also query planning, routing, concept linking through planner hints, evidence reranking, and structured-output reliability.
+
+---
+
+
+# Running the Project
 
 ## Requirements
 
@@ -231,82 +217,180 @@ The pipeline verifies that citations correspond to retrieved legal evidence and 
 - API access for the selected LLM provider
 - OpenAI API access for the fixed embedding model and evaluation judge
 
-Runtime dependencies are defined in:
+## 2. Clone the repository
+
+```bash
+git clone <YOUR_REPOSITORY_URL>
+cd <YOUR_REPOSITORY_DIRECTORY>
+```
+
+---
+
+## 3. Create and activate a Python virtual environment
+
+### Requirements
+
+- Python 3.12
+- Docker / Docker Compose
+- FastAPI
+- Weaviate
+- API access for the selected LLM provider
+- OpenAI API access for the fixed embedding model and evaluation judge
+
+### Windows
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
+### Linux / macOS
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+Install the project dependencies using the dependency file included in the repository, for example:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 4. Configure environment variables
+
+Create a local `.env` file.
+
+**Never commit `.env` or real API keys to GitHub.**
+
+Example:
+
+```env
+# Pipeline LLM
+PIPELINE_LLM_PROVIDER=openai
+PIPELINE_LLM_MODEL=gpt-5-nano
+
+# Fixed embedding provider
+OPENAI_API_KEY=YOUR_OPENAI_API_KEY
+OPENAI_EMBEDDING_MODEL=text-embedding-3-small
+
+# Optional providers
+GOOGLE_API_KEY=
+OPENCODE_API_KEY=
+COHERE_API_KEY=
+
+# Weaviate
+WEAVIATE_API_KEY=YOUR_WEAVIATE_API_KEY
+WEAVIATE_HTTP_HOST=weaviate
+WEAVIATE_HTTP_PORT=8080
+WEAVIATE_GRPC_HOST=weaviate
+WEAVIATE_GRPC_PORT=50051
+
+# KG
+KG_TTL_PATH=/app/data/jordan_labor_law_full_knowledge_graph.ttl
+
+# Evaluation judge
+EVALUATION_JUDGE_MODEL=gpt-5.4-mini
+```
+
+When running the Python API directly on the host instead of inside Docker, point the Weaviate host variables to the address exposed to the host, typically:
+
+```env
+WEAVIATE_HTTP_HOST=localhost
+WEAVIATE_GRPC_HOST=localhost
+```
+
+and use a host-accessible KG path.
+
+---
+
+## 5. Start Weaviate
+
+If the repository contains a Docker Compose configuration, start the services with:
+
+```bash
+docker compose up -d
+```
+
+Verify that Weaviate is healthy before ingestion.
+
+The API itself also exposes:
 
 ```text
-requirements.txt
+GET /health
 ```
+
+to verify both the FastAPI process and the Weaviate connection.
 
 ---
 
-## Configuration
+## 6. Inspect the KG before ingestion
 
-Create a local environment file:
+Optional but recommended:
 
 ```bash
-cp .env.example .env
+python -m scripts.inspect_ttl
 ```
 
-Do **not** commit `.env` or API keys.
+You can also run the reachability audit:
 
-Core configuration:
-
-```env
-OPENAI_API_KEY=...
-WEAVIATE_API_KEY=...
-
-PIPELINE_LLM_PROVIDER=...
-PIPELINE_LLM_MODEL=...
+```bash
+python -m scripts.audit_graph_reachability
 ```
 
-Depending on the selected provider, configure its key as well, for example:
-
-```env
-GOOGLE_API_KEY=...
-OPENCODE_API_KEY=...
-COHERE_API_KEY=...
-```
-
-OpenAI remains required when another provider is used because embeddings and the fixed evaluation judge use OpenAI services.
+The KG should report all 142 Articles as semantically reachable.
 
 ---
 
-## Setup
+## 7. Ingest the KG into Weaviate
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/osamaqsm/Kg-GraphRAG.git
-cd Kg-GraphRAG
-```
-
-### 2. Start Weaviate
+For a clean deterministic import:
 
 ```bash
-docker compose up -d weaviate
+python -m scripts.ingest_kg --reset
 ```
 
-### 3. Validate and Ingest the KG
+The ingestion process:
+
+```text
+TTL validation
+→ RDF node/edge extraction
+→ OpenAI node embeddings
+→ Weaviate schema creation
+→ Node ingestion
+→ Edge ingestion
+```
+
+If collections already contain data, the ingestion script intentionally refuses to continue unless `--reset` is supplied.
+
+---
+
+## 8. Start the FastAPI application
+
+For direct Python execution:
 
 ```bash
-docker compose run --rm api python scripts/ingest_kg.py --reset
+uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
-This command validates the Turtle KG, prepares the Weaviate collections, generates embeddings, and ingests the legal nodes and RDF edges.
+The API will be available at:
 
-### 4. Start the API
-
-```bash
-docker compose up -d api
+```text
+http://localhost:8000
 ```
 
-### 5. Health Check
+Useful endpoints:
 
-```bash
-curl http://localhost:8000/health
+```text
+GET  /
+GET  /health
+POST /retrieve
+POST /generate
 ```
 
-Interactive FastAPI documentation is available at:
+FastAPI interactive documentation is normally available at:
 
 ```text
 http://localhost:8000/docs
@@ -314,136 +398,112 @@ http://localhost:8000/docs
 
 ---
 
-## Basic Retrieval Test
+## 9. Run retrieval only
 
 ```bash
-docker compose exec -T api   python scripts/retrieve.py   "ما مدة الإجازة السنوية للعامل؟"
+python -m scripts.retrieve "ما المعلومات التي يرسلها صاحب العمل إلى وزارة العمل في بداية كل سنة؟" --debug
 ```
 
-The output follows the `retrieval.v1` contract.
-
----
-
-## Generation from Saved Retrieval
+To save the `retrieval.v2` output:
 
 ```bash
-docker compose exec -T api   python scripts/generate_from_retrieval.py   /app/path/to/retrieval.json
+python -m scripts.retrieve \
+  "ما المعلومات التي يرسلها صاحب العمل إلى وزارة العمل في بداية كل سنة؟" \
+  --output retrieval.json
 ```
-
-This verifies the architecture constraint that generation consumes a retrieval package without rerunning retrieval.
 
 ---
 
-## Final Evaluation Benchmark
+## 10. Run generation from saved retrieval
 
-The final experiment uses the frozen benchmark:
+This command **does not rerun retrieval**:
 
-```text
-data/benchmarks/jordan_labor_law_fresh_final_40_v2_3.json
+```bash
+python -m scripts.generate_from_retrieval retrieval.json --output generation.json
 ```
 
-SHA-256:
-
-```text
-547d4636800043e14cd9254b566cbcf6aabfc464f046c798011ea3edd72077c7
-```
-
-### Benchmark Composition
-
-| Test type | Questions |
-|---|---:|
-| Straightforward | 8 |
-| Paraphrased | 8 |
-| Typo / noisy | 3 |
-| Numerical | 5 |
-| Colloquial | 5 |
-| Multi-article | 7 |
-| Out-of-scope | 4 |
-| **Total** | **40** |
-
-| Expected behavior | Count |
-|---|---:|
-| Retrieve | 36 |
-| Abstain | 4 |
-
-| Difficulty | Count |
-|---|---:|
-| Easy | 6 |
-| Medium | 17 |
-| Hard | 17 |
-
-Only the Arabic question is sent to the pipeline. Gold evidence and evaluation metadata remain evaluation-only.
+This is useful when inspecting the strict boundary between evidence retrieval and answer generation.
 
 ---
 
-## Evaluation Protocol
-
-The following components are held fixed during model comparison:
-
-| Component | Fixed setting |
-|---|---|
-| Knowledge Graph | Same validated Jordanian Labor Law KG |
-| Retrieval architecture | Same ontology-driven hybrid GraphRAG pipeline |
-| Embedding model | `text-embedding-3-small` |
-| Benchmark | Same frozen 40-question holdout |
-| Evaluation judge | `gpt-5.4-mini` |
-| Runs | 3 independent runs per model |
-
-For each experiment, the selected LLM powers the LLM-dependent stages:
-
-- query planning;
-- routing-related model logic;
-- article reranking;
-- grounded answer generation; and
-- citation retry.
-
----
-
-## Evaluation Metrics
+## 11. Query the API directly
 
 ### Retrieval
 
-- Routing Accuracy
-- Hit@1
-- Article Recall@5
-- Article Precision
-- Out-of-Scope Accuracy
-- Retrieval Stage Latency
+```bash
+curl -X POST "http://localhost:8000/retrieve" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "question": "ما المعلومات التي يرسلها صاحب العمل إلى وزارة العمل في بداية كل سنة، وما السجلات التي يجب أن يحتفظ بها داخل المؤسسة؟",
+    "include_debug": true
+  }'
+```
+
+The response is a `retrieval.v2` object.
 
 ### Generation
 
-- Correctness
-- Faithfulness
-- Citation Validity
-- Citation Recall
-- Out-of-Scope Response Accuracy
-- Generation Stage Latency
+Send the **complete output of `/retrieve`** as the request body to:
 
-### Primary Metric
+```text
+POST /generate
+```
 
-The primary metric is **strict end-to-end (E2E) success**.
+Example:
 
-A case passes only when the complete pipeline satisfies the required routing, legal evidence, answer-quality, grounding, and citation conditions.
-
-Results are reported as **mean ± sample standard deviation across three independent runs**.
+```bash
+curl -X POST "http://localhost:8000/generate?include_debug=false" \
+  -H "Content-Type: application/json" \
+  --data-binary @retrieval.json
+```
 
 ---
 
-## Reproducing the Model Evaluation
-
-Set the required provider and model in `.env`, then recreate the API container:
+## 12. Run tests
 
 ```bash
-docker compose up -d --force-recreate api
+pytest
 ```
 
-Run the three-run evaluation:
+The current tests include:
+
+- architecture invariants;
+- KG integrity and semantic Article reachability;
+- exclusion of Article/Paragraph document nodes from concept linking;
+- Arabic text normalization;
+- statutory text relevance behavior.
+
+---
+
+# Reproducing the Model Evaluation
+
+Before evaluation:
+
+1. start the API;
+2. ingest the same KG;
+3. choose the evaluated pipeline model;
+4. keep all non-model retrieval/generation settings fixed;
+5. keep `text-embedding-3-small` fixed;
+6. keep `gpt-5.4-mini` fixed as the evaluation judge.
+
+Example environment:
+
+```env
+PIPELINE_LLM_PROVIDER=google
+PIPELINE_LLM_MODEL=<GEMINI_MODEL_NAME>
+EVALUATION_JUDGE_MODEL=gpt-5.4-mini
+```
+
+Run three independent repetitions:
 
 ```bash
-docker compose exec -T api   env PYTHONIOENCODING=utf-8   python scripts/run_full_pipeline_evaluation.py   --benchmark /app/data/benchmarks/jordan_labor_law_fresh_final_40_v2_3.json   --runs 3   --output-dir /app/data/model_evaluations/<provider__model>
+python -m scripts.run_full_pipeline_evaluation \
+  --benchmark data/benchmarks/jordan_labor_law_fresh_final_40_v3_1.json \
+  --runs 3 \
+  --output-dir data/model_evaluations/gemini
 ```
 
-The evaluator writes:
+The evaluation runner writes:
 
 ```text
 run-1.json
@@ -452,148 +512,62 @@ run-3.json
 final-summary.json
 ```
 
-Use a separate output directory for each model.
+`final-summary.json` reports mean and **sample standard deviation** across complete independent runs.
+
+To compare another model, change only the evaluated provider/model configuration and rerun the same command with a separate output directory.
 
 ---
 
-## Final Model Comparison
+## Evaluation Integrity
 
-Four models were evaluated:
+The model-comparison runner checks that the configured LLM path was actually used. Infrastructure/provider failures are treated as execution failures instead of silently replacing the evaluated model with deterministic fallback behavior.
 
-1. GPT-5-nano
-2. Gemini-3.5-Flash-Lite
-3. Qwen3.7-Plus
-4. Aya Expanse 32B — additional multilingual baseline
-
-### Aggregate Results
-
-| Metric | GPT-5-nano | Gemini-3.5-Flash-Lite | Qwen3.7-Plus | Aya Expanse 32B |
-|---|---:|---:|---:|---:|
-| **E2E success** | 81.67 ± 3.82% | 88.33 ± 5.20% | **90.83 ± 3.82%** | 69.17 ± 3.82% |
-| Routing accuracy | **100%** | **100%** | **100%** | 90.00% |
-| Hit@1 | 93.52 ± 3.21% | 93.52 ± 1.60% | **94.44 ± 2.78%** | 69.44 ± 4.81% |
-| Recall@5 | **98.06 ± 1.23%** | 96.44 ± 1.47% | 96.94 ± 1.82% | 93.47 ± 1.93% |
-| Retrieval precision | 85.90 ± 4.75% | **93.69 ± 0.97%** | 93.56 ± 3.19% | 49.65 ± 0.12% |
-| Correctness | 91.20 ± 2.89% | 93.98 ± 3.50% | **95.83 ± 2.41%** | 87.14 ± 3.78% |
-| Faithfulness | 90.74 ± 4.24% | 97.22 ± 3.67% | **98.15 ± 0.80%** | 91.90 ± 2.97% |
-| Citation validity | **100%** | 99.07 ± 1.60% | 99.07 ± 1.60% | 99.05 ± 1.65% |
-| Citation recall | **97.82 ± 1.54%** | 96.44 ± 1.47% | 96.94 ± 1.82% | 95.19 ± 3.63% |
-| Retrieval latency | 23.88 s | **7.00 s** | 70.89 s | 22.23 s |
-| Generation latency | 6.52 s | **1.24 s** | 19.73 s | 4.69 s |
-
-Qwen3.7-Plus achieved the **highest observed mean E2E success rate**, while Gemini-3.5-Flash-Lite provided the strongest latency/performance balance.
-
-No statistical-significance claim is made from only three runs.
-
-> Latency values are pipeline-stage measurements and may include model inference, provider API, and network overhead.
+Gold Articles, required facts, required citations, forbidden claims, and scope labels are evaluation metadata only. Only the Arabic question is sent to the retrieval endpoint.
 
 ---
 
-## Multi-Article Performance
+## Design Guarantees
 
-Multi-article questions remained the most difficult category.
+The implementation includes explicit safeguards to preserve the intended architecture:
 
-| Model | Multi-article E2E |
-|---|---:|
-| GPT-5-nano | 57.14 ± 24.74% |
-| Gemini-3.5-Flash-Lite | **66.67 ± 21.82%** |
-| Qwen3.7-Plus | 61.90 ± 8.25% |
-| Aya Expanse 32B | 33.33 ± 16.50% |
-
-The main remaining systems challenge is **complete evidence-set retrieval for compound legal questions**.
-
----
-
-## Official Result Files
-
-Detailed per-question outputs and aggregate summaries are stored under:
-
-```text
-data/model_evaluations/fresh_final_v2_3/
-```
-
-Each official model directory contains:
-
-```text
-run-1.json
-run-2.json
-run-3.json
-final-summary.json
-```
-
-Use the raw run files for per-question inspection and `final-summary.json` for aggregate mean/standard-deviation results.
+- Vector and BM25 search are restricted to semantic concepts.
+- Article and Paragraph nodes are excluded from ontology concept linking.
+- Legal Articles are introduced only by relation-aware graph traversal.
+- Structural `hasArticle` catalogue traversal is disabled.
+- The LLM reranker cannot select an Article outside the graph-derived catalogue.
+- An empty reranker selection is valid when the graph provides insufficient evidence.
+- The generation endpoint cannot rerun retrieval.
+- The generator can cite only Articles supplied by retrieval.
+- Invalid or unretrieved Article citations trigger validation and at most one repair retry.
+- Failed citation validation results in `insufficient_evidence` rather than an unsupported answer.
 
 ---
 
-## Reproducibility Notes
+## Research Use
 
-To preserve a fair comparison:
+This repository supports reproducible research on Arabic legal question answering, ontology-driven GraphRAG, legal knowledge graphs, grounded LLM generation, and model comparison.
 
-- the KG is fixed;
-- the benchmark is fixed;
-- the embedding model is fixed;
-- the evaluation judge is fixed;
-- retrieval parameters are held constant;
-- the same model powers all LLM-dependent stages for a given experiment; and
-- official results are stored separately for each model.
-
-Model-generated structured-output or semantic-contract failures are counted as pipeline/task failures rather than silently replacing the evaluated model.
-
----
-
-## Limitations
-
-- The KG represents the version of Jordanian Labor Law used in this project; later amendments require an explicit KG update.
-- The system is a research prototype and is **not a substitute for professional legal advice**.
-- Multi-article questions remain substantially harder than most single-issue questions.
-- LLM planning and reranking can vary across independent runs.
-- Automated evaluation supports controlled comparison, but expert legal review remains important for real legal decision-support applications.
-- Weaviate is used for retrieval and graph materialization; the system does not claim native OWL/RDFS inference within Weaviate.
-
----
-
-## Security and Secrets
-
-Never commit:
-
-```text
-.env
-API keys
-provider credentials
-local secret configuration
-```
-
-Use `.env.example` for non-secret configuration templates and keep `.env` excluded through `.gitignore`.
-
----
-
-## Authors
-
-**Osama Alqasem**  
-Data Science Department  
-Princess Sumaya University for Technology  
-Amman, Jordan
-
-**Omar Qawasmeh**  
-Data Science Department  
-Princess Sumaya University for Technology  
-Amman, Jordan  
-Academic Supervisor
+The system provides legal-information answers over the represented Jordanian Labor Law KG and is not a substitute for professional legal advice.
 
 ---
 
 ## Citation
 
-This repository accompanies an ongoing research study on ontology-driven GraphRAG for Arabic legal question answering over Jordanian Labor Law.
+If you use this repository in academic work, please cite the associated paper.
 
-A formal paper citation can be added once the conference-paper metadata is finalized.
-
-For software citation, a `CITATION.cff` file can also be added to the repository root so GitHub can expose a built-in **Cite this repository** action.
+```bibtex
+@inproceedings{alqasem_ontology_graphrag,
+  title   = {An Ontology-Driven GraphRAG Framework for Arabic Legal Question
+             Answering over Jordanian Labor Law},
+  author  = {Osama Alqasem, Omar Qawasmeh},
+  year    = {2026},
+  note    = {Bibliographic details to be updated after publication}
+}
+```
 
 ---
 
-## Disclaimer
 
-This software is provided for research and experimental purposes.
+## Acknowledgements
 
-Generated answers should not be interpreted as legal advice, legal representation, or an authoritative interpretation of Jordanian law.
+This project investigates the integration of legal ontologies, RDF knowledge graphs, relation-aware retrieval, and large language models for Arabic legal question answering over Jordanian Labor Law.

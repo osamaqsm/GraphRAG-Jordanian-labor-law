@@ -60,8 +60,8 @@ app = FastAPI(
     title=settings.app_name,
     version=settings.app_version,
     description=(
-        "Legal question-answering API using the Jordanian "
-        "Labour Law Knowledge Graph."
+        "Ontology-driven GraphRAG API over the Jordanian "
+        "Labour Law Knowledge Graph with graph-only legal evidence retrieval."
     ),
     lifespan=lifespan,
 )

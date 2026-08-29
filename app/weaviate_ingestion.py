@@ -81,6 +81,7 @@ def node_properties(
         "localName": record.local_name,
         "nodeKind": record.node_kind,
         "searchableText": record.searchable_text,
+        "retrievalEligible": record.retrieval_eligible,
     }
 
     optional_arrays = {
@@ -88,6 +89,9 @@ def node_properties(
         "labelsAr": record.labels_ar,
         "labelsEn": record.labels_en,
         "labelsOther": record.labels_other,
+        "aliasesAr": record.aliases_ar,
+        "aliasesEn": record.aliases_en,
+        "aliasesOther": record.aliases_other,
         "commentsAr": record.comments_ar,
         "commentsEn": record.comments_en,
         "commentsOther": record.comments_other,

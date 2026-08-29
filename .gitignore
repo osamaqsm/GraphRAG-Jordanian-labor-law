@@ -1,36 +1,6 @@
-# Secret configuration
 .env
-
-# Python
 __pycache__/
 *.py[cod]
-*.pyo
 .pytest_cache/
-.mypy_cache/
-.ruff_cache/
-
-# Virtual environments
 .venv/
-venv/
-
-# IDEs
-.vscode/
-.idea/
-
-# Logs
-*.log
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Test coverage
-.coverage
-htmlcov/
-
-# Temporary files
-tmp/
-
-__pycache__/
-*.pyc
-*.pyo
+.env.old

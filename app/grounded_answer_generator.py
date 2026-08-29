@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 import re
 import time
 from typing import Any
@@ -10,11 +9,11 @@ from pydantic import BaseModel, ConfigDict, Field
 from app.config import Settings, get_settings
 from app.llm_provider import build_pipeline_llm
 from app.generation_contract import (
-    AnswerCitationV1,
-    GenerationUsageV1,
-    GroundedAnswerResultV1,
+    AnswerCitationV2,
+    GenerationUsageV2,
+    GroundedAnswerResultV2,
 )
-from app.retrieval_contract import RetrievalEvidenceV1, RetrievalResultV1
+from app.retrieval_contract import RetrievalEvidenceV2, RetrievalResultV2
 
 
 ARABIC_DIGITS = str.maketrans("٠١٢٣٤٥٦٧٨٩", "0123456789")
@@ -29,19 +28,6 @@ ARTICLE_MENTION_RE = re.compile(
 BRACKETED_CITATION_RE = re.compile(
     r"\[+\s*(?:المادة|مادة)\s+([0-9٠-٩]+)\s*\]+"
 )
-
-
-def _setting(settings: Settings, name: str, env_name: str, default: Any) -> Any:
-    value = getattr(settings, name, None)
-    if value is not None and value != "":
-        return value
-    return os.getenv(env_name, default)
-
-
-def _truthy(value: Any, *, default: bool = False) -> bool:
-    if value is None:
-        return default
-    return str(value).strip().lower() not in {"0", "false", "no", "off", ""}
 
 
 def _unique_numbers(values: list[int]) -> list[int]:
@@ -153,8 +139,8 @@ class GroundedAnswerGenerator:
     """
     One-call generation boundary.
 
-    Input: one completed retrieval.v1 object.
-    Output: one generation.v1 object.
+    Input: one completed retrieval.v2 object.
+    Output: one generation.v2 object.
 
     This module has no retrieval, vector database, graph traversal, embedding,
     reranking, evidence-selection, or answer-verification dependency.
@@ -167,66 +153,23 @@ class GroundedAnswerGenerator:
         client: Any | None = None,
     ) -> None:
         self.settings = settings or get_settings()
-
-        strict_value = os.getenv(
-            "PIPELINE_STRICT_EVALUATION",
-            "false",
-        ).strip().lower()
-        self.strict_evaluation = strict_value not in {
-            "0", "false", "no", "off", ""
-        }
-
-        self.enabled = _truthy(
-            _setting(
-                self.settings,
-                "answer_enabled",
-                "PIPELINE_ANSWER_ENABLED",
-                _setting(
-                    self.settings,
-                    "openai_answer_enabled",
-                    "OPENAI_ANSWER_ENABLED",
-                    "true",
-                ),
-            ),
-            default=True,
-        )
-
-        self.provider = str(
-            getattr(
-                self.settings,
-                "pipeline_llm_provider",
-                "openai",
-            )
-        ).strip().lower()
-
-        self.model = str(
-            getattr(
-                self.settings,
-                "pipeline_llm_model",
-                "gpt-5-nano",
-            )
-        ).strip()
-
-        self.max_output_tokens = max(
-            500,
-            int(
-                getattr(
-                    self.settings,
-                    "generator_max_output_tokens",
-                    3000,
-                )
-            ),
-        )
-
+        self.provider = self.settings.pipeline_llm_provider
+        self.model = self.settings.pipeline_llm_model
+        self.max_output_tokens = max(500, self.settings.generator_max_output_tokens)
         self.llm = client
-        self.initialization_error: str | None = None
 
-        if self.llm is None and self.enabled:
-            try:
-                self.llm = build_pipeline_llm(self.settings)
-            except Exception as exc:
-                self.llm = None
-                self.initialization_error = f"{type(exc).__name__}: {exc}"
+    def _ensure_llm(self) -> Any:
+        if self.llm is not None:
+            return self.llm
+        try:
+            self.llm = build_pipeline_llm(self.settings)
+            return self.llm
+        except Exception as exc:
+            raise RuntimeError(
+                "Answer generator initialization failed. "
+                f"Provider={self.provider} Model={self.model} "
+                f"Error={type(exc).__name__}: {exc}"
+            ) from exc
 
     @staticmethod
     def _instructions() -> str:
@@ -239,7 +182,7 @@ INPUT
 The user message is one JSON object with exactly these top-level fields:
 - user_question: the exact question asked by the user.
 - retrieval_evidence: a compact provider-neutral evidence view derived from the
-  exact retrieval.v1 object produced by the previous step.
+  exact retrieval.v2 object produced by the previous step.
 
 Use retrieval_evidence.articles[].text as the only legal evidence. The decision
 field is routing metadata and must not be treated as legal text.
@@ -247,7 +190,7 @@ field is routing metadata and must not be treated as legal text.
 RULES
 
 1. Answer the exact user_question directly in clear Modern Standard Arabic.
-2. Use only retrieval_result.articles[].text. Do not use memory, outside legal
+2. Use only retrieval_evidence.articles[].text. Do not use memory, outside legal
    knowledge, web knowledge, metadata, graph paths, scores, or unstated facts.
 3. First split the question internally into its independently requested parts.
    For each part, identify the article text that directly answers it.
@@ -281,7 +224,7 @@ CITATIONS
 
 - Put an inline citation immediately after every legal sentence using exactly
   [المادة N].
-- N must be an article_number present in retrieval_result.articles.
+- N must be an article_number present in retrieval_evidence.articles.
 - Never cite an article that was not supplied.
 - cited_article_numbers must list the unique cited articles in first-use order.
 
@@ -316,13 +259,13 @@ Before returning, perform this final check:
         )
 
     @staticmethod
-    def _citation(article: RetrievalEvidenceV1) -> AnswerCitationV1:
+    def _citation(article: RetrievalEvidenceV2) -> AnswerCitationV2:
         label = (
             article.labels_ar[0]
             if article.labels_ar
             else f"المادة {article.article_number}"
         )
-        return AnswerCitationV1(
+        return AnswerCitationV2(
             article_number=int(article.article_number),
             label_ar=label,
             uri=article.uri,
@@ -331,7 +274,7 @@ Before returning, perform this final check:
 
     def _non_model_result(
         self,
-        retrieval: RetrievalResultV1,
+        retrieval: RetrievalResultV2,
         *,
         status: str,
         answer_ar: str,
@@ -340,7 +283,7 @@ Before returning, perform this final check:
         include_debug: bool = False,
         model_called: bool = False,
         debug_details: dict[str, Any] | None = None,
-    ) -> GroundedAnswerResultV1:
+    ) -> GroundedAnswerResultV2:
         debug: dict[str, Any] | None = None
         if include_debug:
             debug = {
@@ -350,7 +293,7 @@ Before returning, perform this final check:
             if debug_details:
                 debug.update(debug_details)
 
-        return GroundedAnswerResultV1(
+        return GroundedAnswerResultV2(
             status=status,
             question=retrieval.question,
             answer_ar=answer_ar,
@@ -360,8 +303,8 @@ Before returning, perform this final check:
             debug=debug,
         )
 
-    def _request_payload(self, retrieval: RetrievalResultV1) -> dict[str, Any]:
-        # /generate still consumes the exact retrieval.v1 object and never
+    def _request_payload(self, retrieval: RetrievalResultV2) -> dict[str, Any]:
+        # /generate still consumes the exact retrieval.v2 object and never
         # reruns retrieval.  The LLM itself receives only the fields needed for
         # grounded answering so hosted and 8K-context local models see the same
         # compact semantic input rather than provider-irrelevant graph metadata.
@@ -390,14 +333,14 @@ Before returning, perform this final check:
 
     def generate(
         self,
-        retrieval: RetrievalResultV1 | dict[str, Any],
+        retrieval: RetrievalResultV2 | dict[str, Any],
         *,
         include_debug: bool = False,
-    ) -> GroundedAnswerResultV1:
+    ) -> GroundedAnswerResultV2:
         started = time.perf_counter()
 
-        if not isinstance(retrieval, RetrievalResultV1):
-            retrieval = RetrievalResultV1.model_validate(retrieval)
+        if not isinstance(retrieval, RetrievalResultV2):
+            retrieval = RetrievalResultV2.model_validate(retrieval)
 
         if retrieval.decision.behavior == "abstain":
             # User-facing out-of-scope behavior is deterministic and
@@ -437,29 +380,11 @@ Before returning, perform this final check:
                 include_debug=include_debug,
             )
 
-        if not self.enabled or self.llm is None:
-            if self.strict_evaluation:
-                raise RuntimeError(
-                    "Strict evaluation aborted: answer generator is unavailable. "
-                    f"Provider={self.provider} Model={self.model} "
-                    f"Error={self.initialization_error}"
-                )
-            return self._non_model_result(
-                retrieval,
-                status="insufficient_evidence",
-                answer_ar="توليد الإجابة معطل حالياً.",
-                started=started,
-                warning=(
-                    "PIPELINE_ANSWER_ENABLED is false or no pipeline "
-                    "LLM provider is available."
-                ),
-                include_debug=include_debug,
-            )
-
         payload = self._request_payload(retrieval)
+        llm = self._ensure_llm()
 
         try:
-            result = self.llm.generate_structured(
+            result = llm.generate_structured(
                 instructions=self._instructions(),
                 payload=payload,
                 response_model=AnswerDraft,
@@ -467,24 +392,11 @@ Before returning, perform this final check:
                 max_output_tokens=self.max_output_tokens,
             )
         except Exception as exc:
-            if self.strict_evaluation:
-                raise RuntimeError(
-                    "Strict evaluation aborted: answer generation failed. "
-                    f"Provider={self.provider} Model={self.model} "
-                    f"Error={type(exc).__name__}: {exc}"
-                ) from exc
-            return self._non_model_result(
-                retrieval,
-                status="insufficient_evidence",
-                answer_ar="تعذر إنشاء إجابة من المواد المسترجعة.",
-                started=started,
-                warning=(
-                    "Pipeline answer generation failed. "
-                    f"Provider={self.provider} Model={self.model} Error={exc}"
-                ),
-                include_debug=include_debug,
-                model_called=True,
-            )
+            raise RuntimeError(
+                "Answer generation failed. "
+                f"Provider={self.provider} Model={self.model} "
+                f"Error={type(exc).__name__}: {exc}"
+            ) from exc
 
         draft = AnswerDraft.model_validate(result.data)
         initial_draft = draft
@@ -503,7 +415,7 @@ Before returning, perform this final check:
             retry_applied = True
 
             try:
-                retry_result = self.llm.generate_structured(
+                retry_result = llm.generate_structured(
                     instructions=self._retry_instructions(
                         sorted(allowed_numbers)
                     ),
@@ -525,14 +437,11 @@ Before returning, perform this final check:
                 draft = retry_draft
 
             except Exception as exc:
-                if self.strict_evaluation:
-                    raise RuntimeError(
-                        "Strict evaluation aborted: citation-repair retry failed. "
-                        f"Provider={self.provider} Model={self.model} "
-                        f"Error={type(exc).__name__}: {exc}"
-                    ) from exc
-                retry_result = None
-                retry_draft = None
+                raise RuntimeError(
+                    "Citation-repair retry failed. "
+                    f"Provider={self.provider} Model={self.model} "
+                    f"Error={type(exc).__name__}: {exc}"
+                ) from exc
 
         answer = state["answer"]
         structured_numbers = list(state["final_numbers"])
@@ -661,7 +570,7 @@ Before returning, perform this final check:
                 "draft": draft.model_dump(mode="json"),
             }
 
-        return GroundedAnswerResultV1(
+        return GroundedAnswerResultV2(
             status="generated",
             question=retrieval.question,
             answer_ar=answer.strip(),
@@ -675,7 +584,7 @@ Before returning, perform this final check:
                 if value.strip()
             ],
             model=self.model,
-            usage=GenerationUsageV1(
+            usage=GenerationUsageV2(
                 input_tokens=input_tokens,
                 output_tokens=output_tokens,
                 total_tokens=total_tokens,

@@ -17,7 +17,7 @@ from openai import OpenAI
 
 from app.config import get_settings
 
-DEFAULT_BENCHMARK = Path('/app/data/benchmarks/jordan_labor_law_final_unseen_40.json')
+DEFAULT_BENCHMARK = Path('/app/data/benchmarks/jordan_labor_law_fresh_final_40_v2_3.json')
 DEFAULT_RESULTS_DIR = Path('/app/data/model_evaluations')
 ARABIC_RE = re.compile(r'[\u0600-\u06FF]')
 LATIN_RE = re.compile(r'[A-Za-z]')
@@ -59,7 +59,7 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=None,
         help=(
-            'Backward-compatible single-run output path. Supplying this forces '
+            'Optional single-run output path. Supplying this forces '
             'one run and is useful for smoke/diagnostic tests.'
         ),
     )
@@ -73,25 +73,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument('--start', type=int, default=1)
     parser.add_argument('--limit', type=int, default=None)
     parser.add_argument('--stop-on-error', action='store_true')
-    parser.add_argument(
-        '--allow-llm-fallback',
-        action='store_true',
-        help=(
-            'Diagnostic only. Allow deterministic fallback when an LLM stage '
-            'fails. Final model-comparison runs should NOT use this flag.'
-        ),
-    )
     return parser.parse_args()
 
 
 class ExecutionIntegrityError(RuntimeError):
     """Raised when a model-comparison run stops using the configured LLM."""
-
-
-def truthy(value: Any) -> bool:
-    return str(value or '').strip().lower() not in {
-        '', '0', 'false', 'no', 'off'
-    }
 
 
 def validate_execution_integrity(
@@ -104,9 +90,8 @@ def validate_execution_integrity(
 ) -> None:
     """Fail closed when a benchmark case silently leaves the LLM path.
 
-    The planner flag is observable in retrieval.v1. Reranker/provider failures
-    are made fatal by PIPELINE_STRICT_EVALUATION inside the API components.
-    Generation provider failures are also fatal in strict mode, while genuine
+    The planner flag is observable in retrieval.v2. Reranker/provider failures are never replaced by deterministic fallbacks.
+    Provider failures remain execution errors, while genuine
     model-quality failures (for example invalid citations after a successful
     model call) remain scoreable outcomes rather than infrastructure errors.
     """
@@ -330,9 +315,11 @@ def _is_model_contract_failure(
     # Examples include an abstain plan containing atomic issues or
     # requesting articles. Those ValueErrors are model-output failures,
     # not provider/infrastructure failures.
-    planner_stage_markers = (
-        'strict evaluation aborted: query planner failed.',
-        'strict evaluation aborted: route verification failed.',
+    model_stage_markers = (
+        'query planner failed.',
+        'article reranker failed.',
+        'answer generation failed.',
+        'citation-repair retry failed.',
     )
 
     validation_error_markers = (
@@ -344,7 +331,7 @@ def _is_model_contract_failure(
     return (
         any(
             marker in normalized
-            for marker in planner_stage_markers
+            for marker in model_stage_markers
         )
         and any(
             marker in normalized
@@ -826,7 +813,7 @@ def build_output(
     settings = get_settings()
 
     return {
-        'schema_version': 'full-pipeline-evaluation.v3',
+        'schema_version': 'full-pipeline-evaluation.v4',
         'created_at_utc': datetime.now(timezone.utc).isoformat(),
         'model_name': model_name,
         'provider': settings.pipeline_llm_provider,
@@ -834,10 +821,7 @@ def build_output(
         'runs_requested': runs_requested,
         'judge_model': args.judge_model,
         'execution_integrity': {
-            'strict_llm_execution': not args.allow_llm_fallback,
-            'pipeline_strict_evaluation_env': truthy(
-                os.getenv('PIPELINE_STRICT_EVALUATION', 'false')
-            ),
+            'strict_llm_execution': True,
             'checkpoint_resume_enabled': True,
         },
         'pipeline_models': {
@@ -1276,7 +1260,7 @@ def _run_once(
     runs_requested: int,
     model_name: str,
 ) -> dict[str, Any]:
-    strict_execution = not args.allow_llm_fallback
+    strict_execution = True
     rows, is_complete = _load_resume_checkpoint(
         args=args,
         benchmark=benchmark,
@@ -1465,15 +1449,7 @@ def _run_once(
 
 def main() -> int:
     args = parse_args()
-    strict_execution = not args.allow_llm_fallback
-
-    if strict_execution and not truthy(
-        os.getenv('PIPELINE_STRICT_EVALUATION', 'false')
-    ):
-        raise RuntimeError(
-            'Final model-comparison runs require '
-            'PIPELINE_STRICT_EVALUATION=true in the API container.'
-        )
+    strict_execution = True
 
     benchmark = load_json(args.benchmark)
     if not benchmark.get('frozen'):
@@ -1491,7 +1467,7 @@ def main() -> int:
     settings = get_settings()
     model_name = str(args.model_name or settings.pipeline_llm_model)
 
-    # Compatibility mode: an explicit --output is exactly one run. This keeps
+    # An explicit --output is exactly one run. This keeps
     # the previous smoke-test commands valid.
     runs_requested = 1 if args.output is not None else int(args.runs)
     if runs_requested < 1:

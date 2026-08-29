@@ -5,26 +5,26 @@ import json
 from pathlib import Path
 
 from app.grounded_answer_generator import GroundedAnswerGenerator
-from app.retrieval_contract import RetrievalResultV1
+from app.retrieval_contract import RetrievalResultV2
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Generate a grounded answer from a saved retrieval.v1 JSON file. "
+            "Generate a grounded answer from a saved retrieval.v2 JSON file. "
             "This command never runs retrieval."
         )
     )
     parser.add_argument(
         "retrieval_json",
         type=Path,
-        help="Path to a saved retrieval.v1 JSON file.",
+        help="Path to a saved retrieval.v2 JSON file.",
     )
     parser.add_argument(
         "--output",
         type=Path,
         default=None,
-        help="Optional output path for generation.v1 JSON.",
+        help="Optional output path for generation.v2 JSON.",
     )
     parser.add_argument(
         "--debug",
@@ -39,7 +39,7 @@ def main() -> int:
     payload = json.loads(
         args.retrieval_json.read_text(encoding="utf-8-sig")
     )
-    retrieval = RetrievalResultV1.model_validate(payload)
+    retrieval = RetrievalResultV2.model_validate(payload)
 
     generator = GroundedAnswerGenerator()
     result = generator.generate(
